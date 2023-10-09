@@ -15,7 +15,7 @@ public:
 	void Update() override;
 
 private:
-	int fontSize = 16;
+	int FontSize = 16;
 	std::string _text = "new_text";
 	std::vector<TextCharacter> _textCharacterVector;
 

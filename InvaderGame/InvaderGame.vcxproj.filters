@@ -66,6 +66,18 @@
     <ClInclude Include="SpriteRenderer.h">
       <Filter>Source\Game</Filter>
     </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowsProjectDirectX11_2.cpp">
@@ -93,6 +105,18 @@
       <Filter>Source\Game</Filter>
     </ClCompile>
     <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
       <Filter>Source\Game</Filter>
     </ClCompile>
   </ItemGroup>

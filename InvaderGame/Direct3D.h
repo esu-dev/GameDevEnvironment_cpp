@@ -5,7 +5,11 @@
 
 #include "DirectX.h"
 
+#include "Vector3.h"
+#include "Quaternion.h"
+
 class Texture;
+class Quaternion;
 
 // 2D用頂点構造体
 struct VertexType2D
@@ -63,10 +67,13 @@ public:
 	// 2D描画モードにする
 	void ChangeMode_2D();
 
-	// 2D描画
-	void Draw2D(const Texture& texture, float x, float y, float w, float h);
+	void SetRect(float x, float y, float w, float h);
+	void SetRect(float x, float y, float w, float h, Quaternion quaternion);
 
-	void DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView, float x, float y, float w, float h);
+	// 2D描画
+	void Draw2D(const Texture& texture);
+
+	void DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView);
 
 	//=========================================
 	// 今回このクラスは、どこからでもアクセスできるように

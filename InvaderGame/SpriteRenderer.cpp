@@ -1,6 +1,10 @@
 #include "SpriteRenderer.h"
 
+#include "GameObject.h"
+#include "Transform.h"
+
 SpriteRenderer::SpriteRenderer()
+	: m_texture{nullptr}
 {
 
 }
@@ -12,5 +16,6 @@ void SpriteRenderer::SetTexture(Texture* texture)
 
 void SpriteRenderer::Update()
 {
-	D3D.Draw2D(*m_texture, 0, 0, 100.0 * 2 / 960, 100.0 * 2 / 540);
+	this->gameObject->transform->Update();
+	D3D.Draw2D(*m_texture);
 }

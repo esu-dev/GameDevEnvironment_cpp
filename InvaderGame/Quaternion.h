@@ -1,0 +1,30 @@
+#pragma once
+
+#include "framework.h"
+#include "DirectX.h"
+
+class Vector3;
+class Matrix;
+
+class Quaternion
+{
+public:
+	float x, y, z, w;
+
+	static Quaternion& AngleAxis(float angle, Vector3 axis);
+	static Quaternion Inverse(Quaternion quaternion);
+
+	Vector3 Mult(Vector3 vector);
+
+	Matrix ToXMMATRIX();
+};
+
+class Matrix
+{
+public:
+	//Matrix(int rowNum, int columnNum);
+
+	Matrix operator*(const Matrix& matrix) const;
+
+	std::vector<std::vector<float>> g_matrix; // [çs][óÒ]
+};

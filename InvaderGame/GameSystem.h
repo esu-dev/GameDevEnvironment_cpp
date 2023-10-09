@@ -19,8 +19,7 @@ public:
 private:
 	static inline GameSystem* s_instance;
 
-	int s = 0;
-	std::vector<GameObject> _gameObjectVector;
+	std::vector<GameObject*> _gameObjectVector;
 
 	GameSystem() { }
 

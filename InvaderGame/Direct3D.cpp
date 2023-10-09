@@ -267,7 +267,7 @@ void Direct3D::ChangeMode_2D()
 	m_deviceContext->OMSetBlendState(blendState.Get(), blendFactor, 0xffffffff);
 }
 
-void Direct3D::Draw2D(const Texture& texture, float x, float y, float w, float h)
+void Direct3D::SetRect(float x, float y, float w, float h)
 {
 	float hW = w * 0.5f;
 	float hH = h * 0.5f;
@@ -289,7 +289,46 @@ void Direct3D::Draw2D(const Texture& texture, float x, float y, float w, float h
 
 		m_deviceContext->Unmap(m_vbSquare.Get(), 0);
 	}
+}
 
+void Direct3D::SetRect(float x, float y, float w, float h, Quaternion quaternion)
+{
+	float hW = w * 0.5f;
+	float hH = h * 0.5f;
+
+	Vector3 position = Vector3(x, y, 0);
+
+	Vector3 direction_leftDown = Vector3(-hW, -hH, 0);
+	Vector3 direction_leftUp = Vector3(-hW, hH, 0);
+	Vector3 direction_rightDown = Vector3(hW, -hH, 0);
+	Vector3 direction_rightUp = Vector3(hW, hH, 0);
+
+	Vector3 leftDown = position + quaternion.Mult(direction_leftDown);
+	Vector3 leftUp = position + quaternion.Mult(direction_leftUp);
+	Vector3 rightDown = position + quaternion.Mult(direction_rightDown);
+	Vector3 rightUp = position + quaternion.Mult(direction_rightUp);
+
+	// 頂点データ作成
+	VertexType2D v[4] = {
+		{{leftDown.x * 2 / 960, leftDown.y * 2 / 540, 0}, {0, 1}},	// 左下
+		{{leftUp.x * 2 / 960, leftUp.y * 2 / 540, 0}, {0, 0}},	// 左上
+		{{rightDown.x * 2 / 960, rightDown.y * 2 / 540, 0}, {1, 1}},	// 右下
+		{{rightUp.x * 2 / 960, rightUp.y * 2 / 540, 0}, {1, 0}},	// 右上
+	};
+
+	// 頂点バッファにデータを書き込む
+	D3D11_MAPPED_SUBRESOURCE pData;
+	if (SUCCEEDED(m_deviceContext->Map(m_vbSquare.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &pData)))
+	{
+		// データコピー
+		memcpy_s(pData.pData, sizeof(v), &v[0], sizeof(v));
+
+		m_deviceContext->Unmap(m_vbSquare.Get(), 0);
+	}
+}
+
+void Direct3D::Draw2D(const Texture& texture)
+{
 	// テクスチャを、ピクセルシェーダーのスロット0にセット
 	m_deviceContext->PSSetShaderResources(0, 1, texture.m_shaderResourceview.GetAddressOf());
 
@@ -297,29 +336,8 @@ void Direct3D::Draw2D(const Texture& texture, float x, float y, float w, float h
 	m_deviceContext->Draw(4, 0); // 頂点の数
 }
 
-void Direct3D::DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView, float x, float y, float w, float h)
+void Direct3D::DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView)
 {
-	float hW = w * 0.5f;
-	float hH = h * 0.5f;
-
-	// 頂点データ作成
-	VertexType2D v[4] = {
-		{{x - hW, y - hH, 0}, {0, 1}},	// 左下
-		{{x - hW, y + hH, 0}, {0, 0}},	// 左上
-		{{x + hW, y - hH, 0}, {1, 1}},	// 右下
-		{{x + hW, y + hH, 0}, {1, 0}},	// 右上
-	};
-
-	// 頂点バッファにデータを書き込む
-	D3D11_MAPPED_SUBRESOURCE pData;
-	if (SUCCEEDED(m_deviceContext->Map(m_vbSquare.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &pData)))
-	{
-		// データコピー
-		memcpy_s(pData.pData, sizeof(v), &v[0], sizeof(v));
-
-		m_deviceContext->Unmap(m_vbSquare.Get(), 0);
-	}
-
 	// テクスチャを、ピクセルシェーダーのスロット0にセット
 	m_deviceContext->PSSetShaderResources(0, 1, shaderResourceView.GetAddressOf());
 

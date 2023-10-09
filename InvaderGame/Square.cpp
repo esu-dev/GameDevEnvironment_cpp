@@ -30,5 +30,5 @@ Square::Square(const Texture& texture, float x, float y, float w, float h)
 
 void Square::Draw()
 {
-	D3D.Draw2D(_texture, _x, _y, _w, _h);
+	//D3D.Draw2D(_texture, _x, _y, _w, _h);
 }

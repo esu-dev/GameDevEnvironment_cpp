@@ -1,8 +1,11 @@
 ﻿#include "TextLabel.h"
 
+#include "GameObject.h"
+#include "Transform.h"
+
 TextLabel::TextLabel()
 {
-	
+
 }
 
 TextLabel::TextLabel(std::string text)
@@ -17,19 +20,25 @@ void TextLabel::SetText(std::string text)
 
 void TextLabel::SetFontSize(int fontSize)
 {
-	this->fontSize = fontSize;
+	FontSize = fontSize;
 }
 
 void TextLabel::Update()
 {
+	Quaternion rotation = gameObject->transform->rotation;
+
 	int i = 0;
 	for (wchar_t c : _text)
 	{
 		_textCharacterVector.push_back(TextCharacter());
-		_textCharacterVector[i].fontSize = fontSize;
+		_textCharacterVector[i].fontSize = FontSize;
 
 		MakeShaderResourceViewOf(c, &_textCharacterVector[i].ShaderResourceView);
-		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView, (0 + i * fontSize) * 2 / 960.0f, 0 * 2 / 540.0f, fontSize * 2 / 960.0f, fontSize * 2 / 540.0f);
+		
+		Vector3 textOriginal = gameObject->transform->position;
+		Vector3 drawPosition = rotation.Mult(Vector3(textOriginal.x + i * FontSize, textOriginal.y, 0));
+		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, FontSize, FontSize, rotation);
+		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView);
 		
 		i++;
 	}
@@ -47,7 +56,7 @@ void TextLabel::MakeShaderResourceViewOf(wchar_t c, ComPtr<ID3D11ShaderResourceV
 
 	// LOGFONT.. フォントの属性を定義する構造体
 	LOGFONT logFont = {
-		fontSize, 0, 0, 0,
+		FontSize, 0, 0, 0,
 		fontWeight, 0, 0, 0,
 		SHIFTJIS_CHARSET,
 		OUT_TT_ONLY_PRECIS,

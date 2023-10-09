@@ -1,8 +1,14 @@
 #include "GameObject.h"
 
-void GameObject::Test()
+#include "Component.h"
+#include "Transform.h"
+#include "TextLabel.h"
+#include "SpriteRenderer.h"
+
+GameObject::GameObject()
+	: transform{ AddComponent<Transform>() }
 {
-	
+
 }
 
 void GameObject::Update()
