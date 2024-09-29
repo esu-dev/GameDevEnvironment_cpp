@@ -3,7 +3,7 @@
 #define GAMESYS GameSystem::GetInstance()
 
 #include "framework.h"
-#include "GameObject.h"
+#include "GameEngine.h"
 
 class GameSystem
 {
@@ -15,6 +15,8 @@ public:
 	int WINDOW_WIDTH = 960;
 	int WINDOW_HEIGHT = 540;
 	Texture m_Texture;
+
+	Event OnUpdateListener;
 
 private:
 	static inline GameSystem* s_instance;

@@ -39,10 +39,7 @@ Vector3 Quaternion::Mult(Vector3 vector)
 		{ 0 }
 	};
 
-	Debug::Log(L"start");
 	Matrix result1 = quaternionMatrix * vectorMatrix;
-
-	Debug::Log(L"result1: [%d][%d]", result1.g_matrix.size(), result1.g_matrix.front().size());
 
 	// result1をクォータニオンに戻す
 	Quaternion quaternion = Quaternion();
@@ -105,10 +102,6 @@ Matrix Matrix::operator*(const Matrix& matrix) const
 	int rowNum = this->g_matrix.size();
 	int columnNum = matrix.g_matrix.front().size();
 
-	Debug::Log(L"rowNum: %d", rowNum);
-	Debug::Log(L"columnNum: %d", columnNum);
-	Debug::Log(L"colimnNum_left: %d", this->g_matrix.front().size());
-
 	for (int i = 0; i < rowNum; i++) // 4
 	{
 		std::vector<float> column;
@@ -123,8 +116,6 @@ Matrix Matrix::operator*(const Matrix& matrix) const
 			newMatrix.g_matrix[i].push_back(v);
 		}
 	}
-
-	Debug::Log(L"end*");
 
 	return newMatrix;
 }

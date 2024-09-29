@@ -78,6 +78,24 @@
     <ClInclude Include="Debug.h">
       <Filter>Source\Game</Filter>
     </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowsProjectDirectX11_2.cpp">
@@ -117,6 +135,21 @@
       <Filter>Source\Game</Filter>
     </ClCompile>
     <ClCompile Include="Debug.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
       <Filter>Source\Game</Filter>
     </ClCompile>
   </ItemGroup>

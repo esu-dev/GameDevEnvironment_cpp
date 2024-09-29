@@ -1,14 +1,12 @@
-#include "framework.h"
-
 #include "DirectX.h"
 
 #include "GameSystem.h"
-#include "Transform.h"
-#include "TextLabel.h"
-#include "SpriteRenderer.h"
 
 void GameSystem::Initialize()
 {
+	// static class‚Ì‰Šú‰»
+	Time::Initialize();
+
 	m_Texture.Load("./Data/Logo.png");
 
 	D3D.ChangeMode_2D();
@@ -30,15 +28,22 @@ void GameSystem::Initialize()
 
 void GameSystem::Execute()
 {
+	// ƒCƒxƒ“ƒgˆ—
+	OnUpdateListener.Invoke();
+
     float color[4] = { 0.2f, 0.2f, 1.0f, 1.0f };
     D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 	
+	// Updateˆ—
 	for (GameObject* gameObject : _gameObjectVector)
 	{
 		gameObject->Update();
 	}
 
+	//Debug::Log(L"%u", GetTickCount64());
+
     D3D.m_swapChain->Present(1, 0);
+
 }
 
 void GameSystem::AddSquare(float x, float y, float w, float h)
