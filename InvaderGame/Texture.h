@@ -11,5 +11,8 @@ public:
 	// ‰æ‘œî•ñ
 	DirectX::TexMetadata m_texMetaData = {};
 
+	Texture();
+	Texture(std::string fileName);
+
 	bool Load(const std::string& fileName); // std‚ÍC++•W€‚Ì–¼‘O‹óŠÔ
 };

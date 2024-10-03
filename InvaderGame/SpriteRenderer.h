@@ -1,5 +1,7 @@
 #pragma once
 
+#include "framework.h"
+
 #include "DirectX.h"
 #include "Component.h"
 #include "Texture.h"

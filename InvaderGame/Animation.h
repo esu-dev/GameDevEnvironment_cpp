@@ -8,11 +8,9 @@ class SpriteRenderer;
 class Animation
 {
 public:
-	Animation(std::string animationName);
+	Animation(std::string animationName, SpriteRenderer* spriteRenderer);
 
 	std::string GetAnimationName();
-
-	void SetSpriteRenderer(SpriteRenderer* spriteRenderer);
 
 	void SetAnimation(Texture* texture, float time);
 

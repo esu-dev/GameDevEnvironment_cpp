@@ -5,8 +5,7 @@
 class Input
 {
 public:
-	static bool GetKey(int vkey)
-	{
-		return GetAsyncKeyState(vkey) & 0x8000;
-	}
+	static bool GetKey(int vkey);
+
+	static bool GetKeyDown(int vkey);
 };

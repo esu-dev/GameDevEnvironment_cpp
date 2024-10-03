@@ -10,6 +10,8 @@ public:
 
 	void Play(std::string animationName);
 
+	void Update() override;
+
 private:
 	std::vector<Animation*> _animationVector;
 };

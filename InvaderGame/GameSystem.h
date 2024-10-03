@@ -8,23 +8,6 @@
 class GameSystem
 {
 public:
-	void Initialize();
-	void Execute();
-	void AddSquare(float x, float y, float w, float h);
-
-	int WINDOW_WIDTH = 960;
-	int WINDOW_HEIGHT = 540;
-	Texture m_Texture;
-
-	Event OnUpdateListener;
-
-private:
-	static inline GameSystem* s_instance;
-
-	std::vector<GameObject*> _gameObjectVector;
-
-	GameSystem() { }
-
 public:
 	static void CreateInstance()
 	{
@@ -42,4 +25,21 @@ public:
 	{
 		return *s_instance;
 	}
+
+	int WINDOW_WIDTH = 960;
+	int WINDOW_HEIGHT = 540;
+	Texture m_Texture;
+	Event OnUpdateListener;
+
+	void Initialize();
+	void Execute();
+	void AddSquare(float x, float y, float w, float h);
+
+private:
+	static inline GameSystem* s_instance;
+ 	b2Vec2 _gravity = { 0.0f, 0.0f };
+	b2World _world{_gravity};
+	std::vector<GameObject*> _gameObjectVector;
+
+	GameSystem() { }
 };

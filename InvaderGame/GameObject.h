@@ -6,6 +6,7 @@ class Component;
 class Transform;
 class TextLabel;
 class SpriteRenderer;
+class Animator;
 
 class GameObject
 {

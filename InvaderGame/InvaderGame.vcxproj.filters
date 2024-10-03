@@ -96,6 +96,18 @@
     <ClInclude Include="Event.h">
       <Filter>Source\Game</Filter>
     </ClInclude>
+    <ClInclude Include="std_extension.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider2D.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowsProjectDirectX11_2.cpp">
@@ -150,6 +162,15 @@
       <Filter>Source\Game</Filter>
     </ClCompile>
     <ClCompile Include="Time.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="std_extension.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider2D.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
       <Filter>Source\Game</Filter>
     </ClCompile>
   </ItemGroup>

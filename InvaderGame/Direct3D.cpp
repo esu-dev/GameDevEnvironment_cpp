@@ -310,17 +310,18 @@ void Direct3D::SetRect(float x, float y, float w, float h, Quaternion quaternion
 
 	// 頂点データ作成
 	VertexType2D v[4] = {
-		{{leftDown.x * 2 / 960, leftDown.y * 2 / 540, 0}, {0, 1}},	// 左下
-		{{leftUp.x * 2 / 960, leftUp.y * 2 / 540, 0}, {0, 0}},	// 左上
-		{{rightDown.x * 2 / 960, rightDown.y * 2 / 540, 0}, {1, 1}},	// 右下
-		{{rightUp.x * 2 / 960, rightUp.y * 2 / 540, 0}, {1, 0}},	// 右上
+		{{leftDown.x / 960, leftDown.y / 540, 0}, {0, 1}},	// 左下
+		{{leftUp.x / 960, leftUp.y / 540, 0}, {0, 0}},	// 左上
+		{{rightDown.x / 960, rightDown.y / 540, 0}, {1, 1}},	// 右下
+		{{rightUp.x / 960, rightUp.y / 540, 0}, {1, 0}},	// 右上
 	};
 
 	// 頂点バッファにデータを書き込む
 	D3D11_MAPPED_SUBRESOURCE pData;
+	// Map...サブリソースに含まれるデータへのポインターを取得し、そのサブリソースへの GPU アクセスを拒否します。
 	if (SUCCEEDED(m_deviceContext->Map(m_vbSquare.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &pData)))
 	{
-		// データコピー
+		// 頂点データをサブリソースにコピー
 		memcpy_s(pData.pData, sizeof(v), &v[0], sizeof(v));
 
 		m_deviceContext->Unmap(m_vbSquare.Get(), 0);

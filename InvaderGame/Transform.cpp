@@ -2,7 +2,7 @@
 
 Transform::Transform()
 {
-	rotation = Quaternion::AngleAxis(30, Vector3::forward);
+	rotation = Quaternion::AngleAxis(0, Vector3::forward);
 }
 
 void Transform::SetPosition(float x, float y)

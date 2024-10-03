@@ -2,16 +2,11 @@
 
 #include "GameEngine.h"
 
-Animation::Animation(std::string animationName) : _animationName(animationName), _spriteRenderer(nullptr) {}
+Animation::Animation(std::string animationName, SpriteRenderer* spriteRenderer) : _animationName(animationName), _spriteRenderer(spriteRenderer) {}
 
 std::string Animation::GetAnimationName()
 {
 	return _animationName;
-}
-
-void Animation::SetSpriteRenderer(SpriteRenderer* spriteRenderer)
-{
-	_spriteRenderer = spriteRenderer;
 }
 
 void Animation::SetAnimation(Texture* texture, float time)
@@ -33,7 +28,7 @@ void Animation::Update()
 {
 	if (_isPlaying)
 	{
-		if (_textureIndex > _animationDataSetVector.size())
+		if (_textureIndex >= _animationDataSetVector.size())
 		{
 			_isPlaying = false;
 			return;
@@ -41,6 +36,7 @@ void Animation::Update()
 
 		if (_playingTime >= _animationDataSetVector[_textureIndex]->time)
 		{
+			Debug::Log(L"%d", _textureIndex);
 			_spriteRenderer->SetTexture(_animationDataSetVector[_textureIndex]->texture);
 			_textureIndex++;
 		}

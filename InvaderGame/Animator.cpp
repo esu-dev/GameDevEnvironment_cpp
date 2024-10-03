@@ -1,5 +1,7 @@
 #include "Animator.h"
 
+#include <iterator>
+
 void Animator::SetAnimation(Animation* animation)
 {
 	_animationVector.push_back(animation);
@@ -7,7 +9,21 @@ void Animator::SetAnimation(Animation* animation)
 
 void Animator::Play(std::string animationName)
 {
-	// selectやらを実装する必要がありそうだ。
-	// stlのtransformとかで実装できそう。
-	//std::find(_animationVector.begin(), _animationVector.end(), animationName)
+	std::vector<std::string> result;
+	std::transform(_animationVector.begin(), _animationVector.end(), std::back_inserter(result),
+		[](Animation* animation) { return animation->GetAnimationName(); });
+
+	auto itr = std::find(result.begin(), result.end(), animationName);
+	int index = std::distance(result.begin(), itr);
+
+	_animationVector[index]->Play();
+	Debug::Log(L"%d, %d", _animationVector.size(), index);
+}
+
+void Animator::Update()
+{
+	for (Animation* anim : _animationVector)
+	{
+		anim->Update();
+	}
 }

@@ -23,5 +23,7 @@
 
 #include <functional>
 #include <algorithm>
+#include <iterator>
+#include <box2d.h>
 
 #include "Debug.h"

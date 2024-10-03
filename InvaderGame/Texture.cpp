@@ -6,6 +6,13 @@
 
 #include "Texture.h"
 
+Texture::Texture() {}
+
+Texture::Texture(std::string fileName)
+{
+	Load(fileName);
+}
+
 bool Texture::Load(const std::string& fileName)
 {
 	// マルチバイト文字列からワイド文字列へ変換
