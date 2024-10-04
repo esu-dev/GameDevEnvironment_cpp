@@ -1,5 +1,7 @@
 #pragma once
 
+class Vector2;
+
 class Vector3
 {
 public:
@@ -7,7 +9,9 @@ public:
 
 	Vector3(float x, float y, float z);
 
-	const Vector3 operator+ (const Vector3& vector) const;
-	const Vector3 operator* (const float& value) const;
+	Vector2 ToVector2();
+
+	Vector3 operator+ (const Vector3& vector) const;
+	Vector3 operator* (const float& value) const;
 	static Vector3 forward;
 };

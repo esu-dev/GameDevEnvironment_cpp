@@ -108,6 +108,12 @@
     <ClInclude Include="Collider.h">
       <Filter>Source\Game</Filter>
     </ClInclude>
+    <ClInclude Include="Rigidbody2D.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowDrawer.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowsProjectDirectX11_2.cpp">
@@ -172,6 +178,12 @@
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
       <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody2D.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowDrawer.cpp">
+      <Filter>Source\DirectX</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

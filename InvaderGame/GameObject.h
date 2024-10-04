@@ -37,8 +37,27 @@ public:
 		return component;
 	}
 
+	// ポインタ渡しでも、関節参照でのオブジェクトのメンバにアクセスはできるが、ポインタ自体の変更はできない？
+	template <typename T> bool TryGetComponent(T* component)
+	{
+		component = this->GetComponent<T>();
+
+		if (component == nullptr)
+		{
+			return false;
+		}
+
+		Debug::Log(L"%d", component == nullptr);
+
+		return true;
+	}
+
+	void SetActive(bool isActive);
+	void Start();
 	void Update();
 
+
 private:
+	bool _isActive;
 	std::vector<Component*> m_componentVector;
 };

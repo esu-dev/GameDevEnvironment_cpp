@@ -16,6 +16,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <box2d.h>
 
 #include <string>
 #include <vector>
@@ -24,6 +25,5 @@
 #include <functional>
 #include <algorithm>
 #include <iterator>
-#include <box2d.h>
 
 #include "Debug.h"

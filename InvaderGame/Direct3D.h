@@ -10,6 +10,8 @@
 
 class Texture;
 class Quaternion;
+class WindowDrawer;
+
 
 // 2D用頂点構造体
 struct VertexType2D
@@ -86,8 +88,10 @@ private:
 	// 呼び出し時に関数先に行かずに関数側が呼び出し側に展開される
 	static inline Direct3D* s_instance;
 
+	WindowDrawer* _debugDrawer;
+
 	// コンストラクタはprivateにする
-	Direct3D() {}
+	Direct3D();
 public:
 	// インスタンス作成
 	static void CreateInstance()

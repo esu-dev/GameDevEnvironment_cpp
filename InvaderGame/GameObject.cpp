@@ -12,6 +12,19 @@ GameObject::GameObject()
 
 }
 
+void GameObject::SetActive(bool isActive)
+{
+	_isActive = isActive;
+}
+
+void GameObject::Start()
+{
+	for (Component* component : m_componentVector)
+	{
+		component->Start();
+	}
+}
+
 void GameObject::Update()
 {
 	for (Component* component : m_componentVector)

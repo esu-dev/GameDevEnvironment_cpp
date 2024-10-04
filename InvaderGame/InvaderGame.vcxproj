@@ -164,6 +164,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Rigidbody2D.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Square.h" />
     <ClInclude Include="std_extension.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
+    <ClInclude Include="WindowDrawer.h" />
     <ClInclude Include="WindowsProjectDirectX11_2.h" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +205,7 @@
     <ClCompile Include="Quaternion.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="Rigidbody2D.cpp" />
     <ClCompile Include="SpriteRenderer.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -224,6 +227,7 @@
     <ClCompile Include="Vector3.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="WindowDrawer.cpp" />
     <ClCompile Include="WindowsProjectDirectX11_2.cpp" />
     <ClCompile Include="GameSystem.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebugDLL</RuntimeLibrary>

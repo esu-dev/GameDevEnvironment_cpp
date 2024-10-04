@@ -3,8 +3,11 @@
 #include "framework.h"
 
 #include "Direct3D.h"
+#include "WindowDrawer.h"
 
 #include <windows.h>
+
+Direct3D::Direct3D() : _debugDrawer(new WindowDrawer(L"Shader/SpriteShader.hlsl")) {}
 
 bool Direct3D::Initialize(HWND hWnd, int width, int height)
 {

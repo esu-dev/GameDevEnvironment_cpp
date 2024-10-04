@@ -29,7 +29,7 @@ float4 PS(VSOutput In) : SV_Target0
 {
 	float4 color = Texture.Sample(Sampler, In.UV);
 
-	/*if (color.a == 0)
+	/*if (Texture == null)
 	{
 		color = float4(1.0, 1.0, 0, 1.0);
 	}*/

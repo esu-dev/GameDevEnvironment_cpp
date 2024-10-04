@@ -7,6 +7,7 @@
 #include "Animator.h"
 #include "Collider.h"
 #include "BoxCollider2D.h"
+#include "Rigidbody2D.h"
 
 #include "Animation.h"
 #include "Vector2.h"
