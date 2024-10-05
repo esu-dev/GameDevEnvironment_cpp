@@ -146,14 +146,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    // Direct3Dインスタンス作成
    Direct3D::CreateInstance();
    // Direct3D初期化
-   D3D.Initialize(hWnd, 1280, 720);
+   D3D.Initialize(hWnd, GameSystem::WINDOW_WIDTH, GameSystem::WINDOW_HEIGHT);
 
    // ウィンドウのクライアントサイズを設定
    RECT rcWnd, rcClient;
    GetWindowRect(hWnd, &rcWnd);
    GetClientRect(hWnd, &rcClient);
-   int newWidth = (rcWnd.right - rcWnd.left) - (rcClient.right - rcClient.left) + 960;
-   int newHeight = (rcWnd.bottom - rcWnd.top) - (rcClient.bottom - rcClient.top) + 540;
+   int newWidth = (rcWnd.right - rcWnd.left) - (rcClient.right - rcClient.left) + GameSystem::WINDOW_WIDTH;
+   int newHeight = (rcWnd.bottom - rcWnd.top) - (rcClient.bottom - rcClient.top) + GameSystem::WINDOW_HEIGHT;
    SetWindowPos(hWnd, NULL, 0, 0, newWidth, newHeight, SWP_NOMOVE | SWP_NOZORDER);
 
    SetWindowText(hWnd, TEXT("Test"));

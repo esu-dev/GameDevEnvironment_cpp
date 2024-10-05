@@ -1,7 +1,6 @@
 ﻿#include "TextLabel.h"
 
-#include "GameObject.h"
-#include "Transform.h"
+#include "GameEngine.h"
 
 TextLabel::TextLabel()
 {
@@ -36,8 +35,8 @@ void TextLabel::Update()
 		MakeShaderResourceViewOf(c, &_textCharacterVector[i].ShaderResourceView);
 		
 		Vector3 textOriginal = gameObject->transform->position;
-		Vector3 drawPosition = rotation.Mult(Vector3(textOriginal.x + i * FontSize, textOriginal.y, 0));
-		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, FontSize, FontSize, rotation);
+		Vector3 drawPosition = rotation.Mult(Vector3(textOriginal.x + i * FontSize / Camera::Magnification, textOriginal.y, 0));
+		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, FontSize / Camera::Magnification, FontSize / Camera::Magnification, rotation);
 		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView);
 		
 		i++;

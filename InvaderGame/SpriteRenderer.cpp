@@ -17,5 +17,13 @@ void SpriteRenderer::SetTexture(Texture* texture)
 void SpriteRenderer::Update()
 {
 	this->gameObject->transform->Update();
-	D3D.Draw2D(*m_texture);
+
+	if (m_texture == nullptr)
+	{
+		D3D.Draw2D();
+	}
+	else
+	{
+		D3D.Draw2D(*m_texture);
+	}
 }

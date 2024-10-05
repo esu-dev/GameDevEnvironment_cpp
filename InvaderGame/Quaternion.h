@@ -18,13 +18,3 @@ public:
 
 	Matrix ToXMMATRIX();
 };
-
-class Matrix
-{
-public:
-	//Matrix(int rowNum, int columnNum);
-
-	Matrix operator*(const Matrix& matrix) const;
-
-	std::vector<std::vector<float>> g_matrix; // [çs][óÒ]
-};

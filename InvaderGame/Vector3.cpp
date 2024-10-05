@@ -11,7 +11,7 @@ Vector3::Vector3(float x, float y, float z)
 
 Vector2 Vector3::ToVector2()
 {
-	return Vector2(this->y, this->y);
+	return Vector2(this->x, this->y);
 }
 
 Vector3 Vector3::operator+ (const Vector3& vector) const

@@ -5,7 +5,26 @@
 void Rigidbody2D::SetUseGravity(bool useGravity)
 {
 	_boxCollider2D = this->gameObject->GetComponent<BoxCollider2D>();
-	_boxCollider2D->Getb2Body()->SetGravityScale(useGravity ? 1 : 0);
+	_boxCollider2D->Getb2Body()->SetGravityScale(useGravity ? 1.0f : 0.0f);
+}
+
+void Rigidbody2D::SetKinematic()
+{
+	_boxCollider2D = this->gameObject->GetComponent<BoxCollider2D>();
+	_boxCollider2D->Getb2Body()->SetType(b2BodyType::b2_kinematicBody);
+}
+
+void Rigidbody2D::SetFreeze()
+{
+	_boxCollider2D = this->gameObject->GetComponent<BoxCollider2D>();
+	_boxCollider2D->Getb2Body()->SetType(b2BodyType::b2_staticBody);
+}
+
+void Rigidbody2D::SetVelocity(Vector2 velocity)
+{
+	Vector2 box2DVelocity = Camera::WorldToBox2DWorld(velocity.ToVector3());
+	b2Vec2 v = b2Vec2{ box2DVelocity.x, box2DVelocity.y };
+	_boxCollider2D->Getb2Body()->SetLinearVelocity(v);
 }
 
 void Rigidbody2D::Start()
@@ -21,18 +40,10 @@ void Rigidbody2D::Start()
 
 void Rigidbody2D::Update()
 {
-	//Debug::Log(L"%f", _boxCollider2D->Getb2Body()->GetGravityScale());
-
 	if (_boxCollider2D != nullptr)
 	{
-		/*b2Vec2 vec2 = _boxCollider2D->Getb2Body()->GetPosition();
-		Vector2 pos = Vector2(vec2.x, vec2.y);
-		this->gameObject->transform->position = pos.ToVector3();*/
-
 		b2Vec2 velocity = _boxCollider2D->Getb2Body()->GetLinearVelocity();
-		Vector3 v = Vector3(velocity.x, velocity.y, 0);
-		this->gameObject->transform->position = this->gameObject->transform->position + v;
-
-		//_boxCollider2D->Getb2Body()->SetTransform()
+		Vector2 v = Vector2(velocity.x, velocity.y);
+		this->gameObject->transform->position = this->gameObject->transform->position + Camera::Box2DWorldToWorld(v) * Time::GetDelataTime();
 	}
 }

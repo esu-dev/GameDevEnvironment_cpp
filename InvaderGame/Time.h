@@ -6,11 +6,12 @@
 class Time
 {
 public:
+	static const float FixedDeltaTime;
 	static void Initialize();
 
-	static double GetDelataTime();
+	static float GetDelataTime();
 
 private:
 	static ULONGLONG _updatedTime;
-	static double _deltaTime;
+	static float _deltaTime;
 };

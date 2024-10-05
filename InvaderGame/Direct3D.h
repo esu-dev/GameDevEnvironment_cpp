@@ -10,7 +10,7 @@
 
 class Texture;
 class Quaternion;
-class WindowDrawer;
+class Shader;
 
 
 // 2D用頂点構造体
@@ -59,9 +59,12 @@ public:
 	bool Initialize(HWND hWnd, int width, int height);
 
 	// 2D描画用のシェーダー
-	ComPtr<ID3D11VertexShader> m_spriteVS = nullptr;
+	Shader* _textureShader;
+	Shader* _colorShader;
+
+	/*ComPtr<ID3D11VertexShader> m_spriteVS = nullptr;
 	ComPtr<ID3D11PixelShader> m_spritePS = nullptr;
-	ComPtr<ID3D11InputLayout> m_spriteInputLayout = nullptr;
+	ComPtr<ID3D11InputLayout> m_spriteInputLayout = nullptr;*/
 
 	ComPtr <ID3D11Buffer> m_vbSquare; // 四角形用頂点バッファ
 	ComPtr<ID3D11Buffer> constantBuffer;
@@ -73,6 +76,7 @@ public:
 	void SetRect(float x, float y, float w, float h, Quaternion quaternion);
 
 	// 2D描画
+	void Draw2D();
 	void Draw2D(const Texture& texture);
 
 	void DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView);
@@ -87,8 +91,6 @@ private:
 	// 処理の高速化で使用される手法のひとつ
 	// 呼び出し時に関数先に行かずに関数側が呼び出し側に展開される
 	static inline Direct3D* s_instance;
-
-	WindowDrawer* _debugDrawer;
 
 	// コンストラクタはprivateにする
 	Direct3D();

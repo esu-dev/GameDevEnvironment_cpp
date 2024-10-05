@@ -3,11 +3,15 @@
 #include "framework.h"
 
 #include "Direct3D.h"
-#include "WindowDrawer.h"
+#include "Shader.h"
+
+#include "GameSystem.h"
 
 #include <windows.h>
 
-Direct3D::Direct3D() : _debugDrawer(new WindowDrawer(L"Shader/SpriteShader.hlsl")) {}
+Direct3D::Direct3D() :
+	_textureShader(new Shader(L"Shader/SpriteShader.hlsl", "VS", "PS")),
+	_colorShader(new Shader(L"Shader/SpriteShader.hlsl", "VS", "PS_Color")) {}
 
 bool Direct3D::Initialize(HWND hWnd, int width, int height)
 {
@@ -134,55 +138,14 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	//=====================================================
 	// シェーダーの作成
 	//=====================================================
-	// 頂点シェーダーを読み込み＆コンパイル
-	// 3Dグラフィックスにおけるモデリング・データの頂点情報を、描画時にプログラムで制御する機能。
-	// モデリング・データを変えることなく、最終的な描画データに移動や変形、ライティングの変更などを加えて、多彩な表現を可能にする。
-	ComPtr<ID3DBlob> compiledVS;
-	if (FAILED(D3DCompileFromFile(L"Shader/SpriteShader.hlsl", nullptr, nullptr, "VS", "vs_5_0", 0, 0, &compiledVS, nullptr)))
-	{
-		return false;
-	}
-	// ピクセルシェーダーを読み込み＆コンパイル
-	// ピクセルシェーダとは、3次元グラフィックスで光源や陰影の処理を行う（シェーディング）機能の一種で、画像をピクセル単位で処理する方式のことである。
-	ComPtr<ID3DBlob> compiledPS;
-	if (FAILED(D3DCompileFromFile(L"Shader/SpriteShader.hlsl", nullptr, nullptr, "PS", "ps_5_0", 0, 0, &compiledPS, nullptr)))
-	{
-		return false;
-	}
-
-	// 頂点シェーダー作成
-	if (FAILED(m_device->CreateVertexShader(compiledVS->GetBufferPointer(), compiledVS->GetBufferSize(), nullptr, &m_spriteVS)))
-	{
-		return false;
-	}
-	// ピクセルシェーダー作成
-	if (FAILED(m_device->CreatePixelShader(compiledPS->GetBufferPointer(), compiledPS->GetBufferSize(), nullptr, &m_spritePS)))
-	{
-		return false;
-	}
-
-	// １頂点の詳細な情報
-	std::vector<D3D11_INPUT_ELEMENT_DESC> layout = {
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "TEXUV", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-	};
-
-	// 頂点インプットレイアウト作成
-	//メモリ内に配置された頂点データをグラフィックスパイプラインの入力アセンブラーステージにフィードする方法の定義を保持します。
-	if (FAILED(m_device->CreateInputLayout(&layout[0], layout.size(), compiledVS->GetBufferPointer(), compiledVS->GetBufferSize(), &m_spriteInputLayout)))
-	{
-		return false;
-	}
+	_textureShader->CreateShader(*m_device.Get());
+	_colorShader->CreateShader(*m_device.Get());
 
 	return true;
 }
 
 void Direct3D::ChangeMode_2D()
 {
-	m_deviceContext->VSSetShader(D3D.m_spriteVS.Get(), 0, 0);
-	m_deviceContext->PSSetShader(D3D.m_spritePS.Get(), 0, 0);
-	m_deviceContext->IASetInputLayout(D3D.m_spriteInputLayout.Get());
-
 	// 四角形用頂点バッファを作成
 	if (m_vbSquare == nullptr)
 	{
@@ -222,7 +185,8 @@ void Direct3D::ChangeMode_2D()
 	{
 		// 異方性フィルタリング補間、Wrapモード
 		D3D11_SAMPLER_DESC desc = {};
-		desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;	// 線形フィルタリング
+		//desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;	// 線形フィルタリング
+		desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;	// ポイントサンプリング
 		desc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;		// テクスチャアドレッシングモードをWrapに
 		desc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;		// テクスチャアドレッシングモードをWrapに
 		desc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;		// テクスチャアドレッシングモードをWrapに
@@ -299,24 +263,24 @@ void Direct3D::SetRect(float x, float y, float w, float h, Quaternion quaternion
 	float hW = w * 0.5f;
 	float hH = h * 0.5f;
 
-	Vector3 position = Vector3(x, y, 0);
+	Vector3 position = Camera::WorldToViewportPoint(Vector3(x, y, 0));
 
 	Vector3 direction_leftDown = Vector3(-hW, -hH, 0);
 	Vector3 direction_leftUp = Vector3(-hW, hH, 0);
 	Vector3 direction_rightDown = Vector3(hW, -hH, 0);
 	Vector3 direction_rightUp = Vector3(hW, hH, 0);
 
-	Vector3 leftDown = position + quaternion.Mult(direction_leftDown);
-	Vector3 leftUp = position + quaternion.Mult(direction_leftUp);
-	Vector3 rightDown = position + quaternion.Mult(direction_rightDown);
-	Vector3 rightUp = position + quaternion.Mult(direction_rightUp);
+	Vector3 leftDown = position + Camera::WorldToViewportPoint(quaternion.Mult(direction_leftDown));
+	Vector3 leftUp = position + Camera::WorldToViewportPoint(quaternion.Mult(direction_leftUp));
+	Vector3 rightDown = position + Camera::WorldToViewportPoint(quaternion.Mult(direction_rightDown));
+	Vector3 rightUp = position + Camera::WorldToViewportPoint(quaternion.Mult(direction_rightUp));
 
 	// 頂点データ作成
 	VertexType2D v[4] = {
-		{{leftDown.x / 960, leftDown.y / 540, 0}, {0, 1}},	// 左下
-		{{leftUp.x / 960, leftUp.y / 540, 0}, {0, 0}},	// 左上
-		{{rightDown.x / 960, rightDown.y / 540, 0}, {1, 1}},	// 右下
-		{{rightUp.x / 960, rightUp.y / 540, 0}, {1, 0}},	// 右上
+		{{leftDown.x, leftDown.y, 0}, {0, 1}},	// 左下
+		{{leftUp.x, leftUp.y, 0}, {0, 0}},	// 左上
+		{{rightDown.x, rightDown.y, 0}, {1, 1}},	// 右下
+		{{rightUp.x, rightUp.y, 0}, {1, 0}},	// 右上
 	};
 
 	// 頂点バッファにデータを書き込む
@@ -331,8 +295,21 @@ void Direct3D::SetRect(float x, float y, float w, float h, Quaternion quaternion
 	}
 }
 
+void Direct3D::Draw2D()
+{
+	m_deviceContext->VSSetShader(_colorShader->GetVertexShader().Get(), 0, 0);
+	m_deviceContext->PSSetShader(_colorShader->GetPixelShader().Get(), 0, 0);
+	m_deviceContext->IASetInputLayout(_colorShader->GetInputLayout().Get());
+
+	m_deviceContext->Draw(4, 0);
+}
+
 void Direct3D::Draw2D(const Texture& texture)
 {
+	m_deviceContext->VSSetShader(_textureShader->GetVertexShader().Get(), 0, 0);
+	m_deviceContext->PSSetShader(_textureShader->GetPixelShader().Get(), 0, 0);
+	m_deviceContext->IASetInputLayout(_textureShader->GetInputLayout().Get());
+
 	// テクスチャを、ピクセルシェーダーのスロット0にセット
 	m_deviceContext->PSSetShaderResources(0, 1, texture.m_shaderResourceview.GetAddressOf());
 
@@ -342,6 +319,10 @@ void Direct3D::Draw2D(const Texture& texture)
 
 void Direct3D::DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView)
 {
+	m_deviceContext->VSSetShader(_textureShader->GetVertexShader().Get(), 0, 0);
+	m_deviceContext->PSSetShader(_textureShader->GetPixelShader().Get(), 0, 0);
+	m_deviceContext->IASetInputLayout(_textureShader->GetInputLayout().Get());
+
 	// テクスチャを、ピクセルシェーダーのスロット0にセット
 	m_deviceContext->PSSetShaderResources(0, 1, shaderResourceView.GetAddressOf());
 

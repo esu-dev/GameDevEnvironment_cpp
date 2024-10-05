@@ -25,6 +25,12 @@
     <Filter Include="Shader">
       <UniqueIdentifier>{59315b53-0fa3-482e-8cad-9c335bfbc85c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Premitive">
+      <UniqueIdentifier>{2f7f8a09-5595-40dc-9d1e-7a1aac6de3fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Math">
+      <UniqueIdentifier>{21bd08c3-979f-4074-9ab9-9d6818ddbd60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -114,6 +120,21 @@
     <ClInclude Include="WindowDrawer.h">
       <Filter>Source\DirectX</Filter>
     </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Source\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowsProjectDirectX11_2.cpp">
@@ -184,6 +205,21 @@
     </ClCompile>
     <ClCompile Include="WindowDrawer.cpp">
       <Filter>Source\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Source\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

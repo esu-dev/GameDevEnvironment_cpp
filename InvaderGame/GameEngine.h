@@ -1,3 +1,5 @@
+#include "Scene.h"
+
 #include "GameObject.h"
 
 #include "Component.h"
@@ -8,6 +10,7 @@
 #include "Collider.h"
 #include "BoxCollider2D.h"
 #include "Rigidbody2D.h"
+#include "Camera.h"
 
 #include "Animation.h"
 #include "Vector2.h"

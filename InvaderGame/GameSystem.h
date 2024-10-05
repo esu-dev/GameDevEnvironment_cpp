@@ -8,7 +8,9 @@
 class GameSystem
 {
 public:
-public:
+	static const int WINDOW_WIDTH = 960;
+	static const int WINDOW_HEIGHT = 540;
+
 	static void CreateInstance()
 	{
 		DeleteInstance();
@@ -26,8 +28,6 @@ public:
 		return *s_instance;
 	}
 
-	int WINDOW_WIDTH = 960;
-	int WINDOW_HEIGHT = 540;
 	Texture m_Texture;
 	Event OnUpdateListener;
 
@@ -38,9 +38,9 @@ public:
 
 private:
 	static inline GameSystem* s_instance;
+	GameObject* _testObject;
  	b2Vec2 _gravity = { 0.0f, -9.81f };
 	b2World _world{_gravity};
-	std::vector<GameObject*> _gameObjectVector;
 
 	GameSystem() { }
 };
