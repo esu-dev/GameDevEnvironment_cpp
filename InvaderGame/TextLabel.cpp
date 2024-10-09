@@ -24,7 +24,7 @@ void TextLabel::SetFontSize(int fontSize)
 
 void TextLabel::Update()
 {
-	Quaternion rotation = gameObject->transform->rotation;
+	Quaternion rotation = gameObject->GetTransform()->rotation;
 
 	int i = 0;
 	for (wchar_t c : _text)
@@ -34,7 +34,7 @@ void TextLabel::Update()
 
 		MakeShaderResourceViewOf(c, &_textCharacterVector[i].ShaderResourceView);
 		
-		Vector3 textOriginal = gameObject->transform->position;
+		Vector3 textOriginal = gameObject->GetTransform()->position;
 		Vector3 drawPosition = rotation.Mult(Vector3(textOriginal.x + i * FontSize / Camera::Magnification, textOriginal.y, 0));
 		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, FontSize / Camera::Magnification, FontSize / Camera::Magnification, rotation);
 		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView);

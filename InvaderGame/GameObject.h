@@ -13,8 +13,6 @@ class GameObject
 public:
 	GameObject();
 
-	Transform* transform;
-
 	// 関数テンプレートは型やコンパイル時に定まる値をパラメータ化する機能
 	// 利用されるときに実体化するため、正しく分割コンパイルされない
 	template <typename T> T* AddComponent()
@@ -27,7 +25,10 @@ public:
 
 	template <typename T> T* GetComponent()
 	{
-		auto iterator = std::find_if(m_componentVector.begin(), m_componentVector.end(), [](Component* x) { return typeid(*x) == typeid(T); });
+		auto iterator = std::find_if(m_componentVector.begin(), m_componentVector.end(), [](Component* x)
+			{ 
+				return typeid(*x) == typeid(T) || dynamic_cast<T*>(x);
+			});
 		if (iterator == m_componentVector.end())
 		{
 			return nullptr;
@@ -52,12 +53,14 @@ public:
 		return true;
 	}
 
+	Transform* GetTransform();
 	void SetActive(bool isActive);
 	void Start();
 	void Update();
 
 
 private:
-	bool _isActive;
+	bool _isActive{true};
+	Transform* _transform;
 	std::vector<Component*> m_componentVector;
 };

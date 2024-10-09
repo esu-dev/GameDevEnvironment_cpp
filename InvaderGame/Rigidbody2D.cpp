@@ -44,6 +44,6 @@ void Rigidbody2D::Update()
 	{
 		b2Vec2 velocity = _boxCollider2D->Getb2Body()->GetLinearVelocity();
 		Vector2 v = Vector2(velocity.x, velocity.y);
-		this->gameObject->transform->position = this->gameObject->transform->position + Camera::Box2DWorldToWorld(v) * Time::GetDelataTime();
+		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + Camera::Box2DWorldToWorld(v) * Time::GetDelataTime();
 	}
 }

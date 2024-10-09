@@ -30,17 +30,13 @@ public:
 
 	Texture m_Texture;
 	Event OnUpdateListener;
+	Event _delayedExecutionEvent;
 
-	b2World* GetBox2DWorld();
+	void AddDelayedExecution(std::function<void()> func);
 	void Initialize();
 	void Execute();
-	void AddSquare(float x, float y, float w, float h);
 
 private:
 	static inline GameSystem* s_instance;
 	GameObject* _testObject;
- 	b2Vec2 _gravity = { 0.0f, -9.81f };
-	b2World _world{_gravity};
-
-	GameSystem() { }
 };

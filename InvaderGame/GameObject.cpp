@@ -7,14 +7,27 @@
 #include "Animator.h"
 
 GameObject::GameObject()
-	: transform{ AddComponent<Transform>() }
+	: _transform{ AddComponent<Transform>() }
 {
 
+}
+
+Transform* GameObject::GetTransform()
+{
+	return _transform;
 }
 
 void GameObject::SetActive(bool isActive)
 {
 	_isActive = isActive;
+
+	if (_isActive == false)
+	{
+		for (Component* component : m_componentVector)
+		{
+			component->OnDisable();
+		}
+	}
 }
 
 void GameObject::Start()
@@ -27,6 +40,11 @@ void GameObject::Start()
 
 void GameObject::Update()
 {
+	if (!_isActive)
+	{
+		return;
+	}
+
 	for (Component* component : m_componentVector)
 	{
 		component->Update();

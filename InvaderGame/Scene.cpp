@@ -11,6 +11,11 @@ namespace SceneManagement
 		return _name;
 	}
 
+	const std::vector<GameObject*>& Scene::GetGameObjectVector()
+	{
+		return _gameObjectVector;
+	}
+
 	void Scene::AddGameObject(GameObject* gameObject)
 	{
 		_gameObjectVector.push_back(gameObject);

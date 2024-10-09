@@ -12,3 +12,8 @@ void Event::Invoke()
 		func();
 	}
 }
+
+void Event::RemoveAllListener()
+{
+	_functionVector.clear();
+}

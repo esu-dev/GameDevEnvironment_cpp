@@ -16,7 +16,7 @@ void SpriteRenderer::SetTexture(Texture* texture)
 
 void SpriteRenderer::Update()
 {
-	this->gameObject->transform->Update();
+	this->gameObject->GetTransform()->Update();
 
 	if (m_texture == nullptr)
 	{
