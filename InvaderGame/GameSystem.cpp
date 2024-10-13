@@ -90,6 +90,7 @@ void GameSystem::Initialize()
 	BGM = new GameObject();
 	AudioSource* audioSource = BGM->AddComponent<AudioSource>();
 	audioSource->SetAudioClip(audioClip);
+	audioSource->SetVolume(0.2f);
 	audioSource->Play();
 
 	Debug::Log(L"Play!");
@@ -144,7 +145,7 @@ void GameSystem::Execute()
 	}
 	else if (Input::GetKeyDown('Q'))
 	{
-		BGM->GetComponent<AudioSource>()->Stop();
+		BGM->GetComponent<AudioSource>()->SetVolume(0.5f);
 	}
 	else
 	{

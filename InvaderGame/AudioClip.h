@@ -6,9 +6,9 @@ class AudioClip
 {
 public:
 	AudioClip(const std::string& filePath);
-	char* GetWaveData();
-	DWORD GetWaveSize();
-	WAVEFORMATEX& GetWAVEFORMATEX();
+	char* GetWaveData() const;
+	DWORD GetWaveSize() const;
+	WAVEFORMATEX GetWAVEFORMATEX() const;
 
 private:
 	char* _waveData;

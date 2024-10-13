@@ -3,6 +3,8 @@
 #include "framework.h"
 #include "DirectX.h"
 
+class AudioSource;
+
 class DirectSound
 {
 public:
@@ -17,13 +19,15 @@ public:
 
 		_directSoundDevice->SetCooperativeLevel(windowHandle, DSSCL_NORMAL);
 	}
-	static void Play(AudioClip* audioClip);
-	static void Stop(AudioClip* audioClip);
+	static void SetVolume(const AudioSource* audioSource, float volume);
+	static void CreateSecondaryBuffer(AudioSource* audioSource);
+	static void Play(AudioSource* audioSource);
+	static void Stop(AudioSource* audioSource);
 
 private:
 	struct AudioData
 	{
-		AudioClip* audioClip;
+		AudioSource* audioSource;
 		IDirectSoundBuffer8* dsSecondaryBuffer;
 	};
 

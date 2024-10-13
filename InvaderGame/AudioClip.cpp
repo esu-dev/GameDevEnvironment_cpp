@@ -53,17 +53,17 @@ AudioClip::AudioClip(const std::string& filePath)
 	mmioClose(handle_MMIO, 0);
 }
 
-char* AudioClip::GetWaveData()
+char* AudioClip::GetWaveData() const
 {
 	return _waveData;
 }
 
-DWORD AudioClip::GetWaveSize()
+DWORD AudioClip::GetWaveSize() const
 {
 	return _waveSize;
 }
 
-WAVEFORMATEX& AudioClip::GetWAVEFORMATEX()
+WAVEFORMATEX AudioClip::GetWAVEFORMATEX() const
 {
 	return _waveFormatEX;
 }
