@@ -5,7 +5,7 @@
 #include "framework.h"
 #include "WindowsProjectDirectX11_2.h"
 
-#include "Direct3D.h"
+#include "DirectX.h"
 #include "GameSystem.h"
 
 #define MAX_LOADSTRING 100
@@ -147,6 +147,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    Direct3D::CreateInstance();
    // Direct3D初期化
    D3D.Initialize(hWnd, GameSystem::WINDOW_WIDTH, GameSystem::WINDOW_HEIGHT);
+
+   DirectSound::Initialize(hWnd);
 
    // ウィンドウのクライアントサイズを設定
    RECT rcWnd, rcClient;

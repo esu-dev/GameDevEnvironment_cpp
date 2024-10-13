@@ -7,7 +7,6 @@
 
 #include "GameSystem.h"
 
-#include <windows.h>
 
 Direct3D::Direct3D() :
 	_textureShader(new Shader(L"Shader/SpriteShader.hlsl", "VS", "PS")),

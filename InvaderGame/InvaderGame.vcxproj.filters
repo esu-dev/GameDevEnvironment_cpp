@@ -31,6 +31,9 @@
     <Filter Include="Source\Math">
       <UniqueIdentifier>{21bd08c3-979f-4074-9ab9-9d6818ddbd60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\DebugAssets">
+      <UniqueIdentifier>{1019eee8-04b6-4f03-8231-87b79f74446e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -141,8 +144,20 @@
     <ClInclude Include="Collision2D.h">
       <Filter>Source\Game</Filter>
     </ClInclude>
+    <ClInclude Include="DirectSound.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioClip.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSource.h">
+      <Filter>Source\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugPrefab.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
     <ClInclude Include="SampleMonoBehaviour.h">
-      <Filter>Source\Premitive</Filter>
+      <Filter>Source\DebugAssets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -236,8 +251,17 @@
     <ClCompile Include="Collider2D.cpp">
       <Filter>Source\Game</Filter>
     </ClCompile>
+    <ClCompile Include="DirectSound.cpp">
+      <Filter>Source\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioClip.cpp">
+      <Filter>Source\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioSource.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
     <ClCompile Include="SampleMonoBehaviour.cpp">
-      <Filter>Source\Premitive</Filter>
+      <Filter>Source\DebugAssets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

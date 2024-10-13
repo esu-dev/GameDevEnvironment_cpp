@@ -4,6 +4,8 @@
 
 #include "SampleMonoBehaviour.h"
 
+#include "DirectSound.h"
+
 using namespace SceneManagement;
 
 
@@ -42,15 +44,19 @@ void GameSystem::Initialize()
 	//_gameObjectVector[2]->GetTransform()->scale = { 2, 1, 1 };
 	//_gameObjectVector[2]->AddComponent<SpriteRenderer>()->SetTexture(&m_Texture);*/
 
+
 	Texture* mainShipTexture = new Texture();
 	mainShipTexture->Load("./Resources/MainShip/FullHealth.png");
 	Texture* mainShipTexture_SlightDamage = new Texture("./Resources/MainShip/SlightDamage.png");
+
+	AudioClip* mainShipAudioClip = new AudioClip("./Resources/Sound/SE/RetroWeaponLaser03.wav");
 
 	_testObject = new GameObject();
 	_testObject->AddComponent<SampleMonoBehaviour>();
 	_testObject->AddComponent<SpriteRenderer>()->SetTexture(mainShipTexture);
 	_testObject->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
 	_testObject->AddComponent<Rigidbody2D>()->SetUseGravity(false);
+	_testObject->AddComponent<AudioSource>()->SetAudioClip(mainShipAudioClip);
 	_testObject->GetTransform()->position = Vector3(-2, 0, 0);
 	_testObject->GetTransform()->scale = { 2, 2, 0.0f };
 
@@ -60,6 +66,7 @@ void GameSystem::Initialize()
 	_testObject->AddComponent<Animator>()->SetAnimation(mainShipAnimation);
 
 	currentScene->AddGameObject(_testObject);
+
 
 	GameObject* wall = new GameObject();
 	wall->AddComponent<SpriteRenderer>();
@@ -78,6 +85,14 @@ void GameSystem::Initialize()
 	rect->GetTransform()->scale = { 2, 2, 0.0f };
 
 	currentScene->AddGameObject(rect);
+
+	AudioClip* audioClip = new AudioClip("./Resources/Sound/BGM/SpaceshipShooter.wav");
+	BGM = new GameObject();
+	AudioSource* audioSource = BGM->AddComponent<AudioSource>();
+	audioSource->SetAudioClip(audioClip);
+	audioSource->Play();
+
+	Debug::Log(L"Play!");
 
 	GameObject* title2 = new GameObject();
 	title2->GetTransform()->SetPosition(0, 4);
@@ -126,6 +141,10 @@ void GameSystem::Execute()
 	else if (Input::GetKey('D'))
 	{
 		_testObject->GetComponent<Rigidbody2D>()->SetVelocity(Vector2(4.0f, 0));
+	}
+	else if (Input::GetKeyDown('Q'))
+	{
+		BGM->GetComponent<AudioSource>()->Stop();
 	}
 	else
 	{

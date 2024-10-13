@@ -1,7 +1,5 @@
 #include "framework.h"
 
-#include <locale.h>
-
 #include "Direct3D.h"
 
 #include "Texture.h"

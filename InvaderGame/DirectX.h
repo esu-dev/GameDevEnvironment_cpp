@@ -10,6 +10,13 @@
 #pragma comment(lib, "d3dcompiler.lib")
 #pragma comment(lib, "DirectXTex.lib")
 
+// サウンド関連のライブラリ
+#pragma comment(lib, "dsound.lib")
+
+// GUIDのライブラリ
+#pragma comment(lib, "dxguid.lib")
+
+
 // Direct3Dの型・クラス・関数などを呼べるようにする
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -20,6 +27,9 @@
 // DirectXテクスチャライブラリを使用できるようにする
 #include <DirectXTex.h>
 
+// サウンドライブラリを使用できるようにする
+#include <dsound.h>
+
 // ComPtrを使用できるようにする
 // ComPtrはスマートポインタ。ポインタをラップしている
 // ポインタに関連づけられたオブジェクトの管理をするために使う
@@ -29,4 +39,5 @@ using Microsoft::WRL::ComPtr;
 
 // 自作のDirectX関係のヘッダーをインクルード
 #include "Direct3D.h"
+#include "DirectSound.h"
 #include "Texture.h"
