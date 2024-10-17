@@ -13,7 +13,7 @@ void DirectSound::SetVolume(const AudioSource* audioSource, float volume)
 	{
 		float max_dB = 20 * std::log10f(-DSBVOLUME_MIN);
 		float v = -(std::powf(10, (1 - volume) * max_dB / 20));
-		if (FAILED(audioData->dsSecondaryBuffer->SetVolume(v)))
+		if (FAILED(audioData->dsSecondaryBuffer->SetVolume((LONG)v)))
 		{
 			Debug::Log(L"Failed set volume.");
 		}

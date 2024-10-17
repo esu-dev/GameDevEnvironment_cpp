@@ -5,6 +5,7 @@
 #include "Vector3.h"
 #include "Matrix.h"
 
+// Transformの値をどれだけ拡大するか
 const float Camera::Magnification = 24.0f;
 
 // 最終的にはカメラパラメータを考慮して実装する必要がある。

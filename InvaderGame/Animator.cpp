@@ -14,7 +14,7 @@ void Animator::Play(std::string animationName)
 		[](Animation* animation) { return animation->GetAnimationName(); });
 
 	auto itr = std::find(result.begin(), result.end(), animationName);
-	int index = std::distance(result.begin(), itr);
+	__int64 index = std::distance(result.begin(), itr);
 
 	_animationVector[index]->Play();
 	Debug::Log(L"%d, %d", _animationVector.size(), index);

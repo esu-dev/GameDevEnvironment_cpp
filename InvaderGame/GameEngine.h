@@ -28,3 +28,5 @@
 
 #include "Collision2D.h"
 #include "Event.h"
+
+#include "SceneAssests.h"

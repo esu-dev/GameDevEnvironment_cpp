@@ -18,7 +18,7 @@ public:
 		{
 			return nullptr;
 		}
-		int index = std::distance(vector.begin(), iterator);
+		__int64 index = std::distance(vector.begin(), iterator);
 		return vector[index];
 	}
 };

@@ -18,8 +18,8 @@ Matrix Matrix::operator*(const Matrix& matrix) const
 {
 	Matrix newMatrix = Matrix();
 
-	int rowNum = this->g_matrix.size();
-	int columnNum = matrix.g_matrix.front().size();
+	int rowNum = (int)this->g_matrix.size();
+	int columnNum = (int)matrix.g_matrix.front().size();
 
 	for (int i = 0; i < rowNum; i++) // 4
 	{

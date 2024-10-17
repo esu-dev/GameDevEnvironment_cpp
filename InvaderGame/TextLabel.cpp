@@ -22,11 +22,27 @@ void TextLabel::SetFontSize(int fontSize)
 	FontSize = fontSize;
 }
 
+void TextLabel::SetTextAlign(TextAlign textAlign)
+{
+	_textAlign = textAlign;
+}
+
 void TextLabel::Update()
 {
 	Quaternion rotation = gameObject->GetTransform()->rotation;
 
 	int i = 0;
+
+	Vector3 textStartPos = gameObject->GetTransform()->position;
+	if (_textAlign == TextAlign::Center)
+	{
+		textStartPos = gameObject->GetTransform()->position.AddX(-((_text.length() - 1) * FontSize / Camera::Magnification / 2));
+	}
+	else if (_textAlign == TextAlign::Right)
+	{
+		textStartPos = gameObject->GetTransform()->position.AddX(-((_text.length() - 1) * FontSize / Camera::Magnification));
+	}
+
 	for (wchar_t c : _text)
 	{
 		_textCharacterVector.push_back(TextCharacter());
@@ -34,8 +50,7 @@ void TextLabel::Update()
 
 		MakeShaderResourceViewOf(c, &_textCharacterVector[i].ShaderResourceView);
 		
-		Vector3 textOriginal = gameObject->GetTransform()->position;
-		Vector3 drawPosition = rotation.Mult(Vector3(textOriginal.x + i * FontSize / Camera::Magnification, textOriginal.y, 0));
+		Vector3 drawPosition = rotation.Mult(Vector3(textStartPos.x + i * FontSize / Camera::Magnification, textStartPos.y, 0));
 		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, FontSize / Camera::Magnification, FontSize / Camera::Magnification, rotation);
 		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView);
 		
@@ -55,7 +70,7 @@ void TextLabel::MakeShaderResourceViewOf(wchar_t c, ComPtr<ID3D11ShaderResourceV
 
 	// LOGFONT.. フォントの属性を定義する構造体
 	LOGFONT logFont = {
-		FontSize, 0, 0, 0,
+		FontSize * _resolution, 0, 0, 0,
 		fontWeight, 0, 0, 0,
 		SHIFTJIS_CHARSET,
 		OUT_TT_ONLY_PRECIS,

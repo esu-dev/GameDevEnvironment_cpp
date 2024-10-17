@@ -159,6 +159,9 @@
     <ClInclude Include="SampleMonoBehaviour.h">
       <Filter>Source\DebugAssets</Filter>
     </ClInclude>
+    <ClInclude Include="SceneAssests.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowsProjectDirectX11_2.cpp">
@@ -261,6 +264,9 @@
       <Filter>Source\Game</Filter>
     </ClCompile>
     <ClCompile Include="SampleMonoBehaviour.cpp">
+      <Filter>Source\DebugAssets</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneAssets.cpp">
       <Filter>Source\DebugAssets</Filter>
     </ClCompile>
   </ItemGroup>

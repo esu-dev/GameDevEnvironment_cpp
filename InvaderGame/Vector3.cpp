@@ -9,6 +9,21 @@ Vector3::Vector3(float x, float y, float z)
 	this->z = z;
 }
 
+Vector3 Vector3::AddX(float value)
+{
+	return Vector3(this->x + value, this->y, this->z);
+}
+
+Vector3 Vector3::AddY(float value)
+{
+	return Vector3(this->x, this->y + value, this->z);
+}
+
+Vector3 Vector3::AddZ(float value)
+{
+	return Vector3(this->x, this->y, this->z + value);
+}
+
 Vector2 Vector3::ToVector2()
 {
 	return Vector2(this->x, this->y);

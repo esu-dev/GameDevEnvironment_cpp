@@ -38,6 +38,4 @@ public:
 
 private:
 	static inline GameSystem* s_instance;
-	GameObject* _testObject;
-	GameObject* BGM;
 };
