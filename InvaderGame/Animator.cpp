@@ -2,6 +2,8 @@
 
 #include <iterator>
 
+#include "Animation.h"
+
 void Animator::SetAnimation(Animation* animation)
 {
 	_animationVector.push_back(animation);

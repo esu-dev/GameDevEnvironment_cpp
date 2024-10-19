@@ -1,10 +1,8 @@
-#include "DirectX.h"
-
 #include "GameSystem.h"
 
-#include "SampleMonoBehaviour.h"
-
-#include "DirectSound.h"
+#include "DirectX.h"
+#include "GameEngine.h"
+#include "SampleSceneAssests.h"
 
 using namespace SceneManagement;
 
@@ -21,22 +19,12 @@ void GameSystem::Initialize()
 	Physics2D::Initialize();
 
 	D3D.ChangeMode_2D();
-
-	SceneAssets::CreateSampleSceneAsset();
-
-	Scene* currentScene = SceneManager::CreateScene("test");
-	SceneManager::CreateScene("test2");
-	SceneManager::SetActiveScene(currentScene);
-
-	// Startˆ—
-	SceneManager::LoadScene("SampleScene");
 }
 
 void GameSystem::Execute()
 {
-	_delayedExecutionEvent.Invoke();
-
 	// ƒCƒxƒ“ƒgˆ—
+	_delayedExecutionEvent.Invoke();
 	OnUpdateListener.Invoke();
 
 	Physics2D::Update();
@@ -45,7 +33,11 @@ void GameSystem::Execute()
     D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 	
 	// Updateˆ—
-	SceneManager::GetActiveScene()->Update();
+	Scene* activeScene;
+	if ((activeScene = SceneManager::GetActiveScene()) != nullptr)
+	{
+		activeScene->Update();
+	}
 
     D3D.m_swapChain->Present(1, 0);
 }

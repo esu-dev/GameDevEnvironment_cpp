@@ -1,6 +1,8 @@
 #pragma once
 
-#include "GameEngine.h"
+#include "Component.h"
+
+class Collision2D;
 
 class MonoBehaviour : public Component
 {

@@ -22,8 +22,6 @@ void BoxCollider2D::SetSize(Vector2 size)
 
 	Vector2 v = Camera::WorldToBox2DWorld(size.ToVector3() * 0.5f);
 	dynamicBox.SetAsBox(v.x, v.y);
-
-	Debug::Log(L"%f, %f", v.x, v.y);
 }
 
 void BoxCollider2D::SynchronizeBodyWithGameObject()

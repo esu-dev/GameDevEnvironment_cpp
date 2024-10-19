@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InvaderGame", "InvaderGame\InvaderGame.vcxproj", "{97673971-A033-4881-97A2-E381A159B603}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameWindow", "GameWindow\GameWindow.vcxproj", "{BBC537AB-8F8F-4D6E-8F96-1DBB7E55A8B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{97673971-A033-4881-97A2-E381A159B603}.Release|x64.Build.0 = Release|x64
 		{97673971-A033-4881-97A2-E381A159B603}.Release|x86.ActiveCfg = Release|Win32
 		{97673971-A033-4881-97A2-E381A159B603}.Release|x86.Build.0 = Release|Win32
+		{BBC537AB-8F8F-4D6E-8F96-1DBB7E55A8B5}.Debug|x64.ActiveCfg = Debug|x64
+		{BBC537AB-8F8F-4D6E-8F96-1DBB7E55A8B5}.Debug|x64.Build.0 = Debug|x64
+		{BBC537AB-8F8F-4D6E-8F96-1DBB7E55A8B5}.Debug|x86.ActiveCfg = Debug|Win32
+		{BBC537AB-8F8F-4D6E-8F96-1DBB7E55A8B5}.Debug|x86.Build.0 = Debug|Win32
+		{BBC537AB-8F8F-4D6E-8F96-1DBB7E55A8B5}.Release|x64.ActiveCfg = Release|x64
+		{BBC537AB-8F8F-4D6E-8F96-1DBB7E55A8B5}.Release|x64.Build.0 = Release|x64
+		{BBC537AB-8F8F-4D6E-8F96-1DBB7E55A8B5}.Release|x86.ActiveCfg = Release|Win32
+		{BBC537AB-8F8F-4D6E-8F96-1DBB7E55A8B5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

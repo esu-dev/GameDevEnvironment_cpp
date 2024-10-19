@@ -1,3 +1,5 @@
+#pragma once
+
 // SceneManagement
 #include "SceneManager.h"
 #include "Scene.h"
@@ -29,4 +31,4 @@
 #include "Collision2D.h"
 #include "Event.h"
 
-#include "SceneAssests.h"
+#include "SampleSceneAssests.h"

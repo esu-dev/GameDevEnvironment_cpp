@@ -1,7 +1,9 @@
 #pragma once
 
 #include "framework.h"
-#include "GameEngine.h"
+#include "Component.h"
+
+class Animation;
 
 class Animator : public Component 
 {

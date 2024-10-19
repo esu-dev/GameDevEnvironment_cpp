@@ -3,7 +3,9 @@
 #define GAMESYS GameSystem::GetInstance()
 
 #include "framework.h"
-#include "GameEngine.h"
+
+#include "Texture.h"
+#include "Event.h"
 
 class GameSystem
 {

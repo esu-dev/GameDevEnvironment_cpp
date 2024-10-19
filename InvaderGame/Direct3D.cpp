@@ -5,6 +5,7 @@
 #include "Direct3D.h"
 #include "Shader.h"
 
+#include "GameEngine.h"
 #include "GameSystem.h"
 
 
