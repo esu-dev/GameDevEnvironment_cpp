@@ -19,24 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\InvaderGame\GameWindow.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\InvaderGame\Resource.h" />
-    <ClInclude Include="..\InvaderGame\targetver.h" />
-    <ClInclude Include="..\InvaderGame\WindowsProjectDirectX11_2.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\InvaderGame\InvaderGame.vcxproj">
       <Project>{97673971-a033-4881-97a2-e381a159b603}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\InvaderGame\small.ico" />
-    <Image Include="..\InvaderGame\WindowsProjectDirectX11_2.ico" />
+    <ClCompile Include="..\InvaderGame\GameWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\InvaderGame\WindowsProjectDirectX11_2.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\InvaderGame\include\Resource.h" />
+    <ClInclude Include="..\InvaderGame\include\WindowsProjectDirectX11_2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -153,10 +148,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\;..\..\box2d-2.4.1\box2d-2.4.1\include\box2d;C:\Users\har14\GameDev\DirectXTex-main\DirectXTex-main\DirectXTex</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\..\box2d-2.4.1\box2d-2.4.1\include\box2d;C:\Users\har14\GameDev\DirectXTex-main\DirectXTex-main\DirectXTex;..\InvaderGame\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

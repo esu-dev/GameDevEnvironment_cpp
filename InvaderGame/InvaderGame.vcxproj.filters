@@ -39,128 +39,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioClip.h">
-      <Filter>Source\DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="Direct3D.h">
-      <Filter>Source\DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="DirectSound.h">
-      <Filter>Source\DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="DirectX.h">
-      <Filter>Source\DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Source\DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="TextLabel.h">
-      <Filter>Source\DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Source\DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowDrawer.h">
-      <Filter>Source\DirectX</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Animator.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioSource.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="BoxCollider2D.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Collider2D.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision2D.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEngine.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSystem.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="MonoBehaviour.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics2D.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Quaternion.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody2D.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteRenderer.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Source\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="DebugPrefab.h">
-      <Filter>Source\DebugAssets</Filter>
-    </ClInclude>
-    <ClInclude Include="SampleSceneAssests.h">
-      <Filter>Source\DebugAssets</Filter>
-    </ClInclude>
-    <ClInclude Include="SampleMonoBehaviour.h">
-      <Filter>Source\DebugAssets</Filter>
-    </ClInclude>
-    <ClInclude Include="StringConverter.h">
-      <Filter>Source\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="std_extension.h">
-      <Filter>Source\Utility</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="AudioClip.cpp">
       <Filter>Source\DirectX</Filter>
     </ClCompile>
@@ -263,5 +141,138 @@
     <ClCompile Include="std_extension.cpp">
       <Filter>Source\Utility</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="WindowsProjectDirectX11_2.ico">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Animator.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Animation.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AudioClip.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Debug.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AudioSource.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BoxCollider2D.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Camera.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Collider2D.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Collision2D.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DirectX.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Direct3D.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DirectSound.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Event.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\framework.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameEngine.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameObject.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameSystem.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Matrix.h">
+      <Filter>Source\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Quaternion.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MonoBehaviour.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics2D.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Rigidbody2D.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SampleMonoBehaviour.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SampleSceneAssests.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SceneManager.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SpriteRenderer.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\std_extension.h">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StringConverter.h">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\targetver.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TextLabel.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Texture.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vector3.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Time.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Transform.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vector2.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WindowDrawer.h">
+      <Filter>Source\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DebugPrefab.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
