@@ -13,6 +13,7 @@ namespace SceneManagement
 		static Scene* CreateScene(std::string sceneName);
 		static Scene* GetActiveScene();
 		static Scene* GetSceneAt(int index);
+		static void AddScene(Scene* scene);
 		static bool SetActiveScene(Scene* scene);
 		static void LoadScene(std::string sceneName);
 

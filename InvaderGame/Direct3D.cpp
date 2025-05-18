@@ -175,11 +175,34 @@ void Direct3D::ChangeMode_2D()
 	bufferDesk.CPUAccessFlags = 0;
 
 	// 定数バッファの設定
-	if (FAILED(m_device->CreateBuffer(&bufferDesk, nullptr, constantBuffer.GetAddressOf())))
+	if (FAILED(m_device->CreateBuffer(&bufferDesk, nullptr, _constantBuffer.GetAddressOf())))
 	{
 		MessageBox(NULL, L"定数バッファを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
 		return;
 	}
+
+
+	// カラー定数バッファの作成
+	// 定数情報の追加
+	D3D11_BUFFER_DESC colorBufferDesk = {};
+	ZeroMemory(&colorBufferDesk, sizeof(D3D11_BUFFER_DESC));
+	colorBufferDesk.Usage = D3D11_USAGE_DYNAMIC;
+	colorBufferDesk.ByteWidth = sizeof(ConstantBuffer);
+	colorBufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	colorBufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	colorBufferDesk.MiscFlags = 0;
+	colorBufferDesk.StructureByteStride = 0;
+
+	// 定数バッファの設定
+	if (FAILED(m_device->CreateBuffer(&colorBufferDesk, nullptr, _colorBuffer.GetAddressOf())))
+	{
+		MessageBox(NULL, L"カラー定数バッファを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
+		return;
+	}
+
+	// 初期値設定
+	SetColor(DirectX::XMFLOAT4(1, 1, 1, 1));
+
 
 	// サンプラーステートを作成しセットする
 	{
@@ -293,6 +316,29 @@ void Direct3D::SetRect(float x, float y, float w, float h, Quaternion quaternion
 
 		m_deviceContext->Unmap(m_vbSquare.Get(), 0);
 	}
+}
+
+void Direct3D::SetColor(DirectX::XMFLOAT4 color)
+{
+	// 更新するデータを用意
+	ColorBuffer colorBuffer;
+	colorBuffer.color = color;
+
+	// 定数バッファにデータを書き込む
+	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
+	if (SUCCEEDED(m_deviceContext->Map(_colorBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
+	{
+		memcpy(mappedSubresource.pData, &colorBuffer, sizeof(ColorBuffer));
+		m_deviceContext->Unmap(_colorBuffer.Get(), 0);
+	}
+	else
+	{
+		MessageBox(NULL, L"カラー設定時に、定数バッファを更新できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
+		return;
+	}
+
+	// ピクセルシェーダーに定数バッファを設定
+	m_deviceContext->PSSetConstantBuffers(1, 1, _colorBuffer.GetAddressOf());
 }
 
 void Direct3D::Draw2D()

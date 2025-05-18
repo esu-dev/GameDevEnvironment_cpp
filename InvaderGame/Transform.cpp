@@ -13,5 +13,5 @@ void Transform::SetPosition(float x, float y)
 
 void Transform::Update()
 {
-	D3D.SetRect(position.x, position.y, scale.x, scale.y, rotation);
+	//D3D.SetRect(position.x, position.y, scale.x, scale.y, rotation);
 }

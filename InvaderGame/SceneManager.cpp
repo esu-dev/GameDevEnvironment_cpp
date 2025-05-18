@@ -11,7 +11,7 @@ namespace SceneManagement
 	Scene* SceneManager::CreateScene(std::string sceneName)
 	{
 		Scene* newScene = new Scene(sceneName);
-		_sceneVector.push_back(newScene);
+		AddScene(newScene);
 
 		return newScene;
 	}
@@ -26,9 +26,15 @@ namespace SceneManagement
 		return _sceneVector[index];
 	}
 
+	void SceneManager::AddScene(Scene* scene)
+	{
+		_sceneVector.push_back(scene);
+	}
+
 	bool SceneManager::SetActiveScene(Scene* scene)
 	{
 		_activeScene = scene;
+		_activeScene->Start();
 		return _activeScene != nullptr;
 	}
 
@@ -36,6 +42,5 @@ namespace SceneManagement
 	{
 		Scene* loadingScene = std_extension::Find<Scene*>(_sceneVector, [&](Scene* x) { return x->GetName() == sceneName; });
 		SetActiveScene(loadingScene);
-		loadingScene->Start();
 	}
 }

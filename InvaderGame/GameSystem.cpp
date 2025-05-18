@@ -19,6 +19,8 @@ void GameSystem::Initialize()
 	Physics2D::Initialize();
 
 	D3D.ChangeMode_2D();
+
+	SampleSceneAssets::CreateSampleSceneAsset();
 }
 
 void GameSystem::Execute()
@@ -29,6 +31,7 @@ void GameSystem::Execute()
 
 	Physics2D::Update();
 
+	// ”wŒiF‚ÌÝ’è
     float color[4] = { 0.2f, 0.2f, 1.0f, 1.0f };
     D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 	

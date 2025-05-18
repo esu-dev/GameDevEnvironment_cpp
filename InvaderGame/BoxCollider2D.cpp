@@ -8,7 +8,7 @@ BoxCollider2D::BoxCollider2D()
 	_bodyDef.position.Set(0, 0);
 	_body = Physics2D::GetBox2DWorld()->CreateBody(&_bodyDef);
 
-	dynamicBox.SetAsBox(4.0f, 4.0f);
+	SetSize(4.0f, 4.0f);
 }
 
 void BoxCollider2D::SetOffset(Vector2 centerPos)

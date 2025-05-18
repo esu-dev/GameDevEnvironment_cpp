@@ -5,7 +5,14 @@
 void Rigidbody2D::SetUseGravity(bool useGravity)
 {
 	_boxCollider2D = this->gameObject->GetComponent<BoxCollider2D>();
-	_boxCollider2D->Getb2Body()->SetGravityScale(useGravity ? 1.0f : 0.0f);
+	if (useGravity)
+	{
+		_boxCollider2D->Getb2Body()->SetGravityScale(1);
+	}
+	else
+	{
+		_boxCollider2D->Getb2Body()->SetGravityScale(0);
+	}
 }
 
 void Rigidbody2D::SetKinematic()

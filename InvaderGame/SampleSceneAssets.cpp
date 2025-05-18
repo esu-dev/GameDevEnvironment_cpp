@@ -35,6 +35,34 @@ void SampleSceneAssets::CreateSampleSceneAsset()
 
 	Texture* mainShipTexture = new Texture();
 	mainShipTexture->Load("./Resources/MainShip/FullHealth.png");
+
+	AudioClip* mainShipAudioClip = new AudioClip("./Resources/Sound/SE/RetroWeaponLaser03.wav");
+
+	GameObject* _testObject = new GameObject();
+	//_testObject->AddComponent<SampleMonoBehaviour>();
+	_testObject->AddComponent<SpriteRenderer>()->SetTexture(mainShipTexture);
+	_testObject->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
+	_testObject->AddComponent<Rigidbody2D>()->SetUseGravity(false);
+	_testObject->GetTransform()->position = Vector3(8, 0, 0);
+	_testObject->GetTransform()->scale = { 2, 2, 0.0f };
+
+	sampleScene->AddGameObject(_testObject);
+
+
+	GameObject* wall = new GameObject();
+	wall->AddComponent<SpriteRenderer>();
+	wall->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
+	Rigidbody2D* rb_ship2 = wall->AddComponent<Rigidbody2D>();
+	//rb_ship2->SetUseGravity(false);
+	rb_ship2->SetFreeze();
+	wall->GetTransform()->position = Vector3(-10, -4, 0);
+	wall->GetTransform()->scale = { 2, 2, 0 }; // コンストラクタの呼び出し
+
+	sampleScene->AddGameObject(wall);
+
+	/*
+	Texture* mainShipTexture = new Texture();
+	mainShipTexture->Load("./Resources/MainShip/FullHealth.png");
 	Texture* mainShipTexture_SlightDamage = new Texture("./Resources/MainShip/SlightDamage.png");
 
 	AudioClip* mainShipAudioClip = new AudioClip("./Resources/Sound/SE/RetroWeaponLaser03.wav");
@@ -81,4 +109,7 @@ void SampleSceneAssets::CreateSampleSceneAsset()
 	audioSource->SetAudioClip(audioClip);
 	audioSource->SetVolume(0.2f);
 	audioSource->Play();
+	*/
+
+	SceneManager::SetActiveScene(sampleScene);
 }

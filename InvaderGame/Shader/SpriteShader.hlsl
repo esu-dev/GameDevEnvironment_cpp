@@ -9,6 +9,11 @@ cbuffer ConstantBuffer : register(b0)
 	matrix wp;
 };
 
+cbuffer ColorBuffer : register(b1)
+{
+    float4 color;
+}
+
 struct VSOutput
 {
 	float4 Pos : SV_Position;
@@ -29,17 +34,15 @@ float4 PS(VSOutput In) : SV_Target0
 {
 	float4 color = Texture.Sample(Sampler, In.UV);
 
-	if (color.a == 0)
+	/*if (color.a == 0)
 	{
-		//color = float4(1.0, 1.0, 0, 1.0);
-	}
+		color = float4(1.0, 1.0, 0, 1.0);
+	}*/
 
 	return color;
 }
 
 float4 PS_Color(VSOutput In) : SV_Target0
 {
-    float4 color = float4(1.0, 1.0, 0, 1.0);
-	
     return color;
 }

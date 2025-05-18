@@ -25,6 +25,11 @@ struct ConstantBuffer
 	DirectX::XMMATRIX m_WP;
 };
 
+struct ColorBuffer
+{
+	DirectX::XMFLOAT4 color;
+};
+
 //=========================================
 // Direct3Dクラス
 //=========================================
@@ -67,13 +72,16 @@ public:
 	ComPtr<ID3D11InputLayout> m_spriteInputLayout = nullptr;*/
 
 	ComPtr <ID3D11Buffer> m_vbSquare; // 四角形用頂点バッファ
-	ComPtr<ID3D11Buffer> constantBuffer;
+	ComPtr<ID3D11Buffer> _constantBuffer;
+	ComPtr<ID3D11Buffer> _colorBuffer;
 
 	// 2D描画モードにする
 	void ChangeMode_2D();
 
 	void SetRect(float x, float y, float w, float h);
 	void SetRect(float x, float y, float w, float h, Quaternion quaternion);
+
+	void SetColor(DirectX::XMFLOAT4 color);
 
 	// 2D描画
 	void Draw2D();
