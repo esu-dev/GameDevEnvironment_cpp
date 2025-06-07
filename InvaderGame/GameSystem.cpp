@@ -32,7 +32,8 @@ void GameSystem::Execute()
 	Physics2D::Update();
 
 	// ”wŒiF‚Ìİ’è
-    float color[4] = { 0.2f, 0.2f, 1.0f, 1.0f };
+    //float color[4] = { 0.2f, 0.2f, 1.0f, 1.0f };
+	float color[4] = { 0, 0, 0, 1.0 };
     D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 	
 	// Updateˆ—

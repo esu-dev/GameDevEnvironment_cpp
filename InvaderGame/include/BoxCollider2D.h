@@ -10,6 +10,7 @@ public:
 	void SetOffset(Vector2 centerPos);
 	void SetSize(Vector2 size);
 
+	void OnEnable() override;
 	void OnDisable() override;
 	void Start() override;
 	void Update() override;

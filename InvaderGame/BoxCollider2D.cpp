@@ -8,7 +8,7 @@ BoxCollider2D::BoxCollider2D()
 	_bodyDef.position.Set(0, 0);
 	_body = Physics2D::GetBox2DWorld()->CreateBody(&_bodyDef);
 
-	SetSize(4.0f, 4.0f);
+	SetSize(Vector2(4.0f, 4.0f));
 }
 
 void BoxCollider2D::SetOffset(Vector2 centerPos)
@@ -28,6 +28,11 @@ void BoxCollider2D::SynchronizeBodyWithGameObject()
 {
 	Vector2 colliderPos = Camera::WorldToBox2DWorld(this->gameObject->GetTransform()->position) + _offset;
 	_body->SetTransform(b2Vec2{ colliderPos.x, colliderPos.y }, _body->GetAngle());
+}
+
+void BoxCollider2D::OnEnable()
+{
+	GAMESYS.AddDelayedExecution([&]() { _body->SetEnabled(true); });
 }
 
 void BoxCollider2D::OnDisable()

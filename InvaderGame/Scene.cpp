@@ -23,17 +23,21 @@ namespace SceneManagement
 
 	void Scene::Start()
 	{
-		for (GameObject* gameObject : _gameObjectVector)
+		int num = _gameObjectVector.size();
+		for (int i = 0; i < num; i++)
 		{
-			gameObject->Start();
+			_gameObjectVector[i]->Start();
+			num = _gameObjectVector.size();
 		}
 	}
 
 	void Scene::Update()
 	{
-		for (GameObject* gameObject : _gameObjectVector)
+		int num = _gameObjectVector.size();
+		for (int i = 0; i < num; i++)
 		{
-			gameObject->Update();
+			_gameObjectVector[i]->Update();
+			num = _gameObjectVector.size();
 		}
 	}
 }
