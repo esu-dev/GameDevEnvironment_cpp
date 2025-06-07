@@ -15,6 +15,7 @@ public:
 	static Quaternion Inverse(Quaternion quaternion);
 
 	Vector3 Mult(Vector3 vector);
+	Vector3 operator* (const Vector3& vector);
 
 	Matrix ToXMMATRIX();
 };
