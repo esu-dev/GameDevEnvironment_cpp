@@ -117,7 +117,7 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>.\;..\..\box2d-2.4.1\box2d-2.4.1\include\box2d;C:\Users\har14\GameDev\DirectXTex-main\DirectXTex-main\DirectXTex;.\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\include;.\lib\Box2D\2.4.1\include;.\lib\DirectXTex</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
