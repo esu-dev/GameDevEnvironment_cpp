@@ -23,7 +23,8 @@
 // C ランタイム ヘッダー ファイル
 #include <stdlib.h>
 #include <malloc.h>
-#include <memory.h>
+#include <memory.h> // これは？
+#include <memory>
 #include <tchar.h>
 #include <locale.h>
 #include <box2d.h>
