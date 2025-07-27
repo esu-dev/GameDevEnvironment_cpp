@@ -19,8 +19,6 @@ void GameSystem::Initialize()
 	Physics2D::Initialize();
 
 	D3D.ChangeMode_2D();
-
-	SampleSceneAssets::CreateSampleSceneAsset();
 }
 
 void GameSystem::Execute()
