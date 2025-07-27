@@ -274,5 +274,17 @@
     <ClInclude Include="include\DebugPrefab.h">
       <Filter>Source\DebugAssets</Filter>
     </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Asset.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneAsset.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Behaviour.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

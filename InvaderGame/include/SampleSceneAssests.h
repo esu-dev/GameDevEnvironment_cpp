@@ -1,7 +1,9 @@
 #pragma once
 
-class SampleSceneAssets
+#include "SceneAsset.h"
+
+class SampleSceneAssets : public SceneAsset<SampleSceneAssets>
 {
 public:
-	static void CreateSampleSceneAsset();
+	static void load_scene_asset_impl();
 };

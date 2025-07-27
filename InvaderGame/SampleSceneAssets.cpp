@@ -5,7 +5,7 @@
 
 using namespace SceneManagement;
 
-void SampleSceneAssets::CreateSampleSceneAsset()
+void SampleSceneAssets::load_scene_asset_impl()
 {
 	Scene* sampleScene = SceneManager::CreateScene("SampleScene");
 

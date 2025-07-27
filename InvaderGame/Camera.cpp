@@ -7,6 +7,7 @@
 
 // Transformの値をどれだけ拡大するか
 const float Camera::Magnification = 24.0f;
+Camera* Camera::main = nullptr;
 
 // 最終的にはカメラパラメータを考慮して実装する必要がある。
 // 3D環境開発時に行う
@@ -56,4 +57,17 @@ Vector3 Camera::Box2DWorldToWorld(Vector2 worldPos)
 	Matrix result = matrix * matrix_pos;
 
 	return Vector3(result.g_matrix[0][0], result.g_matrix[1][0], result.g_matrix[2][0]);
+}
+
+Camera* Camera::get_main()
+{
+	return main;
+}
+
+Camera::Camera()
+{
+	if (main == nullptr)
+	{
+		main = this;
+	}
 }
