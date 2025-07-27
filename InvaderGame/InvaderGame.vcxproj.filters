@@ -280,10 +280,13 @@
     <ClInclude Include="Asset.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="SceneAsset.h">
+    <ClInclude Include="Behaviour.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="Behaviour.h">
+    <ClInclude Include="include\SceneAsset.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
   </ItemGroup>

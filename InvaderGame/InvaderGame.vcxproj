@@ -293,12 +293,14 @@
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\MonoBehaviour.h" />
+    <ClInclude Include="include\Object.h" />
     <ClInclude Include="include\Physics2D.h" />
     <ClInclude Include="include\Quaternion.h" />
     <ClInclude Include="include\Rigidbody2D.h" />
     <ClInclude Include="include\SampleMonoBehaviour.h" />
     <ClInclude Include="include\SampleSceneAssests.h" />
     <ClInclude Include="include\Scene.h" />
+    <ClInclude Include="include\SceneAsset.h" />
     <ClInclude Include="include\SceneManager.h" />
     <ClInclude Include="include\Shader.h" />
     <ClInclude Include="include\SpriteRenderer.h" />
@@ -313,7 +315,6 @@
     <ClInclude Include="include\Vector3.h" />
     <ClInclude Include="include\WindowDrawer.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="SceneAsset.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

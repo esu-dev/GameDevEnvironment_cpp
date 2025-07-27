@@ -1,10 +1,11 @@
 #pragma once
 
 #include "framework.h"
+#include "Object.h"
 
 class GameObject;
 
-class Component
+class Component : public Object
 {
 public:
 	GameObject* gameObject;
