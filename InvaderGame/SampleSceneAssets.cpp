@@ -9,6 +9,9 @@ void SampleSceneAssets::load_scene_asset_impl()
 {
 	Scene* sampleScene = SceneManager::CreateScene("SampleScene");
 
+	GameObject* camera = new GameObject();
+	camera->AddComponent<Camera>();
+	//camera->GetTransform()->position = Vector3(10, 0, 0);
 
 	GameObject* title = new GameObject();
 	title->GetTransform()->SetPosition(0, 4);

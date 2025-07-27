@@ -25,8 +25,8 @@ void SpriteRenderer::Update()
 	D3D.SetColor(_color);
 
 	Transform* transform = this->gameObject->GetTransform();
-	//Vector2 draw_position = Vector2(transform->position.x - Camera::get_main()., transform->position.y);
-	D3D.SetRect(transform->position.x, transform->position.y, transform->scale.x, transform->scale.y, transform->rotation);
+	Vector2 draw_position = Vector2(transform->position.x - Camera::get_main()->get_transform()->position.x, transform->position.y - Camera::get_main()->get_transform()->position.y);
+	D3D.SetRect(draw_position.x, draw_position.y, transform->scale.x, transform->scale.y, transform->rotation);
 
 	if (m_texture == nullptr)
 	{
