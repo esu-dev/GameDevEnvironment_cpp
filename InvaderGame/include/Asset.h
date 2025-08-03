@@ -1,9 +1,9 @@
 #pragma once
 
-template<typename T>
+template<typename T1, typename T2>
 class Asset
 {
 public:
-	static void load() { T::load_impl(); }
+	static T2 load() { return T1::load_impl(); }
 };
 

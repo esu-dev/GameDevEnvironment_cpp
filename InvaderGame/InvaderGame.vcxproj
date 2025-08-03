@@ -213,6 +213,7 @@
     </ClCompile>
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="Physics2D.cpp" />
     <ClCompile Include="Quaternion.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
@@ -269,10 +270,10 @@
     <Image Include="WindowsProjectDirectX11_2.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Asset.h" />
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\Animator.h" />
+    <ClInclude Include="include\Asset.h" />
     <ClInclude Include="include\AudioClip.h" />
     <ClInclude Include="include\AudioSource.h" />
     <ClInclude Include="include\BoxCollider2D.h" />
@@ -314,7 +315,9 @@
     <ClInclude Include="include\Vector2.h" />
     <ClInclude Include="include\Vector3.h" />
     <ClInclude Include="include\WindowDrawer.h" />
+    <ClInclude Include="PrefabAsset.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SamplePrefabAsset.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

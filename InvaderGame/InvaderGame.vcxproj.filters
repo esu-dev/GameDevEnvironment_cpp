@@ -141,6 +141,9 @@
     <ClCompile Include="std_extension.cpp">
       <Filter>Source\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source\GameEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -277,9 +280,6 @@
     <ClInclude Include="Resource.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Asset.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
     <ClInclude Include="Behaviour.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
@@ -288,6 +288,15 @@
     </ClInclude>
     <ClInclude Include="include\Object.h">
       <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PrefabAsset.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="SamplePrefabAsset.h">
+      <Filter>Source\DebugAssets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

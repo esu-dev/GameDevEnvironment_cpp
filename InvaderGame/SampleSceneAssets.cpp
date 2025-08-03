@@ -2,10 +2,11 @@
 
 #include "GameEngine.h"
 #include "SampleMonoBehaviour.h"
+#include "SamplePrefabAsset.h"
 
 using namespace SceneManagement;
 
-void SampleSceneAssets::load_scene_asset_impl()
+Scene* SampleSceneAssets::load_scene_asset_impl()
 {
 	Scene* sampleScene = SceneManager::CreateScene("SampleScene");
 
@@ -63,6 +64,9 @@ void SampleSceneAssets::load_scene_asset_impl()
 
 	sampleScene->AddGameObject(wall);
 
+	GameObject* samplePrefabGameObject = SamplePrefabAsset::load();
+	sampleScene->AddGameObject(samplePrefabGameObject);
+
 	/*
 	Texture* mainShipTexture = new Texture();
 	mainShipTexture->Load("./Resources/MainShip/FullHealth.png");
@@ -115,4 +119,6 @@ void SampleSceneAssets::load_scene_asset_impl()
 	*/
 
 	SceneManager::SetActiveScene(sampleScene);
+
+	return sampleScene;
 }
