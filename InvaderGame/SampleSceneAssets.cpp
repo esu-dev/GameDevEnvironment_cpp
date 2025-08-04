@@ -66,6 +66,7 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 
 	GameObject* samplePrefabGameObject = SamplePrefabAsset::load();
 	sampleScene->AddGameObject(samplePrefabGameObject);
+	samplePrefabGameObject->GetTransform()->position = samplePrefabGameObject->GetTransform()->position - Vector3(3, 3, 0);
 
 	/*
 	Texture* mainShipTexture = new Texture();

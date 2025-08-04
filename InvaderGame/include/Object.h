@@ -5,7 +5,7 @@
 class Object
 {
 public:
-	static Object* Instantiate(Object* original);
+	//static Object* Instantiate(Object* original);
 
 	std::string name;
 };
