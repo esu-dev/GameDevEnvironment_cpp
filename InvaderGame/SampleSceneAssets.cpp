@@ -43,7 +43,7 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 	AudioClip* mainShipAudioClip = new AudioClip("./Resources/Sound/SE/RetroWeaponLaser03.wav");
 
 	GameObject* _testObject = new GameObject();
-	//_testObject->AddComponent<SampleMonoBehaviour>();
+	_testObject->AddComponent<SampleMonoBehaviour>();
 	_testObject->AddComponent<SpriteRenderer>()->SetTexture(mainShipTexture);
 	_testObject->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
 	Rigidbody2D* r = _testObject->AddComponent<Rigidbody2D>();

@@ -34,7 +34,7 @@ namespace SceneManagement
 	bool SceneManager::SetActiveScene(Scene* scene)
 	{
 		_activeScene = scene;
-		_activeScene->Start();
+		//_activeScene->Start();
 		return _activeScene != nullptr;
 	}
 

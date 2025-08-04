@@ -9,12 +9,22 @@ SampleMonoBehaviour::SampleMonoBehaviour()
 
 void SampleMonoBehaviour::OnCollisionEnter2D(Collision2D* collision)
 {
-	collision->GetCollider()->gameObject->SetActive(false);
+	/*collision->GetCollider()->gameObject->SetActive(false);
 
-	this->gameObject->GetComponent<AudioSource>()->Play();
+	this->gameObject->GetComponent<AudioSource>()->Play();*/
 }
 
 void SampleMonoBehaviour::Update()
 {
-	
+	if (Input::GetKeyDown(VK_SPACE))
+	{
+		GameObject* _testObject = new GameObject();
+		_testObject->AddComponent<SpriteRenderer>();
+		_testObject->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
+		Rigidbody2D* r = _testObject->AddComponent<Rigidbody2D>();
+		_testObject->GetTransform()->position = Vector3(8, 5, 0);
+		_testObject->GetTransform()->scale = { 2, 2, 0.0f };
+
+		SceneManagement::SceneManager::GetActiveScene()->AddGameObject(_testObject);
+	}
 }

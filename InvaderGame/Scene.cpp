@@ -19,9 +19,10 @@ namespace SceneManagement
 	void Scene::AddGameObject(GameObject* gameObject)
 	{
 		_gameObjectVector.push_back(gameObject);
+		gameObject->Start();
 	}
 
-	void Scene::Start()
+	/*void Scene::Start()
 	{
 		int num = _gameObjectVector.size();
 		for (int i = 0; i < num; i++)
@@ -29,7 +30,7 @@ namespace SceneManagement
 			_gameObjectVector[i]->Start();
 			num = _gameObjectVector.size();
 		}
-	}
+	}*/
 
 	void Scene::Update()
 	{
