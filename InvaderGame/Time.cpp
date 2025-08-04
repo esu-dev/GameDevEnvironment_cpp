@@ -4,7 +4,8 @@ const float Time::FixedDeltaTime = 1 / 60.0f;
 
 void Time::Initialize()
 {
-	//_instance = new Time();
+	_updatedTime = GetTickCount64();
+
 	GAMESYS.OnUpdateListener.AddListener([]()
 		{
 			ULONGLONG time = GetTickCount64();

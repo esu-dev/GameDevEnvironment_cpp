@@ -24,6 +24,18 @@ Vector3 Vector3::AddZ(float value)
 	return Vector3(this->x, this->y, this->z + value);
 }
 
+Vector3 Vector3::GetNormalized()
+{
+	float square = x * x + y * y + z * z;
+	if (square == 0)
+	{
+		return *this;
+	}
+
+	float norm = std::sqrt(square);
+	return *this / norm;
+}
+
 Vector2 Vector3::ToVector2()
 {
 	return Vector2(this->x, this->y);
@@ -50,6 +62,12 @@ Vector3 Vector3::operator- (const Vector3& vector) const
 Vector3 Vector3::operator* (const float& value) const
 {
 	const Vector3 v = Vector3(this->x * value, this->y * value, this->z * value);
+	return v;
+}
+
+Vector3 Vector3::operator/ (const float& value) const
+{
+	const Vector3 v = Vector3(this->x / value, this->y / value, this->z / value);
 	return v;
 }
 

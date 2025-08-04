@@ -46,7 +46,9 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 	//_testObject->AddComponent<SampleMonoBehaviour>();
 	_testObject->AddComponent<SpriteRenderer>()->SetTexture(mainShipTexture);
 	_testObject->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
-	_testObject->AddComponent<Rigidbody2D>()->SetUseGravity(false);
+	Rigidbody2D* r = _testObject->AddComponent<Rigidbody2D>();
+	//r->SetUseGravity(false);
+	//r->SetVelocity(Vector2(0, -0.1));
 	_testObject->GetTransform()->position = Vector3(8, 0, 0);
 	_testObject->GetTransform()->scale = { 2, 2, 0.0f };
 
@@ -55,18 +57,18 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 
 	GameObject* wall = new GameObject();
 	wall->AddComponent<SpriteRenderer>();
-	wall->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
-	Rigidbody2D* rb_ship2 = wall->AddComponent<Rigidbody2D>();
+	//wall->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
+	//Rigidbody2D* rb_ship2 = wall->AddComponent<Rigidbody2D>();
 	//rb_ship2->SetUseGravity(false);
-	rb_ship2->SetFreeze();
-	wall->GetTransform()->position = Vector3(-10, -4, 0);
+	//rb_ship2->SetFreeze();
+	wall->GetTransform()->position = Vector3(-10, 10, 0);
 	wall->GetTransform()->scale = { 2, 2, 0 }; // コンストラクタの呼び出し
 
 	sampleScene->AddGameObject(wall);
 
 	GameObject* samplePrefabGameObject = SamplePrefabAsset::load();
 	sampleScene->AddGameObject(samplePrefabGameObject);
-	samplePrefabGameObject->GetTransform()->position = samplePrefabGameObject->GetTransform()->position - Vector3(3, 3, 0);
+	samplePrefabGameObject->GetTransform()->position = samplePrefabGameObject->GetTransform()->position - Vector3(3, 3, 0).GetNormalized();
 
 	/*
 	Texture* mainShipTexture = new Texture();

@@ -28,6 +28,8 @@ void BoxCollider2D::SynchronizeBodyWithGameObject()
 {
 	Vector2 colliderPos = Camera::WorldToBox2DWorld(this->gameObject->GetTransform()->position) + _offset;
 	_body->SetTransform(b2Vec2{ colliderPos.x, colliderPos.y }, _body->GetAngle());
+
+	//Debug::Log(L"pos: %f, colliderPos: %f", this->gameObject->GetTransform()->position.y, colliderPos.y);
 }
 
 void BoxCollider2D::OnEnable()
@@ -49,6 +51,8 @@ void BoxCollider2D::Update()
 {
 	// b2Bodyの座標をオブジェクトと同期させる
 	SynchronizeBodyWithGameObject();
+
+	//Debug::Log(L"%f", _body->GetPosition().y);
 
 	//Debug::Log(L"%f, %f, %f, %f", _body->GetPosition().x, _body->GetPosition().y, this->gameObject->transform->position.x, this->gameObject->transform->position.x * Camera::Magnification / _body->GetPosition().x);
 }
