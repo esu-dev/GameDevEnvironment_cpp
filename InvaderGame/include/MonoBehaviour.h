@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Component.h"
+#include "Behaviour.h"
 
 class Collision2D;
 
-class MonoBehaviour : public Component
+class MonoBehaviour : public Behaviour
 {
 public:
 	virtual void OnCollisionEnter2D(Collision2D* collision) {}
