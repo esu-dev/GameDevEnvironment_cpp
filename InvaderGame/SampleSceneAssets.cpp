@@ -9,6 +9,7 @@ using namespace SceneManagement;
 Scene* SampleSceneAssets::load_scene_asset_impl()
 {
 	Scene* sampleScene = SceneManager::CreateScene("SampleScene");
+	SceneManager::SetActiveScene(sampleScene);
 
 	GameObject* camera = new GameObject();
 	camera->AddComponent<Camera>();
@@ -121,7 +122,6 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 	audioSource->Play();
 	*/
 
-	SceneManager::SetActiveScene(sampleScene);
 
 	return sampleScene;
 }

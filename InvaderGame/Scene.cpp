@@ -19,7 +19,13 @@ namespace SceneManagement
 	void Scene::AddGameObject(GameObject* gameObject)
 	{
 		_gameObjectVector.push_back(gameObject);
+		gameObject->scene = this;
 		gameObject->Start();
+	}
+
+	void Scene::RemoveGameObject(GameObject* gameObject)
+	{
+		remove(_gameObjectVector.begin(), _gameObjectVector.end(), gameObject);
 	}
 
 	/*void Scene::Start()

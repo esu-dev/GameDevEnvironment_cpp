@@ -23,7 +23,7 @@ void GameObject::SetActive(bool isActive)
 
 	if (_isActive == false)
 	{
-		for (Component* component : m_componentVector)
+		for (std::shared_ptr<Component> component : m_componentVector)
 		{
 			component->OnDisable();
 		}
@@ -32,7 +32,7 @@ void GameObject::SetActive(bool isActive)
 
 void GameObject::Start()
 {
-	for (Component* component : m_componentVector)
+	for (auto component : m_componentVector)
 	{
 		component->Start();
 	}
@@ -45,7 +45,7 @@ void GameObject::Update()
 		return;
 	}
 
-	for (Component* component : m_componentVector)
+	for (auto component : m_componentVector)
 	{
 		component->Update();
 	}

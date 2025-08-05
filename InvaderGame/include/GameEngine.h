@@ -6,7 +6,8 @@
 
 #include "GameObject.h"
 
-// Componentîhê∂
+// Objectîhê∂
+#include "Object.h"
 #include "Component.h"
 #include "MonoBehaviour.h"
 #include "Transform.h"

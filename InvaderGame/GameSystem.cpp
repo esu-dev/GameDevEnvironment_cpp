@@ -25,6 +25,7 @@ void GameSystem::Execute()
 {
 	// ƒCƒxƒ“ƒgˆ—
 	_delayedExecutionEvent.Invoke();
+	_delayedExecutionEvent.RemoveAllListener();
 	OnUpdateListener.Invoke();
 
 	Physics2D::Update();

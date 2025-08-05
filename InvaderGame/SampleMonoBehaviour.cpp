@@ -4,7 +4,9 @@
 
 SampleMonoBehaviour::SampleMonoBehaviour()
 {
-	
+	_test->AddComponent<SpriteRenderer>();
+	_test->GetTransform()->position = Vector3(-5, 0, 0);
+	SceneManagement::SceneManager::GetActiveScene()->AddGameObject(_test);
 }
 
 void SampleMonoBehaviour::OnCollisionEnter2D(Collision2D* collision)
@@ -12,6 +14,11 @@ void SampleMonoBehaviour::OnCollisionEnter2D(Collision2D* collision)
 	/*collision->GetCollider()->gameObject->SetActive(false);
 
 	this->gameObject->GetComponent<AudioSource>()->Play();*/
+}
+
+void SampleMonoBehaviour::Start()
+{
+	//SceneManagement::SceneManager::GetActiveScene()->AddGameObject(new GameObject());
 }
 
 void SampleMonoBehaviour::Update()
@@ -26,5 +33,7 @@ void SampleMonoBehaviour::Update()
 		_testObject->GetTransform()->scale = { 2, 2, 0.0f };
 
 		SceneManagement::SceneManager::GetActiveScene()->AddGameObject(_testObject);
+
+		Destroy(_test);
 	}
 }
