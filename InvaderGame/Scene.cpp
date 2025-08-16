@@ -25,7 +25,8 @@ namespace SceneManagement
 
 	void Scene::RemoveGameObject(GameObject* gameObject)
 	{
-		remove(_gameObjectVector.begin(), _gameObjectVector.end(), gameObject);
+		//remove(_gameObjectVector.begin(), _gameObjectVector.end(), gameObject);
+		std_extension::Remove(_gameObjectVector, gameObject);
 	}
 
 	/*void Scene::Start()

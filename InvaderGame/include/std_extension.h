@@ -21,4 +21,10 @@ public:
 		__int64 index = std::distance(vector.begin(), iterator);
 		return vector[index];
 	}
+
+	template <typename T>
+	static void Remove(std::vector<T>& vector, T element)
+	{
+		vector.erase(std::remove(vector.begin(), vector.end(), element), vector.end());
+	}
 };
