@@ -20,7 +20,7 @@ namespace SceneManagement
 	{
 		_gameObjectVector.push_back(gameObject);
 		gameObject->scene = this;
-		gameObject->Start();
+		gameObject->Start(); // Ç±ÇÍÇÕê≥ÇµÇ≠Ç»Ç¢ÇÊÇÀ
 	}
 
 	void Scene::RemoveGameObject(GameObject* gameObject)

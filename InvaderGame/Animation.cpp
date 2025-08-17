@@ -9,6 +9,11 @@ std::string Animation::GetAnimationName()
 	return _animationName;
 }
 
+void Animation::SetLoopTime(bool loopTime)
+{
+	_loopTime = loopTime;
+}
+
 void Animation::SetAnimation(Texture* texture, float time)
 {
 	AnimationDataSet* animationDataSet = new AnimationDataSet();
@@ -20,6 +25,8 @@ void Animation::SetAnimation(Texture* texture, float time)
 void Animation::Play()
 {
 	_isPlaying = true;
+	_playingTime = 0;
+	_textureIndex = 0;
 }
 
 // Animation単体で動かすことを想定していないため、Update処理尾GameObjectと分離しない。
@@ -30,8 +37,15 @@ void Animation::Update()
 	{
 		if (_textureIndex >= _animationDataSetVector.size())
 		{
-			_isPlaying = false;
-			return;
+			if (_loopTime)
+			{
+				Play();
+			}
+			else
+			{
+				_isPlaying = false;
+				return;
+			}
 		}
 
 		if (_playingTime >= _animationDataSetVector[_textureIndex]->time)

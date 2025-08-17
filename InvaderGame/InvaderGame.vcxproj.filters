@@ -147,6 +147,18 @@
     <ClCompile Include="Canvas.cpp">
       <Filter>Source\GameEngine</Filter>
     </ClCompile>
+    <ClCompile Include="DemoSceneAsset.cpp">
+      <Filter>Source\DebugAssets</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoSoundPlayer.cpp">
+      <Filter>Source\DebugAssets</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoPhysicsManager.cpp">
+      <Filter>Source\DebugAssets</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoMovement.cpp">
+      <Filter>Source\DebugAssets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -303,6 +315,18 @@
     </ClInclude>
     <ClInclude Include="Canvas.h">
       <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoSceneAsset.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoSoundPlayer.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoPhysicsManager.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoMovement.h">
+      <Filter>Source\DebugAssets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,0 +1,147 @@
+#include "DemoSceneAsset.h"
+
+#include "GameEngine.h"
+#include "DemoSoundPlayer.h"
+#include "DemoPhysicsManager.h"
+#include "DemoMovement.h"
+
+using namespace SceneManagement;
+
+Scene* DemoSceneAsset::load_scene_asset_impl()
+{
+	Scene* scene = SceneManager::CreateScene("DemoScene");
+	
+
+	// カメラ
+	GameObject* cameraText = new GameObject();
+	cameraText->GetTransform()->SetPosition(0, -10);
+	cameraText->AddComponent<TextLabel>()->SetText("Camera");
+	scene->AddGameObject(cameraText);
+
+	GameObject* camera = new GameObject();
+	camera->AddComponent<Camera>();
+	camera->AddComponent<DemoMovement>();
+	scene->AddGameObject(camera);
+
+
+	// メッシュ
+	GameObject* meshText = new GameObject();
+	TextLabel* meshTextLabel = meshText->AddComponent<TextLabel>();
+	meshTextLabel->SetText("Mesh");
+	meshTextLabel->SetCanMove(true);
+	meshText->GetTransform()->SetPosition(-14, 9);
+	scene->AddGameObject(meshText);
+
+	GameObject* meshObject = new GameObject();
+	meshObject->AddComponent<SpriteRenderer>();
+	meshObject->GetTransform()->SetPosition(-14, 7);
+	scene->AddGameObject(meshObject);
+
+	GameObject* meshObject2 = new GameObject();
+	meshObject2->AddComponent<SpriteRenderer>()->SetColor(DirectX::XMFLOAT4(0, 0, 1, 1));
+	meshObject2->GetTransform()->SetPosition(-14, 5);
+	scene->AddGameObject(meshObject2);
+
+
+	// テクスチャ
+	GameObject* textureText = new GameObject();
+	TextLabel* textureTextLabel = textureText->AddComponent<TextLabel>();
+	textureTextLabel->SetText("Texture");
+	textureTextLabel->SetCanMove(true);
+	textureText->GetTransform()->SetPosition(-9, 9);
+	scene->AddGameObject(textureText);
+
+	Texture* texture = new Texture("./Resources/Texture/knight_m_idle_anim_f0.png");
+	Texture* texture2 = new Texture("./Resources/Texture/knight_m_idle_anim_f1.png");
+	Texture* texture3 = new Texture("./Resources/Texture/knight_m_idle_anim_f2.png");
+	Texture* texture4 = new Texture("./Resources/Texture/knight_m_idle_anim_f3.png");
+
+	GameObject* textureObject = new GameObject();
+	textureObject->AddComponent<SpriteRenderer>()->SetTexture(texture);
+	textureObject->GetTransform()->SetPosition(-9, 7);
+	textureObject->GetTransform()->scale = Vector3(2, 2 * 28 / 16.0f, 0);
+	scene->AddGameObject(textureObject);
+
+	GameObject* textureObject2 = new GameObject();
+	textureObject2->AddComponent<SpriteRenderer>()->SetTexture(texture2);
+	textureObject2->GetTransform()->SetPosition(-9, 4);
+	textureObject2->GetTransform()->scale = Vector3(2, 2 * 28 / 16.0f, 0);
+	scene->AddGameObject(textureObject2);
+
+	GameObject* textureObject3 = new GameObject();
+	textureObject3->AddComponent<SpriteRenderer>()->SetTexture(texture3);
+	textureObject3->GetTransform()->SetPosition(-9, 1);
+	textureObject3->GetTransform()->scale = Vector3(2, 2 * 28 / 16.0f, 0);
+	scene->AddGameObject(textureObject3);
+
+	GameObject* textureObject4 = new GameObject();
+	textureObject4->AddComponent<SpriteRenderer>()->SetTexture(texture4);
+	textureObject4->GetTransform()->SetPosition(-9, -2);
+	textureObject4->GetTransform()->scale = Vector3(2, 2 * 28 / 16.0f, 0);
+	scene->AddGameObject(textureObject4);
+
+
+	// アニメーション
+	GameObject* animationText = new GameObject();
+	TextLabel* animationTextLabel = animationText->AddComponent<TextLabel>();
+	animationTextLabel->SetText("Animation");
+	animationTextLabel->SetCanMove(true);
+	animationText->GetTransform()->SetPosition(-2, 9);
+	scene->AddGameObject(animationText);
+
+	GameObject* animationObject = new GameObject();
+	SpriteRenderer* animationSpriteRenderer = animationObject->AddComponent<SpriteRenderer>();
+	animationObject->GetTransform()->SetPosition(-2, 7);
+	animationObject->GetTransform()->scale = Vector3(2, 2 * 28 / 16.0f, 0);
+
+	Animation* animation = new Animation("Idle", animationSpriteRenderer);
+	animation->SetAnimation(texture, 0);
+	animation->SetAnimation(texture2, 0.2f);
+	animation->SetAnimation(texture3, 0.4f);
+	animation->SetAnimation(texture4, 0.6f);
+	animation->SetAnimation(texture4, 0.8f);
+	animation->SetLoopTime(true);
+
+	Animator* animator = animationObject->AddComponent<Animator>();
+	animator->SetAnimation(animation);
+	animator->Play("Idle");
+
+	scene->AddGameObject(animationObject);
+
+
+	// サウンド
+	GameObject* soundText = new GameObject();
+	TextLabel* soundTextLabel = soundText->AddComponent<TextLabel>();
+	soundTextLabel->SetText("Sound");
+	soundTextLabel->SetCanMove(true);
+	soundText->GetTransform()->SetPosition(4, 9);
+	scene->AddGameObject(soundText);
+
+	AudioClip* audioClip = new AudioClip("./Resources/Sound/SE/RetroWeaponLaser03.wav");
+
+	GameObject* soundPlayer = new GameObject();
+	soundPlayer->GetTransform()->SetPosition(4, 7);
+	AudioSource* audioSource = soundPlayer->AddComponent<AudioSource>();
+	audioSource->SetAudioClip(audioClip);
+	soundPlayer->AddComponent<DemoSoundPlayer>();
+	scene->AddGameObject(soundPlayer);
+
+
+	// 物理演算
+	GameObject* physicsText = new GameObject();
+	TextLabel* physicsTextLabel = physicsText->AddComponent<TextLabel>();
+	physicsTextLabel->SetText("Physics");
+	physicsTextLabel->SetCanMove(true);
+	physicsText->GetTransform()->SetPosition(10, 9);
+	scene->AddGameObject(physicsText);
+
+	GameObject* demoPhysicsManager = new GameObject();
+	demoPhysicsManager->GetTransform()->SetPosition(10, 7);
+	demoPhysicsManager->AddComponent<DemoPhysicsManager>();
+	scene->AddGameObject(demoPhysicsManager);
+
+
+	SceneManager::SetActiveScene(scene);
+
+	return scene;
+}

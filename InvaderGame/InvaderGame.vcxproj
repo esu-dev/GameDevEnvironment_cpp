@@ -192,6 +192,9 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="DemoPhysicsManager.cpp" />
+    <ClCompile Include="DemoSceneAsset.cpp" />
+    <ClCompile Include="DemoSoundPlayer.cpp" />
     <ClCompile Include="Direct3D.cpp" />
     <ClCompile Include="DirectSound.cpp" />
     <ClCompile Include="Event.cpp">
@@ -214,6 +217,7 @@
     </ClCompile>
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="DemoMovement.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Physics2D.cpp" />
     <ClCompile Include="Quaternion.cpp">
@@ -273,6 +277,9 @@
   <ItemGroup>
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="Canvas.h" />
+    <ClInclude Include="DemoPhysicsManager.h" />
+    <ClInclude Include="DemoSceneAsset.h" />
+    <ClInclude Include="DemoSoundPlayer.h" />
     <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\Animator.h" />
     <ClInclude Include="include\Asset.h" />
@@ -317,6 +324,7 @@
     <ClInclude Include="include\Vector2.h" />
     <ClInclude Include="include\Vector3.h" />
     <ClInclude Include="include\WindowDrawer.h" />
+    <ClInclude Include="DemoMovement.h" />
     <ClInclude Include="PrefabAsset.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SamplePrefabAsset.h" />
