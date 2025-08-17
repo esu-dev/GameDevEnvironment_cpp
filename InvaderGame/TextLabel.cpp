@@ -7,9 +7,9 @@ TextLabel::TextLabel()
 
 }
 
-TextLabel::TextLabel(std::string text)
+void TextLabel::SetCanMove(bool canMove)
 {
-	_text += text;
+	_canMove = canMove;
 }
 
 void TextLabel::SetText(std::string text)
@@ -51,6 +51,10 @@ void TextLabel::Update()
 		MakeShaderResourceViewOf(c, &_textCharacterVector[i].ShaderResourceView);
 		
 		Vector3 drawPosition = rotation.Mult(Vector3(textStartPos.x + i * FontSize / Camera::Magnification, textStartPos.y, 0));
+		if (_canMove)
+		{
+			drawPosition = drawPosition - Camera::main->get_transform()->position;
+		}
 		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, FontSize / Camera::Magnification, FontSize / Camera::Magnification, rotation);
 		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView);
 		

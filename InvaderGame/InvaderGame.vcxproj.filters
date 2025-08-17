@@ -144,6 +144,9 @@
     <ClCompile Include="Object.cpp">
       <Filter>Source\GameEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Canvas.cpp">
+      <Filter>Source\GameEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -297,6 +300,9 @@
     </ClInclude>
     <ClInclude Include="SamplePrefabAsset.h">
       <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="Canvas.h">
+      <Filter>Source\GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

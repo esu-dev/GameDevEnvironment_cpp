@@ -17,13 +17,14 @@ public:
 
 public:
 	TextLabel();
-	TextLabel(std::string text);
+	void SetCanMove(bool canMove);
 	void SetText(std::string text);
 	void SetFontSize(int fontSize);
 	void SetTextAlign(TextAlign textAlign);
 	void Update() override;
 
 private:
+	bool _canMove = false;
 	int FontSize = 16;
 	int _resolution = 10;
 	TextAlign _textAlign = TextAlign::Center;

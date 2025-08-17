@@ -15,6 +15,10 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 	camera->AddComponent<Camera>();
 	//camera->GetTransform()->position = Vector3(10, 0, 0);
 
+	GameObject* canvasObject = new GameObject();
+	canvasObject->AddComponent<Canvas>();
+	sampleScene->AddGameObject(canvasObject);
+
 	GameObject* title = new GameObject();
 	title->GetTransform()->SetPosition(0, 4);
 	title->AddComponent<TextLabel>()->SetText("title");

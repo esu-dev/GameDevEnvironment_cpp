@@ -19,9 +19,44 @@ void Transform::SetPosition(float x, float y)
 {
 	position.x = x;
 	position.y = y;
+
+	if (_parent == nullptr)
+	{
+		return;
+	}
+	_localPosition = position - _parent->position;
+}
+
+void Transform::SetLocalPosition(Vector3& vector)
+{
+	if (_parent == nullptr)
+	{
+		return;
+	}
+
+	_localPosition.x = vector.x;
+	_localPosition.y = vector.y;
+	
+	position = _parent->position + _localPosition;
+}
+
+Vector3 Transform::GetLocalPosition()
+{
+	return _localPosition;
+}
+
+void Transform::SetParent(Transform* parent)
+{
+	this->_parent = parent;
 }
 
 void Transform::Update()
 {
-	//D3D.SetRect(position.x, position.y, scale.x, scale.y, rotation);
+	if (_parent == nullptr)
+	{
+		return;
+	}
+
+	//_localPosition = position - parent->position;
+	position = _parent->position + _localPosition;
 }

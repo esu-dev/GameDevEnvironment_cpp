@@ -40,3 +40,5 @@
 #include "Debug.h"
 #include "std_extension.h"
 #include "AudioClip.h"
+
+using namespace std::literals::string_literals;

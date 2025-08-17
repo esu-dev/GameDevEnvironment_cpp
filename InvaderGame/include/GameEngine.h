@@ -9,6 +9,13 @@
 // Objectîhê∂
 #include "Object.h"
 #include "Component.h"
+
+// Behaviourîhê∂
+#include "Behaviour.h"
+#include "Camera.h"
+#include "Canvas.h"
+
+// MonoBehaviourîhê∂
 #include "MonoBehaviour.h"
 #include "Transform.h"
 #include "TextLabel.h"
@@ -17,7 +24,6 @@
 #include "Collider2D.h"
 #include "BoxCollider2D.h"
 #include "Rigidbody2D.h"
-#include "Camera.h"
 #include "AudioSource.h"
 
 #include "Animation.h"

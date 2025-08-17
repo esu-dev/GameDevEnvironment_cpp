@@ -12,4 +12,5 @@ public:
 
 private:
 	GameObject* _test = new GameObject();
+	GameObject* fpsText = new GameObject();
 };

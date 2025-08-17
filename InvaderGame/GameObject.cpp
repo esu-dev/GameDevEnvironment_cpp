@@ -7,9 +7,8 @@
 #include "Animator.h"
 
 GameObject::GameObject()
-	: _transform{ AddComponent<Transform>() }
 {
-
+	_transform = this->AddComponent<Transform>();
 }
 
 Transform* GameObject::GetTransform()
