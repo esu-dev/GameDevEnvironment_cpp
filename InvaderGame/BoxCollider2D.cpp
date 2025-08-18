@@ -8,7 +8,14 @@ BoxCollider2D::BoxCollider2D()
 	_bodyDef.position.Set(0, 0);
 	_body = Physics2D::GetBox2DWorld()->CreateBody(&_bodyDef);
 
-	SetSize(Vector2(4.0f, 4.0f));
+	SetSize(Vector2(1.0f, 1.0f));
+}
+
+BoxCollider2D::~BoxCollider2D()
+{
+	Physics2D::GetBox2DWorld()->DestroyBody(_body);
+
+	Debug::Log(L"BoxCollider2D Destractor");
 }
 
 void BoxCollider2D::SetOffset(Vector2 centerPos)

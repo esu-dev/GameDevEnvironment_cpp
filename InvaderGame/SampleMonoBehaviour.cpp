@@ -39,6 +39,7 @@ void SampleMonoBehaviour::Update()
 		SceneManagement::SceneManager::GetActiveScene()->AddGameObject(_testObject);
 
 		Destroy(_test);
+		Destroy(_testObject);
 	}
 
 	Camera::main->get_transform()->position.x += Time::GetDelataTime();

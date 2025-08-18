@@ -13,6 +13,7 @@ public:
 	void SetUseGravity(bool useGravity);
 	void SetKinematic();
 	void SetFreeze();
+	void SetDynamic();
 	void SetVelocity(Vector2 velocity);
 	void Start() override;
 	void Update() override;

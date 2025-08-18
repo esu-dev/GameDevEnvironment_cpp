@@ -47,8 +47,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     GameSystem::CreateInstance();
     GameSystem::GetInstance().Initialize();
 
-    //SampleSceneAssets::load();
-    DemoSceneAsset::load();
+    SampleSceneAssets::load();
+    //DemoSceneAsset::load();
 
     // ゲームループ
     while (1)

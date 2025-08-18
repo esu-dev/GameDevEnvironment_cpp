@@ -20,6 +20,7 @@ void DemoPhysicsManager::Update()
 		_timer = 0;
 
 		_cube->GetTransform()->SetPosition(this->get_transform()->position.x, this->get_transform()->position.y);
+		_cube->GetComponent<Rigidbody2D>()->SetDynamic();
 	}
 
 	_timer += Time::GetDelataTime();
@@ -28,10 +29,10 @@ void DemoPhysicsManager::Update()
 DemoPhysicsManager::DemoPhysicsManager()
 {
 	_cube->AddComponent<SpriteRenderer>();
-	_cube->AddComponent<BoxCollider2D>()->SetSize(Vector2(1.275, 1.275));
+	_cube->AddComponent<BoxCollider2D>()->SetSize(Vector2(1, 1));
 	_cube->AddComponent<Rigidbody2D>();
 
 	_ground->AddComponent<SpriteRenderer>();
-	_ground->AddComponent<BoxCollider2D>()->SetSize(Vector2(1.275, 1.275));
+	_ground->AddComponent<BoxCollider2D>()->SetSize(Vector2(1, 1));
 	_ground->AddComponent<Rigidbody2D>()->SetKinematic();
 }

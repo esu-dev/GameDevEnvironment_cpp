@@ -7,6 +7,7 @@ class BoxCollider2D : public Collider2D
 {
 public:
 	BoxCollider2D();
+	~BoxCollider2D();
 	void SetOffset(Vector2 centerPos);
 	void SetSize(Vector2 size);
 

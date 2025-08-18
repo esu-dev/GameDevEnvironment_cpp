@@ -27,6 +27,12 @@ void Rigidbody2D::SetFreeze()
 	_boxCollider2D->Getb2Body()->SetType(b2BodyType::b2_staticBody);
 }
 
+void Rigidbody2D::SetDynamic()
+{
+	_boxCollider2D = this->gameObject->GetComponent<BoxCollider2D>();
+	_boxCollider2D->Getb2Body()->SetType(b2BodyType::b2_dynamicBody);
+}
+
 void Rigidbody2D::SetVelocity(Vector2 velocity)
 {
 	Vector2 box2DVelocity = Camera::WorldToBox2DWorld(velocity.ToVector3());
