@@ -13,7 +13,8 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 
 	GameObject* camera = new GameObject();
 	camera->AddComponent<Camera>();
-	//camera->GetTransform()->position = Vector3(10, 0, 0);
+	camera->tag = "MainCamera";
+	sampleScene->AddGameObject(camera);
 
 	GameObject* canvasObject = new GameObject();
 	canvasObject->AddComponent<Canvas>();
@@ -74,6 +75,7 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 	GameObject* samplePrefabGameObject = SamplePrefabAsset::load();
 	sampleScene->AddGameObject(samplePrefabGameObject);
 	samplePrefabGameObject->GetTransform()->position = samplePrefabGameObject->GetTransform()->position - Vector3(3, 3, 0).GetNormalized();
+
 
 	/*
 	Texture* mainShipTexture = new Texture();

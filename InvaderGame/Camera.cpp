@@ -1,13 +1,11 @@
 #include "Camera.h"
 
 #include "GameSystem.h"
-#include "Vector2.h"
-#include "Vector3.h"
+#include "GameEngine.h"
 #include "Matrix.h"
 
 // Transformの値をどれだけ拡大するか
 const float Camera::Magnification = 24.0f;
-Camera* Camera::main = nullptr;
 
 // 最終的にはカメラパラメータを考慮して実装する必要がある。
 // 3D環境開発時に行う
@@ -61,13 +59,5 @@ Vector3 Camera::Box2DWorldToWorld(Vector2 worldPos)
 
 Camera* Camera::get_main()
 {
-	return main;
-}
-
-Camera::Camera()
-{
-	if (main == nullptr)
-	{
-		main = this;
-	}
+	return GameObject::FindGameObjectsWithTag("MainCamera")[0]->GetComponent<Camera>();
 }

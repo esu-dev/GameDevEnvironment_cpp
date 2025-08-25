@@ -53,7 +53,7 @@ void TextLabel::Update()
 		Vector3 drawPosition = rotation.Mult(Vector3(textStartPos.x + i * FontSize / Camera::Magnification, textStartPos.y, 0));
 		if (_canMove)
 		{
-			drawPosition = drawPosition - Camera::main->get_transform()->position;
+			drawPosition = drawPosition - Camera::get_main()->get_transform()->position;
 		}
 		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, FontSize / Camera::Magnification, FontSize / Camera::Magnification, rotation);
 		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView);

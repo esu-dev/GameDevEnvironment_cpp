@@ -1,10 +1,23 @@
 #include "GameObject.h"
 
-#include "Component.h"
-#include "Transform.h"
-#include "TextLabel.h"
-#include "SpriteRenderer.h"
-#include "Animator.h"
+#include "GameEngine.h"
+
+
+std::vector<GameObject*> GameObject::FindGameObjectsWithTag(std::string tag)
+{
+	Scene* scene = SceneManagement::SceneManager::GetActiveScene();
+
+	std::vector<GameObject*> gameObjectVector = std::vector<GameObject*>();
+	for (GameObject* g : scene->GetGameObjectVector())
+	{
+		if (g->tag == tag)
+		{
+			gameObjectVector.push_back(g);
+		}
+	}
+
+	return gameObjectVector;
+}
 
 GameObject::GameObject()
 {

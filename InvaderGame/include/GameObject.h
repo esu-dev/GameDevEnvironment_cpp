@@ -16,9 +16,12 @@ using namespace SceneManagement;
 class GameObject : public Object
 {
 public:
+	static std::vector<GameObject*> FindGameObjectsWithTag(std::string tag);
+
 	GameObject();
 
 	Scene* scene;
+	std::string tag = "Untagged";
 
 	// 関数テンプレートは型やコンパイル時に定まる値をパラメータ化する機能
 	// 利用されるときに実体化するため、正しく分割コンパイルされない

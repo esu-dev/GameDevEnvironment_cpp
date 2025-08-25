@@ -15,7 +15,4 @@ public:
 	static Camera* get_main();
 	
 	static const float Magnification;
-	static Camera* main;
-
-	Camera();
 };
