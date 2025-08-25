@@ -3,7 +3,8 @@
 
 #include "DirectX.h"
 #include "GameSystem.h"
-#include "include/SampleSceneAssests.h"
+#include "SceneManager.h"
+#include "SampleSceneAssests.h"
 #include "DemoSceneAsset.h"
 
 #define MAX_LOADSTRING 100
@@ -47,7 +48,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     GameSystem::CreateInstance();
     GameSystem::GetInstance().Initialize();
 
-    SampleSceneAssets::load();
+    //SceneManagement::SceneManager::LoadScene(SampleSceneAssets::load()->GetName());
+    SceneManagement::SceneManager::LoadScene(DemoSceneAsset::load()->GetName());
+    //SampleSceneAssets::load();
     //DemoSceneAsset::load();
 
     // ゲームループ

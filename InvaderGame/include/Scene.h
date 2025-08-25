@@ -14,7 +14,7 @@ namespace SceneManagement
 		const std::vector<GameObject*>& GetGameObjectVector();
 		void AddGameObject(GameObject* gameObject);
 		void RemoveGameObject(GameObject* gameObject);
-		//void Start();
+		void Start();
 		void Update();
 
 	private:

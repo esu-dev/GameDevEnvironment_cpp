@@ -8,6 +8,7 @@ class GameObject;
 class Component : public Object
 {
 public:
+	bool Started = false;
 	GameObject* gameObject;
 
 	virtual void OnEnable() {} // –{—ˆ‚ÍMonoBehaviour‚É’è‹`

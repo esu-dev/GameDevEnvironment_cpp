@@ -46,7 +46,11 @@ void GameObject::Start()
 {
 	for (auto component : m_componentVector)
 	{
-		component->Start();
+		if (!component.get()->Started)
+		{
+			component->Start();
+			component.get()->Started = true;
+		}
 	}
 }
 

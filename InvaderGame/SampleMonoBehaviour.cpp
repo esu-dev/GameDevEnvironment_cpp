@@ -6,11 +6,9 @@ SampleMonoBehaviour::SampleMonoBehaviour()
 {
 	_test->AddComponent<SpriteRenderer>();
 	_test->GetTransform()->position = Vector3(-5, 0, 0);
-	SceneManagement::SceneManager::GetActiveScene()->AddGameObject(_test);
 
 	fpsText->AddComponent<TextLabel>()->SetText("fps: "s + std::to_string(60));
 	fpsText->GetTransform()->SetPosition(-5, 4);
-	SceneManagement::SceneManager::GetActiveScene()->AddGameObject(fpsText);
 }
 
 void SampleMonoBehaviour::OnCollisionEnter2D(Collision2D* collision)
@@ -22,7 +20,10 @@ void SampleMonoBehaviour::OnCollisionEnter2D(Collision2D* collision)
 
 void SampleMonoBehaviour::Start()
 {
-	//SceneManagement::SceneManager::GetActiveScene()->AddGameObject(new GameObject());
+	Debug::Log(L"SampleMono Startd");
+
+	SceneManagement::SceneManager::GetActiveScene()->AddGameObject(_test);
+	SceneManagement::SceneManager::GetActiveScene()->AddGameObject(fpsText);
 }
 
 void SampleMonoBehaviour::Update()

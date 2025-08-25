@@ -316,9 +316,6 @@
     <ClInclude Include="Canvas.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="DemoSceneAsset.h">
-      <Filter>Source\DebugAssets</Filter>
-    </ClInclude>
     <ClInclude Include="DemoSoundPlayer.h">
       <Filter>Source\DebugAssets</Filter>
     </ClInclude>
@@ -326,6 +323,9 @@
       <Filter>Source\DebugAssets</Filter>
     </ClInclude>
     <ClInclude Include="DemoMovement.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DemoSceneAsset.h">
       <Filter>Source\DebugAssets</Filter>
     </ClInclude>
   </ItemGroup>

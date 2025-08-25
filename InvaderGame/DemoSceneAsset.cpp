@@ -19,6 +19,7 @@ Scene* DemoSceneAsset::load_scene_asset_impl()
 	scene->AddGameObject(cameraText);
 
 	GameObject* camera = new GameObject();
+	camera->tag = "MainCamera";
 	camera->AddComponent<Camera>();
 	camera->AddComponent<DemoMovement>();
 	scene->AddGameObject(camera);
@@ -140,8 +141,6 @@ Scene* DemoSceneAsset::load_scene_asset_impl()
 	demoPhysicsManager->AddComponent<DemoPhysicsManager>();
 	scene->AddGameObject(demoPhysicsManager);
 
-
-	SceneManager::SetActiveScene(scene);
 
 	return scene;
 }

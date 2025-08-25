@@ -33,8 +33,14 @@ namespace SceneManagement
 
 	bool SceneManager::SetActiveScene(Scene* scene)
 	{
+		Scene* sceneBackup = _activeScene;
 		_activeScene = scene;
-		//_activeScene->Start();
+
+		if (GameObject::FindGameObjectsWithTag("MainCamera").size() == 0)
+		{
+			Debug::Log(L"MainCamera‚ª‚ ‚è‚Ü‚¹‚ñB");
+		}
+
 		return _activeScene != nullptr;
 	}
 

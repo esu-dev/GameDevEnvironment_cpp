@@ -36,9 +36,10 @@ void GameSystem::Execute()
     D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 	
 	// Updateˆ—
-	Scene* activeScene;
-	if ((activeScene = SceneManager::GetActiveScene()) != nullptr)
+	Scene* activeScene = SceneManager::GetActiveScene();
+	if (activeScene != nullptr)
 	{
+		activeScene->Start();
 		activeScene->Update();
 	}
 

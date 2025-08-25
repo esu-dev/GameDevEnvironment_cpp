@@ -278,7 +278,6 @@
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="DemoPhysicsManager.h" />
-    <ClInclude Include="DemoSceneAsset.h" />
     <ClInclude Include="DemoSoundPlayer.h" />
     <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\Animator.h" />
@@ -292,6 +291,7 @@
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\Debug.h" />
     <ClInclude Include="include\DebugPrefab.h" />
+    <ClInclude Include="include\DemoSceneAsset.h" />
     <ClInclude Include="include\Direct3D.h" />
     <ClInclude Include="include\DirectSound.h" />
     <ClInclude Include="include\DirectX.h" />

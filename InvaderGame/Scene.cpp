@@ -20,7 +20,7 @@ namespace SceneManagement
 	{
 		_gameObjectVector.push_back(gameObject);
 		gameObject->scene = this;
-		gameObject->Start(); // Ç±ÇÍÇÕê≥ÇµÇ≠Ç»Ç¢ÇÊÇÀ
+		//gameObject->Start(); // Ç±ÇÍÇÕê≥ÇµÇ≠Ç»Ç¢ÇÊÇÀ
 	}
 
 	void Scene::RemoveGameObject(GameObject* gameObject)
@@ -29,7 +29,7 @@ namespace SceneManagement
 		std_extension::Remove(_gameObjectVector, gameObject);
 	}
 
-	/*void Scene::Start()
+	void Scene::Start()
 	{
 		int num = _gameObjectVector.size();
 		for (int i = 0; i < num; i++)
@@ -37,7 +37,7 @@ namespace SceneManagement
 			_gameObjectVector[i]->Start();
 			num = _gameObjectVector.size();
 		}
-	}*/
+	}
 
 	void Scene::Update()
 	{
