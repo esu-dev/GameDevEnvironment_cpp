@@ -275,8 +275,6 @@
     <Image Include="WindowsProjectDirectX11_2.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Behaviour.h" />
-    <ClInclude Include="Canvas.h" />
     <ClInclude Include="DemoPhysicsManager.h" />
     <ClInclude Include="DemoSoundPlayer.h" />
     <ClInclude Include="include\Animation.h" />
@@ -325,7 +323,6 @@
     <ClInclude Include="include\Vector3.h" />
     <ClInclude Include="include\WindowDrawer.h" />
     <ClInclude Include="DemoMovement.h" />
-    <ClInclude Include="PrefabAsset.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SamplePrefabAsset.h" />
   </ItemGroup>

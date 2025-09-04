@@ -142,5 +142,23 @@ Scene* DemoSceneAsset::load_scene_asset_impl()
 	scene->AddGameObject(demoPhysicsManager);
 
 
+	// Image
+	GameObject* imageText = new GameObject();
+	TextLabel* imageTextLabel = imageText->AddComponent<TextLabel>();
+	imageTextLabel->SetText("UI Image");
+	imageTextLabel->SetCanMove(false);
+	imageText->GetTransform()->SetPosition(-14, -9);
+	scene->AddGameObject(imageText);
+
+	Texture* picture = new Texture("./Resources/Texture/picture.png");
+	GameObject* imageObject = new GameObject();
+	SpriteRenderer* imageSpriteRenderer = imageObject->AddComponent<SpriteRenderer>();
+	imageSpriteRenderer->SetTexture(picture);
+	imageSpriteRenderer->SetCanMove(false);
+	imageObject->GetTransform()->SetPosition(-14, -6);
+	imageObject->GetTransform()->scale = Vector3(4, 4, 0);
+	scene->AddGameObject(imageObject);
+
+
 	return scene;
 }

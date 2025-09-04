@@ -10,6 +10,11 @@ SpriteRenderer::SpriteRenderer() : _color(DirectX::XMFLOAT4(1, 1, 1, 1)), m_text
 
 }
 
+void SpriteRenderer::SetCanMove(bool canMove)
+{
+	_canMove = canMove;
+}
+
 void SpriteRenderer::SetTexture(Texture* texture)
 {
 	m_texture = texture;
@@ -25,7 +30,11 @@ void SpriteRenderer::Update()
 	D3D.SetColor(_color);
 
 	Transform* transform = this->gameObject->GetTransform();
-	Vector2 draw_position = Vector2(transform->position.x - Camera::get_main()->get_transform()->position.x, transform->position.y - Camera::get_main()->get_transform()->position.y);
+	Vector3 draw_position = transform->position;
+	if (_canMove)
+	{
+		draw_position = transform->position - Camera::get_main()->get_transform()->position;
+	}
 	D3D.SetRect(draw_position.x, draw_position.y, transform->scale.x, transform->scale.y, transform->rotation);
 
 	if (m_texture == nullptr)
