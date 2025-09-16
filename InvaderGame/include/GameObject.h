@@ -43,9 +43,6 @@ public:
 		{
 			return nullptr;
 		}
-		//__int64 index = std::distance(m_componentVector.begin(), iterator);
-		//T* component = dynamic_cast<T*>(m_componentVector[index]); // dynamic_castは抽象クラスにしかダウンキャストととして利用できない
-		//return component;
 
 		return dynamic_cast<T*>(iterator->get());
 	}

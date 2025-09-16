@@ -19,5 +19,7 @@ public:
 		OutputDebugStringW(buffer);
 		OutputDebugStringW(L"\n\n");
 	}
+
+	static void Log(const char* log, ...);
 };
 

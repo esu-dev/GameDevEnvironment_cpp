@@ -162,7 +162,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    int newHeight = (rcWnd.bottom - rcWnd.top) - (rcClient.bottom - rcClient.top) + GameSystem::WINDOW_HEIGHT;
    SetWindowPos(hWnd, NULL, 0, 0, newWidth, newHeight, SWP_NOMOVE | SWP_NOZORDER);
 
-   SetWindowText(hWnd, TEXT("Test"));
+   SetWindowText(hWnd, TEXT("GameLibraryWindow"));
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);

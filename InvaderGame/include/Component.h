@@ -3,7 +3,7 @@
 #include "framework.h"
 #include "Object.h"
 
-class GameObject;
+#include "GameObject.h"
 
 class Component : public Object
 {
@@ -15,4 +15,9 @@ public:
 	virtual void OnDisable() {}
 	virtual void Start() {}
 	virtual void Update() {}
+
+	template<typename T> T* GetComponent() // template‚Í•ªŠ„ƒRƒ“ƒpƒCƒ‹‚·‚é‚Æ–Ê“|
+	{
+		return this->gameObject->GetComponent<T>();
+	}
 };

@@ -50,7 +50,7 @@ void Animation::Update()
 
 		if (_playingTime >= _animationDataSetVector[_textureIndex]->time)
 		{
-			Debug::Log(L"%d", _textureIndex);
+			//Debug::Log(L"%d", _textureIndex);
 			_spriteRenderer->SetTexture(_animationDataSetVector[_textureIndex]->texture);
 			_textureIndex++;
 		}
