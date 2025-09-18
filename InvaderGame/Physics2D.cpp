@@ -4,12 +4,14 @@
 
 using namespace SceneManagement;
 
+Physics2D::LibraryType Physics2D::_libraryType = Physics2D::LibraryType::Original;
 b2Vec2 Physics2D::_gravity = { 0.0f, -9.81f };
 b2World Physics2D::_world = { _gravity };
 
-void Physics2D::ScheduleChangingEnable()
-{
 
+Physics2D::LibraryType Physics2D::GetLibraryType()
+{
+	return _libraryType;
 }
 
 void Physics2D::Initialize()

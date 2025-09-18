@@ -159,6 +159,12 @@
     <ClCompile Include="DemoMovement.cpp">
       <Filter>Source\DebugAssets</Filter>
     </ClCompile>
+    <ClCompile Include="DemoPhysicsSceneAsset.cpp">
+      <Filter>Source\DebugAssets</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleCollider2D.cpp">
+      <Filter>Source\GameEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -318,6 +324,12 @@
     </ClInclude>
     <ClInclude Include="include\DemoSceneAsset.h">
       <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoPhysicsSceneAsset.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleCollider2D.h">
+      <Filter>Source\GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

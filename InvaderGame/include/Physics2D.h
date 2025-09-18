@@ -5,6 +5,12 @@
 class Physics2D
 {
 public:
+	enum LibraryType
+	{
+		Box2D,
+		Original
+	};
+
 	static b2Vec2 _gravity;
 	static b2World _world;
 
@@ -12,14 +18,14 @@ public:
 	{
 		return &_world;
 	}
+	static LibraryType GetLibraryType();
 
-	static void ScheduleChangingEnable();
 	static void Initialize();
 	static void Update();
 
 
 private:
-	//static std::vector<b2Body*> 
+	static LibraryType _libraryType;
 };
 
 class MyContactListener : public b2ContactListener

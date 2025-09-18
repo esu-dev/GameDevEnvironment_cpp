@@ -8,7 +8,6 @@ class BoxCollider2D : public Collider2D
 public:
 	BoxCollider2D();
 	~BoxCollider2D();
-	void SetOffset(Vector2 centerPos);
 	void SetSize(Vector2 size);
 
 	void OnEnable() override;
@@ -16,9 +15,7 @@ public:
 	void Start() override;
 	void Update() override;
 
-private:
-	Vector2 _offset = Vector2(0, 0);
-	Vector2 _size = Vector2(1, 1);
 
+private:
 	void SynchronizeBodyWithGameObject();
 };

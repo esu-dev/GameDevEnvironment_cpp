@@ -6,6 +6,7 @@
 #include "SceneManager.h"
 #include "SampleSceneAssests.h"
 #include "DemoSceneAsset.h"
+#include "DemoPhysicsSceneAsset.h"
 
 #define MAX_LOADSTRING 100
 
@@ -49,7 +50,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     GameSystem::GetInstance().Initialize();
 
     //SceneManagement::SceneManager::LoadScene(SampleSceneAssets::load()->GetName());
-    SceneManagement::SceneManager::LoadScene(DemoSceneAsset::load()->GetName());
+    //SceneManagement::SceneManager::LoadScene(DemoSceneAsset::load()->GetName());
+    SceneManagement::SceneManager::LoadScene(DemoPhysicsSceneAsset::load()->GetName());
     //SampleSceneAssets::load();
     //DemoSceneAsset::load();
 

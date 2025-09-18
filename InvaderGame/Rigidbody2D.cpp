@@ -4,58 +4,73 @@
 
 void Rigidbody2D::SetUseGravity(bool useGravity)
 {
-	_boxCollider2D = this->gameObject->GetComponent<BoxCollider2D>();
+	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
 	if (useGravity)
 	{
-		_boxCollider2D->Getb2Body()->SetGravityScale(1);
+		_collider2D->Getb2Body()->SetGravityScale(1);
 	}
 	else
 	{
-		_boxCollider2D->Getb2Body()->SetGravityScale(0);
+		_collider2D->Getb2Body()->SetGravityScale(0);
 	}
 }
 
 void Rigidbody2D::SetKinematic()
 {
-	_boxCollider2D = this->gameObject->GetComponent<BoxCollider2D>();
-	_boxCollider2D->Getb2Body()->SetType(b2BodyType::b2_kinematicBody);
+	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
+	_collider2D->Getb2Body()->SetType(b2BodyType::b2_kinematicBody);
 }
 
 void Rigidbody2D::SetFreeze()
 {
-	_boxCollider2D = this->gameObject->GetComponent<BoxCollider2D>();
-	_boxCollider2D->Getb2Body()->SetType(b2BodyType::b2_staticBody);
+	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
+	_collider2D->Getb2Body()->SetType(b2BodyType::b2_staticBody);
 }
 
 void Rigidbody2D::SetDynamic()
 {
-	_boxCollider2D = this->gameObject->GetComponent<BoxCollider2D>();
-	_boxCollider2D->Getb2Body()->SetType(b2BodyType::b2_dynamicBody);
+	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
+	_collider2D->Getb2Body()->SetType(b2BodyType::b2_dynamicBody);
 }
 
 void Rigidbody2D::SetVelocity(Vector2 velocity)
 {
 	Vector2 box2DVelocity = Camera::WorldToBox2DWorld(velocity.ToVector3());
 	b2Vec2 v = b2Vec2{ box2DVelocity.x, box2DVelocity.y };
-	_boxCollider2D->Getb2Body()->SetLinearVelocity(v);
+	_collider2D->Getb2Body()->SetLinearVelocity(v);
 }
 
 void Rigidbody2D::Start()
 {
-	_boxCollider2D = this->gameObject->GetComponent<BoxCollider2D>();
+	_collider2D = this->gameObject->GetComponent<Collider2D>();
 
-	fixtureDef.shape = _boxCollider2D->Getb2PolygonShape();
-	fixtureDef.density = 1.0f;
-	fixtureDef.friction = 0.3f;
+	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Box2D)
+	{
+		fixtureDef.shape = _collider2D->Getb2PolygonShape();
+		fixtureDef.density = 1.0f;
+		fixtureDef.friction = 0.3f;
 
-	_boxCollider2D->Getb2Body()->CreateFixture(&fixtureDef);
+		_collider2D->Getb2Body()->CreateFixture(&fixtureDef);
+	}
 }
 
 void Rigidbody2D::Update()
 {
-	if (_boxCollider2D != nullptr)
+	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
 	{
-		b2Vec2 velocity = _boxCollider2D->Getb2Body()->GetLinearVelocity();
+		// 重力の適用
+		_velocity = _velocity + Vector2(0, -9.81f) * Time::FixedDeltaTime;
+
+		// 位置の更新
+		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + _velocity.ToVector3() * Time::FixedDeltaTime;
+
+		return;
+	}
+
+	// 位置の更新
+	if (_collider2D != nullptr)
+	{
+		b2Vec2 velocity = _collider2D->Getb2Body()->GetLinearVelocity();
 		Vector2 v = Vector2(velocity.x, velocity.y);
 		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + Camera::Box2DWorldToWorld(v) * Time::FixedDeltaTime;
 

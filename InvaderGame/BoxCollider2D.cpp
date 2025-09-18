@@ -18,11 +18,6 @@ BoxCollider2D::~BoxCollider2D()
 	Debug::Log(L"BoxCollider2D Destractor");
 }
 
-void BoxCollider2D::SetOffset(Vector2 centerPos)
-{
-	_offset = centerPos;
-}
-
 void BoxCollider2D::SetSize(Vector2 size)
 {
 	_size = size;

@@ -4,7 +4,7 @@
 #include "Component.h"
 #include "Vector2.h"
 
-class BoxCollider2D;
+#include "Collider2D.h"
 
 class Rigidbody2D : public Component
 {
@@ -19,6 +19,7 @@ public:
 	void Update() override;
 
 private:
-	BoxCollider2D* _boxCollider2D;
+	Vector2 _velocity = Vector2(0, 0);
+	Collider2D* _collider2D;
 	b2FixtureDef fixtureDef;
 };
