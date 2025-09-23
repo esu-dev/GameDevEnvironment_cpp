@@ -22,6 +22,31 @@ void Physics2D::Initialize()
 
 void Physics2D::Update()
 {
+	if (_libraryType == LibraryType::Original)
+	{
+		static std::vector<std::pair<Collider2D*, Collider2D*>> collisionPairVector;
+
+		auto gameObjectVector = SceneManager::GetActiveScene()->GetGameObjectVector();
+
+		// 衝突検出（ブロードフェーズ）
+		for (int i = 0; i < gameObjectVector.size(); i++)
+		{
+			Collider2D* colliderA = gameObjectVector[i]->GetComponent<Collider2D>();
+			if (colliderA == nullptr) continue;
+
+			for (int j = i; j < gameObjectVector.size(); j++)
+			{
+				Collider2D* colliderB = gameObjectVector[j]->GetComponent<Collider2D>();
+				if (colliderB == nullptr) continue;
+
+				if (colliderA->IsAABB_Collided(colliderB))
+				{
+					collisionPairVector.push_back({ colliderA, colliderB });
+				}
+			}
+		}
+	}
+
 	float timeStep = Time::FixedDeltaTime;
 	int32 velocityIterations = 10;
 	int32 positionIterations = 8;

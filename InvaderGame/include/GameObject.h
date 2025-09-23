@@ -28,8 +28,8 @@ public:
 	template <typename T> T* AddComponent()
 	{
 		std::shared_ptr<T> component = std::make_shared<T>();
+		component.get()->gameObject = this;
 		m_componentVector.push_back(component);
-		m_componentVector.back()->gameObject = this;
 		return component.get();
 	}
 
@@ -47,8 +47,9 @@ public:
 		return dynamic_cast<T*>(iterator->get());
 	}
 
+	// 使用不可
 	// ポインタ渡しでも、関節参照でのオブジェクトのメンバにアクセスはできるが、ポインタ自体の変更はできない？
-	template <typename T> bool TryGetComponent(T* component)
+	/*template <typename T> bool TryGetComponent(T* component)
 	{
 		component = this->GetComponent<T>();
 
@@ -60,7 +61,7 @@ public:
 		Debug::Log(L"%d", component == nullptr);
 
 		return true;
-	}
+	}*/
 
 	Transform* GetTransform();
 	void SetActive(bool isActive);

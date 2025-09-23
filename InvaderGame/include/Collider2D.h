@@ -12,7 +12,7 @@ public:
 	b2Body* Getb2Body();
 	b2PolygonShape* Getb2PolygonShape();
 
-	bool IsAABB_Collided(Collider2D* a, Collider2D* b);
+	bool IsAABB_Collided(Collider2D* collider);
 
 
 protected:
@@ -22,4 +22,6 @@ protected:
 	b2BodyDef _bodyDef;
 	b2Body* _body;
 	b2PolygonShape dynamicBox;
+
+	std::pair<Vector2, Vector2> GetAABB();
 };
