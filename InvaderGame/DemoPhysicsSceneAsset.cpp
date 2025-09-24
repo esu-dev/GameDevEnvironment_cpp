@@ -14,10 +14,11 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 	scene->AddGameObject(camera);
 
 	GameObject* cube = new GameObject();
-	cube->GetTransform()->SetPosition(3, 0);
+	cube->GetTransform()->SetPosition(0, -5);
+	cube->GetTransform()->scale = Vector3(10, 1, 0);
 	cube->AddComponent<SpriteRenderer>();
 	cube->AddComponent<BoxCollider2D>();
-	cube->AddComponent<Rigidbody2D>();
+	cube->AddComponent<Rigidbody2D>()->SetKinematic();
 	scene->AddGameObject(cube);
 
 	Texture* circleTex = new Texture("Resources/Texture/Circle.png");

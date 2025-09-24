@@ -78,6 +78,13 @@ public:
 	// 2D描画モードにする
 	void ChangeMode_2D();
 
+	/// <summary>
+	/// 使用不可
+	/// </summary>
+	/// <param name="x"></param>
+	/// <param name="y"></param>
+	/// <param name="w"></param>
+	/// <param name="h"></param>
 	void SetRect(float x, float y, float w, float h);
 	void SetRect(float x, float y, float w, float h, Quaternion quaternion);
 
@@ -86,6 +93,8 @@ public:
 	// 2D描画
 	void Draw2D();
 	void Draw2D(const Texture& texture);
+
+	void DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color);
 
 	void DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView);
 

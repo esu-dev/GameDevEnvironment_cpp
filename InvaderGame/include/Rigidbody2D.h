@@ -19,6 +19,7 @@ public:
 	void Update() override;
 
 private:
+	bool _isKinematic;
 	Vector2 _velocity = Vector2(0, 0);
 	Collider2D* _collider2D;
 	b2FixtureDef fixtureDef;

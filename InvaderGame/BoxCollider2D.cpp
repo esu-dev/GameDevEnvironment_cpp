@@ -51,6 +51,8 @@ void BoxCollider2D::Start()
 
 void BoxCollider2D::Update()
 {
+	Collider2D::Update();
+
 	// b2Bodyの座標をオブジェクトと同期させる
 	SynchronizeBodyWithGameObject();
 

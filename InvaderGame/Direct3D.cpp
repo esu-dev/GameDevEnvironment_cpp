@@ -363,6 +363,13 @@ void Direct3D::Draw2D(const Texture& texture)
 	m_deviceContext->Draw(4, 0); // í∏ì_ÇÃêî
 }
 
+void Direct3D::DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color)
+{
+	SetColor(color);
+	SetRect(center.x, center.y, size.x, size.y, rotation);
+	Draw2D();
+}
+
 void Direct3D::DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView)
 {
 	m_deviceContext->VSSetShader(_textureShader->GetVertexShader().Get(), 0, 0);

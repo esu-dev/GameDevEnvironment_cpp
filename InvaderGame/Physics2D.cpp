@@ -24,17 +24,17 @@ void Physics2D::Update()
 {
 	if (_libraryType == LibraryType::Original)
 	{
-		static std::vector<std::pair<Collider2D*, Collider2D*>> collisionPairVector;
+		std::vector<std::pair<Collider2D*, Collider2D*>> collisionPairVector;
 
 		auto gameObjectVector = SceneManager::GetActiveScene()->GetGameObjectVector();
-
+		
 		// 衝突検出（ブロードフェーズ）
 		for (int i = 0; i < gameObjectVector.size(); i++)
 		{
 			Collider2D* colliderA = gameObjectVector[i]->GetComponent<Collider2D>();
 			if (colliderA == nullptr) continue;
 
-			for (int j = i; j < gameObjectVector.size(); j++)
+			for (int j = i + 1; j < gameObjectVector.size(); j++)
 			{
 				Collider2D* colliderB = gameObjectVector[j]->GetComponent<Collider2D>();
 				if (colliderB == nullptr) continue;
@@ -45,6 +45,11 @@ void Physics2D::Update()
 				}
 			}
 		}
+
+		// 衝突検出（ナローフェーズ）
+
+
+		return;
 	}
 
 	float timeStep = Time::FixedDeltaTime;

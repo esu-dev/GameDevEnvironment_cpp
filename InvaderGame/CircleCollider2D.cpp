@@ -2,5 +2,5 @@
 
 void CircleCollider2D::Update()
 {
-
+	Collider2D::Update();
 }

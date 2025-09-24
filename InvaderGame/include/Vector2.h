@@ -13,6 +13,7 @@ public:
 	Vector2 Normalized();
 	Vector3 ToVector3();
 	Vector2 operator+ (const Vector2& vector) const;
+	Vector2 operator- (const Vector2& vector) const;
 	Vector2 operator* (const float& value) const;
 	Vector2 operator/ (const float& value) const;
 };

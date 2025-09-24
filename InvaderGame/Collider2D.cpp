@@ -2,6 +2,15 @@
 
 #include "GameEngine.h"
 
+void Collider2D::Update()
+{
+	if (!_showAABB) return;
+	Transform* transform = this->gameObject->GetTransform();
+	auto AABB = GetAABB();
+	Vector2 size = AABB.second - AABB.first;
+	Direct3D::GetInstance().DrawRect(transform->position.ToVector2(), size, transform->rotation, DirectX::XMFLOAT4(0, 0, 1, 1));
+}
+
 void Collider2D::SetOffset(Vector2 centerPos)
 {
 	_offset = centerPos;
@@ -25,14 +34,21 @@ bool Collider2D::IsAABB_Collided(Collider2D* collider)
 	Vector2 minA = AABB_a.first;
 	Vector2 maxA = AABB_a.second;
 
-	Vector2 minB = AABB_a.first;
-	Vector2 maxB = AABB_a.second;
+	Vector2 minB = AABB_b.first;
+	Vector2 maxB = AABB_b.second;
 
 	if (((minA.x >= minB.x && minA.x <= maxB.x) || (minB.x >= minA.x && minB.x <= maxA.x)) &&
 		((minA.y >= minB.y && minA.y <= maxB.y) || (minB.y >= minA.y && minB.y <= maxA.y)))
 	{
 		return true;
 	}
+
+	return false;
+}
+
+bool Collider2D::IsCollided(BoxCollider2D* collider)
+{
+
 
 	return false;
 }
@@ -60,8 +76,8 @@ std::pair<Vector2, Vector2> Collider2D::GetAABB()
 	}
 
 	// AABB‚ÌŒvŽZ
-	Vector2 minPoint = Vector2(-INFINITY, -INFINITY);
-	Vector2 maxPoint = Vector2(INFINITY, INFINITY);
+	Vector2 minPoint = Vector2(INFINITY, INFINITY);
+	Vector2 maxPoint = Vector2(-INFINITY, -INFINITY);
 	for (Vector2 &v : points)
 	{
 		if (v.x < minPoint.x)
