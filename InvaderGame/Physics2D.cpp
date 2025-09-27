@@ -46,8 +46,45 @@ void Physics2D::Update()
 			}
 		}
 
-		// 衝突検出（ナローフェーズ）
 
+		std::vector<Collision2D*> collisionVector;
+
+		// 衝突検出（ナローフェーズ）
+		for (auto collisionPair : collisionPairVector)
+		{
+			if (BoxCollider2D* boxCollider = dynamic_cast<BoxCollider2D*>(collisionPair.second))
+			{
+				Collision2D* collision = new Collision2D(collisionPair.first, collisionPair.second);
+				if (collisionPair.first->DetectCollision(collision, boxCollider))
+				{
+					collisionVector.push_back(collision);
+				}
+				else delete collision;
+			}
+		}
+
+
+		// 衝突応答
+		for (Collision2D* collision : collisionVector)
+		{
+			Rigidbody2D* rigidbody = collision->collider->GetComponent<Rigidbody2D>();
+			Rigidbody2D* rigidbody_Other = collision->otherCollider->GetComponent<Rigidbody2D>();
+
+			Vector2 relativeVelocity = rigidbody->velocity - rigidbody_Other->velocity;
+
+			Debug::Log(L"相対速度： (%f, %f)", relativeVelocity.x, relativeVelocity.y);
+
+			float forum1 = 1 / rigidbody->mass;
+
+			for (auto collisionData : collision->collisionDataVector)
+			{
+				Vector2 impulse = -collision->NormalVector * (1 + 1.0f) / forum1 * min(Vector2::Dot(relativeVelocity, collision->NormalVector), 0) / collision->collisionDataVector.size();
+
+				Debug::Log(L"撃力： (%f, %f)", impulse.x, impulse.y);
+
+				rigidbody->AddImpulse(impulse);
+			}
+		}
 
 		return;
 	}
@@ -94,7 +131,7 @@ void MyContactListener::BeginContact(b2Contact* contact)
 	}
 
 	// Collision2Dの作成
-	monoBehaviour->OnCollisionEnter2D(new Collision2D(FindGameObjectWith(body_B)->GetComponent<Collider2D>()));
+	//monoBehaviour->OnCollisionEnter2D(new Collision2D(FindGameObjectWith(body_B)->GetComponent<Collider2D>()));
 }
 
 void MyContactListener::EndContact(b2Contact* contact)

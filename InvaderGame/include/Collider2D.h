@@ -4,19 +4,22 @@
 #include "Component.h"
 
 #include "Vector2.h"
+#include "Collision2D.h"
 
 class BoxCollider2D;
 
 class Collider2D : public Component
 {
 public:
+	virtual bool DetectCollision(Collision2D* outCollision, BoxCollider2D* collider) { return false; }
+	virtual Vector2 GetClosestPoint(Vector2 point) { return Vector2(0, 0); };
+
 	void Update() override;
 	void SetOffset(Vector2 centerPos);
 	b2Body* Getb2Body();
 	b2PolygonShape* Getb2PolygonShape();
 
 	bool IsAABB_Collided(Collider2D* collider);
-	bool IsCollided(BoxCollider2D* collider);
 
 
 protected:
@@ -29,4 +32,5 @@ protected:
 	b2PolygonShape dynamicBox;
 
 	std::pair<Vector2, Vector2> GetAABB();
+	void GetOBBvertices(Vector2 outVertices[4]);
 };

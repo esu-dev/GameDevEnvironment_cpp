@@ -60,3 +60,30 @@ void BoxCollider2D::Update()
 
 	//Debug::Log(L"%f, %f, %f, %f", _body->GetPosition().x, _body->GetPosition().y, this->gameObject->transform->position.x, this->gameObject->transform->position.x * Camera::Magnification / _body->GetPosition().x);
 }
+
+
+// protected
+Vector2 BoxCollider2D::GetClosestPoint(Vector2 point)
+{
+	float maxDistance = INFINITY;
+	Vector2 closestPoint;
+
+	Vector2 vertices[4];
+	this->GetOBBvertices(vertices);
+
+	for (int i = 0; i < 4; i++)
+	{
+		Vector2 A = vertices[i];
+		Vector2 B = vertices[(i + 1) >= 4 ? 0 : (i + 1)];
+
+		Vector2 minPoint = MathUtility::CalcMinDisPointOnLine(A, B, point);
+		float distance = Vector2::Distance(minPoint, point);
+		if (distance < maxDistance)
+		{
+			maxDistance = distance;
+			closestPoint = minPoint;
+		}
+	}
+
+	return closestPoint;
+}

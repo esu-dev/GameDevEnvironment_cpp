@@ -14,6 +14,7 @@ public:
 	void OnDisable() override;
 	void Start() override;
 	void Update() override;
+	Vector2 GetClosestPoint(Vector2 point) override;
 
 
 private:

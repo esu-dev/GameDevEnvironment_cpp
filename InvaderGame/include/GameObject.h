@@ -4,6 +4,7 @@
 
 #include "Object.h"
 #include "Scene.h"
+//#include "Component.h"
 
 class Component;
 class Transform;
@@ -29,6 +30,7 @@ public:
 	{
 		std::shared_ptr<T> component = std::make_shared<T>();
 		component.get()->gameObject = this;
+		if (this->_transform != nullptr) ((Component*)component.get())->SetTransform(this->_transform);
 		m_componentVector.push_back(component);
 		return component.get();
 	}

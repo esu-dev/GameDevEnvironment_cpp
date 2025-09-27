@@ -68,11 +68,11 @@ void Rigidbody2D::Update()
 		// 重力の適用
 		if (!_isKinematic)
 		{
-			_velocity = _velocity + Vector2(0, -9.81f) * Time::FixedDeltaTime;
+			velocity += Vector2(0, -9.81f) * Time::FixedDeltaTime;
 		}
 
 		// 位置の更新
-		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + _velocity.ToVector3() * Time::FixedDeltaTime;
+		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + velocity.ToVector3() * Time::FixedDeltaTime;
 
 		return;
 	}
@@ -86,4 +86,11 @@ void Rigidbody2D::Update()
 
 		//Debug::Log(L"pos: %f, delta: %f", this->gameObject->GetTransform()->position.y, Time::GetDelataTime());
 	}
+}
+
+void Rigidbody2D::AddImpulse(Vector2 impulse)
+{
+	if (_isKinematic) return;
+
+	velocity += impulse / mass;
 }

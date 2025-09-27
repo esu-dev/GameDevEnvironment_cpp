@@ -9,18 +9,24 @@
 class Rigidbody2D : public Component
 {
 public:
-	Vector2 position = Vector2(0, 0);
+	float mass = 1;
+	Vector2 velocity = Vector2(0, 0);
+
+	void Start() override;
+	void Update() override;
+
 	void SetUseGravity(bool useGravity);
 	void SetKinematic();
 	void SetFreeze();
 	void SetDynamic();
 	void SetVelocity(Vector2 velocity);
-	void Start() override;
-	void Update() override;
+
+	void AddImpulse(Vector2 impulse);
+	
 
 private:
 	bool _isKinematic;
-	Vector2 _velocity = Vector2(0, 0);
+	
 	Collider2D* _collider2D;
 	b2FixtureDef fixtureDef;
 };

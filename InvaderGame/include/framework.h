@@ -39,6 +39,8 @@
 
 #include "Debug.h"
 #include "std_extension.h"
+#include "MathUtility.h"
+#include "Property.h"
 #include "AudioClip.h"
 
 using namespace std::literals::string_literals;

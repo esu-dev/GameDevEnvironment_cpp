@@ -1,13 +1,25 @@
 #pragma once
 
+#include "framework.h"
+#include "Vector2.h"
+
 class Collider2D;
 
 class Collision2D
 {
 public:
-	Collision2D(Collider2D* collider);
-	Collider2D* GetCollider();
+	struct CollisionData
+	{
+		float depth;
+		Vector2 contact;
+	};
 
-private:
-	Collider2D* _collider;
+	Collider2D* collider;
+	Collider2D* otherCollider;
+
+	std::vector<CollisionData*> collisionDataVector;
+	Vector2 NormalVector;
+
+	Collision2D(Collider2D* collider, Collider2D* otherCollider);
+	Collider2D* GetCollider();
 };

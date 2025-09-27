@@ -70,6 +70,11 @@ Vector3 Quaternion::Mult(Vector3 vector)
 	return v;
 }
 
+Quaternion Quaternion::operator-()
+{
+	return Inverse(*this);
+}
+
 Vector3 Quaternion::operator*(const Vector3& vector)
 {
 	return this->Mult(vector);

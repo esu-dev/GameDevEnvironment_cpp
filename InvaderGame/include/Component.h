@@ -5,6 +5,8 @@
 
 #include "GameObject.h"
 
+class Transform;
+
 class Component : public Object
 {
 public:
@@ -16,8 +18,15 @@ public:
 	virtual void Start() {}
 	virtual void Update() {}
 
+	Transform* GetTransform();
+	void SetTransform(Transform* transform);
+
 	template<typename T> T* GetComponent() // template‚Í•ªŠ„ƒRƒ“ƒpƒCƒ‹‚·‚é‚Æ–Ê“|
 	{
 		return this->gameObject->GetComponent<T>();
 	}
+
+
+private:
+	Transform* _transform;
 };

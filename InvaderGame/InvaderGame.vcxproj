@@ -218,10 +218,12 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="MathUtility.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="DemoMovement.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Physics2D.cpp" />
+    <ClCompile Include="Property.cpp" />
     <ClCompile Include="Quaternion.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebug</RuntimeLibrary>
@@ -327,6 +329,8 @@
     <ClInclude Include="include\Vector3.h" />
     <ClInclude Include="include\WindowDrawer.h" />
     <ClInclude Include="DemoMovement.h" />
+    <ClInclude Include="MathUtility.h" />
+    <ClInclude Include="Property.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SamplePrefabAsset.h" />
   </ItemGroup>

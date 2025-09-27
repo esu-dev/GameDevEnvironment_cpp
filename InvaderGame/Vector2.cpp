@@ -2,6 +2,17 @@
 
 #include "GameEngine.h"
 
+float Vector2::Distance(const Vector2& vectorA, const Vector2& vectorB)
+{
+	Vector2 v = vectorB - vectorA;
+	return sqrt(v.x * v.x + v.y * v.y);
+}
+
+float Vector2::Dot(const Vector2& vectorA, const Vector2& vectorB)
+{
+	return vectorA.x * vectorB.x + vectorA.y * vectorB.y;
+}
+
 Vector2::Vector2()
 {
 	this->x = 0;
@@ -37,6 +48,11 @@ Vector2 Vector2::operator+ (const Vector2& vector) const
 	return v;
 }
 
+Vector2 Vector2::operator- () const
+{
+	return Vector2(-this->x, -this->y);
+}
+
 Vector2 Vector2::operator- (const Vector2& vector) const
 {
 	const Vector2 v = Vector2(this->x - vector.x, this->y - vector.y);
@@ -53,4 +69,10 @@ Vector2 Vector2::operator/ (const float& value) const
 {
 	const Vector2 v = Vector2(this->x / value, this->y / value);
 	return v;
+}
+
+Vector2& Vector2::operator+= (const Vector2& vector)
+{
+	*this = *this + vector;
+	return *this;
 }

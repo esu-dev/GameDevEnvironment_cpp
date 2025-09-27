@@ -46,13 +46,6 @@ bool Collider2D::IsAABB_Collided(Collider2D* collider)
 	return false;
 }
 
-bool Collider2D::IsCollided(BoxCollider2D* collider)
-{
-
-
-	return false;
-}
-
 
 // private
 std::pair<Vector2, Vector2> Collider2D::GetAABB()
@@ -61,13 +54,8 @@ std::pair<Vector2, Vector2> Collider2D::GetAABB()
 	Transform* transform = this->gameObject->GetTransform();
 
 	// ’¸“_‚ÌŽæ“¾
-	Vector2 points[4]
-	{
-		Vector2(transform->position.x + transform->scale.x / 2, transform->position.y + transform->scale.y / 2),
-		Vector2(transform->position.x + transform->scale.x / 2, transform->position.y - transform->scale.y / 2),
-		Vector2(transform->position.x - transform->scale.x / 2, transform->position.y - transform->scale.y / 2),
-		Vector2(transform->position.x - transform->scale.x / 2, transform->position.y + transform->scale.y / 2)
-	};
+	Vector2 points[4];
+	GetOBBvertices(points);
 
 	// ’¸“_‚Ì‰ñ“]
 	for (int i = 0; i < sizeof(points) / sizeof(Vector2); i++)
@@ -100,4 +88,13 @@ std::pair<Vector2, Vector2> Collider2D::GetAABB()
 	}
 
 	return { minPoint, maxPoint };
+}
+
+void Collider2D::GetOBBvertices(Vector2 outVertices[4])
+{
+	Transform* transform = this->GetTransform();
+	outVertices[0] = Vector2(transform->position.x + transform->scale.x / 2, transform->position.y + transform->scale.y / 2);
+	outVertices[1] = Vector2(transform->position.x + transform->scale.x / 2, transform->position.y - transform->scale.y / 2);
+	outVertices[2] = Vector2(transform->position.x - transform->scale.x / 2, transform->position.y - transform->scale.y / 2);
+	outVertices[3] = Vector2(transform->position.x - transform->scale.x / 2, transform->position.y + transform->scale.y / 2);
 }

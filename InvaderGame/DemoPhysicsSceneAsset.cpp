@@ -8,18 +8,12 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 {
 	Scene* scene = SceneManager::CreateScene("DemoPhysicsScene");
 
+
 	GameObject* camera = new GameObject();
 	camera->AddComponent<Camera>();
 	camera->tag = "MainCamera";
 	scene->AddGameObject(camera);
 
-	GameObject* cube = new GameObject();
-	cube->GetTransform()->SetPosition(0, -5);
-	cube->GetTransform()->scale = Vector3(10, 1, 0);
-	cube->AddComponent<SpriteRenderer>();
-	cube->AddComponent<BoxCollider2D>();
-	cube->AddComponent<Rigidbody2D>()->SetKinematic();
-	scene->AddGameObject(cube);
 
 	Texture* circleTex = new Texture("Resources/Texture/Circle.png");
 
@@ -29,5 +23,14 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 	circle->AddComponent<Rigidbody2D>();
 	scene->AddGameObject(circle);
 	
+
+	GameObject* cube = new GameObject();
+	cube->GetTransform()->SetPosition(0, -5);
+	cube->GetTransform()->scale = Vector3(10, 1, 0);
+	cube->AddComponent<SpriteRenderer>();
+	cube->AddComponent<BoxCollider2D>();
+	cube->AddComponent<Rigidbody2D>()->SetKinematic();
+	scene->AddGameObject(cube);
+
 	return scene;
 }
