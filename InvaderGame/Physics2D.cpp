@@ -25,7 +25,7 @@ void Physics2D::Update()
 	if (_libraryType == LibraryType::Original)
 	{
 		static float g = 9.81f;
-		static float e = 0.7f;
+		static float e = 0.5f;
 
 		auto gameObjectVector = SceneManager::GetActiveScene()->GetGameObjectVector();
 
@@ -34,7 +34,7 @@ void Physics2D::Update()
 		{
 			if (Rigidbody2D* rigidbody = go->GetComponent<Rigidbody2D>())
 			{
-				if (rigidbody->isKinematic) continue;
+				if (rigidbody->IsKinematic) continue;
 
 				rigidbody->velocity += Vector2(0, -g) * Time::FixedDeltaTime;
 			}
@@ -57,6 +57,7 @@ void Physics2D::Update()
 				if (colliderA->IsAABB_Collided(colliderB))
 				{
 					collisionPairVector.push_back({ colliderA, colliderB });
+					//Debug::Log(L"衝突検出（ブロードフェーズ）");
 				}
 			}
 		}
@@ -67,50 +68,99 @@ void Physics2D::Update()
 		// 衝突検出（ナローフェーズ）
 		for (auto collisionPair : collisionPairVector)
 		{
-			if (BoxCollider2D* boxCollider = dynamic_cast<BoxCollider2D*>(collisionPair.second))
-			{
-				Collision2D* collision = new Collision2D(collisionPair.first, collisionPair.second);
-				if (collisionPair.first->DetectCollision(collision, boxCollider))
-				{
-					collisionVector.push_back(collision);
-				}
-				else delete collision;
-			}
+			Collision2D* collision = new Collision2D(collisionPair.first, collisionPair.second);
+
+			std::function<bool(Collider2D*, Collider2D*)> detectCollision = [&](Collider2D* colliderA, Collider2D* colliderB) -> bool {
+					if (BoxCollider2D* boxCollider = dynamic_cast<BoxCollider2D*>(colliderB))
+					{
+						if (colliderA->DetectCollision(collision, boxCollider))
+						{
+							collisionVector.push_back(collision);
+							return true;
+							Debug::Log(L"衝突検出（ナローフェーズ）");
+						}
+					}
+					return false;
+				};
+
+			if (detectCollision(collisionPair.first, collisionPair.second) ||
+				detectCollision(collisionPair.second, collisionPair.first)) continue;
+
+			delete collision;
 		}
 
 
 		// 衝突応答
 		for (Collision2D* collision : collisionVector)
 		{
+			Vector2 sumImpulse;
+
 			Rigidbody2D* rigidbody = collision->collider->GetComponent<Rigidbody2D>();
 			Rigidbody2D* rigidbody_Other = collision->otherCollider->GetComponent<Rigidbody2D>();
 
-			Vector2 relativeVelocity = rigidbody->velocity - rigidbody_Other->velocity;
+			Rigidbody2D* rigidbodyA = rigidbody;
+			Rigidbody2D* rigidbodyB = rigidbody_Other;
+			if (rigidbody->IsKinematic)
+			{
+				rigidbodyA = rigidbody_Other;
+				rigidbodyB = rigidbody;
+				collision->Normal *= -1;
+			}
 
-			//Debug::Log(L"相対速度： (%f, %f)", relativeVelocity.x, relativeVelocity.y);
+			bool isKinematic = false;
+			if (rigidbody->IsKinematic || rigidbody_Other->IsKinematic) isKinematic = true;
 
-			float forum1 = 1 / rigidbody->mass;
+
+			Vector2 relativeVelocity = rigidbodyA->velocity - rigidbodyB->velocity;
+			Debug::Log(L"相対速度： (%f, %f)", relativeVelocity.x, relativeVelocity.y);
+
+			float forum1 = 1 / rigidbodyA->mass;
+			if (isKinematic) forum1 = 1 / rigidbodyA->mass;
+			else forum1 = 1 / rigidbodyA->mass + 1 / rigidbodyB->mass;
+
+			int collisionDataNum = collision->collisionDataVector.size();
 
 			for (auto collisionData : collision->collisionDataVector)
 			{
-				int collisionDataNum = collision->collisionDataVector.size();
-				Vector2 impulse = -collision->NormalVector * (1 + e) / forum1 * min(Vector2::Dot(relativeVelocity, collision->NormalVector), 0) / collisionDataNum;
+				Vector2 impulse = -collision->Normal * (1 + e) / forum1 * min(Vector2::Dot(relativeVelocity, collision->Normal), 0) / collisionDataNum;
 
 				// 重力キャンセル
-				float gravityCancelScaler = Vector2::Dot(Vector2(0, 1) * rigidbody->mass * g * Time::FixedDeltaTime / collisionDataNum, collision->NormalVector);
-				Vector2 gravityCancelImpulse = (-collision->NormalVector * min(Vector2::Dot(relativeVelocity, collision->NormalVector), 0)).Normalized() * gravityCancelScaler;
-				impulse -= gravityCancelImpulse;
-
-				// 速度反転が起きないなら速度を０にする撃力を与える
-				if (impulse.magnitude < (relativeVelocity * rigidbody->mass).magnitude / collisionDataNum)
+				if (isKinematic)
 				{
-					impulse = -collision->NormalVector * min(Vector2::Dot(relativeVelocity, collision->NormalVector), 0) * rigidbody->mass / collisionDataNum;
+					float gravityCancelScaler = Vector2::Dot(Vector2(0, 1) * rigidbodyA->mass * g * Time::FixedDeltaTime / collisionDataNum, collision->Normal);
+					Vector2 gravityCancelImpulse = (-collision->Normal * min(Vector2::Dot(relativeVelocity, collision->Normal), 0)).Normalized() * gravityCancelScaler;
+					impulse -= gravityCancelImpulse;
 				}
 
-				//Debug::Log(L"撃力： (%f, %f)", impulse.x, impulse.y);
+				// 速度反転が起きないなら速度を０にする撃力を与える
+				if (isKinematic && impulse.magnitude < (relativeVelocity * rigidbodyA->mass).magnitude / collisionDataNum)
+				{
+					impulse = -collision->Normal * min(Vector2::Dot(relativeVelocity, collision->Normal), 0) * rigidbodyA->mass / collisionDataNum;
+				}
 
-				rigidbody->AddImpulse(impulse);
+				Debug::Log(L"撃力： (%f, %f)", impulse.x, impulse.y);
+
+				sumImpulse += impulse;
+				rigidbodyA->AddImpulse(impulse); // rbにストックさせて、まとめて適用にするかも
+				if (!isKinematic) rigidbodyB->AddImpulse(-impulse);
 			}
+
+			Debug::Log(L"衝突法線： (%f, %f)", collision->Normal.x, collision->Normal.y);
+
+
+			// 摩擦力
+			Vector2 collisionLineVector = Vector2(-collision->Normal.y, collision->Normal.x);
+			Vector2 collisionLineVelocity = collisionLineVector * Vector2::Dot(collisionLineVector, rigidbodyA->velocity);
+			Vector2 direction = -collisionLineVelocity.Normalized();
+
+			float mu = 0.1f;
+			Vector2 friction = direction * mu * (sumImpulse / collisionDataNum).magnitude / Time::FixedDeltaTime;
+			Vector2 maxForce = collisionLineVelocity * rigidbodyA->mass / Time::FixedDeltaTime;
+			if (friction.magnitude > maxForce.magnitude)
+			{
+				friction = -maxForce;
+			}
+			rigidbodyA->AddImpulse(friction * Time::FixedDeltaTime);
 		}
 
 		return;

@@ -17,7 +17,7 @@ void Rigidbody2D::SetUseGravity(bool useGravity)
 
 void Rigidbody2D::SetKinematic()
 {
-	isKinematic = true;
+	IsKinematic = true;
 	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
 	{
 		return;
@@ -35,7 +35,7 @@ void Rigidbody2D::SetFreeze()
 
 void Rigidbody2D::SetDynamic()
 {
-	isKinematic = false;
+	IsKinematic = false;
 	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
 	_collider2D->Getb2Body()->SetType(b2BodyType::b2_dynamicBody);
 }
@@ -84,7 +84,7 @@ void Rigidbody2D::Update()
 
 void Rigidbody2D::AddImpulse(Vector2 impulse)
 {
-	if (isKinematic) return;
+	if (IsKinematic) return;
 
 	velocity += impulse / mass;
 }

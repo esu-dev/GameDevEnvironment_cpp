@@ -18,6 +18,7 @@ bool CircleCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D*
 	// 回転を考慮
 	relativePosition = (-boxTransform->rotation * relativePosition.ToVector3()).ToVector2();
 	Vector2 relativePosition_Abs = Vector2(fabsf(relativePosition.x), fabsf(relativePosition.y));
+	Vector2 positionOnBoxCoordinate = relativePosition + boxTransform->position.ToVector2();
 
 	// 衝突していなければ終了
 	if (relativePosition_Abs.x > boxTransform->scale.x / 2 + radius ||
@@ -39,32 +40,27 @@ bool CircleCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D*
 	outCollision->collisionDataVector.push_back(collisionData);
 
 	// 衝突点の計算
-	Vector2 collisionPointLocal;
-	Vector2 closestPoint = collider->GetClosestPoint(relativePosition);
-	float distance = Vector2::Distance(relativePosition, closestPoint);
+	Vector2 closestPoint = collider->GetClosestPoint(positionOnBoxCoordinate);
+	float distance = Vector2::Distance(positionOnBoxCoordinate, closestPoint);
 
-	//Debug::Log(L"最近傍点： (%f, %f)", closestPoint.x, closestPoint.y);
+	Debug::Log(L"相対位置： (%f, %f)", relativePosition.x, relativePosition.y);
+	Debug::Log(L"最近傍点： (%f, %f)", closestPoint.x, closestPoint.y);
 
 	if (relativePosition_Abs.x > boxTransform->scale.x / 2 ||
 		relativePosition_Abs.y > boxTransform->scale.y / 2)
 	{
 		collisionData->depth = radius - distance;
-		outCollision->NormalVector = (relativePosition - closestPoint).Normalized();
-	}
-	else
-	{
-
+		outCollision->Normal = (positionOnBoxCoordinate - closestPoint).Normalized();
 	}
 
 
 	// 回転を解消
-	collisionPointLocal = (boxTransform->rotation * collisionPointLocal.ToVector3()).ToVector2();
-	outCollision->NormalVector = (boxTransform->rotation * outCollision->NormalVector.ToVector3()).ToVector2();
+	outCollision->Normal = (boxTransform->rotation * outCollision->Normal.ToVector3()).ToVector2();
 
 	//Debug::Log(L"衝突法線： (%f, %f)", outCollision->NormalVector.x, outCollision->NormalVector.y);
 
 	// 衝突点
-	collisionData->contact = boxTransform->position.ToVector2() + collisionPointLocal;
+	collisionData->contact = positionOnBoxCoordinate - outCollision->Normal * radius;
 
 	return true;
 }

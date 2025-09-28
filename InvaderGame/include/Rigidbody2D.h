@@ -9,7 +9,7 @@
 class Rigidbody2D : public Component
 {
 public:
-	bool isKinematic;
+	bool IsKinematic;
 	float mass = 1;
 	Vector2 velocity = Vector2(0, 0);
 

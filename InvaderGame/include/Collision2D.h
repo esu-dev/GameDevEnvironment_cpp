@@ -18,7 +18,7 @@ public:
 	Collider2D* otherCollider;
 
 	std::vector<CollisionData*> collisionDataVector;
-	Vector2 NormalVector;
+	Vector2 Normal;
 
 	Collision2D(Collider2D* collider, Collider2D* otherCollider);
 	Collider2D* GetCollider();

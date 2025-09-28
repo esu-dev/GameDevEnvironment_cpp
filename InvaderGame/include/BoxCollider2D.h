@@ -15,6 +15,10 @@ public:
 	void Start() override;
 	void Update() override;
 	Vector2 GetClosestPoint(Vector2 point) override;
+	bool DetectCollision(Collision2D* outCollision, BoxCollider2D* collider) override;
+
+	Vector2 GetClosestPointByVertex(const Vector2 vertices[4], int targetIndex);
+	bool IsPointIn(Vector2& point);
 
 
 private:

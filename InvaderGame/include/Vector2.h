@@ -8,6 +8,7 @@ class Vector2
 public:
 	static float Distance(const Vector2& vectorA, const Vector2& vectorB);
 	static float Dot(const Vector2& vectorA, const Vector2& vectorB);
+	static float Cross(const Vector2& vectorA, const Vector2& vectorB);
 
 	float x, y;
 	
@@ -29,4 +30,5 @@ public:
 
 	Vector2& operator+= (const Vector2& vector);
 	Vector2& operator-= (const Vector2& vector);
+	Vector2& operator*= (float value);
 };

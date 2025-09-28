@@ -13,6 +13,11 @@ float Vector2::Dot(const Vector2& vectorA, const Vector2& vectorB)
 	return vectorA.x * vectorB.x + vectorA.y * vectorB.y;
 }
 
+float Vector2::Cross(const Vector2& vectorA, const Vector2& vectorB)
+{
+	return vectorA.x * vectorB.y - vectorA.y * vectorB.x;
+}
+
 Vector2::Vector2()
 {
 	this->x = 0;
@@ -81,5 +86,11 @@ Vector2& Vector2::operator+= (const Vector2& vector)
 Vector2& Vector2::operator-= (const Vector2& vector)
 {
 	*this = *this - vector;
+	return *this;
+}
+
+Vector2& Vector2::operator*= (float value)
+{
+	*this = *this * value;
 	return *this;
 }
