@@ -17,15 +17,26 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 
 	Texture* circleTex = new Texture("Resources/Texture/Circle.png");
 
-	GameObject* circle = new GameObject();
-	circle->AddComponent<SpriteRenderer>()->SetTexture(circleTex);
-	circle->AddComponent<CircleCollider2D>();
-	circle->AddComponent<Rigidbody2D>();
-	scene->AddGameObject(circle);
-	
+	{
+		GameObject* circle = new GameObject();
+		circle->AddComponent<SpriteRenderer>()->SetTexture(circleTex);
+		circle->AddComponent<CircleCollider2D>();
+		circle->AddComponent<Rigidbody2D>();
+		scene->AddGameObject(circle);
+	}
+
+	{
+		GameObject* circle = new GameObject();
+		circle->AddComponent<SpriteRenderer>()->SetTexture(circleTex);
+		circle->AddComponent<CircleCollider2D>();
+		circle->AddComponent<Rigidbody2D>()->SetKinematic();
+		circle->GetTransform()->SetPosition(1.5f, 0);
+		scene->AddGameObject(circle);
+	}
 
 	GameObject* cube = new GameObject();
 	cube->GetTransform()->SetPosition(0, -5);
+	cube->GetTransform()->rotation = Quaternion::AngleAxis(0, Vector3(0, 0, 1));
 	cube->GetTransform()->scale = Vector3(10, 1, 0);
 	cube->AddComponent<SpriteRenderer>();
 	cube->AddComponent<BoxCollider2D>();

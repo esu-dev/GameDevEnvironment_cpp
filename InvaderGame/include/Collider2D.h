@@ -23,7 +23,7 @@ public:
 
 
 protected:
-	bool _showAABB = true;
+	bool _showAABB = false;
 	Vector2 _offset = Vector2(0, 0);
 	Vector2 _size = Vector2(1, 1);
 

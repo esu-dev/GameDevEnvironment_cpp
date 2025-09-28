@@ -8,7 +8,7 @@ void Collider2D::Update()
 	Transform* transform = this->gameObject->GetTransform();
 	auto AABB = GetAABB();
 	Vector2 size = AABB.second - AABB.first;
-	Direct3D::GetInstance().DrawRect(transform->position.ToVector2(), size, transform->rotation, DirectX::XMFLOAT4(0, 0, 1, 1));
+	Direct3D::GetInstance().DrawRect(transform->position.ToVector2(), size, Quaternion::AngleAxis(0, Vector3(0, 0, 1)), DirectX::XMFLOAT4(0, 0, 1, 1));
 }
 
 void Collider2D::SetOffset(Vector2 centerPos)
@@ -57,12 +57,6 @@ std::pair<Vector2, Vector2> Collider2D::GetAABB()
 	Vector2 points[4];
 	GetOBBvertices(points);
 
-	// ’¸“_‚Ì‰ñ“]
-	for (int i = 0; i < sizeof(points) / sizeof(Vector2); i++)
-	{
-		points[i] = (transform->rotation * (points[i].ToVector3() - transform->position) + transform->position).ToVector2();
-	}
-
 	// AABB‚ÌŒvŽZ
 	Vector2 minPoint = Vector2(INFINITY, INFINITY);
 	Vector2 maxPoint = Vector2(-INFINITY, -INFINITY);
@@ -72,7 +66,7 @@ std::pair<Vector2, Vector2> Collider2D::GetAABB()
 		{
 			minPoint.x = v.x;
 		}
-		else if (v.x > maxPoint.x)
+		if (v.x > maxPoint.x)
 		{
 			maxPoint.x = v.x;
 		}
@@ -81,7 +75,7 @@ std::pair<Vector2, Vector2> Collider2D::GetAABB()
 		{
 			minPoint.y = v.y;
 		}
-		else if (v.y > maxPoint.y)
+		if (v.y > maxPoint.y)
 		{
 			maxPoint.y = v.y;
 		}
@@ -93,8 +87,13 @@ std::pair<Vector2, Vector2> Collider2D::GetAABB()
 void Collider2D::GetOBBvertices(Vector2 outVertices[4])
 {
 	Transform* transform = this->GetTransform();
-	outVertices[0] = Vector2(transform->position.x + transform->scale.x / 2, transform->position.y + transform->scale.y / 2);
-	outVertices[1] = Vector2(transform->position.x + transform->scale.x / 2, transform->position.y - transform->scale.y / 2);
-	outVertices[2] = Vector2(transform->position.x - transform->scale.x / 2, transform->position.y - transform->scale.y / 2);
-	outVertices[3] = Vector2(transform->position.x - transform->scale.x / 2, transform->position.y + transform->scale.y / 2);
+	outVertices[0] = Vector2(transform->scale.x / 2, transform->scale.y / 2);
+	outVertices[1] = Vector2(transform->scale.x / 2, -transform->scale.y / 2);
+	outVertices[2] = Vector2(-transform->scale.x / 2, -transform->scale.y / 2);
+	outVertices[3] = Vector2(-transform->scale.x / 2, transform->scale.y / 2);
+
+	for (int i = 0; i < 4; i++)
+	{
+		outVertices[i] = (transform->rotation * outVertices[i].ToVector3() + transform->position).ToVector2();
+	}
 }

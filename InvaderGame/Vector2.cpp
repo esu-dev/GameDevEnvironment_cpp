@@ -17,6 +17,7 @@ Vector2::Vector2()
 {
 	this->x = 0;
 	this->y = 0;
+	magnitude = 10;
 }
 
 Vector2::Vector2(float x, float y)
@@ -74,5 +75,11 @@ Vector2 Vector2::operator/ (const float& value) const
 Vector2& Vector2::operator+= (const Vector2& vector)
 {
 	*this = *this + vector;
+	return *this;
+}
+
+Vector2& Vector2::operator-= (const Vector2& vector)
+{
+	*this = *this - vector;
 	return *this;
 }

@@ -2,6 +2,17 @@
 #include "Vector3.h"
 #include "Matrix.h"
 
+Quaternion& Quaternion::Identity()
+{
+	Quaternion* quaternion = new Quaternion();
+	quaternion->x = 0;
+	quaternion->y = 0;
+	quaternion->z = 0;
+	quaternion->w = 0;
+
+	return *quaternion;
+}
+
 Quaternion& Quaternion::AngleAxis(float angle, Vector3 axis)
 {
 	Quaternion* quaternion = new Quaternion();

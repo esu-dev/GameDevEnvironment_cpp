@@ -11,6 +11,7 @@ class Quaternion
 public:
 	float x, y, z, w;
 
+	static Quaternion& Identity();
 	static Quaternion& AngleAxis(float angle, Vector3 axis);
 	static Quaternion Inverse(Quaternion quaternion);
 

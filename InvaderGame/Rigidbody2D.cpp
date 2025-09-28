@@ -17,7 +17,7 @@ void Rigidbody2D::SetUseGravity(bool useGravity)
 
 void Rigidbody2D::SetKinematic()
 {
-	_isKinematic = true;
+	isKinematic = true;
 	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
 	{
 		return;
@@ -35,7 +35,7 @@ void Rigidbody2D::SetFreeze()
 
 void Rigidbody2D::SetDynamic()
 {
-	_isKinematic = false;
+	isKinematic = false;
 	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
 	_collider2D->Getb2Body()->SetType(b2BodyType::b2_dynamicBody);
 }
@@ -65,12 +65,6 @@ void Rigidbody2D::Update()
 {
 	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
 	{
-		// 重力の適用
-		if (!_isKinematic)
-		{
-			velocity += Vector2(0, -9.81f) * Time::FixedDeltaTime;
-		}
-
 		// 位置の更新
 		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + velocity.ToVector3() * Time::FixedDeltaTime;
 
@@ -90,7 +84,7 @@ void Rigidbody2D::Update()
 
 void Rigidbody2D::AddImpulse(Vector2 impulse)
 {
-	if (_isKinematic) return;
+	if (isKinematic) return;
 
 	velocity += impulse / mass;
 }

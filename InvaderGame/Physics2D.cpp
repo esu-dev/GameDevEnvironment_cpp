@@ -24,9 +24,24 @@ void Physics2D::Update()
 {
 	if (_libraryType == LibraryType::Original)
 	{
-		std::vector<std::pair<Collider2D*, Collider2D*>> collisionPairVector;
+		static float g = 9.81f;
+		static float e = 0.7f;
 
 		auto gameObjectVector = SceneManager::GetActiveScene()->GetGameObjectVector();
+
+		// 重力の適用
+		for (GameObject* go : gameObjectVector)
+		{
+			if (Rigidbody2D* rigidbody = go->GetComponent<Rigidbody2D>())
+			{
+				if (rigidbody->isKinematic) continue;
+
+				rigidbody->velocity += Vector2(0, -g) * Time::FixedDeltaTime;
+			}
+		}
+
+
+		std::vector<std::pair<Collider2D*, Collider2D*>> collisionPairVector;
 		
 		// 衝突検出（ブロードフェーズ）
 		for (int i = 0; i < gameObjectVector.size(); i++)
@@ -72,15 +87,27 @@ void Physics2D::Update()
 
 			Vector2 relativeVelocity = rigidbody->velocity - rigidbody_Other->velocity;
 
-			Debug::Log(L"相対速度： (%f, %f)", relativeVelocity.x, relativeVelocity.y);
+			//Debug::Log(L"相対速度： (%f, %f)", relativeVelocity.x, relativeVelocity.y);
 
 			float forum1 = 1 / rigidbody->mass;
 
 			for (auto collisionData : collision->collisionDataVector)
 			{
-				Vector2 impulse = -collision->NormalVector * (1 + 1.0f) / forum1 * min(Vector2::Dot(relativeVelocity, collision->NormalVector), 0) / collision->collisionDataVector.size();
+				int collisionDataNum = collision->collisionDataVector.size();
+				Vector2 impulse = -collision->NormalVector * (1 + e) / forum1 * min(Vector2::Dot(relativeVelocity, collision->NormalVector), 0) / collisionDataNum;
 
-				Debug::Log(L"撃力： (%f, %f)", impulse.x, impulse.y);
+				// 重力キャンセル
+				float gravityCancelScaler = Vector2::Dot(Vector2(0, 1) * rigidbody->mass * g * Time::FixedDeltaTime / collisionDataNum, collision->NormalVector);
+				Vector2 gravityCancelImpulse = (-collision->NormalVector * min(Vector2::Dot(relativeVelocity, collision->NormalVector), 0)).Normalized() * gravityCancelScaler;
+				impulse -= gravityCancelImpulse;
+
+				// 速度反転が起きないなら速度を０にする撃力を与える
+				if (impulse.magnitude < (relativeVelocity * rigidbody->mass).magnitude / collisionDataNum)
+				{
+					impulse = -collision->NormalVector * min(Vector2::Dot(relativeVelocity, collision->NormalVector), 0) * rigidbody->mass / collisionDataNum;
+				}
+
+				//Debug::Log(L"撃力： (%f, %f)", impulse.x, impulse.y);
 
 				rigidbody->AddImpulse(impulse);
 			}

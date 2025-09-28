@@ -9,6 +9,7 @@
 class Rigidbody2D : public Component
 {
 public:
+	bool isKinematic;
 	float mass = 1;
 	Vector2 velocity = Vector2(0, 0);
 
@@ -25,8 +26,6 @@ public:
 	
 
 private:
-	bool _isKinematic;
-	
 	Collider2D* _collider2D;
 	b2FixtureDef fixtureDef;
 };

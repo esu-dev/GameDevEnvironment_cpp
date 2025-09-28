@@ -1,5 +1,6 @@
 #pragma once
 
+#include "framework.h"
 class Vector3;
 
 class Vector2
@@ -9,6 +10,11 @@ public:
 	static float Dot(const Vector2& vectorA, const Vector2& vectorB);
 
 	float x, y;
+	
+	Property<float> magnitude = {
+		[&]() -> float {
+			return sqrt(x * x + y * y);
+		}};
 
 	Vector2();
 	Vector2(float x, float y);
@@ -22,4 +28,5 @@ public:
 	Vector2 operator/ (const float& value) const;
 
 	Vector2& operator+= (const Vector2& vector);
+	Vector2& operator-= (const Vector2& vector);
 };

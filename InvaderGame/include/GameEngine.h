@@ -30,6 +30,7 @@
 #include "Animation.h"
 #include "Vector2.h"
 #include "Vector3.h"
+#include "Quaternion.h"
 
 // staticƒNƒ‰ƒX
 #include "Input.h"

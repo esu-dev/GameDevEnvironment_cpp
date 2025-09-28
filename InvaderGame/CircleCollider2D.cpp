@@ -9,7 +9,7 @@ void CircleCollider2D::Update()
 
 bool CircleCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D* collider)
 {
-	float radius = this->GetTransform()->scale.x;
+	float radius = this->GetTransform()->scale.x / 2;
 	Transform* boxTransform = collider->gameObject->GetTransform();
 
 	// 矩形からの相対座標を求める
@@ -20,6 +20,11 @@ bool CircleCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D*
 	Vector2 relativePosition_Abs = Vector2(fabsf(relativePosition.x), fabsf(relativePosition.y));
 
 	// 衝突していなければ終了
+	if (relativePosition_Abs.x > boxTransform->scale.x / 2 + radius ||
+		relativePosition_Abs.y > boxTransform->scale.y / 2 + radius)
+	{
+		return false;
+	}
 	if (relativePosition_Abs.x > boxTransform->scale.x / 2 &&
 		relativePosition_Abs.y > boxTransform->scale.y / 2)
 	{
@@ -38,7 +43,7 @@ bool CircleCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D*
 	Vector2 closestPoint = collider->GetClosestPoint(relativePosition);
 	float distance = Vector2::Distance(relativePosition, closestPoint);
 
-	Debug::Log(L"最近傍点： (%f, %f)", closestPoint.x, closestPoint.y);
+	//Debug::Log(L"最近傍点： (%f, %f)", closestPoint.x, closestPoint.y);
 
 	if (relativePosition_Abs.x > boxTransform->scale.x / 2 ||
 		relativePosition_Abs.y > boxTransform->scale.y / 2)
@@ -56,7 +61,7 @@ bool CircleCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D*
 	collisionPointLocal = (boxTransform->rotation * collisionPointLocal.ToVector3()).ToVector2();
 	outCollision->NormalVector = (boxTransform->rotation * outCollision->NormalVector.ToVector3()).ToVector2();
 
-	Debug::Log(L"衝突法線： (%f, %f)", outCollision->NormalVector.x, outCollision->NormalVector.y);
+	//Debug::Log(L"衝突法線： (%f, %f)", outCollision->NormalVector.x, outCollision->NormalVector.y);
 
 	// 衝突点
 	collisionData->contact = boxTransform->position.ToVector2() + collisionPointLocal;
