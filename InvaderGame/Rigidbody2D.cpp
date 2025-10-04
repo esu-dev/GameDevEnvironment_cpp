@@ -66,7 +66,7 @@ void Rigidbody2D::Update()
 	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
 	{
 		// ˆÊ’u‚ÌXV
-		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + velocity.ToVector3() * Time::FixedDeltaTime;
+		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + velocity.ToVector3() * Time::_fixedDeltaTime;
 
 		return;
 	}
@@ -76,7 +76,7 @@ void Rigidbody2D::Update()
 	{
 		b2Vec2 velocity = _collider2D->Getb2Body()->GetLinearVelocity();
 		Vector2 v = Vector2(velocity.x, velocity.y);
-		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + Camera::Box2DWorldToWorld(v) * Time::FixedDeltaTime;
+		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + Camera::Box2DWorldToWorld(v) * Time::_fixedDeltaTime;
 
 		//Debug::Log(L"pos: %f, delta: %f", this->gameObject->GetTransform()->position.y, Time::GetDelataTime());
 	}

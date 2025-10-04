@@ -6,6 +6,18 @@ IDirectSound8* DirectSound::_directSoundDevice = nullptr;
 IDirectSoundBuffer8* DirectSound::_dsSecondaryBuffer = nullptr;
 std::vector<DirectSound::AudioData*> DirectSound::_audioDataVector = std::vector<DirectSound::AudioData*>();
 
+void DirectSound::Initialize(HWND windowHandle)
+{
+	// サウンドデバイスの作成
+	if (FAILED(DirectSoundCreate8(NULL, (LPDIRECTSOUND8*)&_directSoundDevice, NULL)))
+	{
+		Debug::Log(L"DirectSound could not be created.");
+		return;
+	}
+
+	_directSoundDevice->SetCooperativeLevel(windowHandle, DSSCL_NORMAL);
+}
+
 void DirectSound::SetVolume(const AudioSource* audioSource, float volume)
 {
 	AudioData* audioData = std_extension::Find<AudioData*>(_audioDataVector, [&](AudioData* x) { return x->audioSource == audioSource; });

@@ -6,11 +6,15 @@
 class Time
 {
 public:
-	static const float FixedDeltaTime;
+	// private‚É•ÏX—\’è
+	static const float _fixedDeltaTime;
+
+	static Property<float> TimeScale;
 
 	static void Initialize();
 
 	static float GetDelataTime();
+	static float GetFixedDeltaTime();
 	static float GetTotalTime();
 
 private:

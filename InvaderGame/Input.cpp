@@ -2,9 +2,11 @@
 
 bool Input::GetKey(int vkey)
 {
-	return GetAsyncKeyState(vkey) & 0x8000;
+	return GetAsyncKeyState(vkey);
 }
 
+// 前回の履歴が残るバグあり？
+// 自力で前フレームを比較する必要あり
 bool Input::GetKeyDown(int vkey)
 {
 	return GetAsyncKeyState(vkey) & 0x0001;

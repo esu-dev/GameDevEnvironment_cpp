@@ -10,11 +10,14 @@ void TimeController::Initialize()
 	keySet_ctrl.vkey = VK_CONTROL;
 
 	InputSystem::KeySet keySet_space = InputSystem::KeySet();
-	keySet_ctrl.isHold = false;
-	keySet_ctrl.vkey = VK_SPACE;
+	keySet_space.isHold = false;
+	keySet_space.vkey = VK_SPACE;
 
 	keySetVector.push_back(keySet_ctrl);
 	keySetVector.push_back(keySet_space);
 
-	InputSystem::AddKeyAction(keySetVector, []() -> void { Debug::Log(L"push"); });
+	InputSystem::AddKeyAction(keySetVector, []() -> void {
+			Debug::Log(L"push");
+			Time::TimeScale = 0;
+		});
 }

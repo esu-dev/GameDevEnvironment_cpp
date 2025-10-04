@@ -5,6 +5,8 @@
 #include "Vector3.h"
 #include "Quaternion.h"
 
+#include "Record.h"
+
 class Transform : public Component
 {
 public:
@@ -26,4 +28,6 @@ public:
 private:
 	Vector3 _localPosition = Vector3(0, 0, 0);
 	Transform* _parent = nullptr;
+
+	Record<int> _record;
 };

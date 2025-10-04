@@ -1,9 +1,11 @@
 #include "Time.h"
 
-const float Time::FixedDeltaTime = 1 / 60.0f;
+const float Time::_fixedDeltaTime = 1 / 60.0f;
+Property<float> Time::TimeScale{};
 
 void Time::Initialize()
 {
+	TimeScale = 1;
 	_updatedTime = GetTickCount64();
 
 	GAMESYS.OnUpdateListener.AddListener([]()
@@ -18,7 +20,12 @@ void Time::Initialize()
 
 float Time::GetDelataTime()
 {
-	return _deltaTime;
+	return _deltaTime * TimeScale;
+}
+
+float Time::GetFixedDeltaTime()
+{
+	return _fixedDeltaTime * TimeScale;
 }
 
 float Time::GetTotalTime()

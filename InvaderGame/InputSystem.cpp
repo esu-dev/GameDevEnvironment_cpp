@@ -5,27 +5,30 @@
 
 void InputSystem::Update()
 {
-	for (KeyActionSet keyActionSet : _keyActionSetVector)
+	for (KeyActionSet& keyActionSet : _keyActionSetVector)
 	{
-		for (KeySet keySet : keyActionSet.keySetVector)
+		// “¯Žž‰Ÿ‚µ‚¶‚á‚È‚­‚Ä‚à”½‰ž‚µ‚Ä‚µ‚Ü‚¤ƒoƒO‚ª‚ ‚é‚ªˆê’U•ú’u
+		for (KeySet& keySet : keyActionSet.keySetVector)
 		{
 			if (keySet.isHold)
 			{
 				if (!Input::GetKey(keySet.vkey))
 				{
-					return;
+					goto CONT;
 				}
 			}
 			else
 			{
 				if (!Input::GetKeyDown(keySet.vkey))
 				{
-					return;
+					goto CONT;
 				}
 			}
 		}
 
 		keyActionSet.action();
+
+	CONT:;
 	}
 }
 
@@ -34,6 +37,8 @@ void InputSystem::AddKeyAction(std::vector<KeySet> keySetVector, const std::func
 	KeyActionSet keyActionSet;
 	keyActionSet.keySetVector = keySetVector;
 	keyActionSet.action = action;
+
+	_keyActionSetVector.push_back(keyActionSet);
 }
 
 

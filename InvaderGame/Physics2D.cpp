@@ -36,7 +36,7 @@ void Physics2D::Update()
 			{
 				if (rigidbody->IsKinematic) continue;
 
-				rigidbody->velocity += Vector2(0, -g) * Time::FixedDeltaTime;
+				rigidbody->velocity += Vector2(0, -g) * Time::_fixedDeltaTime;
 			}
 		}
 
@@ -112,7 +112,7 @@ void Physics2D::Update()
 
 
 			Vector2 relativeVelocity = rigidbodyA->velocity - rigidbodyB->velocity;
-			Debug::Log(L"相対速度： (%f, %f)", relativeVelocity.x, relativeVelocity.y);
+			//Debug::Log(L"相対速度： (%f, %f)", relativeVelocity.x, relativeVelocity.y);
 
 			float forum1 = 1 / rigidbodyA->mass;
 			if (isKinematic) forum1 = 1 / rigidbodyA->mass;
@@ -127,7 +127,7 @@ void Physics2D::Update()
 				// 重力キャンセル
 				if (isKinematic)
 				{
-					float gravityCancelScaler = Vector2::Dot(Vector2(0, 1) * rigidbodyA->mass * g * Time::FixedDeltaTime / collisionDataNum, collision->Normal);
+					float gravityCancelScaler = Vector2::Dot(Vector2(0, 1) * rigidbodyA->mass * g * Time::_fixedDeltaTime / collisionDataNum, collision->Normal);
 					Vector2 gravityCancelImpulse = (-collision->Normal * min(Vector2::Dot(relativeVelocity, collision->Normal), 0)).Normalized() * gravityCancelScaler;
 					impulse -= gravityCancelImpulse;
 				}
@@ -138,14 +138,14 @@ void Physics2D::Update()
 					impulse = -collision->Normal * min(Vector2::Dot(relativeVelocity, collision->Normal), 0) * rigidbodyA->mass / collisionDataNum;
 				}
 
-				Debug::Log(L"撃力： (%f, %f)", impulse.x, impulse.y);
+				//Debug::Log(L"撃力： (%f, %f)", impulse.x, impulse.y);
 
 				sumImpulse += impulse;
 				rigidbodyA->AddImpulse(impulse); // rbにストックさせて、まとめて適用にするかも
 				if (!isKinematic) rigidbodyB->AddImpulse(-impulse);
 			}
 
-			Debug::Log(L"衝突法線： (%f, %f)", collision->Normal.x, collision->Normal.y);
+			//Debug::Log(L"衝突法線： (%f, %f)", collision->Normal.x, collision->Normal.y);
 
 
 			// 摩擦力
@@ -154,19 +154,19 @@ void Physics2D::Update()
 			Vector2 direction = -collisionLineVelocity.Normalized();
 
 			float mu = 0.1f;
-			Vector2 friction = direction * mu * (sumImpulse / collisionDataNum).magnitude / Time::FixedDeltaTime;
-			Vector2 maxForce = collisionLineVelocity * rigidbodyA->mass / Time::FixedDeltaTime;
+			Vector2 friction = direction * mu * (sumImpulse / collisionDataNum).magnitude / Time::_fixedDeltaTime;
+			Vector2 maxForce = collisionLineVelocity * rigidbodyA->mass / Time::_fixedDeltaTime;
 			if (friction.magnitude > maxForce.magnitude)
 			{
 				friction = -maxForce;
 			}
-			rigidbodyA->AddImpulse(friction * Time::FixedDeltaTime);
+			rigidbodyA->AddImpulse(friction * Time::_fixedDeltaTime);
 		}
 
 		return;
 	}
 
-	float timeStep = Time::FixedDeltaTime;
+	float timeStep = Time::_fixedDeltaTime;
 	int32 velocityIterations = 10;
 	int32 positionIterations = 8;
 	_world.Step(timeStep, velocityIterations, positionIterations);

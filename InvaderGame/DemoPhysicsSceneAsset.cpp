@@ -1,5 +1,6 @@
 #include "DemoPhysicsSceneAsset.h"
 
+#include "Record.h"
 #include "GameEngine.h"
 
 using namespace SceneManagement;
