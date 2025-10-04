@@ -171,6 +171,12 @@
     <ClCompile Include="Property.cpp">
       <Filter>Source\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="InputSystem.cpp">
+      <Filter>Source\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeController.cpp">
+      <Filter>Source\GameEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -342,6 +348,12 @@
     </ClInclude>
     <ClInclude Include="Property.h">
       <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeController.h">
+      <Filter>Source\GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

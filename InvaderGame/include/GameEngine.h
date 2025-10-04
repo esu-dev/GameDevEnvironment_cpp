@@ -34,7 +34,9 @@
 
 // staticƒNƒ‰ƒX
 #include "Input.h"
+#include "InputSystem.h"
 #include "Time.h"
+#include "TimeController.h"
 #include "Physics2D.h"
 
 #include "Collision2D.h"

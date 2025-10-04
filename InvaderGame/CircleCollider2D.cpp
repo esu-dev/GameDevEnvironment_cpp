@@ -43,8 +43,8 @@ bool CircleCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D*
 	Vector2 closestPoint = collider->GetClosestPoint(positionOnBoxCoordinate);
 	float distance = Vector2::Distance(positionOnBoxCoordinate, closestPoint);
 
-	Debug::Log(L"相対位置： (%f, %f)", relativePosition.x, relativePosition.y);
-	Debug::Log(L"最近傍点： (%f, %f)", closestPoint.x, closestPoint.y);
+	/*Debug::Log(L"相対位置： (%f, %f)", relativePosition.x, relativePosition.y);
+	Debug::Log(L"最近傍点： (%f, %f)", closestPoint.x, closestPoint.y);*/
 
 	if (relativePosition_Abs.x > boxTransform->scale.x / 2 ||
 		relativePosition_Abs.y > boxTransform->scale.y / 2)

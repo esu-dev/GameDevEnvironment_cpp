@@ -16,6 +16,7 @@ void GameSystem::Initialize()
 {
 	// static class‚Ì‰Šú‰»
 	Time::Initialize();
+	TimeController::Initialize();
 	Physics2D::Initialize();
 
 	D3D.ChangeMode_2D();
@@ -29,6 +30,7 @@ void GameSystem::Execute()
 	OnUpdateListener.Invoke();
 
 	Physics2D::Update();
+	InputSystem::Update();
 
 	// ”wŒiF‚Ìİ’è
     //float color[4] = { 0.2f, 0.2f, 1.0f, 1.0f };
