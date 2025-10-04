@@ -66,7 +66,7 @@ void Rigidbody2D::Update()
 	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
 	{
 		// ˆÊ’u‚ÌXV
-		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + velocity.ToVector3() * Time::_fixedDeltaTime;
+		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + ((Vector2)velocity).ToVector3() * Time::GetFixedDeltaTime();
 
 		return;
 	}

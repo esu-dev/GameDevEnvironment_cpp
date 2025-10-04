@@ -4,13 +4,13 @@
 #include "Component.h"
 #include "Vector3.h"
 #include "Quaternion.h"
-
 #include "Record.h"
 
 class Transform : public Component
 {
 public:
 	Vector3 position = Vector3(0, 0, 0);
+	//Record<Vector3> position;
 	Quaternion rotation = Quaternion();
 	Vector3 scale = Vector3(1, 1, 1);
 
@@ -28,6 +28,4 @@ public:
 private:
 	Vector3 _localPosition = Vector3(0, 0, 0);
 	Transform* _parent = nullptr;
-
-	Record<int> _record;
 };

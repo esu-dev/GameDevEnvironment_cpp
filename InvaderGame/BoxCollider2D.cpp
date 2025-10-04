@@ -1,5 +1,6 @@
 #include "BoxCollider2D.h"
 
+#include "GameSystem.h"
 #include "GameEngine.h"
 
 BoxCollider2D::BoxCollider2D()

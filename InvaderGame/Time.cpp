@@ -1,5 +1,7 @@
 #include "Time.h"
 
+#include "GameSystem.h"
+
 const float Time::_fixedDeltaTime = 1 / 60.0f;
 Property<float> Time::TimeScale{};
 

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "framework.h"
-#include "GameSystem.h"
 
 class Time
 {

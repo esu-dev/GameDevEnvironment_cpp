@@ -3,8 +3,6 @@
 Transform::Transform()
 {
 	rotation = Quaternion::AngleAxis(0, Vector3::forward);
-
-	_record = 0;
 }
 
 Vector3 Transform::GetUp()
@@ -54,8 +52,6 @@ void Transform::SetParent(Transform* parent)
 
 void Transform::Update()
 {
-	_record = _record + 1;
-
 	if (_parent == nullptr)
 	{
 		return;

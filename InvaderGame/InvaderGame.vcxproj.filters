@@ -180,6 +180,9 @@
     <ClCompile Include="Record.cpp">
       <Filter>Source\GameEngine</Filter>
     </ClCompile>
+    <ClCompile Include="RecordManager.cpp">
+      <Filter>Source\GameEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -366,6 +369,12 @@
     </ClInclude>
     <ClInclude Include="ReadonlyProperty.h">
       <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordManager.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordBase.h">
+      <Filter>Source\GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
