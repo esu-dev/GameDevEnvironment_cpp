@@ -177,6 +177,9 @@
     <ClCompile Include="TimeController.cpp">
       <Filter>Source\GameEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Record.cpp">
+      <Filter>Source\GameEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -354,6 +357,15 @@
     </ClInclude>
     <ClInclude Include="TimeController.h">
       <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Record.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertyBase.h">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadonlyProperty.h">
+      <Filter>Source\Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

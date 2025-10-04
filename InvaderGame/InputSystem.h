@@ -5,16 +5,21 @@
 class InputSystem
 {
 public:
+	struct KeySet
+	{
+		int vkey;
+		bool isHold;
+	};
+
 	static void Update();
 
-	template<typename... vkey>
-	static void AddKeyAction(const std::function<void()> action, const vkey... vkeys);
+	static void AddKeyAction(std::vector<KeySet> keySetVector, const std::function<void()> action);
 
 
 private:
 	struct KeyActionSet
 	{
-		std::vector<int> vkeyVector;
+		std::vector<KeySet> keySetVector;
 		std::function<void()> action;
 	};
 

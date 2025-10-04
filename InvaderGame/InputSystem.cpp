@@ -7,11 +7,21 @@ void InputSystem::Update()
 {
 	for (KeyActionSet keyActionSet : _keyActionSetVector)
 	{
-		for (int vkey : keyActionSet.vkeyVector)
+		for (KeySet keySet : keyActionSet.keySetVector)
 		{
-			if (!Input::GetKeyDown(vkey))
+			if (keySet.isHold)
 			{
-				return;
+				if (!Input::GetKey(keySet.vkey))
+				{
+					return;
+				}
+			}
+			else
+			{
+				if (!Input::GetKeyDown(keySet.vkey))
+				{
+					return;
+				}
 			}
 		}
 
@@ -19,10 +29,11 @@ void InputSystem::Update()
 	}
 }
 
-template<typename... vkey>
-void InputSystem::AddKeyAction(const std::function<void()> action, const vkey... vkeys)
+void InputSystem::AddKeyAction(std::vector<KeySet> keySetVector, const std::function<void()> action)
 {
-	
+	KeyActionSet keyActionSet;
+	keyActionSet.keySetVector = keySetVector;
+	keyActionSet.action = action;
 }
 
 

@@ -21,7 +21,6 @@ private:
 	T _variable;
 	
 	std::function<T()> _get = [&]() -> T { return _variable; };
-	//std::function<int()> get = []() -> int { return 0; };
 	//std::function<void(T)> _set = [&](T value) -> void { _variable = value; };
 };
 

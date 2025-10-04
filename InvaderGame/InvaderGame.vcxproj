@@ -231,6 +231,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="Record.cpp" />
     <ClCompile Include="Rigidbody2D.cpp" />
     <ClCompile Include="SampleMonoBehaviour.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
@@ -334,6 +335,9 @@
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="MathUtility.h" />
     <ClInclude Include="Property.h" />
+    <ClInclude Include="PropertyBase.h" />
+    <ClInclude Include="ReadonlyProperty.h" />
+    <ClInclude Include="Record.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SamplePrefabAsset.h" />
     <ClInclude Include="TimeController.h" />
