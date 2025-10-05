@@ -36,11 +36,11 @@ void TextLabel::Update()
 	Vector3 textStartPos = gameObject->GetTransform()->position;
 	if (_textAlign == TextAlign::Center)
 	{
-		textStartPos = gameObject->GetTransform()->position.AddX(-((_text.length() - 1) * FontSize / Camera::Magnification / 2));
+		textStartPos = gameObject->GetTransform()->position.Get().AddX(-((_text.length() - 1) * FontSize / Camera::Magnification / 2));
 	}
 	else if (_textAlign == TextAlign::Right)
 	{
-		textStartPos = gameObject->GetTransform()->position.AddX(-((_text.length() - 1) * FontSize / Camera::Magnification));
+		textStartPos = gameObject->GetTransform()->position.Get().AddX(-((_text.length() - 1) * FontSize / Camera::Magnification));
 	}
 
 	for (wchar_t c : _text)

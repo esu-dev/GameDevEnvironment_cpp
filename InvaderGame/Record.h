@@ -10,21 +10,46 @@ template <typename T>
 class Record : public RecordBase
 {
 public:
-	void Back() override
+	void Select(float time) override
 	{
-		_variable = _timeVariableSetVector[0].variable;
+		if (_timeVariableSetVector.size() == 0) return;
+
+		for (int i = 0; i < (int)_timeVariableSetVector.size(); i++)
+		{
+			if (time - _timeVariableSetVector[i].time <= RECORD_INTERVAL)
+			{
+				_variable = _timeVariableSetVector[i].variable;
+
+				return;
+			}
+		}
+	}
+
+	void Decide(float time) override
+	{
+		if (_timeVariableSetVector.size() == 0) return;
+
+		for (int i = 0; i < (int)_timeVariableSetVector.size(); i++)
+		{
+			if (time - _timeVariableSetVector[i].time <= RECORD_INTERVAL)
+			{
+				// 以降のデータを削除
+				_timeVariableSetVector.erase(_timeVariableSetVector.begin() + i, _timeVariableSetVector.end());
+
+				return;
+			}
+		}
 	}
 
 	Record()
 	{
-		UpdateValue();
+		_variable = T();
 		RecordManager::RecordVector.push_back(this);
 	}
 
 	Record(T value)
 	{
 		_variable = value;
-		UpdateValue();
 		RecordManager::RecordVector.push_back(this);
 	}
 
@@ -33,9 +58,14 @@ public:
 		// リストから削除
 	}
 
-	const T& Get() { return _variable; }
+	T& Get() { return _variable; }
 
-	operator T() { return _variable; } // こっちは参照型じゃなくて良いのかよ？
+	operator T() { return _variable; }
+
+	T operator+ (const T variable)
+	{
+		return _variable + variable;
+	}
 
 	T operator- (const T variable)
 	{
@@ -64,15 +94,14 @@ private:
 		T variable;
 	};
 	
+
 	T _variable;
 	std::vector<TimeVariableSet> _timeVariableSetVector;
 
 	void UpdateValue()
 	{
-		static const float RECORD_INTERVAL = 1;
-
 		float _lastTime = _timeVariableSetVector.size() == 0 ? 0 : _timeVariableSetVector.back().time;
-		if (_timeVariableSetVector.size() == 0 || Time::GetTotalTime() - _lastTime >= RECORD_INTERVAL)
+		if (Time::GetTotalTime() - _lastTime >= RECORD_INTERVAL)
 		{
 			TimeVariableSet timeVariableSet;
 			timeVariableSet.time = Time::GetTotalTime();

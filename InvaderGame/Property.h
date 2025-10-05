@@ -11,10 +11,11 @@ class Property
 public:
 	Property() {}
 	Property(std::function<T()> get) { _get = get; }
-	//Property(std::function<T()> get, std::function<void(T)> set) { _get = get; _set = set; }
 	operator T() { return _get(); }
 	//void operator= (const T variable) { _set(variable); }
 	void operator= (const T variable) { _variable = variable; }
+
+	void operator+= (const T variable) { _variable = _variable + variable; }
 
 
 private:

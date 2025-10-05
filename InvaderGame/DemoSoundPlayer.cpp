@@ -10,7 +10,7 @@ void DemoSoundPlayer::Update()
 	{
 		_started = true;
 
-		_cube->GetTransform()->SetPosition(this->get_transform()->position.x, this->get_transform()->position.y);
+		_cube->GetTransform()->SetPosition(this->get_transform()->position.Get().x, this->get_transform()->position.Get().y);
 		SceneManager::GetActiveScene()->AddGameObject(_cube);
 	}
 

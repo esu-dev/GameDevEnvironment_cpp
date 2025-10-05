@@ -18,7 +18,7 @@ bool CircleCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D*
 	// ‰ñ“]‚ðl—¶
 	relativePosition = (-boxTransform->rotation * relativePosition.ToVector3()).ToVector2();
 	Vector2 relativePosition_Abs = Vector2(fabsf(relativePosition.x), fabsf(relativePosition.y));
-	Vector2 positionOnBoxCoordinate = relativePosition + boxTransform->position.ToVector2();
+	Vector2 positionOnBoxCoordinate = relativePosition + boxTransform->position.Get().ToVector2();
 
 	// Õ“Ë‚µ‚Ä‚¢‚È‚¯‚ê‚ÎI—¹
 	if (relativePosition_Abs.x > boxTransform->scale.x / 2 + radius ||

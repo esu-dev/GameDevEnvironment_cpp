@@ -3,5 +3,8 @@
 class RecordBase
 {
 public:
-	virtual void Back() = 0;
+	static constexpr float RECORD_INTERVAL = 1;
+
+	virtual void Select(float time) = 0;
+	virtual void Decide(float time) = 0;
 };

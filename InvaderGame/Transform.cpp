@@ -17,8 +17,8 @@ Vector3 Transform::GetForward()
 
 void Transform::SetPosition(float x, float y)
 {
-	position.x = x;
-	position.y = y;
+	position.Get().x = x;
+	position.Get().y = y;
 
 	if (_parent == nullptr)
 	{

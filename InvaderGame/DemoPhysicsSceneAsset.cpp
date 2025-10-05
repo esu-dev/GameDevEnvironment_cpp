@@ -32,7 +32,7 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 		GameObject* circle = new GameObject();
 		circle->AddComponent<SpriteRenderer>()->SetTexture(circleTex);
 		circle->AddComponent<CircleCollider2D>();
-		circle->AddComponent<Rigidbody2D>()->SetKinematic();
+		circle->AddComponent<Rigidbody2D>();
 		circle->GetTransform()->SetPosition(1.5f, 0);
 		scene->AddGameObject(circle);
 	}

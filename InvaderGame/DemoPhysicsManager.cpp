@@ -8,10 +8,10 @@ void DemoPhysicsManager::Update()
 	{
 		_started = true;
 
-		_cube->GetTransform()->SetPosition(this->get_transform()->position.x, this->get_transform()->position.y);
+		_cube->GetTransform()->SetPosition(this->get_transform()->position.Get().x, this->get_transform()->position.Get().y);
 		SceneManager::GetActiveScene()->AddGameObject(_cube);
 
-		_ground->GetTransform()->SetPosition(this->get_transform()->position.x, this->get_transform()->position.y - 15);
+		_ground->GetTransform()->SetPosition(this->get_transform()->position.Get().x, this->get_transform()->position.Get().y - 15);
 		SceneManager::GetActiveScene()->AddGameObject(_ground);
 	}
 
@@ -20,7 +20,7 @@ void DemoPhysicsManager::Update()
 		_timer = 0;
 
 		_cube->GetComponent<Rigidbody2D>()->SetVelocity(Vector2(0, -0.1f));
-		_cube->GetTransform()->SetPosition(this->get_transform()->position.x, this->get_transform()->position.y);
+		_cube->GetTransform()->SetPosition(this->get_transform()->position.Get().x, this->get_transform()->position.Get().y);
 		_cube->GetComponent<Rigidbody2D>()->SetDynamic();
 	}
 

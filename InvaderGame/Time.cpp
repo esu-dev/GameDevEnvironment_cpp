@@ -3,18 +3,20 @@
 #include "GameSystem.h"
 
 const float Time::_fixedDeltaTime = 1 / 60.0f;
+Property<float> Time::_totalTime{};
 Property<float> Time::TimeScale{};
 
 void Time::Initialize()
 {
+	static ULONGLONG updatedTime = GetTickCount64();
+
 	TimeScale = 1;
-	_updatedTime = GetTickCount64();
 
 	GAMESYS.OnUpdateListener.AddListener([]()
 		{
 			ULONGLONG time = GetTickCount64();
-			_deltaTime = (time - _updatedTime) / 1000.0f;
-			_updatedTime = time;
+			_deltaTime = (time - updatedTime) / 1000.0f * TimeScale;
+			updatedTime = time;
 
 			_totalTime += _deltaTime;
 		});
@@ -22,7 +24,7 @@ void Time::Initialize()
 
 float Time::GetDelataTime()
 {
-	return _deltaTime * TimeScale;
+	return _deltaTime;
 }
 
 float Time::GetFixedDeltaTime()
@@ -35,7 +37,11 @@ float Time::GetTotalTime()
 	return _totalTime;
 }
 
+void Time::SetIsPause(bool isPause)
+{
+	_isPause = isPause;
+}
 
-ULONGLONG Time::_updatedTime = 0;
+
+bool Time::_isPause = false;
 float Time::_deltaTime = 0;
-float Time::_totalTime = 0;

@@ -5,9 +5,7 @@
 class Time
 {
 public:
-	// privateÇ…ïœçXó\íË
-	static const float _fixedDeltaTime;
-
+	static Property<float> _totalTime;
 	static Property<float> TimeScale;
 
 	static void Initialize();
@@ -15,9 +13,11 @@ public:
 	static float GetDelataTime();
 	static float GetFixedDeltaTime();
 	static float GetTotalTime();
+	static void SetIsPause(bool isPause);
 
 private:
-	static ULONGLONG _updatedTime;
+	static const float _fixedDeltaTime;
+
+	static bool _isPause;
 	static float _deltaTime;
-	static float _totalTime;
 };

@@ -9,8 +9,8 @@
 class Transform : public Component
 {
 public:
-	Vector3 position = Vector3(0, 0, 0);
-	//Record<Vector3> position;
+	//Vector3 position = Vector3(0, 0, 0);
+	Record<Vector3> position;
 	Quaternion rotation = Quaternion();
 	Vector3 scale = Vector3(1, 1, 1);
 
