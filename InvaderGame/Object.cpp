@@ -12,3 +12,6 @@ void Object::Destroy(GameObject* gameObject)
 			delete gameObject;
 		});
 }
+
+Object::Object() { } // ƒ‰ƒ“ƒ_ƒ€‚ÉinstanceID‚ðŒˆ’è‚·‚é
+Object::Object(std::string instanceID) { this->instanceID = instanceID; }

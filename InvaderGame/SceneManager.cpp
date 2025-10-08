@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 
+#include "Utility.h"
 #include "GameEngine.h"
 
 namespace SceneManagement

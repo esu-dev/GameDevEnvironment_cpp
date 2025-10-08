@@ -1,6 +1,8 @@
 #pragma once
 
 #include "framework.h"
+#include "Utility.h"
+
 class Vector3;
 
 class Vector2

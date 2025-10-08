@@ -22,7 +22,7 @@ void Physics2D::Initialize()
 
 void Physics2D::Update()
 {
-	if (Time::TimeScale <= 0) return;
+	if (EngineTime::TimeScale <= 0) return;
 
 	if (_libraryType == LibraryType::Original)
 	{
@@ -38,7 +38,7 @@ void Physics2D::Update()
 			{
 				if (rigidbody->IsKinematic) continue;
 
-				rigidbody->velocity += Vector2(0, -g) * Time::GetFixedDeltaTime();
+				rigidbody->velocity += Vector2(0, -g) * EngineTime::GetFixedDeltaTime();
 			}
 		}
 
@@ -129,7 +129,7 @@ void Physics2D::Update()
 				// d—ÍƒLƒƒƒ“ƒZƒ‹
 				if (isKinematic)
 				{
-					float gravityCancelScaler = Vector2::Dot(Vector2(0, 1) * rigidbodyA->mass * g * Time::GetFixedDeltaTime() / collisionDataNum, collision->Normal);
+					float gravityCancelScaler = Vector2::Dot(Vector2(0, 1) * rigidbodyA->mass * g * EngineTime::GetFixedDeltaTime() / collisionDataNum, collision->Normal);
 					Vector2 gravityCancelImpulse = (-collision->Normal * min(Vector2::Dot(relativeVelocity, collision->Normal), 0)).Normalized() * gravityCancelScaler;
 					impulse -= gravityCancelImpulse;
 				}
@@ -156,19 +156,19 @@ void Physics2D::Update()
 			Vector2 direction = -collisionLineVelocity.Normalized();
 
 			float mu = 0.1f;
-			Vector2 friction = direction * mu * (sumImpulse / collisionDataNum).magnitude / Time::GetFixedDeltaTime();
-			Vector2 maxForce = collisionLineVelocity * rigidbodyA->mass / Time::GetFixedDeltaTime();
+			Vector2 friction = direction * mu * (sumImpulse / collisionDataNum).magnitude / EngineTime::GetFixedDeltaTime();
+			Vector2 maxForce = collisionLineVelocity * rigidbodyA->mass / EngineTime::GetFixedDeltaTime();
 			if (friction.magnitude > maxForce.magnitude)
 			{
 				friction = -maxForce;
 			}
-			rigidbodyA->AddImpulse(friction * Time::GetFixedDeltaTime());
+			rigidbodyA->AddImpulse(friction * EngineTime::GetFixedDeltaTime());
 		}
 
 		return;
 	}
 
-	float timeStep = Time::GetFixedDeltaTime();
+	float timeStep = EngineTime::GetFixedDeltaTime();
 	int32 velocityIterations = 10;
 	int32 positionIterations = 8;
 	_world.Step(timeStep, velocityIterations, positionIterations);

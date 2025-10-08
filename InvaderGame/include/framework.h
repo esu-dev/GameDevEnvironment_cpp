@@ -37,11 +37,7 @@
 #include <algorithm>
 #include <iterator>
 
-#include "Debug.h"
-#include "std_extension.h"
-#include "MathUtility.h"
-#include "Property.h"
-//#include "Record.h"
-#include "AudioClip.h"
+// 正規表現
+#include <regex>
 
 using namespace std::literals::string_literals;

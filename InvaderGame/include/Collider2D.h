@@ -1,5 +1,7 @@
 #pragma once
 
+#include <box2d.h>
+
 #include "framework.h"
 #include "Component.h"
 

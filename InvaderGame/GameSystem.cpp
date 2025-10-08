@@ -15,7 +15,7 @@ void GameSystem::AddDelayedExecution(std::function<void()> func)
 void GameSystem::Initialize()
 {
 	// static class‚Ì‰Šú‰»
-	Time::Initialize();
+	EngineTime::Initialize();
 	TimeController::Initialize();
 	Physics2D::Initialize();
 

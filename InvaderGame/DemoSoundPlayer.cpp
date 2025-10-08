@@ -27,7 +27,7 @@ void DemoSoundPlayer::Update()
 		this->get_gameObject()->GetComponent<AudioSource>()->Play();
 	}
 
-	_timer += Time::GetDelataTime();
+	_timer += EngineTime::GetDelataTime();
 }
 
 DemoSoundPlayer::DemoSoundPlayer()

@@ -1,0 +1,9 @@
+--- 000
+GameObject:
+  componentVector:
+  - instanceID: 001
+--- 001
+Transform:
+  position: {x: 0, y: 0, z: 0}
+SpriteRenderer:
+  

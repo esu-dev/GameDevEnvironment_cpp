@@ -2,6 +2,7 @@
 
 #include <iterator>
 
+#include "Utility.h"
 #include "Animation.h"
 
 void Animator::SetAnimation(Animation* animation)

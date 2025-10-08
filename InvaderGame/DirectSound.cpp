@@ -1,5 +1,6 @@
 #include "DirectSound.h"
 
+#include "Utility.h"
 #include "AudioSource.h"
 
 IDirectSound8* DirectSound::_directSoundDevice = nullptr;

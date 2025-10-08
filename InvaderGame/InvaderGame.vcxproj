@@ -120,6 +120,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>.\;.\include;.\lib\Box2D\2.4.1\include;.\lib\DirectXTex</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -205,6 +206,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="GameObject.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebug</RuntimeLibrary>
@@ -241,6 +243,7 @@
     </ClCompile>
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SampleSceneAssets.cpp" />
+    <ClCompile Include="SceneLoader.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SpriteRenderer.cpp">
@@ -256,7 +259,7 @@
     </ClCompile>
     <ClCompile Include="TextLabel.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="EngineTime.cpp" />
     <ClCompile Include="TimeController.cpp" />
     <ClCompile Include="Transform.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
@@ -277,6 +280,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ClCompile Include="WindowDrawer.cpp" />
+    <ClCompile Include="YamlUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico" />
@@ -287,6 +291,7 @@
     <ClInclude Include="DemoPhysicsManager.h" />
     <ClInclude Include="DemoPhysicsSceneAsset.h" />
     <ClInclude Include="DemoSoundPlayer.h" />
+    <ClInclude Include="FileReader.h" />
     <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\Animator.h" />
     <ClInclude Include="include\Asset.h" />
@@ -327,7 +332,7 @@
     <ClInclude Include="include\targetver.h" />
     <ClInclude Include="include\TextLabel.h" />
     <ClInclude Include="include\Texture.h" />
-    <ClInclude Include="include\Time.h" />
+    <ClInclude Include="include\EngineTime.h" />
     <ClInclude Include="include\Transform.h" />
     <ClInclude Include="include\Vector2.h" />
     <ClInclude Include="include\Vector3.h" />
@@ -343,7 +348,10 @@
     <ClInclude Include="RecordManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SamplePrefabAsset.h" />
+    <ClInclude Include="SceneLoader.h" />
     <ClInclude Include="TimeController.h" />
+    <ClInclude Include="Utility.h" />
+    <ClInclude Include="YamlUtility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

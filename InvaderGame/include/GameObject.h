@@ -31,17 +31,17 @@ public:
 		std::shared_ptr<T> component = std::make_shared<T>();
 		component.get()->gameObject = this;
 		if (this->_transform != nullptr) ((Component*)component.get())->SetTransform(this->_transform);
-		m_componentVector.push_back(component);
+		_componentVector.push_back(component);
 		return component.get();
 	}
 
 	template <typename T> T* GetComponent()
 	{
-		auto iterator = std::find_if(m_componentVector.begin(), m_componentVector.end(), [](std::shared_ptr<Component> x)
+		auto iterator = std::find_if(_componentVector.begin(), _componentVector.end(), [](std::shared_ptr<Component> x)
 			{ 
 				return typeid(*x) == typeid(T) || dynamic_cast<T*>(x.get());
 			});
-		if (iterator == m_componentVector.end())
+		if (iterator == _componentVector.end())
 		{
 			return nullptr;
 		}
@@ -74,5 +74,5 @@ public:
 private:
 	bool _isActive{true};
 	Transform* _transform;
-	std::vector<std::shared_ptr<Component>> m_componentVector;
+	std::vector<std::shared_ptr<Component>> _componentVector;
 };

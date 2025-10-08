@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 #include <vector>
-#include "Time.h"
+#include "EngineTime.h"
 #include "RecordBase.h"
 #include "RecordManager.h"
 
@@ -101,10 +101,10 @@ private:
 	void UpdateValue()
 	{
 		float _lastTime = _timeVariableSetVector.size() == 0 ? 0 : _timeVariableSetVector.back().time;
-		if (Time::GetTotalTime() - _lastTime >= RECORD_INTERVAL)
+		if (EngineTime::GetTotalTime() - _lastTime >= RECORD_INTERVAL)
 		{
 			TimeVariableSet timeVariableSet;
-			timeVariableSet.time = Time::GetTotalTime();
+			timeVariableSet.time = EngineTime::GetTotalTime();
 			timeVariableSet.variable = _variable;
 			_timeVariableSetVector.push_back(timeVariableSet);
 		}

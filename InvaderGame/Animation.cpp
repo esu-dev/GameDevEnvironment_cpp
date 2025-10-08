@@ -55,6 +55,6 @@ void Animation::Update()
 			_textureIndex++;
 		}
 
-		_playingTime += Time::GetDelataTime();
+		_playingTime += EngineTime::GetDelataTime();
 	}
 }

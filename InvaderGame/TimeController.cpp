@@ -23,7 +23,7 @@ void TimeController::Initialize()
 		InputSystem::AddKeyAction(keySetVector, []() -> void {
 			Debug::Log(L"Enter Editor");
 			backNum = 0;
-			Time::TimeScale = 0;
+			EngineTime::TimeScale = 0;
 		});
 	}
 
@@ -37,13 +37,13 @@ void TimeController::Initialize()
 
 		InputSystem::AddKeyAction(keySetVector, []() -> void {
 			Debug::Log(L"Exit Editor");
-			float time = Time::_totalTime - RecordBase::RECORD_INTERVAL * (backNum - 1);
+			float time = EngineTime::_totalTime - RecordBase::RECORD_INTERVAL * (backNum - 1);
 			for (RecordBase* record : RecordManager::RecordVector)
 			{
 				record->Decide(time);
 			}
-			Time::_totalTime = (int)(time / RecordBase::RECORD_INTERVAL);
-			Time::TimeScale = 1;
+			EngineTime::_totalTime = (int)(time / RecordBase::RECORD_INTERVAL);
+			EngineTime::TimeScale = 1;
 		});
 	}
 
@@ -58,7 +58,7 @@ void TimeController::Initialize()
 		InputSystem::AddKeyAction(keySetVector, []() -> void {
 			Debug::Log(L"--");
 			backNum++;
-			float time = Time::GetTotalTime() - RecordBase::RECORD_INTERVAL * (backNum - 1);
+			float time = EngineTime::GetTotalTime() - RecordBase::RECORD_INTERVAL * (backNum - 1);
 			for (RecordBase* record : RecordManager::RecordVector)
 			{
 				record->Select(time);
@@ -77,7 +77,7 @@ void TimeController::Initialize()
 		InputSystem::AddKeyAction(keySetVector, []() -> void {
 			Debug::Log(L"++");
 			backNum = backNum <= 1 ? 1 : backNum - 1;
-			float time = Time::GetTotalTime() - RecordBase::RECORD_INTERVAL * (backNum - 1);
+			float time = EngineTime::GetTotalTime() - RecordBase::RECORD_INTERVAL * (backNum - 1);
 			for (RecordBase* record : RecordManager::RecordVector)
 			{
 				record->Select(time);

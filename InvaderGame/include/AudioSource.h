@@ -4,6 +4,8 @@
 #include "DirectX.h"
 #include "Component.h"
 
+#include "AudioClip.h"
+
 class AudioSource : public Component
 {
 public:
