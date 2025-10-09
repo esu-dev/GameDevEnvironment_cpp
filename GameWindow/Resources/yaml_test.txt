@@ -6,4 +6,6 @@ GameObject:
 Transform:
   position: {x: 0, y: 0, z: 0}
 SpriteRenderer:
+--- 002
+SpriteRenderer:
   

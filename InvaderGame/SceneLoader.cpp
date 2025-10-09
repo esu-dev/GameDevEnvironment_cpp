@@ -15,22 +15,25 @@ Scene* SceneLoader::Load(std::string path)
 	camera->tag = "MainCamera";
 	scene->AddGameObject(camera);
 
-	int instanceID;
+	std::string instanceID;
 	for (std::string content : contentVector)
 	{
-		std::regex re(R"((-{3})\s(\w+))");
 		std::smatch m;
+
+		// instanceID
+		std::regex re(R"((-{3})\s(\w+))");
 		if (std::regex_match(content, m, re))
 		{
-			m[2].str();
+			instanceID = m[2].str();
 		}
 
 		re = { R"((\w+):)" };
 		if (std::regex_match(content, m, re))
 		{
-			m[1].str();
+			std::string typeString = m[1].str();
 
 			// マクロでインスタンス生成
+			//Activator
 		}
 	}
 

@@ -157,6 +157,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Activator.cpp" />
     <ClCompile Include="Animation.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebug</RuntimeLibrary>
@@ -287,6 +288,7 @@
     <Image Include="WindowsProjectDirectX11_2.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Activator.h" />
     <ClInclude Include="CircleCollider2D.h" />
     <ClInclude Include="DemoPhysicsManager.h" />
     <ClInclude Include="DemoPhysicsSceneAsset.h" />

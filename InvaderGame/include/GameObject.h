@@ -1,6 +1,7 @@
 #pragma once
 
 #include "framework.h"
+#include "Utility.h"
 
 #include "Object.h"
 #include "Scene.h"
@@ -76,3 +77,4 @@ private:
 	Transform* _transform;
 	std::vector<std::shared_ptr<Component>> _componentVector;
 };
+//REGISTER_TYPE(GameObject);
