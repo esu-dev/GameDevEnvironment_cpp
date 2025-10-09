@@ -7,3 +7,4 @@
 //#include "Record.h"
 #include "FileReader.h"
 #include "Activator.h"
+#include "SerializedClass.h"

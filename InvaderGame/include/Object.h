@@ -1,10 +1,11 @@
 #pragma once
 
 #include "framework.h"
+#include "SerializedClass.h"
 
 class GameObject;
 
-class Object
+class Object : public SerializedClass
 {
 public:
 	//static Object* Instantiate(Object* original);

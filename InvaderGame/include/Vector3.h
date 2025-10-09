@@ -1,11 +1,19 @@
 #pragma once
 
+#include "framework.h"
+#include "Utility.h"
 class Vector2;
 
-class Vector3
+class Vector3 : public SerializedClass
 {
 public:
 	float x, y, z;
+
+	SERIALIZE(
+		SERIALIZE_FIELD(x),
+		SERIALIZE_FIELD(y),
+		SERIALIZE_FIELD(z)
+	)
 
 	Vector3();
 	Vector3(float x, float y, float z);

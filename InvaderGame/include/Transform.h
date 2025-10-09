@@ -1,21 +1,20 @@
 #pragma once
 
+#include "framework.h"
 #include "DirectX.h"
-#include "Component.h"
-#include "Vector3.h"
-#include "Quaternion.h"
+#include "GameEngine.h"
 #include "Record.h"
 
 class Transform : public Component
 {
 public:
-	//Vector3 position = Vector3(0, 0, 0);
 	Record<Vector3> position;
 	Quaternion rotation = Quaternion();
 	Vector3 scale = Vector3(1, 1, 1);
 
 
 	Transform();
+
 	Vector3 GetUp();
 	Vector3 GetForward();
 	void SetPosition(float x, float y);
@@ -23,6 +22,15 @@ public:
 	Vector3 GetLocalPosition();
 	void SetParent(Transform* parent);
 	void Update() override;
+
+	//std::string Serialize() override
+	//{
+	//	std::string content = "position: \n";
+	//	content += position.Get().Serialize();
+
+	//	// rotation
+	//	// scale
+	//}
 
 
 private:
