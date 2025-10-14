@@ -4,7 +4,7 @@
 #include "DirectX.h"
 #include "GameSystem.h"
 #include "SceneManager.h"
-#include "SceneLoader.h"
+#include "SceneDataManager.h"
 #include "SampleSceneAssests.h"
 #include "DemoSceneAsset.h"
 #include "DemoPhysicsSceneAsset.h"
@@ -55,7 +55,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //SceneManagement::SceneManager::LoadScene(DemoPhysicsSceneAsset::load()->GetName());
     //SampleSceneAssets::load();
     //DemoSceneAsset::load();
-    SceneLoader::Load("Resources/yaml_test.txt");
+    SceneDataManager::Load("Resources/yaml_test.txt");
+    FileManager::Write("Resources/write_test.txt", "aiueo");
 
     // ゲームループ
     while (1)

@@ -1,7 +1,7 @@
 #pragma once
 
 #define SERIALIZE_FIELD(v) \
-	[&]() -> void { serializedData += "  " + std::string(#v) + ": " + std::to_string(v) + "\n"; } \
+	[&]() -> void { serializedData += SerializedClass::SerializeField(#v, v); } \
 
 #define SERIALIZE(...) \
 	std::string Serialize() override \
@@ -21,5 +21,11 @@
 class SerializedClass
 {
 public:
+	template <typename T>
+	static std::string SerializeField(const std::string& name, const T& value)
+	{
+		return "  " + name + ": " + std::to_string(value) + "\n";
+	}
+
 	virtual std::string Serialize() { return ""; }
 };

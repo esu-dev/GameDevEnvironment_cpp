@@ -2,10 +2,13 @@
 GameObject:
   componentVector:
   - instanceID: 001
+  - instanceID: 002
 --- 001
 Transform:
-  position: {x: 0, y: 0, z: 0}
-SpriteRenderer:
+  position:
+    x: 0
+    y: 0
+    z: 0
 --- 002
 SpriteRenderer:
   

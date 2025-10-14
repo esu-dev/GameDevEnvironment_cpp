@@ -5,6 +5,6 @@
 #include "MathUtility.h"
 #include "Property.h"
 //#include "Record.h"
-#include "FileReader.h"
+#include "FileManager.h"
 #include "Activator.h"
 #include "SerializedClass.h"

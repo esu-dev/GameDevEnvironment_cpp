@@ -207,7 +207,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
-    <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="GameObject.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebug</RuntimeLibrary>
@@ -244,7 +244,7 @@
     </ClCompile>
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SampleSceneAssets.cpp" />
-    <ClCompile Include="SceneLoader.cpp" />
+    <ClCompile Include="SceneDataManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SpriteRenderer.cpp">
@@ -293,7 +293,7 @@
     <ClInclude Include="DemoPhysicsManager.h" />
     <ClInclude Include="DemoPhysicsSceneAsset.h" />
     <ClInclude Include="DemoSoundPlayer.h" />
-    <ClInclude Include="FileReader.h" />
+    <ClInclude Include="FileManager.h" />
     <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\Animator.h" />
     <ClInclude Include="include\Asset.h" />
@@ -350,7 +350,7 @@
     <ClInclude Include="RecordManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SamplePrefabAsset.h" />
-    <ClInclude Include="SceneLoader.h" />
+    <ClInclude Include="SceneDataManager.h" />
     <ClInclude Include="SerializedClass.h" />
     <ClInclude Include="TimeController.h" />
     <ClInclude Include="Utility.h" />

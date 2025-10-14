@@ -186,13 +186,13 @@
     <ClCompile Include="YamlUtility.cpp">
       <Filter>Source\GameEngine</Filter>
     </ClCompile>
-    <ClCompile Include="FileReader.cpp">
+    <ClCompile Include="FileManager.cpp">
       <Filter>Source\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Activator.cpp">
       <Filter>Source\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="SceneLoader.cpp">
+    <ClCompile Include="SceneDataManager.cpp">
       <Filter>Source\GameEngine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -391,7 +391,7 @@
     <ClInclude Include="YamlUtility.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="FileReader.h">
+    <ClInclude Include="FileManager.h">
       <Filter>Source\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
@@ -400,7 +400,7 @@
     <ClInclude Include="Activator.h">
       <Filter>Source\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="SceneLoader.h">
+    <ClInclude Include="SceneDataManager.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
     <ClInclude Include="SerializedClass.h">
