@@ -12,8 +12,13 @@ namespace SceneManagement
 	Scene* SceneManager::CreateScene(std::string sceneName)
 	{
 		Scene* newScene = new Scene(sceneName);
-		AddScene(newScene);
 
+		GameObject* camera = GameObject::Create();
+		camera->AddComponent<Camera>();
+		camera->tag = "MainCamera";
+		newScene->AddGameObject(camera);
+
+		AddScene(newScene);
 		return newScene;
 	}
 
@@ -37,6 +42,7 @@ namespace SceneManagement
 		Scene* sceneBackup = _activeScene;
 		_activeScene = scene;
 
+		// ‚±‚ê‚Í•s—v‚©‚È
 		if (GameObject::FindGameObjectsWithTag("MainCamera").size() == 0)
 		{
 			Debug::Log(L"MainCamera‚ª‚ ‚è‚Ü‚¹‚ñB");

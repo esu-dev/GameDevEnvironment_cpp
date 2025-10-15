@@ -7,7 +7,7 @@
 
 SpriteRenderer::SpriteRenderer() : _color(DirectX::XMFLOAT4(1, 1, 1, 1)), m_texture { nullptr }
 {
-
+	
 }
 
 void SpriteRenderer::SetCanMove(bool canMove)

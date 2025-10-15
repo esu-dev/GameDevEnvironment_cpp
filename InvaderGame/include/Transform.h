@@ -23,14 +23,7 @@ public:
 	void SetParent(Transform* parent);
 	void Update() override;
 
-	//std::string Serialize() override
-	//{
-	//	std::string content = "position: \n";
-	//	content += position.Get().Serialize();
-
-	//	// rotation
-	//	// scale
-	//}
+	NAME(Transform)
 
 
 private:

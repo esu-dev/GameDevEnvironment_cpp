@@ -15,6 +15,9 @@ public:
 	void SetColor(DirectX::XMFLOAT4 color);
 	void Update() override;
 
+	NAME(SpriteRenderer)
+
+
 private:
 	bool _canMove = true;
 	DirectX::XMFLOAT4 _color;

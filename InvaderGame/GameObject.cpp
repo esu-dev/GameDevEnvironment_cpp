@@ -22,13 +22,13 @@ std::vector<GameObject*> GameObject::FindGameObjectsWithTag(std::string tag)
 GameObject* GameObject::Create()
 {
 	GameObject* gameObject = new GameObject();
-	gameObject->_transform = gameObject->AddComponent<Transform>();
+	gameObject->AddComponent<Transform>();
 	return gameObject;
 }
 
 Transform* GameObject::GetTransform()
 {
-	return _transform;
+	return GetComponent<Transform>();
 }
 
 void GameObject::SetActive(bool isActive)
@@ -42,6 +42,11 @@ void GameObject::SetActive(bool isActive)
 			component->OnDisable();
 		}
 	}
+}
+
+const std::vector<std::shared_ptr<Component>>& GameObject::GetComponentVector()
+{
+	return _componentVector;
 }
 
 void GameObject::Start()

@@ -24,6 +24,8 @@ public:
 	Scene* scene;
 	std::string tag = "Untagged";
 
+	NAME(GameObject)
+
 	SERIALIZE(
 		SERIALIZE_VECTOR(_componentVector, new TypeData(true, true, true))
 	)
@@ -34,7 +36,6 @@ public:
 	{
 		std::shared_ptr<T> component = std::make_shared<T>();
 		component.get()->gameObject = this;
-		if (this->_transform != nullptr) ((Component*)component.get())->SetTransform(this->_transform);
 		_componentVector.push_back(component);
 		return component.get();
 	}
@@ -70,6 +71,7 @@ public:
 	}*/
 
 	Transform* GetTransform();
+	const std::vector<std::shared_ptr<Component>>& GetComponentVector();
 	void SetActive(bool isActive);
 	void Start();
 	void Update();
@@ -189,7 +191,6 @@ private:
 	}
 
 	bool _isActive{true};
-	Transform* _transform; // getcomponent‚ÅŽæ“¾‚ª—Ç‚¢‚©‚à
 	std::vector<std::shared_ptr<Component>> _componentVector;
 };
 //REGISTER_TYPE(GameObject);

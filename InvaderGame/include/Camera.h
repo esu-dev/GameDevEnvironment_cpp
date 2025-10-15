@@ -13,6 +13,8 @@ public:
 	static Vector2 WorldToBox2DWorld(Vector3 worldPos);
 	static Vector3 Box2DWorldToWorld(Vector2 worldPos);
 	static Camera* get_main();
+
+	NAME(Camera)
 	
 	static const float Magnification;
 };

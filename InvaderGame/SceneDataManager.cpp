@@ -18,11 +18,6 @@ Scene* SceneDataManager::Load(std::string path)
 	// ƒV[ƒ“‚Ìì¬
 	Scene* scene = SceneManager::CreateScene("YamlTestScene");
 
-	GameObject* camera = GameObject::Create();
-	camera->AddComponent<Camera>();
-	camera->tag = "MainCamera";
-	scene->AddGameObject(camera);
-
 
 	struct InstanceData
 	{
@@ -107,12 +102,27 @@ void SceneDataManager::Save(std::string name)
 	std::string serializedData = "";
 	for (GameObject* gameObject : SceneManager::GetActiveScene()->GetGameObjectVector())
 	{
+		// GameObject
+		serializedData += "--- " + gameObject->instanceID + "\n";
+		serializedData += gameObject->GetName() + ":\n";
 		for (std::string line : gameObject->Serialize())
 		{
-			serializedData += line + "\n";
+			serializedData += "  " + line + "\n";
+		}
+
+		// Component
+		for (auto componentPtr : gameObject->GetComponentVector())
+		{
+			Component* component = componentPtr.get();
+			serializedData += "--- " + component->instanceID + "\n";
+			serializedData += component->GetName() + ":\n";
+			for (std::string line : component->Serialize())
+			{
+				serializedData += "  " + line + "\n";
+			}
 		}
 	}
-	Debug::Log("a");
+	FileManager::Write("Resources/write_test.txt", serializedData);
 }
 
 

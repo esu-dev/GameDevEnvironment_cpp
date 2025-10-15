@@ -1,5 +1,11 @@
 #pragma once
 
+#define NAME(n) \
+	std::string GetName() override \
+	{ \
+		return #n; \
+	}
+
 #include "framework.h"
 #include "SerializedClass.h"
 
@@ -14,8 +20,10 @@ public:
 	Object();
 	Object(std::string instanceID);
 
-	std::string instanceID;
-	std::string name;
+	std::string instanceID = "initial instanceID";
+	std::string name = "initial name"; // 削除するとエラーが出る。どこで参照されているのか不明
+
+	virtual std::string GetName() { return "not overrided"; };
 
 
 protected:

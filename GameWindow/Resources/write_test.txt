@@ -1,1 +1,12 @@
-aiueo
+--- initial instanceID
+GameObject:
+  _componentVector:
+  - (instanceID)initial instanceID
+  - (instanceID)initial instanceID
+--- initial instanceID
+Transform:
+  not overrided
+--- initial instanceID
+Camera:
+  not overrided
+

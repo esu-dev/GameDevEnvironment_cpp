@@ -75,12 +75,12 @@ public:
 		{
 			if (typeData->isSmartPointer)
 			{
-				serializedDataVector.push_back("  " + value[i].get()->instanceID);
+				serializedDataVector.push_back("- (instanceID)" + value[i].get()->instanceID);
 			}
 		}
 		return serializedDataVector;
 	}
 
-	virtual std::vector<std::string> Serialize() { return {}; }
+	virtual std::vector<std::string> Serialize() { return { "not overrided"}; }
 	virtual void Deserialize(std::vector<std::string> instanceDataVector) {}
 };
