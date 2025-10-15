@@ -5,9 +5,10 @@ GameObject:
   - instanceID: 002
 --- 001
 Transform:
+  gameObject: (instanceID)000
   position:
-    x: 0
-    y: 0
+    x: 1
+    y: 3
     z: 0
 --- 002
 SpriteRenderer:

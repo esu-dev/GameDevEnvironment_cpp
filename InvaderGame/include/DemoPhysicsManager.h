@@ -13,6 +13,6 @@ private:
 	float _timer = 0;
 	bool _started = false;
 
-	GameObject* _cube = new GameObject();
-	GameObject* _ground = new GameObject();
+	GameObject* _cube = GameObject::Create();
+	GameObject* _ground = GameObject::Create();
 };

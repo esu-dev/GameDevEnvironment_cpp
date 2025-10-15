@@ -10,7 +10,7 @@ public:
 	{
 		AudioClip* audioClip = new AudioClip("./Resources/Sound/SE/RetroWeaponLaser03.wav");
 
-		GameObject* gameObject = new GameObject();
+		GameObject* gameObject = GameObject::Create();
 		gameObject->AddComponent<AudioSource>()->SetAudioClip(audioClip);
 		gameObject->AddComponent<SampleMonoBehaviour>();
 

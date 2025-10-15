@@ -29,7 +29,7 @@ void FileManager::Write(const std::string& path, const std::string& content)
 
 	if (!file)
 	{
-		Debug::Log("ファイルを開けませんでした。(%s)", path);
+		Debug::Log(L"ファイルを開けませんでした。");
 		return;
 	}
 

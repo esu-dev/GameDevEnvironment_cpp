@@ -19,9 +19,11 @@ std::vector<GameObject*> GameObject::FindGameObjectsWithTag(std::string tag)
 	return gameObjectVector;
 }
 
-GameObject::GameObject()
+GameObject* GameObject::Create()
 {
-	_transform = this->AddComponent<Transform>();
+	GameObject* gameObject = new GameObject();
+	gameObject->_transform = gameObject->AddComponent<Transform>();
+	return gameObject;
 }
 
 Transform* GameObject::GetTransform()

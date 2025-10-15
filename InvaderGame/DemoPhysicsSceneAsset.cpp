@@ -10,7 +10,7 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 	Scene* scene = SceneManager::CreateScene("DemoPhysicsScene");
 
 
-	GameObject* camera = new GameObject();
+	GameObject* camera = GameObject::Create();
 	camera->AddComponent<Camera>();
 	camera->tag = "MainCamera";
 	scene->AddGameObject(camera);
@@ -20,7 +20,7 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 
 	/*
 	{
-		GameObject* circle = new GameObject();
+		GameObject* circle = GameObject::Create();
 		circle->AddComponent<SpriteRenderer>()->SetTexture(circleTex);
 		circle->AddComponent<CircleCollider2D>();
 		circle->AddComponent<Rigidbody2D>();
@@ -29,7 +29,7 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 	}//*/
 
 	{
-		GameObject* circle = new GameObject();
+		GameObject* circle = GameObject::Create();
 		circle->AddComponent<SpriteRenderer>()->SetTexture(circleTex);
 		circle->AddComponent<CircleCollider2D>();
 		circle->AddComponent<Rigidbody2D>();
@@ -39,7 +39,7 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 
 	//*
 	{
-		GameObject* cube = new GameObject();
+		GameObject* cube = GameObject::Create();
 		cube->GetTransform()->SetPosition(-4.0f, 0);
 		cube->AddComponent<SpriteRenderer>();
 		cube->AddComponent<BoxCollider2D>();
@@ -48,7 +48,7 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 	}//*/
 
 	{
-		GameObject* cube = new GameObject();
+		GameObject* cube = GameObject::Create();
 		cube->GetTransform()->SetPosition(0, -5);
 		cube->GetTransform()->rotation = Quaternion::AngleAxis(0, Vector3(0, 0, 1));
 		cube->GetTransform()->scale = Vector3(10, 1, 0);
@@ -60,7 +60,7 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 
 	/*/
 	{
-		GameObject* cube = new GameObject();
+		GameObject* cube = GameObject::Create();
 		cube->GetTransform()->SetPosition(-5.0f, 0);
 		cube->AddComponent<SpriteRenderer>();
 		cube->AddComponent<BoxCollider2D>();
@@ -69,7 +69,7 @@ Scene* DemoPhysicsSceneAsset::load_scene_asset_impl()
 	}//*/
 
 	{
-		GameObject* cube = new GameObject();
+		GameObject* cube = GameObject::Create();
 		cube->GetTransform()->SetPosition(-5.75f, -5);
 		cube->AddComponent<SpriteRenderer>();
 		cube->AddComponent<BoxCollider2D>();

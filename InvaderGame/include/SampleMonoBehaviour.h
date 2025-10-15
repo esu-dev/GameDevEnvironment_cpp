@@ -11,6 +11,6 @@ public:
 	void Update() override;
 
 private:
-	GameObject* _test = new GameObject();
-	GameObject* fpsText = new GameObject();
+	GameObject* _test = GameObject::Create();
+	GameObject* fpsText = GameObject::Create();
 };

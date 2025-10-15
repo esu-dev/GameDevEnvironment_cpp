@@ -10,24 +10,24 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 {
 	Scene* sampleScene = SceneManager::CreateScene("SampleScene");
 
-	GameObject* camera = new GameObject();
+	GameObject* camera = GameObject::Create();
 	camera->AddComponent<Camera>();
 	camera->tag = "MainCamera";
 	sampleScene->AddGameObject(camera);
 
 
-	GameObject* canvasObject = new GameObject();
+	GameObject* canvasObject = GameObject::Create();
 	canvasObject->AddComponent<Canvas>();
 	sampleScene->AddGameObject(canvasObject);
 
-	GameObject* title = new GameObject();
+	GameObject* title = GameObject::Create();
 	title->GetTransform()->SetPosition(0, 4);
 	title->AddComponent<TextLabel>()->SetText("title");
 	title->GetComponent<TextLabel>()->SetFontSize(32);
 	sampleScene->AddGameObject(title);
 
 
-	GameObject* title2 = new GameObject();
+	GameObject* title2 = GameObject::Create();
 	title2->GetTransform()->SetPosition(0, 5);
 	title2->AddComponent<TextLabel>()->SetText("title");
 	title2->GetComponent<TextLabel>()->SetFontSize(32);
@@ -35,7 +35,7 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 	sampleScene->AddGameObject(title2);
 
 
-	GameObject* title3 = new GameObject();
+	GameObject* title3 = GameObject::Create();
 	title3->GetTransform()->SetPosition(0, 6);
 	title3->AddComponent<TextLabel>()->SetText("title");
 	title3->GetComponent<TextLabel>()->SetFontSize(32);
@@ -48,7 +48,7 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 
 	AudioClip* mainShipAudioClip = new AudioClip("./Resources/Sound/SE/RetroWeaponLaser03.wav");
 
-	GameObject* _testObject = new GameObject();
+	GameObject* _testObject = GameObject::Create();
 	_testObject->AddComponent<SampleMonoBehaviour>();
 	_testObject->AddComponent<SpriteRenderer>()->SetTexture(mainShipTexture);
 	_testObject->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
@@ -62,7 +62,7 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 	sampleScene->AddGameObject(_testObject);
 
 
-	GameObject* wall = new GameObject();
+	GameObject* wall = GameObject::Create();
 	wall->AddComponent<SpriteRenderer>();
 	//wall->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
 	//Rigidbody2D* rb_ship2 = wall->AddComponent<Rigidbody2D>();
@@ -89,7 +89,7 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 
 	AudioClip* mainShipAudioClip = new AudioClip("./Resources/Sound/SE/RetroWeaponLaser03.wav");
 
-	GameObject* _testObject = new GameObject();
+	GameObject* _testObject = GameObject::Create();
 	_testObject->AddComponent<SampleMonoBehaviour>();
 	_testObject->AddComponent<SpriteRenderer>()->SetTexture(mainShipTexture);
 	_testObject->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
@@ -106,7 +106,7 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 	sampleScene->AddGameObject(_testObject);
 
 
-	GameObject* wall = new GameObject();
+	GameObject* wall = GameObject::Create();
 	wall->AddComponent<SpriteRenderer>();
 	wall->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
 	Rigidbody2D* rb_ship2 = wall->AddComponent<Rigidbody2D>();
@@ -117,7 +117,7 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 
 	sampleScene->AddGameObject(wall);
 
-	GameObject* rect = new GameObject();
+	GameObject* rect = GameObject::Create();
 	rect->AddComponent<SpriteRenderer>();
 	rect->GetTransform()->position = Vector3(0, 0, 0);
 	rect->GetTransform()->scale = { 2, 2, 0.0f };
@@ -126,7 +126,7 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 
 
 	AudioClip* audioClip = new AudioClip("./Resources/Sound/BGM/SpaceshipShooter.wav");
-	GameObject* BGM = new GameObject();
+	GameObject* BGM = GameObject::Create();
 	AudioSource* audioSource = BGM->AddComponent<AudioSource>();
 	audioSource->SetAudioClip(audioClip);
 	audioSource->SetVolume(0.2f);

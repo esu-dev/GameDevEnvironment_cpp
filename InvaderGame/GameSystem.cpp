@@ -18,6 +18,7 @@ void GameSystem::Initialize()
 	EngineTime::Initialize();
 	TimeController::Initialize();
 	Physics2D::Initialize();
+	Activator::Initialize();
 
 	D3D.ChangeMode_2D();
 }

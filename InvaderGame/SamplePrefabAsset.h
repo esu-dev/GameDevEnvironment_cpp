@@ -8,7 +8,7 @@ class SamplePrefabAsset : public PrefabAsset<SamplePrefabAsset>
 public:
 	static GameObject* LoadPrefabAsset()
 	{
-		GameObject* gameObject = new GameObject();
+		GameObject* gameObject = GameObject::Create();
 		gameObject->AddComponent<SpriteRenderer>();
 
 		return gameObject;

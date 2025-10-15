@@ -17,6 +17,7 @@
 
 
 #include "framework.h"
+#include "SceneDataManager.h"
 
 class SerializedClass
 {
@@ -28,4 +29,5 @@ public:
 	}
 
 	virtual std::string Serialize() { return ""; }
+	virtual void Deserialize(std::vector<std::string> instanceDataVector) {}
 };

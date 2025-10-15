@@ -56,7 +56,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //SampleSceneAssets::load();
     //DemoSceneAsset::load();
     SceneDataManager::Load("Resources/yaml_test.txt");
-    FileManager::Write("Resources/write_test.txt", "aiueo");
 
     // ゲームループ
     while (1)

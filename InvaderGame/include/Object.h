@@ -17,7 +17,6 @@ public:
 	std::string instanceID;
 	std::string name;
 
-	void SetField(std::string fieldName, std::string valueString);
 
 protected:
 	std::unordered_map<std::string, std::function<void(std::string)>> variableMap;

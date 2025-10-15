@@ -30,7 +30,7 @@ void SampleMonoBehaviour::Update()
 {
 	if (Input::GetKeyDown(VK_SPACE))
 	{
-		GameObject* _testObject = new GameObject();
+		GameObject* _testObject = GameObject::Create();
 		_testObject->AddComponent<SpriteRenderer>();
 		_testObject->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
 		Rigidbody2D* r = _testObject->AddComponent<Rigidbody2D>();
