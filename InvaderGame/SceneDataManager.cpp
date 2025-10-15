@@ -91,15 +91,28 @@ Scene* SceneDataManager::Load(std::string path)
 
 	// オブジェクトのデータベースは忘れずに開放しておく
 
-	FileManager::Write("Resources/write_test.txt", "aiueo");
+	//FileManager::Write("Resources/write_test.txt", "aiueo");
 
+	
+	instanceDataVector[0]->object->Serialize();
 	SceneManager::LoadScene("YamlTestScene");
+	Save("write_test");
 	return scene;
 }
 
-void Save(std::string name)
+void SceneDataManager::Save(std::string name)
 {
-
+	// シーン内の全てのゲームオブジェクトに対してシリアライズを実行
+	// 最終的な文字列を書き込む
+	std::string serializedData = "";
+	for (GameObject* gameObject : SceneManager::GetActiveScene()->GetGameObjectVector())
+	{
+		for (std::string line : gameObject->Serialize())
+		{
+			serializedData += line + "\n";
+		}
+	}
+	Debug::Log("a");
 }
 
 

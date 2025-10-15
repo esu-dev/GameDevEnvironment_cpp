@@ -24,6 +24,10 @@ public:
 	Scene* scene;
 	std::string tag = "Untagged";
 
+	SERIALIZE(
+		SERIALIZE_VECTOR(_componentVector, new TypeData(true, true, true))
+	)
+
 	// 関数テンプレートは型やコンパイル時に定まる値をパラメータ化する機能
 	// 利用されるときに実体化するため、正しく分割コンパイルされない
 	template <typename T> T* AddComponent()
@@ -147,7 +151,7 @@ public:
 			function(subInstanceDataVector[i++]);
 		}
 	}
-
+	
 
 private:
 	template <typename T>
