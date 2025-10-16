@@ -13,6 +13,10 @@ public:
 	bool Started = false;
 	GameObject* gameObject;
 
+	DESERIALIZE(
+		DESERIALIZE_FIELD(gameObject)
+	)
+
 	virtual void OnEnable() {} // –{—ˆ‚ÍMonoBehaviour‚É’è‹`
 	virtual void OnDisable() {}
 	virtual void Start() {}

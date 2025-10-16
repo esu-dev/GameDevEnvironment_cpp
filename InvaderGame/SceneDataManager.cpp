@@ -77,7 +77,7 @@ Scene* SceneDataManager::Load(std::string path)
 	// 保持しておいたyamlを元にデシリアライズ
 	for (InstanceData* instanceData : instanceDataVector)
 	{
-		//instanceData->object->Deserialize(instanceData->yamlVector);
+		instanceData->object->Deserialize(instanceData->yamlVector);
 
 		// GameObjectをSceneに追加
 		/*if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceData->object))
@@ -85,7 +85,7 @@ Scene* SceneDataManager::Load(std::string path)
 			scene->AddGameObject(gameObject);
 		}*/
 	}
-	instanceDataVector[0]->object->Deserialize(instanceDataVector[0]->yamlVector);
+	//instanceDataVector[0]->object->Deserialize(instanceDataVector[0]->yamlVector);
 	if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceDataVector[0]->object))
 	{
 		scene->AddGameObject(gameObject);
