@@ -83,6 +83,65 @@ public:
 		std::vector<std::string> memberVector;
 	};
 
+	std::vector<InstanceData*> GetSubInstanceDataVector(std::vector<std::string> instanceDataVector)
+	{
+		bool isPacking = false;
+		std::vector<InstanceData*> subInstanceDataVector;
+		for (std::string instanceData : instanceDataVector)
+		{
+			std::smatch m;
+
+			if (isPacking)
+			{
+				// リスト
+				if (std::regex_match(instanceData, m, std::regex(R"(-\s(\(\w+\))(\w+))")))
+				{
+					subInstanceDataVector.back()->isVector = true;
+
+					// instanceIDをもつかどうか
+					if (m[1].str() == "(instanceID)")
+					{
+						std::string instanceID = m[2].str();
+						subInstanceDataVector.back()->hasInstanceID = true;
+						subInstanceDataVector.back()->memberVector.push_back(instanceID);
+					}
+					else
+					{
+
+					}
+				}
+				// クラス, 構造体
+				else if (std::regex_match(instanceData, m, std::regex(R"(\s{2}(\w+):\s(\w+))")))
+				{
+					// リストに格納
+				}
+			}
+
+
+			std::regex re(R"(^(\w+):(\s*)(\w*))");
+			if (std::regex_search(instanceData, m, re))
+			{
+				// クラス, 構造体, vector
+				if (m[3].str() == "")
+				{
+					// 文字列vectorを確保
+					// インデントの深さと"-"でチェック
+					isPacking = true;
+					subInstanceDataVector.push_back(new InstanceData());
+				}
+				// 値
+				else
+				{
+					isPacking = false;
+
+					// ここで代入
+				}
+			}
+		}
+
+		return subInstanceDataVector;
+	}
+
 	void Deserialize(std::vector<std::string> instanceDataVector) override
 	{
 		std::vector<std::function<void(InstanceData*)>> functionVector = {
@@ -101,12 +160,12 @@ public:
 			if (isPacking)
 			{
 				// リスト
-				if (std::regex_match(instanceData, m, std::regex(R"(-\s(\w+):\s(\w+))")))
+				if (std::regex_match(instanceData, m, std::regex(R"(-\s(\(\w+\))(\w+))")))
 				{
 					subInstanceDataVector.back()->isVector = true;
 
 					// instanceIDをもつかどうか
-					if (m[1].str() == "instanceID")
+					if (m[1].str() == "(instanceID)")
 					{
 						std::string instanceID = m[2].str();
 						subInstanceDataVector.back()->hasInstanceID = true;

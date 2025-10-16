@@ -40,4 +40,7 @@
 // 正規表現
 #include <regex>
 
+// 疑似乱数
+#include <random>
+
 using namespace std::literals::string_literals;

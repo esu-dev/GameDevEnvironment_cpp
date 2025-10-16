@@ -9,4 +9,15 @@ Transform:
 --- initial instanceID
 Camera:
   not overrided
+--- 000
+GameObject:
+  _componentVector:
+  - (instanceID)001
+  - (instanceID)002
+--- 001
+Transform:
+  not overrided
+--- 002
+SpriteRenderer:
+  not overrided
 

@@ -234,6 +234,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="Record.cpp" />
     <ClCompile Include="RecordManager.cpp" />
     <ClCompile Include="Rigidbody2D.cpp" />
@@ -344,6 +345,7 @@
     <ClInclude Include="MathUtility.h" />
     <ClInclude Include="Property.h" />
     <ClInclude Include="PropertyBase.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="ReadonlyProperty.h" />
     <ClInclude Include="Record.h" />
     <ClInclude Include="RecordBase.h" />

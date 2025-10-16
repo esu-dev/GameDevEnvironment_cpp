@@ -78,9 +78,18 @@ Scene* SceneDataManager::Load(std::string path)
 	for (InstanceData* instanceData : instanceDataVector)
 	{
 		//instanceData->object->Deserialize(instanceData->yamlVector);
+
+		// GameObjectをSceneに追加
+		/*if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceData->object))
+		{
+			scene->AddGameObject(gameObject);
+		}*/
 	}
 	instanceDataVector[0]->object->Deserialize(instanceDataVector[0]->yamlVector);
-
+	if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceDataVector[0]->object))
+	{
+		scene->AddGameObject(gameObject);
+	}
 
 	// instanceIDの値は、全体から検索してポインタを代入
 
