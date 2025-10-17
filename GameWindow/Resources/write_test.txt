@@ -1,14 +1,14 @@
---- initial instanceID
+--- 1656398468=641584702=44564466
 GameObject:
   _componentVector:
-  - (instanceID)initial instanceID
-  - (instanceID)initial instanceID
---- initial instanceID
+  - (instanceID)1062123783=1360749216=951367352
+  - (instanceID)1608044093=1786516046=1070535660
+--- 1062123783=1360749216=951367352
 Transform:
-  not overrided
---- initial instanceID
+  gameObject: 1656398468=641584702=44564466
+--- 1608044093=1786516046=1070535660
 Camera:
-  not overrided
+  gameObject: 1656398468=641584702=44564466
 --- 000
 GameObject:
   _componentVector:
@@ -16,8 +16,8 @@ GameObject:
   - (instanceID)002
 --- 001
 Transform:
-  not overrided
+  gameObject: 000
 --- 002
 SpriteRenderer:
-  not overrided
+  gameObject: 000
 

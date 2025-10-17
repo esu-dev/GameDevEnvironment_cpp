@@ -20,16 +20,24 @@
 	}
 
 #define DESERIALIZE_FIELD(v) \
-	[&](InstanceData* instanceData) -> void { DeserializeProperty(v, instanceData); }
+	[&](InstanceData* instanceData) -> void { DeserializeField(v, instanceData); }
+
+#define DESERIALIZE_POINTER(v) \
+	[&](InstanceData* instanceData) -> void { DeserializePointer(v, instanceData); }
 
 #define DESERIALIZE_VECTOR(v) \
 	[&](InstanceData* instanceData) -> void { DeserializeVector(v, instanceData); }
 
-#define DESERIALIZE(...) \
-	void Deserialize(std::vector<std::string> instanceDataVector) override \
+// out引数で返した方がシリアライズとも統一感があってよいのでは？
+#define DESERIALIZE(p, ...) \
+	int Deserialize(std::vector<std::string> v) override \
 	{ \
-		std::vector<std::function<void(InstanceData*)>> functionVector = {__VA_ARGS__}; \
-		InputValue(instanceDataVector, functionVector); \
+		int n = p::Deserialize(v); \
+		std::vector<std::function<void(InstanceData*)>> fv = {__VA_ARGS__}; \
+		if (n >= 2) v.erase(v.begin(), v.begin() + n - 1); \
+		else if (n == 1) v.erase(v.begin()); \
+		InputValue(v, fv); \
+		return n + (int)fv.size(); \
 	}
 
 
@@ -42,7 +50,7 @@ class SerializedClass
 {
 public:
 	virtual std::vector<std::string> Serialize() { return { "not overrided" }; }
-	virtual void Deserialize(std::vector<std::string> instanceDataVector) {}
+	virtual int Deserialize(std::vector<std::string> v) { return 0; } // intを返すのは、親クラスの処理数を教えるため
 
 
 protected:
@@ -65,23 +73,12 @@ protected:
 	{
 		std::vector<std::string> serializedDataVector;
 
-		// Tの型によって処理を分ける
-		// templateの部分特殊化を行うことで、検出できるようだが、ここでは一旦パスする
-		// いつか実装する
-		
-		// vector
-		if (typeData->isVector)
+		// ポインタ
+		if constexpr (std::is_pointer<T>())
 		{
-			serializedDataVector.push_back(name + ":\n");
-			// vector<T>の型が分からなくて詰む
-			/*for (int i = 0; i < value.size(); i++)
-			{
-				if (typeData->isSmartPointer)
-				{
-					serializedDataVector.push_back("  " + value[i].get()->instanceID);
-				}
-			}*/
+			serializedDataVector.push_back(name + ": " + value->instanceID);
 		}
+		else serializedDataVector.push_back("error");
 
 		return serializedDataVector;
 	}
@@ -110,26 +107,48 @@ protected:
 	};
 	
 	template <typename T>
-	static void DeserializeProperty(T& variable, const InstanceData* instanceData)
+	static void DeserializeField(T& variable, const InstanceData* instanceData)
+	{
+		// constexpr(constant expression)でコンパイル分岐が可能になる
+		// 値ならそのまま代入
+		if constexpr (std::is_arithmetic<T>())
+		{
+			std::string value = instanceData->memberVector[0];
+
+			// float
+			if (typeid(T) == typeid(float))
+			{
+				variable = std::stof(value);
+			}
+			else
+			{
+
+			}
+		}
+		// シリアライズできる場合(ex. Record)
+		else if constexpr (std::is_base_of<SerializedClass, T>())
+		{
+			variable.Deserialize(instanceData->memberVector);
+		}
+	}
+
+	template <typename T>
+	static void DeserializePointer(T& variable, const InstanceData* instanceData)
 	{
 		for (auto member : instanceData->memberVector)
 		{
-			if (instanceData->hasInstanceID)
+			Object* object = SceneDataManager::GetInstanceID2PointerMap()[member];
+
+			// Tにキャストで良いのでは？
+
+			// 型チェック
+			if (Component* component = dynamic_cast<Component*>(object))
 			{
-				Object* object = SceneDataManager::GetInstanceID2PointerMap()[member];
-
-				// Tにキャストで良いのでは？
-
-				// 型チェック
-				if (Component* component = dynamic_cast<Component*>(object))
-				{
-				}
-				// GameObject
-				else if (GameObject* gameObject = dynamic_cast<GameObject*>(object))
-				{
-					variable = gameObject;
-				}
-
+			}
+			// GameObject
+			else if (GameObject* gameObject = dynamic_cast<GameObject*>(object))
+			{
+				variable = gameObject;
 			}
 		}
 	}
@@ -186,9 +205,10 @@ protected:
 					}
 				}
 				// クラス, 構造体
-				else if (std::regex_match(instanceData, m, std::regex(R"(\s{2}(\w+):\s(\w+))")))
+				else if (std::regex_match(instanceData, m, std::regex(R"(\s{2}(\s*\w+:\s*.*))")))
 				{
-					// リストに格納
+					// リストの格納
+					subInstanceDataVector.back()->memberVector.push_back(m[1].str());
 				}
 			}
 
@@ -203,7 +223,7 @@ protected:
 				{
 					isPacking = true;
 				}
-				// 値
+				// 値, ポインタ
 				else
 				{
 					isPacking = false;
@@ -216,6 +236,10 @@ protected:
 						std::string instanceID = match[1].str();
 						subInstanceDataVector.back()->hasInstanceID = true;
 						subInstanceDataVector.back()->memberVector.push_back(instanceID);
+					}
+					else
+					{
+						subInstanceDataVector.back()->memberVector.push_back(matchString);
 					}
 				}
 			}

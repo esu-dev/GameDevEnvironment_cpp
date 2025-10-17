@@ -1,6 +1,8 @@
 #pragma once
 
-class RecordBase
+#include "SerializedClass.h"
+
+class RecordBase : public SerializedClass
 {
 public:
 	static constexpr float RECORD_INTERVAL = 1;

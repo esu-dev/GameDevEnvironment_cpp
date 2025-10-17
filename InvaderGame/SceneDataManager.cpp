@@ -46,7 +46,7 @@ Scene* SceneDataManager::Load(std::string path)
 		// ‚Ü‚Æ‚ß‚é
 		if (isPacking)
 		{
-			if (std::regex_match(content, m, std::regex(R"(\s+(.+))")))
+			if (std::regex_match(content, m, std::regex(R"(\s{2}(.+))")))
 			{
 				instanceDataVector.back()->yamlVector.push_back(m[1].str());
 			}

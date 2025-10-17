@@ -15,6 +15,12 @@ public:
 		SERIALIZE_FIELD(z)
 	)
 
+	DESERIALIZE(SerializedClass,
+		DESERIALIZE_FIELD(x),
+		DESERIALIZE_FIELD(y),
+		DESERIALIZE_FIELD(z)
+	)
+
 	Vector3();
 	Vector3(float x, float y, float z);
 

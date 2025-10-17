@@ -5,10 +5,11 @@
 class Random
 {
 public:
-	int Range(int min, int max);
+	static int Range(int min, int max);
+	static int Generate();
 
 private:
-	static float _seed;
-	std::mt19937 generator;
+	static int _seed;
+	static std::mt19937 generator;
 };
 

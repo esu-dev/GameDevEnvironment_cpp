@@ -8,3 +8,5 @@
 #include "FileManager.h"
 #include "Activator.h"
 #include "SerializedClass.h"
+#include "Random.h"
+#include "UuidGenerator.h"

@@ -13,8 +13,12 @@ public:
 	bool Started = false;
 	GameObject* gameObject;
 
-	DESERIALIZE(
-		DESERIALIZE_FIELD(gameObject)
+	SERIALIZE(
+		SERIALIZE_FIELD(gameObject)
+	)
+
+	DESERIALIZE(Object,
+		DESERIALIZE_POINTER(gameObject)
 	)
 
 	virtual void OnEnable() {} // –{—ˆ‚ÍMonoBehaviour‚É’è‹`

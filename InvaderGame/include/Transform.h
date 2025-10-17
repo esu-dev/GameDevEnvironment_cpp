@@ -12,6 +12,9 @@ public:
 	Quaternion rotation = Quaternion();
 	Vector3 scale = Vector3(1, 1, 1);
 
+	DESERIALIZE(Component,
+		DESERIALIZE_FIELD(position)
+	)
 
 	Transform();
 

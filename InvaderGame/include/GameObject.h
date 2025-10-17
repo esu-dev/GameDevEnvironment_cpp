@@ -30,7 +30,7 @@ public:
 		SERIALIZE_VECTOR(_componentVector, new TypeData(true, true, true))
 	)
 
-	DESERIALIZE(
+	DESERIALIZE(Object,
 		DESERIALIZE_VECTOR(_componentVector)
 	)
 

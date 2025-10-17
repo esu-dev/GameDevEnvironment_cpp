@@ -10,6 +10,10 @@ template <typename T>
 class Record : public RecordBase
 {
 public:
+	DESERIALIZE(RecordBase,
+		DESERIALIZE_FIELD(_variable)
+	)
+
 	void Select(float time) override
 	{
 		if (_timeVariableSetVector.size() == 0) return;
