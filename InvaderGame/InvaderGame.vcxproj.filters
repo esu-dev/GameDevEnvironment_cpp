@@ -37,6 +37,12 @@
     <Filter Include="Source\GameEngine">
       <UniqueIdentifier>{cfb4c06f-c693-4713-b631-bd94fa429222}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\imgui">
+      <UniqueIdentifier>{92d1a34e-faaf-4b1e-badc-73f0bfa03f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\imgui\backends">
+      <UniqueIdentifier>{87d8fbd5-473e-4cc3-931f-d878085ed81e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioClip.cpp">
@@ -200,6 +206,27 @@
     </ClCompile>
     <ClCompile Include="UuidGenerator.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_tables.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\backends\imgui_impl_dx11.cpp">
+      <Filter>ソース ファイル\imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\backends\imgui_impl_win32.cpp">
+      <Filter>ソース ファイル\imgui\backends</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
