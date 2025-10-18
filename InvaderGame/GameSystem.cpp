@@ -4,6 +4,8 @@
 #include "GameEngine.h"
 #include "SampleSceneAssests.h"
 
+#include "imgui.h"
+
 using namespace SceneManagement;
 
 
@@ -45,6 +47,8 @@ void GameSystem::Execute()
 		activeScene->Start();
 		activeScene->Update();
 	}
+
+	ImGui::CreateContext();
 
     D3D.m_swapChain->Present(1, 0);
 }
