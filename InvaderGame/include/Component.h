@@ -13,7 +13,7 @@ public:
 	bool Started = false;
 	GameObject* gameObject;
 
-	SERIALIZE(
+	SERIALIZE(Object,
 		SERIALIZE_FIELD(gameObject)
 	)
 

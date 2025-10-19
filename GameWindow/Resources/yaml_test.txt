@@ -1,3 +1,4 @@
+YamlTestScene
 --- 000
 GameObject:
   componentVector:

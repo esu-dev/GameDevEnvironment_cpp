@@ -16,7 +16,7 @@ Scene* SceneDataManager::Load(std::string path)
 
 
 	// シーンの作成
-	Scene* scene = SceneManager::CreateScene("YamlTestScene");
+	Scene* scene = SceneManager::CreateScene(contentVector[0]);
 
 
 	struct InstanceData
@@ -99,16 +99,17 @@ Scene* SceneDataManager::Load(std::string path)
 
 	
 	instanceDataVector[0]->object->Serialize();
-	SceneManager::LoadScene("YamlTestScene");
-	Save("write_test");
+	SceneManager::LoadScene(contentVector[0]);
 	return scene;
 }
 
-void SceneDataManager::Save(std::string name)
+void SceneDataManager::Save()
 {
+	std::string sceneName = SceneManager::GetActiveScene()->GetName();
+
 	// シーン内の全てのゲームオブジェクトに対してシリアライズを実行
 	// 最終的な文字列を書き込む
-	std::string serializedData = "";
+	std::string serializedData = sceneName + "\n";
 	for (GameObject* gameObject : SceneManager::GetActiveScene()->GetGameObjectVector())
 	{
 		// GameObject
@@ -127,11 +128,11 @@ void SceneDataManager::Save(std::string name)
 			serializedData += component->GetName() + ":\n";
 			for (std::string line : component->Serialize())
 			{
-				serializedData += "  " + line + "\n";
+				serializedData += line + "\n";
 			}
 		}
 	}
-	FileManager::Write("Resources/write_test.txt", serializedData);
+	FileManager::Write("Resources/" + sceneName + ".txt", serializedData);
 }
 
 

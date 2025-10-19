@@ -4,7 +4,7 @@
 #include "GameEngine.h"
 #include "SampleSceneAssests.h"
 
-#include "C:/Users/har14/source/repos/InvaderGame/InvaderGame/lib/imgui/include/imgui.h"
+#include "ImGuiUtility.h"
 
 using namespace SceneManagement;
 
@@ -21,6 +21,7 @@ void GameSystem::Initialize()
 	TimeController::Initialize();
 	Physics2D::Initialize();
 	Activator::Initialize();
+	SceneEditor::Initialize();
 
 	D3D.ChangeMode_2D();
 }
@@ -34,12 +35,16 @@ void GameSystem::Execute()
 
 	Physics2D::Update();
 	InputSystem::Update();
+	//SceneEditor::Update();
 
 	// ”wŒiF‚Ìİ’è
     //float color[4] = { 0.2f, 0.2f, 1.0f, 1.0f };
 	float color[4] = { 0, 0, 0, 1.0 };
     D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 	
+	// ImGui¶¬
+	ImGuiUtility::BeginFrame();
+
 	// Updateˆ—
 	Scene* activeScene = SceneManager::GetActiveScene();
 	if (activeScene != nullptr)
@@ -48,7 +53,8 @@ void GameSystem::Execute()
 		activeScene->Update();
 	}
 
-	ImGui::CreateContext();
+	// ImGui•`‰æ
+	ImGuiUtility::Render();
 
     D3D.m_swapChain->Present(1, 0);
 }

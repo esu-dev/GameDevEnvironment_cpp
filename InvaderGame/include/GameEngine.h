@@ -38,6 +38,8 @@
 #include "EngineTime.h"
 #include "TimeController.h"
 #include "Physics2D.h"
+#include "SceneEditor.h"
+#include "SceneDataManager.h"
 
 #include "Collision2D.h"
 #include "Event.h"

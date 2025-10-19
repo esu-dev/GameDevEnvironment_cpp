@@ -9,6 +9,10 @@
 #include "DemoSceneAsset.h"
 #include "DemoPhysicsSceneAsset.h"
 
+// ImGui
+#include "imgui_impl_win32.h"
+#include "ImGuiUtility.h"
+
 #define MAX_LOADSTRING 100
 
 // グローバル変数:
@@ -21,6 +25,9 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+// ImGui関数の前方宣言
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -157,6 +164,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    D3D.Initialize(hWnd, GameSystem::WINDOW_WIDTH, GameSystem::WINDOW_HEIGHT);
 
    DirectSound::Initialize(hWnd);
+   ImGuiUtility::Initialize(hWnd);
 
    // ウィンドウのクライアントサイズを設定
    RECT rcWnd, rcClient;
@@ -186,6 +194,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    // ImGuiのメッセージ処理
+    if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam)) return true;
+
     switch (message)
     {
     case WM_COMMAND:
@@ -219,6 +230,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
+
+    
+
     return 0;
 }
 

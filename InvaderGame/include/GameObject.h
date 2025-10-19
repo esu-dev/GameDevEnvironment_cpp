@@ -26,8 +26,8 @@ public:
 
 	NAME(GameObject)
 
-	SERIALIZE(
-		SERIALIZE_VECTOR(_componentVector, new TypeData(true, true, true))
+	SERIALIZE(Object,
+		SERIALIZE_VECTOR(_componentVector)
 	)
 
 	DESERIALIZE(Object,

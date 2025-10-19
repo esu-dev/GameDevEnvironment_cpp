@@ -7,28 +7,23 @@ void InputSystem::Update()
 {
 	for (KeyActionSet& keyActionSet : _keyActionSetVector)
 	{
-		// 同時押しじゃなくても反応してしまうバグがあるが一旦放置
+		bool isHolding = false;
+
 		for (KeySet& keySet : keyActionSet.keySetVector)
 		{
 			if (keySet.isHold)
 			{
-				if (!Input::GetKey(keySet.vkey))
+				if (Input::GetKey(keySet.vkey))
 				{
-					goto CONT;
+					isHolding = true;
 				}
 			}
 			else
 			{
-				if (!Input::GetKeyDown(keySet.vkey))
-				{
-					goto CONT;
-				}
+				// GetKeyDownを呼ぶことで履歴をリセット
+				if (Input::GetKeyDown(keySet.vkey) && isHolding) keyActionSet.action();
 			}
 		}
-
-		keyActionSet.action();
-
-	CONT:;
 	}
 }
 

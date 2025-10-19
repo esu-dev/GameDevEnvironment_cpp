@@ -9,16 +9,10 @@ class Vector3 : public SerializedClass
 public:
 	float x, y, z;
 
-	SERIALIZE(
-		SERIALIZE_FIELD(x),
-		SERIALIZE_FIELD(y),
-		SERIALIZE_FIELD(z)
-	)
-
-	DESERIALIZE(SerializedClass,
-		DESERIALIZE_FIELD(x),
-		DESERIALIZE_FIELD(y),
-		DESERIALIZE_FIELD(z)
+	SERIALIZE2(SerializedClass,
+		SERIALIZE_FIELD2(x),
+		SERIALIZE_FIELD2(y),
+		SERIALIZE_FIELD2(z)
 	)
 
 	Vector3();

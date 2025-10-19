@@ -1,0 +1,50 @@
+YamlTestScene
+--- 1656398468=641584702=44564466
+GameObject:
+  _componentVector:
+  - (instanceID)1062123783=1360749216=951367352
+  - (instanceID)1608044093=1786516046=1070535660
+--- 1062123783=1360749216=951367352
+Transform:
+  gameObject: 1656398468=641584702=44564466
+  position:
+    _variable:
+      x: 0.000000
+      y: 0.000000
+      z: 0.000000
+--- 1608044093=1786516046=1070535660
+Camera:
+  gameObject: 1656398468=641584702=44564466
+--- 000
+GameObject:
+  _componentVector:
+  - (instanceID)001
+  - (instanceID)002
+--- 001
+Transform:
+  gameObject: 000
+  position:
+    _variable:
+      x: 1.000000
+      y: 3.000000
+      z: 0.000000
+--- 002
+SpriteRenderer:
+  gameObject: 000
+--- 189708308=322934011=1471798994
+GameObject:
+  _componentVector:
+  - (instanceID)1468488889=2047396616=1753639090
+  - (instanceID)8478839=721708229=1099924507
+--- 1468488889=2047396616=1753639090
+Transform:
+  gameObject: 189708308=322934011=1471798994
+  position:
+    _variable:
+      x: 0.000000
+      y: 0.000000
+      z: 0.000000
+--- 8478839=721708229=1099924507
+SpriteRenderer:
+  gameObject: 189708308=322934011=1471798994
+

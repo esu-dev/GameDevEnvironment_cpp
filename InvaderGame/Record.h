@@ -10,6 +10,10 @@ template <typename T>
 class Record : public RecordBase
 {
 public:
+	SERIALIZE(RecordBase,
+		SERIALIZE_FIELD(_variable)
+	)
+
 	DESERIALIZE(RecordBase,
 		DESERIALIZE_FIELD(_variable)
 	)
