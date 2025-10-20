@@ -31,20 +31,4 @@ Transform:
 --- 002
 SpriteRenderer:
   gameObject: 000
---- 189708308=322934011=1471798994
-GameObject:
-  _componentVector:
-  - (instanceID)1468488889=2047396616=1753639090
-  - (instanceID)8478839=721708229=1099924507
---- 1468488889=2047396616=1753639090
-Transform:
-  gameObject: 189708308=322934011=1471798994
-  position:
-    _variable:
-      x: 0.000000
-      y: 0.000000
-      z: 0.000000
---- 8478839=721708229=1099924507
-SpriteRenderer:
-  gameObject: 189708308=322934011=1471798994
 

@@ -6,6 +6,6 @@ class SceneEditor : public Editor
 {
 public:
 	static void Initialize();
-	void Update() override;
+	static void Update();
 };
 

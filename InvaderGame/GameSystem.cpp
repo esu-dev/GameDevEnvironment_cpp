@@ -28,6 +28,11 @@ void GameSystem::Initialize()
 
 void GameSystem::Execute()
 {
+	// 背景色の設定
+	//float color[4] = { 0.2f, 0.2f, 1.0f, 1.0f };
+	float color[4] = { 0, 0, 0, 1.0 };
+	D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
+
 	// イベント処理
 	_delayedExecutionEvent.Invoke();
 	_delayedExecutionEvent.RemoveAllListener();
@@ -35,15 +40,7 @@ void GameSystem::Execute()
 
 	Physics2D::Update();
 	InputSystem::Update();
-	//SceneEditor::Update();
-
-	// 背景色の設定
-    //float color[4] = { 0.2f, 0.2f, 1.0f, 1.0f };
-	float color[4] = { 0, 0, 0, 1.0 };
-    D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
-	
-	// ImGui生成
-	ImGuiUtility::BeginFrame();
+	SceneEditor::Update();
 
 	// Update処理
 	Scene* activeScene = SceneManager::GetActiveScene();
@@ -54,6 +51,7 @@ void GameSystem::Execute()
 	}
 
 	// ImGui描画
+	// これを最後に持ってこないと、オブジェクトの下にGUIが表示されてしまう。
 	ImGuiUtility::Render();
 
     D3D.m_swapChain->Present(1, 0);

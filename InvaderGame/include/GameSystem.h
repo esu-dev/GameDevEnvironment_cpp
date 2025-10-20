@@ -10,8 +10,8 @@
 class GameSystem
 {
 public:
-	static const int WINDOW_WIDTH = 960;
-	static const int WINDOW_HEIGHT = 540;
+	static const int WINDOW_WIDTH = 1440;
+	static const int WINDOW_HEIGHT = 810;
 
 	static void CreateInstance()
 	{
