@@ -33,6 +33,8 @@ void GameSystem::Execute()
 	float color[4] = { 0, 0, 0, 1.0 };
 	D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 
+	//ImGuiUtility::BeginFrame();
+
 	// ƒCƒxƒ“ƒgˆ—
 	_delayedExecutionEvent.Invoke();
 	_delayedExecutionEvent.RemoveAllListener();

@@ -11,24 +11,33 @@
 
 void SceneEditor::Initialize()
 {
-	InputSystem::KeySet keyset_ctrl;
-	keyset_ctrl .isHold = true;
-	keyset_ctrl.vkey = VK_CONTROL;
+	Texture* texture = new Texture("Resources/Texture/Frame1.png");
+	_frameObject = GameObject::Create();
+	_frameObject->AddComponent<SpriteRenderer>()->SetTexture(texture);
 
-	InputSystem::KeySet keyset_s;
-	keyset_s.isHold = false;
-	keyset_s.vkey = 'S';
 
-	InputSystem::AddKeyAction({ keyset_ctrl, keyset_s }, []() -> void { SceneDataManager::Save(); });
+	// 設置フレーム移動コマンド
+	InputSystem::AddKeyAction({ InputSystem::KeySet('W') }, []() -> void { _frameObject->GetTransform()->position.Get().y += 1; });
+	InputSystem::AddKeyAction({ InputSystem::KeySet('A') }, []() -> void { _frameObject->GetTransform()->position.Get().x -= 1; });
+	InputSystem::AddKeyAction({ InputSystem::KeySet('S') }, []() -> void { _frameObject->GetTransform()->position.Get().y -= 1; });
+	InputSystem::AddKeyAction({ InputSystem::KeySet('D') }, []() -> void { _frameObject->GetTransform()->position.Get().x += 1; });
+
+	// 設置コマンド
+	InputSystem::AddKeyAction({ InputSystem::KeySet('J') }, []() -> void {
+		GameObject* gameObject = GameObject::Create();
+		gameObject->GetTransform()->position = _frameObject->GetTransform()->position;
+		gameObject->AddComponent<SpriteRenderer>();
+
+		SceneManagement::SceneManager::GetActiveScene()->AddGameObject(gameObject);
+	});
+
+	// セーブコマンド
+	InputSystem::AddKeyAction({ InputSystem::KeySet('P') }, []() -> void { SceneDataManager::Save(); });
 }
 
 void SceneEditor::Update()
 {
 	// imgui表示
-	/*ImGui::SetNextWindowSize(ImVec2(320, 100));
-	ImGui::Begin("hoge");
-	ImGui::Text("fugafuga");
-	ImGui::End();*/
 	ImGuiUtility::BeginFrame();
 	ImGui::ShowDemoWindow();
 	ImGui::SetNextWindowPos(ImVec2(0, 0));
@@ -53,11 +62,9 @@ void SceneEditor::Update()
 
 	ImGui::End();
 
-	if (Input::GetKeyDown('A'))
-	{
-		GameObject* gameObject = GameObject::Create();
-		gameObject->AddComponent<SpriteRenderer>();
 
-		SceneManagement::SceneManager::GetActiveScene()->AddGameObject(gameObject);
-	}
+	// 
+	_frameObject->Update();
 }
+
+GameObject* SceneEditor::_frameObject = nullptr;

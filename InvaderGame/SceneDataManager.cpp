@@ -17,6 +17,8 @@ Scene* SceneDataManager::Load(std::string path)
 
 	// シーンの作成
 	Scene* scene = SceneManager::CreateScene(contentVector[0]);
+	/*Scene* scene = new Scene(contentVector[0]);
+	SceneManager::AddScene(scene);*/
 
 
 	struct InstanceData
@@ -80,25 +82,12 @@ Scene* SceneDataManager::Load(std::string path)
 		instanceData->object->Deserialize(instanceData->yamlVector);
 
 		// GameObjectをSceneに追加
-		/*if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceData->object))
+		if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceData->object))
 		{
 			scene->AddGameObject(gameObject);
-		}*/
+		}
 	}
-	//instanceDataVector[0]->object->Deserialize(instanceDataVector[0]->yamlVector);
-	if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceDataVector[0]->object))
-	{
-		scene->AddGameObject(gameObject);
-	}
-
-	// instanceIDの値は、全体から検索してポインタを代入
-
-	// オブジェクトのデータベースは忘れずに開放しておく
-
-	//FileManager::Write("Resources/write_test.txt", "aiueo");
-
 	
-	instanceDataVector[0]->object->Serialize();
 	SceneManager::LoadScene(contentVector[0]);
 	return scene;
 }

@@ -8,6 +8,7 @@
 void Activator::Initialize()
 {
 	REGISTER_TYPE(GameObject);
+	REGISTER_TYPE(Camera);
 	REGISTER_TYPE(Transform);
 	REGISTER_TYPE(SpriteRenderer);
 }
@@ -17,7 +18,7 @@ Object* Activator::CreateInstance(std::string typeString)
 	auto creationFunc = instanceMap[typeString];
 	if (creationFunc == nullptr)
 	{
-		Debug::Log("[%s] is nor registerd.", typeString);
+		Debug::Log("[Activator.cpp] %sÉNÉâÉXÇ™ìoò^Ç≥ÇÍÇƒÇ¢Ç‹ÇπÇÒÅB", typeString.c_str());
 		return nullptr;
 	}
 	return instanceMap[typeString]();

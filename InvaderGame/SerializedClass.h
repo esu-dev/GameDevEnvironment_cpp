@@ -116,7 +116,13 @@ protected:
 			std::vector<std::string> subSerializeDataVector = value.Serialize(indentNum + 1);
 			serializedDataVector.insert(serializedDataVector.end(), subSerializeDataVector.begin(), subSerializeDataVector.end());
 		}
-		else serializedDataVector.push_back("error");
+		// ‚»‚Ì‘¼‚Ístring‚Æ‚İ‚È‚·
+		// ‚à‚µ—áŠO‚ª‚ ‚éê‡‚ÍA•”•ª“Áê‰»‚ÅÀ‘•‚·‚é
+		else
+		{
+			//serializedDataVector.push_back(indent + name + ": " + std::to_string(value));
+			serializedDataVector.push_back(indent + name + ": " + "error");
+		}
 
 		return serializedDataVector;
 	}

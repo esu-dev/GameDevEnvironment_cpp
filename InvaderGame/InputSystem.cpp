@@ -7,23 +7,26 @@ void InputSystem::Update()
 {
 	for (KeyActionSet& keyActionSet : _keyActionSetVector)
 	{
-		bool isHolding = false;
+		bool canAction = true;
 
 		for (KeySet& keySet : keyActionSet.keySetVector)
 		{
 			if (keySet.isHold)
 			{
-				if (Input::GetKey(keySet.vkey))
+				if (!Input::GetKey(keySet.vkey))
 				{
-					isHolding = true;
+					canAction = false;
 				}
 			}
 			else
 			{
 				// GetKeyDownを呼ぶことで履歴をリセット
-				if (Input::GetKeyDown(keySet.vkey) && isHolding) keyActionSet.action();
+				// 同じ文字は１フレーム内で１度しか認識されない
+				if (!Input::GetKeyDown(keySet.vkey)) canAction = false;
 			}
 		}
+
+		if (canAction) keyActionSet.action();
 	}
 }
 

@@ -7,8 +7,12 @@ class InputSystem
 public:
 	struct KeySet
 	{
-		int vkey;
-		bool isHold;
+		int vkey = 0;
+		bool isHold = false;
+
+		KeySet() {}
+		KeySet(int vkey) { this->vkey = vkey; }
+		KeySet(int vkey, bool isHold) { this->vkey = vkey; this->isHold = isHold; }
 	};
 
 	static void Update();
