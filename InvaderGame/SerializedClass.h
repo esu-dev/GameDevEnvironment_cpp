@@ -76,6 +76,7 @@
 
 
 #include "framework.h"
+#include "std_extension.h"
 #include "SceneDataManager.h"
 
 class Component;
@@ -116,11 +117,22 @@ protected:
 			std::vector<std::string> subSerializeDataVector = value.Serialize(indentNum + 1);
 			serializedDataVector.insert(serializedDataVector.end(), subSerializeDataVector.begin(), subSerializeDataVector.end());
 		}
-		// その他はstringとみなす
-		// もし例外がある場合は、部分特殊化で実装する
+		// vector
+		else if constexpr (std_extension::is_vector_v<T>)
+		{
+			serializedDataVector.push_back(indent + name + ":");
+			for (int i = 0; i < value.size(); i++)
+			{
+				serializedDataVector.push_back(indent + "- (instanceID)" + value[i].get()->instanceID);
+			}
+		}
+		// 文字列
+		else if constexpr (std_extension::is_string_v<T>)
+		{
+			serializedDataVector.push_back(indent + name + ": " + value);
+		}
 		else
 		{
-			//serializedDataVector.push_back(indent + name + ": " + std::to_string(value));
 			serializedDataVector.push_back(indent + name + ": " + "error");
 		}
 
@@ -166,10 +178,35 @@ protected:
 
 			}
 		}
+		// ポインタ
+		else if constexpr (std::is_pointer<T>())
+		{
+
+		}
 		// シリアライズできる場合(ex. Record)
 		else if constexpr (std::is_base_of<SerializedClass, T>())
 		{
 			variable.Deserialize(instanceData->memberVector);
+		}
+		// vector
+		else if constexpr (std_extension::is_vector_v<T>)
+		{
+			// shared_ptr
+			if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)
+			{
+				for (auto member : instanceData->memberVector)
+				{
+					// インスタンスの検索
+					Object* object = SceneDataManager::GetInstanceID2PointerMap()[member];
+
+					if (Component* component = dynamic_cast<Component*>(object)) variable.push_back(std::shared_ptr<Component>(component));
+				}
+			}
+		}
+		// 文字列
+		else if constexpr (std_extension::is_string_v<T>)
+		{
+			variable = instanceData->memberVector[0];
 		}
 	}
 
@@ -229,7 +266,7 @@ protected:
 			if (isPacking)
 			{
 				// リスト
-				if (std::regex_match(instanceData, m, std::regex(R"(-\s(\(\w+\))(\w+))")))
+				if (std::regex_match(instanceData, m, std::regex(R"(-\s(\(\w+\))(.+))")))
 				{
 					subInstanceDataVector.back()->isVector = true;
 

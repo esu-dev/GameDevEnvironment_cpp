@@ -27,11 +27,13 @@ public:
 	NAME(GameObject)
 
 	SERIALIZE(Object,
-		SERIALIZE_VECTOR(_componentVector)
+		SERIALIZE_FIELD(tag),
+		SERIALIZE_FIELD(_componentVector)
 	)
 
 	DESERIALIZE(Object,
-		DESERIALIZE_VECTOR(_componentVector)
+		DESERIALIZE_FIELD(tag),
+		DESERIALIZE_FIELD(_componentVector)
 	)
 
 	// 関数テンプレートは型やコンパイル時に定まる値をパラメータ化する機能

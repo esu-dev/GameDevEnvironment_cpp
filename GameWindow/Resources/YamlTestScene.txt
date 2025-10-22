@@ -1,6 +1,7 @@
 YamlTestScene
 --- 1252673902=482747128=54055886
 GameObject:
+  tag: MainCamera
   _componentVector:
   - (instanceID)425336760=1523012605=1633227268
   - (instanceID)570298916=363162752=566082805
@@ -17,6 +18,7 @@ Camera:
   gameObject: 1252673902=482747128=54055886
 --- 000
 GameObject:
+  tag: Untagged
   _componentVector:
   - (instanceID)001
   - (instanceID)002
@@ -31,4 +33,89 @@ Transform:
 --- 002
 SpriteRenderer:
   gameObject: 000
+--- 1913013932=1745090229=425463357
+GameObject:
+  tag: Untagged
+  _componentVector:
+  - (instanceID)1315389727=65748752=1549957732
+  - (instanceID)1884663730=626799079=1562155864
+--- 1315389727=65748752=1549957732
+Transform:
+  gameObject: 1913013932=1745090229=425463357
+  position:
+    _variable:
+      x: -1.000000
+      y: 0.000000
+      z: 0.000000
+--- 1884663730=626799079=1562155864
+SpriteRenderer:
+  gameObject: 1913013932=1745090229=425463357
+--- 1970904921=1161532955=1534539814
+GameObject:
+  tag: Untagged
+  _componentVector:
+  - (instanceID)282304226=1165105158=888343929
+  - (instanceID)305307852=1672307391=801743174
+--- 282304226=1165105158=888343929
+Transform:
+  gameObject: 1970904921=1161532955=1534539814
+  position:
+    _variable:
+      x: 0.000000
+      y: -1.000000
+      z: 0.000000
+--- 305307852=1672307391=801743174
+SpriteRenderer:
+  gameObject: 1970904921=1161532955=1534539814
+--- 1253918638=1447690923=392198031
+GameObject:
+  tag: Untagged
+  _componentVector:
+  - (instanceID)948829519=1773998124=932037958
+  - (instanceID)226348704=1326644495=608976284
+--- 948829519=1773998124=932037958
+Transform:
+  gameObject: 1253918638=1447690923=392198031
+  position:
+    _variable:
+      x: 1.000000
+      y: -1.000000
+      z: 0.000000
+--- 226348704=1326644495=608976284
+SpriteRenderer:
+  gameObject: 1253918638=1447690923=392198031
+--- 1101955986=140796045=1396717321
+GameObject:
+  tag: Untagged
+  _componentVector:
+  - (instanceID)121212974=1290721318=1643803851
+  - (instanceID)1729203659=25314607=1120228732
+--- 121212974=1290721318=1643803851
+Transform:
+  gameObject: 1101955986=140796045=1396717321
+  position:
+    _variable:
+      x: 2.000000
+      y: -1.000000
+      z: 0.000000
+--- 1729203659=25314607=1120228732
+SpriteRenderer:
+  gameObject: 1101955986=140796045=1396717321
+--- 1314138309=1951308622=712711717
+GameObject:
+  tag: Untagged
+  _componentVector:
+  - (instanceID)685554284=1201835716=194259975
+  - (instanceID)720480009=645748456=883007803
+--- 685554284=1201835716=194259975
+Transform:
+  gameObject: 1314138309=1951308622=712711717
+  position:
+    _variable:
+      x: 3.000000
+      y: 0.000000
+      z: 0.000000
+--- 720480009=645748456=883007803
+SpriteRenderer:
+  gameObject: 1314138309=1951308622=712711717
 

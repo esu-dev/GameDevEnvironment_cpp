@@ -56,12 +56,29 @@ void SceneEditor::Update()
 			if (ImGui::Selectable((gameObjectVector[i]->name + std::to_string(i)).c_str(), selected == i))
 			{
 				selected = i;
+
+				Selection::gameObject = gameObjectVector[i];
 			}
 		}
 	}
 
 	ImGui::End();
 
+
+	ImGui::SetNextWindowPos(ImVec2(300, 0));
+	ImGui::SetNextWindowSize(ImVec2(200, 300));
+	ImGui::Begin("Inspector");
+	if (Selection::gameObject != nullptr)
+	{
+		for (auto& component : Selection::gameObject->GetComponentVector())
+		{
+			if (ImGui::CollapsingHeader(component.get()->GetName().c_str()))
+			{
+
+			}
+		}
+	}
+	ImGui::End();
 
 	// 
 	_frameObject->Update();

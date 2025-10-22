@@ -44,4 +44,7 @@
 #include "Collision2D.h"
 #include "Event.h"
 
+// エディター向け
+#include "Selection.h"
+
 #include "SampleSceneAssests.h"

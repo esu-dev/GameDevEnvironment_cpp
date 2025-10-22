@@ -62,7 +62,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //SceneManagement::SceneManager::LoadScene(DemoPhysicsSceneAsset::load()->GetName());
     //SampleSceneAssets::load();
     //DemoSceneAsset::load();
-    SceneDataManager::Load("Resources/yaml_test.txt");
+    //SceneDataManager::Load("Resources/yaml_test.txt");
+    SceneDataManager::Load("Resources/YamlTestScene.txt");
 
     // ゲームループ
     while (1)

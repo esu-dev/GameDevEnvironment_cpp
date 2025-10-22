@@ -27,4 +27,35 @@ public:
 	{
 		vector.erase(std::remove(vector.begin(), vector.end(), element), vector.end());
 	}
+
+	// テンプレート構造体
+	template <typename T>
+	struct is_vector : std::false_type {};
+
+	// テンプレート部分特殊化
+	template <typename T>
+	struct is_vector<std::vector<T>> : std::true_type {};
+
+	template <typename T>
+	static constexpr bool is_vector_v = is_vector<T>::value;
+
+
+	template <typename T>
+	struct is_string : std::false_type {};
+
+	template <>
+	struct is_string<std::string> : std::true_type {};
+
+	template <typename T>
+	static constexpr bool is_string_v = is_string<T>::value;
+
+	
+	template <typename T>
+	struct is_shared_ptr : std::false_type {};
+
+	template <typename U>
+	struct is_shared_ptr<std::shared_ptr<U>> : std::true_type {};
+
+	template <typename U>
+	static constexpr bool is_shared_ptr_v = is_shared_ptr<U>::value;
 };

@@ -16,9 +16,9 @@ Scene* SceneDataManager::Load(std::string path)
 
 
 	// ƒV[ƒ“‚Ìì¬
-	Scene* scene = SceneManager::CreateScene(contentVector[0]);
-	/*Scene* scene = new Scene(contentVector[0]);
-	SceneManager::AddScene(scene);*/
+	//Scene* scene = SceneManager::CreateScene(contentVector[0]);
+	Scene* scene = new Scene(contentVector[0]);
+	SceneManager::AddScene(scene);
 
 
 	struct InstanceData
@@ -36,7 +36,7 @@ Scene* SceneDataManager::Load(std::string path)
 		std::smatch m;
 
 		// instanceID
-		std::regex re(R"((-{3})\s(\w+))");
+		std::regex re(R"((-{3})\s(.+))");
 		if (std::regex_match(content, m, re))
 		{
 			isPacking = false;
@@ -106,7 +106,7 @@ void SceneDataManager::Save()
 		serializedData += gameObject->GetName() + ":\n";
 		for (std::string line : gameObject->Serialize())
 		{
-			serializedData += "  " + line + "\n";
+			serializedData += line + "\n";
 		}
 
 		// Component
