@@ -262,6 +262,7 @@
     <ClCompile Include="SceneEditor.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Selection.cpp" />
+    <ClCompile Include="SerializedClass.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SpriteRenderer.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>

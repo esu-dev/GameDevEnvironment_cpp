@@ -6,6 +6,8 @@
 class BoxCollider2D : public Collider2D
 {
 public:
+	NAME(BoxCollider2D)
+
 	BoxCollider2D();
 	~BoxCollider2D();
 	void SetSize(Vector2 size);

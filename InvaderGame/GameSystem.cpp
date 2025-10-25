@@ -2,6 +2,7 @@
 
 #include "DirectX.h"
 #include "GameEngine.h"
+#include "SceneEditor.h"
 #include "SampleSceneAssests.h"
 
 #include "ImGuiUtility.h"
@@ -33,7 +34,7 @@ void GameSystem::Execute()
 	float color[4] = { 0, 0, 0, 1.0 };
 	D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 
-	//ImGuiUtility::BeginFrame();
+	ImGuiUtility::BeginFrame();
 
 	// ƒCƒxƒ“ƒgˆ—
 	_delayedExecutionEvent.Invoke();

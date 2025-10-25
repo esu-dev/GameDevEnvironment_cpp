@@ -11,6 +11,7 @@ public:
 	static void Update();
 
 private:
+	static bool _isEditMode;
 	static GameObject* _frameObject;
 };
 

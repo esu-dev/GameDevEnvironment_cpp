@@ -26,6 +26,13 @@ GameObject* GameObject::Create()
 	return gameObject;
 }
 
+void GameObject::AddComponent(Component* component)
+{
+	std::shared_ptr<Component> sPtr_component = std::shared_ptr<Component>(component);
+	sPtr_component.get()->gameObject = this;
+	_componentVector.push_back(sPtr_component);
+}
+
 Transform* GameObject::GetTransform()
 {
 	return GetComponent<Transform>();

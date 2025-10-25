@@ -89,6 +89,8 @@ Vector2 BoxCollider2D::GetClosestPoint(Vector2 point)
 
 bool BoxCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D* collider)
 {
+	if (collider == nullptr) return false;
+
 	Vector2 thisVertices[4];
 	this->GetOBBvertices(thisVertices);
 

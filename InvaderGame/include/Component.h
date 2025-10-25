@@ -13,12 +13,8 @@ public:
 	bool Started = false;
 	GameObject* gameObject;
 
-	SERIALIZE(Object,
-		SERIALIZE_FIELD(gameObject)
-	)
-
-	DESERIALIZE(Object,
-		DESERIALIZE_POINTER(gameObject)
+	SERIALIZE3(Object,
+		SERIALIZE_FIELD3(gameObject)
 	)
 
 	virtual void OnEnable() {} // 本来はMonoBehaviourに定義
@@ -27,7 +23,6 @@ public:
 	virtual void Update() {}
 
 	Transform* GetTransform();
-	void SetTransform(Transform* transform);
 
 	template<typename T> T* GetComponent() // templateは分割コンパイルすると面倒
 	{

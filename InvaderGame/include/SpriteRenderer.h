@@ -9,13 +9,15 @@
 class SpriteRenderer : public Component
 {
 public:
+	NAME(SpriteRenderer)
+	SERIALIZE3(Component,
+	)
+
 	SpriteRenderer();
 	void SetCanMove(bool canMove);
 	void SetTexture(Texture* texture);
 	void SetColor(DirectX::XMFLOAT4 color);
 	void Update() override;
-
-	NAME(SpriteRenderer)
 
 
 private:

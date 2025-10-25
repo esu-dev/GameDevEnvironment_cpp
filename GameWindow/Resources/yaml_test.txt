@@ -1,18 +1,18 @@
 YamlTestScene
 --- 000
 GameObject:
-  componentVector:
+  tag: MainCamera
+  _componentVector:
   - (instanceID)001
   - (instanceID)002
 --- 001
 Transform:
-  gameObject: (instanceID)000
+  gameObject: 000
   position:
     _variable:
-      x: 1
-      y: 3
-      z: 0
+      x: 0.000000
+      y: 0.000000
+      z: 0.000000
 --- 002
-SpriteRenderer:
-  gameObject: (instanceID)000
-  
+Camera:
+  gameObject: 000

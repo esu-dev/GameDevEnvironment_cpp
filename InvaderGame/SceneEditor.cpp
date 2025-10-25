@@ -4,6 +4,7 @@
 #include "Utility.h"
 #include "GameEngine.h"
 #include "ImGuiUtility.h"
+#include "GameSystem.h"
 
 #include "imgui_internal.h"
 #include "imgui_impl_win32.h"
@@ -15,6 +16,15 @@ void SceneEditor::Initialize()
 	_frameObject = GameObject::Create();
 	_frameObject->AddComponent<SpriteRenderer>()->SetTexture(texture);
 
+	EngineTime::TimeScale = 0;
+
+
+	// エディタ起動コマンド
+	InputSystem::AddKeyAction({ InputSystem::KeySet('E') }, []() -> void {
+		_isEditMode = !_isEditMode;
+		EngineTime::TimeScale = _isEditMode ? 0 : 1;
+	});
+
 
 	// 設置フレーム移動コマンド
 	InputSystem::AddKeyAction({ InputSystem::KeySet('W') }, []() -> void { _frameObject->GetTransform()->position.Get().y += 1; });
@@ -24,6 +34,7 @@ void SceneEditor::Initialize()
 
 	// 設置コマンド
 	InputSystem::AddKeyAction({ InputSystem::KeySet('J') }, []() -> void {
+		if (!_isEditMode) return;
 		GameObject* gameObject = GameObject::Create();
 		gameObject->GetTransform()->position = _frameObject->GetTransform()->position;
 		gameObject->AddComponent<SpriteRenderer>();
@@ -37,9 +48,13 @@ void SceneEditor::Initialize()
 
 void SceneEditor::Update()
 {
+	if (!_isEditMode) return;
+
 	// imgui表示
-	ImGuiUtility::BeginFrame();
 	ImGui::ShowDemoWindow();
+
+
+	// ヒエラルキー
 	ImGui::SetNextWindowPos(ImVec2(0, 0));
 	ImGui::SetNextWindowSize(ImVec2(200, 500));
 	ImGui::Begin("Hierarchy");
@@ -61,10 +76,10 @@ void SceneEditor::Update()
 			}
 		}
 	}
-
 	ImGui::End();
 
 
+	// インスペクター
 	ImGui::SetNextWindowPos(ImVec2(300, 0));
 	ImGui::SetNextWindowSize(ImVec2(200, 300));
 	ImGui::Begin("Inspector");
@@ -74,8 +89,85 @@ void SceneEditor::Update()
 		{
 			if (ImGui::CollapsingHeader(component.get()->GetName().c_str()))
 			{
+				bool hasChanged = false;
 
+				auto serializedDataVec = component->Serialize();
+				for (auto& serializedData : serializedDataVec)
+				{
+					std::smatch smatch;
+					if (std::regex_match(serializedData, smatch, std::regex(R"((\s*(\w+):\s)(\w+))")))
+					{
+						std::string value = smatch[3].str();
+						if (value == "true" || value == "false")
+						{
+							bool b = (value == "true");
+							if (ImGui::Checkbox(smatch[2].str().c_str(), &b))
+							{
+								hasChanged = true;
+								
+								serializedData = smatch[1].str() + (b ? "true" : "false");
+							}
+						}
+						else
+						{
+							ImGui::Text(serializedData.c_str());
+						}
+					}
+					else
+					{
+						ImGui::Text(serializedData.c_str());
+					}
+				}
+
+				if (hasChanged)
+				{
+					for (std::string& serializedData : serializedDataVec)
+					{
+						// 空白除去
+						std::smatch smatch;
+						if (std::regex_match(serializedData, smatch, std::regex(R"(\s*(.+))")))
+						{
+							serializedData = smatch[1].str();
+						}
+					}
+
+					component->Deserialize(serializedDataVec);
+				}
 			}
+		}
+
+		if (ImGui::Button("Add Component"))
+		{
+			ImGui::OpenPopup("add_component_popup");
+		}
+		//ImGui::SameLine();
+		if (ImGui::BeginPopup("add_component_popup"))
+		{
+			std::vector<std::string> componentNameVec = Activator::GetObjectNameVec();
+			static int selectedIndex = 0;
+			const char* comboPreviewValue = componentNameVec[selectedIndex].c_str();
+			if (ImGui::BeginCombo("-", comboPreviewValue))
+			{
+				for (int n = 0; n < componentNameVec.size(); n++)
+				{
+					bool isSelected = (n == selectedIndex);
+					if (ImGui::Selectable(componentNameVec[n].c_str(), isSelected)) selectedIndex = n;
+
+					// Set the initial focus when opening the combo (scrolling + keyboard navigation focus)
+					if (isSelected)	ImGui::SetItemDefaultFocus();
+				}
+				ImGui::EndCombo();
+			}
+
+			if (ImGui::Button("Add Component"))
+			{
+				Component* component = dynamic_cast<Component*>(Activator::CreateInstance(componentNameVec[selectedIndex]));
+				Selection::gameObject->AddComponent(component);
+				//GameSystem::GetInstance().AddDelayedExecution([&]() -> void { Selection::gameObject->AddComponent(component); });
+				ImGui::CloseCurrentPopup();
+			}
+
+			ImGui::EndPopup();
 		}
 	}
 	ImGui::End();
@@ -84,4 +176,5 @@ void SceneEditor::Update()
 	_frameObject->Update();
 }
 
+bool SceneEditor::_isEditMode = true;
 GameObject* SceneEditor::_frameObject = nullptr;

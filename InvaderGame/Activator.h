@@ -8,7 +8,8 @@ class Activator
 public:
 	static void Initialize();
 	static Object* CreateInstance(std::string typeString);
+	static std::vector<std::string> GetObjectNameVec();
 
 private:
-	static std::unordered_map<std::string, std::function<Object*()>> instanceMap;
+	static std::unordered_map<std::string, std::function<Object*()>> nameToInstanceMap;
 };

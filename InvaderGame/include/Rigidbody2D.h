@@ -16,6 +16,11 @@ public:
 	//Vector2 velocity = Vector2(0, 0);
 	Record<Vector2> velocity;
 
+	NAME(Rigidbody2D)
+	SERIALIZE3(Component,
+		SERIALIZE_FIELD3(IsKinematic)
+	)
+
 	void Start() override;
 	void Update() override;
 

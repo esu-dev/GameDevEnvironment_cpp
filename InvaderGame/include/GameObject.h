@@ -46,6 +46,8 @@ public:
 		return component.get();
 	}
 
+	void AddComponent(Component* component);
+
 	template <typename T> T* GetComponent()
 	{
 		auto iterator = std::find_if(_componentVector.begin(), _componentVector.end(), [](std::shared_ptr<Component> x)

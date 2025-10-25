@@ -42,22 +42,60 @@
 		return n + (int)fv.size(); \
 	}
 
-#define SERIALIZE_FIELD2(v) \
-	std::pair<std::function<std::vector<std::string>(int)>, std::function<void(InstanceData*)>>( \
-		[&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, indentNum); }, \
-		[&](InstanceData* instanceData) -> void { DeserializeField(v, instanceData); } \
-	)
+//#define SERIALIZE_FIELD2(v) \
+//	std::pair<std::function<std::vector<std::string>(int)>, std::function<void(InstanceData*)>>( \
+//		[&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, indentNum); }, \
+//		[&](InstanceData* instanceData) -> void { DeserializeField(v, instanceData); } \
+//	)
+//
+//#define SERIALIZE2(p, ...) \
+//	std::vector<std::string> Serialize(const int indentNum = 1) override \
+//	{ \
+//		std::vector<std::string> pV = p::Serialize(indentNum); \
+//		std::vector<std::string> r; \
+//		if (pV[0] != "") r.insert(r.end(), pV.begin(), pV.end()); \
+//		std::vector<std::pair<std::function<std::vector<std::string>(int)>, std::function<void(InstanceData*)>>> functionVector = {__VA_ARGS__}; \
+//		for (auto& function : functionVector) \
+//		{ \
+//			std::vector<std::string> s = function.first(indentNum); \
+//			r.insert(r.end(), s.begin(), s.end()); \
+//		} \
+//		return r; \
+//	} \
+//	\
+//	int Deserialize(std::vector<std::string> v) override \
+//	{ \
+//		int n = p::Deserialize(v); \
+//		std::vector<std::pair<std::function<std::vector<std::string>(int)>, std::function<void(InstanceData*)>>> fv = {__VA_ARGS__}; \
+//		if (n >= 2) v.erase(v.begin(), v.begin() + n - 1); \
+//		else if (n == 1) v.erase(v.begin()); \
+//		InputValue2(v, fv); \
+//		return n + (int)fv.size(); \
+//	}
 
-#define SERIALIZE2(p, ...) \
+#define SERIALIZE_FIELD3(v) \
+	new SerializeFuncData( \
+		[&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, indentNum); }, \
+		[&](InstanceData* instanceData) -> void { DeserializeField(v, instanceData); }, \
+		[&]() -> FieldInfo { return FieldInfo(#v, typeid(v).name()); }, \
+		[&](std::string name) -> void { }) \
+
+#define SERIALIZE3(p, ...) \
+	std::vector<SerializeFuncData*> GetSerializeFuncData() override \
+	{ \
+		std::vector<SerializeFuncData*> pV = p::GetSerializeFuncData(); \
+		std::vector<SerializeFuncData*> sfdV = { __VA_ARGS__ }; \
+		pV.insert(pV.end(), sfdV.begin(), sfdV.end()); \
+		return pV; \
+	} \
+	\
 	std::vector<std::string> Serialize(const int indentNum = 1) override \
 	{ \
-		std::vector<std::string> pV = p::Serialize(indentNum); \
 		std::vector<std::string> r; \
-		if (pV[0] != "") r.insert(r.end(), pV.begin(), pV.end()); \
-		std::vector<std::pair<std::function<std::vector<std::string>(int)>, std::function<void(InstanceData*)>>> functionVector = {__VA_ARGS__}; \
-		for (auto& function : functionVector) \
+		std::vector<SerializeFuncData*> sfdV = GetSerializeFuncData(); \
+		for (auto& sfd : sfdV) \
 		{ \
-			std::vector<std::string> s = function.first(indentNum); \
+			std::vector<std::string> s = sfd->serializeFunc(indentNum); \
 			r.insert(r.end(), s.begin(), s.end()); \
 		} \
 		return r; \
@@ -65,12 +103,9 @@
 	\
 	int Deserialize(std::vector<std::string> v) override \
 	{ \
-		int n = p::Deserialize(v); \
-		std::vector<std::pair<std::function<std::vector<std::string>(int)>, std::function<void(InstanceData*)>>> fv = {__VA_ARGS__}; \
-		if (n >= 2) v.erase(v.begin(), v.begin() + n - 1); \
-		else if (n == 1) v.erase(v.begin()); \
-		InputValue2(v, fv); \
-		return n + (int)fv.size(); \
+		std::vector<SerializeFuncData*> sfdV = GetSerializeFuncData(); \
+		InputValue3(v, sfdV); \
+		return 0; \
 	}
 
 
@@ -84,11 +119,51 @@ class Component;
 class SerializedClass
 {
 public:
+	struct FieldInfo
+	{
+		std::string name;
+		std::string type;
+
+		FieldInfo(std::string name, std::string type)
+		{
+			this->name = name;
+			this->type = type;
+		}
+	};
+	
 	virtual std::vector<std::string> Serialize(const int indentNum = 1) { return { "" }; }
 	virtual int Deserialize(std::vector<std::string> v) { return 0; } // intを返すのは、親クラスの処理数を教えるため
-
+	std::vector<FieldInfo> GetFields();
+	void SetField();
 
 protected:
+	struct InstanceData
+	{
+		bool isVector = false;
+		bool hasInstanceID = false;
+		std::vector<std::string> memberVector;
+	};
+
+	struct SerializeFuncData
+	{
+		std::function<std::vector<std::string>(int)> serializeFunc;
+		std::function<void(InstanceData*)> deserializeFunc;
+		std::function<FieldInfo()> getFieldFunc;
+		std::function<void(std::string)> setFieldFunc;
+
+		SerializeFuncData(
+			std::function<std::vector<std::string>(int)> serilizeFunc,
+			std::function<void(InstanceData*)> deserializeFunc,
+			std::function<FieldInfo()> getFieldFunc,
+			std::function<void(std::string)> setFieldFunc)
+		{
+			this->serializeFunc = serilizeFunc;
+			this->deserializeFunc = deserializeFunc;
+			this->getFieldFunc = getFieldFunc;
+			this->setFieldFunc = setFieldFunc;
+		}
+	};
+
 	template <typename T>
 	static std::vector<std::string> SerializeField(const std::string& name, T& value, const int indentNum = 1)
 	{
@@ -103,7 +178,14 @@ protected:
 		// 値
 		if constexpr (std::is_arithmetic<T>())
 		{
-			serializedDataVector.push_back(indent + name + ": " + std::to_string(value));
+			if (typeid(T) == typeid(bool))
+			{
+				serializedDataVector.push_back(indent + name + ": " + (std::to_string(value) == "0" ? "false" : "true"));
+			}
+			else
+			{
+				serializedDataVector.push_back(indent + name + ": " + std::to_string(value));
+			}
 		}
 		// ポインタ
 		else if constexpr (std::is_pointer<T>())
@@ -152,12 +234,6 @@ protected:
 	}
 
 
-	struct InstanceData
-	{
-		bool isVector = false;
-		bool hasInstanceID = false;
-		std::vector<std::string> memberVector;
-	};
 	
 	template <typename T>
 	static void DeserializeField(T& variable, const InstanceData* instanceData)
@@ -173,15 +249,21 @@ protected:
 			{
 				variable = std::stof(value);
 			}
-			else
+			else if (typeid(T) == typeid(bool))
 			{
-
+				variable = (value == "true");
 			}
 		}
 		// ポインタ
 		else if constexpr (std::is_pointer<T>())
 		{
+			Object* object = SceneDataManager::GetInstanceID2PointerMap()[instanceData->memberVector[0]];
 
+			// Tにキャストで良いのでは？
+			if (T t = dynamic_cast<T>(object))
+			{
+				variable = t;
+			}
 		}
 		// シリアライズできる場合(ex. Record)
 		else if constexpr (std::is_base_of<SerializedClass, T>())
@@ -332,7 +414,7 @@ protected:
 		}
 	}
 
-	static void InputValue2(const std::vector<std::string>& instanceDataVector, const std::vector<std::pair<std::function<std::vector<std::string>(int)>, std::function<void(InstanceData*)>>>& functionVector)
+	static void InputValue3(const std::vector<std::string>& instanceDataVector, const std::vector<SerializeFuncData*>& functionVector)
 	{
 		bool isPacking = false;
 		std::vector<InstanceData*> subInstanceDataVector;
@@ -405,7 +487,9 @@ protected:
 		int i = 0;
 		for (auto& function : functionVector)
 		{
-			function.second(subInstanceDataVector[i++]);
+			function->deserializeFunc(subInstanceDataVector[i++]);
 		}
 	}
+
+	virtual std::vector<SerializeFuncData*> GetSerializeFuncData() { return std::vector<SerializeFuncData*>(); }
 };

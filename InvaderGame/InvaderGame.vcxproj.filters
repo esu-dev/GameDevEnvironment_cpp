@@ -240,6 +240,9 @@
     <ClCompile Include="Selection.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="SerializedClass.cpp">
+      <Filter>Source\GameEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
