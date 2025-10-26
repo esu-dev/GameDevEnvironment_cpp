@@ -484,10 +484,9 @@ protected:
 
 
 		// データを元に値を代入
-		int i = 0;
-		for (auto& function : functionVector)
+		for (int i = 0; i < subInstanceDataVector.size(); i++)
 		{
-			function->deserializeFunc(subInstanceDataVector[i++]);
+			functionVector[i]->deserializeFunc(subInstanceDataVector[i]);
 		}
 	}
 

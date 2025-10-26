@@ -91,32 +91,93 @@ void SceneEditor::Update()
 			{
 				bool hasChanged = false;
 
+				bool _isTreeOpen = false;
 				auto serializedDataVec = component->Serialize();
-				for (auto& serializedData : serializedDataVec)
+				for (int i = 0; i < serializedDataVec.size(); i++)
 				{
-					std::smatch smatch;
-					if (std::regex_match(serializedData, smatch, std::regex(R"((\s*(\w+):\s)(\w+))")))
-					{
-						std::string value = smatch[3].str();
-						if (value == "true" || value == "false")
+					std::function<void()> createContents = [&]() -> void {
+						if (i >= serializedDataVec.size()) return;
+
+						std::string& serializedData = serializedDataVec[i];
+						std::smatch smatch;
+
+						// 空白２個なら木構造終了
+						if (_isTreeOpen && std::regex_match(serializedData, smatch, std::regex(R"(\s{2}\w+:.+)")))
 						{
-							bool b = (value == "true");
-							if (ImGui::Checkbox(smatch[2].str().c_str(), &b))
+							i--;
+							_isTreeOpen = false;
+							return;
+						}
+
+						// 空白が多いならツリーが開いているときのみ
+						/*if (!_isTreeOpen && std::regex_match(serializedData, smatch, std::regex(R"(\s{2}\s+\w+:.*)")))
+						{
+							return;
+						}*/
+
+						ImGui::PushID(i);
+
+						if (std::regex_match(serializedData, smatch, std::regex(R"((\s*(\w+):\s)(.+))")))
+						{
+							std::string serializedVarName = smatch[1].str();
+							std::string label = smatch[2].str();
+							std::string value = smatch[3].str();
+
+							// float
+							if (std::regex_match(value, smatch, std::regex(R"(-?\d+\.\d+)")))
 							{
-								hasChanged = true;
-								
-								serializedData = smatch[1].str() + (b ? "true" : "false");
+								float v = std::stof(value);
+								if (ImGui::DragFloat(label.c_str(), &v))
+								{
+									hasChanged = true;
+
+									serializedData = serializedVarName + std::to_string(v);
+								}
+							}
+							else if (value == "true" || value == "false")
+							{
+								bool b = (value == "true");
+								if (ImGui::Checkbox(label.c_str(), &b))
+								{
+									hasChanged = true;
+
+									serializedData = serializedVarName + (b ? "true" : "false");
+								}
+							}
+							else
+							{
+								ImGui::Text(serializedData.c_str());
 							}
 						}
+						// クラス、構造体
+						/*else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*(\w+):)")))
+						{
+							i++;
+
+							std::string label = smatch[1].str();
+							if (ImGui::TreeNode(label.c_str()))
+							{
+								_isTreeOpen = true;
+								createContents();
+								ImGui::TreePop();
+								return;
+							}
+						}*/
 						else
 						{
 							ImGui::Text(serializedData.c_str());
 						}
-					}
-					else
-					{
-						ImGui::Text(serializedData.c_str());
-					}
+
+						ImGui::PopID();
+
+						if (_isTreeOpen)
+						{
+							i++;
+							createContents();
+						}
+					};
+
+					createContents();
 				}
 
 				if (hasChanged)
@@ -125,7 +186,7 @@ void SceneEditor::Update()
 					{
 						// 空白除去
 						std::smatch smatch;
-						if (std::regex_match(serializedData, smatch, std::regex(R"(\s*(.+))")))
+						if (std::regex_match(serializedData, smatch, std::regex(R"(\s{2}(.+))")))
 						{
 							serializedData = smatch[1].str();
 						}

@@ -13,7 +13,8 @@ public:
 	Vector3 scale = Vector3(1, 1, 1);
 
 	SERIALIZE3(Component,
-		SERIALIZE_FIELD3(position)
+		SERIALIZE_FIELD3(position),
+		SERIALIZE_FIELD3(scale)
 	)
 
 	Transform();
