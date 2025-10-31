@@ -12,9 +12,11 @@ class SceneDataManager
 public:
 	static std::unordered_map<std::string, Object*>& GetInstanceID2PointerMap();
 	static Scene* Load(std::string path);
+	static Scene* Reload();
 	static void Save();
 
 private:
+	static std::string _path;
 	static std::unordered_map<std::string, Object*> instanceID2PointerMap;
 };
 

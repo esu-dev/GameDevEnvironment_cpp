@@ -2,6 +2,7 @@
 
 #include "DirectX.h"
 #include "GameEngine.h"
+#include "TimeController.h"
 #include "SceneEditor.h"
 #include "SampleSceneAssests.h"
 
@@ -43,6 +44,7 @@ void GameSystem::Execute()
 
 	Physics2D::Update();
 	InputSystem::Update();
+	TimeController::Update();
 	SceneEditor::Update();
 
 	// Updateèàóù

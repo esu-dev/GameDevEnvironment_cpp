@@ -12,7 +12,7 @@ void FileManager::Read(std::vector<std::string>& outContentVector, std::string p
 	file.open(path);
 	if (!file.is_open())
 	{
-		Debug::Log("ファイルを開けませんでした。(%s)", path);
+		Debug::Log("ファイルを開けませんでした。(%s)", path.c_str());
 		return;
 	}
 

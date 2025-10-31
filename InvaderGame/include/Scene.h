@@ -10,6 +10,7 @@ namespace SceneManagement
 	{
 	public:
 		Scene(std::string name);
+		~Scene();
 		std::string GetName();
 		const std::vector<GameObject*>& GetGameObjectVector();
 		void AddGameObject(GameObject* gameObject);

@@ -10,15 +10,15 @@ std::unordered_map<std::string, Object*>& SceneDataManager::GetInstanceID2Pointe
 
 Scene* SceneDataManager::Load(std::string path)
 {
+	_path = path;
+
 	// yaml‚Ì“Ç‚İ‚İ
 	std::vector<std::string> contentVector;
 	FileManager::Read(contentVector, path);
 
 
 	// ƒV[ƒ“‚Ìì¬
-	//Scene* scene = SceneManager::CreateScene(contentVector[0]);
 	Scene* scene = new Scene(contentVector[0]);
-	SceneManager::AddScene(scene);
 
 
 	struct InstanceData
@@ -88,8 +88,14 @@ Scene* SceneDataManager::Load(std::string path)
 		}
 	}
 	
-	SceneManager::LoadScene(contentVector[0]);
+	SceneManager::SetActiveScene(scene);
 	return scene;
+}
+
+Scene* SceneDataManager::Reload()
+{
+	if (_path == "") return nullptr;
+	return Load(_path);
 }
 
 void SceneDataManager::Save()
@@ -125,4 +131,5 @@ void SceneDataManager::Save()
 }
 
 
+std::string SceneDataManager::_path = "";
 std::unordered_map<std::string, Object*> SceneDataManager::instanceID2PointerMap;

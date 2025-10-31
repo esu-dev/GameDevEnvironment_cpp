@@ -5,6 +5,7 @@
 #include "GameEngine.h"
 #include "ImGuiUtility.h"
 #include "GameSystem.h"
+#include "SceneDataManager.h"
 
 #include "imgui_internal.h"
 #include "imgui_impl_win32.h"
@@ -22,7 +23,15 @@ void SceneEditor::Initialize()
 	// エディタ起動コマンド
 	InputSystem::AddKeyAction({ InputSystem::KeySet('E') }, []() -> void {
 		_isEditMode = !_isEditMode;
-		EngineTime::TimeScale = _isEditMode ? 0 : 1;
+
+		if (_isEditMode)
+		{
+			// シーンを再生成する
+			SceneDataManager::Reload();
+
+			EngineTime::TimeScale = 0;
+		}
+		else EngineTime::TimeScale = 1;
 	});
 
 

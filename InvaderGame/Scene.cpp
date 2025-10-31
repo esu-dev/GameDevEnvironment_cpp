@@ -6,6 +6,14 @@ namespace SceneManagement
 {
 	Scene::Scene(std::string name) : _name(name) {}
 
+	Scene::~Scene()
+	{
+		for (GameObject* gameObject : _gameObjectVector)
+		{
+			delete gameObject;
+		}
+	}
+
 	std::string Scene::GetName()
 	{
 		return _name;

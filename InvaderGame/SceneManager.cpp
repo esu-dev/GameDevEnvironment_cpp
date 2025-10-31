@@ -32,6 +32,8 @@ namespace SceneManagement
 		return _sceneVector[index];
 	}
 
+	// 複数シーンを読み込む場合に使用する
+	// どのみちpublicにする意味はない
 	void SceneManager::AddScene(Scene* scene)
 	{
 		_sceneVector.push_back(scene);
@@ -39,18 +41,27 @@ namespace SceneManagement
 
 	bool SceneManager::SetActiveScene(Scene* scene)
 	{
-		Scene* sceneBackup = _activeScene;
-		_activeScene = scene;
+		// 現在のシーンを破棄
+		if (_activeScene != nullptr)
+		{
+			delete _activeScene;
+		}
 
 		// これは不要かな
 		if (GameObject::FindGameObjectsWithTag("MainCamera").size() == 0)
 		{
 			Debug::Log(L"MainCameraがありません。");
+			return false;
 		}
 
-		return _activeScene != nullptr;
+		_activeScene = scene;
+
+		// ここでRecordを初期化する
+
+		return true;
 	}
 
+	// これは不要
 	void SceneManager::LoadScene(std::string sceneName)
 	{
 		Scene* loadingScene = std_extension::Find<Scene*>(_sceneVector, [&](Scene* x) { return x->GetName() == sceneName; });
