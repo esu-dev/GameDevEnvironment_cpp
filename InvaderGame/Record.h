@@ -18,13 +18,23 @@ public:
 		DESERIALIZE_FIELD(_variable)
 	)
 
+	void Initialize() override
+	{
+		_timeVariableSetVector.clear();
+
+		TimeVariableSet timeVariableSet;
+		timeVariableSet.time = EngineTime::GetTotalTime();
+		timeVariableSet.variable = _variable;
+		_timeVariableSetVector.push_back(timeVariableSet);
+	}
+
 	void Select(float time) override
 	{
 		if (_timeVariableSetVector.size() == 0) return;
 
 		for (int i = 0; i < (int)_timeVariableSetVector.size(); i++)
 		{
-			if (time - _timeVariableSetVector[i].time <= RECORD_INTERVAL)
+			if (time - _timeVariableSetVector[i].time < RECORD_INTERVAL)
 			{
 				_variable = _timeVariableSetVector[i].variable;
 
@@ -39,10 +49,10 @@ public:
 
 		for (int i = 0; i < (int)_timeVariableSetVector.size(); i++)
 		{
-			if (time - _timeVariableSetVector[i].time <= RECORD_INTERVAL)
+			if (time - _timeVariableSetVector[i].time < RECORD_INTERVAL)
 			{
 				// 以降のデータを削除
-				_timeVariableSetVector.erase(_timeVariableSetVector.begin() + i, _timeVariableSetVector.end());
+				_timeVariableSetVector.erase(_timeVariableSetVector.begin() + i + 1, _timeVariableSetVector.end());
 
 				return;
 			}
@@ -64,6 +74,8 @@ public:
 	~Record()
 	{
 		// リストから削除
+		//std_extension::Remove(RecordManager::RecordVector, (RecordBase*)this);
+		Debug::Log("des");
 	}
 
 	T& Get() { return _variable; }
@@ -98,7 +110,7 @@ public:
 private:
 	struct TimeVariableSet
 	{
-		float time;
+		float time = 0;
 		T variable;
 	};
 	

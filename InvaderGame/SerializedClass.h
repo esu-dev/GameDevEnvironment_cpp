@@ -263,6 +263,7 @@ protected:
 			if (T t = dynamic_cast<T>(object))
 			{
 				variable = t;
+				variable = t;
 			}
 		}
 		// シリアライズできる場合(ex. Record)

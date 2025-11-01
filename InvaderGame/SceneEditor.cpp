@@ -29,9 +29,19 @@ void SceneEditor::Initialize()
 			// ƒV[ƒ“‚ðÄ¶¬‚·‚é
 			SceneDataManager::Reload();
 
+			EngineTime::TotalTime = 0;
 			EngineTime::TimeScale = 0;
 		}
-		else EngineTime::TimeScale = 1;
+		else
+		{
+			// ‚±‚±‚ÅRecord‚ð‰Šú‰»‚·‚é
+			for (RecordBase* record : RecordManager::RecordVector)
+			{
+				record->Initialize();
+			}
+
+			EngineTime::TimeScale = 1;
+		}
 	});
 
 

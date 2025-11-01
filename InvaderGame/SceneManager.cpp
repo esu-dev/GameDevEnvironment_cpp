@@ -47,16 +47,14 @@ namespace SceneManagement
 			delete _activeScene;
 		}
 
+		_activeScene = scene;
+
 		// ‚±‚ê‚Í•s—v‚©‚È
 		if (GameObject::FindGameObjectsWithTag("MainCamera").size() == 0)
 		{
 			Debug::Log(L"MainCamera‚ª‚ ‚è‚Ü‚¹‚ñB");
 			return false;
 		}
-
-		_activeScene = scene;
-
-		// ‚±‚±‚ÅRecord‚ğ‰Šú‰»‚·‚é
 
 		return true;
 	}

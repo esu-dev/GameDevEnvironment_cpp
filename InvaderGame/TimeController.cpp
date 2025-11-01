@@ -28,12 +28,13 @@ void TimeController::Initialize()
 		else
 		{
 			Debug::Log(L"Exit Editor");
-			float time = EngineTime::_totalTime - RecordBase::RECORD_INTERVAL * (backNum - 1);
+			//float time = EngineTime::TotalTime - RecordBase::RECORD_INTERVAL * (backNum - 1);
 			for (RecordBase* record : RecordManager::RecordVector)
 			{
-				record->Decide(time);
+				record->Decide(_time);
 			}
-			EngineTime::_totalTime = (int)(time / RecordBase::RECORD_INTERVAL);
+			//EngineTime::TotalTime = (int)(time / RecordBase::RECORD_INTERVAL);
+			EngineTime::TotalTime = _time;
 			EngineTime::TimeScale = 1;
 		}
 	});
@@ -65,15 +66,28 @@ void TimeController::Update()
 	static int width = 300;
 	static int height = 200;
 
-	static int n = 0;
+	static int time = 0;
 
 	ImGui::SetNextWindowPos(ImVec2(GameSystem::WINDOW_WIDTH - width - 10, GameSystem::WINDOW_HEIGHT - height - 10));
 	ImGui::SetNextWindowSize(ImVec2(width, height));
 	if (ImGui::Begin("Time Controller"))
 	{
-		ImGui::SliderInt("-", &n, 0, 5);
+		int totalTime_int = EngineTime::GetTotalTime() / RecordBase::RECORD_INTERVAL;
+		if (ImGui::SliderInt("-", &time, 0, totalTime_int))
+		{
+			_time = time * RecordBase::RECORD_INTERVAL;
+
+			for (RecordBase* record : RecordManager::RecordVector)
+			{
+				record->Select(_time);
+			}
+		
+		}
+		ImGui::Text(("Time: " + std::to_string(_time)).c_str());
+		ImGui::Text(("Total: " + std::to_string(EngineTime::GetTotalTime())).c_str());
 	}
 	ImGui::End();
 }
 
+float TimeController::_time = 0;
 bool TimeController::_isEditorON = false;

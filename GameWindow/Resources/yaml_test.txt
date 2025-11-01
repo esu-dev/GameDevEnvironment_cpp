@@ -10,9 +10,9 @@ Transform:
   gameObject: 000
   position:
     _variable:
-      x: 0.000000
-      y: 0.000000
-      z: 0.000000
+      x: 4.000000
+      y: 5.000000
+      z: 6.000000
 --- 002
 Camera:
   gameObject: 000

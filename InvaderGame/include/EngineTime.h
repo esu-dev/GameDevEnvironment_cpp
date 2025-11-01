@@ -5,7 +5,7 @@
 class EngineTime
 {
 public:
-	static Property<float> _totalTime;
+	static Property<float> TotalTime;
 	static Property<float> TimeScale;
 
 	static void Initialize();

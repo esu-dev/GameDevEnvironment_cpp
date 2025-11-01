@@ -18,7 +18,7 @@ public:
 	)
 
 	Transform();
-
+	
 	Vector3 GetUp();
 	Vector3 GetForward();
 	void SetPosition(float x, float y);

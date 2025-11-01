@@ -3,7 +3,7 @@
 #include "GameSystem.h"
 
 const float EngineTime::_fixedDeltaTime = 1 / 60.0f;
-Property<float> EngineTime::_totalTime{};
+Property<float> EngineTime::TotalTime{};
 Property<float> EngineTime::TimeScale{};
 
 void EngineTime::Initialize()
@@ -18,7 +18,7 @@ void EngineTime::Initialize()
 			_deltaTime = (time - updatedTime) / 1000.0f * TimeScale;
 			updatedTime = time;
 
-			_totalTime += _deltaTime;
+			TotalTime += _deltaTime;
 		});
 }
 
@@ -34,7 +34,7 @@ float EngineTime::GetFixedDeltaTime()
 
 float EngineTime::GetTotalTime()
 {
-	return _totalTime;
+	return TotalTime;
 }
 
 void EngineTime::SetIsPause(bool isPause)

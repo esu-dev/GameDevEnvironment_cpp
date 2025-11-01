@@ -5,8 +5,9 @@
 class RecordBase : public SerializedClass
 {
 public:
-	static constexpr float RECORD_INTERVAL = 1;
+	static constexpr float RECORD_INTERVAL = 0.25f;
 
+	virtual void Initialize() = 0;
 	virtual void Select(float time) = 0;
 	virtual void Decide(float time) = 0;
 };

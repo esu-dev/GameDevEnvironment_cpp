@@ -11,6 +11,9 @@ std::unordered_map<std::string, Object*>& SceneDataManager::GetInstanceID2Pointe
 Scene* SceneDataManager::Load(std::string path)
 {
 	_path = path;
+	instanceID2PointerMap.clear();
+	RecordManager::RecordVector.clear(); // GameObjectの途中破棄に対応できないからほんとはダメ
+
 
 	// yamlの読み込み
 	std::vector<std::string> contentVector;
@@ -26,7 +29,7 @@ Scene* SceneDataManager::Load(std::string path)
 		Object* object = nullptr;
 		std::vector<std::string> yamlVector;
 	};
-	std::vector<InstanceData*> instanceDataVector;
+	std::vector<InstanceData> instanceDataVector;
 
 	// デシリアライズ
 	bool isPacking = false;
@@ -50,7 +53,7 @@ Scene* SceneDataManager::Load(std::string path)
 		{
 			if (std::regex_match(content, m, std::regex(R"(\s{2}(.+))")))
 			{
-				instanceDataVector.back()->yamlVector.push_back(m[1].str());
+				instanceDataVector.back().yamlVector.push_back(m[1].str());
 			}
 		}
 
@@ -69,20 +72,20 @@ Scene* SceneDataManager::Load(std::string path)
 			instanceID2PointerMap[instanceID] = object;
 
 			// instanceIDをキーとして、yamlとポインタを保持
-			InstanceData* instanceData = new InstanceData();
-			instanceData->object = object;
+			InstanceData instanceData = InstanceData();
+			instanceData.object = object;
 
 			instanceDataVector.push_back(instanceData);
 		}
 	}
 
 	// 保持しておいたyamlを元にデシリアライズ
-	for (InstanceData* instanceData : instanceDataVector)
+	for (InstanceData& instanceData : instanceDataVector)
 	{
-		instanceData->object->Deserialize(instanceData->yamlVector);
+		instanceData.object->Deserialize(instanceData.yamlVector);
 
 		// GameObjectをSceneに追加
-		if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceData->object))
+		if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceData.object))
 		{
 			scene->AddGameObject(gameObject);
 		}
