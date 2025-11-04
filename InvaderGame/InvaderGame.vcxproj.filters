@@ -43,6 +43,9 @@
     <Filter Include="ソース ファイル\imgui\backends">
       <UniqueIdentifier>{87d8fbd5-473e-4cc3-931f-d878085ed81e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Scripts">
+      <UniqueIdentifier>{b8d3eb53-24c1-4846-b248-8755db106e80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioClip.cpp">
@@ -242,6 +245,9 @@
     </ClCompile>
     <ClCompile Include="SerializedClass.cpp">
       <Filter>Source\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="VelocityController.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -474,6 +480,12 @@
     </ClInclude>
     <ClInclude Include="Selection.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="VelocityController.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SerializedSample.h">
+      <Filter>Source\DebugAssets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

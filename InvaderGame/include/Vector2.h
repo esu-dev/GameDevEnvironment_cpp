@@ -5,7 +5,7 @@
 
 class Vector3;
 
-class Vector2
+class Vector2 : public SerializedClass
 {
 public:
 	static float Distance(const Vector2& vectorA, const Vector2& vectorB);
@@ -14,6 +14,11 @@ public:
 
 	float x, y;
 	
+	SERIALIZE3(SerializedClass,
+		SERIALIZE_FIELD3(x),
+		SERIALIZE_FIELD3(y)
+	)
+
 	Property<float> magnitude = {
 		[&]() -> float {
 			return sqrt(x * x + y * y);

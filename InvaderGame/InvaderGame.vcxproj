@@ -298,6 +298,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="VelocityController.cpp" />
     <ClCompile Include="WindowDrawer.cpp" />
     <ClCompile Include="YamlUtility.cpp" />
   </ItemGroup>
@@ -376,9 +377,11 @@
     <ClInclude Include="SceneEditor.h" />
     <ClInclude Include="Selection.h" />
     <ClInclude Include="SerializedClass.h" />
+    <ClInclude Include="SerializedSample.h" />
     <ClInclude Include="TimeController.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="UuidGenerator.h" />
+    <ClInclude Include="VelocityController.h" />
     <ClInclude Include="YamlUtility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

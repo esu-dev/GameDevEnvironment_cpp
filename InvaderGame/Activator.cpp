@@ -1,6 +1,8 @@
 #include "Activator.h"
 
 #include "GameEngine.h"
+#include "VelocityController.h"
+#include "SerializedSample.h"
 
 #define REGISTER_TYPE(type) \
 	nameToInstanceMap[#type] = []() -> Object* { return new type(); }
@@ -13,6 +15,9 @@ void Activator::Initialize()
 	REGISTER_TYPE(SpriteRenderer);
 	REGISTER_TYPE(Rigidbody2D);
 	REGISTER_TYPE(BoxCollider2D);
+
+	REGISTER_TYPE(VelocityController);
+	REGISTER_TYPE(SerializedSample);
 }
 
 Object* Activator::CreateInstance(std::string typeString)

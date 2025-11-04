@@ -58,12 +58,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     GameSystem::GetInstance().Initialize();
 
     //SceneManagement::SceneManager::LoadScene(SampleSceneAssets::load()->GetName());
-    //SceneManagement::SceneManager::LoadScene(DemoSceneAsset::load()->GetName());
+    //SceneManagement::SceneManager::SetActiveScene(DemoSceneAsset::load());
     //SceneManagement::SceneManager::LoadScene(DemoPhysicsSceneAsset::load()->GetName());
     //SampleSceneAssets::load();
     //DemoSceneAsset::load();
     //SceneDataManager::Load("Resources/yaml_test.txt");
-    SceneDataManager::Load("Resources/YamlTestScene.txt");
+    //SceneDataManager::Load("Resources/YamlTestScene.txt");
+    SceneDataManager::Load("Resources/DemoScene.txt");
 
     // ゲームループ
     while (1)

@@ -40,6 +40,7 @@ void SceneEditor::Initialize()
 				record->Initialize();
 			}
 
+			// TimeScaleで管理すると、無駄な処理がずっと走ることになるから、要検討
 			EngineTime::TimeScale = 1;
 		}
 	});
@@ -70,7 +71,7 @@ void SceneEditor::Update()
 	if (!_isEditMode) return;
 
 	// imgui表示
-	ImGui::ShowDemoWindow();
+	//ImGui::ShowDemoWindow();
 
 
 	// ヒエラルキー
@@ -99,8 +100,8 @@ void SceneEditor::Update()
 
 
 	// インスペクター
-	ImGui::SetNextWindowPos(ImVec2(300, 0));
-	ImGui::SetNextWindowSize(ImVec2(200, 300));
+	ImGui::SetNextWindowPos(ImVec2(210, 0));
+	ImGui::SetNextWindowSize(ImVec2(200, 500));
 	ImGui::Begin("Inspector");
 	if (Selection::gameObject != nullptr)
 	{
