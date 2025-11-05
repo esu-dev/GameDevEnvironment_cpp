@@ -18,7 +18,8 @@ public:
 	)
 
 	Transform();
-	
+	~Transform() override {} // クラスのデストラクタが呼ばれないと、メンバ変数のデストラクタも呼ばれない。
+
 	Vector3 GetUp();
 	Vector3 GetForward();
 	void SetPosition(float x, float y);

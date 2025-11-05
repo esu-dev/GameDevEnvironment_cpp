@@ -17,6 +17,7 @@ public:
 		SERIALIZE_FIELD3(gameObject)
 	)
 
+		virtual ~Component() { Debug::Log("Destructor is nor overrided. [%s]", GetName().c_str()); }
 	virtual void OnEnable() {} // –{—ˆ‚ÍMonoBehaviour‚É’è‹`
 	virtual void OnDisable() {}
 	virtual void Start() {}
@@ -28,8 +29,4 @@ public:
 	{
 		return this->gameObject->GetComponent<T>();
 	}
-
-
-private:
-	Transform* _transform;
 };

@@ -1,5 +1,6 @@
 #include "GameObject.h"
 
+#include "GameSystem.h"
 #include "GameEngine.h"
 
 
@@ -38,6 +39,14 @@ void GameObject::AddComponent(Component* component)
 	std::shared_ptr<Component> sPtr_component = std::shared_ptr<Component>(component);
 	sPtr_component.get()->gameObject = this;
 	_componentVector.push_back(sPtr_component);
+}
+
+void GameObject::RemoveComponent(const std::shared_ptr<Component>& component)
+{
+	GameSystem::GetInstance().AddDelayedExecution([&]() -> void {
+		std_extension::Remove(_componentVector, component);
+		//delete component;
+	});
 }
 
 Transform* GameObject::GetTransform()

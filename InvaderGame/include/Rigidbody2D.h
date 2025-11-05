@@ -21,6 +21,8 @@ public:
 		SERIALIZE_FIELD3(IsKinematic)
 	)
 
+	~Rigidbody2D() override {}
+
 	void Start() override;
 	void Update() override;
 

@@ -74,8 +74,7 @@ public:
 	~Record()
 	{
 		// ƒŠƒXƒg‚©‚çíœ
-		//std_extension::Remove(RecordManager::RecordVector, (RecordBase*)this);
-		Debug::Log("des");
+		std_extension::Remove(RecordManager::RecordVector, (RecordBase*)this);
 	}
 
 	T& Get() { return _variable; }

@@ -47,6 +47,7 @@ public:
 	}
 
 	void AddComponent(Component* component);
+	void RemoveComponent(const std::shared_ptr<Component>& component);
 
 	template <typename T> T* GetComponent()
 	{

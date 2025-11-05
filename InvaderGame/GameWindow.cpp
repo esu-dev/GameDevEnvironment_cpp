@@ -63,8 +63,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //SampleSceneAssets::load();
     //DemoSceneAsset::load();
     //SceneDataManager::Load("Resources/yaml_test.txt");
-    //SceneDataManager::Load("Resources/YamlTestScene.txt");
-    SceneDataManager::Load("Resources/DemoScene.txt");
+    SceneDataManager::Load("Resources/YamlTestScene.txt");
+    //SceneDataManager::Load("Resources/DemoScene.txt");
 
     // ゲームループ
     while (1)

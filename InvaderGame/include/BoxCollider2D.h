@@ -9,7 +9,7 @@ public:
 	NAME(BoxCollider2D)
 
 	BoxCollider2D();
-	~BoxCollider2D();
+	~BoxCollider2D() override;
 	void SetSize(Vector2 size);
 
 	void OnEnable() override;

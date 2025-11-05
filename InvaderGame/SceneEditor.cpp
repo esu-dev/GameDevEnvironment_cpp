@@ -71,7 +71,7 @@ void SceneEditor::Update()
 	if (!_isEditMode) return;
 
 	// imgui表示
-	//ImGui::ShowDemoWindow();
+	ImGui::ShowDemoWindow();
 
 
 	// ヒエラルキー
@@ -87,12 +87,21 @@ void SceneEditor::Update()
 		auto gameObjectVector = SceneManagement::SceneManager::GetActiveScene()->GetGameObjectVector();
 		for (int i = 0; i < gameObjectVector.size(); i++)
 		{
+			// GameOBject
 			// 同じ名前はIDが同じになってしまう。IDを付与する必要がある。
 			if (ImGui::Selectable((gameObjectVector[i]->name + std::to_string(i)).c_str(), selected == i))
 			{
 				selected = i;
 
 				Selection::gameObject = gameObjectVector[i];
+			}
+			if (ImGui::BeginPopupContextItem())
+			{
+				if (ImGui::Selectable("Delete"))
+				{
+					Object::Destroy(gameObjectVector[i]);
+				}
+				ImGui::EndPopup();
 			}
 		}
 	}
@@ -107,6 +116,7 @@ void SceneEditor::Update()
 	{
 		for (auto& component : Selection::gameObject->GetComponentVector())
 		{
+			// Component
 			if (ImGui::CollapsingHeader(component.get()->GetName().c_str()))
 			{
 				bool hasChanged = false;
@@ -214,6 +224,14 @@ void SceneEditor::Update()
 
 					component->Deserialize(serializedDataVec);
 				}
+			}
+			if (ImGui::BeginPopupContextItem())
+			{
+				if (ImGui::Selectable("Remove Component"))
+				{
+					Selection::gameObject->RemoveComponent(component);
+				}
+				ImGui::EndPopup();
 			}
 		}
 
