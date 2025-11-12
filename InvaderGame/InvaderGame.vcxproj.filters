@@ -249,6 +249,9 @@
     <ClCompile Include="VelocityController.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source\GameEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -486,6 +489,9 @@
     </ClInclude>
     <ClInclude Include="SerializedSample.h">
       <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Source\GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

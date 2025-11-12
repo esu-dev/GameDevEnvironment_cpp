@@ -2,6 +2,7 @@
 
 #include "DirectX.h"
 #include "GameEngine.h"
+#include "AssetManager.h"
 #include "TimeController.h"
 #include "SceneEditor.h"
 #include "SampleSceneAssests.h"
@@ -23,6 +24,7 @@ void GameSystem::Initialize()
 	TimeController::Initialize();
 	Physics2D::Initialize();
 	Activator::Initialize();
+	AssetManager::Initialize();
 	SceneEditor::Initialize();
 
 	D3D.ChangeMode_2D();

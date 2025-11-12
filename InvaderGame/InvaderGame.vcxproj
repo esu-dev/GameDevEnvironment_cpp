@@ -174,6 +174,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AudioClip.cpp" />
     <ClCompile Include="AudioSource.cpp" />
     <ClCompile Include="BoxCollider2D.cpp">
@@ -308,6 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Activator.h" />
+    <ClInclude Include="AssetManager.h" />
     <ClInclude Include="CircleCollider2D.h" />
     <ClInclude Include="CommonExtension.h" />
     <ClInclude Include="DemoPhysicsManager.h" />
