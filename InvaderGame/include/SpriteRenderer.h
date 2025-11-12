@@ -11,6 +11,7 @@ class SpriteRenderer : public Component
 public:
 	NAME(SpriteRenderer)
 	SERIALIZE3(Component,
+		SERIALIZE_FIELD3(m_texture)
 	)
 
 	SpriteRenderer();

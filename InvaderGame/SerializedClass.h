@@ -112,7 +112,9 @@
 
 #include "framework.h"
 #include "std_extension.h"
+#include "Debug.h"
 #include "SceneDataManager.h"
+#include "AssetManager.h"
 
 class Component;
 
@@ -191,7 +193,8 @@ protected:
 		// ポインタ
 		else if constexpr (std::is_pointer<T>())
 		{
-			serializedDataVector.push_back(indent + name + ": " + value->instanceID);
+			if (value == nullptr) serializedDataVector.push_back(indent + name + ": (instanceID)nullptr");
+			else serializedDataVector.push_back(indent + name + ": (instanceID)" + value->instanceID);
 		}
 		// シリアライズ可能
 		else if constexpr (std::is_base_of<SerializedClass, T>())
@@ -258,12 +261,27 @@ protected:
 		// ポインタ
 		else if constexpr (std::is_pointer<T>())
 		{
-			Object* object = SceneDataManager::GetInstanceID2PointerMap()[instanceData->memberVector[0]];
-
-			// Tにキャストで良いのでは？
-			if (T t = dynamic_cast<T>(object))
+			if (instanceData->memberVector[0] == "nullptr")
 			{
-				variable = t;
+				variable = nullptr;
+				return;
+			}
+
+			// シーンから検索
+			Object* object = SceneDataManager::GetInstanceID2PointerMap()[instanceData->memberVector[0]];
+			
+			// アセットから検索
+			if (object == nullptr)
+			{
+				object = AssetManager::GetInstanceID2PointerMap()[instanceData->memberVector[0]];
+			}
+
+			if (object == nullptr)
+			{
+				variable = nullptr;
+			}
+			else if (T t = dynamic_cast<T>(object))
+			{
 				variable = t;
 			}
 		}
@@ -470,7 +488,7 @@ protected:
 					// ポインタかどうか確認
 					std::smatch match;
 					std::string matchString = m[3].str();
-					if (std::regex_match(matchString, match, std::regex(R"(\(\w+\)(\w+))")))
+					if (std::regex_match(matchString, match, std::regex(R"(\(\w+\)(.+))")))
 					{
 						std::string instanceID = match[1].str();
 						subInstanceDataVector.back()->hasInstanceID = true;

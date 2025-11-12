@@ -7,7 +7,7 @@ GameObject:
   - (instanceID)002
 --- 001
 Transform:
-  gameObject: 000
+  gameObject: (instanceID)000
   position:
     _variable:
       x: 0.000000
@@ -19,4 +19,27 @@ Transform:
     z: 1.000000
 --- 002
 Camera:
-  gameObject: 000
+  gameObject: (instanceID)000
+--- 1292049439=950831409=1158666185
+GameObject:
+  tag: Untagged
+  _componentVector:
+  - (instanceID)2087129730=335617909=60554422
+  - (instanceID)435460910=1868266570=791104992
+--- 2087129730=335617909=60554422
+Transform:
+  gameObject: (instanceID)1292049439=950831409=1158666185
+  position:
+    _variable:
+      x: -2.000000
+      y: 0.000000
+      z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 435460910=1868266570=791104992
+SpriteRenderer:
+  gameObject: (instanceID)1292049439=950831409=1158666185
+  m_texture: (instanceID)nullptr
+

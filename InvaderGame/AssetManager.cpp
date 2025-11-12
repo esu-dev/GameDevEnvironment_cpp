@@ -3,6 +3,7 @@
 #include <iostream>
 #include "framework.h"
 #include "Utility.h"
+#include "Object.h"
 #include "Debug.h"
 #include "Texture.h"
 
@@ -38,6 +39,11 @@ void AssetManager::Initialize()
 		// Texture‚ğ¶¬
 		instanceID2PointerMap[instanceID] = new Texture(instanceID, path);
 	}
+}
+
+std::unordered_map<std::string, Object*>& AssetManager::GetInstanceID2PointerMap()
+{
+	return AssetManager::instanceID2PointerMap;
 }
 
 std::unordered_map<std::string, Object*> AssetManager::instanceID2PointerMap;

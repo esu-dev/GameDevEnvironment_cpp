@@ -115,6 +115,7 @@ void SceneEditor::Update()
 	ImGui::Begin("Inspector");
 	if (Selection::gameObject != nullptr)
 	{
+		// Componentの配置
 		for (auto& component : Selection::gameObject->GetComponentVector())
 		{
 			// Component
@@ -153,7 +154,7 @@ void SceneEditor::Update()
 							std::string serializedVarName = smatch[1].str();
 							std::string label = smatch[2].str();
 							std::string value = smatch[3].str();
-
+							
 							// float
 							if (std::regex_match(value, smatch, std::regex(R"(-?\d+\.\d+)")))
 							{
@@ -165,6 +166,7 @@ void SceneEditor::Update()
 									serializedData = serializedVarName + std::to_string(v);
 								}
 							}
+							// bool
 							else if (value == "true" || value == "false")
 							{
 								bool b = (value == "true");
@@ -175,9 +177,19 @@ void SceneEditor::Update()
 									serializedData = serializedVarName + (b ? "true" : "false");
 								}
 							}
+							// pointer
+							else if (std::regex_match(value, smatch, std::regex(R"(\(\w+\)(.+))")))
+							{
+								ImGui::Text(label.c_str());
+								if (ImGui::Button(smatch[1].str().c_str()))
+								{
+									// Asset Browserを表示
+								}
+							}
 							else
 							{
-								ImGui::Text(serializedData.c_str());
+								// これがあるとエラーが出る
+								//ImGui::Text(serializedData.c_str());
 							}
 						}
 						// クラス、構造体
@@ -236,11 +248,11 @@ void SceneEditor::Update()
 			}
 		}
 
+		// AddComponent
 		if (ImGui::Button("Add Component"))
 		{
 			ImGui::OpenPopup("add_component_popup");
 		}
-		//ImGui::SameLine();
 		if (ImGui::BeginPopup("add_component_popup"))
 		{
 			std::vector<std::string> componentNameVec = Activator::GetObjectNameVec();
