@@ -1,7 +1,3 @@
-#include "framework.h"
-
-#include "Direct3D.h"
-
 #include "Texture.h"
 
 Texture::Texture() {}
@@ -9,6 +5,13 @@ Texture::Texture() {}
 Texture::Texture(std::string fileName)
 {
 	Load(fileName);
+}
+
+Texture::Texture(std::string instanceID, std::wstring path)
+{
+	this->instanceID = instanceID;
+
+	Load(path);
 }
 
 bool Texture::Load(const std::string& fileName)
@@ -19,12 +22,18 @@ bool Texture::Load(const std::string& fileName)
 	size_t ret; // size_t はオブジェクトのバイト数を表現できる程度に十分に大きい符号なし整数型。
 	mbstowcs_s(&ret, wFileName, fileName.c_str(), 256);
 
+ 	return Load(wFileName);
+}
+
+bool Texture::Load(const std::wstring& path)
+{
 	// WIC(Windows Imaging Component)画像を読み込む
 	auto image = std::make_unique<DirectX::ScratchImage>(); // インスタンス化
-	if (FAILED(DirectX::LoadFromWICFile(wFileName, DirectX::WIC_FLAGS_NONE, &m_texMetaData, *image)))
+	if (FAILED(DirectX::LoadFromWICFile(path.c_str(), DirectX::WIC_FLAGS_NONE, &m_texMetaData, *image)))
 	{
 		// 失敗
 		m_texMetaData = {};
+		Debug::Log("WICの読み込みに失敗しました。");
 		return false;
 	}
 
@@ -36,6 +45,10 @@ bool Texture::Load(const std::string& fileName)
 		{
 			image = std::move(mipChain);
 		}
+		else
+		{
+			Debug::Log("みっぷマップの生成に失敗しました。");
+		}
 	}
 
 	// リソースとシェーダーリソースビューを作成
@@ -43,6 +56,7 @@ bool Texture::Load(const std::string& fileName)
 	{
 		// 失敗
 		m_texMetaData = {};
+		Debug::Log("ShaderResourceViewの作成に失敗しました。");
 		return false;
 	}
 

@@ -350,14 +350,14 @@ void Direct3D::Draw2D()
 	m_deviceContext->Draw(4, 0);
 }
 
-void Direct3D::Draw2D(const Texture& texture)
+void Direct3D::Draw2D(const Texture* texture)
 {
 	m_deviceContext->VSSetShader(_textureShader->GetVertexShader().Get(), 0, 0);
 	m_deviceContext->PSSetShader(_textureShader->GetPixelShader().Get(), 0, 0);
 	m_deviceContext->IASetInputLayout(_textureShader->GetInputLayout().Get());
 
 	// テクスチャを、ピクセルシェーダーのスロット0にセット
-	m_deviceContext->PSSetShaderResources(0, 1, texture.m_shaderResourceview.GetAddressOf());
+	m_deviceContext->PSSetShaderResources(0, 1, texture->m_shaderResourceview.GetAddressOf());
 
 	// デバイスコンテキストくん、上記のセットした内容で描画してください、とお願いする
 	m_deviceContext->Draw(4, 0); // 頂点の数

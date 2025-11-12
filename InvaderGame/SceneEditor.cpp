@@ -13,7 +13,8 @@
 
 void SceneEditor::Initialize()
 {
-	Texture* texture = new Texture("Resources/Texture/Frame1.png");
+	Texture* texture = new Texture();
+	texture->Load("Resources/Texture/Frame1.png");
 	_frameObject = GameObject::Create();
 	_frameObject->AddComponent<SpriteRenderer>()->SetTexture(texture);
 

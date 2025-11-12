@@ -92,7 +92,7 @@ public:
 
 	// 2D•`‰æ
 	void Draw2D();
-	void Draw2D(const Texture& texture);
+	void Draw2D(const Texture* texture);
 
 	void DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color);
 

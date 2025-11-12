@@ -6,7 +6,6 @@
 		return #n; \
 	}
 
-#include "framework.h"
 #include "SerializedClass.h"
 
 class GameObject;
@@ -18,14 +17,9 @@ public:
 	static void Destroy(GameObject* gameObject);
 
 	Object();
-	Object(std::string instanceID);
 
 	std::string instanceID = "initial instanceID";
 	std::string name = "initial name"; // 削除するとエラーが出る。どこで参照されているのか不明
 
 	virtual std::string GetName() { return "not overrided"; };
-
-
-protected:
-	std::unordered_map<std::string, std::function<void(std::string)>> variableMap;
 };

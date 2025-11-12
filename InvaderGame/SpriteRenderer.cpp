@@ -53,6 +53,6 @@ void SpriteRenderer::Update()
 	}
 	else
 	{
-		D3D.Draw2D(*m_texture);
+		D3D.Draw2D(m_texture);
 	}
 }

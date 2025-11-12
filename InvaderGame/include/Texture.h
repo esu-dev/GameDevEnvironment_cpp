@@ -2,18 +2,21 @@
 
 #include "framework.h"
 #include "DirectX.h"
+#include "Object.h"
 
-class Texture
+class Texture : public Object
 {
 public:
 	// シェーダーリソースビュー（画像データ読み取りハンドル）
-	ComPtr<ID3D11ShaderResourceView> m_shaderResourceview = nullptr;
+	ComPtr<ID3D11ShaderResourceView> m_shaderResourceview;
 
 	// 画像情報
 	DirectX::TexMetadata m_texMetaData = {};
 
 	Texture();
 	Texture(std::string fileName);
+	Texture(std::string instanceID, std::wstring path);
 
 	bool Load(const std::string& fileName); // stdはC++標準の名前空間
+	bool Load(const std::wstring& path);
 };

@@ -19,4 +19,3 @@ Object::Object()
 	// ƒ‰ƒ“ƒ_ƒ€‚ÉinstanceID‚ðŒˆ’è‚·‚é
 	instanceID = UuidGenerator::Generate();
 }
-Object::Object(std::string instanceID) { this->instanceID = instanceID; }

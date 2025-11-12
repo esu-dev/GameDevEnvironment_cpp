@@ -12,7 +12,7 @@ void FileManager::Read(std::vector<std::string>& outContentVector, std::string p
 	file.open(path);
 	if (!file.is_open())
 	{
-		Debug::Log("ファイルを開けませんでした。(%s)", path.c_str());
+		Debug::Log("File could not opened. (%s)", path.c_str());
 		return;
 	}
 
@@ -23,9 +23,26 @@ void FileManager::Read(std::vector<std::string>& outContentVector, std::string p
 	}
 }
 
-std::vector<std::string> FileManager::GetAllPath(std::string directry, std::string extension)
+void FileManager::Read(std::vector<std::string>& outContentVector, std::wstring path)
 {
-	std::vector<std::string> pathVector;
+	std::ifstream file;
+	file.open(path);
+	if (!file.is_open())
+	{
+		Debug::Log("File could not opened. (%s)", path.c_str());
+		return;
+	}
+
+	std::string line;
+	while (std::getline(file, line))
+	{
+		outContentVector.push_back(line);
+	}
+}
+
+std::vector<std::wstring> FileManager::GetAllPath(std::string directry, std::string extension)
+{
+	std::vector<std::wstring> pathVector;
 
 	std::string wildCard = directry + std::string("*.") + extension;
 
@@ -48,7 +65,9 @@ std::vector<std::string> FileManager::GetAllPath(std::string directry, std::stri
 	// ファイルを読み込み続ける
 	do
 	{
-		Debug::Log("%s", win32FindData.cFileName); // 最初の一文字しか取れていない
+		std::wstring fileName = win32FindData.cFileName;
+		//Debug::Log("%s", fileName.c_str()); // 最初の一文字しか取れていない
+		pathVector.push_back(fileName);
 	} while (FindNextFileW(hFindFile, &win32FindData));
 
 

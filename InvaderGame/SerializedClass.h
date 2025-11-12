@@ -133,8 +133,9 @@ public:
 	
 	virtual std::vector<std::string> Serialize(const int indentNum = 1) { return { "" }; }
 	virtual int Deserialize(std::vector<std::string> v) { return 0; } // intを返すのは、親クラスの処理数を教えるため
-	std::vector<FieldInfo> GetFields();
-	void SetField();
+
+	SerializedClass() {}
+
 
 protected:
 	struct InstanceData
