@@ -69,6 +69,8 @@ void SceneEditor::Initialize()
 
 void SceneEditor::Update()
 {
+	static bool isAssetBrowserOpen = false;
+
 	if (!_isEditMode) return;
 
 	// imgui表示
@@ -147,7 +149,6 @@ void SceneEditor::Update()
 							return;
 						}*/
 
-						ImGui::PushID(i);
 
 						if (std::regex_match(serializedData, smatch, std::regex(R"((\s*(\w+):\s)(.+))")))
 						{
@@ -159,23 +160,33 @@ void SceneEditor::Update()
 							if (std::regex_match(value, smatch, std::regex(R"(-?\d+\.\d+)")))
 							{
 								float v = std::stof(value);
+
+								ImGui::PushID(i);
+
 								if (ImGui::DragFloat(label.c_str(), &v))
 								{
 									hasChanged = true;
 
 									serializedData = serializedVarName + std::to_string(v);
 								}
+
+								ImGui::PopID();
 							}
 							// bool
 							else if (value == "true" || value == "false")
 							{
 								bool b = (value == "true");
+
+								ImGui::PushID(i);
+
 								if (ImGui::Checkbox(label.c_str(), &b))
 								{
 									hasChanged = true;
 
 									serializedData = serializedVarName + (b ? "true" : "false");
 								}
+
+								ImGui::PopID();
 							}
 							// pointer
 							else if (std::regex_match(value, smatch, std::regex(R"(\(\w+\)(.+))")))
@@ -184,6 +195,9 @@ void SceneEditor::Update()
 								if (ImGui::Button(smatch[1].str().c_str()))
 								{
 									// Asset Browserを表示
+									//isAssetBrowserOpen = true;
+
+									// 画像表示がクソ面倒臭いのでcomboで実装することに
 								}
 							}
 							else
@@ -210,8 +224,6 @@ void SceneEditor::Update()
 						{
 							ImGui::Text(serializedData.c_str());
 						}
-
-						ImGui::PopID();
 
 						if (_isTreeOpen)
 						{
@@ -283,6 +295,23 @@ void SceneEditor::Update()
 		}
 	}
 	ImGui::End();
+
+
+	// Asset Browser
+	if (isAssetBrowserOpen)
+	{
+		ImGui::SetNextWindowSize(ImVec2(400, 400), ImGuiCond_FirstUseEver);
+		ImGui::Begin("Asset Browser", &isAssetBrowserOpen);
+		if (ImGui::BeginChild("Assets"))
+		{
+			ImGuiListClipper listClipper;
+			listClipper.Begin(3, 3);
+			ImGui::Selectable("", false, 0, ImVec2(30, 30));
+			listClipper.End();
+		}
+		ImGui::EndChild();
+		ImGui::End();
+	}
 
 	// 
 	_frameObject->Update();
