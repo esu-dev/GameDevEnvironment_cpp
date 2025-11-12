@@ -40,7 +40,7 @@ void FileManager::Read(std::vector<std::string>& outContentVector, std::wstring 
 	}
 }
 
-std::vector<std::wstring> FileManager::GetAllPath(std::string directry, std::string extension)
+std::vector<std::wstring> FileManager::GetAllFileName(std::string directry, std::string extension)
 {
 	std::vector<std::wstring> pathVector;
 

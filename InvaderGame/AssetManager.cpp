@@ -15,18 +15,19 @@ void AssetManager::Initialize()
 
 
 	// テクスチャアセットをすべて読み込む
-	std::vector<std::wstring> pathVector = FileManager::GetAllPath("Resources/Texture/", "txt");
+	std::vector<std::wstring> fileNameVector = FileManager::GetAllFileName("Resources/Texture/", "txt");
 
 
 	// それぞれの画像に対応するアセットが存在するか調べる
 	// ない場合はアセットを作成する
 
 	// テクスチャを生成する
-	for (std::wstring path : pathVector)
+	for (std::wstring fileName : fileNameVector)
 	{
 		// ファイルの中身を読む込む
 		std::vector<std::string> contentVector;
-		FileManager::Read(contentVector, L"Resources/Texture/" + path);
+		std::wstring path = L"Resources/Texture/" + fileName;
+		FileManager::Read(contentVector, path);
 
 		// instanceIDを取得する
 		std::string instanceID;
@@ -37,8 +38,10 @@ void AssetManager::Initialize()
 		}
 
 		// Textureを生成
-		instanceID2PointerMap[instanceID] = new Texture(instanceID, path);
+		instanceID2PointerMap[instanceID] = new Texture(instanceID, fileName); // 画像パスはまだ渡さないでおく
 	}
+
+	// Textureを生成し、テクスチャをロードする
 }
 
 std::unordered_map<std::string, Object*>& AssetManager::GetInstanceID2PointerMap()

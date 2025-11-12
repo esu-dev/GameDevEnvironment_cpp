@@ -149,6 +149,7 @@ void SceneEditor::Update()
 							return;
 						}*/
 
+						ImGui::PushID(i);
 
 						if (std::regex_match(serializedData, smatch, std::regex(R"((\s*(\w+):\s)(.+))")))
 						{
@@ -160,33 +161,23 @@ void SceneEditor::Update()
 							if (std::regex_match(value, smatch, std::regex(R"(-?\d+\.\d+)")))
 							{
 								float v = std::stof(value);
-
-								ImGui::PushID(i);
-
 								if (ImGui::DragFloat(label.c_str(), &v))
 								{
 									hasChanged = true;
 
 									serializedData = serializedVarName + std::to_string(v);
 								}
-
-								ImGui::PopID();
 							}
 							// bool
 							else if (value == "true" || value == "false")
 							{
 								bool b = (value == "true");
-
-								ImGui::PushID(i);
-
 								if (ImGui::Checkbox(label.c_str(), &b))
 								{
 									hasChanged = true;
 
 									serializedData = serializedVarName + (b ? "true" : "false");
 								}
-
-								ImGui::PopID();
 							}
 							// pointer
 							else if (std::regex_match(value, smatch, std::regex(R"(\(\w+\)(.+))")))
@@ -194,10 +185,43 @@ void SceneEditor::Update()
 								ImGui::Text(label.c_str());
 								if (ImGui::Button(smatch[1].str().c_str()))
 								{
-									// Asset Browserを表示
-									//isAssetBrowserOpen = true;
+									ImGui::OpenPopup("select_instanceID_popup");
+								}
+								if (ImGui::BeginPopup("select_instanceID_popup"))
+								{
+									if (ImGui::BeginTabBar("TabVar"))
+									{
+										if (ImGui::BeginTabItem("Scene"))
+										{
+											for (auto& pair : SceneDataManager::GetInstanceID2PointerMap())
+											{
+												if (ImGui::Selectable((pair.second->name + "(" + pair.second->instanceID + ")").c_str()))
+												{
+													hasChanged = true;
 
-									// 画像表示がクソ面倒臭いのでcomboで実装することに
+													serializedData = serializedVarName + "(instanceID)" + pair.second->instanceID;
+													ImGui::CloseCurrentPopup();
+												}
+											}
+											ImGui::EndTabItem();
+										}
+										if (ImGui::BeginTabItem("Asset"))
+										{
+											for (auto& pair : AssetManager::GetInstanceID2PointerMap())
+											{
+												if (ImGui::Selectable((pair.second->name + "(" + pair.first + ")").c_str()));
+												{
+													hasChanged = true;
+
+													serializedData = serializedVarName + "(instanceID)" + pair.second->instanceID;
+													ImGui::CloseCurrentPopup();
+												}
+											}
+											ImGui::EndTabItem();
+										}
+										ImGui::EndTabBar();
+									}
+									ImGui::EndPopup();
 								}
 							}
 							else
@@ -225,6 +249,8 @@ void SceneEditor::Update()
 							ImGui::Text(serializedData.c_str());
 						}
 
+						ImGui::PopID();
+
 						if (_isTreeOpen)
 						{
 							i++;
@@ -235,6 +261,7 @@ void SceneEditor::Update()
 					createContents();
 				}
 
+				// 関数的に呼べばよいのでは？
 				if (hasChanged)
 				{
 					for (std::string& serializedData : serializedDataVec)
@@ -302,14 +329,23 @@ void SceneEditor::Update()
 	{
 		ImGui::SetNextWindowSize(ImVec2(400, 400), ImGuiCond_FirstUseEver);
 		ImGui::Begin("Asset Browser", &isAssetBrowserOpen);
-		if (ImGui::BeginChild("Assets"))
+		if (ImGui::BeginTabBar("TabVar"))
 		{
-			ImGuiListClipper listClipper;
-			listClipper.Begin(3, 3);
-			ImGui::Selectable("", false, 0, ImVec2(30, 30));
-			listClipper.End();
+			if (ImGui::BeginTabItem("Scene"))
+			{
+				for (auto& pair : SceneDataManager::GetInstanceID2PointerMap())
+				{
+					if (ImGui::Selectable(pair.second->name.c_str()))
+					{
+
+					}
+				}
+			}
+			else if (ImGui::BeginTabItem("Asset"))
+			{
+
+			}
 		}
-		ImGui::EndChild();
 		ImGui::End();
 	}
 
