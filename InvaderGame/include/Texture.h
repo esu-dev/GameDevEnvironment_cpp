@@ -13,8 +13,12 @@ public:
 	// ‰æ‘œî•ñ
 	DirectX::TexMetadata m_texMetaData = {};
 
+	SERIALIZE3(Object,
+	)
+
 	Texture();
 	Texture(std::string fileName);
+	Texture(std::wstring path);
 	Texture(std::string instanceID, std::wstring path);
 
 	bool Load(const std::string& fileName); // std‚ÍC++•W€‚Ì–¼‘O‹óŠÔ

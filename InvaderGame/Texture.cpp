@@ -7,6 +7,11 @@ Texture::Texture(std::string fileName)
 	Load(fileName);
 }
 
+Texture::Texture(std::wstring path)
+{
+	Load(path);
+}
+
 Texture::Texture(std::string instanceID, std::wstring path)
 {
 	this->instanceID = instanceID;

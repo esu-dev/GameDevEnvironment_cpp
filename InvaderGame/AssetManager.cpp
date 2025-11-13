@@ -9,39 +9,62 @@
 
 void AssetManager::Initialize()
 {
-	// テクスチャアセットの相対パスをすべて取得する
+	// 画像をすべて読み込む
+	// とりあえず対応はpngのみ
+	std::vector<std::wstring> fileNameVector_png = FileManager::GetAllFileName("Resources/Texture/", "png");
 
-	// 画像の相対パスをすべて取得する
-
-
-	// テクスチャアセットをすべて読み込む
-	std::vector<std::wstring> fileNameVector = FileManager::GetAllFileName("Resources/Texture/", "txt");
-
-
-	// それぞれの画像に対応するアセットが存在するか調べる
-	// ない場合はアセットを作成する
-
-	// テクスチャを生成する
-	for (std::wstring fileName : fileNameVector)
+	for (std::wstring fileName : fileNameVector_png)
 	{
-		// ファイルの中身を読む込む
-		std::vector<std::string> contentVector;
-		std::wstring path = L"Resources/Texture/" + fileName;
-		FileManager::Read(contentVector, path);
+		// Textureの生成
+		Texture* texture = new Texture(fileName);
 
-		// instanceIDを取得する
-		std::string instanceID;
-		std::smatch smatch;
-		if (std::regex_match(contentVector[0], smatch, std::regex(R"(-{3}\s(.+))")))
+		// 拡張子の変更
+		std::wstring textFileName;
+		std::wsmatch wsmatch;
+		if (std::regex_match(fileName, wsmatch, std::wregex(L"((.+)\\.\\w+)")))
 		{
-			instanceID = smatch[1].str();
+			textFileName = wsmatch[1].str() + L".txt";
+		}
+		else
+		{
+			Debug::Log(L"拡張子を変更できませんでした．");
+			continue;
 		}
 
-		// Textureを生成
-		instanceID2PointerMap[instanceID] = new Texture(instanceID, fileName); // 画像パスはまだ渡さないでおく
-	}
+		// アセットが存在するか確認
+		std::wstring path = L"Resources/Texture/" + textFileName;
+		
+		// あればinstanceIDの設定
+		if (FileManager::Exist(path))
+		{
+			// ファイルの中身を読む込む
+			std::vector<std::string> contentVector;
+			FileManager::Read(contentVector, path);
 
-	// Textureを生成し、テクスチャをロードする
+			// instanceIDを取得する
+			std::string instanceID;
+			std::smatch smatch;
+			if (std::regex_match(contentVector[0], smatch, std::regex(R"(-{3}\s(.+))")))
+			{
+				instanceID = smatch[1].str();
+			}
+
+			texture->instanceID = instanceID;
+		}
+		// なければアセットの作成
+		else
+		{
+			std::string  serializedData = "";
+			for (std::string line : texture->Serialize())
+			{
+				serializedData += line + "\n";
+			}
+
+			FileManager::Write(path, serializedData);
+		}
+
+		instanceID2PointerMap[texture->instanceID] = texture;
+	}
 }
 
 std::unordered_map<std::string, Object*>& AssetManager::GetInstanceID2PointerMap()

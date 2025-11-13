@@ -6,6 +6,18 @@
 
 #include "GameEngine.h"
 
+bool FileManager::Exist(const std::wstring& path)
+{
+	std::ifstream file;
+	file.open(path);
+	bool isExist = !file;
+	if (isExist)
+	{
+		file.close();
+	}
+	return isExist;
+}
+
 void FileManager::Read(std::vector<std::string>& outContentVector, std::string path)
 {
 	std::ifstream file;
@@ -21,6 +33,8 @@ void FileManager::Read(std::vector<std::string>& outContentVector, std::string p
 	{
 		outContentVector.push_back(line);
 	}
+
+	file.close();
 }
 
 void FileManager::Read(std::vector<std::string>& outContentVector, std::wstring path)
@@ -38,6 +52,8 @@ void FileManager::Read(std::vector<std::string>& outContentVector, std::wstring 
 	{
 		outContentVector.push_back(line);
 	}
+
+	file.close();
 }
 
 std::vector<std::wstring> FileManager::GetAllFileName(std::string directry, std::string extension)
@@ -77,6 +93,23 @@ std::vector<std::wstring> FileManager::GetAllFileName(std::string directry, std:
 }
 
 void FileManager::Write(const std::string& path, const std::string& content)
+{
+	std::ofstream file(path);
+
+	if (!file)
+	{
+		Debug::Log(L"ファイルを開けませんでした。");
+		return;
+	}
+
+	file << content << std::endl;
+
+	file.close();
+
+	Debug::Log(L"ファイル書き込みが完了しました。");
+}
+
+void FileManager::Write(const std::wstring& path, const std::string& content)
 {
 	std::ofstream file(path);
 

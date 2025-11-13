@@ -46,6 +46,9 @@
     <Filter Include="Source\Scripts">
       <UniqueIdentifier>{b8d3eb53-24c1-4846-b248-8755db106e80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Editor">
+      <UniqueIdentifier>{6fae86cd-305e-4956-93ca-adee83b25dd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioClip.cpp">
@@ -251,6 +254,12 @@
     </ClCompile>
     <ClCompile Include="AssetManager.cpp">
       <Filter>Source\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationEditor.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuiCreator.cpp">
+      <Filter>Source\Editor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -492,6 +501,12 @@
     </ClInclude>
     <ClInclude Include="AssetManager.h">
       <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationEditor.h">
+      <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuiCreator.h">
+      <Filter>Source\Editor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
