@@ -7,6 +7,7 @@ class GameObject;
 class SceneEditor : public Editor
 {
 public:
+	static int FieldID;
 	static void Initialize();
 	static void Update();
 

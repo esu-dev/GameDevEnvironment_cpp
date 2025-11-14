@@ -91,6 +91,12 @@ Scene* SceneDataManager::Load(std::string path)
 		}
 	}
 	
+	/*Texture* texture = new Texture(L"Resources/Texture/Circle.png");
+	texture = dynamic_cast<Texture*>(AssetManager::GetInstanceID2PointerMap()["1601021899=1013763379=2025362492"]);
+	GameObject* gameObject = GameObject::Create();
+	gameObject->AddComponent<SpriteRenderer>()->SetTexture(texture);
+	scene->AddGameObject(gameObject);*/
+
 	SceneManager::SetActiveScene(scene);
 	return scene;
 }

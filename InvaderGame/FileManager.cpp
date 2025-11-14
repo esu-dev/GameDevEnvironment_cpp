@@ -10,12 +10,12 @@ bool FileManager::Exist(const std::wstring& path)
 {
 	std::ifstream file;
 	file.open(path);
-	bool isExist = !file;
-	if (isExist)
+	bool isNotExist = !file;
+	if (isNotExist)
 	{
 		file.close();
 	}
-	return isExist;
+	return !isNotExist;
 }
 
 void FileManager::Read(std::vector<std::string>& outContentVector, std::string path)

@@ -191,35 +191,10 @@ void SceneEditor::Update()
 	}
 	ImGui::End();
 
-
-	// Asset Browser
-	if (isAssetBrowserOpen)
-	{
-		ImGui::SetNextWindowSize(ImVec2(400, 400), ImGuiCond_FirstUseEver);
-		ImGui::Begin("Asset Browser", &isAssetBrowserOpen);
-		if (ImGui::BeginTabBar("TabVar"))
-		{
-			if (ImGui::BeginTabItem("Scene"))
-			{
-				for (auto& pair : SceneDataManager::GetInstanceID2PointerMap())
-				{
-					if (ImGui::Selectable(pair.second->name.c_str()))
-					{
-
-					}
-				}
-			}
-			else if (ImGui::BeginTabItem("Asset"))
-			{
-
-			}
-		}
-		ImGui::End();
-	}
-
 	// 
 	_frameObject->Update();
 }
 
+int SceneEditor::FieldID = 0;
 bool SceneEditor::_isEditMode = true;
 GameObject* SceneEditor::_frameObject = nullptr;

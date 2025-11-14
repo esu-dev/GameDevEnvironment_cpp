@@ -2,6 +2,7 @@
 
 #include "imgui_impl_dx11.h"
 #include "Object.h"
+#include "SceneEditor.h"
 #include "SceneDataManager.h"
 
 void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& serializedDataVec)
@@ -30,6 +31,8 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 				return;
 			}*/
 
+			std::string instanceID = "";
+
 			ImGui::PushID(i);
 
 			// 値
@@ -38,6 +41,7 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 				std::string serializedVarName = smatch[1].str();
 				std::string label = smatch[2].str();
 				std::string value = smatch[3].str();
+
 
 				// float
 				if (std::regex_match(value, smatch, std::regex(R"(-?\d+\.\d+)")))
@@ -62,10 +66,10 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 					}
 				}
 				// pointer
-				else if (IsPointer(value))
+				else if (IsPointer(instanceID, value))
 				{
 					ImGui::Text(label.c_str());
-					if (ImGui::Button(smatch[1].str().c_str()))
+					if (ImGui::Button(instanceID.c_str()))
 					{
 						ImGui::OpenPopup("select_instanceID_popup");
 					}
@@ -77,13 +81,15 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 							{
 								for (auto& pair : SceneDataManager::GetInstanceID2PointerMap())
 								{
-									if (ImGui::Selectable((pair.second->name + "(" + pair.second->instanceID + ")").c_str()))
+									ImGui::PushID(SceneEditor::FieldID++);
+									if (ImGui::Selectable((pair.second->name + "(" + pair.first + ")").c_str()))
 									{
 										outHasChanged = true;
 
-										serializedData = serializedVarName + "(instanceID)" + pair.second->instanceID;
-										ImGui::CloseCurrentPopup();
+										serializedData = serializedVarName + "(instanceID)" + pair.first;
+										//ImGui::CloseCurrentPopup();
 									}
+									ImGui::PopID();
 								}
 								ImGui::EndTabItem();
 							}
@@ -91,12 +97,13 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 							{
 								for (auto& pair : AssetManager::GetInstanceID2PointerMap())
 								{
-									if (ImGui::Selectable((pair.second->name + "(" + pair.first + ")").c_str()));
+									if (ImGui::Selectable((pair.second->name + "(" + pair.first + ")").c_str()))
 									{
 										outHasChanged = true;
 
-										serializedData = serializedVarName + "(instanceID)" + pair.second->instanceID;
-										ImGui::CloseCurrentPopup();
+										serializedData = serializedVarName + "(instanceID)" + pair.first;
+										SceneDataManager::GetInstanceID2PointerMap();
+										//ImGui::CloseCurrentPopup();
 									}
 								}
 								ImGui::EndTabItem();
@@ -121,7 +128,7 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*-\s(.+))")))
 			{
 				// 要素がポインタ
-				if (IsPointer(smatch[1].str()))
+				if (IsPointer(instanceID, smatch[1].str()))
 				{
 
 				}
@@ -146,10 +153,16 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 	
 }
 
-bool ImGuiCreator::IsPointer(const std::string& value)
+bool ImGuiCreator::IsPointer(std::string& instanceID, const std::string& value)
 {
 	std::smatch smatch;
-	return std::regex_match(value, smatch, std::regex(R"(\(\w+\)(.+))"));
+	if (std::regex_match(value, smatch, std::regex(R"(\(\w+\)(.+))")))
+	{
+		instanceID = smatch[1].str();
+		return true;
+	}
+	instanceID = "nullptr";
+	return false;
 }
 
 void ImGuiCreator::PutPointerField()

@@ -8,6 +8,6 @@ public:
 	static void Create(bool& outHasChanged, std::vector<std::string>& serializedDataVec);
 
 private:
-	static bool IsPointer(const std::string& value);
+	static bool IsPointer(std::string& instanceID, const std::string& value);
 	static void PutPointerField();
 };

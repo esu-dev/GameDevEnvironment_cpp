@@ -13,6 +13,7 @@ public:
 	// ‰æ‘œî•ñ
 	DirectX::TexMetadata m_texMetaData = {};
 
+	NAME(Texture)
 	SERIALIZE3(Object,
 	)
 

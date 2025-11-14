@@ -267,11 +267,14 @@ protected:
 				return;
 			}
 
+			Object* object = nullptr;
 			// シーンから検索
-			Object* object = SceneDataManager::GetInstanceID2PointerMap()[instanceData->memberVector[0]];
-			
+			if (SceneDataManager::GetInstanceID2PointerMap().find(instanceData->memberVector[0]) != SceneDataManager::GetInstanceID2PointerMap().end())
+			{
+				object = SceneDataManager::GetInstanceID2PointerMap()[instanceData->memberVector[0]];
+			}
 			// アセットから検索
-			if (object == nullptr)
+			else if (AssetManager::GetInstanceID2PointerMap().find(instanceData->memberVector[0]) != AssetManager::GetInstanceID2PointerMap().end())
 			{
 				object = AssetManager::GetInstanceID2PointerMap()[instanceData->memberVector[0]];
 			}

@@ -16,12 +16,13 @@ void AssetManager::Initialize()
 	for (std::wstring fileName : fileNameVector_png)
 	{
 		// Textureの生成
-		Texture* texture = new Texture(fileName);
+		std::wstring imgPath = L"Resources/Texture/" + fileName;
+		Texture* texture = new Texture(imgPath);
 
 		// 拡張子の変更
 		std::wstring textFileName;
 		std::wsmatch wsmatch;
-		if (std::regex_match(fileName, wsmatch, std::wregex(L"((.+)\\.\\w+)")))
+		if (std::regex_match(fileName, wsmatch, std::wregex(L"(.+)\\.\\w+")))
 		{
 			textFileName = wsmatch[1].str() + L".txt";
 		}
@@ -54,7 +55,9 @@ void AssetManager::Initialize()
 		// なければアセットの作成
 		else
 		{
-			std::string  serializedData = "";
+			std::string  serializedData =
+				"--- " + texture->instanceID + "\n" + 
+				texture->GetName() + ":\n";
 			for (std::string line : texture->Serialize())
 			{
 				serializedData += line + "\n";
