@@ -1,13 +1,18 @@
 #pragma once
 
 #include "framework.h"
+#include "SerializedClass.h"
 
 class Texture;
 class SpriteRenderer;
 
-class Animation
+class Animation : public SerializedClass
 {
 public:
+	/*SERIALIZE3(SerializedClass,
+		SERIALIZE_FIELD3(_animationDataSetVector)
+	)*/
+
 	Animation(std::string animationName, SpriteRenderer* spriteRenderer);
 
 	std::string GetAnimationName();
@@ -20,11 +25,16 @@ public:
 	void Update();
 
 private:
-	class AnimationDataSet
+	class AnimationDataSet : public SerializedClass
 	{
 	public:
 		Texture* texture;
 		float time;
+
+		/*SERIALIZE3(SerializedClass,
+			SERIALIZE_FIELD3(time),
+			SERIALIZE_FIELD3(texture)
+		)*/
 	};
 
 	int _textureIndex = 0;

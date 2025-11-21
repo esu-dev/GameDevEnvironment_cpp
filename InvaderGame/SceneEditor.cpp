@@ -7,6 +7,7 @@
 #include "GameSystem.h"
 #include "SceneDataManager.h"
 #include "ImGuiCreator.h"
+#include "AnimationEditor.h"
 
 #include "imgui_internal.h"
 #include "imgui_impl_win32.h"
@@ -73,6 +74,9 @@ void SceneEditor::Update()
 	static bool isAssetBrowserOpen = false;
 
 	if (!_isEditMode) return;
+
+	// 他エディタのUpdate処理
+	AnimationEditor::Update();
 
 	// imgui表示
 	ImGui::ShowDemoWindow();

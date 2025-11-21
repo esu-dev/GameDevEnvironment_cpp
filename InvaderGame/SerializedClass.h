@@ -209,7 +209,11 @@ protected:
 			serializedDataVector.push_back(indent + name + ":");
 			for (int i = 0; i < value.size(); i++)
 			{
-				serializedDataVector.push_back(indent + "- (instanceID)" + value[i].get()->instanceID);
+				// shardPtr
+				if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)
+				{
+					serializedDataVector.push_back(indent + "- (instanceID)" + value[i].get()->instanceID);
+				}
 			}
 		}
 		// •¶Žš—ñ
