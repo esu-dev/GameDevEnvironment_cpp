@@ -1,78 +1,5 @@
 #pragma once
 
-#define SERIALIZE_FIELD(v) \
-	[&]() -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, indentNum); }
-
-#define SERIALIZE_VECTOR(v) \
-	[&]() -> std::vector<std::string> { return SerializedClass::SerializeVector(#v, v); }
-
-#define SERIALIZE(p, ...) \
-	std::vector<std::string> Serialize(const int indentNum = 1) override \
-	{ \
-		std::vector<std::string> pV = p::Serialize(indentNum); \
-		std::vector<std::string> r; \
-		if (pV[0] != "") r.insert(r.end(), pV.begin(), pV.end()); \
-		std::vector<std::function<std::vector<std::string>()>> functionVector = {__VA_ARGS__}; \
-		for (auto& function : functionVector) \
-		{ \
-			std::vector<std::string> s = function(); \
-			r.insert(r.end(), s.begin(), s.end()); \
-		} \
-		return r; \
-	}
-
-#define DESERIALIZE_FIELD(v) \
-	[&](InstanceData* instanceData) -> void { DeserializeField(v, instanceData); }
-
-#define DESERIALIZE_POINTER(v) \
-	[&](InstanceData* instanceData) -> void { DeserializePointer(v, instanceData); }
-
-#define DESERIALIZE_VECTOR(v) \
-	[&](InstanceData* instanceData) -> void { DeserializeVector(v, instanceData); }
-
-// out引数で返した方がシリアライズとも統一感があってよいのでは？
-#define DESERIALIZE(p, ...) \
-	int Deserialize(std::vector<std::string> v) override \
-	{ \
-		int n = p::Deserialize(v); \
-		std::vector<std::function<void(InstanceData*)>> fv = {__VA_ARGS__}; \
-		if (n >= 2) v.erase(v.begin(), v.begin() + n - 1); \
-		else if (n == 1) v.erase(v.begin()); \
-		InputValue(v, fv); \
-		return n + (int)fv.size(); \
-	}
-
-//#define SERIALIZE_FIELD2(v) \
-//	std::pair<std::function<std::vector<std::string>(int)>, std::function<void(InstanceData*)>>( \
-//		[&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, indentNum); }, \
-//		[&](InstanceData* instanceData) -> void { DeserializeField(v, instanceData); } \
-//	)
-//
-//#define SERIALIZE2(p, ...) \
-//	std::vector<std::string> Serialize(const int indentNum = 1) override \
-//	{ \
-//		std::vector<std::string> pV = p::Serialize(indentNum); \
-//		std::vector<std::string> r; \
-//		if (pV[0] != "") r.insert(r.end(), pV.begin(), pV.end()); \
-//		std::vector<std::pair<std::function<std::vector<std::string>(int)>, std::function<void(InstanceData*)>>> functionVector = {__VA_ARGS__}; \
-//		for (auto& function : functionVector) \
-//		{ \
-//			std::vector<std::string> s = function.first(indentNum); \
-//			r.insert(r.end(), s.begin(), s.end()); \
-//		} \
-//		return r; \
-//	} \
-//	\
-//	int Deserialize(std::vector<std::string> v) override \
-//	{ \
-//		int n = p::Deserialize(v); \
-//		std::vector<std::pair<std::function<std::vector<std::string>(int)>, std::function<void(InstanceData*)>>> fv = {__VA_ARGS__}; \
-//		if (n >= 2) v.erase(v.begin(), v.begin() + n - 1); \
-//		else if (n == 1) v.erase(v.begin()); \
-//		InputValue2(v, fv); \
-//		return n + (int)fv.size(); \
-//	}
-
 #define SERIALIZE_FIELD3(v) \
 	new SerializeFuncData( \
 		[&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, indentNum); }, \
@@ -209,8 +136,13 @@ protected:
 			serializedDataVector.push_back(indent + name + ":");
 			for (int i = 0; i < value.size(); i++)
 			{
+				// 値
+				if constexpr (std::is_arithmetic<typename T::value_type>())
+				{
+					serializedDataVector.push_back(indent + "- " + std::to_string(value[i]));
+				}
 				// shardPtr
-				if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)
+				else if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)
 				{
 					serializedDataVector.push_back(indent + "- (instanceID)" + value[i].get()->instanceID);
 				}
@@ -228,20 +160,6 @@ protected:
 
 		return serializedDataVector;
 	}
-
-	template <typename T>
-	static std::vector<std::string> SerializeVector(const std::string& name, const std::vector<T>& value)
-	{
-		std::vector<std::string> serializedDataVector;
-		serializedDataVector.push_back(name + ":");
-		for (int i = 0; i < value.size(); i++)
-		{
-			serializedDataVector.push_back("- (instanceID)" + value[i].get()->instanceID);
-		}
-		return serializedDataVector;
-	}
-
-
 	
 	template <typename T>
 	static void DeserializeField(T& variable, const InstanceData* instanceData)
@@ -318,53 +236,9 @@ protected:
 			variable = instanceData->memberVector[0];
 		}
 	}
+	
 
-	template <typename T>
-	static void DeserializePointer(T& variable, const InstanceData* instanceData)
-	{
-		for (auto member : instanceData->memberVector)
-		{
-			Object* object = SceneDataManager::GetInstanceID2PointerMap()[member];
-
-			// Tにキャストで良いのでは？
-
-			// 型チェック
-			if (Component* component = dynamic_cast<Component*>(object))
-			{
-			}
-			// GameObject
-			else if (GameObject* gameObject = dynamic_cast<GameObject*>(object))
-			{
-				variable = gameObject;
-			}
-		}
-	}
-
-	template <typename T>
-	static void DeserializeVector(T& variable, const InstanceData* instanceData)
-	{
-		for (auto member : instanceData->memberVector)
-		{
-			if (instanceData->hasInstanceID)
-			{
-				// インスタンスの検索
-				Object* object = SceneDataManager::GetInstanceID2PointerMap()[member];
-
-				// 型チェック
-				Component* component = dynamic_cast<Component*>(object);
-				if (component != nullptr)
-				{
-					variable.push_back(std::shared_ptr<Component>(component));
-				}
-				else
-				{
-					// GameObject
-				}
-			}
-		}
-	}
-
-	static void InputValue(const std::vector<std::string>& instanceDataVector, const std::vector<std::function<void(InstanceData*)>>& functionVector)
+	static void InputValue3(const std::vector<std::string>& instanceDataVector, const std::vector<SerializeFuncData*>& functionVector)
 	{
 		bool isPacking = false;
 		std::vector<InstanceData*> subInstanceDataVector;
@@ -418,83 +292,6 @@ protected:
 					// ポインタかどうか確認
 					std::smatch match;
 					std::string matchString = m[3].str();
-					if (std::regex_match(matchString, match, std::regex(R"(\(\w+\)(\w+))")))
-					{
-						std::string instanceID = match[1].str();
-						subInstanceDataVector.back()->hasInstanceID = true;
-						subInstanceDataVector.back()->memberVector.push_back(instanceID);
-					}
-					else
-					{
-						subInstanceDataVector.back()->memberVector.push_back(matchString);
-					}
-				}
-			}
-		}
-
-
-		// データを元に値を代入
-		int i = 0;
-		for (auto function : functionVector)
-		{
-			function(subInstanceDataVector[i++]);
-		}
-	}
-
-	static void InputValue3(const std::vector<std::string>& instanceDataVector, const std::vector<SerializeFuncData*>& functionVector)
-	{
-		bool isPacking = false;
-		std::vector<InstanceData*> subInstanceDataVector;
-		for (std::string instanceData : instanceDataVector)
-		{
-			std::smatch m;
-
-			if (isPacking)
-			{
-				// リスト
-				if (std::regex_match(instanceData, m, std::regex(R"(-\s(\(\w+\))(\w+))")))
-				{
-					subInstanceDataVector.back()->isVector = true;
-
-					// instanceIDをもつかどうか
-					if (m[1].str() == "(instanceID)")
-					{
-						std::string instanceID = m[2].str();
-						subInstanceDataVector.back()->hasInstanceID = true;
-						subInstanceDataVector.back()->memberVector.push_back(instanceID);
-					}
-					else
-					{
-
-					}
-				}
-				// クラス, 構造体
-				else if (std::regex_match(instanceData, m, std::regex(R"(\s{2}(\s*\w+:\s*.*))")))
-				{
-					// リストの格納
-					subInstanceDataVector.back()->memberVector.push_back(m[1].str());
-				}
-			}
-
-
-			std::regex re(R"(^(\w+):(\s*)(.*))");
-			if (std::regex_search(instanceData, m, re))
-			{
-				subInstanceDataVector.push_back(new InstanceData());
-
-				// クラス, 構造体, vector
-				if (m[3].str() == "")
-				{
-					isPacking = true;
-				}
-				// 値, ポインタ
-				else
-				{
-					isPacking = false;
-
-					// ポインタかどうか確認
-					std::smatch match;
-					std::string matchString = m[3].str();
 					if (std::regex_match(matchString, match, std::regex(R"(\(\w+\)(.+))")))
 					{
 						std::string instanceID = match[1].str();
@@ -506,6 +303,10 @@ protected:
 						subInstanceDataVector.back()->memberVector.push_back(matchString);
 					}
 				}
+			}
+			else
+			{
+				Debug::Log(L"未登録です。[%s]", instanceData.c_str());
 			}
 		}
 

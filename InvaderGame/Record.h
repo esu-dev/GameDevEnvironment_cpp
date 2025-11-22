@@ -10,12 +10,8 @@ template <typename T>
 class Record : public RecordBase
 {
 public:
-	SERIALIZE(RecordBase,
-		SERIALIZE_FIELD(_variable)
-	)
-
-	DESERIALIZE(RecordBase,
-		DESERIALIZE_FIELD(_variable)
+	SERIALIZE3(RecordBase,
+		SERIALIZE_FIELD3(_variable)
 	)
 
 	void Initialize() override

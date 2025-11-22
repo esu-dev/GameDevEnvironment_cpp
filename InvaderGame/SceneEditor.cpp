@@ -149,14 +149,15 @@ void SceneEditor::Update()
 					component->Deserialize(serializedDataVec);
 				}
 			}
-			if (ImGui::BeginPopupContextItem())
+			// ‚È‚º‚©ƒGƒ‰[‚ª”­¶‚·‚é
+			/*if (ImGui::BeginPopupContextItem())
 			{
 				if (ImGui::Selectable("Remove Component"))
 				{
 					Selection::gameObject->RemoveComponent(component);
 				}
 				ImGui::EndPopup();
-			}
+			}*/
 		}
 
 		// AddComponent

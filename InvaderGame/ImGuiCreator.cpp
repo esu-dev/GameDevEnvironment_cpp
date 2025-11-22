@@ -60,30 +60,16 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 
 void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& serializedDataVec)
 {
-	static bool _isTreeOpen = false;
-
 	for (int i = 0; i < serializedDataVec.size(); i++)
 	{
 		std::function<void()> createContents = [&]() -> void {
-			if (i >= serializedDataVec.size()) return;
-
-			std::string& serializedData = serializedDataVec[i];
-			std::smatch smatch;
-
-			// 空白２個なら木構造終了
-			if (_isTreeOpen && std::regex_match(serializedData, smatch, std::regex(R"(\s{2}\w+:.+)")))
+			if (i >= serializedDataVec.size())
 			{
-				i--;
-				_isTreeOpen = false;
 				return;
 			}
 
-			// 空白が多いならツリーが開いているときのみ
-			/*if (!_isTreeOpen && std::regex_match(serializedData, smatch, std::regex(R"(\s{2}\s+\w+:.*)")))
-			{
-				return;
-			}*/
-
+			std::string& serializedData = serializedDataVec[i];
+			std::smatch smatch;
 			std::string instanceID = "";
 
 			ImGui::PushID(i);
@@ -128,8 +114,19 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*(\w+):)")))
 			{
 				ImGui::Text(serializedData.c_str());
+
+				/*if (ImGui::TreeNode(serializedData.c_str()))
+				{
+					ImGui::TreePop();
+				}*/
 			}
-			// リスト
+			// vector
+			//else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*\(vector\)(\w+):\s\(d+))")))
+			//{
+			//	// 要素数のフィールド
+			//	//ImGui::InputInt("size");
+			//}
+			// vectorの要素
 			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*-\s(.+))")))
 			{
 				// 要素が値
@@ -149,18 +146,10 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 			}
 
 			ImGui::PopID();
-
-			if (_isTreeOpen)
-			{
-				i++;
-				createContents();
-			}
-			};
+		};
 
 		createContents();
 	}
-
-	
 }
 
 bool ImGuiCreator::IsArithmetic(std::smatch& outSmatch, const std::string& value)
