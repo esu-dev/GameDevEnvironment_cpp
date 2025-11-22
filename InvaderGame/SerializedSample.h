@@ -9,7 +9,7 @@ class SerializedSample : public Component
 public:
 	float hoge = 0;
 	Vector3 fuga = Vector3();
-	std::vector<int> intVector = {1, 2};
+	std::vector<int> intVector = {};
 
 	NAME(SerializedSample)
 	SERIALIZE3(Component,

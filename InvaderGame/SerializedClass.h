@@ -133,7 +133,7 @@ protected:
 		// vector
 		else if constexpr (std_extension::is_vector_v<T>)
 		{
-			serializedDataVector.push_back(indent + name + ":");
+			serializedDataVector.push_back(indent + "(vector)" + name + ": " + std::to_string(value.size()));
 			for (int i = 0; i < value.size(); i++)
 			{
 				// 値
@@ -179,6 +179,10 @@ protected:
 			{
 				variable = (value == "true");
 			}
+			else
+			{
+				Debug::Log("型を追加してください。[DeserializeField()]");
+			}
 		}
 		// ポインタ
 		else if constexpr (std::is_pointer<T>())
@@ -218,11 +222,49 @@ protected:
 		// vector
 		else if constexpr (std_extension::is_vector_v<T>)
 		{
-			// shared_ptr
-			if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)
+			variable.clear();
+
+			for (int i = 1; i < std::stoi(instanceData->memberVector[0]) + 1; i++)
 			{
-				for (auto member : instanceData->memberVector)
+				bool isEmpty = false;
+				std::string member = "";
+
+				if (i >= instanceData->memberVector.size())
 				{
+					isEmpty = true;
+				}
+				else
+				{
+					member = instanceData->memberVector[i];
+				}
+
+
+				// 要素が値
+				if constexpr (std::is_arithmetic<typename T::value_type>())
+				{
+					// int
+					if (typeid(typename T::value_type) == typeid(int))
+					{
+						variable.push_back(!isEmpty ? std::stoi(member) : 0);
+					}
+					// float
+					else if (typeid(typename T::value_type) == typeid(float))
+					{
+						//variable.push_back(std::stof(member));
+					}
+					else
+					{
+						Debug::Log("型を追加してください。[DeserializeField()]");
+					}
+				}
+				// shared_ptr
+				else if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)
+				{
+					if (isEmpty)
+					{
+						variable.push_back(std::shared_ptr<Component>(nullptr));
+					}
+
 					// インスタンスの検索
 					Object* object = SceneDataManager::GetInstanceID2PointerMap()[member];
 
@@ -238,85 +280,7 @@ protected:
 	}
 	
 
-	static void InputValue3(const std::vector<std::string>& instanceDataVector, const std::vector<SerializeFuncData*>& functionVector)
-	{
-		bool isPacking = false;
-		std::vector<InstanceData*> subInstanceDataVector;
-		for (std::string instanceData : instanceDataVector)
-		{
-			std::smatch m;
-
-			if (isPacking)
-			{
-				// リスト
-				if (std::regex_match(instanceData, m, std::regex(R"(-\s(\(\w+\))(.+))")))
-				{
-					subInstanceDataVector.back()->isVector = true;
-
-					// instanceIDをもつかどうか
-					if (m[1].str() == "(instanceID)")
-					{
-						std::string instanceID = m[2].str();
-						subInstanceDataVector.back()->hasInstanceID = true;
-						subInstanceDataVector.back()->memberVector.push_back(instanceID);
-					}
-					else
-					{
-
-					}
-				}
-				// クラス, 構造体
-				else if (std::regex_match(instanceData, m, std::regex(R"(\s{2}(\s*\w+:\s*.*))")))
-				{
-					// リストの格納
-					subInstanceDataVector.back()->memberVector.push_back(m[1].str());
-				}
-			}
-
-
-			std::regex re(R"(^(\w+):(\s*)(.*))");
-			if (std::regex_search(instanceData, m, re))
-			{
-				subInstanceDataVector.push_back(new InstanceData());
-
-				// クラス, 構造体, vector
-				if (m[3].str() == "")
-				{
-					isPacking = true;
-				}
-				// 値, ポインタ
-				else
-				{
-					isPacking = false;
-
-					// ポインタかどうか確認
-					std::smatch match;
-					std::string matchString = m[3].str();
-					if (std::regex_match(matchString, match, std::regex(R"(\(\w+\)(.+))")))
-					{
-						std::string instanceID = match[1].str();
-						subInstanceDataVector.back()->hasInstanceID = true;
-						subInstanceDataVector.back()->memberVector.push_back(instanceID);
-					}
-					else
-					{
-						subInstanceDataVector.back()->memberVector.push_back(matchString);
-					}
-				}
-			}
-			else
-			{
-				Debug::Log(L"未登録です。[%s]", instanceData.c_str());
-			}
-		}
-
-
-		// データを元に値を代入
-		for (int i = 0; i < subInstanceDataVector.size(); i++)
-		{
-			functionVector[i]->deserializeFunc(subInstanceDataVector[i]);
-		}
-	}
+	static void InputValue3(const std::vector<std::string>& instanceDataVector, const std::vector<SerializeFuncData*>& functionVector);
 
 	virtual std::vector<SerializeFuncData*> GetSerializeFuncData() { return std::vector<SerializeFuncData*>(); }
 };

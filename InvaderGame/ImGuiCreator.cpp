@@ -75,39 +75,17 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 			ImGui::PushID(i);
 
 			// 値
-			if (IsArithmetic(smatch, serializedData))
+			if (std::regex_match(serializedData, smatch, std::regex(R"((\s*)(\w+):\s(.+))")))
 			{
-				std::string serializedVarName = smatch[1].str();
+				std::string indent = smatch[1].str();
 				std::string label = smatch[2].str();
 				std::string value = smatch[3].str();
 
+				std::string serializedVarName = indent + label + ": ";
 
-				// float
-				if (std::regex_match(value, smatch, std::regex(R"(-?\d+\.\d+)")))
+				if (ArithmeticField(serializedData, serializedVarName, label, value))
 				{
-					float v = std::stof(value);
-					if (ImGui::DragFloat(label.c_str(), &v))
-					{
-						outHasChanged = true;
-
-						serializedData = serializedVarName + std::to_string(v);
-					}
-				}
-				// bool
-				else if (value == "true" || value == "false")
-				{
-					bool b = (value == "true");
-					if (ImGui::Checkbox(label.c_str(), &b))
-					{
-						outHasChanged = true;
-
-						serializedData = serializedVarName + (b ? "true" : "false");
-					}
-				}
-				// pointer
-				else if (IsPointer(instanceID, value))
-				{
-					outHasChanged = PutPointerField(serializedData, serializedVarName, label, instanceID);
+					outHasChanged = true;
 				}
 			}
 			// クラス、構造体
@@ -121,18 +99,41 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 				}*/
 			}
 			// vector
-			//else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*\(vector\)(\w+):\s\(d+))")))
-			//{
-			//	// 要素数のフィールド
-			//	//ImGui::InputInt("size");
-			//}
+			else if (std::regex_match(serializedData, smatch, std::regex(R"((\s*\(vector\)(\w+:)\s)(\d+))")))
+			{
+				std::string serializedVarName = smatch[1].str();
+				std::string label = smatch[2].str();
+				int size = std::stoi(smatch[3].str());
+
+				// ラベル
+				ImGui::Text(label.c_str());
+
+				// 要素数のフィールド
+				if (ImGui::InputInt("size", &size))
+				{
+					outHasChanged = true;
+
+					serializedData = serializedVarName + std::to_string(size);
+				}
+			}
 			// vectorの要素
 			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*-\s(.+))")))
 			{
 				// 要素が値
-				if (IsArithmetic(smatch, serializedData))
+				if (std::regex_match(serializedData, smatch, std::regex(R"((\s*)-\s(.+))")))
 				{
+					std::string indent = smatch[1].str();
+					std::string label = "-";
+					std::string value = smatch[2].str();
 
+					std::string serializedVarName = indent + "- ";
+
+					if (ArithmeticField(serializedData, serializedVarName, label, value))
+					{
+						outHasChanged = true;
+
+						// ここで値の変更処理をした方が統一感がある
+					}
 				}
 				// 要素がポインタ
 				else if (IsPointer(instanceID, smatch[1].str()))
@@ -154,7 +155,7 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 
 bool ImGuiCreator::IsArithmetic(std::smatch& outSmatch, const std::string& value)
 {
-	if (std::regex_match(value, outSmatch, std::regex(R"((\s*(\w+):\s)(.+))")))
+	if (std::regex_match(value, outSmatch, std::regex(R"((\s*)(\w+):\s(.+))")))
 	{
 		return true;
 	}
@@ -171,4 +172,57 @@ bool ImGuiCreator::IsPointer(std::string& instanceID, const std::string& value)
 	}
 	instanceID = "nullptr";
 	return false;
+}
+
+bool ImGuiCreator::ArithmeticField(std::string& outSerializedData, const std::string& serializedVarName, const std::string& label, const std::string& value)
+{
+	bool outHasChanged = false;
+
+	std::string instanceID;
+	std::smatch smatch;
+
+	// int
+	if (std::regex_match(value, smatch, std::regex(R"(-?\d+)")))
+	{
+		int v = std::stoi(value);
+		if (ImGui::DragInt(label.c_str(), &v))
+		{
+			outHasChanged = true;
+
+			outSerializedData = serializedVarName + std::to_string(v);
+		}
+	}
+	// float
+	else if (std::regex_match(value, smatch, std::regex(R"(-?\d+\.\d+)")))
+	{
+		float v = std::stof(value);
+		if (ImGui::DragFloat(label.c_str(), &v))
+		{
+			outHasChanged = true;
+
+			outSerializedData = serializedVarName + std::to_string(v);
+		}
+	}
+	// bool
+	else if (value == "true" || value == "false")
+	{
+		bool b = (value == "true");
+		if (ImGui::Checkbox(label.c_str(), &b))
+		{
+			outHasChanged = true;
+
+			outSerializedData = serializedVarName + (b ? "true" : "false");
+		}
+	}
+	// pointer
+	else if (IsPointer(instanceID, value))
+	{
+		outHasChanged = PutPointerField(outSerializedData, serializedVarName, label, instanceID);
+	}
+	else
+	{
+		Debug::Log(L"型を追加してください。[ArithmeticField()]");
+	}
+
+	return outHasChanged;
 }

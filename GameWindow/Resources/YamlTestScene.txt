@@ -2,7 +2,7 @@ YamlTestScene
 --- 000
 GameObject:
   tag: MainCamera
-  _componentVector:
+  (vector)_componentVector: 2
   - (instanceID)001
   - (instanceID)002
 --- 001
@@ -23,7 +23,7 @@ Camera:
 --- 1292049439=950831409=1158666185
 GameObject:
   tag: Untagged
-  _componentVector:
+  (vector)_componentVector: 3
   - (instanceID)1092143204=1540147028=1065931083
   - (instanceID)445859544=432769175=1810923136
   - (instanceID)484111153=451917637=1025366165
@@ -42,7 +42,7 @@ Transform:
 --- 445859544=432769175=1810923136
 SpriteRenderer:
   gameObject: (instanceID)1292049439=950831409=1158666185
-  m_texture: (instanceID)nullptr
+  m_texture: (instanceID)1601021899=1013763379=2025362492
 --- 484111153=451917637=1025366165
 SerializedSample:
   gameObject: (instanceID)1292049439=950831409=1158666185
@@ -51,7 +51,13 @@ SerializedSample:
     x: 0.000000
     y: 0.000000
     z: 0.000000
-  intVector:
-  - 1
-  - 2
+  (vector)intVector: 8
+  - 3
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 
