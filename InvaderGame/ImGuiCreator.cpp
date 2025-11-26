@@ -58,8 +58,11 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 	return outHasChanged;
 }
 
-void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& serializedDataVec)
+void ImGuiCreator::Create(SerializedClass* serializedObject)
 {
+	bool hasChanged = false;
+	std::vector<std::string> serializedDataVec = serializedObject->Serialize();
+
 	for (int i = 0; i < serializedDataVec.size(); i++)
 	{
 		std::function<void()> createContents = [&]() -> void {
@@ -85,7 +88,7 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 
 				if (ArithmeticField(serializedData, serializedVarName, label, value))
 				{
-					outHasChanged = true;
+					hasChanged = true;
 				}
 			}
 			// クラス、構造体
@@ -111,7 +114,7 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 				// 要素数のフィールド
 				if (ImGui::InputInt("size", &size))
 				{
-					outHasChanged = true;
+					hasChanged = true;
 
 					serializedData = serializedVarName + std::to_string(size);
 				}
@@ -130,7 +133,7 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 
 					if (ArithmeticField(serializedData, serializedVarName, label, value))
 					{
-						outHasChanged = true;
+						hasChanged = true;
 
 						// ここで値の変更処理をした方が統一感がある
 					}
@@ -138,7 +141,7 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 				// 要素がポインタ
 				else if (IsPointer(instanceID, smatch[1].str()))
 				{
-
+					Debug::Log(L"要素がポインタの時の挙動が未定義です。[ImGuiCreator::Create()]");
 				}
 			}
 			else
@@ -150,6 +153,21 @@ void ImGuiCreator::Create(bool& outHasChanged, std::vector<std::string>& seriali
 		};
 
 		createContents();
+	}
+
+	if (hasChanged)
+	{
+		for (std::string& serializedData : serializedDataVec)
+		{
+			// 空白除去
+			std::smatch smatch;
+			if (std::regex_match(serializedData, smatch, std::regex(R"(\s{2}(.+))")))
+			{
+				serializedData = smatch[1].str();
+			}
+		}
+
+		serializedObject->Deserialize(serializedDataVec);
 	}
 }
 

@@ -1,6 +1,8 @@
 #include "AnimationEditor.h"
 
 #include "imgui_impl_dx11.h"
+#include "ImGuiCreator.h"
+
 #include "Input.h"
 
 void AnimationEditor::Update()
@@ -9,24 +11,23 @@ void AnimationEditor::Update()
 	if (Input::GetKeyDown('Q')) // 最終的にはAにする
 	{
 		isEditMode = !isEditMode;
+
+		if (isEditMode)
+		{
+			_animation = new Animation("TestAnimation");
+		}
 	}
 
 	if (isEditMode)
 	{
-		static int listNum = 0;
-
 		// ImGui表示
 		ImGui::SetNextWindowSize(ImVec2(200, 400));
 		ImGui::Begin("Animation Editor");
 
-		// 最終的にはシリアライズデータから生成するようにする
-		if (ImGui::InputInt("List Num", &listNum))
-		{
-			for (int i = 0; i < listNum; i++)
-			{
-				
-			}
-		}
+		ImGuiCreator::Create(_animation);
+
 		ImGui::End();
 	}
 }
+
+Animation* AnimationEditor::_animation = nullptr;

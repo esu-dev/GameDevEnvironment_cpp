@@ -2,6 +2,7 @@
 
 #include "GameEngine.h"
 
+Animation::Animation(std::string animationClipName) : _animationName(animationClipName) {}
 Animation::Animation(std::string animationName, SpriteRenderer* spriteRenderer) : _animationName(animationName), _spriteRenderer(spriteRenderer) {}
 
 std::string Animation::GetAnimationName()
@@ -16,9 +17,9 @@ void Animation::SetLoopTime(bool loopTime)
 
 void Animation::SetAnimation(Texture* texture, float time)
 {
-	AnimationDataSet* animationDataSet = new AnimationDataSet();
-	animationDataSet->texture = texture;
-	animationDataSet->time = time;
+	AnimationDataSet animationDataSet = AnimationDataSet();
+	animationDataSet.texture = texture;
+	animationDataSet.time = time;
 	_animationDataSetVector.push_back(animationDataSet);
 }
 
@@ -48,10 +49,10 @@ void Animation::Update()
 			}
 		}
 
-		if (_playingTime >= _animationDataSetVector[_textureIndex]->time)
+		if (_playingTime >= _animationDataSetVector[_textureIndex].time)
 		{
 			//Debug::Log(L"%d", _textureIndex);
-			_spriteRenderer->SetTexture(_animationDataSetVector[_textureIndex]->texture);
+			_spriteRenderer->SetTexture(_animationDataSetVector[_textureIndex].texture);
 			_textureIndex++;
 		}
 

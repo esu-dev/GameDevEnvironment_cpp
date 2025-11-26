@@ -146,6 +146,11 @@ protected:
 				{
 					serializedDataVector.push_back(indent + "- (instanceID)" + value[i].get()->instanceID);
 				}
+				// シリアライズ可能
+				else if constexpr (std::is_base_of<SerializedClass, T>())
+				{
+					Debug::Log(L"シリアライズ可能です。[SerializedClass::Serialize()]");
+				}
 			}
 		}
 		// 文字列
@@ -269,6 +274,11 @@ protected:
 					Object* object = SceneDataManager::GetInstanceID2PointerMap()[member];
 
 					if (Component* component = dynamic_cast<Component*>(object)) variable.push_back(std::shared_ptr<Component>(component));
+				}
+				// シリアライズ可能
+				else if constexpr (std::is_base_of<SerializedClass, typename T::value_type>())
+				{
+					variable.push_back(typename T::value_type());
 				}
 			}
 		}

@@ -128,26 +128,7 @@ void SceneEditor::Update()
 			// Component
 			if (ImGui::CollapsingHeader(component.get()->GetName().c_str()))
 			{
-				bool hasChanged = false;
-
-				auto serializedDataVec = component->Serialize();
-				ImGuiCreator::Create(hasChanged, serializedDataVec);
-
-				// 関数的に呼べばよいのでは？
-				if (hasChanged)
-				{
-					for (std::string& serializedData : serializedDataVec)
-					{
-						// 空白除去
-						std::smatch smatch;
-						if (std::regex_match(serializedData, smatch, std::regex(R"(\s{2}(.+))")))
-						{
-							serializedData = smatch[1].str();
-						}
-					}
-
-					component->Deserialize(serializedDataVec);
-				}
+				ImGuiCreator::Create(component.get());
 			}
 			// なぜかエラーが発生する
 			/*if (ImGui::BeginPopupContextItem())

@@ -2,17 +2,19 @@
 
 #include "framework.h"
 #include "SerializedClass.h"
+#include "Texture.h"
 
-class Texture;
 class SpriteRenderer;
 
 class Animation : public SerializedClass
 {
 public:
-	/*SERIALIZE3(SerializedClass,
+	SERIALIZE3(SerializedClass,
+		SERIALIZE_FIELD3(_loopTime),
 		SERIALIZE_FIELD3(_animationDataSetVector)
-	)*/
+	)
 
+	Animation(std::string animationClipName);
 	Animation(std::string animationName, SpriteRenderer* spriteRenderer);
 
 	std::string GetAnimationName();
@@ -31,10 +33,10 @@ private:
 		Texture* texture;
 		float time;
 
-		/*SERIALIZE3(SerializedClass,
+		SERIALIZE3(SerializedClass,
 			SERIALIZE_FIELD3(time),
 			SERIALIZE_FIELD3(texture)
-		)*/
+		)
 	};
 
 	int _textureIndex = 0;
@@ -42,6 +44,6 @@ private:
 	bool _isPlaying = false;
 	bool _loopTime = false;
 	std::string _animationName;
-	SpriteRenderer* _spriteRenderer;
-	std::vector<AnimationDataSet*> _animationDataSetVector;
+	SpriteRenderer* _spriteRenderer = nullptr;
+	std::vector<AnimationDataSet> _animationDataSetVector;
 };
