@@ -17,7 +17,7 @@ public:
 	SERIALIZE3(Object,
 	)
 
-	Texture();
+	Texture(); // このコンストラクタは基本あってはならない
 	Texture(std::string fileName);
 	Texture(std::wstring path);
 	Texture(std::string instanceID, std::wstring path);

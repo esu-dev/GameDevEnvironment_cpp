@@ -42,7 +42,7 @@ Transform:
 --- 445859544=432769175=1810923136
 SpriteRenderer:
   gameObject: (instanceID)1292049439=950831409=1158666185
-  m_texture: (instanceID)1601021899=1013763379=2025362492
+  m_texture: (instanceID)nullptr
 --- 484111153=451917637=1025366165
 SerializedSample:
   gameObject: (instanceID)1292049439=950831409=1158666185

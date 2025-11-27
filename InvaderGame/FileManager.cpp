@@ -92,6 +92,36 @@ std::vector<std::wstring> FileManager::GetAllFileName(std::string directry, std:
 	return pathVector;
 }
 
+std::vector<std::wstring> FileManager::GetAllFileName(std::wstring directry, std::wstring extension)
+{
+	std::vector<std::wstring> pathVector;
+
+	LPCWSTR wildCard = (directry + L"*." + extension).c_str();
+
+	WIN32_FIND_DATA win32FindData;
+	HANDLE hFindFile = FindFirstFileW(wildCard, &win32FindData);
+
+	// ファイルが見つからなかった場合
+	if (hFindFile == INVALID_HANDLE_VALUE)
+	{
+		Debug::Log("file was not found.");
+		return pathVector;
+	}
+
+	// ファイルを読み込み続ける
+	do
+	{
+		std::wstring fileName = win32FindData.cFileName;
+		//Debug::Log("%s", fileName.c_str()); // 最初の一文字しか取れていない
+		pathVector.push_back(fileName);
+	} while (FindNextFileW(hFindFile, &win32FindData));
+
+
+	FindClose(hFindFile);
+
+	return pathVector;
+}
+
 void FileManager::Write(const std::string& path, const std::string& content)
 {
 	std::ofstream file(path);
@@ -115,7 +145,7 @@ void FileManager::Write(const std::wstring& path, const std::string& content)
 
 	if (!file)
 	{
-		Debug::Log(L"ファイルを開けませんでした。");
+		Debug::Log(L"ファイルを開けませんでした。[FileManager::Write()]");
 		return;
 	}
 

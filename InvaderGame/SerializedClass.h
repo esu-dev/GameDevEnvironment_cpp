@@ -147,8 +147,18 @@ protected:
 					serializedDataVector.push_back(indent + "- (instanceID)" + value[i].get()->instanceID);
 				}
 				// シリアライズ可能
-				else if constexpr (std::is_base_of<SerializedClass, T>())
+				else if constexpr (std::is_base_of<SerializedClass, typename T::value_type>())
 				{
+					// シリアライズ
+					std::vector<std::string> subSerializedDataVec = value[i].Serialize();
+
+					// 結果をvectorに結合
+					serializedDataVector.push_back(indent + "- " + subSerializedDataVec[0]);
+					for (int i = 1; i < subSerializedDataVec.size(); i++)
+					{
+						serializedDataVector.push_back(indent + "  " + subSerializedDataVec[i]);
+					}
+
 					Debug::Log(L"シリアライズ可能です。[SerializedClass::Serialize()]");
 				}
 			}

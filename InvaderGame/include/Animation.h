@@ -6,10 +6,12 @@
 
 class SpriteRenderer;
 
-class Animation : public SerializedClass
+class Animation : public Object
 {
 public:
-	SERIALIZE3(SerializedClass,
+	NAME(Animation)
+	SERIALIZE3(Object,
+		SERIALIZE_FIELD3(_animationName),
 		SERIALIZE_FIELD3(_loopTime),
 		SERIALIZE_FIELD3(_animationDataSetVector)
 	)

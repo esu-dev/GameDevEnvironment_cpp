@@ -237,6 +237,16 @@ bool ImGuiCreator::ArithmeticField(std::string& outSerializedData, const std::st
 	{
 		outHasChanged = PutPointerField(outSerializedData, serializedVarName, label, instanceID);
 	}
+	// •¶š—ñ
+	else if (std::regex_match(value, smatch, std::regex(R"(.+)")))
+	{
+		static char buf[256];
+		if (ImGui::InputText(label.c_str(), buf, IM_ARRAYSIZE(buf)))
+		{
+			outHasChanged = true;
+			outSerializedData = serializedVarName + std::string(buf);
+		}
+	}
 	else
 	{
 		Debug::Log(L"Œ^‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B[ArithmeticField()]");

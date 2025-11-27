@@ -58,4 +58,7 @@ public:
 
 	template <typename U>
 	static constexpr bool is_shared_ptr_v = is_shared_ptr<U>::value;
+
+
+	static std::string StringVector2String(const std::vector<std::string>& stringVector);
 };

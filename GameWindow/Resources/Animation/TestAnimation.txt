@@ -1,0 +1,6 @@
+--- 811531329=2024950972=1561614321
+Animation:
+  _animationName: TestAnimation
+  _loopTime: true
+  (vector)_animationDataSetVector: 0
+

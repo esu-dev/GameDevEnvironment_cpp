@@ -6,73 +6,116 @@
 #include "Object.h"
 #include "Debug.h"
 #include "Texture.h"
+#include "Animation.h"
 
 void AssetManager::Initialize()
 {
-	// 画像をすべて読み込む
-	// とりあえず対応はpngのみ
-	std::vector<std::wstring> fileNameVector_png = FileManager::GetAllFileName("Resources/Texture/", "png");
-
-	for (std::wstring fileName : fileNameVector_png)
+	// png
 	{
-		// Textureの生成
-		std::wstring imgPath = L"Resources/Texture/" + fileName;
-		Texture* texture = new Texture(imgPath);
+		std::wstring directry = L"Resources/Texture/";
+		std::vector<std::wstring> fileNameVector_png = FileManager::GetAllFileName(directry, L"png");
 
-		// 拡張子の変更
-		std::wstring textFileName;
-		std::wsmatch wsmatch;
-		if (std::regex_match(fileName, wsmatch, std::wregex(L"(.+)\\.\\w+")))
+		for (std::wstring fileName : fileNameVector_png)
 		{
-			textFileName = wsmatch[1].str() + L".txt";
-		}
-		else
-		{
-			Debug::Log(L"拡張子を変更できませんでした．");
-			continue;
-		}
+			// Textureの生成
+			std::wstring imgPath = directry + fileName;
+			Texture* object = new Texture(imgPath);
 
-		// アセットが存在するか確認
-		std::wstring path = L"Resources/Texture/" + textFileName;
-		
-		// あればinstanceIDの設定
-		if (FileManager::Exist(path))
-		{
-			// ファイルの中身を読む込む
-			std::vector<std::string> contentVector;
-			FileManager::Read(contentVector, path);
-
-			// instanceIDを取得する
-			std::string instanceID;
-			std::smatch smatch;
-			if (std::regex_match(contentVector[0], smatch, std::regex(R"(-{3}\s(.+))")))
+			// 拡張子の変更
+			std::wstring textFileName;
+			std::wsmatch wsmatch;
+			if (std::regex_match(fileName, wsmatch, std::wregex(L"(.+)\\.\\w+")))
 			{
-				instanceID = smatch[1].str();
+				textFileName = wsmatch[1].str() + L".txt";
+			}
+			else
+			{
+				Debug::Log(L"拡張子を変更できませんでした．");
+				return;
 			}
 
-			texture->instanceID = instanceID;
-		}
-		// なければアセットの作成
-		else
-		{
-			std::string  serializedData =
-				"--- " + texture->instanceID + "\n" + 
-				texture->GetName() + ":\n";
-			for (std::string line : texture->Serialize())
+			// アセットが存在するか確認
+			std::wstring path = directry + textFileName;
+
+			// あればinstanceIDの設定
+			if (FileManager::Exist(path))
 			{
-				serializedData += line + "\n";
+				// ファイルの中身を読む込む
+				std::vector<std::string> contentVector;
+				FileManager::Read(contentVector, path);
+
+				// instanceIDを取得する
+				std::string instanceID;
+				std::smatch smatch;
+				if (std::regex_match(contentVector[0], smatch, std::regex(R"(-{3}\s(.+))")))
+				{
+					instanceID = smatch[1].str();
+				}
+
+				object->instanceID = instanceID;
+			}
+			// なければアセットの作成
+			else
+			{
+				std::string  serializedData =
+					"--- " + object->instanceID + "\n" +
+					object->GetName() + ":\n";
+				serializedData += std_extension::StringVector2String(object->Serialize());
+
+				FileManager::Write(path, serializedData);
 			}
 
-			FileManager::Write(path, serializedData);
+			instanceID2PointerMap[object->instanceID] = object;
 		}
+	}
 
-		instanceID2PointerMap[texture->instanceID] = texture;
+	// Animation
+	{
+		std::wstring directry = L"Resources/Animation/";
+		std::vector<std::wstring> fileNameVector = FileManager::GetAllFileName(directry, L"txt");
+
+		for (std::wstring fileName : fileNameVector)
+		{
+			std::wstring path = directry + fileName;
+
+			// あればinstanceIDの設定
+			if (FileManager::Exist(path))
+			{
+				Animation* object = new Animation("TestAnimation");
+
+				// ファイルの中身を読む込む
+				std::vector<std::string> contentVector;
+				FileManager::Read(contentVector, path);
+
+				// instanceIDを取得する
+				std::string instanceID;
+				std::smatch smatch;
+				if (std::regex_match(contentVector[0], smatch, std::regex(R"(-{3}\s(.+))")))
+				{
+					instanceID = smatch[1].str();
+				}
+
+				object->instanceID = instanceID;
+
+				instanceID2PointerMap[object->instanceID] = object;
+			}
+		}
 	}
 }
 
 std::unordered_map<std::string, Object*>& AssetManager::GetInstanceID2PointerMap()
 {
 	return AssetManager::instanceID2PointerMap;
+}
+
+void AssetManager::CreateAsset(const std::string& path, Object* object)
+{
+	std::string  serializedData =
+		"--- " + object->instanceID + "\n" +
+		object->GetName() + ":\n";
+	serializedData += std_extension::StringVector2String(object->Serialize());
+
+	FileManager::Write(path, serializedData);
 }
 
 std::unordered_map<std::string, Object*> AssetManager::instanceID2PointerMap;
