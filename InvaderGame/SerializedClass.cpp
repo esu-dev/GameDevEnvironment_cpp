@@ -25,11 +25,11 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 					subInstanceDataVector.back()->memberVector.push_back(instanceID);
 				}
 				// クラス，構造体
-				else if (std::regex_match(value, m, std::regex(R"(-\s(\w+):)")))
+				else if (std::regex_match(value, m, std::regex(R"(-\s\w+:)")))
 				{
-					std::string value = m[1].str();
 					subInstanceDataVector.back()->memberVector.push_back(value);
 				}
+				// 値
 				else
 				{
 					subInstanceDataVector.back()->memberVector.push_back(value);
@@ -41,6 +41,7 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 				// リストの格納
 				subInstanceDataVector.back()->memberVector.push_back(m[1].str());
 			}
+			// クラス、構造体はスルー
 		}
 
 

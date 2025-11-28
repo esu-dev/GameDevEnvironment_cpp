@@ -183,6 +183,7 @@ protected:
 		{
 			std::string value = instanceData->memberVector[0];
 
+			// intを追加すると警告が出る
 			// float
 			if (typeid(T) == typeid(float))
 			{
@@ -237,20 +238,56 @@ protected:
 		{
 			variable.clear();
 
-			for (int i = 1; i < std::stoi(instanceData->memberVector[0]) + 1; i++)
-			{
-				bool isEmpty = false;
-				std::string member = "";
+			// 要素ごとに分離
+			std::vector<std::vector<std::string>> elementVector;
+			int index = -1;
 
-				if (i >= instanceData->memberVector.size())
+			for (int i = 0; i < std::stoi(instanceData->memberVector[0]); i++)
+			{
+				elementVector.push_back(std::vector<std::string>());
+			}
+
+			for (int i = 1; i < instanceData->memberVector.size(); i++)
+			{
+				std::smatch smatch;
+
+				// 要素がクラス、構造体
+				if (std::regex_match(instanceData->memberVector[i], smatch, std::regex(R"(\d+:)")))
 				{
-					isEmpty = true;
+					//elementVector.push_back(std::vector<std::string>());
+					index++;
+					if (index >= elementVector.size())
+					{
+						break;
+					}
 				}
+				// 要素がシリアライズ可能なオブジェクトのメンバー
+				else if (std::regex_match(instanceData->memberVector[i], smatch, std::regex(R"(\s{2}(.+:.*))")))
+				{
+					elementVector[index].push_back(smatch[1]);
+				}
+				// 要素が値
 				else
 				{
-					member = instanceData->memberVector[i];
+					//elementVector.push_back(std::vector<std::string>());
+					index++;
+					if (index >= elementVector.size())
+					{
+						break;
+					}
+					elementVector[index].push_back(instanceData->memberVector[i]);
 				}
+			}
 
+
+			for (int i = 0; i < elementVector.size(); i++)
+			{
+				bool isEmpty = (elementVector[i].size() == 0);
+				std::string member = "";
+				if (!isEmpty)
+				{
+					member = elementVector[i][0];
+				}
 
 				// 要素が値
 				if constexpr (std::is_arithmetic<typename T::value_type>())
@@ -258,12 +295,12 @@ protected:
 					// int
 					if (typeid(typename T::value_type) == typeid(int))
 					{
-						variable.push_back(!isEmpty ? std::stoi(member) : 0);
+						variable.push_back(isEmpty ? 0 : std::stoi(member));
 					}
 					// float
 					else if (typeid(typename T::value_type) == typeid(float))
 					{
-						//variable.push_back(std::stof(member));
+						variable.push_back(isEmpty ? 0 : std::stof(member));
 					}
 					else
 					{
@@ -273,11 +310,6 @@ protected:
 				// shared_ptr
 				else if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)
 				{
-					if (isEmpty)
-					{
-						variable.push_back(std::shared_ptr<Component>(nullptr));
-					}
-
 					// インスタンスの検索
 					Object* object = SceneDataManager::GetInstanceID2PointerMap()[member];
 
@@ -287,7 +319,12 @@ protected:
 				else if constexpr (std::is_base_of<SerializedClass, typename T::value_type>())
 				{
 					auto serializedObject = typename T::value_type();
-					//serializedObject.Deserialize(member);
+					
+					if (!isEmpty)
+					{
+						serializedObject.Deserialize(elementVector[i]);
+					}
+
 					variable.push_back(serializedObject);
 				}
 			}
