@@ -1,0 +1,12 @@
+--- 770774332=875966823=1057134211
+Animation:
+  _animationName: a
+  _loopTime: false
+  (vector)_animationDataSetVector: 2
+  - 0:
+      time: 0.000000
+      texture: (instanceID)nullptr
+  - 1:
+      time: 0.000000
+      texture: (instanceID)nullptr
+

@@ -153,13 +153,11 @@ protected:
 					std::vector<std::string> subSerializedDataVec = value[i].Serialize();
 
 					// 結果をvectorに結合
-					serializedDataVector.push_back(indent + "- " + subSerializedDataVec[0]);
-					for (int i = 1; i < subSerializedDataVec.size(); i++)
+					serializedDataVector.push_back(indent + "- " + std::to_string(i) + ":");
+					for (int i = 0; i < subSerializedDataVec.size(); i++)
 					{
 						serializedDataVector.push_back(indent + "  " + subSerializedDataVec[i]);
 					}
-
-					Debug::Log(L"シリアライズ可能です。[SerializedClass::Serialize()]");
 				}
 			}
 		}
@@ -288,7 +286,9 @@ protected:
 				// シリアライズ可能
 				else if constexpr (std::is_base_of<SerializedClass, typename T::value_type>())
 				{
-					variable.push_back(typename T::value_type());
+					auto serializedObject = typename T::value_type();
+					//serializedObject.Deserialize(member);
+					variable.push_back(serializedObject);
 				}
 			}
 		}

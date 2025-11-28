@@ -19,7 +19,7 @@ void AnimationEditor::Update()
 	if (isEditMode)
 	{
 		// ImGui表示
-		ImGui::SetNextWindowSize(ImVec2(300, 400));
+		ImGui::SetNextWindowSize(ImVec2(400, 400));
 		ImGui::Begin("Animation Editor");
 
 		if (ImGui::Button("New Animation"))
@@ -28,7 +28,7 @@ void AnimationEditor::Update()
 		}
 
 		static char buf[256];
-		ImGui::InputText("Animation Name", buf, IM_ARRAYSIZE(buf));
+		ImGui::InputText("Load Animation Name", buf, IM_ARRAYSIZE(buf));
 		if (ImGui::Button("Load Animation"))
 		{
 			// アセットを開く

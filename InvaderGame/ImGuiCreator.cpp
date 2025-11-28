@@ -123,7 +123,7 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*-\s(.+))")))
 			{
 				// 要素が値
-				if (std::regex_match(serializedData, smatch, std::regex(R"((\s*)-\s(.+))")))
+				if (std::regex_match(serializedData, smatch, std::regex(R"((\s*)-\s([^:]+))")))
 				{
 					std::string indent = smatch[1].str();
 					std::string label = "-";
@@ -142,6 +142,13 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 				else if (IsPointer(instanceID, smatch[1].str()))
 				{
 					Debug::Log(L"要素がポインタの時の挙動が未定義です。[ImGuiCreator::Create()]");
+				}
+				// 要素がクラス，構造体
+				else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*-\s(\w+):)")))
+				{
+					std::string label = smatch[1].str();
+
+					ImGui::Text(label.c_str());
 				}
 			}
 			else
