@@ -27,11 +27,14 @@ void AnimationEditor::Update()
 			_animation = new Animation("TestAnimation");
 		}
 
-		static char buf[256];
-		ImGui::InputText("Load Animation Name", buf, IM_ARRAYSIZE(buf));
+		/*static char buf[256];
+		ImGui::InputText("Load Animation Name", buf, IM_ARRAYSIZE(buf));*/
+		std::string str = "";
+		std::string instanceID = "";
+		ImGuiCreator::PutPointerField(str, "", "Select Animation", instanceID);
 		if (ImGui::Button("Load Animation"))
 		{
-			// アセットを開く
+			_animation = (Animation*)AssetManager::GetInstanceID2PointerMap()[instanceID];
 		}
 
 		

@@ -307,6 +307,14 @@ protected:
 						Debug::Log("型を追加してください。[DeserializeField()]");
 					}
 				}
+				// 要素がポインタ
+				else if constexpr (std::is_pointer<typename T::value_type>())
+				{
+					// インスタンスの検索
+					Object* object = AssetManager::GetInstanceID2PointerMap()[member];
+
+					variable.push_back((typename T::value_type*)object);
+				}
 				// shared_ptr
 				else if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)
 				{
