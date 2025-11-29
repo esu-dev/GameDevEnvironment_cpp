@@ -6,6 +6,19 @@
 
 #include "GameEngine.h"
 
+bool FileManager::Exist(const std::string& path)
+{
+	std::ifstream file;
+	file.open(path);
+	bool isNotExist = !file;
+	if (isNotExist)
+	{
+		file.close();
+	}
+	return !isNotExist;
+}
+
+
 bool FileManager::Exist(const std::wstring& path)
 {
 	std::ifstream file;
@@ -56,20 +69,14 @@ void FileManager::Read(std::vector<std::string>& outContentVector, std::wstring 
 	file.close();
 }
 
-std::vector<std::wstring> FileManager::GetAllFileName(std::string directry, std::string extension)
+std::vector<std::string> FileManager::GetAllFileName(std::string directry, std::string extension)
 {
-	std::vector<std::wstring> pathVector;
+	std::vector<std::string> pathVector;
 
 	std::string wildCard = directry + std::string("*.") + extension;
 
-	// stringをLPWSTRに変換する
-	int length = MultiByteToWideChar(CP_UTF8, 0, wildCard.c_str(), -1, nullptr, 0);
-	WCHAR* buffer = new WCHAR[length]; // 配列のメモリ動的割り当てかな
-	MultiByteToWideChar(CP_UTF8, 0, wildCard.c_str(), -1, buffer, length);
-	LPWSTR wildCard_lpwstr = buffer;
-
-	WIN32_FIND_DATA win32FindData;
-	HANDLE hFindFile = FindFirstFileW(wildCard_lpwstr, &win32FindData);
+	WIN32_FIND_DATAA win32FindData;
+	HANDLE hFindFile = FindFirstFileA(wildCard.c_str(), &win32FindData);
 
 	// ファイルが見つからなかった場合
 	if (hFindFile == INVALID_HANDLE_VALUE)
@@ -81,10 +88,10 @@ std::vector<std::wstring> FileManager::GetAllFileName(std::string directry, std:
 	// ファイルを読み込み続ける
 	do
 	{
-		std::wstring fileName = win32FindData.cFileName;
+		std::string fileName = win32FindData.cFileName;
 		//Debug::Log("%s", fileName.c_str()); // 最初の一文字しか取れていない
 		pathVector.push_back(fileName);
-	} while (FindNextFileW(hFindFile, &win32FindData));
+	} while (FindNextFileA(hFindFile, &win32FindData));
 
 
 	FindClose(hFindFile);
@@ -96,7 +103,8 @@ std::vector<std::wstring> FileManager::GetAllFileName(std::wstring directry, std
 {
 	std::vector<std::wstring> pathVector;
 
-	LPCWSTR wildCard = (directry + L"*." + extension).c_str();
+	std::wstring wildCard_wstring = directry + L"*." + extension;
+	LPCWSTR wildCard = wildCard_wstring.c_str();
 
 	WIN32_FIND_DATA win32FindData;
 	HANDLE hFindFile = FindFirstFileW(wildCard, &win32FindData);
@@ -104,7 +112,7 @@ std::vector<std::wstring> FileManager::GetAllFileName(std::wstring directry, std
 	// ファイルが見つからなかった場合
 	if (hFindFile == INVALID_HANDLE_VALUE)
 	{
-		Debug::Log("file was not found.");
+		Debug::Log("file was not found.[FileManager::GetAllFileName()]");
 		return pathVector;
 	}
 

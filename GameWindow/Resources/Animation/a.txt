@@ -1,15 +1,12 @@
---- 23794548=1449810387=746052496
+--- 1777427112=2096715329=1679817402
 Animation:
   _animationName: a
   _loopTime: false
-  (vector)_animationDataSetVector: 3
+  (vector)_animationDataSetVector: 2
   - 0:
-      time: 31.000000
-      texture: (instanceID)nullptr
+      time: 0.000000
+      texture: (instanceID)440866229=1898028535=1248019608
   - 1:
-      time: 21.000000
-      texture: (instanceID)nullptr
-  - 2:
-      time: 5.000000
-      texture: (instanceID)nullptr
+      time: 1.000000
+      texture: (instanceID)951427561=1522571409=1654621673
 

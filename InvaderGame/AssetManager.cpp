@@ -1,6 +1,7 @@
 #include "AssetManager.h"
 
 #include <iostream>
+#include <codecvt>
 #include "framework.h"
 #include "Utility.h"
 #include "Object.h"
@@ -12,21 +13,21 @@ void AssetManager::Initialize()
 {
 	// png
 	{
-		std::wstring directry = L"Resources/Texture/";
-		std::vector<std::wstring> fileNameVector_png = FileManager::GetAllFileName(directry, L"png");
+		std::string directry = "Resources/Texture/";
+		std::vector<std::string> fileNameVector_png = FileManager::GetAllFileName(directry, "png");
 
-		for (std::wstring fileName : fileNameVector_png)
+		for (std::string fileName : fileNameVector_png)
 		{
 			// Textureの生成
-			std::wstring imgPath = directry + fileName;
+			std::string imgPath = directry + fileName;
 			Texture* object = new Texture(imgPath);
 
 			// 拡張子の変更
-			std::wstring textFileName;
-			std::wsmatch wsmatch;
-			if (std::regex_match(fileName, wsmatch, std::wregex(L"(.+)\\.\\w+")))
+			std::string textFileName;
+			std::smatch wsmatch;
+			if (std::regex_match(fileName, wsmatch, std::regex(R"((.+).\w+)")))
 			{
-				textFileName = wsmatch[1].str() + L".txt";
+				textFileName = wsmatch[1].str() + ".txt";
 			}
 			else
 			{
@@ -35,7 +36,7 @@ void AssetManager::Initialize()
 			}
 
 			// アセットが存在するか確認
-			std::wstring path = directry + textFileName;
+			std::string path = directry + textFileName;
 
 			// あればinstanceIDの設定
 			if (FileManager::Exist(path))
@@ -65,23 +66,26 @@ void AssetManager::Initialize()
 				FileManager::Write(path, serializedData);
 			}
 
+			// アセット名の設定
+			object->name = fileName;
+
 			instanceID2PointerMap[object->instanceID] = object;
 		}
 	}
 
 	// Animation
 	{
-		std::wstring directry = L"Resources/Animation/";
-		std::vector<std::wstring> fileNameVector = FileManager::GetAllFileName(directry, L"txt");
+		std::string directry = "Resources/Animation/";
+		std::vector<std::string> fileNameVector = FileManager::GetAllFileName(directry, "txt");
 
-		for (std::wstring fileName : fileNameVector)
+		for (std::string fileName : fileNameVector)
 		{
-			std::wstring path = directry + fileName;
+			std::string path = directry + fileName;
 
 			// あればinstanceIDの設定
 			if (FileManager::Exist(path))
 			{
-				Animation* object = new Animation("TestAnimation");
+				Animation* object = new Animation(fileName);
 
 				// ファイルの中身を読む込む
 				std::vector<std::string> contentVector;
@@ -96,6 +100,7 @@ void AssetManager::Initialize()
 				}
 
 				object->instanceID = instanceID;
+				object->name = fileName;
 
 				instanceID2PointerMap[object->instanceID] = object;
 			}

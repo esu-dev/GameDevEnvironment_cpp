@@ -313,7 +313,7 @@ protected:
 					// インスタンスの検索
 					Object* object = AssetManager::GetInstanceID2PointerMap()[member];
 
-					variable.push_back((typename T::value_type*)object);
+					variable.push_back((typename T::value_type)(object));
 				}
 				// shared_ptr
 				else if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)

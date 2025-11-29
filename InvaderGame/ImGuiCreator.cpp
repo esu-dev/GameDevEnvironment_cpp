@@ -44,7 +44,7 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 						outHasChanged = true;
 
 						serializedData = serializedVarName + "(instanceID)" + pair.first;
-						SceneDataManager::GetInstanceID2PointerMap();
+						//SceneDataManager::GetInstanceID2PointerMap();
 						//ImGui::CloseCurrentPopup();
 					}
 				}

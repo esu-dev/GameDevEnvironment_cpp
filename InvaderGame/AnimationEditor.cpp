@@ -31,7 +31,7 @@ void AnimationEditor::Update()
 		ImGui::InputText("Load Animation Name", buf, IM_ARRAYSIZE(buf));*/
 		std::string str = "";
 		std::string instanceID = "";
-		ImGuiCreator::PutPointerField(str, "", "Select Animation", instanceID);
+		//ImGuiCreator::PutPointerField(str, "", "Select Animation", instanceID);
 		if (ImGui::Button("Load Animation"))
 		{
 			_animation = (Animation*)AssetManager::GetInstanceID2PointerMap()[instanceID];
