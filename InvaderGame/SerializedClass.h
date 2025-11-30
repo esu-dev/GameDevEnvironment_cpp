@@ -141,6 +141,18 @@ protected:
 				{
 					serializedDataVector.push_back(indent + "- " + std::to_string(value[i]));
 				}
+				// 要素がポインタ
+				else if constexpr (std::is_pointer<typename T::value_type>())
+				{
+					if (value[i] == nullptr)
+					{
+						serializedDataVector.push_back(indent + "- (instanceID)nullptr");
+					}
+					else
+					{
+						serializedDataVector.push_back(indent + "- (instanceID)" + value[i]->instanceID);
+					}
+				}
 				// shardPtr
 				else if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)
 				{
@@ -247,12 +259,34 @@ protected:
 				elementVector.push_back(std::vector<std::string>());
 			}
 
+			// elementVectorの設定
 			for (int i = 1; i < instanceData->memberVector.size(); i++)
 			{
 				std::smatch smatch;
 
+				// 要素が値
+				if (std::regex_match(instanceData->memberVector[i], smatch, std::regex(R"([^:]+)")))
+				{
+					//elementVector.push_back(std::vector<std::string>());
+					index++;
+					if (index >= elementVector.size())
+					{
+						break;
+					}
+					elementVector[index].push_back(instanceData->memberVector[i]);
+				}
+				// 要素がポインタ
+				else if (std::regex_match(instanceData->memberVector[i], smatch, std::regex(R"([^\s]+:\s(\(\w+\).+))")))
+				{
+					index++;
+					if (index >= elementVector.size())
+					{
+						break;
+					}
+					elementVector[index].push_back(smatch[1].str());
+				}
 				// 要素がクラス、構造体
-				if (std::regex_match(instanceData->memberVector[i], smatch, std::regex(R"(\d+:)")))
+				else if (std::regex_match(instanceData->memberVector[i], smatch, std::regex(R"(\d+:)")))
 				{
 					//elementVector.push_back(std::vector<std::string>());
 					index++;
@@ -266,16 +300,9 @@ protected:
 				{
 					elementVector[index].push_back(smatch[1]);
 				}
-				// 要素が値
 				else
 				{
-					//elementVector.push_back(std::vector<std::string>());
-					index++;
-					if (index >= elementVector.size())
-					{
-						break;
-					}
-					elementVector[index].push_back(instanceData->memberVector[i]);
+					Debug::Log("型を追加してください。[DeserializeField()]");
 				}
 			}
 
@@ -310,6 +337,18 @@ protected:
 				// 要素がポインタ
 				else if constexpr (std::is_pointer<typename T::value_type>())
 				{
+					if (isEmpty)
+					{
+						variable.push_back(nullptr);
+						continue;
+					}
+
+					if (member == "nullptr")
+					{
+						variable.push_back(nullptr);
+						continue;
+					}
+
 					// インスタンスの検索
 					Object* object = AssetManager::GetInstanceID2PointerMap()[member];
 

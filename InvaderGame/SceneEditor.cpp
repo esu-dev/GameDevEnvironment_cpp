@@ -105,6 +105,10 @@ void SceneEditor::Update()
 			}
 			if (ImGui::BeginPopupContextItem())
 			{
+				if (ImGui::Selectable("Duplicate"))
+				{
+					//SceneManagement::SceneManager::GetActiveScene()->AddGameObject()
+				}
 				if (ImGui::Selectable("Delete"))
 				{
 					Object::Destroy(gameObjectVector[i]);
@@ -130,15 +134,16 @@ void SceneEditor::Update()
 			{
 				ImGuiCreator::Create(component.get());
 			}
-			// ‚È‚º‚©ƒGƒ‰[‚ª”­¶‚·‚é
-			/*if (ImGui::BeginPopupContextItem())
+
+			// Remove Component
+			if (ImGui::BeginPopupContextItem())
 			{
 				if (ImGui::Selectable("Remove Component"))
 				{
 					Selection::gameObject->RemoveComponent(component);
 				}
 				ImGui::EndPopup();
-			}*/
+			}
 		}
 
 		// AddComponent

@@ -24,27 +24,27 @@ void AnimationEditor::Update()
 
 		if (ImGui::Button("New Animation"))
 		{
-			_animation = new Animation("TestAnimation");
+			_animationClip = new AnimationClip("TestAnimation");
 		}
 
 		/*static char buf[256];
 		ImGui::InputText("Load Animation Name", buf, IM_ARRAYSIZE(buf));*/
-		std::string str = "";
+		//std::string str = "";
 		std::string instanceID = "";
 		//ImGuiCreator::PutPointerField(str, "", "Select Animation", instanceID);
 		if (ImGui::Button("Load Animation"))
 		{
-			_animation = (Animation*)AssetManager::GetInstanceID2PointerMap()[instanceID];
+			_animationClip = (AnimationClip*)AssetManager::GetInstanceID2PointerMap()[instanceID];
 		}
 
 		
-		if (_animation != nullptr)
+		if (_animationClip != nullptr)
 		{
-			ImGuiCreator::Create(_animation);
+			ImGuiCreator::Create(_animationClip);
 			if (ImGui::Button("Create"))
 			{
-				std::string path = "Resources/Animation/" + _animation->GetAnimationName() + ".txt";
-				AssetManager::CreateAsset(path, _animation);
+				std::string path = "Resources/Animation/" + _animationClip->GetAnimationName() + ".txt";
+				AssetManager::CreateAsset(path, _animationClip);
 
 				// window‚ð•Â‚¶‚é
 				isEditMode = false;
@@ -55,4 +55,4 @@ void AnimationEditor::Update()
 	}
 }
 
-Animation* AnimationEditor::_animation = nullptr;
+AnimationClip* AnimationEditor::_animationClip = nullptr;

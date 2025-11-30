@@ -95,16 +95,16 @@ Scene* DemoSceneAsset::load_scene_asset_impl()
 	animationObject->GetTransform()->SetPosition(-2, 7);
 	animationObject->GetTransform()->scale = Vector3(2, 2 * 28 / 16.0f, 0);
 
-	Animation* animation = new Animation("Idle", animationSpriteRenderer);
-	animation->SetAnimation(texture, 0);
+	//Animation* animation = new Animation("Idle", animationSpriteRenderer);
+	/*animation->SetAnimation(texture, 0);
 	animation->SetAnimation(texture2, 0.2f);
 	animation->SetAnimation(texture3, 0.4f);
 	animation->SetAnimation(texture4, 0.6f);
 	animation->SetAnimation(texture4, 0.8f);
-	animation->SetLoopTime(true);
+	animation->SetLoopTime(true);*/
 
 	Animator* animator = animationObject->AddComponent<Animator>();
-	animator->SetAnimation(animation);
+	//animator->SetAnimation(animation);
 	animator->Play("Idle");
 
 	scene->AddGameObject(animationObject);

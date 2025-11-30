@@ -26,7 +26,7 @@ GameObject:
   (vector)_componentVector: 3
   - (instanceID)1075129542=1986999632=872817339
   - (instanceID)1143258267=1990377142=528611924
-  - (instanceID)1796708406=1887280565=285819982
+  - (instanceID)626134180=1619734207=2038984355
 --- 1075129542=1986999632=872817339
 Transform:
   gameObject: (instanceID)1082300621=283998857=1642694024
@@ -36,26 +36,16 @@ Transform:
       y: 0.000000
       z: 0.000000
   scale:
-    x: 1.000000
-    y: 1.000000
+    x: 3.000000
+    y: 5.000000
     z: 1.000000
 --- 1143258267=1990377142=528611924
 SpriteRenderer:
   gameObject: (instanceID)1082300621=283998857=1642694024
-  m_texture: (instanceID)nullptr
---- 1796708406=1887280565=285819982
-SerializedSample:
+  m_texture: (instanceID)1076716786=347121883=1111975783
+--- 626134180=1619734207=2038984355
+Animator:
   gameObject: (instanceID)1082300621=283998857=1642694024
-  hoge: 0.000000
-  fuga:
-    x: 0.000000
-    y: 0.000000
-    z: 0.000000
-  (vector)intVector: 1
-  - 26
-  (vector)fooVector: 2
-  - 0:
-      a: 15.000000
-  - 1:
-      a: 4.000000
+  (vector)_animationVector: 1
+  - (instanceID)1405914789=310590474=1626959017
 

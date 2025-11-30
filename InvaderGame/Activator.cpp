@@ -13,8 +13,10 @@ void Activator::Initialize()
 	REGISTER_TYPE(Camera);
 	REGISTER_TYPE(Transform);
 	REGISTER_TYPE(SpriteRenderer);
+	REGISTER_TYPE(Animator);
 	REGISTER_TYPE(Rigidbody2D);
 	REGISTER_TYPE(BoxCollider2D);
+	REGISTER_TYPE(AnimationClip);
 
 	REGISTER_TYPE(VelocityController);
 	REGISTER_TYPE(SerializedSample);

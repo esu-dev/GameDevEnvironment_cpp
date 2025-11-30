@@ -1,6 +1,0 @@
---- 614709579=1965707235=335019283
-Animation:
-  _animationName: aiu
-  _loopTime: true
-  (vector)_animationDataSetVector: 0
-

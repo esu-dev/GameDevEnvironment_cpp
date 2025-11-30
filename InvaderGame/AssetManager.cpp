@@ -7,7 +7,7 @@
 #include "Object.h"
 #include "Debug.h"
 #include "Texture.h"
-#include "Animation.h"
+#include "AnimationClip.h"
 
 void AssetManager::Initialize()
 {
@@ -25,7 +25,7 @@ void AssetManager::Initialize()
 			// 拡張子の変更
 			std::string textFileName;
 			std::smatch wsmatch;
-			if (std::regex_match(fileName, wsmatch, std::regex(R"((.+).\w+)")))
+			if (std::regex_match(fileName, wsmatch, std::regex(R"((.+)\.\w+)")))
 			{
 				textFileName = wsmatch[1].str() + ".txt";
 			}
@@ -73,7 +73,7 @@ void AssetManager::Initialize()
 		}
 	}
 
-	// Animation
+	// AnimationClip
 	{
 		std::string directry = "Resources/Animation/";
 		std::vector<std::string> fileNameVector = FileManager::GetAllFileName(directry, "txt");
@@ -82,27 +82,10 @@ void AssetManager::Initialize()
 		{
 			std::string path = directry + fileName;
 
-			// あればinstanceIDの設定
+			// アセットがあればインスタンスの生成
 			if (FileManager::Exist(path))
 			{
-				Animation* object = new Animation(fileName);
-
-				// ファイルの中身を読む込む
-				std::vector<std::string> contentVector;
-				FileManager::Read(contentVector, path);
-
-				// instanceIDを取得する
-				std::string instanceID;
-				std::smatch smatch;
-				if (std::regex_match(contentVector[0], smatch, std::regex(R"(-{3}\s(.+))")))
-				{
-					instanceID = smatch[1].str();
-				}
-
-				object->instanceID = instanceID;
-				object->name = fileName;
-
-				instanceID2PointerMap[object->instanceID] = object;
+				CreateInstance(path);
 			}
 		}
 	}
@@ -121,6 +104,63 @@ void AssetManager::CreateAsset(const std::string& path, Object* object)
 	serializedData += std_extension::StringVector2String(object->Serialize());
 
 	FileManager::Write(path, serializedData);
+}
+
+void AssetManager::CreateInstance(const std::string& path)
+{
+	// ファイルの中身を読む込む
+	std::vector<std::string> contentVector;
+	FileManager::Read(contentVector, path);
+
+	bool isPacking = false;
+	std::string instanceID;
+	Object* object = nullptr;
+	std::vector<std::string> yamlVector;
+	for (std::string content : contentVector)
+	{
+		std::smatch m;
+
+		// instanceID
+		std::regex re(R"((-{3})\s(.+))");
+		if (std::regex_match(content, m, re))
+		{
+			isPacking = false;
+
+			instanceID = m[2].str();
+		}
+
+
+		// まとめる
+		if (isPacking)
+		{
+			if (std::regex_match(content, m, std::regex(R"(\s{2}(.+))")))
+			{
+				yamlVector.push_back(m[1].str());
+			}
+		}
+
+
+		// Objectの生成
+		re = { R"(^(\w+):)" };
+		if (std::regex_match(content, m, re))
+		{
+			isPacking = true;
+
+			std::string typeString = m[1].str();
+
+			// インスタンス生成
+			object = Activator::CreateInstance(typeString);
+			if (object == nullptr)
+			{
+				continue;
+			}
+			object->instanceID = instanceID;
+			instanceID2PointerMap[instanceID] = object;
+		}
+	}
+
+	// 保持しておいたyamlを元にデシリアライズ
+	object->Deserialize(yamlVector);
 }
 
 std::unordered_map<std::string, Object*> AssetManager::instanceID2PointerMap;

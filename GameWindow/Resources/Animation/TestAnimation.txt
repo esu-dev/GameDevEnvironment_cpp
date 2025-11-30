@@ -1,9 +1,0 @@
---- 2064049854=853888589=520977338
-Animation:
-  _animationName: TestAnimation
-  _loopTime: false
-  (vector)_animationDataSetVector: 1
-  - 0:
-      time: 16.000000
-      texture: (instanceID)440866229=1898028535=1248019608
-

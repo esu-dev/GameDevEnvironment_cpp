@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Animation.h"
+#include "AnimationClip.h"
 
 class AnimationEditor
 {
@@ -9,5 +9,5 @@ public:
 
 
 private:
-	static Animation* _animation;
+	static AnimationClip* _animationClip;
 };
