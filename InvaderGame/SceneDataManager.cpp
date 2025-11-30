@@ -91,12 +91,6 @@ Scene* SceneDataManager::Load(std::string path)
 		}
 	}
 	
-	/*Texture* texture = new Texture(L"Resources/Texture/Circle.png");
-	texture = dynamic_cast<Texture*>(AssetManager::GetInstanceID2PointerMap()["1601021899=1013763379=2025362492"]);
-	GameObject* gameObject = GameObject::Create();
-	gameObject->AddComponent<SpriteRenderer>()->SetTexture(texture);
-	scene->AddGameObject(gameObject);*/
-
 	SceneManager::SetActiveScene(scene);
 	return scene;
 }
@@ -116,25 +110,7 @@ void SceneDataManager::Save()
 	std::string serializedData = sceneName + "\n";
 	for (GameObject* gameObject : SceneManager::GetActiveScene()->GetGameObjectVector())
 	{
-		// GameObject
-		serializedData += "--- " + gameObject->instanceID + "\n";
-		serializedData += gameObject->GetName() + ":\n";
-		for (std::string line : gameObject->Serialize())
-		{
-			serializedData += line + "\n";
-		}
-
-		// Component
-		for (auto componentPtr : gameObject->GetComponentVector())
-		{
-			Component* component = componentPtr.get();
-			serializedData += "--- " + component->instanceID + "\n";
-			serializedData += component->GetName() + ":\n";
-			for (std::string line : component->Serialize())
-			{
-				serializedData += line + "\n";
-			}
-		}
+		AssetManager::SerializeGameObject(serializedData, gameObject);
 	}
 	FileManager::Write("Resources/" + sceneName + ".txt", serializedData);
 }

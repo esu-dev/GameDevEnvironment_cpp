@@ -44,6 +44,7 @@ void GameSystem::Execute()
 	_delayedExecutionEvent.RemoveAllListener();
 	OnUpdateListener.Invoke();
 
+	Input::Update();
 	Physics2D::Update();
 	InputSystem::Update();
 	TimeController::Update();

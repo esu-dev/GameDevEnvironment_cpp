@@ -5,6 +5,8 @@
 #include "framework.h"
 #include "Utility.h"
 #include "Object.h"
+#include "GameObject.h"
+#include "Component.h"
 #include "Debug.h"
 #include "Texture.h"
 #include "AnimationClip.h"
@@ -161,6 +163,29 @@ void AssetManager::CreateInstance(const std::string& path)
 
 	// 保持しておいたyamlを元にデシリアライズ
 	object->Deserialize(yamlVector);
+}
+
+void AssetManager::SerializeGameObject(std::string& outSerializedData, GameObject* gameObject)
+{
+	// GameObject
+	outSerializedData += "--- " + gameObject->instanceID + "\n";
+	outSerializedData += gameObject->GetName() + ":\n";
+	for (std::string line : gameObject->Serialize())
+	{
+		outSerializedData += line + "\n";
+	}
+
+	// Component
+	for (auto componentPtr : gameObject->GetComponentVector())
+	{
+		Component* component = componentPtr.get();
+		outSerializedData += "--- " + component->instanceID + "\n";
+		outSerializedData += component->GetName() + ":\n";
+		for (std::string line : component->Serialize())
+		{
+			outSerializedData += line + "\n";
+		}
+	}
 }
 
 std::unordered_map<std::string, Object*> AssetManager::instanceID2PointerMap;

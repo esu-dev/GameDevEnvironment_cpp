@@ -48,4 +48,48 @@ Animator:
   gameObject: (instanceID)1082300621=283998857=1642694024
   (vector)_animationVector: 1
   - (instanceID)1405914789=310590474=1626959017
+--- 1525527534=2026245113=1075802877
+GameObject:
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)319251056=390196646=814301680
+  - (instanceID)24876621=1456512282=1750006566
+--- 319251056=390196646=814301680
+Transform:
+  gameObject: (instanceID)1525527534=2026245113=1075802877
+  position:
+    _variable:
+      x: 1.000000
+      y: 1.000000
+      z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 24876621=1456512282=1750006566
+SpriteRenderer:
+  gameObject: (instanceID)1525527534=2026245113=1075802877
+  m_texture: (instanceID)nullptr
+--- 1691783062=1968798064=769133943
+GameObject:
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)260245162=2110461196=1008962487
+  - (instanceID)978945215=143943475=285541779
+--- 260245162=2110461196=1008962487
+Transform:
+  gameObject: (instanceID)1691783062=1968798064=769133943
+  position:
+    _variable:
+      x: 1.000000
+      y: -2.000000
+      z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 978945215=143943475=285541779
+SpriteRenderer:
+  gameObject: (instanceID)1691783062=1968798064=769133943
+  m_texture: (instanceID)nullptr
 

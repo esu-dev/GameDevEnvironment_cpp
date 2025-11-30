@@ -1,0 +1,23 @@
+--- 1525527534=2026245113=1075802877
+GameObject:
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)319251056=390196646=814301680
+  - (instanceID)24876621=1456512282=1750006566
+--- 319251056=390196646=814301680
+Transform:
+  gameObject: (instanceID)1525527534=2026245113=1075802877
+  position:
+    _variable:
+      x: 1.000000
+      y: 1.000000
+      z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 24876621=1456512282=1750006566
+SpriteRenderer:
+  gameObject: (instanceID)1525527534=2026245113=1075802877
+  m_texture: (instanceID)nullptr
+

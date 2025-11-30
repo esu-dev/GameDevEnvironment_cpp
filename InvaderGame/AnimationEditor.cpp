@@ -11,7 +11,7 @@
 void AnimationEditor::Update()
 {
 	static bool isEditMode = false;
-	if (Input::GetKeyDown('Q')) // ç≈èIìIÇ…ÇÕAÇ…Ç∑ÇÈ
+	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('A'))
 	{
 		isEditMode = !isEditMode;
 	}
