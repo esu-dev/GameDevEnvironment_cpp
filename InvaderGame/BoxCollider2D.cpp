@@ -91,10 +91,40 @@ bool BoxCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D* co
 {
 	if (collider == nullptr) return false;
 
-	Vector2 thisVertices[4];
-	this->GetOBBvertices(thisVertices);
+	/*Vector2 thisVertices[4];
+	this->GetOBBvertices(thisVertices);*/
 
-	for (int i = 0; i < 4; i++)
+	// コライダーの中に頂点が含まれているか半別
+	// コリジョンの生成
+	auto createCollision = [outCollision](BoxCollider2D* colliderA, BoxCollider2D* colliderB) -> bool {
+		Vector2 colVertsA[4];
+		colliderA->GetOBBVertices(colVertsA);
+		for (int i = 0; i < 4; i++)
+		{
+			if (colliderB->IsPointIn(colVertsA[i]))
+			{
+				Vector2 closestPoint = colliderB->GetClosestPointByVertex(colVertsA, i);
+				Collision2D::CollisionData* collisionData = new Collision2D::CollisionData();
+				outCollision->collisionDataVector.push_back(collisionData);
+
+				collisionData->depth = Vector2::Distance(colVertsA[i], closestPoint);
+				collisionData->contact = colVertsA[i];
+				outCollision->Normal = (closestPoint - colVertsA[i]).Normalized();
+
+				return true;
+			}
+		}
+	};
+
+
+	// 相手のコライダーの中に自身の頂点が含まれているか判別
+	if (!createCollision(this, collider))
+	{
+		// 自身のコライダーの中に相手の頂点が含まれているか半別
+		createCollision(collider, this);
+	}
+
+	/*for (int i = 0; i < 4; i++)
 	{
 		if (collider->IsPointIn(thisVertices[i]))
 		{
@@ -106,7 +136,7 @@ bool BoxCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D* co
 			collisionData->contact = thisVertices[i];
 			outCollision->Normal = (closestPoint - thisVertices[i]).Normalized();
 		}
-	}
+	}*/
 
 	return outCollision->collisionDataVector.size() > 0;
 }
