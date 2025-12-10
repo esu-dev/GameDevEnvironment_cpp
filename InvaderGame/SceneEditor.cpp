@@ -22,7 +22,7 @@ void SceneEditor::Initialize()
 	_frameObject->AddComponent<SpriteRenderer>()->SetTexture(texture);
 
 	_focusFrame = GameObject::Create();
-	_focusFrame->AddComponent<SpriteRenderer>()->SetTexture(new Texture("Resources/Texture/Frame2.png"));
+	_focusFrame->AddComponent<SpriteRenderer>()->SetTexture(new Texture("Resources/Texture/Frame3.png"));
 
 	EngineTime::TimeScale = 0;
 

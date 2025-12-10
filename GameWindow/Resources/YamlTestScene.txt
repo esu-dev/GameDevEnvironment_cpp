@@ -47,7 +47,7 @@ SpriteRenderer:
 Animator:
   gameObject: (instanceID)1082300621=283998857=1642694024
   (vector)_animationVector: 1
-  - (instanceID)143292226=1359852442=462492175
+  - (instanceID)1405914789=310590474=1626959017
 --- 497196057=906531225=817251284
 GameObject:
   tag: Untagged
@@ -193,5 +193,5 @@ Transform:
 --- 771255266=768640621=1224613073
 SpriteRenderer:
   gameObject: (instanceID)1331245835=796256961=1891290254
-  m_texture: (instanceID)1194511168=1983697167=1980983536
+  m_texture: (instanceID)nullptr
 

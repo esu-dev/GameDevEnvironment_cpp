@@ -37,6 +37,13 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 			}
 			if (ImGui::BeginTabItem("Asset"))
 			{
+				if (ImGui::Selectable("none"))
+				{
+					outHasChanged = true;
+
+					serializedData = serializedVarName + "nullptr";
+				}
+
 				for (auto& pair : AssetManager::GetInstanceID2PointerMap())
 				{
 					if (ImGui::Selectable((pair.second->name + "(" + pair.first + ")").c_str()))
@@ -44,8 +51,6 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 						outHasChanged = true;
 
 						serializedData = serializedVarName + "(instanceID)" + pair.first;
-						//SceneDataManager::GetInstanceID2PointerMap();
-						//ImGui::CloseCurrentPopup();
 					}
 				}
 				ImGui::EndTabItem();
