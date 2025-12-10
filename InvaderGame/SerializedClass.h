@@ -234,6 +234,8 @@ protected:
 			if (object == nullptr)
 			{
 				variable = nullptr;
+
+				Debug::Log("存在しないインスタンスでデシリアライズしようとしています。[DeserializeField()]");
 			}
 			else if (T t = dynamic_cast<T>(object))
 			{

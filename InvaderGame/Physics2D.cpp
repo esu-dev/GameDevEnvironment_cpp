@@ -102,11 +102,13 @@ void Physics2D::Update()
 
 			Rigidbody2D* rigidbodyA = rigidbody;
 			Rigidbody2D* rigidbodyB = rigidbody_Other;
+
+			// 自身がキネマティックなら交換
 			if (rigidbody->IsKinematic)
 			{
 				rigidbodyA = rigidbody_Other;
 				rigidbodyB = rigidbody;
-				collision->Normal *= -1;
+				//collision->Normal *= -1;
 			}
 
 			bool isKinematic = false;
@@ -117,27 +119,50 @@ void Physics2D::Update()
 			//Debug::Log(L"相対速度： (%f, %f)", relativeVelocity.x, relativeVelocity.y);
 
 			float forum1 = 1 / rigidbodyA->mass;
-			if (isKinematic) forum1 = 1 / rigidbodyA->mass;
-			else forum1 = 1 / rigidbodyA->mass + 1 / rigidbodyB->mass;
+			if (isKinematic)
+			{
+				forum1 = 1 / rigidbodyA->mass;
+			}
+			else
+			{
+				forum1 = 1 / rigidbodyA->mass + 1 / rigidbodyB->mass;
+			}
 
 			int collisionDataNum = collision->collisionDataVector.size();
 
 			for (auto collisionData : collision->collisionDataVector)
 			{
-				Vector2 impulse = -collision->Normal * (1 + e) / forum1 * min(Vector2::Dot(relativeVelocity, collision->Normal), 0) / collisionDataNum;
+				// 法線方向の相対速度
+				float relNormalSpeed = min(Vector2::Dot(relativeVelocity, collision->Normal), 0);
+
+				Vector2 impulse = -collision->Normal * (1 + e) / forum1 * relNormalSpeed / collisionDataNum;
 
 				// 重力キャンセル
 				if (isKinematic)
 				{
 					float gravityCancelScaler = Vector2::Dot(Vector2(0, 1) * rigidbodyA->mass * g * EngineTime::GetFixedDeltaTime() / collisionDataNum, collision->Normal);
-					Vector2 gravityCancelImpulse = (-collision->Normal * min(Vector2::Dot(relativeVelocity, collision->Normal), 0)).Normalized() * gravityCancelScaler;
+					Vector2 gravityCancelImpulse = (-collision->Normal * relNormalSpeed).Normalized() * gravityCancelScaler;
 					impulse -= gravityCancelImpulse;
 				}
 
 				// 速度反転が起きないなら速度を０にする撃力を与える
 				if (isKinematic && impulse.magnitude < (relativeVelocity * rigidbodyA->mass).magnitude / collisionDataNum)
 				{
-					impulse = -collision->Normal * min(Vector2::Dot(relativeVelocity, collision->Normal), 0) * rigidbodyA->mass / collisionDataNum;
+					impulse = -collision->Normal * relNormalSpeed * rigidbodyA->mass / collisionDataNum;
+				}
+
+				// めり込み補正
+				if (isKinematic && collisionData->depth > 0)
+				{
+					float power = rigidbodyA->mass * 10 * collisionData->depth;
+
+					float down = relNormalSpeed * 5 * EngineTime::GetDelataTime();
+					if (power + down < 0)
+					{
+						down = -power;
+					}
+
+					impulse += (collision->Normal * (power)) / collisionDataNum;
 				}
 
 				//Debug::Log(L"撃力： (%f, %f)", impulse.x, impulse.y);

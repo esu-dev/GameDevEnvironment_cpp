@@ -3,6 +3,10 @@
 #include "GameSystem.h"
 #include "GameEngine.h"
 
+GameObject::GameObject() : scene(nullptr)
+{
+	name = "GameObject";
+}
 
 std::vector<GameObject*> GameObject::FindGameObjectsWithTag(std::string tag)
 {

@@ -10,6 +10,7 @@ using namespace SceneManagement;
 class SceneDataManager
 {
 public:
+	static Object* GetInstance(const std::string& instanceID);
 	static std::unordered_map<std::string, Object*>& GetInstanceID2PointerMap();
 	static Scene* Load(std::string path);
 	static Scene* Reload();

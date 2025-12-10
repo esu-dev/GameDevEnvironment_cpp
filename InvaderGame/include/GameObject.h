@@ -21,7 +21,7 @@ public:
 	static std::vector<GameObject*> FindGameObjectsWithTag(std::string tag);
 	static GameObject* Create();
 
-	Scene* scene;
+	Scene* scene = nullptr;
 	std::string tag = "Untagged";
 
 	NAME(GameObject)
@@ -30,6 +30,8 @@ public:
 		SERIALIZE_FIELD3(tag),
 		SERIALIZE_FIELD3(_componentVector)
 	)
+
+	GameObject();
 
 	// 関数テンプレートは型やコンパイル時に定まる値をパラメータ化する機能
 	// 利用されるときに実体化するため、正しく分割コンパイルされない

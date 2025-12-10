@@ -33,7 +33,7 @@ Transform:
   position:
     _variable:
       x: -2.000000
-      y: 0.000000
+      y: 4.000000
       z: 0.000000
   scale:
     x: 3.000000
@@ -48,45 +48,14 @@ Animator:
   gameObject: (instanceID)1082300621=283998857=1642694024
   (vector)_animationVector: 1
   - (instanceID)1405914789=310590474=1626959017
---- 1691783062=1968798064=769133943
-GameObject:
-  tag: Untagged
-  (vector)_componentVector: 4
-  - (instanceID)260245162=2110461196=1008962487
-  - (instanceID)978945215=143943475=285541779
-  - (instanceID)1117418519=2078852195=1626930374
-  - (instanceID)213680857=518530501=942253144
---- 260245162=2110461196=1008962487
-Transform:
-  gameObject: (instanceID)1691783062=1968798064=769133943
-  position:
-    _variable:
-      x: 1.000000
-      y: -2.000000
-      z: 0.000000
-  scale:
-    x: 1.000000
-    y: 1.000000
-    z: 1.000000
---- 978945215=143943475=285541779
-SpriteRenderer:
-  gameObject: (instanceID)1691783062=1968798064=769133943
-  m_texture: (instanceID)nullptr
---- 1117418519=2078852195=1626930374
-BoxCollider2D:
-  gameObject: (instanceID)1691783062=1968798064=769133943
---- 213680857=518530501=942253144
-Rigidbody2D:
-  gameObject: (instanceID)1691783062=1968798064=769133943
-  IsKinematic: false
 --- 497196057=906531225=817251284
 GameObject:
   tag: Untagged
   (vector)_componentVector: 4
   - (instanceID)1799500956=137508752=642793527
   - (instanceID)1509651495=882491034=462321931
-  - (instanceID)149792252=1659153988=401814205
   - (instanceID)195784630=193413168=2014331585
+  - (instanceID)746408839=1785363155=2049907163
 --- 1799500956=137508752=642793527
 Transform:
   gameObject: (instanceID)497196057=906531225=817251284
@@ -103,13 +72,13 @@ Transform:
 SpriteRenderer:
   gameObject: (instanceID)497196057=906531225=817251284
   m_texture: (instanceID)nullptr
---- 149792252=1659153988=401814205
-BoxCollider2D:
-  gameObject: (instanceID)497196057=906531225=817251284
 --- 195784630=193413168=2014331585
 Rigidbody2D:
   gameObject: (instanceID)497196057=906531225=817251284
   IsKinematic: true
+--- 746408839=1785363155=2049907163
+BoxCollider2D:
+  gameObject: (instanceID)497196057=906531225=817251284
 --- 2102212640=487321293=653675589
 GameObject:
   tag: Untagged
@@ -124,7 +93,7 @@ Transform:
   position:
     _variable:
       x: 3.000000
-      y: -2.000000
+      y: 3.000000
       z: 0.000000
   scale:
     x: 1.000000
@@ -141,4 +110,73 @@ BoxCollider2D:
 Rigidbody2D:
   gameObject: (instanceID)2102212640=487321293=653675589
   IsKinematic: false
+--- 655355753=640052246=1215976672
+GameObject:
+  tag: Untagged
+  (vector)_componentVector: 5
+  - (instanceID)605239882=1166137584=699623466
+  - (instanceID)1699747353=1151176671=18894886
+  - (instanceID)785395023=1060158469=82241996
+  - (instanceID)1943218357=30294982=2142561411
+  - (instanceID)75503205=207787926=1891845258
+--- 605239882=1166137584=699623466
+Transform:
+  gameObject: (instanceID)655355753=640052246=1215976672
+  position:
+    _variable:
+      x: -4.000000
+      y: 0.000000
+      z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 1699747353=1151176671=18894886
+SpriteRenderer:
+  gameObject: (instanceID)655355753=640052246=1215976672
+  m_texture: (instanceID)nullptr
+--- 785395023=1060158469=82241996
+Rigidbody2D:
+  gameObject: (instanceID)655355753=640052246=1215976672
+  IsKinematic: false
+--- 1943218357=30294982=2142561411
+VelocityController:
+  gameObject: (instanceID)655355753=640052246=1215976672
+  _initialVelocity:
+    x: 3.000000
+    y: 0.000000
+--- 75503205=207787926=1891845258
+BoxCollider2D:
+  gameObject: (instanceID)655355753=640052246=1215976672
+--- 287234944=898251891=1541843887
+GameObject:
+  tag: Untagged
+  (vector)_componentVector: 4
+  - (instanceID)1150224287=1040984073=216669262
+  - (instanceID)863037060=1631207664=989395126
+  - (instanceID)1115572162=1297295089=896617397
+  - (instanceID)857203901=48881299=1161813552
+--- 1150224287=1040984073=216669262
+Transform:
+  gameObject: (instanceID)287234944=898251891=1541843887
+  position:
+    _variable:
+      x: 1.000000
+      y: 0.000000
+      z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 863037060=1631207664=989395126
+SpriteRenderer:
+  gameObject: (instanceID)287234944=898251891=1541843887
+  m_texture: (instanceID)nullptr
+--- 1115572162=1297295089=896617397
+Rigidbody2D:
+  gameObject: (instanceID)287234944=898251891=1541843887
+  IsKinematic: false
+--- 857203901=48881299=1161813552
+BoxCollider2D:
+  gameObject: (instanceID)287234944=898251891=1541843887
 

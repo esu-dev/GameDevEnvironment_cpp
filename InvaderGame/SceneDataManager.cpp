@@ -3,6 +3,19 @@
 #include "Utility.h"
 #include "GameEngine.h"
 
+
+Object* SceneDataManager::GetInstance(const std::string& instanceID)
+{
+	if (instanceID2PointerMap.find(instanceID) != instanceID2PointerMap.end())
+	{
+		return instanceID2PointerMap[instanceID];
+	}
+
+	Debug::Log("存在しないインスタンスを取得しようとしています。[SceneDataManager::GetInstance()]");
+
+	return nullptr;
+}
+
 std::unordered_map<std::string, Object*>& SceneDataManager::GetInstanceID2PointerMap()
 {
 	return SceneDataManager::instanceID2PointerMap;

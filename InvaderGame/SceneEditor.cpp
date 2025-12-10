@@ -20,50 +20,10 @@ void SceneEditor::Initialize()
 	_frameObject = GameObject::Create();
 	_frameObject->AddComponent<SpriteRenderer>()->SetTexture(texture);
 
+	_focusFrame = GameObject::Create();
+	_focusFrame->AddComponent<SpriteRenderer>()->SetTexture(new Texture("Resources/Texture/Frame2.png"));
+
 	EngineTime::TimeScale = 0;
-
-
-	// エディタ起動コマンド
-	//InputSystem::AddKeyAction({ InputSystem::KeySet('E') }, []() -> void {
-	//	_isEditMode = !_isEditMode;
-
-	//	if (_isEditMode)
-	//	{
-	//		// シーンを再生成する
-	//		SceneDataManager::Reload();
-
-	//		EngineTime::TotalTime = 0;
-	//		EngineTime::TimeScale = 0;
-	//	}
-	//	else
-	//	{
-	//		// ここでRecordを初期化する
-	//		for (RecordBase* record : RecordManager::RecordVector)
-	//		{
-	//			record->Initialize();
-	//		}
-
-	//		// TimeScaleで管理すると、無駄な処理がずっと走ることになるから、要検討
-	//		EngineTime::TimeScale = 1;
-	//	}
-	//});
-
-
-	// 設置フレーム移動コマンド
-	/*InputSystem::AddKeyAction({ InputSystem::KeySet('W') }, []() -> void { _frameObject->GetTransform()->position.Get().y += 1; });
-	InputSystem::AddKeyAction({ InputSystem::KeySet('A') }, []() -> void { _frameObject->GetTransform()->position.Get().x -= 1; });
-	InputSystem::AddKeyAction({ InputSystem::KeySet('S') }, []() -> void { _frameObject->GetTransform()->position.Get().y -= 1; });
-	InputSystem::AddKeyAction({ InputSystem::KeySet('D') }, []() -> void { _frameObject->GetTransform()->position.Get().x += 1; });*/
-
-	// 設置コマンド
-	/*InputSystem::AddKeyAction({ InputSystem::KeySet('J') }, []() -> void {
-		if (!_isEditMode) return;
-		GameObject* gameObject = GameObject::Create();
-		gameObject->GetTransform()->position = _frameObject->GetTransform()->position;
-		gameObject->AddComponent<SpriteRenderer>();
-
-		SceneManagement::SceneManager::GetActiveScene()->AddGameObject(gameObject);
-	});*/
 
 	// セーブコマンド
 	InputSystem::AddKeyAction({ InputSystem::KeySet('P') }, []() -> void { SceneDataManager::Save(); });
@@ -78,13 +38,15 @@ void SceneEditor::Update()
 	{
 		_isEditMode = !_isEditMode;
 
+		// シーンを再生成する
+		SceneDataManager::Reload();
+
 		if (_isEditMode)
 		{
-			// シーンを再生成する
-			SceneDataManager::Reload();
-
 			EngineTime::TotalTime = 0;
 			EngineTime::TimeScale = 0;
+
+			Selection::gameObject = nullptr;
 		}
 		else
 		{
@@ -212,7 +174,6 @@ void SceneEditor::Update()
 			{
 				Component* component = dynamic_cast<Component*>(Activator::CreateInstance(componentNameVec[selectedIndex]));
 				Selection::gameObject->AddComponent(component);
-				//GameSystem::GetInstance().AddDelayedExecution([&]() -> void { Selection::gameObject->AddComponent(component); });
 				ImGui::CloseCurrentPopup();
 			}
 
@@ -220,6 +181,15 @@ void SceneEditor::Update()
 		}
 	}
 	ImGui::End();
+
+
+	// フォーカスフレーム
+	if (Selection::gameObject != nullptr)
+	{
+		_focusFrame->GetTransform()->position = Selection::gameObject->GetTransform()->position;
+		_focusFrame->GetTransform()->scale = Selection::gameObject->GetTransform()->scale + Vector3::one;
+		_focusFrame->Update();
+	}
 
 
 	// PuttingMode
@@ -242,6 +212,7 @@ void SceneEditor::Update()
 		gameObject->AddComponent<SpriteRenderer>();
 
 		SceneManagement::SceneManager::GetActiveScene()->AddGameObject(gameObject);
+		SceneDataManager::GetInstanceID2PointerMap()[gameObject->instanceID] = gameObject;
 	}
 
 	// フレームの描画
@@ -252,3 +223,4 @@ int SceneEditor::FieldID = 0;
 bool SceneEditor::_isEditMode = true;
 bool SceneEditor::_isPuttingMode = false;
 GameObject* SceneEditor::_frameObject = nullptr;
+GameObject* SceneEditor::_focusFrame = nullptr;

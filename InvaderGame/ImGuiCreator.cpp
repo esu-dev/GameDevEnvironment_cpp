@@ -248,6 +248,7 @@ bool ImGuiCreator::ArithmeticField(std::string& outSerializedData, const std::st
 	else if (std::regex_match(value, smatch, std::regex(R"(.+)")))
 	{
 		static char buf[256];
+		strcpy_s(buf, value.c_str());
 		if (ImGui::InputText(label.c_str(), buf, IM_ARRAYSIZE(buf)))
 		{
 			outHasChanged = true;

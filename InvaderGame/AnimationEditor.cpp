@@ -27,14 +27,20 @@ void AnimationEditor::Update()
 			_animationClip = new AnimationClip("TestAnimation");
 		}
 
-		/*static char buf[256];
-		ImGui::InputText("Load Animation Name", buf, IM_ARRAYSIZE(buf));*/
-		//std::string str = "";
-		std::string instanceID = "";
-		//ImGuiCreator::PutPointerField(str, "", "Select Animation", instanceID);
+		static std::string instanceID = "Select Animation";
+		std::string serializedData = "";
+		if (ImGuiCreator::PutPointerField(serializedData, "", "", instanceID))
+		{
+			// instanceIDÇÃíäèo
+			std::smatch smatch;
+			if (std::regex_match(serializedData, smatch, std::regex(R"(\(\w+\)(.+))")))
+			{
+				instanceID = smatch[1].str();
+			}
+		}
 		if (ImGui::Button("Load Animation"))
 		{
-			_animationClip = (AnimationClip*)AssetManager::GetInstanceID2PointerMap()[instanceID];
+			_animationClip = (AnimationClip*)AssetManager::GetInstance(instanceID);
 		}
 
 		

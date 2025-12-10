@@ -87,10 +87,19 @@ void AssetManager::Initialize()
 			// アセットがあればインスタンスの生成
 			if (FileManager::Exist(path))
 			{
-				CreateInstance(path);
+				CreateInstance(directry, fileName);
 			}
 		}
 	}
+}
+
+Object* AssetManager::GetInstance(const std::string& instanceID)
+{
+	if (instanceID2PointerMap.find(instanceID) != instanceID2PointerMap.end())
+	{
+		return instanceID2PointerMap[instanceID];
+	}
+	return nullptr;
 }
 
 std::unordered_map<std::string, Object*>& AssetManager::GetInstanceID2PointerMap()
@@ -108,8 +117,10 @@ void AssetManager::CreateAsset(const std::string& path, Object* object)
 	FileManager::Write(path, serializedData);
 }
 
-void AssetManager::CreateInstance(const std::string& path)
+void AssetManager::CreateInstance(const std::string& directry, const std::string& fileName)
 {
+	std::string path = directry + fileName;
+
 	// ファイルの中身を読む込む
 	std::vector<std::string> contentVector;
 	FileManager::Read(contentVector, path);
@@ -157,6 +168,7 @@ void AssetManager::CreateInstance(const std::string& path)
 				continue;
 			}
 			object->instanceID = instanceID;
+			object->name = fileName;
 			instanceID2PointerMap[instanceID] = object;
 		}
 	}
