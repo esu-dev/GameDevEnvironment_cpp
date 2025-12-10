@@ -8,6 +8,7 @@
 #include "SceneDataManager.h"
 #include "ImGuiCreator.h"
 #include "AnimationEditor.h"
+#include "TimeController.h"
 
 #include "imgui_internal.h"
 #include "imgui_impl_win32.h"
@@ -47,6 +48,8 @@ void SceneEditor::Update()
 			EngineTime::TimeScale = 0;
 
 			Selection::gameObject = nullptr;
+
+			TimeController::Initialize();
 		}
 		else
 		{
@@ -61,7 +64,12 @@ void SceneEditor::Update()
 		}
 	}
 
-	if (!_isEditMode) return;
+	if (!_isEditMode)
+	{
+		TimeController::Update();
+
+		return;
+	}
 
 	// 設置モード切り替え
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('O'))
@@ -73,7 +81,7 @@ void SceneEditor::Update()
 	AnimationEditor::Update();
 
 	// imguiデモ表示
-	ImGui::ShowDemoWindow();
+	//ImGui::ShowDemoWindow();
 
 
 	// ヒエラルキー

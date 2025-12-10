@@ -11,35 +11,35 @@
 
 void TimeController::Initialize()
 {
-	static int backNum = 0;
+	_isEditorON = false;
 
-	InputSystem::KeySet keySet_ctrl = InputSystem::KeySet();
-	keySet_ctrl.isHold = true;
-	keySet_ctrl.vkey = VK_CONTROL;
+	//InputSystem::KeySet keySet_ctrl = InputSystem::KeySet();
+	//keySet_ctrl.isHold = true;
+	//keySet_ctrl.vkey = VK_CONTROL;
 
-	InputSystem::AddKeyAction({ InputSystem::KeySet('T') }, []() -> void {
-		_isEditorON = !_isEditorON;
-		if (_isEditorON)
-		{
-			Debug::Log(L"Enter Editor");
-			backNum = 0;
-			EngineTime::TimeScale = 0;
-		}
-		else
-		{
-			Debug::Log(L"Exit Editor");
-			//float time = EngineTime::TotalTime - RecordBase::RECORD_INTERVAL * (backNum - 1);
-			for (RecordBase* record : RecordManager::RecordVector)
-			{
-				record->Decide(_time);
-			}
-			//EngineTime::TotalTime = (int)(time / RecordBase::RECORD_INTERVAL);
-			EngineTime::TotalTime = _time;
-			EngineTime::TimeScale = 1;
-		}
-	});
+	//InputSystem::AddKeyAction({ InputSystem::KeySet('T') }, []() -> void {
+	//	_isEditorON = !_isEditorON;
+	//	if (_isEditorON)
+	//	{
+	//		Debug::Log(L"Enter Editor");
+	//		backNum = 0;
+	//		EngineTime::TimeScale = 0;
+	//	}
+	//	else
+	//	{
+	//		Debug::Log(L"Exit Editor");
+	//		//float time = EngineTime::TotalTime - RecordBase::RECORD_INTERVAL * (backNum - 1);
+	//		for (RecordBase* record : RecordManager::RecordVector)
+	//		{
+	//			record->Decide(_time);
+	//		}
+	//		//EngineTime::TotalTime = (int)(time / RecordBase::RECORD_INTERVAL);
+	//		EngineTime::TotalTime = _time;
+	//		EngineTime::TimeScale = 1;
+	//	}
+	//});
 
-	InputSystem::AddKeyAction({ InputSystem::KeySet(VK_LEFT) }, []() -> void {
+	/*InputSystem::AddKeyAction({ InputSystem::KeySet(VK_LEFT) }, []() -> void {
 		Debug::Log(L"--");
 		backNum++;
 		float time = EngineTime::GetTotalTime() - RecordBase::RECORD_INTERVAL * (backNum - 1);
@@ -57,7 +57,7 @@ void TimeController::Initialize()
 		{
 			record->Select(time);
 		}
-	});
+	});*/
 }
 
 void TimeController::Update()
@@ -66,7 +66,37 @@ void TimeController::Update()
 	static int width = 300;
 	static int height = 200;
 
+	static int backNum = 0;
 	static int time = 0;
+
+
+	// Editor‹N“®
+	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('T'))
+	{
+		_isEditorON = !_isEditorON;
+		if (_isEditorON)
+		{
+			backNum = 0;
+			EngineTime::TimeScale = 0;
+		}
+		else
+		{
+			//float time = EngineTime::TotalTime - RecordBase::RECORD_INTERVAL * (backNum - 1);
+			for (RecordBase* record : RecordManager::RecordVector)
+			{
+				record->Decide(_time);
+			}
+			//EngineTime::TotalTime = (int)(time / RecordBase::RECORD_INTERVAL);
+			EngineTime::TotalTime = _time;
+			EngineTime::TimeScale = 1;
+		}
+	}
+
+
+	if (!_isEditorON)
+	{
+		return;
+	}
 
 	ImGui::SetNextWindowPos(ImVec2(GameSystem::WINDOW_WIDTH - width - 10, GameSystem::WINDOW_HEIGHT - height - 10));
 	ImGui::SetNextWindowSize(ImVec2(width, height));

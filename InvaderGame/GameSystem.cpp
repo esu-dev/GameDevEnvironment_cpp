@@ -3,7 +3,6 @@
 #include "DirectX.h"
 #include "GameEngine.h"
 #include "AssetManager.h"
-#include "TimeController.h"
 #include "SceneEditor.h"
 #include "SampleSceneAssests.h"
 
@@ -21,7 +20,6 @@ void GameSystem::Initialize()
 {
 	// static class‚Ì‰Šú‰»
 	EngineTime::Initialize();
-	TimeController::Initialize();
 	Physics2D::Initialize();
 	Activator::Initialize();
 	AssetManager::Initialize();
@@ -47,7 +45,6 @@ void GameSystem::Execute()
 	Input::Update();
 	Physics2D::Update();
 	InputSystem::Update();
-	TimeController::Update();
 	SceneEditor::Update();
 
 	// Updateˆ—

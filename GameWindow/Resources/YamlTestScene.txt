@@ -65,7 +65,7 @@ Transform:
       y: -5.000000
       z: 0.000000
   scale:
-    x: 10.000000
+    x: 12.000000
     y: 1.000000
     z: 1.000000
 --- 1509651495=882491034=462321931
@@ -113,11 +113,10 @@ Rigidbody2D:
 --- 655355753=640052246=1215976672
 GameObject:
   tag: Untagged
-  (vector)_componentVector: 5
+  (vector)_componentVector: 4
   - (instanceID)605239882=1166137584=699623466
   - (instanceID)1699747353=1151176671=18894886
   - (instanceID)785395023=1060158469=82241996
-  - (instanceID)1943218357=30294982=2142561411
   - (instanceID)75503205=207787926=1891845258
 --- 605239882=1166137584=699623466
 Transform:
@@ -139,22 +138,15 @@ SpriteRenderer:
 Rigidbody2D:
   gameObject: (instanceID)655355753=640052246=1215976672
   IsKinematic: false
---- 1943218357=30294982=2142561411
-VelocityController:
-  gameObject: (instanceID)655355753=640052246=1215976672
-  _initialVelocity:
-    x: 3.000000
-    y: 0.000000
 --- 75503205=207787926=1891845258
 BoxCollider2D:
   gameObject: (instanceID)655355753=640052246=1215976672
 --- 287234944=898251891=1541843887
 GameObject:
   tag: Untagged
-  (vector)_componentVector: 4
+  (vector)_componentVector: 3
   - (instanceID)1150224287=1040984073=216669262
   - (instanceID)863037060=1631207664=989395126
-  - (instanceID)1115572162=1297295089=896617397
   - (instanceID)857203901=48881299=1161813552
 --- 1150224287=1040984073=216669262
 Transform:
@@ -172,11 +164,6 @@ Transform:
 SpriteRenderer:
   gameObject: (instanceID)287234944=898251891=1541843887
   m_texture: (instanceID)nullptr
---- 1115572162=1297295089=896617397
-Rigidbody2D:
-  gameObject: (instanceID)287234944=898251891=1541843887
-  IsKinematic: false
 --- 857203901=48881299=1161813552
 BoxCollider2D:
   gameObject: (instanceID)287234944=898251891=1541843887
-
