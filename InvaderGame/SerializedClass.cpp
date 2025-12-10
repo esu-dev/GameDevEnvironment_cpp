@@ -13,15 +13,12 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 			// リスト
 			if (std::regex_match(instanceData, m, std::regex(R"(-\s(.+))")))
 			{
-				subInstanceDataVector.back()->isVector = true;
-
 				std::string value = m[1].str();
 
 				// instanceIDをもつかどうか
 				if (std::regex_match(value, m, std::regex(R"(\(instanceID\)(.+))")))
 				{
 					std::string instanceID = m[1].str();
-					subInstanceDataVector.back()->hasInstanceID = true;
 					subInstanceDataVector.back()->memberVector.push_back(instanceID);
 				}
 				// クラス，構造体
@@ -53,6 +50,15 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 
 			std::smatch smatch;
 
+
+			// 変数名の代入
+			std::string label = m[1].str();
+			if (std::regex_match(label, smatch, std::regex(R"((\(\w+\))?([^\s]+))")))
+			{
+				subInstanceDataVector.back()->variableName = smatch[2].str();
+			}
+
+
 			// クラス, 構造体
 			if (m[3].str() == "")
 			{
@@ -76,7 +82,6 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 				if (std::regex_match(matchString, match, std::regex(R"(\(\w+\)(.+))")))
 				{
 					std::string instanceID = match[1].str();
-					subInstanceDataVector.back()->hasInstanceID = true;
 					subInstanceDataVector.back()->memberVector.push_back(instanceID);
 				}
 				else
@@ -91,6 +96,18 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 	// データを元に値を代入
 	for (int i = 0; i < subInstanceDataVector.size(); i++)
 	{
-		functionVector[i]->deserializeFunc(subInstanceDataVector[i]);
+		// 同じ変数名を検索
+		//std_extension::Select(functionVector, [](SerializeFuncData* x) -> FieldInfo { return x->getFieldFunc(); });
+		for (int j = 0; j < functionVector.size(); j++)
+		{
+			if (functionVector[j]->getFieldFunc().name == subInstanceDataVector[i]->variableName)
+			{
+				functionVector[j]->deserializeFunc(subInstanceDataVector[i]);
+				break;
+			}
+		}
+
+
+		//functionVector[i]->deserializeFunc(subInstanceDataVector[i]);
 	}
 }

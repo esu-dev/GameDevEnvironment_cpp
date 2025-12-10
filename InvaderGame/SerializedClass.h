@@ -69,8 +69,7 @@ public:
 protected:
 	struct InstanceData
 	{
-		bool isVector = false;
-		bool hasInstanceID = false;
+		std::string variableName;
 		std::vector<std::string> memberVector;
 	};
 

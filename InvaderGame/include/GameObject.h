@@ -21,6 +21,7 @@ public:
 	static std::vector<GameObject*> FindGameObjectsWithTag(std::string tag);
 	static GameObject* Create();
 
+	bool IsPrefab = false;
 	Scene* scene = nullptr;
 	std::string tag = "Untagged";
 

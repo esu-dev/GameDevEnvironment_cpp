@@ -4,6 +4,16 @@
 #include "GameEngine.h"
 #include "Utility.h"
 
+GameObject* Object::Instantiate(GameObject* original)
+{
+	if (original->IsPrefab)
+	{
+		SceneDataManager::LoadGameObjectClone(SceneManagement::SceneManager::GetActiveScene(), original->Serialize());
+	}
+
+	return nullptr;
+}
+
 void Object::Destroy(GameObject* gameObject)
 {
 	GAMESYS.AddDelayedExecution([=]() -> void

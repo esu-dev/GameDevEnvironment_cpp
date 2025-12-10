@@ -91,6 +91,23 @@ void AssetManager::Initialize()
 			}
 		}
 	}
+
+	// Prefab
+	{
+		std::string directry = "Resources/Prefab/";
+		std::vector<std::string> fileNameVector = FileManager::GetAllFileName(directry, "prefab");
+
+		for (std::string fileName : fileNameVector)
+		{
+			std::string path = directry + fileName;
+
+			// アセットがあればインスタンスの生成
+			if (FileManager::Exist(path))
+			{
+				CreateInstance(directry, fileName);
+			}
+		}
+	}
 }
 
 Object* AssetManager::GetInstance(const std::string& instanceID)
@@ -125,10 +142,16 @@ void AssetManager::CreateInstance(const std::string& directry, const std::string
 	std::vector<std::string> contentVector;
 	FileManager::Read(contentVector, path);
 
+
+	struct InstanceData
+	{
+		Object* object = nullptr;
+		std::vector<std::string> yamlVector;
+	};
+	std::vector<InstanceData> instanceDataVector;
+
 	bool isPacking = false;
 	std::string instanceID;
-	Object* object = nullptr;
-	std::vector<std::string> yamlVector;
 	for (std::string content : contentVector)
 	{
 		std::smatch m;
@@ -148,7 +171,7 @@ void AssetManager::CreateInstance(const std::string& directry, const std::string
 		{
 			if (std::regex_match(content, m, std::regex(R"(\s{2}(.+))")))
 			{
-				yamlVector.push_back(m[1].str());
+				instanceDataVector.back().yamlVector.push_back(m[1].str());
 			}
 		}
 
@@ -161,20 +184,27 @@ void AssetManager::CreateInstance(const std::string& directry, const std::string
 
 			std::string typeString = m[1].str();
 
+			InstanceData instanceData = InstanceData();
+
 			// インスタンス生成
-			object = Activator::CreateInstance(typeString);
-			if (object == nullptr)
+			instanceData.object = Activator::CreateInstance(typeString);
+			if (instanceData.object == nullptr)
 			{
 				continue;
 			}
-			object->instanceID = instanceID;
-			object->name = fileName;
-			instanceID2PointerMap[instanceID] = object;
+			instanceData.object->instanceID = instanceID;
+			instanceData.object->name = fileName;
+			instanceID2PointerMap[instanceID] = instanceData.object;
+
+			instanceDataVector.push_back(instanceData);
 		}
 	}
 
 	// 保持しておいたyamlを元にデシリアライズ
-	object->Deserialize(yamlVector);
+	for (InstanceData& instanceData : instanceDataVector)
+	{
+		instanceData.object->Deserialize(instanceData.yamlVector);
+	}
 }
 
 void AssetManager::SerializeGameObject(std::string& outSerializedData, GameObject* gameObject)

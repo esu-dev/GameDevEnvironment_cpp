@@ -2,6 +2,7 @@ YamlTestScene
 --- 000
 GameObject:
   tag: MainCamera
+  Prefab: (instanceID)nullptr
   (vector)_componentVector: 2
   - (instanceID)001
   - (instanceID)002
@@ -23,6 +24,7 @@ Camera:
 --- 1082300621=283998857=1642694024
 GameObject:
   tag: Untagged
+  Prefab: (instanceID)nullptr
   (vector)_componentVector: 3
   - (instanceID)1075129542=1986999632=872817339
   - (instanceID)1143258267=1990377142=528611924
@@ -42,7 +44,7 @@ Transform:
 --- 1143258267=1990377142=528611924
 SpriteRenderer:
   gameObject: (instanceID)1082300621=283998857=1642694024
-  m_texture: (instanceID)1194511168=1983697167=1980983536
+  m_texture: (instanceID)1076716786=347121883=1111975783
 --- 626134180=1619734207=2038984355
 Animator:
   gameObject: (instanceID)1082300621=283998857=1642694024
@@ -51,6 +53,7 @@ Animator:
 --- 497196057=906531225=817251284
 GameObject:
   tag: Untagged
+  Prefab: (instanceID)nullptr
   (vector)_componentVector: 4
   - (instanceID)1799500956=137508752=642793527
   - (instanceID)1509651495=882491034=462321931
@@ -82,6 +85,7 @@ BoxCollider2D:
 --- 2102212640=487321293=653675589
 GameObject:
   tag: Untagged
+  Prefab: (instanceID)nullptr
   (vector)_componentVector: 4
   - (instanceID)1937265299=1627949069=475374604
   - (instanceID)700179129=223923703=406123683
@@ -113,6 +117,7 @@ Rigidbody2D:
 --- 655355753=640052246=1215976672
 GameObject:
   tag: Untagged
+  Prefab: (instanceID)nullptr
   (vector)_componentVector: 4
   - (instanceID)605239882=1166137584=699623466
   - (instanceID)1699747353=1151176671=18894886
@@ -144,6 +149,7 @@ BoxCollider2D:
 --- 287234944=898251891=1541843887
 GameObject:
   tag: Untagged
+  Prefab: (instanceID)nullptr
   (vector)_componentVector: 4
   - (instanceID)1150224287=1040984073=216669262
   - (instanceID)863037060=1631207664=989395126
@@ -175,9 +181,11 @@ Rigidbody2D:
 --- 1331245835=796256961=1891290254
 GameObject:
   tag: Untagged
-  (vector)_componentVector: 2
+  Prefab: (instanceID)nullptr
+  (vector)_componentVector: 3
   - (instanceID)1627760598=697391438=1206724379
   - (instanceID)771255266=768640621=1224613073
+  - (instanceID)984021993=608657100=344796783
 --- 1627760598=697391438=1206724379
 Transform:
   gameObject: (instanceID)1331245835=796256961=1891290254
@@ -194,4 +202,15 @@ Transform:
 SpriteRenderer:
   gameObject: (instanceID)1331245835=796256961=1891290254
   m_texture: (instanceID)nullptr
+--- 984021993=608657100=344796783
+SerializedSample:
+  gameObject: (instanceID)1331245835=796256961=1891290254
+  hoo: 0
+  hoge: 0.000000
+  fuga:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  (vector)intVector: 0
+  (vector)fooVector: 0
 
