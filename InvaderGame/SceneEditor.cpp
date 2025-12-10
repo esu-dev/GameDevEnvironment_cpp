@@ -143,9 +143,8 @@ void SceneEditor::Update()
 			{
 				ImGuiCreator::Create(component.get());
 			}
-
 			// Remove Component
-			if (ImGui::BeginPopupContextItem())
+			else if (ImGui::BeginPopupContextItem())
 			{
 				if (ImGui::Selectable("Remove Component"))
 				{

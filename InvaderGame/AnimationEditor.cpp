@@ -49,8 +49,12 @@ void AnimationEditor::Update()
 			ImGuiCreator::Create(_animationClip);
 			if (ImGui::Button("Create"))
 			{
-				std::string path = "Resources/Animation/" + _animationClip->GetAnimationName() + ".txt";
+				std::string directry = "Resources/Animation/";
+				std::string fileName = _animationClip->GetAnimationName() + ".txt";
+				std::string path = directry + fileName;
 				AssetManager::CreateAsset(path, _animationClip);
+
+				AssetManager::CreateInstance(directry, fileName);
 
 				// window‚ð•Â‚¶‚é
 				isEditMode = false;
