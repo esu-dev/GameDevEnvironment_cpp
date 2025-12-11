@@ -21,7 +21,7 @@ std::unordered_map<std::string, Object*>& SceneDataManager::GetInstanceID2Pointe
 	return SceneDataManager::instanceID2PointerMap;
 }
 
-void SceneDataManager::LoadGameObject(Scene* scene, const std::vector<std::string>& yamlVector)
+GameObject* SceneDataManager::LoadGameObject(Scene* scene, const std::vector<std::string>& yamlVector)
 {
 	std::vector<InstanceData> instanceDataVector;
 
@@ -74,19 +74,33 @@ void SceneDataManager::LoadGameObject(Scene* scene, const std::vector<std::strin
 	}
 
 	// 保持しておいたyamlを元にデシリアライズ
-	DeserializeObject(scene, instanceDataVector);
+	GameObject* returnedGameObject = nullptr;
+	for (const InstanceData& instanceData : instanceDataVector)
+	{
+		instanceData.object->Deserialize(instanceData.yamlVector);
+
+		// GameObjectをSceneに追加
+		if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceData.object))
+		{
+			returnedGameObject = gameObject;
+
+			scene->AddGameObject(gameObject);
+		}
+	}
+
+	return returnedGameObject;
 }
 
-void SceneDataManager::LoadGameObjectClone(Scene* scene, const std::vector<std::string>& yamlVector)
+GameObject* SceneDataManager::LoadGameObjectClone(Scene* scene, const std::vector<std::string>& yamlVector)
 {
 	std::vector<InstanceData> instanceDataVector;
+	std::unordered_map<std::string, std::string> originalID2newIDmap;
 
 	// デシリアライズ
 	bool isPacking = false;
+	std::string originalInstanceID;
 	for (std::string content : yamlVector)
 	{
-		std::string originalInstanceID;
-
 		std::smatch m;
 		std::regex re(R"((-{3})\s(.+))");
 		if (std::regex_match(content, m, re))
@@ -118,6 +132,7 @@ void SceneDataManager::LoadGameObjectClone(Scene* scene, const std::vector<std::
 			// インスタンス生成
 			Object* object = Activator::CreateInstance(typeString);
 			object->original = instanceID2PointerMap[originalInstanceID];
+			originalID2newIDmap[originalInstanceID] = object->instanceID;
 			instanceID2PointerMap[object->instanceID] = object;
 
 			// instanceIDをキーとして、yamlとポインタを保持
@@ -128,8 +143,41 @@ void SceneDataManager::LoadGameObjectClone(Scene* scene, const std::vector<std::
 		}
 	}
 
+
 	// 保持しておいたyamlを元にデシリアライズ
-	DeserializeObject(scene, instanceDataVector);
+	GameObject* returnedGameObject = nullptr;
+	for (InstanceData& instanceData : instanceDataVector)
+	{
+		// instanceIDの書き換え
+		for (std::string& line : instanceData.yamlVector)
+		{
+			std::smatch smatch;
+			if (std::regex_match(line, smatch, std::regex(R"((-{3} )(.+))")) ||
+				std::regex_match(line, smatch, std::regex(R"((.+\(\instanceID\))(.+))")))
+			{
+				for (auto& pair : originalID2newIDmap)
+				{
+					if (pair.first == smatch[2].str())
+					{
+						line = smatch[1].str() + pair.second;
+						break;
+					}
+				}
+			}
+		}
+
+		instanceData.object->Deserialize(instanceData.yamlVector);
+
+		// GameObjectをSceneに追加
+		if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceData.object))
+		{
+			returnedGameObject = gameObject;
+
+			scene->AddGameObject(gameObject);
+		}
+	}
+
+	return returnedGameObject;
 }
 
 Scene* SceneDataManager::Load(std::string path)

@@ -1,17 +1,17 @@
 #pragma once
 
 #define SERIALIZE_FIELD3(v) \
-	new SerializeFuncData( \
+	std::make_shared<SerializeFuncData>( \
 		[&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, indentNum); }, \
 		[&](InstanceData* instanceData) -> void { DeserializeField(v, instanceData); }, \
 		[&]() -> FieldInfo { return FieldInfo(#v, typeid(v).name()); }, \
 		[&](std::string name) -> void { }) \
 
 #define SERIALIZE3(p, ...) \
-	std::vector<SerializeFuncData*> GetSerializeFuncData() override \
+	std::vector<std::shared_ptr<SerializeFuncData>> GetSerializeFuncData() override \
 	{ \
-		std::vector<SerializeFuncData*> pV = p::GetSerializeFuncData(); \
-		std::vector<SerializeFuncData*> sfdV = { __VA_ARGS__ }; \
+		std::vector<std::shared_ptr<SerializeFuncData>> pV = p::GetSerializeFuncData(); \
+		std::vector<std::shared_ptr<SerializeFuncData>> sfdV = { __VA_ARGS__ }; \
 		pV.insert(pV.end(), sfdV.begin(), sfdV.end()); \
 		return pV; \
 	} \
@@ -19,7 +19,7 @@
 	std::vector<std::string> Serialize(const int indentNum = 1) override \
 	{ \
 		std::vector<std::string> r; \
-		std::vector<SerializeFuncData*> sfdV = GetSerializeFuncData(); \
+		std::vector<std::shared_ptr<SerializeFuncData>> sfdV = GetSerializeFuncData(); \
 		for (auto& sfd : sfdV) \
 		{ \
 			std::vector<std::string> s = sfd->serializeFunc(indentNum); \
@@ -30,7 +30,7 @@
 	\
 	int Deserialize(std::vector<std::string> v) override \
 	{ \
-		std::vector<SerializeFuncData*> sfdV = GetSerializeFuncData(); \
+		std::vector<std::shared_ptr<SerializeFuncData>> sfdV = GetSerializeFuncData(); \
 		InputValue3(v, sfdV); \
 		return 0; \
 	}
@@ -188,6 +188,27 @@ protected:
 	template <typename T>
 	static void DeserializeField(T& variable, const InstanceData* instanceData)
 	{
+		auto getInstanceFromID = [](std::string instanceID) -> Object* {
+			Object* object = nullptr;
+			// シーンから検索
+			if (SceneDataManager::GetInstanceID2PointerMap().find(instanceID) != SceneDataManager::GetInstanceID2PointerMap().end())
+			{
+				object = SceneDataManager::GetInstanceID2PointerMap()[instanceID];
+			}
+			// アセットから検索
+			else if (AssetManager::GetInstanceID2PointerMap().find(instanceID) != AssetManager::GetInstanceID2PointerMap().end())
+			{
+				object = AssetManager::GetInstanceID2PointerMap()[instanceID];
+			}
+
+			if (object == nullptr)
+			{
+				Debug::Log("存在しないインスタンスでデシリアライズしようとしています。[DeserializeField()]");
+			}
+
+			return object;
+		};
+
 		// constexpr(constant expression)でコンパイル分岐が可能になる
 		// 値ならそのまま代入
 		if constexpr (std::is_arithmetic<T>())
@@ -218,23 +239,11 @@ protected:
 				return;
 			}
 
-			Object* object = nullptr;
-			// シーンから検索
-			if (SceneDataManager::GetInstanceID2PointerMap().find(instanceData->memberVector[0]) != SceneDataManager::GetInstanceID2PointerMap().end())
-			{
-				object = SceneDataManager::GetInstanceID2PointerMap()[instanceData->memberVector[0]];
-			}
-			// アセットから検索
-			else if (AssetManager::GetInstanceID2PointerMap().find(instanceData->memberVector[0]) != AssetManager::GetInstanceID2PointerMap().end())
-			{
-				object = AssetManager::GetInstanceID2PointerMap()[instanceData->memberVector[0]];
-			}
+			Object* object = getInstanceFromID(instanceData->memberVector[0]);
 
 			if (object == nullptr)
 			{
 				variable = nullptr;
-
-				Debug::Log("存在しないインスタンスでデシリアライズしようとしています。[DeserializeField()]");
 			}
 			else if (T t = dynamic_cast<T>(object))
 			{
@@ -351,7 +360,7 @@ protected:
 					}
 
 					// インスタンスの検索
-					Object* object = AssetManager::GetInstanceID2PointerMap()[member];
+					Object* object = getInstanceFromID(member);
 
 					variable.push_back((typename T::value_type)(object));
 				}
@@ -359,7 +368,7 @@ protected:
 				else if constexpr (std_extension::is_shared_ptr_v<typename T::value_type>)
 				{
 					// インスタンスの検索
-					Object* object = SceneDataManager::GetInstanceID2PointerMap()[member];
+					Object* object = getInstanceFromID(member);
 
 					if (Component* component = dynamic_cast<Component*>(object)) variable.push_back(std::shared_ptr<Component>(component));
 				}
@@ -385,7 +394,7 @@ protected:
 	}
 	
 
-	static void InputValue3(const std::vector<std::string>& instanceDataVector, const std::vector<SerializeFuncData*>& functionVector);
+	static void InputValue3(const std::vector<std::string>& instanceDataVector, const std::vector<std::shared_ptr<SerializeFuncData>>& functionVector);
 
-	virtual std::vector<SerializeFuncData*> GetSerializeFuncData() { return std::vector<SerializeFuncData*>(); }
+	virtual std::vector<std::shared_ptr<SerializeFuncData>> GetSerializeFuncData() { return std::vector<std::shared_ptr<SerializeFuncData>>(); }
 };

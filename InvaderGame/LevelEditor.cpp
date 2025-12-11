@@ -29,7 +29,7 @@ void LevelEditor::Update()
 	// PuttingMode
 	if (_isPuttingMode)
 	{
-		static const float flashInterval = 0.5f;
+		const float FLASH_INTERVAL = 0.5f;
 		static float flashTimer = 0;
 		static GameObject* puttingPrefab;
 
@@ -59,6 +59,7 @@ void LevelEditor::Update()
 				i++;
 			}
 		}
+		ImGui::End();
 
 		// 選択中のPrefabを描画
 		if (puttingPrefab == nullptr)
@@ -68,13 +69,14 @@ void LevelEditor::Update()
 		puttingPrefab->GetTransform()->position = _frameObject->GetTransform()->position;
 
 		// 点滅処理
-		if (flashTimer >= flashInterval)
+		if (flashTimer >= FLASH_INTERVAL)
 		{
 			SpriteRenderer* spriteRenderer = puttingPrefab->GetComponent<SpriteRenderer>();
 			spriteRenderer->enabled = !spriteRenderer->enabled;
 
 			flashTimer = 0;
 		}
+		flashTimer += EngineTime::GetDelataTime();
 
 		puttingPrefab->Update();
 
@@ -92,9 +94,7 @@ void LevelEditor::Update()
 			gameObject->AddComponent<SpriteRenderer>();*/
 
 			GameObject* gameObject = Object::Instantiate(puttingPrefab);
-
-			SceneManagement::SceneManager::GetActiveScene()->AddGameObject(gameObject);
-			SceneDataManager::GetInstanceID2PointerMap()[gameObject->instanceID] = gameObject;
+			gameObject->GetTransform()->position = _frameObject->GetTransform()->position;
 		}
 
 		// フレームの描画

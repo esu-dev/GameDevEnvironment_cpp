@@ -15,6 +15,7 @@ public:
 	static void CreateAsset(const std::string& path, Object* object);
 	static void CreateInstance(const std::string& directry, const std::string& fileName);
 	static void SerializeGameObject(std::string& outSerializedData, GameObject* gameObject);
+	static void SerializeGameObject(std::vector<std::string>& outSerializedData, GameObject* gameObject);
 
 private:
 	static std::unordered_map<std::string, Object*> instanceID2PointerMap;

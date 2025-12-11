@@ -80,6 +80,11 @@ void GameObject::Start()
 {
 	for (auto component : _componentVector)
 	{
+		if (!component->enabled)
+		{
+			continue;
+		}
+
 		if (!component.get()->Started)
 		{
 			component->Start();
@@ -97,6 +102,11 @@ void GameObject::Update()
 
 	for (auto component : _componentVector)
 	{
+		if (!component->enabled)
+		{
+			continue;
+		}
+
 		component->Update();
 	}
 }

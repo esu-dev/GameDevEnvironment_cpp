@@ -20,7 +20,7 @@ public:
 
 	std::string instanceID = "initial instanceID";
 	std::string name = "initial name"; // 削除するとエラーが出る。どこで参照されているのか不明
-	Object* original;
+	Object* original = nullptr;
 
 	virtual std::string GetName() { return "not overrided"; };
 };

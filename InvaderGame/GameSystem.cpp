@@ -31,8 +31,8 @@ void GameSystem::Initialize()
 void GameSystem::Execute()
 {
 	// ”wŒiF‚ÌÝ’è
-	//float color[4] = { 0.2f, 0.2f, 1.0f, 1.0f };
-	float color[4] = { 0, 0, 0, 1.0 };
+	const auto& bg = Camera::backgroundColor;
+	float color[4] = { bg.x, bg.y, bg.z, bg.w };
 	D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 
 	ImGuiUtility::BeginFrame();

@@ -230,4 +230,23 @@ void AssetManager::SerializeGameObject(std::string& outSerializedData, GameObjec
 	}
 }
 
+void AssetManager::SerializeGameObject(std::vector<std::string>& outSerializedData, GameObject* gameObject)
+{
+	// GameObject
+	outSerializedData.push_back("--- " + gameObject->instanceID);
+	outSerializedData.push_back(gameObject->GetName() + ":");
+	std::vector<std::string> serializedData = gameObject->Serialize();
+	outSerializedData.insert(outSerializedData.end(), serializedData.begin(), serializedData.end());
+
+	// Component
+	for (auto componentPtr : gameObject->GetComponentVector())
+	{
+		Component* component = componentPtr.get();
+		outSerializedData.push_back("--- " + component->instanceID);
+		outSerializedData.push_back(component->GetName() + ":");
+		std::vector<std::string> serializedData = component->Serialize();
+		outSerializedData.insert(outSerializedData.end(), serializedData.begin(), serializedData.end());
+	}
+}
+
 std::unordered_map<std::string, Object*> AssetManager::instanceID2PointerMap;

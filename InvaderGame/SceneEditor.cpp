@@ -117,9 +117,13 @@ void SceneEditor::Update()
 					GameObject* gameObject = gameObjectVector[i];
 					gameObject->IsPrefab = true;
 					AssetManager::SerializeGameObject(serializedData, gameObject);
-					FileManager::Write("Resources/Prefab/" + gameObject->name + ".prefab", serializedData);
+					
+					std::string directry = "Resources/Prefab/";
+					std::string fileName = gameObject->name + ".prefab";
+					FileManager::Write(directry + fileName, serializedData);
+					AssetManager::CreateInstance(directry, fileName);
 
-					Object::Destroy(gameObject);
+					//Object::Destroy(gameObject);
 				}
 				ImGui::EndPopup();
 			}
