@@ -264,6 +264,9 @@
     <ClCompile Include="AnimationClip.cpp">
       <Filter>Source\GameEngine</Filter>
     </ClCompile>
+    <ClCompile Include="LevelEditor.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -513,6 +516,9 @@
     </ClInclude>
     <ClInclude Include="AnimationClip.h">
       <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelEditor.h">
+      <Filter>Source\Editor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

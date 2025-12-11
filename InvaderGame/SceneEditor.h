@@ -13,8 +13,6 @@ public:
 
 private:
 	static bool _isEditMode;
-	static bool _isPuttingMode;
-	static GameObject* _frameObject;
 	static GameObject* _focusFrame;
 };
 

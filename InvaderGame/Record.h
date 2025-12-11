@@ -39,9 +39,9 @@ public:
 		}
 	}
 
-	void Decide(float time) override
+	float Decide(float time) override
 	{
-		if (_timeVariableSetVector.size() == 0) return;
+		if (_timeVariableSetVector.size() == 0) return 0;
 
 		for (int i = 0; i < (int)_timeVariableSetVector.size(); i++)
 		{
@@ -50,9 +50,11 @@ public:
 				// ˆÈ~‚Ìƒf[ƒ^‚ðíœ
 				_timeVariableSetVector.erase(_timeVariableSetVector.begin() + i + 1, _timeVariableSetVector.end());
 
-				return;
+				return _timeVariableSetVector[i].time;
 			}
 		}
+
+		return 0;
 	}
 
 	Record()

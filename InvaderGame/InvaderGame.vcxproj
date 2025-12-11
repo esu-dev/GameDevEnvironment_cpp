@@ -239,6 +239,7 @@
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputSystem.cpp" />
+    <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="MathUtility.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="DemoMovement.cpp" />
@@ -371,6 +372,7 @@
     <ClInclude Include="include\WindowDrawer.h" />
     <ClInclude Include="DemoMovement.h" />
     <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="MathUtility.h" />
     <ClInclude Include="Property.h" />
     <ClInclude Include="PropertyBase.h" />

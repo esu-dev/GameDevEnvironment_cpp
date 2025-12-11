@@ -7,6 +7,7 @@
 #include "GameSystem.h"
 #include "SceneDataManager.h"
 #include "ImGuiCreator.h"
+#include "LevelEditor.h"
 #include "AnimationEditor.h"
 #include "TimeController.h"
 
@@ -16,18 +17,13 @@
 
 void SceneEditor::Initialize()
 {
-	Texture* texture = new Texture();
-	texture->Load("Resources/Texture/Frame1.png");
-	_frameObject = GameObject::Create();
-	_frameObject->AddComponent<SpriteRenderer>()->SetTexture(texture);
-
 	_focusFrame = GameObject::Create();
 	_focusFrame->AddComponent<SpriteRenderer>()->SetTexture(new Texture("Resources/Texture/Frame3.png"));
 
 	EngineTime::TimeScale = 0;
 
-	// セーブコマンド
-	InputSystem::AddKeyAction({ InputSystem::KeySet('P') }, []() -> void { SceneDataManager::Save(); });
+	// 他のエディタの初期化処理
+	LevelEditor::Initialize();
 }
 
 void SceneEditor::Update()
@@ -54,6 +50,8 @@ void SceneEditor::Update()
 		else
 		{
 			// ここでRecordを初期化する
+			// 初期化タイミングをStart()以降にしないといけないのでは？
+			// Start()で設定されなかった変数を初期化する
 			for (RecordBase* record : RecordManager::RecordVector)
 			{
 				record->Initialize();
@@ -64,6 +62,7 @@ void SceneEditor::Update()
 		}
 	}
 
+	// エディタを開いていないならば
 	if (!_isEditMode)
 	{
 		TimeController::Update();
@@ -71,13 +70,10 @@ void SceneEditor::Update()
 		return;
 	}
 
-	// 設置モード切り替え
-	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('O'))
-	{
-		_isPuttingMode = !_isPuttingMode;
-	}
+	
 
 	// 他エディタのUpdate処理
+	LevelEditor::Update();
 	AnimationEditor::Update();
 
 	// imguiデモ表示
@@ -119,8 +115,11 @@ void SceneEditor::Update()
 				{
 					std::string serializedData = "";
 					GameObject* gameObject = gameObjectVector[i];
+					gameObject->IsPrefab = true;
 					AssetManager::SerializeGameObject(serializedData, gameObject);
 					FileManager::Write("Resources/Prefab/" + gameObject->name + ".prefab", serializedData);
+
+					Object::Destroy(gameObject);
 				}
 				ImGui::EndPopup();
 			}
@@ -199,35 +198,13 @@ void SceneEditor::Update()
 	}
 
 
-	// PuttingMode
-	if (!_isPuttingMode)
+	// セーブ
+	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('S'))
 	{
-		return;
+		SceneDataManager::Save();
 	}
-
-	// フレームの移動
-	if (Input::GetKeyDown('W')) _frameObject->GetTransform()->position.Get().y += 1;
-	else if (Input::GetKeyDown('A')) _frameObject->GetTransform()->position.Get().x -= 1;
-	else if (Input::GetKeyDown('S')) _frameObject->GetTransform()->position.Get().y -= 1;
-	else if (Input::GetKeyDown('D')) _frameObject->GetTransform()->position.Get().x += 1;
-
-	// 設置
-	if (Input::GetKeyDown('J'))
-	{
-		GameObject* gameObject = GameObject::Create();
-		gameObject->GetTransform()->position = _frameObject->GetTransform()->position;
-		gameObject->AddComponent<SpriteRenderer>();
-
-		SceneManagement::SceneManager::GetActiveScene()->AddGameObject(gameObject);
-		SceneDataManager::GetInstanceID2PointerMap()[gameObject->instanceID] = gameObject;
-	}
-
-	// フレームの描画
-	_frameObject->Update();
 }
 
 int SceneEditor::FieldID = 0;
 bool SceneEditor::_isEditMode = true;
-bool SceneEditor::_isPuttingMode = false;
-GameObject* SceneEditor::_frameObject = nullptr;
 GameObject* SceneEditor::_focusFrame = nullptr;

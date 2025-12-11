@@ -7,9 +7,35 @@
 
 class Transform;
 
+#define RECORD_FIELD(v) \
+	new RecordFuncData( \
+		[](float t) -> void { v.Select(t); }, \
+		[](float t) -> float { v.Decide(t); } \
+	)
+
+#define RECORD(p, ...) \
+	void SelectTime(float time) override \
+	{ \
+		std::vector<RecordFuncData*> fV = { __VA_ARGS__ }; \
+		for (auto f : fV) \
+		{ \
+			f->selectFunc(time); \
+		} \
+	} \
+	\
+	void DecideTime(float time) override \
+	{ \
+		std::vector<RecordFuncData*> fV = { __VA_ARGS__ }; \
+		for (auto f : fV) \
+		{ \
+			f->decideFunc(time); \
+		} \
+	}
+
 class Component : public Object
 {
 public:
+	bool enabled = true;
 	bool Started = false;
 	GameObject* gameObject;
 
@@ -17,11 +43,13 @@ public:
 		SERIALIZE_FIELD3(gameObject)
 	)
 
-		virtual ~Component() { Debug::Log("Destructor is nor overrided. [%s]", GetName().c_str()); }
+	virtual ~Component() { Debug::Log("Destructor is nor overrided. [%s]", GetName().c_str()); }
 	virtual void OnEnable() {} // –{—ˆ‚ÍMonoBehaviour‚É’è‹`
 	virtual void OnDisable() {}
 	virtual void Start() {}
 	virtual void Update() {}
+	virtual void SelectTime(float time) {}
+	virtual void DecideTime(float time) {}
 
 	Transform* GetTransform();
 
@@ -29,4 +57,18 @@ public:
 	{
 		return this->gameObject->GetComponent<T>();
 	}
+
+
+protected:
+	struct RecordFuncData
+	{
+		std::function<void(float)> selectFunc;
+		std::function<float(float)> decideFunc;
+
+		RecordFuncData(std::function<void(float)> selectFunc, std::function<float(float)> decideFunc)
+		{
+			this->selectFunc = selectFunc;
+			this->decideFunc = decideFunc;
+		}
+	};
 };

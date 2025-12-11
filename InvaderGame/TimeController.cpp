@@ -12,52 +12,6 @@
 void TimeController::Initialize()
 {
 	_isEditorON = false;
-
-	//InputSystem::KeySet keySet_ctrl = InputSystem::KeySet();
-	//keySet_ctrl.isHold = true;
-	//keySet_ctrl.vkey = VK_CONTROL;
-
-	//InputSystem::AddKeyAction({ InputSystem::KeySet('T') }, []() -> void {
-	//	_isEditorON = !_isEditorON;
-	//	if (_isEditorON)
-	//	{
-	//		Debug::Log(L"Enter Editor");
-	//		backNum = 0;
-	//		EngineTime::TimeScale = 0;
-	//	}
-	//	else
-	//	{
-	//		Debug::Log(L"Exit Editor");
-	//		//float time = EngineTime::TotalTime - RecordBase::RECORD_INTERVAL * (backNum - 1);
-	//		for (RecordBase* record : RecordManager::RecordVector)
-	//		{
-	//			record->Decide(_time);
-	//		}
-	//		//EngineTime::TotalTime = (int)(time / RecordBase::RECORD_INTERVAL);
-	//		EngineTime::TotalTime = _time;
-	//		EngineTime::TimeScale = 1;
-	//	}
-	//});
-
-	/*InputSystem::AddKeyAction({ InputSystem::KeySet(VK_LEFT) }, []() -> void {
-		Debug::Log(L"--");
-		backNum++;
-		float time = EngineTime::GetTotalTime() - RecordBase::RECORD_INTERVAL * (backNum - 1);
-		for (RecordBase* record : RecordManager::RecordVector)
-		{
-			record->Select(time);
-		}
-	});
-
-	InputSystem::AddKeyAction({ InputSystem::KeySet(VK_RIGHT) }, []() -> void {
-		Debug::Log(L"++");
-		backNum = backNum <= 1 ? 1 : backNum - 1;
-		float time = EngineTime::GetTotalTime() - RecordBase::RECORD_INTERVAL * (backNum - 1);
-		for (RecordBase* record : RecordManager::RecordVector)
-		{
-			record->Select(time);
-		}
-	});*/
 }
 
 void TimeController::Update()
@@ -81,13 +35,22 @@ void TimeController::Update()
 		}
 		else
 		{
-			//float time = EngineTime::TotalTime - RecordBase::RECORD_INTERVAL * (backNum - 1);
+			float maxTime = 0;
 			for (RecordBase* record : RecordManager::RecordVector)
 			{
-				record->Decide(_time);
+				float decidedTime = record->Decide(_time);
+				maxTime = max(decidedTime, maxTime);
 			}
-			//EngineTime::TotalTime = (int)(time / RecordBase::RECORD_INTERVAL);
-			EngineTime::TotalTime = _time;
+
+			if (_time - maxTime > RecordBase::RECORD_INTERVAL)
+			{
+				EngineTime::TotalTime = _time;
+			}
+			else
+			{
+				EngineTime::TotalTime = maxTime;
+			}
+
 			EngineTime::TimeScale = 1;
 		}
 	}

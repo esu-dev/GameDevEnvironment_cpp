@@ -9,5 +9,5 @@ public:
 
 	virtual void Initialize() = 0;
 	virtual void Select(float time) = 0;
-	virtual void Decide(float time) = 0;
+	virtual float Decide(float time) = 0;
 };
