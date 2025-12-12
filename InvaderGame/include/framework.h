@@ -33,6 +33,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <variant>
 
 #include <functional>
 #include <algorithm>

@@ -130,6 +130,41 @@ std::vector<std::wstring> FileManager::GetAllFileName(std::wstring directry, std
 	return pathVector;
 }
 
+std::vector<std::string> FileManager::GetAllFolderName(std::string directry)
+{
+	std::vector<std::string> pathVector;
+
+	std::string wildCard = directry + std::string("*");
+
+	WIN32_FIND_DATAA win32FindData;
+	HANDLE hFindFile = FindFirstFileA(wildCard.c_str(), &win32FindData);
+
+	// ファイルが見つからなかった場合
+	if (hFindFile == INVALID_HANDLE_VALUE)
+	{
+		Debug::Log("file was not found.");
+		return pathVector;
+	}
+
+	// ファイルを読み込み続ける
+	do
+	{
+		std::string fileName = win32FindData.cFileName;
+
+		// 拡張子が付いていないもののみ加える
+		std::smatch smatch;
+		if (std::regex_match(fileName, smatch, std::regex(R"([^.]+)")))
+		{
+			pathVector.push_back(fileName);
+		}
+	} while (FindNextFileA(hFindFile, &win32FindData));
+
+
+	FindClose(hFindFile);
+
+	return pathVector;
+}
+
 void FileManager::Write(const std::string& path, const std::string& content)
 {
 	std::ofstream file(path);

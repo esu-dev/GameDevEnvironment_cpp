@@ -19,9 +19,21 @@ public:
 
 
 private:
+	class AnimationState : public SerializedClass
+	{
+	public:
+		float Time = 1;
+		AnimationClip* AnimationClip = nullptr;
+
+		SERIALIZE3(SerializedClass,
+			SERIALIZE_FIELD3(Time),
+			SERIALIZE_FIELD3(AnimationClip)
+		)
+	};
+
 	int _textureIndex = 0;
 	float _playingTime = 0;
 	SpriteRenderer* _spriteRenderer;
-	AnimationClip* _currentAnimation;
-	std::vector<AnimationClip*> _animationVector;
+	AnimationState _currentAnimation;
+	std::vector<AnimationState> _animationVector;
 };

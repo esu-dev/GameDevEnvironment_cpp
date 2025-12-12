@@ -49,7 +49,9 @@ SpriteRenderer:
 Animator:
   gameObject: (instanceID)1082300621=283998857=1642694024
   (vector)_animationVector: 1
-  - (instanceID)1405914789=310590474=1626959017
+  - 0:
+      Time: 1.000000
+      AnimationClip: (instanceID)nullptr
 --- 497196057=906531225=817251284
 GameObject:
   IsPrefab: false
@@ -224,10 +226,12 @@ Transform:
 --- 1654603363=848023440=205348381
 SpriteRenderer:
   gameObject: (instanceID)147560529=380564109=1893899489
-  m_texture: (instanceID)2031896239=1692424211=1578972974
+  m_texture: (instanceID)1085732539=225019827=1627339705
 --- 397732447=1670649184=1016027375
 Animator:
   gameObject: (instanceID)147560529=380564109=1893899489
   (vector)_animationVector: 1
-  - (instanceID)1991957285=1117206255=592262650
+  - 0:
+      Time: 2.500000
+      AnimationClip: (instanceID)1969032072=449929844=1896361220
 

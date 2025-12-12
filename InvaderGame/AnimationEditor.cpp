@@ -19,7 +19,7 @@ void AnimationEditor::Update()
 	if (isEditMode)
 	{
 		// ImGui•\Ž¦
-		ImGui::SetNextWindowSize(ImVec2(400, 400));
+		ImGui::SetNextWindowSize(ImVec2(350, 600));
 		ImGui::Begin("Animation Editor");
 
 		if (ImGui::Button("New Animation"))

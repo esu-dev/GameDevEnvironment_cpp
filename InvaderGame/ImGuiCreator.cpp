@@ -15,6 +15,7 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 	{
 		ImGui::OpenPopup("select_instanceID_popup");
 	}
+	ImGui::SetNextWindowSize(ImVec2(500, 600));
 	if (ImGui::BeginPopup("select_instanceID_popup"))
 	{
 		if (ImGui::BeginTabBar("TabVar"))
@@ -44,7 +45,7 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 					serializedData = serializedVarName + "nullptr";
 				}
 
-				for (auto& pair : AssetManager::GetInstanceID2PointerMap())
+				/*for (auto& pair : AssetManager::GetInstanceID2PointerMap())
 				{
 					if (ImGui::Selectable((pair.second->name + "(" + pair.first + ")").c_str()))
 					{
@@ -52,7 +53,40 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 
 						serializedData = serializedVarName + "(instanceID)" + pair.first;
 					}
-				}
+				}*/
+
+				std::function<void(AssetManager::AssetFolder)> createAssetGui = [&](const AssetManager::AssetFolder& assetFolder) -> void {
+					for (auto& pair : assetFolder.name2Datamp)
+					{
+						std::string folderName = pair.first;
+						auto assetData = pair.second;
+
+						// Folder
+						if (std::holds_alternative<AssetManager::AssetFolder*>(assetData))
+						{
+							if (ImGui::TreeNode(folderName.c_str()))
+							{
+								auto childAssetFolder = *std::get<AssetManager::AssetFolder*>(assetData);
+								createAssetGui(childAssetFolder);
+								ImGui::TreePop();
+							}
+						}
+						// AssetFile
+						else
+						{
+							auto assetFile = std::get<AssetManager::AssetFile*>(assetData);
+							if (ImGui::Selectable((assetFile->object->name + "  (" + assetFile->instanceID + ")").c_str()))
+							{
+								outHasChanged = true;
+
+								serializedData = serializedVarName + "(instanceID)" + assetFile->instanceID;
+							}
+						}
+					}
+				};
+
+				createAssetGui(AssetManager::GetAssetFolder());
+
 				ImGui::EndTabItem();
 			}
 			ImGui::EndTabBar();
