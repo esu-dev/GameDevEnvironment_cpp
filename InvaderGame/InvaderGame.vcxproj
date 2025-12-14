@@ -245,6 +245,7 @@
     <ClCompile Include="DemoMovement.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Physics2D.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Property.cpp" />
     <ClCompile Include="Quaternion.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
@@ -322,6 +323,7 @@
     <ClInclude Include="DemoPhysicsSceneAsset.h" />
     <ClInclude Include="DemoSoundPlayer.h" />
     <ClInclude Include="Editor.h" />
+    <ClInclude Include="EngineBehaviour.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="ImGuiCreator.h" />
     <ClInclude Include="ImGuiUtility.h" />
@@ -374,6 +376,7 @@
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="MathUtility.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Property.h" />
     <ClInclude Include="PropertyBase.h" />
     <ClInclude Include="Random.h" />

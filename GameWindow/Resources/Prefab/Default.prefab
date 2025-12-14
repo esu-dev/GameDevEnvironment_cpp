@@ -1,0 +1,27 @@
+--- 1857398883=146434386=830477929
+GameObject:
+  name: Default
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)1272587230=1254534244=1962790598
+  - (instanceID)903230606=483988091=207009462
+--- 1272587230=1254534244=1962790598
+Transform:
+  name: GameObject.prefab
+  gameObject: (instanceID)1857398883=146434386=830477929
+  position:
+    _variable:
+      x: 1.000000
+      y: 6.000000
+      z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 903230606=483988091=207009462
+SpriteRenderer:
+  name: GameObject.prefab
+  gameObject: (instanceID)1857398883=146434386=830477929
+  m_texture: (instanceID)nullptr
+

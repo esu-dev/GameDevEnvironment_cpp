@@ -49,6 +49,9 @@
     <Filter Include="Source\Editor">
       <UniqueIdentifier>{6fae86cd-305e-4956-93ca-adee83b25dd3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Demo">
+      <UniqueIdentifier>{1be0e894-46da-4907-8f15-a30c2aaf422e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioClip.cpp">
@@ -266,6 +269,9 @@
     </ClCompile>
     <ClCompile Include="LevelEditor.cpp">
       <Filter>Source\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source\Demo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -519,6 +525,12 @@
     </ClInclude>
     <ClInclude Include="LevelEditor.h">
       <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Source\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineBehaviour.h">
+      <Filter>Source\GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

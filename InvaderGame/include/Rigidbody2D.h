@@ -32,6 +32,7 @@ public:
 	void SetDynamic();
 	void SetVelocity(Vector2 velocity);
 
+	void AddForce(Vector2 force);
 	void AddImpulse(Vector2 impulse);
 	
 

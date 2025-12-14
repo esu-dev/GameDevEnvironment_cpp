@@ -22,5 +22,9 @@ public:
 	std::string name = "initial name"; // 削除するとエラーが出る。どこで参照されているのか不明
 	Object* original = nullptr;
 
+	SERIALIZE3(SerializedClass,
+		SERIALIZE_FIELD3(name)
+	)
+
 	virtual std::string GetName() { return "not overrided"; };
 };

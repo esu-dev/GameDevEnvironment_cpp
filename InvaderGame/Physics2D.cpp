@@ -1,6 +1,7 @@
 #include "Physics2D.h"
 
 #include "GameEngine.h"
+#include "EngineBehaviour.h"
 
 using namespace SceneManagement;
 
@@ -146,7 +147,7 @@ void Physics2D::Update()
 				}
 
 				// ‘¬“x”½“]‚ª‹N‚«‚È‚¢‚È‚ç‘¬“x‚ð‚O‚É‚·‚éŒ‚—Í‚ð—^‚¦‚é
-				if (isKinematic && impulse.magnitude < (relativeVelocity * rigidbodyA->mass).magnitude / collisionDataNum)
+				if (isKinematic && impulse.GetMagnitude() < (relativeVelocity * rigidbodyA->mass).GetMagnitude() / collisionDataNum)
 				{
 					impulse = -collision->Normal * relNormalSpeed * rigidbodyA->mass / collisionDataNum;
 				}
@@ -181,13 +182,30 @@ void Physics2D::Update()
 			Vector2 direction = -collisionLineVelocity.Normalized();
 
 			float mu = 0.1f;
-			Vector2 friction = direction * mu * (sumImpulse / collisionDataNum).magnitude / EngineTime::GetFixedDeltaTime();
+			Vector2 friction = direction * mu * (sumImpulse / collisionDataNum).GetMagnitude() / EngineTime::GetFixedDeltaTime();
 			Vector2 maxForce = collisionLineVelocity * rigidbodyA->mass / EngineTime::GetFixedDeltaTime();
-			if (friction.magnitude > maxForce.magnitude)
+			if (friction.GetMagnitude() > maxForce.GetMagnitude())
 			{
 				friction = -maxForce;
 			}
 			rigidbodyA->AddImpulse(friction * EngineTime::GetFixedDeltaTime());
+
+
+			// ƒCƒxƒ“ƒg”­‰Î
+			for (auto& component : collision->collider->gameObject->GetComponentVector())
+			{
+				if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
+				{
+					engineBehaviour->OnCollisionEnter2D(collision->otherCollider->gameObject);
+				}
+			}
+			for (auto& component : collision->otherCollider->gameObject->GetComponentVector())
+			{
+				if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
+				{
+					engineBehaviour->OnCollisionEnter2D(collision->collider->gameObject);
+				}
+			}
 		}
 
 		return;

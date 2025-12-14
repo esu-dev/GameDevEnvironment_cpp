@@ -82,6 +82,11 @@ void Rigidbody2D::Update()
 	}
 }
 
+void Rigidbody2D::AddForce(Vector2 force)
+{
+	velocity += force / mass * EngineTime::GetDelataTime();
+}
+
 void Rigidbody2D::AddImpulse(Vector2 impulse)
 {
 	if (IsKinematic) return;

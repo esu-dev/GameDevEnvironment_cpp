@@ -25,8 +25,6 @@ void Animator::Play(std::string animationName)
 	__int64 index = std::distance(result.begin(), itr);
 
 	_currentAnimation = _animationVector[index];
-	//_currentAnimation->Play();
-	//Debug::Log(L"%d, %d", _animationVector.size(), index);
 }
 
 void Animator::Start()

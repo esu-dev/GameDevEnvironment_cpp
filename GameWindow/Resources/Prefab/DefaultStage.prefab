@@ -1,0 +1,38 @@
+--- 1284351594=637193460=279385479
+GameObject:
+  name: DefaultStage
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 4
+  - (instanceID)245766592=8153429=1055153393
+  - (instanceID)1827568338=1478003507=882236226
+  - (instanceID)1336362703=197618445=757846660
+  - (instanceID)1174280858=369785338=155584458
+--- 245766592=8153429=1055153393
+Transform:
+  name: GameObject.prefab
+  gameObject: (instanceID)1284351594=637193460=279385479
+  position:
+    _variable:
+      x: 22.000000
+      y: -4.000000
+      z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 1827568338=1478003507=882236226
+SpriteRenderer:
+  name: GameObject.prefab
+  gameObject: (instanceID)1284351594=637193460=279385479
+  m_texture: (instanceID)nullptr
+--- 1336362703=197618445=757846660
+BoxCollider2D:
+  name: initial name
+  gameObject: (instanceID)1284351594=637193460=279385479
+--- 1174280858=369785338=155584458
+Rigidbody2D:
+  name: initial name
+  gameObject: (instanceID)1284351594=637193460=279385479
+  IsKinematic: true
+

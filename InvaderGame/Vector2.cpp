@@ -2,6 +2,8 @@
 
 #include "GameEngine.h"
 
+const Vector2 Vector2::up = Vector2(0, 1);
+
 float Vector2::Distance(const Vector2& vectorA, const Vector2& vectorB)
 {
 	Vector2 v = vectorB - vectorA;
@@ -22,13 +24,17 @@ Vector2::Vector2()
 {
 	this->x = 0;
 	this->y = 0;
-	magnitude = 10;
 }
 
 Vector2::Vector2(float x, float y)
 {
 	this->x = x;
 	this->y = y;
+}
+
+float Vector2::GetMagnitude()
+{
+	return sqrt(x * x + y * y);
 }
 
 Vector2 Vector2::Normalized()

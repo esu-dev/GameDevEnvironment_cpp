@@ -95,7 +95,8 @@ void SceneEditor::Update()
 		{
 			// GameOBject
 			// 同じ名前はIDが同じになってしまう。IDを付与する必要がある。
-			if (ImGui::Selectable((gameObjectVector[i]->name + std::to_string(i)).c_str(), selected == i))
+			ImGui::PushID(i);
+			if (ImGui::Selectable((gameObjectVector[i]->name).c_str(), selected == i))
 			{
 				selected = i;
 
@@ -127,6 +128,7 @@ void SceneEditor::Update()
 				}
 				ImGui::EndPopup();
 			}
+			ImGui::PopID();
 		}
 	}
 	ImGui::End();
@@ -138,6 +140,14 @@ void SceneEditor::Update()
 	ImGui::Begin("Inspector");
 	if (Selection::gameObject != nullptr)
 	{
+		// オブジェクト名の配置
+		static char buf[64];
+		strcpy_s(buf, Selection::gameObject->name.c_str());
+		if (ImGui::InputText("Name", buf, IM_ARRAYSIZE(buf)))
+		{
+			Selection::gameObject->name = std::string(buf);
+		}
+
 		// Componentの配置
 		for (auto& component : Selection::gameObject->GetComponentVector())
 		{
