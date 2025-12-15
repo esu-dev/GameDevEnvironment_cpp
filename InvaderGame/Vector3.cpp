@@ -32,6 +32,11 @@ Vector3 Vector3::AddZ(float value)
 	return Vector3(this->x, this->y, this->z + value);
 }
 
+float Vector3::GetMagnitude()
+{
+	return sqrt((x + y) * (x + y) + z * z);
+}
+
 Vector3 Vector3::GetNormalized()
 {
 	float square = x * x + y * y + z * z;

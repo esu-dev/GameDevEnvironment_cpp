@@ -4,13 +4,7 @@
 
 Quaternion& Quaternion::Identity()
 {
-	Quaternion* quaternion = new Quaternion();
-	quaternion->x = 0;
-	quaternion->y = 0;
-	quaternion->z = 0;
-	quaternion->w = 0;
-
-	return *quaternion;
+	return AngleAxis(0, Vector3::forward);
 }
 
 Quaternion& Quaternion::AngleAxis(float angle, Vector3 axis)
@@ -24,6 +18,11 @@ Quaternion& Quaternion::AngleAxis(float angle, Vector3 axis)
 	quaternion->w = DirectX::XMScalarCos(theta / 2);
 
 	return *quaternion;
+}
+
+Quaternion Quaternion::FromToRotation(const Vector3& fromDirection, const Vector3& toDirection)
+{
+
 }
 
 Quaternion Quaternion::Inverse(Quaternion quaternion)

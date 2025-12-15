@@ -1,7 +1,7 @@
 YamlTestScene
 --- 000
 GameObject:
-  name: GameObject
+  name: MainCamera
   IsPrefab: false
   tag: MainCamera
   (vector)_componentVector: 2
@@ -153,8 +153,8 @@ Transform:
       y: 0.000000
       z: 0.000000
   scale:
-    x: 1.000000
-    y: 1.000000
+    x: 3.000000
+    y: 3.000000
     z: 1.000000
 --- 1699747353=1151176671=18894886
 SpriteRenderer:
@@ -165,7 +165,7 @@ SpriteRenderer:
 Rigidbody2D:
   name: initial name
   gameObject: (instanceID)655355753=640052246=1215976672
-  IsKinematic: false
+  IsKinematic: true
 --- 75503205=207787926=1891845258
 BoxCollider2D:
   name: initial name
@@ -251,7 +251,7 @@ Transform:
   gameObject: (instanceID)147560529=380564109=1893899489
   position:
     _variable:
-      x: 19.000000
+      x: 17.000000
       y: 0.000000
       z: 0.000000
   scale:

@@ -7,14 +7,17 @@
 
 void Player::Update()
 {
+	Rigidbody2D* rigidbody = this->GetComponent<Rigidbody2D>();
+
 	// ˆÚ“®
 	if (Input::GetKey('A'))
 	{
-		this->GetTransform()->position.Get().x -= _moveSpeed * EngineTime::GetDelataTime();
+		rigidbody->AddForce(Vector2::left * _moveSpeed);
 	}
 	else if (Input::GetKey('D'))
 	{
-		this->GetTransform()->position.Get().x += _moveSpeed * EngineTime::GetDelataTime();
+		rigidbody->AddForce(Vector2::right * _moveSpeed);
+
 	}
 
 	// ƒWƒƒƒ“ƒv
@@ -23,7 +26,7 @@ void Player::Update()
 		if (_canJump && _jumpCounter < _jumpTime)
 		{
 			_isGround = false;
-			this->GetComponent<Rigidbody2D>()->AddForce(Vector2::up * _jumpPower);
+			rigidbody->AddForce(Vector2::up * _jumpPower);
 		}
 		
 		_jumpCounter += EngineTime::GetDelataTime();

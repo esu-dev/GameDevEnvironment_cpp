@@ -3,6 +3,9 @@
 #include "GameEngine.h"
 
 const Vector2 Vector2::up = Vector2(0, 1);
+const Vector2 Vector2::down = Vector2(0, -1);
+const Vector2 Vector2::right = Vector2(1, 0);
+const Vector2 Vector2::left = Vector2(-1, 0);
 
 float Vector2::Distance(const Vector2& vectorA, const Vector2& vectorB)
 {

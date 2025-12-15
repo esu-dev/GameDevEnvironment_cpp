@@ -22,6 +22,7 @@ public:
 	Vector3 AddY(float value);
 	Vector3 AddZ(float value);
 
+	float GetMagnitude();
 	Vector3 GetNormalized();
 	Vector2 ToVector2();
 

@@ -13,6 +13,7 @@ public:
 
 	static Quaternion& Identity();
 	static Quaternion& AngleAxis(float angle, Vector3 axis);
+	static Quaternion FromToRotation(const Vector3& fromDirection, const Vector3& toDirection);
 	static Quaternion Inverse(Quaternion quaternion);
 
 	Vector3 Mult(Vector3 vector);

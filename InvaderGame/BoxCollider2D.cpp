@@ -91,23 +91,28 @@ bool BoxCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D* co
 {
 	if (collider == nullptr) return false;
 	
-	Vector2 thisVertices[4];
-	this->GetOBBvertices(thisVertices);
+	auto createCollision = [&](BoxCollider2D* colliderA, BoxCollider2D* colliderB) -> void {
+		Vector2 VerticesA[4];
+		colliderA->GetOBBvertices(VerticesA);
 
-	// コライダーの中に頂点が含まれているか半別
-	for (int i = 0; i < 4; i++)
-	{
-		if (collider->IsPointIn(thisVertices[i]))
+		// コライダーの中に頂点が含まれているか半別
+		for (int i = 0; i < 4; i++)
 		{
-			Vector2 closestPoint = collider->GetClosestPointByVertex(thisVertices, i);
-			Collision2D::CollisionData* collisionData = new Collision2D::CollisionData();
-			outCollision->collisionDataVector.push_back(collisionData);
+			if (colliderB->IsPointIn(VerticesA[i]))
+			{
+				Vector2 closestPoint = colliderB->GetClosestPointByVertex(VerticesA, i);
+				Collision2D::CollisionData* collisionData = new Collision2D::CollisionData();
+				outCollision->collisionDataVector.push_back(collisionData);
 
-			collisionData->depth = Vector2::Distance(thisVertices[i], closestPoint);
-			collisionData->contact = thisVertices[i];
-			outCollision->Normal = (closestPoint - thisVertices[i]).Normalized();
+				collisionData->depth = Vector2::Distance(VerticesA[i], closestPoint);
+				collisionData->contact = VerticesA[i];
+				outCollision->Normal = (closestPoint - VerticesA[i]).Normalized();
+			}
 		}
-	}
+	};
+
+	createCollision(this, collider);
+	createCollision(collider, this);
 
 	return outCollision->collisionDataVector.size() > 0;
 }

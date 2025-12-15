@@ -86,8 +86,13 @@ void Physics2D::Update()
 					return false;
 				};
 
-			if (detectCollision(collisionPair.first, collisionPair.second) ||
-				detectCollision(collisionPair.second, collisionPair.first)) continue;
+			/*if (detectCollision(collisionPair.first, collisionPair.second) ||
+				detectCollision(collisionPair.second, collisionPair.first)) continue;*/
+
+			if (detectCollision(collisionPair.first, collisionPair.second))
+			{
+				continue;
+			}
 
 			delete collision;
 		}
@@ -171,6 +176,10 @@ void Physics2D::Update()
 				sumImpulse += impulse;
 				rigidbodyA->AddImpulse(impulse); // rbにストックさせて、まとめて適用にするかも
 				if (!isKinematic) rigidbodyB->AddImpulse(-impulse);
+
+				// デバッグ描画
+				Debug::DrawLine(collisionData->contact.ToVector3(), (collisionData->contact + impulse).ToVector3(), DirectX::XMFLOAT4(0, 0, 1, 1));
+				//Debug::DrawLine(Vector3::zero, Vector3::right * 10, DirectX::XMFLOAT4(0, 0, 1, 1));
 			}
 
 			//Debug::Log(L"衝突法線： (%f, %f)", collision->Normal.x, collision->Normal.y);

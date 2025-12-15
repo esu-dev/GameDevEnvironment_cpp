@@ -9,6 +9,9 @@ class Vector2 : public SerializedClass
 {
 public:
 	static const Vector2 up;
+	static const Vector2 down;
+	static const Vector2 right;
+	static const Vector2 left;
 
 	static float Distance(const Vector2& vectorA, const Vector2& vectorB);
 	static float Dot(const Vector2& vectorA, const Vector2& vectorB);

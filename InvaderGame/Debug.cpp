@@ -1,5 +1,8 @@
 #include "Debug.h"
 
+#include "Direct3D.h"
+#include "Vector3.h"
+
 void Debug::Log(LPCWSTR log, ...)
 {
 	wchar_t buffer[256];
@@ -31,4 +34,16 @@ void Debug::Log(const char* log, ...)
 	OutputDebugString(L"<Debug Log>\n");
 	OutputDebugString(wcstring);
 	OutputDebugStringW(L"\n\n");
+}
+
+void Debug::DrawLine(const Vector3& start, const Vector3& end, const DirectX::XMFLOAT4& color)
+{
+	Direct3D::GetInstance().SetColor({ 1, 1, 1, 1 });
+
+	Vector3 position = start + (end - start) / 2;
+	float length = (end - start).GetMagnitude();
+
+	Direct3D::GetInstance().SetRect(position.x, position.y, length, 0.25f, Quaternion::Identity());
+	Direct3D::GetInstance().Draw2D();
+	Log("•`‰æ");
 }
