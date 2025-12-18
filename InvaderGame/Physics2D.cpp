@@ -5,6 +5,7 @@
 
 using namespace SceneManagement;
 
+const float Physics2D::GRAVITATIONAL_ACCELERATION = 9.81f;
 Physics2D::LibraryType Physics2D::_libraryType = Physics2D::LibraryType::Original;
 b2Vec2 Physics2D::_gravity = { 0.0f, -9.81f };
 b2World Physics2D::_world = { _gravity };
@@ -27,7 +28,7 @@ void Physics2D::Update()
 
 	if (_libraryType == LibraryType::Original)
 	{
-		static float g = 9.81f;
+		static float g = GRAVITATIONAL_ACCELERATION;
 		static float e = 0.5f;
 
 		auto gameObjectVector = SceneManager::GetActiveScene()->GetGameObjectVector();
@@ -37,9 +38,7 @@ void Physics2D::Update()
 		{
 			if (Rigidbody2D* rigidbody = go->GetComponent<Rigidbody2D>())
 			{
-				if (rigidbody->IsKinematic) continue;
-
-				rigidbody->velocity += Vector2(0, -g) * EngineTime::GetFixedDeltaTime();
+				rigidbody->ApplyGravity();
 			}
 		}
 
@@ -66,7 +65,7 @@ void Physics2D::Update()
 		}
 
 
-		std::vector<Collision2D*> collisionVector;
+		std::vector<Collision2D*> collisionVector; // これメモリ開放してる？
 
 		// 衝突検出（ナローフェーズ）
 		for (auto collisionPair : collisionPairVector)
@@ -114,7 +113,7 @@ void Physics2D::Update()
 			{
 				rigidbodyA = rigidbody_Other;
 				rigidbodyB = rigidbody;
-				//collision->Normal *= -1;
+				collision->Normal *= -1;
 			}
 
 			bool isKinematic = false;
@@ -152,10 +151,11 @@ void Physics2D::Update()
 				}
 
 				// 速度反転が起きないなら速度を０にする撃力を与える
-				if (isKinematic && impulse.GetMagnitude() < (relativeVelocity * rigidbodyA->mass).GetMagnitude() / collisionDataNum)
+				// 条件にimpulseを使っているためか挙動がおかしくなる
+				/*if (isKinematic && impulse.GetMagnitude() < (relativeVelocity * rigidbodyA->mass).GetMagnitude() / collisionDataNum)
 				{
 					impulse = -collision->Normal * relNormalSpeed * rigidbodyA->mass / collisionDataNum;
-				}
+				}*/
 
 				// めり込み補正
 				if (isKinematic && collisionData->depth > 0)
@@ -178,8 +178,12 @@ void Physics2D::Update()
 				if (!isKinematic) rigidbodyB->AddImpulse(-impulse);
 
 				// デバッグ描画
-				Debug::DrawLine(collisionData->contact.ToVector3(), (collisionData->contact + impulse).ToVector3(), DirectX::XMFLOAT4(0, 0, 1, 1));
-				//Debug::DrawLine(Vector3::zero, Vector3::right * 10, DirectX::XMFLOAT4(0, 0, 1, 1));
+				float length = 1;
+				if (impulse.GetMagnitude() >= 1)
+				{
+					length = 1 * log2(impulse.GetMagnitude());
+				}
+				Debug::DrawLine(collisionData->contact.ToVector3(), (collisionData->contact + impulse.Normalized() * length).ToVector3(), DirectX::XMFLOAT4(0.5, 0.5, 0, 1));
 			}
 
 			//Debug::Log(L"衝突法線： (%f, %f)", collision->Normal.x, collision->Normal.y);

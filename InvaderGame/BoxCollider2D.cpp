@@ -91,7 +91,7 @@ bool BoxCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D* co
 {
 	if (collider == nullptr) return false;
 	
-	auto createCollision = [&](BoxCollider2D* colliderA, BoxCollider2D* colliderB) -> void {
+	auto createCollision = [&](BoxCollider2D* colliderA, BoxCollider2D* colliderB, bool isInverse = false) -> void {
 		Vector2 VerticesA[4];
 		colliderA->GetOBBvertices(VerticesA);
 
@@ -107,12 +107,17 @@ bool BoxCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D* co
 				collisionData->depth = Vector2::Distance(VerticesA[i], closestPoint);
 				collisionData->contact = VerticesA[i];
 				outCollision->Normal = (closestPoint - VerticesA[i]).Normalized();
+				if (isInverse)
+				{
+					collisionData->contact = closestPoint;
+					outCollision->Normal *= -1;
+				}
 			}
 		}
 	};
 
 	createCollision(this, collider);
-	createCollision(collider, this);
+	createCollision(collider, this, true);
 
 	return outCollision->collisionDataVector.size() > 0;
 }

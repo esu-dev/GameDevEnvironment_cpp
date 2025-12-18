@@ -110,6 +110,9 @@ void SceneEditor::Update()
 				}
 				if (ImGui::Selectable("Delete"))
 				{
+					// ‘I‘ð‚ðŠO‚·
+					Selection::gameObject = nullptr;
+
 					Object::Destroy(gameObjectVector[i]);
 				}
 				if (ImGui::Selectable("Create Prefab"))

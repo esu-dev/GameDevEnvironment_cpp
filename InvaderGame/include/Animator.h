@@ -23,10 +23,12 @@ private:
 	{
 	public:
 		float Time = 1;
+		std::string Name = "NewState";
 		AnimationClip* AnimationClip = nullptr;
 
 		SERIALIZE3(SerializedClass,
 			SERIALIZE_FIELD3(Time),
+			SERIALIZE_FIELD3(Name),
 			SERIALIZE_FIELD3(AnimationClip)
 		)
 	};

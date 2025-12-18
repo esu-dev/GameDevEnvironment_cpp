@@ -92,47 +92,11 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)497196057=906531225=817251284
   IsKinematic: true
+  GravityScale: 1.000000
 --- 746408839=1785363155=2049907163
 BoxCollider2D:
   name: initial name
   gameObject: (instanceID)497196057=906531225=817251284
---- 2102212640=487321293=653675589
-GameObject:
-  name: GameObject
-  IsPrefab: false
-  tag: Untagged
-  (vector)_componentVector: 4
-  - (instanceID)1937265299=1627949069=475374604
-  - (instanceID)700179129=223923703=406123683
-  - (instanceID)1420674921=1377075436=1790830698
-  - (instanceID)1616271669=1415528608=1344846311
---- 1937265299=1627949069=475374604
-Transform:
-  name: initial name
-  gameObject: (instanceID)2102212640=487321293=653675589
-  position:
-    _variable:
-      x: 3.000000
-      y: 3.000000
-      z: 0.000000
-  scale:
-    x: 1.000000
-    y: 1.000000
-    z: 1.000000
---- 700179129=223923703=406123683
-SpriteRenderer:
-  name: initial name
-  gameObject: (instanceID)2102212640=487321293=653675589
-  m_texture: (instanceID)nullptr
---- 1420674921=1377075436=1790830698
-BoxCollider2D:
-  name: initial name
-  gameObject: (instanceID)2102212640=487321293=653675589
---- 1616271669=1415528608=1344846311
-Rigidbody2D:
-  name: initial name
-  gameObject: (instanceID)2102212640=487321293=653675589
-  IsKinematic: false
 --- 655355753=640052246=1215976672
 GameObject:
   name: GameObject
@@ -166,47 +130,11 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)655355753=640052246=1215976672
   IsKinematic: true
+  GravityScale: 1.000000
 --- 75503205=207787926=1891845258
 BoxCollider2D:
   name: initial name
   gameObject: (instanceID)655355753=640052246=1215976672
---- 287234944=898251891=1541843887
-GameObject:
-  name: GameObject
-  IsPrefab: false
-  tag: Untagged
-  (vector)_componentVector: 4
-  - (instanceID)1150224287=1040984073=216669262
-  - (instanceID)863037060=1631207664=989395126
-  - (instanceID)857203901=48881299=1161813552
-  - (instanceID)970599638=336886612=2037179388
---- 1150224287=1040984073=216669262
-Transform:
-  name: initial name
-  gameObject: (instanceID)287234944=898251891=1541843887
-  position:
-    _variable:
-      x: 1.000000
-      y: 0.000000
-      z: 0.000000
-  scale:
-    x: 1.000000
-    y: 1.000000
-    z: 1.000000
---- 863037060=1631207664=989395126
-SpriteRenderer:
-  name: initial name
-  gameObject: (instanceID)287234944=898251891=1541843887
-  m_texture: (instanceID)nullptr
---- 857203901=48881299=1161813552
-BoxCollider2D:
-  name: initial name
-  gameObject: (instanceID)287234944=898251891=1541843887
---- 970599638=336886612=2037179388
-Rigidbody2D:
-  name: initial name
-  gameObject: (instanceID)287234944=898251891=1541843887
-  IsKinematic: false
 --- 1331245835=796256961=1891290254
 GameObject:
   name: GameObject
@@ -251,31 +179,34 @@ Transform:
   gameObject: (instanceID)147560529=380564109=1893899489
   position:
     _variable:
-      x: 17.000000
-      y: 0.000000
+      x: 4.000000
+      y: -1.000000
       z: 0.000000
   scale:
-    x: 3.000000
-    y: 3.000000
+    x: 5.000000
+    y: 5.000000
     z: 1.000000
 --- 1654603363=848023440=205348381
 SpriteRenderer:
   name: initial name
   gameObject: (instanceID)147560529=380564109=1893899489
-  m_texture: (instanceID)1085732539=225019827=1627339705
+  m_texture: (instanceID)2031896239=1692424211=1578972974
 --- 397732447=1670649184=1016027375
 Animator:
   name: initial name
   gameObject: (instanceID)147560529=380564109=1893899489
-  (vector)_animationVector: 1
+  (vector)_animationVector: 2
   - 0:
+      Time: 1.250000
+      AnimationClip: (instanceID)1991957285=1117206255=592262650
+  - 1:
       Time: 2.500000
       AnimationClip: (instanceID)1969032072=449929844=1896361220
 --- 6872234=179677836=1737315805
 Player:
   name: initial name
   gameObject: (instanceID)147560529=380564109=1893899489
-  _moveSpeed: 3.000000
+  _moveSpeed: 4.000000
   _jumpTime: 0.125000
   _jumpPower: 45.000000
 --- 1329810691=1773115153=2142410842
@@ -287,6 +218,7 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)147560529=380564109=1893899489
   IsKinematic: false
+  GravityScale: 1.000000
 --- 1858902932=521514938=1812382809
 GameObject:
   name: Default
@@ -304,7 +236,7 @@ Transform:
   position:
     _variable:
       x: 19.000000
-      y: -5.000000
+      y: -12.000000
       z: 0.000000
   scale:
     x: 9.000000
@@ -324,6 +256,7 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)1858902932=521514938=1812382809
   IsKinematic: true
+  GravityScale: 1.000000
 --- 1284351594=637193460=279385479
 GameObject:
   name: DefaultStage
@@ -361,4 +294,5 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)1284351594=637193460=279385479
   IsKinematic: true
+  GravityScale: 1.000000
 

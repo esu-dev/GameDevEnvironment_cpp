@@ -11,6 +11,8 @@ public:
 		Original
 	};
 
+	static const float GRAVITATIONAL_ACCELERATION;
+
 	static b2Vec2 _gravity;
 	static b2World _world;
 

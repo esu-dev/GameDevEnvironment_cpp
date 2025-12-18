@@ -38,12 +38,13 @@ void Debug::Log(const char* log, ...)
 
 void Debug::DrawLine(const Vector3& start, const Vector3& end, const DirectX::XMFLOAT4& color)
 {
-	Direct3D::GetInstance().SetColor({ 1, 1, 1, 1 });
+	Direct3D::GetInstance().SetColor(color);
 
-	Vector3 position = start + (end - start) / 2;
-	float length = (end - start).GetMagnitude();
+	Vector3 v = end - start;
+	Vector3 position = start + v / 2;
+	float length = v.GetMagnitude();
 
-	Direct3D::GetInstance().SetRect(position.x, position.y, length, 0.25f, Quaternion::Identity());
+	Direct3D::GetInstance().SetRect(position.x, position.y, length, 0.25f, Quaternion::FromToRotation(Vector3::right, v));
 	Direct3D::GetInstance().Draw2D();
 	Log("•`‰æ");
 }

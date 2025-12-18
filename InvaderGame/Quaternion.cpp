@@ -1,4 +1,5 @@
 #include "Quaternion.h"
+#include "Vector2.h"
 #include "Vector3.h"
 #include "Matrix.h"
 
@@ -20,9 +21,10 @@ Quaternion& Quaternion::AngleAxis(float angle, Vector3 axis)
 	return *quaternion;
 }
 
-Quaternion Quaternion::FromToRotation(const Vector3& fromDirection, const Vector3& toDirection)
+// ˆê’U2DŒÀ’è
+Quaternion Quaternion::FromToRotation(Vector3 fromDirection, Vector3 toDirection)
 {
-
+	return AngleAxis(Vector2::Angle(fromDirection.ToVector2(), toDirection.ToVector2()), Vector3::forward);
 }
 
 Quaternion Quaternion::Inverse(Quaternion quaternion)

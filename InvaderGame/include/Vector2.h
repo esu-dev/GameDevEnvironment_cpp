@@ -16,7 +16,8 @@ public:
 	static float Distance(const Vector2& vectorA, const Vector2& vectorB);
 	static float Dot(const Vector2& vectorA, const Vector2& vectorB);
 	static float Cross(const Vector2& vectorA, const Vector2& vectorB);
-	
+	static float Angle(Vector2 vectorA, Vector2 vectorB);
+
 	float x, y;
 	
 	SERIALIZE3(SerializedClass,

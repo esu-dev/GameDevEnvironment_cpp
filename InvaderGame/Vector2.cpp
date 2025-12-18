@@ -40,6 +40,12 @@ float Vector2::GetMagnitude()
 	return sqrt(x * x + y * y);
 }
 
+float Vector2::Angle(Vector2 vectorA, Vector2 vectorB)
+{
+	float rad = DirectX::XMScalarACos(Dot(vectorA, vectorB) / (vectorA.GetMagnitude() * vectorB.GetMagnitude()));
+	return DirectX::XMConvertToDegrees(rad);
+}
+
 Vector2 Vector2::Normalized()
 {
 	float square = x * x + y * y;

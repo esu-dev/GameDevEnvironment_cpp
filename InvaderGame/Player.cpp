@@ -4,21 +4,25 @@
 #include "EngineTime.h"
 #include "Transform.h"
 #include "Rigidbody2d.h"
+#include "Animator.h"
 
 void Player::Update()
 {
 	Rigidbody2D* rigidbody = this->GetComponent<Rigidbody2D>();
+	Animator* animator = this->GetComponent<Animator>();
 
 	// ˆÚ“®
 	if (Input::GetKey('A'))
 	{
 		rigidbody->AddForce(Vector2::left * _moveSpeed);
+		//animator->Play("WalkAnimation");
 	}
 	else if (Input::GetKey('D'))
 	{
 		rigidbody->AddForce(Vector2::right * _moveSpeed);
-
+		//animator->Play("WalkAnimation");
 	}
+	
 
 	// ƒWƒƒƒ“ƒv
 	if (Input::GetKey(VK_SPACE))

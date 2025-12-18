@@ -12,13 +12,15 @@ class Rigidbody2D : public Component
 {
 public:
 	bool IsKinematic = false;
+	float GravityScale = 1;
 	float mass = 1;
 	//Vector2 velocity = Vector2(0, 0);
 	Record<Vector2> velocity;
 
 	NAME(Rigidbody2D)
 	SERIALIZE3(Component,
-		SERIALIZE_FIELD3(IsKinematic)
+		SERIALIZE_FIELD3(IsKinematic),
+		SERIALIZE_FIELD3(GravityScale)
 	)
 
 	~Rigidbody2D() override {}
@@ -32,6 +34,7 @@ public:
 	void SetDynamic();
 	void SetVelocity(Vector2 velocity);
 
+	void ApplyGravity();
 	void AddForce(Vector2 force);
 	void AddImpulse(Vector2 impulse);
 	

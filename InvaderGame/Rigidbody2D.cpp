@@ -63,6 +63,7 @@ void Rigidbody2D::Start()
 
 void Rigidbody2D::Update()
 {
+	// 自作物理エンジン
 	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
 	{
 		// 位置の更新
@@ -80,6 +81,16 @@ void Rigidbody2D::Update()
 
 		//Debug::Log(L"pos: %f, delta: %f", this->gameObject->GetTransform()->position.y, Time::GetDelataTime());
 	}
+}
+
+void Rigidbody2D::ApplyGravity()
+{
+	if (IsKinematic)
+	{
+		return;
+	}
+
+	velocity += Vector2(0, -Physics2D::GRAVITATIONAL_ACCELERATION) * GravityScale * EngineTime::GetFixedDeltaTime();
 }
 
 void Rigidbody2D::AddForce(Vector2 force)
