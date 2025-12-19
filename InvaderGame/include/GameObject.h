@@ -30,7 +30,8 @@ public:
 	SERIALIZE3(Object,
 		SERIALIZE_FIELD3(IsPrefab),
 		SERIALIZE_FIELD3(tag),
-		SERIALIZE_FIELD3(_componentVector)
+		SERIALIZE_FIELD3(_componentVector),
+		SERIALIZE_FIELD3(_isActive)
 	)
 
 	GameObject();

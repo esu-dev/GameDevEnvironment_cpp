@@ -7,15 +7,21 @@ GameObject:
   (vector)_componentVector: 2
   - (instanceID)001
   - (instanceID)002
+  _isActive: true
 --- 001
 Transform:
   name: initial name
   gameObject: (instanceID)000
+  _parent: (instanceID)nullptr
   position:
     _variable:
       x: 0.000000
       y: 0.000000
       z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 1.000000
     y: 1.000000
@@ -26,22 +32,28 @@ Camera:
   gameObject: (instanceID)000
 --- 1082300621=283998857=1642694024
 GameObject:
-  name: GameObject
+  name: Knight
   IsPrefab: false
   tag: Untagged
   (vector)_componentVector: 3
   - (instanceID)1075129542=1986999632=872817339
   - (instanceID)1143258267=1990377142=528611924
   - (instanceID)626134180=1619734207=2038984355
+  _isActive: false
 --- 1075129542=1986999632=872817339
 Transform:
   name: initial name
   gameObject: (instanceID)1082300621=283998857=1642694024
+  _parent: (instanceID)nullptr
   position:
     _variable:
       x: -2.000000
       y: 4.000000
       z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 3.000000
     y: 5.000000
@@ -70,15 +82,21 @@ GameObject:
   - (instanceID)1509651495=882491034=462321931
   - (instanceID)195784630=193413168=2014331585
   - (instanceID)746408839=1785363155=2049907163
+  _isActive: true
 --- 1799500956=137508752=642793527
 Transform:
   name: initial name
   gameObject: (instanceID)497196057=906531225=817251284
+  _parent: (instanceID)nullptr
   position:
     _variable:
       x: 3.000000
       y: -9.000000
       z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 11.000000
     y: 3.000000
@@ -93,6 +111,7 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)497196057=906531225=817251284
   IsKinematic: true
+  IsTrigger: false
   GravityScale: 1.000000
 --- 746408839=1785363155=2049907163
 BoxCollider2D:
@@ -114,15 +133,21 @@ GameObject:
   - (instanceID)1699747353=1151176671=18894886
   - (instanceID)785395023=1060158469=82241996
   - (instanceID)75503205=207787926=1891845258
+  _isActive: true
 --- 605239882=1166137584=699623466
 Transform:
   name: initial name
   gameObject: (instanceID)655355753=640052246=1215976672
+  _parent: (instanceID)nullptr
   position:
     _variable:
       x: -4.000000
       y: 0.000000
       z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 3.000000
     y: 3.000000
@@ -137,6 +162,7 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)655355753=640052246=1215976672
   IsKinematic: true
+  IsTrigger: false
   GravityScale: 1.000000
 --- 75503205=207787926=1891845258
 BoxCollider2D:
@@ -156,15 +182,21 @@ GameObject:
   (vector)_componentVector: 2
   - (instanceID)1627760598=697391438=1206724379
   - (instanceID)771255266=768640621=1224613073
+  _isActive: true
 --- 1627760598=697391438=1206724379
 Transform:
   name: initial name
   gameObject: (instanceID)1331245835=796256961=1891290254
+  _parent: (instanceID)nullptr
   position:
     _variable:
       x: 11.000000
       y: 1.000000
       z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 1.000000
     y: 1.000000
@@ -186,15 +218,21 @@ GameObject:
   - (instanceID)6872234=179677836=1737315805
   - (instanceID)1329810691=1773115153=2142410842
   - (instanceID)1509751976=961373694=1662533778
+  _isActive: true
 --- 1401248970=231768062=1184301228
 Transform:
   name: initial name
   gameObject: (instanceID)147560529=380564109=1893899489
+  _parent: (instanceID)nullptr
   position:
     _variable:
       x: 4.000000
       y: -1.000000
       z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 6.000000
     y: 6.000000
@@ -234,13 +272,14 @@ BoxCollider2D:
     x: 0.000000
     y: 0.000000
   _size:
-    x: 0.350000
-    y: 0.625000
+    x: 0.275000
+    y: 0.600000
 --- 1509751976=961373694=1662533778
 Rigidbody2D:
   name: initial name
   gameObject: (instanceID)147560529=380564109=1893899489
   IsKinematic: false
+  IsTrigger: false
   GravityScale: 1.500000
 --- 1858902932=521514938=1812382809
 GameObject:
@@ -252,15 +291,21 @@ GameObject:
   - (instanceID)72352649=1308621047=746491112
   - (instanceID)1396194485=111968521=75270206
   - (instanceID)315716635=430368037=94721709
+  _isActive: true
 --- 1246838848=1225626328=1770403969
 Transform:
   name: GameObject.prefab
   gameObject: (instanceID)1858902932=521514938=1812382809
+  _parent: (instanceID)nullptr
   position:
     _variable:
       x: 19.000000
       y: -12.000000
       z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 9.000000
     y: 1.000000
@@ -285,6 +330,7 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)1858902932=521514938=1812382809
   IsKinematic: true
+  IsTrigger: false
   GravityScale: 1.000000
 --- 1284351594=637193460=279385479
 GameObject:
@@ -296,15 +342,21 @@ GameObject:
   - (instanceID)1827568338=1478003507=882236226
   - (instanceID)1336362703=197618445=757846660
   - (instanceID)1174280858=369785338=155584458
+  _isActive: true
 --- 245766592=8153429=1055153393
 Transform:
   name: GameObject.prefab
   gameObject: (instanceID)1284351594=637193460=279385479
+  _parent: (instanceID)nullptr
   position:
     _variable:
       x: 22.000000
       y: -4.000000
       z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 1.000000
     y: 1.000000
@@ -329,6 +381,7 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)1284351594=637193460=279385479
   IsKinematic: true
+  IsTrigger: false
   GravityScale: 1.000000
 --- 539947121=372734592=1003681654
 GameObject:
@@ -340,15 +393,21 @@ GameObject:
   - (instanceID)1046160585=1820265007=822371142
   - (instanceID)994324748=1480574290=594848438
   - (instanceID)676406035=256236574=1325835513
+  _isActive: true
 --- 1354955884=1443862817=1188483284
 Transform:
   name: GameObject.prefab
   gameObject: (instanceID)539947121=372734592=1003681654
+  _parent: (instanceID)nullptr
   position:
     _variable:
       x: 8.000000
       y: -7.000000
       z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 1.000000
     y: 5.000000
@@ -373,6 +432,7 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)539947121=372734592=1003681654
   IsKinematic: true
+  IsTrigger: false
   GravityScale: 1.000000
 --- 890107419=408267702=1775497643
 GameObject:
@@ -384,15 +444,21 @@ GameObject:
   - (instanceID)49295729=1781617583=1358331618
   - (instanceID)1499966935=2004788885=708744623
   - (instanceID)30106322=1800156485=1003418034
+  _isActive: true
 --- 1619447062=528024578=1024881459
 Transform:
   name: GameObject.prefab
   gameObject: (instanceID)890107419=408267702=1775497643
+  _parent: (instanceID)nullptr
   position:
     _variable:
       x: 3.000000
       y: -6.000000
       z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 2.000000
     y: 2.000000
@@ -417,5 +483,38 @@ Rigidbody2D:
   name: initial name
   gameObject: (instanceID)890107419=408267702=1775497643
   IsKinematic: false
+  IsTrigger: false
   GravityScale: 1.000000
+--- 334835115=1784456080=1665319366
+GameObject:
+  name: Default
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)1144962052=231822179=1508855639
+  - (instanceID)498869748=334414102=20240684
+  _isActive: true
+--- 1144962052=231822179=1508855639
+Transform:
+  name: GameObject.prefab
+  gameObject: (instanceID)334835115=1784456080=1665319366
+  _parent: (instanceID)1401248970=231768062=1184301228
+  position:
+    _variable:
+      x: 4.000000
+      y: -3.000000
+      z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: -2.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 0.500000
+    z: 1.000000
+--- 498869748=334414102=20240684
+SpriteRenderer:
+  name: GameObject.prefab
+  gameObject: (instanceID)334835115=1784456080=1665319366
+  m_texture: (instanceID)nullptr
 

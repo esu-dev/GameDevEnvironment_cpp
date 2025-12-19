@@ -24,15 +24,20 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 			{
 				for (auto& pair : SceneDataManager::GetInstanceID2PointerMap())
 				{
-					ImGui::PushID(SceneEditor::FieldID++);
-					if (ImGui::Selectable((pair.second->name + "(" + pair.first + ")").c_str()))
+					if (pair.second == nullptr)
+					{
+						continue;
+					}
+
+					//ImGui::PushID(SceneEditor::FieldID++);
+					if (ImGui::Selectable((pair.second->name + " (" + pair.second->GetName() + ") (" + pair.first + ")").c_str()))
 					{
 						outHasChanged = true;
 
 						serializedData = serializedVarName + "(instanceID)" + pair.first;
 						//ImGui::CloseCurrentPopup();
 					}
-					ImGui::PopID();
+					//ImGui::PopID();
 				}
 				ImGui::EndTabItem();
 			}
