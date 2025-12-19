@@ -71,6 +71,11 @@ void GameObject::SetActive(bool isActive)
 	}
 }
 
+bool GameObject::ActiveSelf()
+{
+	return _isActive;
+}
+
 const std::vector<std::shared_ptr<Component>>& GameObject::GetComponentVector()
 {
 	return _componentVector;
@@ -78,6 +83,11 @@ const std::vector<std::shared_ptr<Component>>& GameObject::GetComponentVector()
 
 void GameObject::Start()
 {
+	if (!_isActive)
+	{
+		return;
+	}
+
 	for (auto component : _componentVector)
 	{
 		if (!component->enabled)

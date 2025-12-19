@@ -13,7 +13,9 @@ public:
 	Vector3 scale = Vector3(1, 1, 1);
 
 	SERIALIZE3(Component,
+		SERIALIZE_FIELD3(_parent),
 		SERIALIZE_FIELD3(position),
+		SERIALIZE_FIELD3(_localPosition),
 		SERIALIZE_FIELD3(scale)
 	)
 
@@ -34,4 +36,5 @@ public:
 private:
 	Vector3 _localPosition = Vector3(0, 0, 0);
 	Transform* _parent = nullptr;
+	std::vector<Transform*> _childVector;
 };

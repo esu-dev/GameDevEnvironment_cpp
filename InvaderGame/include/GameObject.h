@@ -62,31 +62,16 @@ public:
 		return dynamic_cast<T*>(iterator->get());
 	}
 
-	// 使用不可
-	// ポインタ渡しでも、関節参照でのオブジェクトのメンバにアクセスはできるが、ポインタ自体の変更はできない？
-	/*template <typename T> bool TryGetComponent(T* component)
-	{
-		component = this->GetComponent<T>();
-
-		if (component == nullptr)
-		{
-			return false;
-		}
-
-		Debug::Log(L"%d", component == nullptr);
-
-		return true;
-	}*/
-
 	Transform* GetTransform();
 	const std::vector<std::shared_ptr<Component>>& GetComponentVector();
 	void SetActive(bool isActive);
+	bool ActiveSelf();
 	void Start();
 	void Update();
 	
 
 private:
-	bool _isActive{true};
+	bool _isActive = true;
 	std::vector<std::shared_ptr<Component>> _componentVector;
 };
 //REGISTER_TYPE(GameObject);

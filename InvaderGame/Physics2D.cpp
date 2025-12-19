@@ -71,7 +71,7 @@ void Physics2D::Update()
 		}
 
 
-		std::vector<Collision2D*> collisionVector; // これメモリ開放してる？
+		std::vector<std::shared_ptr<Collision2D>> collisionVector;
 
 		// 衝突検出（ナローフェーズ）
 		for (auto collisionPair : collisionPairVector)
@@ -83,7 +83,7 @@ void Physics2D::Update()
 					{
 						if (colliderA->DetectCollision(collision, boxCollider))
 						{
-							collisionVector.push_back(collision);
+							collisionVector.push_back(std::shared_ptr<Collision2D>(collision));
 							return true;
 							Debug::Log(L"衝突検出（ナローフェーズ）");
 						}
@@ -104,7 +104,7 @@ void Physics2D::Update()
 
 
 		// 衝突応答
-		for (Collision2D* collision : collisionVector)
+		for (auto collision : collisionVector)
 		{
 			Vector2 sumImpulse;
 
@@ -113,6 +113,12 @@ void Physics2D::Update()
 
 			Rigidbody2D* rigidbodyA = rigidbody;
 			Rigidbody2D* rigidbodyB = rigidbody_Other;
+
+			// isTriggerなら衝突応答は無し
+			if (rigidbodyA->IsTrigger || rigidbodyB->IsTrigger)
+			{
+				continue;
+			}
 
 			// 自身がキネマティックなら交換
 			if (rigidbody->IsKinematic)

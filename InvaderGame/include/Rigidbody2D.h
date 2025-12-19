@@ -12,6 +12,7 @@ class Rigidbody2D : public Component
 {
 public:
 	bool IsKinematic = false;
+	bool IsTrigger;
 	float GravityScale = 1;
 	float mass = 1;
 	//Vector2 velocity = Vector2(0, 0);
@@ -20,6 +21,7 @@ public:
 	NAME(Rigidbody2D)
 	SERIALIZE3(Component,
 		SERIALIZE_FIELD3(IsKinematic),
+		SERIALIZE_FIELD3(IsTrigger),
 		SERIALIZE_FIELD3(GravityScale)
 	)
 

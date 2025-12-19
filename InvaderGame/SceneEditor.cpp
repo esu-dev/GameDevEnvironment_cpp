@@ -143,6 +143,13 @@ void SceneEditor::Update()
 	ImGui::Begin("Inspector");
 	if (Selection::gameObject != nullptr)
 	{
+		// Active
+		bool isActive = Selection::gameObject->ActiveSelf();
+		if (ImGui::Checkbox("Active", &isActive))
+		{
+			Selection::gameObject->SetActive(isActive);
+		}
+
 		// オブジェクト名の配置
 		static char buf[64];
 		strcpy_s(buf, Selection::gameObject->name.c_str());
