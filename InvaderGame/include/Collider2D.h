@@ -13,6 +13,11 @@ class BoxCollider2D;
 class Collider2D : public Component
 {
 public:
+	SERIALIZE3(Component,
+		SERIALIZE_FIELD3(_offset),
+		SERIALIZE_FIELD3(_size)
+	)
+
 	virtual bool DetectCollision(Collision2D* outCollision, BoxCollider2D* collider) { return false; }
 	virtual Vector2 GetClosestPoint(Vector2 point) { return Vector2(0, 0); };
 

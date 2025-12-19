@@ -95,7 +95,7 @@ void Rigidbody2D::ApplyGravity()
 
 void Rigidbody2D::AddForce(Vector2 force)
 {
-	velocity += force / mass * EngineTime::GetDelataTime();
+	velocity += force / mass * EngineTime::GetFixedDeltaTime();
 }
 
 void Rigidbody2D::AddImpulse(Vector2 impulse)

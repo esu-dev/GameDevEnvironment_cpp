@@ -86,6 +86,12 @@ Vector2 Vector2::operator* (const float& value) const
 	return v;
 }
 
+Vector2 Vector2::operator* (const Vector2& value) const
+{
+	const Vector2 v = Vector2(this->x * value.x, this->y * value.y);
+	return v;
+}
+
 Vector2 Vector2::operator/ (const float& value) const
 {
 	const Vector2 v = Vector2(this->x / value, this->y / value);

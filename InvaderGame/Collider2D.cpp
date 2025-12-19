@@ -87,10 +87,11 @@ std::pair<Vector2, Vector2> Collider2D::GetAABB()
 void Collider2D::GetOBBvertices(Vector2 outVertices[4])
 {
 	Transform* transform = this->GetTransform();
-	outVertices[0] = Vector2(transform->scale.x / 2, transform->scale.y / 2);
-	outVertices[1] = Vector2(transform->scale.x / 2, -transform->scale.y / 2);
-	outVertices[2] = Vector2(-transform->scale.x / 2, -transform->scale.y / 2);
-	outVertices[3] = Vector2(-transform->scale.x / 2, transform->scale.y / 2);
+	Vector2 scale = transform->scale.ToVector2() * _size;
+	outVertices[0] = Vector2(scale.x / 2, scale.y / 2);
+	outVertices[1] = Vector2(scale.x / 2, -scale.y / 2);
+	outVertices[2] = Vector2(-scale.x / 2, -scale.y / 2);
+	outVertices[3] = Vector2(-scale.x / 2, scale.y / 2);
 
 	for (int i = 0; i < 4; i++)
 	{

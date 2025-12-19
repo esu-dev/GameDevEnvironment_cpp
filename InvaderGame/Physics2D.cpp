@@ -29,7 +29,8 @@ void Physics2D::Update()
 	if (_libraryType == LibraryType::Original)
 	{
 		static float g = GRAVITATIONAL_ACCELERATION;
-		static float e = 0.5f;
+		static float e = 0.1f;
+		static float mu = 0.5f;
 
 		auto gameObjectVector = SceneManager::GetActiveScene()->GetGameObjectVector();
 
@@ -55,6 +56,11 @@ void Physics2D::Update()
 			{
 				Collider2D* colliderB = gameObjectVector[j]->GetComponent<Collider2D>();
 				if (colliderB == nullptr) continue;
+
+				if (colliderA->GetComponent<Rigidbody2D>()->IsKinematic && colliderB->GetComponent<Rigidbody2D>()->IsKinematic)
+				{
+					continue;
+				}
 
 				if (colliderA->IsAABB_Collided(colliderB))
 				{
@@ -143,7 +149,7 @@ void Physics2D::Update()
 				Vector2 impulse = -collision->Normal * (1 + e) / forum1 * relNormalSpeed / collisionDataNum;
 
 				// 重力キャンセル
-				if (isKinematic)
+				//if (isKinematic)
 				{
 					float gravityCancelScaler = Vector2::Dot(Vector2(0, 1) * rigidbodyA->mass * g * EngineTime::GetFixedDeltaTime() / collisionDataNum, collision->Normal);
 					Vector2 gravityCancelImpulse = (-collision->Normal * relNormalSpeed).Normalized() * gravityCancelScaler;
@@ -152,23 +158,23 @@ void Physics2D::Update()
 
 				// 速度反転が起きないなら速度を０にする撃力を与える
 				// 条件にimpulseを使っているためか挙動がおかしくなる
-				/*if (isKinematic && impulse.GetMagnitude() < (relativeVelocity * rigidbodyA->mass).GetMagnitude() / collisionDataNum)
+				if (isKinematic && impulse.GetMagnitude() < (relativeVelocity * rigidbodyA->mass).GetMagnitude() / collisionDataNum)
 				{
 					impulse = -collision->Normal * relNormalSpeed * rigidbodyA->mass / collisionDataNum;
-				}*/
+				}
 
 				// めり込み補正
-				if (isKinematic && collisionData->depth > 0)
+				if (collisionData->depth > 0)
 				{
-					float power = rigidbodyA->mass * 10 * collisionData->depth;
+					float power = rigidbodyA->mass * 1 * collisionData->depth;
 
-					float down = relNormalSpeed * 5 * EngineTime::GetDelataTime();
+					float down = relNormalSpeed * 1 * EngineTime::GetDelataTime();
 					if (power + down < 0)
 					{
-						down = -power;
+						down = 0;
 					}
 
-					impulse += (collision->Normal * (power)) / collisionDataNum;
+					impulse += (collision->Normal * (power + down)) / collisionDataNum;
 				}
 
 				//Debug::Log(L"撃力： (%f, %f)", impulse.x, impulse.y);
@@ -194,7 +200,6 @@ void Physics2D::Update()
 			Vector2 collisionLineVelocity = collisionLineVector * Vector2::Dot(collisionLineVector, rigidbodyA->velocity);
 			Vector2 direction = -collisionLineVelocity.Normalized();
 
-			float mu = 0.1f;
 			Vector2 friction = direction * mu * (sumImpulse / collisionDataNum).GetMagnitude() / EngineTime::GetFixedDeltaTime();
 			Vector2 maxForce = collisionLineVelocity * rigidbodyA->mass / EngineTime::GetFixedDeltaTime();
 			if (friction.GetMagnitude() > maxForce.GetMagnitude())

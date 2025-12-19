@@ -139,7 +139,7 @@ void SceneEditor::Update()
 
 	// インスペクター
 	ImGui::SetNextWindowPos(ImVec2(210, 0));
-	ImGui::SetNextWindowSize(ImVec2(200, 500));
+	ImGui::SetNextWindowSize(ImVec2(0, 0));
 	ImGui::Begin("Inspector");
 	if (Selection::gameObject != nullptr)
 	{
