@@ -2,6 +2,7 @@
 
 #include "imgui_impl_dx11.h"
 #include "Object.h"
+#include "Component.h"
 #include "SceneEditor.h"
 #include "SceneDataManager.h"
 
@@ -219,6 +220,15 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 		}
 
 		serializedObject->Deserialize(serializedDataVec);
+
+		// OnValueChangedイベントを発行
+		// 現状はComponentのみ対応
+		if (Component* component = dynamic_cast<Component*>(serializedObject))
+		{
+			component->OnValidate();
+
+			// 親要素もOnValidateを呼んで更新する
+		}
 	}
 }
 

@@ -90,18 +90,46 @@ void SceneEditor::Update()
 	{
 		static int selected = -1;
 
-		auto gameObjectVector = SceneManagement::SceneManager::GetActiveScene()->GetGameObjectVector();
-		for (int i = 0; i < gameObjectVector.size(); i++)
-		{
-			// GameOBject
-			// 同じ名前はIDが同じになってしまう。IDを付与する必要がある。
-			ImGui::PushID(i);
-			if (ImGui::Selectable((gameObjectVector[i]->name).c_str(), selected == i))
+		// 子要素も含めたGameObjectの配置
+		std::function<void(int, int, GameObject*)> putGameObject = [&](int id, int depth, GameObject* go) -> void {
+			// 深さ０で親がいるなら配置しない
+			if (depth == 0 && go->GetTransform()->GetParent() != nullptr)
 			{
-				selected = i;
-
-				Selection::gameObject = gameObjectVector[i];
+				return;
 			}
+			
+			// 同じ名前はIDが同じになってしまう。IDを付与する必要がある。
+			ImGui::PushID(id);
+
+			// 子要素があるならTreeNodeExを使う
+			if (go->GetTransform()->GetChildVector().size() > 0)
+			{
+				// 矢印をクリックしたときに展開するようにする
+				bool isTreeOpen = ImGui::TreeNodeEx(go->name.c_str(), ImGuiTreeNodeFlags_OpenOnArrow);
+				if (ImGui::IsItemClicked())
+				{
+					Selection::gameObject = go;
+				}
+
+				if (isTreeOpen)
+				{
+					// 再帰的に子要素を配置
+					for (auto& child : go->GetTransform()->GetChildVector())
+					{
+						putGameObject(id + 1, depth + 1, child->gameObject);
+					}
+
+					ImGui::TreePop();
+				}
+			}
+			else
+			{
+				if (ImGui::Selectable(go->name.c_str()))
+				{
+					Selection::gameObject = go;
+				}
+			}
+			
 			if (ImGui::BeginPopupContextItem())
 			{
 				if (ImGui::Selectable("Duplicate"))
@@ -113,15 +141,15 @@ void SceneEditor::Update()
 					// 選択を外す
 					Selection::gameObject = nullptr;
 
-					Object::Destroy(gameObjectVector[i]);
+					Object::Destroy(go);
 				}
 				if (ImGui::Selectable("Create Prefab"))
 				{
 					std::string serializedData = "";
-					GameObject* gameObject = gameObjectVector[i];
+					GameObject* gameObject = go;
 					gameObject->IsPrefab = true;
 					AssetManager::SerializeGameObject(serializedData, gameObject);
-					
+
 					std::string directry = "Resources/Prefab/";
 					std::string fileName = gameObject->name + ".prefab";
 					FileManager::Write(directry + fileName, serializedData);
@@ -132,6 +160,12 @@ void SceneEditor::Update()
 				ImGui::EndPopup();
 			}
 			ImGui::PopID();
+		};
+
+		auto gameObjectVector = SceneManagement::SceneManager::GetActiveScene()->GetGameObjectVector();
+		for (int i = 0; i < gameObjectVector.size(); i++)
+		{
+			putGameObject(i, 0, gameObjectVector[i]);
 		}
 	}
 	ImGui::End();

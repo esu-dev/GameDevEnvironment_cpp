@@ -12,13 +12,19 @@ void Transform::OnValidate()
 	{
 		return;
 	}
-	
+
 	// 親の子リストに自分が入っていなければ追加する
 	auto& parentChildVector = _parent->GetChildVector();
 	if (std::find(parentChildVector.begin(), parentChildVector.end(), this) == parentChildVector.end())
 	{
 		_parent->AddChild(this);
 	}
+	// 親の子リストに自分が入っているならば、削除する
+	/*auto& parentChildVector = _preParent->GetChildVector();
+	if (std::find(parentChildVector.begin(), parentChildVector.end(), this) != parentChildVector.end())
+	{
+		_preParent->RemoveChild(this);
+	}*/
 }
 
 void Transform::Update()
@@ -72,6 +78,11 @@ Vector3 Transform::GetLocalPosition()
 	return _localPosition;
 }
 
+Transform* Transform::GetParent()
+{
+	return _parent;
+}
+
 void Transform::SetParent(Transform* parent)
 {
 	this->_parent = parent;
@@ -85,4 +96,9 @@ const std::vector<Transform*>& Transform::GetChildVector()
 void Transform::AddChild(Transform* child)
 {
 	_childVector.push_back(child);
+}
+
+void Transform::RemoveChild(const Transform* child)
+{
+	std_extension::Remove(_childVector, (Transform*)child);
 }

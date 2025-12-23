@@ -14,6 +14,7 @@ public:
 
 	SERIALIZE3(Component,
 		SERIALIZE_FIELD3(_parent),
+		SERIALIZE_FIELD3(_childVector),
 		SERIALIZE_FIELD3(position),
 		SERIALIZE_FIELD3(_localPosition),
 		SERIALIZE_FIELD3(scale)
@@ -30,9 +31,11 @@ public:
 	void SetPosition(float x, float y);
 	void SetLocalPosition(Vector3& vector);
 	Vector3 GetLocalPosition();
+	Transform* GetParent();
 	void SetParent(Transform* parent);
 	const std::vector<Transform*>& GetChildVector();
 	void AddChild(Transform* child);
+	void RemoveChild(const Transform* child);
 
 	NAME(Transform)
 
