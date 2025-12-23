@@ -22,13 +22,17 @@ public:
 	Transform();
 	~Transform() override {} // クラスのデストラクタが呼ばれないと、メンバ変数のデストラクタも呼ばれない。
 
+	void OnValidate() override;
+	void Update() override;
+
 	Vector3 GetUp();
 	Vector3 GetForward();
 	void SetPosition(float x, float y);
 	void SetLocalPosition(Vector3& vector);
 	Vector3 GetLocalPosition();
 	void SetParent(Transform* parent);
-	void Update() override;
+	const std::vector<Transform*>& GetChildVector();
+	void AddChild(Transform* child);
 
 	NAME(Transform)
 

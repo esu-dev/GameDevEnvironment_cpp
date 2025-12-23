@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Component.h"
+#include "Behaviour.h"
 
 class GameObject;
 
-class EngineBehaviour : public Component
+class EngineBehaviour : public Behaviour
 {
 public:
 	virtual void OnCollisionEnter2D(GameObject* other) {}

@@ -5,6 +5,33 @@ Transform::Transform()
 	rotation = Quaternion::AngleAxis(0, Vector3::forward);
 }
 
+void Transform::OnValidate()
+{
+	// 親子関係の更新
+	if (_parent == nullptr)
+	{
+		return;
+	}
+	
+	// 親の子リストに自分が入っていなければ追加する
+	auto& parentChildVector = _parent->GetChildVector();
+	if (std::find(parentChildVector.begin(), parentChildVector.end(), this) == parentChildVector.end())
+	{
+		_parent->AddChild(this);
+	}
+}
+
+void Transform::Update()
+{
+	if (_parent == nullptr)
+	{
+		return;
+	}
+
+	//_localPosition = position - parent->position;
+	position = _parent->position + _localPosition;
+}
+
 Vector3 Transform::GetUp()
 {
 	return this->rotation * Vector3::up;
@@ -50,13 +77,12 @@ void Transform::SetParent(Transform* parent)
 	this->_parent = parent;
 }
 
-void Transform::Update()
+const std::vector<Transform*>& Transform::GetChildVector()
 {
-	if (_parent == nullptr)
-	{
-		return;
-	}
+	return _childVector;
+}
 
-	//_localPosition = position - parent->position;
-	position = _parent->position + _localPosition;
+void Transform::AddChild(Transform* child)
+{
+	_childVector.push_back(child);
 }

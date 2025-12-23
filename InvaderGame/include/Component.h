@@ -44,8 +44,9 @@ public:
 	)
 
 	virtual ~Component() { Debug::Log("Destructor is nor overrided. [%s]", GetName().c_str()); }
-	virtual void OnEnable() {} // –{—ˆ‚ÍMonoBehaviour‚É’è‹`
+	virtual void OnEnable() {}
 	virtual void OnDisable() {}
+	virtual void OnValidate() {}
 	virtual void Start() {}
 	virtual void Update() {}
 	virtual void SelectTime(float time) {}
