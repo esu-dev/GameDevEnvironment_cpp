@@ -1,0 +1,4 @@
+--- 40812298=202681549=958210038
+Texture:
+  name: initial name
+

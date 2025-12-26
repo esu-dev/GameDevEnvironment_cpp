@@ -46,5 +46,4 @@ void Debug::DrawLine(const Vector3& start, const Vector3& end, const DirectX::XM
 
 	Direct3D::GetInstance().SetRect(position.x, position.y, length, 0.25f, Quaternion::FromToRotation(Vector3::right, v));
 	Direct3D::GetInstance().Draw2D();
-	Log("•`‰æ");
 }

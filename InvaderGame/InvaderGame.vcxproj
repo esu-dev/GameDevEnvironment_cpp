@@ -229,6 +229,8 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="GimmickTrigger.cpp" />
+    <ClCompile Include="GroundChecker.cpp" />
     <ClCompile Include="ImGuiCreator.cpp" />
     <ClCompile Include="ImGuiUtility.cpp" />
     <ClCompile Include="imgui\backends\imgui_impl_dx11.cpp" />
@@ -271,6 +273,7 @@
     <ClCompile Include="Selection.cpp" />
     <ClCompile Include="SerializedClass.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Shutter.cpp" />
     <ClCompile Include="SpriteRenderer.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebug</RuntimeLibrary>
@@ -326,6 +329,8 @@
     <ClInclude Include="Editor.h" />
     <ClInclude Include="EngineBehaviour.h" />
     <ClInclude Include="FileManager.h" />
+    <ClInclude Include="GimmickTrigger.h" />
+    <ClInclude Include="GroundChecker.h" />
     <ClInclude Include="ImGuiCreator.h" />
     <ClInclude Include="ImGuiUtility.h" />
     <ClInclude Include="include\Animation.h" />
@@ -392,6 +397,7 @@
     <ClInclude Include="Selection.h" />
     <ClInclude Include="SerializedClass.h" />
     <ClInclude Include="SerializedSample.h" />
+    <ClInclude Include="Shutter.h" />
     <ClInclude Include="TimeController.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="UuidGenerator.h" />

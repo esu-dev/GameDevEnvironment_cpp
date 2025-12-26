@@ -30,6 +30,17 @@ VSOutput VS(float4 pos : POSITION, float2 uv : TEXUV)
 	return Out;
 }
 
+// 左右反転して描画する頂点シェーダー
+VSOutput VS_Flip(float4 pos : POSITION, float2 uv : TEXUV)
+{
+	VSOutput Out;
+	Out.Pos = pos;
+
+	// UV の X を反転して渡す（左右反転）
+	Out.UV = float2(1.0 - uv.x, uv.y);
+	return Out;
+}
+
 float4 PS(VSOutput In) : SV_Target0
 {
 	float4 color = Texture.Sample(Sampler, In.UV);

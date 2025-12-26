@@ -53,6 +53,23 @@ void SpriteRenderer::Update()
 	}
 	else
 	{
-		D3D.Draw2D(m_texture);
+		if (_isFlipX)
+		{
+			D3D.Draw2D_Flip(m_texture);
+		}
+		else
+		{
+			D3D.Draw2D(m_texture);
+		}
 	}
+}
+
+void SpriteRenderer::SetFlip(bool flip)
+{
+	_isFlipX = flip;
+}
+
+bool SpriteRenderer::GetFlip() const
+{
+	return _isFlipX;
 }

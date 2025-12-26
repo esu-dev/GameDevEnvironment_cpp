@@ -20,10 +20,13 @@ public:
 	void SetColor(DirectX::XMFLOAT4 color);
 	void Update() override;
 
+	void SetFlip(bool flip);
+	bool GetFlip() const;
 
 private:
 	bool _canMove = true;
 	DirectX::XMFLOAT4 _color;
 	Texture* m_texture;
+	bool _isFlipX = false;
 };
 

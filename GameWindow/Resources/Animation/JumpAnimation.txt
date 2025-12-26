@@ -1,0 +1,34 @@
+--- 1882825050=783300963=986042454
+AnimationClip:
+  name: JumpAnimation
+  _animationName: JumpAnimation
+  _loopTime: false
+  (vector)_animationDataSetVector: 9
+  - 0:
+      time: 0.000000
+      texture: (instanceID)1225070578=1551418483=1326230118
+  - 1:
+      time: 1.000000
+      texture: (instanceID)1667799944=872565693=651547555
+  - 2:
+      time: 2.000000
+      texture: (instanceID)1930007326=447448078=2091855469
+  - 3:
+      time: 3.000000
+      texture: (instanceID)1983095956=2033714070=1213949151
+  - 4:
+      time: 4.000000
+      texture: (instanceID)944236499=701281158=1988151881
+  - 5:
+      time: 5.000000
+      texture: (instanceID)297908898=948624703=1358608438
+  - 6:
+      time: 6.000000
+      texture: (instanceID)40812298=202681549=958210038
+  - 7:
+      time: 7.000000
+      texture: (instanceID)1434001069=765174939=217521873
+  - 8:
+      time: 8.000000
+      texture: (instanceID)1225070578=1551418483=1326230118
+

@@ -2,6 +2,8 @@
 
 #include "EngineBehaviour.h"
 
+class GroundChecker;
+
 class Player : public EngineBehaviour
 {
 public:
@@ -16,7 +18,7 @@ public:
 
 	void Start() override;
 	void Update() override;
-	void OnCollisionEnter2D(GameObject* other) override;
+
 
 private:
 	class State
@@ -25,6 +27,7 @@ private:
 		State(Player* player);
 		virtual void Enter() {}
 		virtual void Update() {}
+		virtual void Exit() {}
 
 	protected:
 		Player* player;
@@ -43,6 +46,19 @@ private:
 	public:
 		WalkingState(Player* player) : State(player) {}
 		void Enter() override;
+		void Update() override;
+	};
+
+	class JumpingState : public State
+	{
+	public:
+		JumpingState(Player* player) : State(player) {}
+		void Enter() override;
+		void Update() override;
+		void Exit() override;
+
+	private:
+		GroundChecker* _groundChecker = nullptr;
 	};
 
 	float _moveAcceleration = 1;
@@ -51,12 +67,12 @@ private:
 	float _jumpTime = 0.5f;
 	float _jumpPower = 1;
 
-	bool _canJump;
-	float _jumpCounter = 0;
+	bool _canJump = true;
 
 	State* _currentState;
 	State* _idleState;
 	State* _walkingState;
+	State* _jumpingState;
 
 	void ChangeState(State* state);
 };

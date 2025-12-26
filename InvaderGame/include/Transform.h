@@ -2,8 +2,8 @@
 
 #include "framework.h"
 #include "DirectX.h"
-#include "GameEngine.h"
 #include "Record.h"
+#include "Component.h"
 
 class Transform : public Component
 {

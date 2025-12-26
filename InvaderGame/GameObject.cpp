@@ -2,6 +2,7 @@
 
 #include "GameSystem.h"
 #include "GameEngine.h"
+#include "Transform.h"
 
 GameObject::GameObject() : scene(nullptr)
 {
@@ -16,7 +17,7 @@ std::vector<GameObject*> GameObject::FindGameObjectsWithTag(std::string tag)
 
 	if (scene == nullptr)
 	{
-		Debug::Log("アクティブなシーンがありません。[SceneManager::GetActiveScene()]");
+		Debug::Log("Scene is null [SceneManager::GetActiveScene()]");
 		return gameObjectVector;
 	}
 
@@ -58,6 +59,11 @@ Transform* GameObject::GetTransform()
 	return GetComponent<Transform>();
 }
 
+const std::vector<std::shared_ptr<Component>>& GameObject::GetComponentVector()
+{
+	return _componentVector;
+}
+
 void GameObject::SetActive(bool isActive)
 {
 	_isActive = isActive;
@@ -74,11 +80,6 @@ void GameObject::SetActive(bool isActive)
 bool GameObject::ActiveSelf()
 {
 	return _isActive;
-}
-
-const std::vector<std::shared_ptr<Component>>& GameObject::GetComponentVector()
-{
-	return _componentVector;
 }
 
 void GameObject::Start()

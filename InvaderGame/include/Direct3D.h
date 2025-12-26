@@ -66,6 +66,7 @@ public:
 	// 2D描画用のシェーダー
 	Shader* _textureShader;
 	Shader* _colorShader;
+	Shader* _textureShaderFlip;
 
 	/*ComPtr<ID3D11VertexShader> m_spriteVS = nullptr;
 	ComPtr<ID3D11PixelShader> m_spritePS = nullptr;
@@ -93,6 +94,7 @@ public:
 	// 2D描画
 	void Draw2D();
 	void Draw2D(const Texture* texture);
+	void Draw2D_Flip(const Texture* texture);
 
 	void DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color);
 

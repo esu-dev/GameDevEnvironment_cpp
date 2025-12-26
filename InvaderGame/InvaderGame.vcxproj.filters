@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Shader">
-      <UniqueIdentifier>{d01abb69-25a2-44c0-a2fd-2c1424f8e168}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{2bdc75fc-263d-46ed-b450-80167a1ef096}</UniqueIdentifier>
     </Filter>
@@ -271,6 +268,15 @@
       <Filter>Source\Editor</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
+      <Filter>Source\Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="GroundChecker.cpp">
+      <Filter>Source\Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickTrigger.cpp">
+      <Filter>Source\Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="Shutter.cpp">
       <Filter>Source\Demo</Filter>
     </ClCompile>
   </ItemGroup>
@@ -531,6 +537,15 @@
     </ClInclude>
     <ClInclude Include="EngineBehaviour.h">
       <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundChecker.h">
+      <Filter>Source\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickTrigger.h">
+      <Filter>Source\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="Shutter.h">
+      <Filter>Source\Demo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

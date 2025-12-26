@@ -232,6 +232,35 @@ void Physics2D::Update()
 			}
 		}
 
+		// ƒCƒxƒ“ƒg”­‰Î
+		for (auto collision : collisionVector)
+		{
+			Rigidbody2D* rigidbody = collision->collider->GetComponent<Rigidbody2D>();
+			Rigidbody2D* rigidbody_Other = collision->otherCollider->GetComponent<Rigidbody2D>();
+
+			if (rigidbody->IsTrigger)
+			{
+				for (auto& component : collision->collider->gameObject->GetComponentVector())
+				{
+					if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
+					{
+						engineBehaviour->OnTriggerStay2D(collision->otherCollider->gameObject);
+					}
+				}
+			}
+
+			if (rigidbody_Other->IsTrigger)
+			{
+				for (auto& component : collision->otherCollider->gameObject->GetComponentVector())
+				{
+					if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
+					{
+						engineBehaviour->OnTriggerStay2D(collision->collider->gameObject);
+					}
+				}
+			}
+		}
+
 		return;
 	}
 

@@ -11,7 +11,8 @@
 
 Direct3D::Direct3D() :
 	_textureShader(new Shader(L"Shader/SpriteShader.hlsl", "VS", "PS")),
-	_colorShader(new Shader(L"Shader/SpriteShader.hlsl", "VS", "PS_Color")) {}
+	_colorShader(new Shader(L"Shader/SpriteShader.hlsl", "VS", "PS_Color")),
+	_textureShaderFlip(new Shader(L"Shader/SpriteShader.hlsl", "VS_Flip", "PS")) {}
 
 bool Direct3D::Initialize(HWND hWnd, int width, int height)
 {
@@ -140,6 +141,7 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	//=====================================================
 	_textureShader->CreateShader(*m_device.Get());
 	_colorShader->CreateShader(*m_device.Get());
+	_textureShaderFlip->CreateShader(*m_device.Get());
 
 	return true;
 }
@@ -361,6 +363,23 @@ void Direct3D::Draw2D(const Texture* texture)
 
 	// デバイスコンテキストくん、上記のセットした内容で描画してください、とお願いする
 	m_deviceContext->Draw(4, 0); // 頂点の数
+}
+
+/// <summary>
+/// フリップ用シェーダーを使用して2Dテクスチャを描画します
+/// </summary>
+/// <param name="texture">描画するテクスチャへのポインタ</param>
+void Direct3D::Draw2D_Flip(const Texture* texture)
+{
+    m_deviceContext->VSSetShader(_textureShaderFlip->GetVertexShader().Get(), 0, 0);
+    m_deviceContext->PSSetShader(_textureShaderFlip->GetPixelShader().Get(), 0, 0);
+    m_deviceContext->IASetInputLayout(_textureShaderFlip->GetInputLayout().Get());
+
+    // テクスチャを、ピクセルシェーダーのスロット0にセット
+    m_deviceContext->PSSetShaderResources(0, 1, texture->m_shaderResourceview.GetAddressOf());
+
+	// 描画
+    m_deviceContext->Draw(4, 0);
 }
 
 void Direct3D::DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color)
