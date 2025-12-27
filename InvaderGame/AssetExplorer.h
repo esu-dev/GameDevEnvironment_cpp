@@ -3,5 +3,5 @@
 class AssetExplorer
 {
 public:
-	void Update();
+	static void Update();
 };

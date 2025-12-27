@@ -282,6 +282,9 @@
     <ClCompile Include="AssetExplorer.cpp">
       <Filter>Source\Editor</Filter>
     </ClCompile>
+    <ClCompile Include="AssetCreator.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -551,6 +554,9 @@
       <Filter>Source\Demo</Filter>
     </ClInclude>
     <ClInclude Include="AssetExplorer.h">
+      <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetCreator.h">
       <Filter>Source\Editor</Filter>
     </ClInclude>
   </ItemGroup>

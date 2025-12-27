@@ -40,6 +40,7 @@
 #include "framework.h"
 #include "std_extension.h"
 #include "Debug.h"
+#include "PropertyBase.h"
 #include "SceneDataManager.h"
 #include "AssetManager.h"
 
@@ -177,9 +178,21 @@ protected:
 		{
 			serializedDataVector.push_back(indent + name + ": " + value);
 		}
-		else
+		// Property
+		else if constexpr (std::is_base_of<PropertyBase, T>())
 		{
-			serializedDataVector.push_back(indent + name + ": " + "error");
+			// テンプレート型がポインタ
+			if constexpr (std::is_pointer<typename T::value_type>())
+			{
+				if (value.Get() == nullptr)
+				{
+					serializedDataVector.push_back(indent + name + ": (instanceID)nullptr");
+				}
+				else
+				{
+					serializedDataVector.push_back(indent + name + ": (instanceID)" + value.Get()->instanceID);
+				}
+			}
 		}
 
 		return serializedDataVector;
@@ -227,7 +240,7 @@ protected:
 			}
 			else
 			{
-				Debug::Log("型を追加してください。[DeserializeField()]");
+				Debug::Log("型(%s)を追加してください。[DeserializeField()]", typeid(T).name());
 			}
 		}
 		// ポインタ
@@ -312,7 +325,7 @@ protected:
 				}
 				else
 				{
-					Debug::Log("型を追加してください。[DeserializeField()]");
+					Debug::Log("型を追加してください。(member: %s)[DeserializeField()]", instanceData->memberVector[i].c_str());
 				}
 			}
 
@@ -390,6 +403,30 @@ protected:
 		else if constexpr (std_extension::is_string_v<T>)
 		{
 			variable = instanceData->memberVector[0];
+		}
+		// Property
+		else if constexpr (std::is_base_of<PropertyBase, T>())
+		{
+			// テンプレート型がポインタ
+			if constexpr (std::is_pointer<typename T::value_type>())
+			{
+				std::string instanceID = instanceData->memberVector[0];
+				if (instanceID == "nullptr")
+				{
+					variable = nullptr;
+				}
+				else
+				{
+					// インスタンスの検索
+					Object* object = getInstanceFromID(instanceID);
+
+					variable = (typename T::value_type)object;
+				}
+			}
+		}
+		else
+		{
+			Debug::Log("デシリアライズできない型です。(type: %s)", typeid(T).name());
 		}
 	}
 	

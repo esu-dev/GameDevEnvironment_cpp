@@ -81,7 +81,7 @@ std::vector<std::string> FileManager::GetAllFileName(std::string directry, std::
 	// ファイルが見つからなかった場合
 	if (hFindFile == INVALID_HANDLE_VALUE)
 	{
-		Debug::Log("file was not found.");
+		Debug::Log("file(%s) was not found.[FileManager::GetAllFileName()]", wildCard.c_str());
 		return pathVector;
 	}
 
@@ -142,7 +142,7 @@ std::vector<std::string> FileManager::GetAllFolderName(std::string directry)
 	// ファイルが見つからなかった場合
 	if (hFindFile == INVALID_HANDLE_VALUE)
 	{
-		Debug::Log("file was not found.");
+		Debug::Log("file was not found.[FileManager::GetAllFolderName()]");
 		return pathVector;
 	}
 

@@ -1,4 +1,4 @@
-YamlTestScene
+YamlTestScene2
 --- 000
 GameObject:
   name: MainCamera

@@ -67,7 +67,15 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 			// vector
 			else if (std::regex_match(instanceData, smatch, std::regex(R"(\(vector\)\w+:\s(\d+))")))
 			{
-				isPacking = true;
+				// —v‘f‚ª‚ ‚é‚È‚ç‚Ü‚Æ‚ß‚é
+				if (std::stoi(smatch[1].str()) > 0)
+				{
+					isPacking = true;
+				}
+				else
+				{
+					isPacking = false;
+				}
 
 				subInstanceDataVector.back()->memberVector.push_back(smatch[1].str());
 			}

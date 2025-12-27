@@ -53,7 +53,7 @@ void Transform::SetPosition(float x, float y)
 	position.Get().x = x;
 	position.Get().y = y;
 
-	if (_parent == nullptr)
+	if (_parentProperty == nullptr)
 	{
 		return;
 	}
@@ -62,7 +62,7 @@ void Transform::SetPosition(float x, float y)
 
 void Transform::SetLocalPosition(Vector3& vector)
 {
-	if (_parent == nullptr)
+	if (_parentProperty == nullptr)
 	{
 		return;
 	}
@@ -80,12 +80,12 @@ Vector3 Transform::GetLocalPosition()
 
 Transform* Transform::GetParent()
 {
-	return _parent;
+	return _parentProperty;
 }
 
 void Transform::SetParent(Transform* parent)
 {
-	this->_parent = parent;
+	this->_parentProperty = parent;
 }
 
 const std::vector<Transform*>& Transform::GetChildVector()

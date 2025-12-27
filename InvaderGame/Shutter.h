@@ -24,6 +24,6 @@ private:
 
 	GimmickTrigger* _gimmickTrigger = nullptr;
 
-	float _movedDistance = 0.0f;
 	bool _isOpening = false;
+	float _startPositionY;
 };

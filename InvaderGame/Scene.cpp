@@ -19,6 +19,11 @@ namespace SceneManagement
 		return _name;
 	}
 
+	void Scene::SetName(std::string name)
+	{
+		_name = name;
+	}
+
 	const std::vector<GameObject*>& Scene::GetGameObjectVector()
 	{
 		return _gameObjectVector;

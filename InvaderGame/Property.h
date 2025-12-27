@@ -3,20 +3,25 @@
 #include <stdlib.h>
 #include <functional>
 
+#include "PropertyBase.h"
+
 class Vector2;
 
 template <typename T>
-class Property
+class Property : public PropertyBase
 {
 public:
+	using value_type = T;
+
 	Property() {}
 	Property(std::function<T()> getter) { _getter = getter; }
 	Property(std::function<void(T)> setter) { _setter = setter; }
+	Property(std::function<T()> getter, std::function<void(T)> setter) { _getter = getter; _setter = setter; }
 	operator T() { return _getter(); }
 	void operator= (const T variable) { _setter(variable); }
 	//void operator= (const T variable) { _variable = variable; }
-
 	void operator+= (const T variable) { _variable = _variable + variable; }
+	T Get() const { return _getter(); }
 
 
 private:

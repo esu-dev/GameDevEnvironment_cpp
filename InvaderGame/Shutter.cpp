@@ -1,4 +1,5 @@
 #include "Shutter.h"
+#include "Vector3.h"
 #include "GimmickTrigger.h"
 #include "Collider2D.h"
 #include "EngineTime.h"
@@ -6,6 +7,8 @@
 
 void Shutter::Start()
 {
+	_startPositionY = this->GetTransform()->position.Get().y;
+
 	if (_gimmickTrigger != nullptr)
 	{
 		_gimmickTrigger->SetTriggerAction([this]() {
@@ -24,30 +27,30 @@ void Shutter::Start()
 void Shutter::Update()
 {
 	float move = _openSpeed * EngineTime::GetDelataTime();
+	float currentPositionY = this->GetTransform()->position.Get().y;
 	if (_isOpening)
 	{
 		_isOpening = false;
 
 		// ˆÚ“®—Ê‚Ì’²®
-		if (_movedDistance + move > _openDistance)
+		float targetPositionY = _startPositionY + _openDistance;
+		if (currentPositionY + move > targetPositionY)
 		{
-			move = _openDistance - _movedDistance;
+			move = targetPositionY - currentPositionY;
 		}
 
 		// ˆÚ“®
 		this->GetTransform()->position.Get().y += move;
-		_movedDistance += move;
 	}
 	else
 	{
 		// ˆÚ“®—Ê‚Ì’²®
-		if (_movedDistance - move < 0)
+		if (currentPositionY - move < _startPositionY)
 		{
-			move = _movedDistance;
+			move = currentPositionY - _startPositionY;
 		}
 
 		// ˆÚ“®
 		this->GetTransform()->position.Get().y -= move;
-		_movedDistance -= move;
 	}
 }

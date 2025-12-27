@@ -140,6 +140,46 @@ void AssetManager::Initialize()
 	
 	// Prefab
 	createAssetFolder("Resources", "Prefab", "prefab", &assetFolder);
+
+
+	std::function<void(std::string, std::string, std::string, AssetFolder*) > createAssetFolder_Scene = [&](std::string rootDirectry, std::string folderName, std::string extension, AssetFolder* currentAssetFolder) -> void {
+		std::string directry = rootDirectry + "/" + folderName + "/";
+
+		AssetFolder* newAssetFolder = new AssetFolder();
+		currentAssetFolder->name2Datamp[folderName] = newAssetFolder;
+
+
+		// ファイル
+		std::vector<std::string> fileNameVector = FileManager::GetAllFileName(directry, extension);
+
+		for (std::string fileName : fileNameVector)
+		{
+			std::string path = directry + fileName;
+
+			// アセットがあればインスタンスの生成
+			if (FileManager::Exist(path))
+			{
+				//CreateInstance(directry, fileName);
+				AssetFile* assetFile = new AssetFile();
+				assetFile->instanceID = fileName;
+				assetFile->object = nullptr;
+				newAssetFolder->name2Datamp[fileName] = assetFile;
+			}
+		}
+
+
+		// ディレクトリ
+		std::vector<std::string> folderNameVector = FileManager::GetAllFolderName(directry);
+
+		// 再帰処理
+		for (std::string folderName : folderNameVector)
+		{
+			createAssetFolder_Scene(directry, folderName, extension, newAssetFolder);
+		}
+		};
+
+	// Scene
+	createAssetFolder_Scene("Resources", "Scenes", "txt", &assetFolder);
 }
 
 Object* AssetManager::GetInstance(const std::string& instanceID)
@@ -161,6 +201,8 @@ const AssetManager::AssetFolder& AssetManager::GetAssetFolder()
 	return assetFolder;
 }
 
+// アセットの作成
+// 本来このクラスに作るべきではない
 void AssetManager::CreateAsset(const std::string& path, Object* object)
 {
 	std::string  serializedData =

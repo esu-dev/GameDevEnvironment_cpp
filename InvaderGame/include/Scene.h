@@ -12,6 +12,7 @@ namespace SceneManagement
 		Scene(std::string name);
 		~Scene();
 		std::string GetName();
+		void SetName(std::string name);
 		const std::vector<GameObject*>& GetGameObjectVector();
 		void AddGameObject(GameObject* gameObject);
 		void RemoveGameObject(GameObject* gameObject);

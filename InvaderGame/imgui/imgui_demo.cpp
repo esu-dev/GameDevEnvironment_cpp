@@ -4102,7 +4102,7 @@ static void DemoWindowWidgetsTreeNodes()
                 ImGuiTreeNodeFlags node_flags = base_flags;
                 const bool is_selected = (selection_mask & (1 << i)) != 0;
                 if (is_selected)
-                    node_flags |= ImGuiTreeNodeFlags_Selected;
+                  node_flags |= ImGuiTreeNodeFlags_Selected;
                 if (i < 3)
                 {
                     // Items 0..2 are Tree Node

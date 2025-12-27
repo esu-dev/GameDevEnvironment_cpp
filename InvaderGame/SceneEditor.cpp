@@ -10,6 +10,7 @@
 #include "LevelEditor.h"
 #include "AnimationEditor.h"
 #include "TimeController.h"
+#include "AssetExplorer.h"
 
 #include "imgui_internal.h"
 #include "imgui_impl_win32.h"
@@ -75,6 +76,7 @@ void SceneEditor::Update()
 	// 他エディタのUpdate処理
 	LevelEditor::Update();
 	AnimationEditor::Update();
+	AssetExplorer::Update();
 
 	// imguiデモ表示
 	ImGui::ShowDemoWindow();
@@ -82,11 +84,20 @@ void SceneEditor::Update()
 
 	// ヒエラルキー
 	ImGui::SetNextWindowPos(ImVec2(0, 0));
-	ImGui::SetNextWindowSize(ImVec2(200, 500));
+	//ImGui::SetNextWindowSize(ImVec2(200, 500));
 	ImGui::Begin("Hierarchy");
 
+	// シーン名の配置
+	static char buf[64];
+	strcpy_s(buf, SceneManager::GetActiveScene()->GetName().c_str());
+	if (ImGui::InputText("SceneName", buf, IM_ARRAYSIZE(buf)))
+	{
+		std::string newName = std::string(buf);
+		SceneManager::GetActiveScene()->SetName(newName);
+	}
+
 	// 展開されている状態のときTrueを返すから、入れ子が実現できる
-	if (ImGui::CollapsingHeader("SceneName"))
+	if (ImGui::CollapsingHeader(SceneManager::GetActiveScene()->GetName().c_str()))
 	{
 		static int selected = -1;
 
@@ -105,9 +116,15 @@ void SceneEditor::Update()
 			if (go->GetTransform()->GetChildVector().size() > 0)
 			{
 				// 矢印をクリックしたときに展開するようにする
-				bool isTreeOpen = ImGui::TreeNodeEx(go->name.c_str(), ImGuiTreeNodeFlags_OpenOnArrow);
+				ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow;
+				if (selected == id)
+				{
+					flags |= ImGuiTreeNodeFlags_Selected;
+				}
+				bool isTreeOpen = ImGui::TreeNodeEx(go->name.c_str(), flags);
 				if (ImGui::IsItemClicked())
 				{
+					selected = id;
 					Selection::gameObject = go;
 				}
 
@@ -116,7 +133,7 @@ void SceneEditor::Update()
 					// 再帰的に子要素を配置
 					for (auto& child : go->GetTransform()->GetChildVector())
 					{
-						putGameObject(id + 1, depth + 1, child->gameObject);
+						putGameObject(std::stoi(std::to_string(id) + "0"), depth + 1, child->gameObject);
 					}
 
 					ImGui::TreePop();
@@ -174,7 +191,7 @@ void SceneEditor::Update()
 
 
 	// インスペクター
-	ImGui::SetNextWindowPos(ImVec2(210, 0));
+	//ImGui::SetNextWindowPos(ImVec2(210, 0));
 	ImGui::SetNextWindowSize(ImVec2(0, 0));
 	ImGui::Begin("Inspector");
 	if (Selection::gameObject != nullptr)

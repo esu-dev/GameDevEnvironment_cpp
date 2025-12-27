@@ -3,6 +3,7 @@
 #include "framework.h"
 #include "AssetManager.h"
 #include "SceneManager.h"
+#include "AssetCreator.h"
 #include "imgui_impl_dx11.h"
 #include "Object.h"
 
@@ -30,7 +31,7 @@ void AssetExplorer::Update()
 			else
 			{
 				auto assetFile = std::get<AssetManager::AssetFile*>(assetData);
-				if (ImGui::Selectable((assetFile->object->name + "  (" + assetFile->instanceID + ")").c_str()))
+				if (ImGui::Selectable((folderName + "  (" + assetFile->instanceID + ")").c_str()))
 				{
 
 				}
@@ -46,7 +47,7 @@ void AssetExplorer::Update()
 		// メニュー表示
 
 		// シーンアセットの作成
-		SceneManager::CreateScene("NewScene");
+		AssetCreator::CreateSceneAsset();
 	}
 
 	createAssetGui(AssetManager::GetAssetFolder());

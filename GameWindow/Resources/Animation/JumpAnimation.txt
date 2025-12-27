@@ -3,7 +3,7 @@ AnimationClip:
   name: JumpAnimation
   _animationName: JumpAnimation
   _loopTime: false
-  (vector)_animationDataSetVector: 9
+  (vector)_animationDataSetVector: 8
   - 0:
       time: 0.000000
       texture: (instanceID)1225070578=1551418483=1326230118
@@ -28,7 +28,4 @@ AnimationClip:
   - 7:
       time: 7.000000
       texture: (instanceID)1434001069=765174939=217521873
-  - 8:
-      time: 8.000000
-      texture: (instanceID)1225070578=1551418483=1326230118
 

@@ -219,7 +219,7 @@ void SceneDataManager::Save()
 	{
 		AssetManager::SerializeGameObject(serializedData, gameObject);
 	}
-	FileManager::Write("Resources/" + sceneName + ".txt", serializedData);
+	FileManager::Write(_path, serializedData);
 }
 
 
