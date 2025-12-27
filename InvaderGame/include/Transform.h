@@ -3,6 +3,7 @@
 #include "framework.h"
 #include "DirectX.h"
 #include "Record.h"
+#include "Property.h"
 #include "Component.h"
 
 class Transform : public Component
@@ -13,7 +14,7 @@ public:
 	Vector3 scale = Vector3(1, 1, 1);
 
 	SERIALIZE3(Component,
-		SERIALIZE_FIELD3(_parent),
+		SERIALIZE_FIELD3(_parentProperty),
 		SERIALIZE_FIELD3(_childVector),
 		SERIALIZE_FIELD3(position),
 		SERIALIZE_FIELD3(_localPosition),
@@ -43,5 +44,29 @@ public:
 private:
 	Vector3 _localPosition = Vector3(0, 0, 0);
 	Transform* _parent = nullptr;
+	Property<Transform*> _parentProperty = { [&](Transform* parent) -> void {
+		// 親の個リストに入っていれば削除する
+		if (parent == nullptr)
+		{
+			if (_parent != nullptr)
+			{
+				_parent->RemoveChild(this);
+			}
+		}
+
+		_parent = parent;
+
+		if (_parent == nullptr)
+		{
+			return;
+		}
+
+		// 親の子リストに自分が入っていなければ追加する
+		auto& parentChildVector = _parent->GetChildVector();
+		if (std::find(parentChildVector.begin(), parentChildVector.end(), this) == parentChildVector.end())
+		{
+			_parent->AddChild(this);
+		}
+	} };
 	std::vector<Transform*> _childVector;
 };

@@ -124,8 +124,9 @@ void SceneEditor::Update()
 			}
 			else
 			{
-				if (ImGui::Selectable(go->name.c_str()))
+				if (ImGui::Selectable(go->name.c_str(), selected == id))
 				{
+					selected = id;
 					Selection::gameObject = go;
 				}
 			}
@@ -134,7 +135,8 @@ void SceneEditor::Update()
 			{
 				if (ImGui::Selectable("Duplicate"))
 				{
-					//SceneManagement::SceneManager::GetActiveScene()->AddGameObject()
+					GameObject* newGameObject = Object::Instantiate(go);
+					SceneManager::GetActiveScene()->AddGameObject(newGameObject);
 				}
 				if (ImGui::Selectable("Delete"))
 				{

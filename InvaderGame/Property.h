@@ -10,10 +10,11 @@ class Property
 {
 public:
 	Property() {}
-	Property(std::function<T()> get) { _get = get; }
-	operator T() { return _get(); }
-	//void operator= (const T variable) { _set(variable); }
-	void operator= (const T variable) { _variable = variable; }
+	Property(std::function<T()> getter) { _getter = getter; }
+	Property(std::function<void(T)> setter) { _setter = setter; }
+	operator T() { return _getter(); }
+	void operator= (const T variable) { _setter(variable); }
+	//void operator= (const T variable) { _variable = variable; }
 
 	void operator+= (const T variable) { _variable = _variable + variable; }
 
@@ -21,7 +22,7 @@ public:
 private:
 	T _variable;
 	
-	std::function<T()> _get = [&]() -> T { return _variable; };
-	//std::function<void(T)> _set = [&](T value) -> void { _variable = value; };
+	std::function<T()> _getter = [&]() -> T { return _variable; };
+	std::function<void(T)> _setter = [&](T value) -> void { _variable = value; };
 };
 

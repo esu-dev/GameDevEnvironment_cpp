@@ -8,17 +8,17 @@ Transform::Transform()
 void Transform::OnValidate()
 {
 	// 親子関係の更新
-	if (_parent == nullptr)
-	{
-		return;
-	}
+	//if (_parent == nullptr)
+	//{
+	//	return;
+	//}
 
-	// 親の子リストに自分が入っていなければ追加する
-	auto& parentChildVector = _parent->GetChildVector();
-	if (std::find(parentChildVector.begin(), parentChildVector.end(), this) == parentChildVector.end())
-	{
-		_parent->AddChild(this);
-	}
+	//// 親の子リストに自分が入っていなければ追加する
+	//auto& parentChildVector = _parent->GetChildVector();
+	//if (std::find(parentChildVector.begin(), parentChildVector.end(), this) == parentChildVector.end())
+	//{
+	//	_parent->AddChild(this);
+	//}
 	// 親の子リストに自分が入っているならば、削除する
 	/*auto& parentChildVector = _preParent->GetChildVector();
 	if (std::find(parentChildVector.begin(), parentChildVector.end(), this) != parentChildVector.end())

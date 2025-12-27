@@ -51,16 +51,6 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 					serializedData = serializedVarName + "nullptr";
 				}
 
-				/*for (auto& pair : AssetManager::GetInstanceID2PointerMap())
-				{
-					if (ImGui::Selectable((pair.second->name + "(" + pair.first + ")").c_str()))
-					{
-						outHasChanged = true;
-
-						serializedData = serializedVarName + "(instanceID)" + pair.first;
-					}
-				}*/
-
 				std::function<void(AssetManager::AssetFolder)> createAssetGui = [&](const AssetManager::AssetFolder& assetFolder) -> void {
 					for (auto& pair : assetFolder.name2Datamp)
 					{
@@ -140,11 +130,6 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*(\w+):)")))
 			{
 				ImGui::Text(serializedData.c_str());
-
-				/*if (ImGui::TreeNode(serializedData.c_str()))
-				{
-					ImGui::TreePop();
-				}*/
 			}
 			// vector
 			else if (std::regex_match(serializedData, smatch, std::regex(R"((\s*\(vector\)(\w+:)\s)(\d+))")))

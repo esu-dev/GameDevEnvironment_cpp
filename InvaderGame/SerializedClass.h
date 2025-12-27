@@ -219,7 +219,7 @@ protected:
 			// float
 			if (typeid(T) == typeid(float))
 			{
-				variable = std::stof(value);
+				variable = (T)std::stof(value);
 			}
 			else if (typeid(T) == typeid(bool))
 			{

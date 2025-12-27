@@ -229,9 +229,8 @@ Transform:
   name: initial name
   gameObject: (instanceID)147560529=380564109=1893899489
   _parent: (instanceID)nullptr
-  (vector)_childVector: 1
-  - (instanceID)1144962052=231822179=1508855639
-  position:
+  (vector)_childVector: 0
+   position:
     _variable:
       x: 4.000000
       y: -1.000000
@@ -464,7 +463,7 @@ GameObject:
 Transform:
   name: GameObject.prefab
   gameObject: (instanceID)334835115=1784456080=1665319366
-  _parent: (instanceID)1401248970=231768062=1184301228
+  _parent: (instanceID)nullptr
   (vector)_childVector: 0
   position:
     _variable:

@@ -4,6 +4,7 @@
 #include "Transform.h"
 #include "Vector2.h"
 #include "Camera.h"
+#include "GameSystem.h"
 
 SpriteRenderer::SpriteRenderer() : _color(DirectX::XMFLOAT4(1, 1, 1, 1)), m_texture { nullptr }
 {
@@ -26,6 +27,14 @@ void SpriteRenderer::SetColor(DirectX::XMFLOAT4 color)
 }
 
 void SpriteRenderer::Update()
+{
+	// Update ‚ÍˆÊ’u‚âó‘Ô‚ÌXV‚¾‚¯‚É‚µ‚ÄA•`‰æ“o˜^‚ðs‚¤
+	// “o˜^ŠÖ”‚ðì¬‚µ‚Ä GameSystem ‚É‡˜•t‚«‚Å“n‚·
+	int order = _order;
+	GameSystem::GetInstance().AddRenderingData(order, [this]() -> void { this->Render(); });
+}
+
+void SpriteRenderer::Render()
 {
 	Transform* transform = this->gameObject->GetTransform();
 	Vector3 draw_position = transform->position;

@@ -279,6 +279,9 @@
     <ClCompile Include="Shutter.cpp">
       <Filter>Source\Demo</Filter>
     </ClCompile>
+    <ClCompile Include="AssetExplorer.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -546,6 +549,9 @@
     </ClInclude>
     <ClInclude Include="Shutter.h">
       <Filter>Source\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetExplorer.h">
+      <Filter>Source\Editor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -37,7 +37,16 @@ public:
 	void AddDelayedExecution(std::function<void()> func);
 	void Initialize();
 	void Execute();
+	void AddRenderingData(int order, std::function<void()> func);
+
 
 private:
 	static inline GameSystem* s_instance;
+	struct RenderingData
+	{
+		int order = 0;
+		std::function<void()> function;
+	};
+
+	std::vector<RenderingData*> _renderingDataVector;
 };

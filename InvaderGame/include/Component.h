@@ -37,7 +37,7 @@ class Component : public Object
 public:
 	bool enabled = true;
 	bool Started = false;
-	GameObject* gameObject;
+	GameObject* gameObject = nullptr;
 
 	SERIALIZE3(Object,
 		SERIALIZE_FIELD3(gameObject)

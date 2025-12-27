@@ -89,10 +89,6 @@ void LevelEditor::Update()
 		// Ý’u
 		if (Input::GetKeyDown('J'))
 		{
-			/*GameObject* gameObject = GameObject::Create();
-			gameObject->GetTransform()->position = _frameObject->GetTransform()->position;
-			gameObject->AddComponent<SpriteRenderer>();*/
-
 			GameObject* gameObject = Object::Instantiate(puttingPrefab);
 			gameObject->GetTransform()->position = _frameObject->GetTransform()->position;
 		}
