@@ -8,9 +8,10 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 	{
 		std::smatch m;
 
+		// うしろに持って行った方が良いのでは？
 		if (isPacking)
 		{
-			// リスト
+			// リストの要素
 			if (std::regex_match(instanceData, m, std::regex(R"(-\s(.+))")))
 			{
 				std::string value = m[1].str();
@@ -32,17 +33,25 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 					subInstanceDataVector.back()->memberVector.push_back(value);
 				}
 			}
-			// 値
+			// 値、クラス、構造体
 			else if (std::regex_match(instanceData, m, std::regex(R"(\s{2}(\s*\w+:\s*.*))")))
 			{
 				// リストの格納
 				subInstanceDataVector.back()->memberVector.push_back(m[1].str());
 			}
-			// クラス、構造体はスルー
+			// リストなど
+			else if (std::regex_match(instanceData, m, std::regex(R"(\s{2}(.+))")))
+			{
+				subInstanceDataVector.back()->memberVector.push_back(m[1].str());
+			}
+			else
+			{
+				//Debug::Log("まとめることができません。(%s)[SerializedClass::InputValue3()]", instanceData.c_str());
+			}
 		}
 
 
-		// 空白があるかないかの判別
+		// 空白がないなら
 		std::regex re(R"(^([^\s]+):(\s*)(.*))");
 		if (std::regex_search(instanceData, m, re))
 		{

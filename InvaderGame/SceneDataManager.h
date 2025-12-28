@@ -15,6 +15,7 @@ public:
 	static GameObject* LoadGameObject(Scene* scene, const std::vector<std::string>& contentVector);
 	static GameObject* LoadGameObjectClone(Scene* scene, const std::vector<std::string>& contentVector);
 	static Scene* Load(std::string path);
+	static Scene* LoadRecord();
 	static Scene* Reload();
 	static void Save();
 	static void SaveRecord();
@@ -31,5 +32,6 @@ private:
 	static std::unordered_map<std::string, Object*> instanceID2PointerMap;
 
 	static void DeserializeObject(Scene* scene, const std::vector<InstanceData>& instanceDataVector);
+	static Scene* LoadScene(const std::string& path);
 };
 

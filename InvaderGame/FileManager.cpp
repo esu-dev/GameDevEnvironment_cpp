@@ -179,7 +179,7 @@ void FileManager::Write(const std::string& path, const std::string& content)
 
 	file.close();
 
-	Debug::Log(L"ファイル書き込みが完了しました。");
+	Debug::Log("Writing file is completed. (path: %s)", path.c_str());
 }
 
 void FileManager::Write(const std::wstring& path, const std::string& content)
@@ -197,4 +197,16 @@ void FileManager::Write(const std::wstring& path, const std::string& content)
 	file.close();
 
 	Debug::Log(L"ファイル書き込みが完了しました。");
+}
+
+std::string FileManager::RemoveExtension(const std::string& path)
+{
+	std::string fileName;
+	std::smatch wsmatch;
+	if (std::regex_match(path, wsmatch, std::regex(R"((.+)\.\w+)")))
+	{
+		fileName = wsmatch[1].str();
+	}
+
+	return fileName;
 }

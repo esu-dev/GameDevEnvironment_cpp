@@ -72,7 +72,7 @@ void SceneEditor::Update()
 
 		_isEditMode = false;
 
-		SceneDataManager::Load("Resources/Scenes/" + SceneManager::GetActiveScene()->GetName() + "_record.txt");
+		SceneDataManager::LoadRecord();
 
 		// TimeScale‚ÅŠÇ—‚·‚é‚ÆA–³‘Ê‚Èˆ—‚ª‚¸‚Á‚Æ‘–‚é‚±‚Æ‚É‚È‚é‚©‚çA—vŒŸ“¢
 		EngineTime::TimeScale = 1;

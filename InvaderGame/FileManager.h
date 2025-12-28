@@ -14,5 +14,6 @@ public:
 	static std::vector<std::string> GetAllFolderName(std::string directry);
 	static void Write(const std::string& path, const std::string& content);
 	static void Write(const std::wstring& path, const std::string& content);
+	static std::string RemoveExtension(const std::string& path);
 };
 

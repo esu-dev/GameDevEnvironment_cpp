@@ -188,23 +188,15 @@ GameObject* SceneDataManager::LoadGameObjectClone(Scene* scene, const std::vecto
 Scene* SceneDataManager::Load(std::string path)
 {
 	_path = path;
-	instanceID2PointerMap.clear();
-	RecordManager::RecordVector.clear(); // GameObjectの途中破棄に対応できないからほんとはダメ
+	return LoadScene(path);
+}
 
+Scene* SceneDataManager::LoadRecord()
+{
+	// 拡張子を外す
+	std::string fileName = FileManager::RemoveExtension(_path);
 
-	// yamlの読み込み
-	std::vector<std::string> yamlVector;
-	FileManager::Read(yamlVector, path);
-
-
-	// シーンの作成
-	Scene* scene = new Scene(yamlVector[0]);
-
-	LoadGameObject(scene, yamlVector);
-	
-	
-	SceneManager::SetActiveScene(scene);
-	return scene;
+	return LoadScene(fileName + "_record.txt");
 }
 
 Scene* SceneDataManager::Reload()
@@ -240,12 +232,7 @@ void SceneDataManager::SaveRecord()
 	}
 
 	// 拡張子を外す
-	std::string fileName;
-	std::smatch wsmatch;
-	if (std::regex_match(_path, wsmatch, std::regex(R"((.+)\.\w+)")))
-	{
-		fileName = wsmatch[1].str();
-	}
+	std::string fileName = FileManager::RemoveExtension(_path);
 
 	std::string newPath = fileName + "_record.txt";
 	FileManager::Write(newPath, serializedData);
@@ -271,4 +258,25 @@ void SceneDataManager::DeserializeObject(Scene* scene, const std::vector<Instanc
 			scene->AddGameObject(gameObject);
 		}
 	}
+}
+
+Scene* SceneDataManager::LoadScene(const std::string& path)
+{
+	instanceID2PointerMap.clear();
+	RecordManager::RecordVector.clear(); // GameObjectの途中破棄に対応できないからほんとはダメ
+
+
+	// yamlの読み込み
+	std::vector<std::string> yamlVector;
+	FileManager::Read(yamlVector, path);
+
+
+	// シーンの作成
+	Scene* scene = new Scene(yamlVector[0]);
+
+	LoadGameObject(scene, yamlVector);
+
+
+	SceneManager::SetActiveScene(scene);
+	return scene;
 }

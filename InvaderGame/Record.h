@@ -10,10 +10,18 @@ template <typename T>
 class Record : public RecordBase
 {
 public:
-	SERIALIZE3(RecordBase,
-		SERIALIZE_FIELD3(_variable),
-		SERIALIZE_FIELD3(_timeVariableSetVector)
-	)
+	std::vector<std::shared_ptr<SerializeFuncData>> GetSerializeFuncData() override {
+		std::vector<std::shared_ptr<SerializeFuncData>> pV = RecordBase::GetSerializeFuncData(); std::vector<std::shared_ptr<SerializeFuncData>> sfdV = { std::make_shared<SerializeFuncData>([&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField("_variable", _variable, indentNum); }, [&](InstanceData* instanceData) -> void { DeserializeField(_variable, instanceData); }, [&]() -> FieldInfo { return SerializedClass::CreateFieldInfo("_variable", typeid(_variable).name(), _variable); }, [&](std::string name) -> void {}), std::make_shared<SerializeFuncData>([&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField("_timeVariableSetVector", _timeVariableSetVector, indentNum); }, [&](InstanceData* instanceData) -> void { DeserializeField(_timeVariableSetVector, instanceData); }, [&]() -> FieldInfo { return SerializedClass::CreateFieldInfo("_timeVariableSetVector", typeid(_timeVariableSetVector).name(), _timeVariableSetVector); }, [&](std::string name) -> void {}) }; pV.insert(pV.end(), sfdV.begin(), sfdV.end()); return pV;
+	} std::vector<std::string> Serialize(const int indentNum = 1) override {
+		std::vector<std::string> r; std::vector<std::shared_ptr<SerializeFuncData>> sfdV = GetSerializeFuncData(); for (auto& sfd : sfdV) {
+			std::vector<std::string> s = sfd->serializeFunc(indentNum); r.insert(r.end(), s.begin(), s.end());
+		} return r;
+	} 
+	int Deserialize(std::vector<std::string> v) override {
+		std::vector<std::shared_ptr<SerializeFuncData>> sfdV = GetSerializeFuncData();
+		InputValue3(v, sfdV);
+		return 0;
+	}
 
 	void Initialize() override
 	{
