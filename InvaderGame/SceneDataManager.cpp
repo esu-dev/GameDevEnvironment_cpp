@@ -227,6 +227,34 @@ void SceneDataManager::Save()
 	FileManager::Write(_path, serializedData);
 }
 
+void SceneDataManager::SaveRecord()
+{
+	std::string sceneName = SceneManager::GetActiveScene()->GetName();
+
+	// シーン内の全てのゲームオブジェクトに対してシリアライズを実行
+	// 最終的な文字列を書き込む
+	std::string serializedData = sceneName + "\n";
+	for (GameObject* gameObject : SceneManager::GetActiveScene()->GetGameObjectVector())
+	{
+		AssetManager::SerializeGameObject(serializedData, gameObject);
+	}
+
+	// 拡張子を外す
+	std::string fileName;
+	std::smatch wsmatch;
+	if (std::regex_match(_path, wsmatch, std::regex(R"((.+)\.\w+)")))
+	{
+		fileName = wsmatch[1].str();
+	}
+
+	std::string newPath = fileName + "_record.txt";
+	FileManager::Write(newPath, serializedData);
+
+
+	// EngineTimeの保存
+	std::string content = std::to_string(EngineTime::GetTotalTime());
+	FileManager::Write(fileName + "_time.txt", content);
+}
 
 std::string SceneDataManager::_path = "";
 std::unordered_map<std::string, Object*> SceneDataManager::instanceID2PointerMap;

@@ -17,6 +17,7 @@ public:
 	static Scene* Load(std::string path);
 	static Scene* Reload();
 	static void Save();
+	static void SaveRecord();
 
 
 private:

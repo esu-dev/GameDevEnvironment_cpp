@@ -3,14 +3,12 @@
 #include "GameSystem.h"
 
 const float EngineTime::_fixedDeltaTime = 1 / 60.0f;
-Property<float> EngineTime::TotalTime{};
-Property<float> EngineTime::TimeScale{};
+float EngineTime::TimeScale = 1;
 
 void EngineTime::Initialize()
 {
-	static ULONGLONG updatedTime = GetTickCount64();
-
 	TimeScale = 1;
+	ResetDeltaTime();
 
 	GAMESYS.OnUpdateListener.AddListener([]()
 		{
@@ -18,13 +16,29 @@ void EngineTime::Initialize()
 			_deltaTime = (time - updatedTime) / 1000.0f * TimeScale;
 			updatedTime = time;
 
-			TotalTime += _deltaTime;
+			_totalTime += _deltaTime;
 		});
+}
+
+void EngineTime::Update()
+{
+	/*static ULONGLONG updatedTime = GetTickCount64();
+
+	ULONGLONG time = GetTickCount64();
+	_deltaTime = (time - updatedTime) / 1000.0f * TimeScale;
+	updatedTime = time;
+
+	_totalTime += _deltaTime;*/
 }
 
 float EngineTime::GetDeltaTime()
 {
 	return _deltaTime;
+}
+
+void EngineTime::ResetDeltaTime()
+{
+	updatedTime = GetTickCount64();
 }
 
 float EngineTime::GetFixedDeltaTime()
@@ -34,7 +48,12 @@ float EngineTime::GetFixedDeltaTime()
 
 float EngineTime::GetTotalTime()
 {
-	return TotalTime;
+	return _totalTime;
+}
+
+void EngineTime::SetTotalTime(float totalTime)
+{
+	_totalTime = totalTime;
 }
 
 void EngineTime::SetIsPause(bool isPause)
@@ -45,3 +64,5 @@ void EngineTime::SetIsPause(bool isPause)
 
 bool EngineTime::_isPause = false;
 float EngineTime::_deltaTime = 0;
+float EngineTime::_totalTime = 0;
+ULONGLONG EngineTime::updatedTime = 0;

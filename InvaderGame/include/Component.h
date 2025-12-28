@@ -40,10 +40,11 @@ public:
 	GameObject* gameObject = nullptr;
 
 	SERIALIZE3(Object,
+		SERIALIZE_FIELD3(enabled),
 		SERIALIZE_FIELD3(gameObject)
 	)
 
-	virtual ~Component() { Debug::Log("Destructor is nor overrided. [%s]", GetName().c_str()); }
+	virtual ~Component() { /*Debug::Log("Destructor is nor overrided. [%s]", GetName().c_str());*/ }
 	virtual void OnEnable() {}
 	virtual void OnDisable() {}
 	virtual void OnValidate() {}

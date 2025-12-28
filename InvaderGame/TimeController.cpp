@@ -7,6 +7,7 @@
 #include "GameSystem.h"
 #include "GameEngine.h"
 #include "RecordManager.h"
+#include "SceneDataManager.h"
 
 
 void TimeController::Initialize()
@@ -44,11 +45,11 @@ void TimeController::Update()
 
 			if (_time - maxTime > RecordBase::RECORD_INTERVAL)
 			{
-				EngineTime::TotalTime = _time;
+				EngineTime::SetTotalTime(_time);
 			}
 			else
 			{
-				EngineTime::TotalTime = maxTime;
+				EngineTime::SetTotalTime(maxTime);
 			}
 
 			EngineTime::TimeScale = 1;
@@ -80,6 +81,13 @@ void TimeController::Update()
 		ImGui::Text(("Total: " + std::to_string(EngineTime::GetTotalTime())).c_str());
 	}
 	ImGui::End();
+
+
+	// Ctrl+S‚Å•Û‘¶
+	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('S'))
+	{
+		SceneDataManager::SaveRecord();
+	}
 }
 
 float TimeController::_time = 0;

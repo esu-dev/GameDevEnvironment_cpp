@@ -16,6 +16,8 @@
 #include "imgui_impl_win32.h"
 #include "imgui_impl_dx11.h"
 
+using namespace SceneManagement;
+
 void SceneEditor::Initialize()
 {
 	_focusFrame = GameObject::Create();
@@ -41,7 +43,7 @@ void SceneEditor::Update()
 
 		if (_isEditMode)
 		{
-			EngineTime::TotalTime = 0;
+			EngineTime::SetTotalTime(0);
 			EngineTime::TimeScale = 0;
 
 			Selection::gameObject = nullptr;
@@ -61,6 +63,28 @@ void SceneEditor::Update()
 			// TimeScaleで管理すると、無駄な処理がずっと走ることになるから、要検討
 			EngineTime::TimeScale = 1;
 		}
+	}
+
+	// レコードシーンを読み込む
+	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('R'))
+	{
+		Debug::Log("RecordSceneの読み込みを開始しました。");
+
+		_isEditMode = false;
+
+		SceneDataManager::Load("Resources/Scenes/" + SceneManager::GetActiveScene()->GetName() + "_record.txt");
+
+		// TimeScaleで管理すると、無駄な処理がずっと走ることになるから、要検討
+		EngineTime::TimeScale = 1;
+
+		// TotalTimeの復元
+		std::vector<std::string> contentVector;
+		FileManager::Read(contentVector, "Resources/Scenes/" + SceneManager::GetActiveScene()->GetName() + "_time.txt");
+		EngineTime::SetTotalTime(std::stof(contentVector[0]));
+		EngineTime::ResetDeltaTime();
+		Debug::Log("RecordSceneの読み込みが完了しました。");
+		//Debug::Log("TotalTimeを%sに設定しました。", contentVector[0].c_str());
+		Debug::Log("TotalTime: %f", EngineTime::GetTotalTime());
 	}
 
 	// エディタを開いていないならば

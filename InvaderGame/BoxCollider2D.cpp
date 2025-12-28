@@ -16,7 +16,7 @@ BoxCollider2D::~BoxCollider2D()
 {
 	Physics2D::GetBox2DWorld()->DestroyBody(_body);
 
-	Debug::Log(L"BoxCollider2D Destractor");
+	//Debug::Log(L"BoxCollider2D Destractor");
 }
 
 void BoxCollider2D::SetSize(Vector2 size)

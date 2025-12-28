@@ -11,6 +11,7 @@ GameObject:
 --- 001
 Transform:
   name: initial name
+  enabled: true
   gameObject: (instanceID)000
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -19,6 +20,7 @@ Transform:
       x: 0.000000
       y: 0.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -30,6 +32,7 @@ Transform:
 --- 002
 Camera:
   name: initial name
+  enabled: true
   gameObject: (instanceID)000
 --- 497196057=906531225=817251284
 GameObject:
@@ -45,6 +48,7 @@ GameObject:
 --- 1799500956=137508752=642793527
 Transform:
   name: initial name
+  enabled: true
   gameObject: (instanceID)497196057=906531225=817251284
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -53,6 +57,7 @@ Transform:
       x: 1.000000
       y: -9.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -64,12 +69,14 @@ Transform:
 --- 1509651495=882491034=462321931
 SpriteRenderer:
   name: initial name
+  enabled: true
   gameObject: (instanceID)497196057=906531225=817251284
   _order: 0
   m_texture: (instanceID)nullptr
 --- 195784630=193413168=2014331585
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)497196057=906531225=817251284
   IsKinematic: true
   IsTrigger: false
@@ -77,6 +84,7 @@ Rigidbody2D:
 --- 746408839=1785363155=2049907163
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)497196057=906531225=817251284
   _offset:
     x: 0.000000
@@ -100,6 +108,7 @@ GameObject:
 --- 1401248970=231768062=1184301228
 Transform:
   name: initial name
+  enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 2
@@ -110,6 +119,7 @@ Transform:
       x: 0.000000
       y: 0.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -121,12 +131,14 @@ Transform:
 --- 1654603363=848023440=205348381
 SpriteRenderer:
   name: initial name
+  enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
   _order: 1
   m_texture: (instanceID)2031896239=1692424211=1578972974
 --- 397732447=1670649184=1016027375
 Animator:
   name: initial name
+  enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
   (vector)_animationVector: 3
   - 0:
@@ -144,6 +156,7 @@ Animator:
 --- 6872234=179677836=1737315805
 Player:
   name: initial name
+  enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
   _moveAcceleration: 15.000000
   _maxSpeed: 5.000000
@@ -154,6 +167,7 @@ Player:
 --- 1329810691=1773115153=2142410842
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
   _offset:
     x: 0.000000
@@ -164,6 +178,7 @@ BoxCollider2D:
 --- 1509751976=961373694=1662533778
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
   IsKinematic: false
   IsTrigger: false
@@ -183,6 +198,7 @@ GameObject:
 --- 1619447062=528024578=1024881459
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -191,6 +207,7 @@ Transform:
       x: 3.000000
       y: -6.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -202,12 +219,14 @@ Transform:
 --- 49295729=1781617583=1358331618
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
   _order: 0
   m_texture: (instanceID)nullptr
 --- 1499966935=2004788885=708744623
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
   _offset:
     x: 0.000000
@@ -218,6 +237,7 @@ BoxCollider2D:
 --- 30106322=1800156485=1003418034
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
   IsKinematic: false
   IsTrigger: false
@@ -225,10 +245,11 @@ Rigidbody2D:
 --- 153492873=74805102=452843053
 DemoRewinder:
   name: initial name
+  enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
 --- 334835115=1784456080=1665319366
 GameObject:
-  name: Default
+  name: GroundChecker
   IsPrefab: true
   tag: Untagged
   (vector)_componentVector: 5
@@ -241,6 +262,7 @@ GameObject:
 --- 1144962052=231822179=1508855639
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)334835115=1784456080=1665319366
   _parentProperty: (instanceID)1401248970=231768062=1184301228
   (vector)_childVector: 0
@@ -249,6 +271,7 @@ Transform:
       x: 0.000000
       y: -2.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: -2.000000
@@ -260,16 +283,19 @@ Transform:
 --- 498869748=334414102=20240684
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: false
   gameObject: (instanceID)334835115=1784456080=1665319366
   _order: 0
   m_texture: (instanceID)nullptr
 --- 987323884=1493656018=1135970640
 GroundChecker:
   name: initial name
+  enabled: true
   gameObject: (instanceID)334835115=1784456080=1665319366
 --- 1128932613=856139598=794314602
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)334835115=1784456080=1665319366
   _offset:
     x: 0.000000
@@ -280,6 +306,7 @@ BoxCollider2D:
 --- 111522592=1152779983=986174074
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)334835115=1784456080=1665319366
   IsKinematic: false
   IsTrigger: true
@@ -298,6 +325,7 @@ GameObject:
 --- 1810307803=1050922664=2001804855
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)660199241=572228906=1018028808
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -306,6 +334,7 @@ Transform:
       x: 10.000000
       y: -7.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -317,12 +346,14 @@ Transform:
 --- 1827141856=1257888055=1178530741
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)660199241=572228906=1018028808
   _order: 0
   m_texture: (instanceID)nullptr
 --- 1438045471=94100770=1112695615
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)660199241=572228906=1018028808
   _offset:
     x: 0.000000
@@ -333,6 +364,7 @@ BoxCollider2D:
 --- 1640646792=2105263272=132995643
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)660199241=572228906=1018028808
   IsKinematic: true
   IsTrigger: false
@@ -352,6 +384,7 @@ GameObject:
 --- 738428193=767931706=81327258
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)334318009=1860016338=1767387823
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -360,6 +393,7 @@ Transform:
       x: 10.000000
       y: -2.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -371,12 +405,14 @@ Transform:
 --- 1761975552=432106473=121860397
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)334318009=1860016338=1767387823
   _order: 0
   m_texture: (instanceID)nullptr
 --- 50367500=615469093=1027278146
 Shutter:
   name: initial name
+  enabled: true
   gameObject: (instanceID)334318009=1860016338=1767387823
   _openSpeed: 3.000000
   _openDistance: 4.500000
@@ -384,6 +420,7 @@ Shutter:
 --- 1920240787=1633577486=86918562
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)334318009=1860016338=1767387823
   _offset:
     x: 0.000000
@@ -394,6 +431,7 @@ BoxCollider2D:
 --- 1699338209=622239389=658941422
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)334318009=1860016338=1767387823
   IsKinematic: true
   IsTrigger: false
@@ -413,6 +451,7 @@ GameObject:
 --- 1004943698=1777140712=1194973901
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -421,6 +460,7 @@ Transform:
       x: -1.000000
       y: -7.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -432,12 +472,14 @@ Transform:
 --- 956385127=996781569=838053284
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
   _order: 0
   m_texture: (instanceID)nullptr
 --- 397698515=921189810=1480861003
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
   _offset:
     x: 0.000000
@@ -448,6 +490,7 @@ BoxCollider2D:
 --- 1668899630=1805059461=1317313416
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
   IsKinematic: true
   IsTrigger: true
@@ -455,6 +498,7 @@ Rigidbody2D:
 --- 220179420=1740506888=1732060206
 GimmickTrigger:
   name: initial name
+  enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
 --- 116941363=1899623809=284380306
 GameObject:
@@ -471,6 +515,7 @@ GameObject:
 --- 214431009=801859099=1164764792
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
   _parentProperty: (instanceID)1401248970=231768062=1184301228
   (vector)_childVector: 0
@@ -479,6 +524,7 @@ Transform:
       x: 0.000000
       y: 0.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -490,12 +536,14 @@ Transform:
 --- 1451225346=1604343145=1266552738
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
   _order: 0
   m_texture: (instanceID)1194511168=1983697167=1980983536
 --- 2044907468=605035024=336969862
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
   IsKinematic: true
   IsTrigger: true
@@ -503,6 +551,7 @@ Rigidbody2D:
 --- 78277159=799468258=1132150830
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
   _offset:
     x: 0.000000
@@ -513,6 +562,7 @@ BoxCollider2D:
 --- 1284479894=919169410=1986298817
 DemoRewindTrigger:
   name: initial name
+  enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
 --- 888262907=508753448=1593350804
 GameObject:
@@ -528,6 +578,7 @@ GameObject:
 --- 919403330=1923829778=1616889876
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)888262907=508753448=1593350804
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -536,6 +587,7 @@ Transform:
       x: -7.000000
       y: -2.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -547,12 +599,14 @@ Transform:
 --- 1404354776=38421914=1142471347
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)888262907=508753448=1593350804
   _order: 0
   m_texture: (instanceID)nullptr
 --- 599011416=1129288345=2136398583
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)888262907=508753448=1593350804
   _offset:
     x: 0.000000
@@ -563,6 +617,7 @@ BoxCollider2D:
 --- 2016904585=505734764=1486702690
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)888262907=508753448=1593350804
   IsKinematic: true
   IsTrigger: false
@@ -581,6 +636,7 @@ GameObject:
 --- 587131200=1521579628=1618114229
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)422284339=383024916=61925684
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -589,6 +645,7 @@ Transform:
       x: 3.500000
       y: 5.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -600,12 +657,14 @@ Transform:
 --- 1904943896=1055925068=1308775728
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)422284339=383024916=61925684
   _order: 0
   m_texture: (instanceID)nullptr
 --- 262604502=1760241896=1281241367
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)422284339=383024916=61925684
   _offset:
     x: 0.000000
@@ -616,6 +675,7 @@ BoxCollider2D:
 --- 1119207995=1728657898=657397407
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)422284339=383024916=61925684
   IsKinematic: true
   IsTrigger: false
@@ -634,6 +694,7 @@ GameObject:
 --- 1767545385=2099698436=168441107
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)1191737536=547853773=851201240
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -642,6 +703,7 @@ Transform:
       x: 14.000000
       y: -2.000000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -653,12 +715,14 @@ Transform:
 --- 2109039921=793623829=606666949
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)1191737536=547853773=851201240
   _order: 0
   m_texture: (instanceID)nullptr
 --- 1874455155=1011910309=1694262774
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)1191737536=547853773=851201240
   _offset:
     x: 0.000000
@@ -669,6 +733,7 @@ BoxCollider2D:
 --- 1367485179=1983645237=1036329098
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)1191737536=547853773=851201240
   IsKinematic: true
   IsTrigger: false
@@ -687,6 +752,7 @@ GameObject:
 --- 1578393535=650385841=1471849165
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)829808381=485146313=1292376636
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -695,6 +761,7 @@ Transform:
       x: -4.000000
       y: -7.375000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -706,12 +773,14 @@ Transform:
 --- 437431387=759971559=200215603
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)829808381=485146313=1292376636
   _order: 0
   m_texture: (instanceID)nullptr
 --- 1289291173=1451176930=478927638
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)829808381=485146313=1292376636
   _offset:
     x: 0.000000
@@ -722,6 +791,7 @@ BoxCollider2D:
 --- 1670877662=616611846=393494931
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)829808381=485146313=1292376636
   IsKinematic: true
   IsTrigger: false
@@ -740,6 +810,7 @@ GameObject:
 --- 1755944459=431380890=1650803771
 Transform:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)1340848554=1288212688=1250136929
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
@@ -748,6 +819,7 @@ Transform:
       x: 6.000000
       y: -7.375000
       z: 0.000000
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -759,12 +831,14 @@ Transform:
 --- 952899062=1819028692=1833483770
 SpriteRenderer:
   name: GameObject.prefab
+  enabled: true
   gameObject: (instanceID)1340848554=1288212688=1250136929
   _order: 0
   m_texture: (instanceID)nullptr
 --- 1087677577=664884420=787077428
 BoxCollider2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)1340848554=1288212688=1250136929
   _offset:
     x: 0.000000
@@ -775,6 +849,7 @@ BoxCollider2D:
 --- 867421620=333900935=1859365701
 Rigidbody2D:
   name: initial name
+  enabled: true
   gameObject: (instanceID)1340848554=1288212688=1250136929
   IsKinematic: true
   IsTrigger: false

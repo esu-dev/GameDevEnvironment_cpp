@@ -11,7 +11,8 @@ class Record : public RecordBase
 {
 public:
 	SERIALIZE3(RecordBase,
-		SERIALIZE_FIELD3(_variable)
+		SERIALIZE_FIELD3(_variable),
+		SERIALIZE_FIELD3(_timeVariableSetVector)
 	)
 
 	void Initialize() override
@@ -119,15 +120,19 @@ public:
 
 
 private:
-	struct TimeVariableSet
+	struct TimeVariableSet : public SerializedClass
 	{
 		float time = 0;
 		T variable;
+
+		SERIALIZE3(SerializedClass,
+			SERIALIZE_FIELD3(time),
+			SERIALIZE_FIELD3(variable)
+		)
 	};
 	
 	T _variable;
 	std::vector<TimeVariableSet> _timeVariableSetVector;
-	std::vector<TimeVariableSet> _timeVarSetVec_Application;
 
 	void UpdateValue()
 	{
