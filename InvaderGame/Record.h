@@ -77,6 +77,20 @@ public:
 
 	T& Get() { return _variable; }
 
+	T& GetRecord(float time)
+	{
+		for (int i = 0; i < _timeVariableSetVector.size(); i++)
+		{
+			if (time - _timeVariableSetVector[i].time < RECORD_INTERVAL)
+			{
+				return _variable = _timeVariableSetVector[i].variable;
+			}
+		}
+
+		// Å‰‚ð•Ô‚·
+		return _timeVariableSetVector.front().variable;
+	}
+
 	operator T() { return _variable; }
 
 	T operator+ (const T variable)
@@ -111,9 +125,9 @@ private:
 		T variable;
 	};
 	
-
 	T _variable;
 	std::vector<TimeVariableSet> _timeVariableSetVector;
+	std::vector<TimeVariableSet> _timeVarSetVec_Application;
 
 	void UpdateValue()
 	{

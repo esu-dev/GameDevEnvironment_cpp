@@ -62,8 +62,11 @@ GameObject* SceneDataManager::LoadGameObject(Scene* scene, const std::vector<std
 
 			// インスタンス生成
 			Object* object = Activator::CreateInstance(typeString);
-			object->instanceID = instanceID;
-			instanceID2PointerMap[instanceID] = object;
+			if (object != nullptr)
+			{
+				object->instanceID = instanceID;
+				instanceID2PointerMap[instanceID] = object;
+			}
 
 			// instanceIDをキーとして、yamlとポインタを保持
 			InstanceData instanceData = InstanceData();
@@ -77,6 +80,8 @@ GameObject* SceneDataManager::LoadGameObject(Scene* scene, const std::vector<std
 	GameObject* returnedGameObject = nullptr;
 	for (const InstanceData& instanceData : instanceDataVector)
 	{
+		if (instanceData.object == nullptr) continue;
+
 		instanceData.object->Deserialize(instanceData.yamlVector);
 
 		// GameObjectをSceneに追加

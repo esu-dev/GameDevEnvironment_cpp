@@ -10,7 +10,7 @@ public:
 
 	static void Initialize();
 
-	static float GetDelataTime();
+	static float GetDeltaTime();
 	static float GetFixedDeltaTime();
 	static float GetTotalTime();
 	static void SetIsPause(bool isPause);

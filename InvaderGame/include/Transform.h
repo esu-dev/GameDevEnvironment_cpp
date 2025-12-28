@@ -47,7 +47,6 @@ private:
 	Property<Transform*> _parentProperty = {
 		[this]() -> Transform* { return this->_parent; },
 		[&](Transform* parent) -> void {
-			Debug::Log("Transform::SetParent() is called in Property setter.");
 			// 親の個リストに入っていれば削除する
 			if (parent == nullptr)
 			{
@@ -64,7 +63,6 @@ private:
 				return;
 			}
 
-			Debug::Log("parent: %s", _parent->instanceID.c_str());
 
 			// 親の子リストに自分が入っていなければ追加する
 			auto& parentChildVector = _parent->GetChildVector();

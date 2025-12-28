@@ -131,9 +131,10 @@ void SceneEditor::Update()
 				if (isTreeOpen)
 				{
 					// 再帰的に子要素を配置
+					int childID = 0;
 					for (auto& child : go->GetTransform()->GetChildVector())
 					{
-						putGameObject(std::stoi(std::to_string(id) + "0"), depth + 1, child->gameObject);
+						putGameObject(std::stoi(std::to_string(id) + "0") + childID++, depth + 1, child->gameObject);
 					}
 
 					ImGui::TreePop();

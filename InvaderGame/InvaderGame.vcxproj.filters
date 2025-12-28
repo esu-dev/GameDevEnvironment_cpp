@@ -285,6 +285,12 @@
     <ClCompile Include="AssetCreator.cpp">
       <Filter>Source\Editor</Filter>
     </ClCompile>
+    <ClCompile Include="DemoRewindTrigger.cpp">
+      <Filter>Source\Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoRewinder.cpp">
+      <Filter>Source\Demo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -558,6 +564,12 @@
     </ClInclude>
     <ClInclude Include="AssetCreator.h">
       <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoRewindTrigger.h">
+      <Filter>Source\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoRewinder.h">
+      <Filter>Source\Demo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,6 +7,8 @@
 #include "GroundChecker.h"
 #include "GimmickTrigger.h"
 #include "Shutter.h"
+#include "DemoRewindTrigger.h"
+#include "DemoRewinder.h"
 
 #define REGISTER_TYPE(type) \
 	nameToInstanceMap[#type] = []() -> Object* { return new type(); }
@@ -28,6 +30,8 @@ void Activator::Initialize()
 	REGISTER_TYPE(GroundChecker);
 	REGISTER_TYPE(GimmickTrigger);
 	REGISTER_TYPE(Shutter);
+	REGISTER_TYPE(DemoRewindTrigger);
+	REGISTER_TYPE(DemoRewinder);
 }
 
 Object* Activator::CreateInstance(std::string typeString)

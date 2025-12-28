@@ -13,7 +13,8 @@ public:
 		SERIALIZE_FIELD3(_maxSpeed),
 		SERIALIZE_FIELD3(_stopAcceleration),
 		SERIALIZE_FIELD3(_jumpTime),
-		SERIALIZE_FIELD3(_jumpPower)
+		SERIALIZE_FIELD3(_jumpPower),
+		SERIALIZE_FIELD3(_rewindCircle)
 	)
 
 	void Start() override;
@@ -66,6 +67,7 @@ private:
 	float _stopAcceleration = 0;
 	float _jumpTime = 0.5f;
 	float _jumpPower = 1;
+	GameObject* _rewindCircle = nullptr;
 
 	bool _canJump = true;
 

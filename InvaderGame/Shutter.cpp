@@ -26,7 +26,7 @@ void Shutter::Start()
 
 void Shutter::Update()
 {
-	float move = _openSpeed * EngineTime::GetDelataTime();
+	float move = _openSpeed * EngineTime::GetDeltaTime();
 	float currentPositionY = this->GetTransform()->position.Get().y;
 	if (_isOpening)
 	{

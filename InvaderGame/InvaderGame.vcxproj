@@ -207,6 +207,8 @@
     </ClCompile>
     <ClCompile Include="DemoPhysicsManager.cpp" />
     <ClCompile Include="DemoPhysicsSceneAsset.cpp" />
+    <ClCompile Include="DemoRewinder.cpp" />
+    <ClCompile Include="DemoRewindTrigger.cpp" />
     <ClCompile Include="DemoSceneAsset.cpp" />
     <ClCompile Include="DemoSoundPlayer.cpp" />
     <ClCompile Include="Direct3D.cpp" />
@@ -329,6 +331,8 @@
     <ClInclude Include="CommonExtension.h" />
     <ClInclude Include="DemoPhysicsManager.h" />
     <ClInclude Include="DemoPhysicsSceneAsset.h" />
+    <ClInclude Include="DemoRewinder.h" />
+    <ClInclude Include="DemoRewindTrigger.h" />
     <ClInclude Include="DemoSoundPlayer.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="EngineBehaviour.h" />

@@ -49,14 +49,21 @@ void Physics2D::Update()
 		// 衝突検出（ブロードフェーズ）
 		for (int i = 0; i < gameObjectVector.size(); i++)
 		{
+			// 非アクティブならスキップ
+			if (gameObjectVector[i]->ActiveSelf() == false) continue;
+
 			Collider2D* colliderA = gameObjectVector[i]->GetComponent<Collider2D>();
 			if (colliderA == nullptr) continue;
 
 			for (int j = i + 1; j < gameObjectVector.size(); j++)
 			{
+				// 非アクティブならスキップ
+				if (gameObjectVector[j]->ActiveSelf() == false) continue;
+
 				Collider2D* colliderB = gameObjectVector[j]->GetComponent<Collider2D>();
 				if (colliderB == nullptr) continue;
 
+				// 両方キネマティックなら衝突判定しない
 				if (colliderA->GetComponent<Rigidbody2D>()->IsKinematic && colliderB->GetComponent<Rigidbody2D>()->IsKinematic)
 				{
 					continue;
@@ -174,7 +181,7 @@ void Physics2D::Update()
 				{
 					float power = rigidbodyA->mass * 1 * collisionData->depth;
 
-					float down = relNormalSpeed * 1 * EngineTime::GetDelataTime();
+					float down = relNormalSpeed * 1 * EngineTime::GetDeltaTime();
 					if (power + down < 0)
 					{
 						down = 0;

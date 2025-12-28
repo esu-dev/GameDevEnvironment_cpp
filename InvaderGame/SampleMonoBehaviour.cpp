@@ -43,7 +43,7 @@ void SampleMonoBehaviour::Update()
 		Destroy(_testObject);
 	}
 
-	Camera::get_main()->get_transform()->position.Get().x += EngineTime::GetDelataTime();
+	Camera::get_main()->get_transform()->position.Get().x += EngineTime::GetDeltaTime();
 
-	fpsText->GetComponent<TextLabel>()->SetText("fps: "s + std::to_string(1 / EngineTime::GetDelataTime()));
+	fpsText->GetComponent<TextLabel>()->SetText("fps: "s + std::to_string(1 / EngineTime::GetDeltaTime()));
 }

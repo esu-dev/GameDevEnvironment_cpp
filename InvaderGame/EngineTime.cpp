@@ -22,7 +22,7 @@ void EngineTime::Initialize()
 		});
 }
 
-float EngineTime::GetDelataTime()
+float EngineTime::GetDeltaTime()
 {
 	return _deltaTime;
 }

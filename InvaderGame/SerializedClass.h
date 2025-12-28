@@ -4,7 +4,7 @@
 	std::make_shared<SerializeFuncData>( \
 		[&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, indentNum); }, \
 		[&](InstanceData* instanceData) -> void { DeserializeField(v, instanceData); }, \
-		[&]() -> FieldInfo { return FieldInfo(#v, typeid(v).name()); }, \
+		[&]() -> FieldInfo { return SerializedClass::CreateFieldInfo(#v, typeid(v).name(), v); }, \
 		[&](std::string name) -> void { }) \
 
 #define SERIALIZE3(p, ...) \
@@ -53,12 +53,7 @@ public:
 	{
 		std::string name;
 		std::string type;
-
-		FieldInfo(std::string name, std::string type)
-		{
-			this->name = name;
-			this->type = type;
-		}
+		SerializedClass* field = nullptr;
 	};
 	
 	virtual std::vector<std::string> Serialize(const int indentNum = 1) { return { "" }; }
@@ -228,12 +223,17 @@ protected:
 		{
 			std::string value = instanceData->memberVector[0];
 
-			// intÇí«â¡Ç∑ÇÈÇ∆åxçêÇ™èoÇÈ
+			// int
+			if (typeid(T) == typeid(int))
+			{
+				variable = (T)std::stoi(value);
+			}
 			// float
-			if (typeid(T) == typeid(float))
+			else if (typeid(T) == typeid(float))
 			{
 				variable = (T)std::stof(value);
 			}
+			// bool
 			else if (typeid(T) == typeid(bool))
 			{
 				variable = (value == "true");
@@ -430,6 +430,20 @@ protected:
 		}
 	}
 	
+	template <typename T>
+	static FieldInfo CreateFieldInfo(const std::string& name, const std::string& type, const T& field)
+	{
+		FieldInfo fieldInfo;
+		fieldInfo.name = name;
+		fieldInfo.type = type;
+		
+		if constexpr (std::is_base_of<SerializedClass, T>())
+		{
+			fieldInfo.field = (SerializedClass*)&field;
+		}
+
+		return fieldInfo;
+	}
 
 	static void InputValue3(const std::vector<std::string>& instanceDataVector, const std::vector<std::shared_ptr<SerializeFuncData>>& functionVector);
 

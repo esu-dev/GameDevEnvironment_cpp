@@ -24,7 +24,7 @@ void DemoPhysicsManager::Update()
 		_cube->GetComponent<Rigidbody2D>()->SetDynamic();
 	}
 
-	_timer += EngineTime::GetDelataTime();
+	_timer += EngineTime::GetDeltaTime();
 }
 
 DemoPhysicsManager::DemoPhysicsManager()

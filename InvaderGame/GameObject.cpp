@@ -68,7 +68,14 @@ void GameObject::SetActive(bool isActive)
 {
 	_isActive = isActive;
 
-	if (_isActive == false)
+	if (_isActive)
+	{
+		for (std::shared_ptr<Component> component :  _componentVector)
+		{
+			component->OnEnable();
+		}
+	}
+	else if (!_isActive)
 	{
 		for (std::shared_ptr<Component> component : _componentVector)
 		{
@@ -111,6 +118,7 @@ void GameObject::Update()
 		return;
 	}
 
+	// コンポーネントのUpdateを呼び出す
 	for (auto component : _componentVector)
 	{
 		if (!component->enabled)

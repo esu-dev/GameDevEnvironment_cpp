@@ -76,7 +76,7 @@ void LevelEditor::Update()
 
 			flashTimer = 0;
 		}
-		flashTimer += EngineTime::GetDelataTime();
+		flashTimer += EngineTime::GetDeltaTime();
 
 		puttingPrefab->Update();
 

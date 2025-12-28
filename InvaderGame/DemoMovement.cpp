@@ -6,19 +6,19 @@ void DemoMovement::Update()
 {
 	if (Input::GetKey('A'))
 	{
-		this->get_transform()->SetPosition(this->get_transform()->position.Get().x - SPEED * EngineTime::GetDelataTime(), this->get_transform()->position.Get().y);
+		this->get_transform()->SetPosition(this->get_transform()->position.Get().x - SPEED * EngineTime::GetDeltaTime(), this->get_transform()->position.Get().y);
 	}
 	else if (Input::GetKey('D'))
 	{
-		this->get_transform()->SetPosition(this->get_transform()->position.Get().x + SPEED * EngineTime::GetDelataTime(), this->get_transform()->position.Get().y);
+		this->get_transform()->SetPosition(this->get_transform()->position.Get().x + SPEED * EngineTime::GetDeltaTime(), this->get_transform()->position.Get().y);
 	}
 
 	if (Input::GetKey('W'))
 	{
-		this->get_transform()->SetPosition(this->get_transform()->position.Get().x, this->get_transform()->position.Get().y + SPEED * EngineTime::GetDelataTime());
+		this->get_transform()->SetPosition(this->get_transform()->position.Get().x, this->get_transform()->position.Get().y + SPEED * EngineTime::GetDeltaTime());
 	}
 	else if (Input::GetKey('S'))
 	{
-		this->get_transform()->SetPosition(this->get_transform()->position.Get().x, this->get_transform()->position.Get().y - SPEED * EngineTime::GetDelataTime());
+		this->get_transform()->SetPosition(this->get_transform()->position.Get().x, this->get_transform()->position.Get().y - SPEED * EngineTime::GetDeltaTime());
 	}
 }

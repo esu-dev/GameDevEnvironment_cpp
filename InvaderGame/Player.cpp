@@ -7,6 +7,7 @@
 #include "Animator.h"
 #include "SpriteRenderer.h"
 #include "GroundChecker.h"
+#include "DemoRewindTrigger.h"
 
 void Player::Start()
 {
@@ -24,13 +25,13 @@ void Player::Update()
 	// 移動
 	bool _isMoving = false;
 	bool _isMovingLeft = false;
-	if (Input::GetKey('A'))
+	if (Input::GetKey(VK_LEFT))
 	{
 		_isMoving = true;
 		_isMovingLeft = true;
 		rigidbody->AddForce(Vector2::left * _moveAcceleration);
 	}
-	else if (Input::GetKey('D'))
+	else if (Input::GetKey(VK_RIGHT))
 	{
 		_isMoving = true;
 		_isMovingLeft = false;
@@ -77,6 +78,19 @@ void Player::Update()
 	if (abs(rigidbody->velocity.Get().x) > _maxSpeed)
 	{
 		rigidbody->velocity.Get().x = (rigidbody->velocity.Get().x > 0 ? 1 : -1) * _maxSpeed;
+	}
+
+
+	// 記録開始
+	if (Input::GetKeyDown('Z'))
+	{
+		_rewindCircle->SetActive(true);
+	}
+
+	// 巻き戻し開始
+	if (Input::GetKeyDown('X'))
+	{
+		_rewindCircle->GetComponent<DemoRewindTrigger>()->Rewind();
 	}
 
 
