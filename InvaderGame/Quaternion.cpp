@@ -3,22 +3,28 @@
 #include "Vector3.h"
 #include "Matrix.h"
 
-Quaternion& Quaternion::Identity()
+Quaternion Quaternion::Identity()
 {
 	return AngleAxis(0, Vector3::forward);
 }
 
-Quaternion& Quaternion::AngleAxis(float angle, Vector3 axis)
+Quaternion Quaternion::AngleAxis(float angle, Vector3 axis)
 {
-	Quaternion* quaternion = new Quaternion();
+	Quaternion quaternion;
 
 	float theta = angle * DirectX::XM_PI / 180;
-	quaternion->x = axis.x * DirectX::XMScalarSin(theta / 2);
-	quaternion->y = axis.y * DirectX::XMScalarSin(theta / 2);
-	quaternion->z = axis.z * DirectX::XMScalarSin(theta / 2);
-	quaternion->w = DirectX::XMScalarCos(theta / 2);
+	quaternion.x = axis.x * DirectX::XMScalarSin(theta / 2);
+	quaternion.y = axis.y * DirectX::XMScalarSin(theta / 2);
+	quaternion.z = axis.z * DirectX::XMScalarSin(theta / 2);
+	quaternion.w = DirectX::XMScalarCos(theta / 2);
 
-	return *quaternion;
+	return quaternion;
+}
+
+// ˆê’U2DŒÀ’è
+Quaternion Quaternion::Euler(const Vector3& euler)
+{
+	return AngleAxis(euler.z, Vector3::forward);
 }
 
 // ˆê’U2DŒÀ’è
@@ -36,6 +42,14 @@ Quaternion Quaternion::Inverse(Quaternion quaternion)
 	q.w = quaternion.w;
 
 	return q;
+}
+
+// ˆê’U2DŒÀ’è
+Vector3 Quaternion::GetEulerAngles()
+{
+	Vector3 v = *this * Vector3::up;
+	float z = Vector3::SignedAngle(v, Vector3::up, Vector3::forward);
+	return Vector3(0, 0, z);
 }
 
 Vector3 Quaternion::Mult(Vector3 vector)

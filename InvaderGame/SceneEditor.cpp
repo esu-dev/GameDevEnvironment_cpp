@@ -18,6 +18,12 @@
 
 using namespace SceneManagement;
 
+
+bool SceneEditor::GetIsEditMode()
+{
+	return _isEditMode;
+}
+
 void SceneEditor::Initialize()
 {
 	_focusFrame = GameObject::Create();
@@ -125,6 +131,54 @@ void SceneEditor::Update()
 	{
 		static int selected = -1;
 
+		auto putPopup = [](GameObject* go) -> void {
+			if (ImGui::BeginPopupContextItem())
+			{
+				if (ImGui::Selectable("Duplicate"))
+				{
+					GameObject* newGameObject = Object::Instantiate(go);
+					SceneManager::GetActiveScene()->AddGameObject(newGameObject);
+				}
+				if (ImGui::Selectable("Delete"))
+				{
+					// 選択を外す
+					Selection::gameObject = nullptr;
+
+					Object::Destroy(go);
+				}
+				if (ImGui::Selectable("Create Prefab"))
+				{
+					// ゲームオブジェクトのシリアライズ
+					// 子要素も行う必要がある
+					std::string serializedData = "";
+					GameObject* gameObject = go;
+					gameObject->IsPrefab = true;
+
+					// 再帰的にシリアライズ
+					std::function<void(GameObject*)> serializeGameObject_Recursively = [&](GameObject* targetGameObject) -> void {
+						AssetManager::SerializeGameObject(serializedData, targetGameObject);
+
+						// 子要素のシリアライズ
+						for (auto transform : targetGameObject->GetTransform()->GetChildVector())
+						{
+							serializeGameObject_Recursively(transform->gameObject);
+						}
+						};
+
+					serializeGameObject_Recursively(gameObject);
+
+
+					std::string directry = "Resources/Prefab/";
+					std::string fileName = gameObject->name + ".prefab";
+					FileManager::Write(directry + fileName, serializedData);
+					AssetManager::InstantiateAsset(directry, fileName, SceneDataManager::GetInstanceID2PointerMap());
+
+					//Object::Destroy(gameObject);
+				}
+				ImGui::EndPopup();
+			}
+		};
+
 		// 子要素も含めたGameObjectの配置
 		std::function<void(int, int, GameObject*)> putGameObject = [&](int id, int depth, GameObject* go) -> void {
 			// 深さ０で親がいるなら配置しない
@@ -145,12 +199,16 @@ void SceneEditor::Update()
 				{
 					flags |= ImGuiTreeNodeFlags_Selected;
 				}
+
+				// 親TreeNode
 				bool isTreeOpen = ImGui::TreeNodeEx(go->name.c_str(), flags);
 				if (ImGui::IsItemClicked())
 				{
 					selected = id;
 					Selection::gameObject = go;
 				}
+
+				putPopup(go);
 
 				if (isTreeOpen)
 				{
@@ -171,38 +229,12 @@ void SceneEditor::Update()
 					selected = id;
 					Selection::gameObject = go;
 				}
+
+				putPopup(go);
 			}
 			
-			if (ImGui::BeginPopupContextItem())
-			{
-				if (ImGui::Selectable("Duplicate"))
-				{
-					GameObject* newGameObject = Object::Instantiate(go);
-					SceneManager::GetActiveScene()->AddGameObject(newGameObject);
-				}
-				if (ImGui::Selectable("Delete"))
-				{
-					// 選択を外す
-					Selection::gameObject = nullptr;
-
-					Object::Destroy(go);
-				}
-				if (ImGui::Selectable("Create Prefab"))
-				{
-					std::string serializedData = "";
-					GameObject* gameObject = go;
-					gameObject->IsPrefab = true;
-					AssetManager::SerializeGameObject(serializedData, gameObject);
-
-					std::string directry = "Resources/Prefab/";
-					std::string fileName = gameObject->name + ".prefab";
-					FileManager::Write(directry + fileName, serializedData);
-					AssetManager::CreateInstance(directry, fileName);
-
-					//Object::Destroy(gameObject);
-				}
-				ImGui::EndPopup();
-			}
+			// ポップアップ
+			
 			ImGui::PopID();
 		};
 

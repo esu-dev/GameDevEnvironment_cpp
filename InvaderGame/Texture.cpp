@@ -34,7 +34,10 @@ bool Texture::Load(const std::wstring& path)
 {
 	// WIC(Windows Imaging Component)画像を読み込む
 	auto image = std::make_unique<DirectX::ScratchImage>(); // インスタンス化
-	if (FAILED(DirectX::LoadFromWICFile(path.c_str(), DirectX::WIC_FLAGS_NONE, &m_texMetaData, *image)))
+	// WIC_FLAGS_NONE...ガンマ補正などをしない設定
+	// WIC_FLAGS_FORCE_SRGB
+	// WIC_FLAGS_IGNORE_SRGB...カラーマネジメント情報（sRGBチャンクやガンマ値）を無視して、ただの数値データとして読み込む
+	if (FAILED(DirectX::LoadFromWICFile(path.c_str(), DirectX::WIC_FLAGS_IGNORE_SRGB, &m_texMetaData, *image)))
 	{
 		// 失敗
 		m_texMetaData = {};

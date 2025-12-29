@@ -9,8 +9,8 @@ GameObject* Object::Instantiate(GameObject* original)
 	if (original->IsPrefab)
 	{
 		std::vector<std::string> serializedData;
-		AssetManager::SerializeGameObject(serializedData, original);
-		return SceneDataManager::LoadGameObjectClone(SceneManagement::SceneManager::GetActiveScene(), serializedData);
+		AssetManager::SerializeGameObjectInChildren(serializedData, original);
+		return SceneDataManager::LoadGameObjectsClone(SceneManagement::SceneManager::GetActiveScene(), serializedData);
 	}
 
 	return nullptr;

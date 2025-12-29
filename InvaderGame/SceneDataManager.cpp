@@ -21,64 +21,16 @@ std::unordered_map<std::string, Object*>& SceneDataManager::GetInstanceID2Pointe
 	return SceneDataManager::instanceID2PointerMap;
 }
 
-GameObject* SceneDataManager::LoadGameObject(Scene* scene, const std::vector<std::string>& yamlVector)
+GameObject* SceneDataManager::LoadGameObjects(Scene* scene, const std::vector<std::string>& yamlVector)
 {
-	std::vector<InstanceData> instanceDataVector;
+	std::vector<AssetManager::InstanceData> instanceDataVector;
 
 	// デシリアライズ
-	bool isPacking = false;
-	std::string instanceID;
-	for (std::string content : yamlVector)
-	{
-		std::smatch m;
-
-		// instanceID
-		std::regex re(R"((-{3})\s(.+))");
-		if (std::regex_match(content, m, re))
-		{
-			isPacking = false;
-
-			instanceID = m[2].str();
-		}
-
-
-		// まとめる
-		if (isPacking)
-		{
-			if (std::regex_match(content, m, std::regex(R"(\s{2}(.+))")))
-			{
-				instanceDataVector.back().yamlVector.push_back(m[1].str());
-			}
-		}
-
-
-		// Objectの生成
-		re = { R"(^(\w+):)" };
-		if (std::regex_match(content, m, re))
-		{
-			isPacking = true;
-
-			std::string typeString = m[1].str();
-
-			// インスタンス生成
-			Object* object = Activator::CreateInstance(typeString);
-			if (object != nullptr)
-			{
-				object->instanceID = instanceID;
-				instanceID2PointerMap[instanceID] = object;
-			}
-
-			// instanceIDをキーとして、yamlとポインタを保持
-			InstanceData instanceData = InstanceData();
-			instanceData.object = object;
-
-			instanceDataVector.push_back(instanceData);
-		}
-	}
+	AssetManager::CreateInstanceDataVector(instanceDataVector, instanceID2PointerMap, yamlVector);
 
 	// 保持しておいたyamlを元にデシリアライズ
 	GameObject* returnedGameObject = nullptr;
-	for (const InstanceData& instanceData : instanceDataVector)
+	for (auto& instanceData : instanceDataVector)
 	{
 		if (instanceData.object == nullptr) continue;
 
@@ -96,9 +48,9 @@ GameObject* SceneDataManager::LoadGameObject(Scene* scene, const std::vector<std
 	return returnedGameObject;
 }
 
-GameObject* SceneDataManager::LoadGameObjectClone(Scene* scene, const std::vector<std::string>& yamlVector)
+GameObject* SceneDataManager::LoadGameObjectsClone(Scene* scene, const std::vector<std::string>& yamlVector)
 {
-	std::vector<InstanceData> instanceDataVector;
+	std::vector<AssetManager::InstanceData> instanceDataVector;
 	std::unordered_map<std::string, std::string> originalID2newIDmap;
 
 	// デシリアライズ
@@ -141,7 +93,7 @@ GameObject* SceneDataManager::LoadGameObjectClone(Scene* scene, const std::vecto
 			instanceID2PointerMap[object->instanceID] = object;
 
 			// instanceIDをキーとして、yamlとポインタを保持
-			InstanceData instanceData = InstanceData();
+			AssetManager::InstanceData instanceData;
 			instanceData.object = object;
 
 			instanceDataVector.push_back(instanceData);
@@ -151,7 +103,7 @@ GameObject* SceneDataManager::LoadGameObjectClone(Scene* scene, const std::vecto
 
 	// 保持しておいたyamlを元にデシリアライズ
 	GameObject* returnedGameObject = nullptr;
-	for (InstanceData& instanceData : instanceDataVector)
+	for (auto& instanceData : instanceDataVector)
 	{
 		// instanceIDの書き換え
 		for (std::string& line : instanceData.yamlVector)
@@ -176,7 +128,10 @@ GameObject* SceneDataManager::LoadGameObjectClone(Scene* scene, const std::vecto
 		// GameObjectをSceneに追加
 		if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceData.object))
 		{
-			returnedGameObject = gameObject;
+			if (returnedGameObject == nullptr)
+			{
+				returnedGameObject = gameObject;
+			}
 
 			scene->AddGameObject(gameObject);
 		}
@@ -246,20 +201,6 @@ void SceneDataManager::SaveRecord()
 std::string SceneDataManager::_path = "";
 std::unordered_map<std::string, Object*> SceneDataManager::instanceID2PointerMap;
 
-void SceneDataManager::DeserializeObject(Scene* scene, const std::vector<InstanceData>& instanceDataVector)
-{
-	for (const InstanceData& instanceData : instanceDataVector)
-	{
-		instanceData.object->Deserialize(instanceData.yamlVector);
-
-		// GameObjectをSceneに追加
-		if (GameObject* gameObject = dynamic_cast<GameObject*>(instanceData.object))
-		{
-			scene->AddGameObject(gameObject);
-		}
-	}
-}
-
 Scene* SceneDataManager::LoadScene(const std::string& path)
 {
 	instanceID2PointerMap.clear();
@@ -274,7 +215,7 @@ Scene* SceneDataManager::LoadScene(const std::string& path)
 	// シーンの作成
 	Scene* scene = new Scene(yamlVector[0]);
 
-	LoadGameObject(scene, yamlVector);
+	LoadGameObjects(scene, yamlVector);
 
 
 	SceneManager::SetActiveScene(scene);

@@ -12,8 +12,8 @@ class SceneDataManager
 public:
 	static Object* GetInstance(const std::string& instanceID);
 	static std::unordered_map<std::string, Object*>& GetInstanceID2PointerMap();
-	static GameObject* LoadGameObject(Scene* scene, const std::vector<std::string>& contentVector);
-	static GameObject* LoadGameObjectClone(Scene* scene, const std::vector<std::string>& contentVector);
+	static GameObject* LoadGameObjects(Scene* scene, const std::vector<std::string>& contentVector);
+	static GameObject* LoadGameObjectsClone(Scene* scene, const std::vector<std::string>& contentVector);
 	static Scene* Load(std::string path);
 	static Scene* LoadRecord();
 	static Scene* Reload();
@@ -22,16 +22,9 @@ public:
 
 
 private:
-	struct InstanceData
-	{
-		Object* object = nullptr;
-		std::vector<std::string> yamlVector;
-	};
-
 	static std::string _path;
 	static std::unordered_map<std::string, Object*> instanceID2PointerMap;
 
-	static void DeserializeObject(Scene* scene, const std::vector<InstanceData>& instanceDataVector);
 	static Scene* LoadScene(const std::string& path);
 };
 

@@ -18,6 +18,7 @@ namespace SceneManagement
 		void RemoveGameObject(GameObject* gameObject);
 		void Start();
 		void Update();
+		void EditorUpdate();
 
 	private:
 		std::string _name;

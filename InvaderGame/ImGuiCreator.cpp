@@ -30,7 +30,7 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 						continue;
 					}
 
-					//ImGui::PushID(SceneEditor::FieldID++);
+					// ここでエラーが出たら、おそらくオブジェクトが削除されているのにmapに残っている
 					if (ImGui::Selectable((pair.second->name + " (" + pair.second->GetName() + ") (" + pair.first + ")").c_str()))
 					{
 						outHasChanged = true;
@@ -71,7 +71,7 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 						else
 						{
 							auto assetFile = std::get<AssetManager::AssetFile*>(assetData);
-							if (ImGui::Selectable((assetFile->object->name + "  (" + assetFile->instanceID + ")").c_str()))
+							if (ImGui::Selectable((folderName + "  (" + assetFile->instanceID + ")").c_str()))
 							{
 								outHasChanged = true;
 

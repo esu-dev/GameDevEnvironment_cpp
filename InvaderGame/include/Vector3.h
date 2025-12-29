@@ -7,6 +7,11 @@ class Vector2;
 class Vector3 : public SerializedClass
 {
 public:
+	static float Dot(const Vector3& vectorA, const Vector3& vectorB);
+	static Vector3 Cross(const Vector3& vectorA, const Vector3& vectorB);
+	static float Angle(Vector3 vectorA, Vector3 vectorB);
+	static float SignedAngle(Vector3 from, Vector3 to, const Vector3& axis);
+
 	float x, y, z;
 
 	SERIALIZE3(SerializedClass,
@@ -31,6 +36,7 @@ public:
 	Vector3 operator-(const Vector3& vector) const;
 	Vector3 operator*(const float& value) const;
 	Vector3 operator/(const float& value) const;
+	bool operator==(const Vector3& vector) const;
 	static const Vector3 zero;
 	static const Vector3 one;
 	static const Vector3 up;

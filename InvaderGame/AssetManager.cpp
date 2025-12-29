@@ -7,6 +7,7 @@
 #include "Object.h"
 #include "GameObject.h"
 #include "Component.h"
+#include "Transform.h"
 #include "Debug.h"
 #include "Texture.h"
 #include "AnimationClip.h"
@@ -120,7 +121,7 @@ void AssetManager::Initialize()
 			// アセットがあればインスタンスの生成
 			if (FileManager::Exist(path))
 			{
-				CreateInstance(directry, fileName);
+				InstantiateAsset(directry, fileName, instanceID2PointerMap);
 			}
 		}
 
@@ -213,36 +214,8 @@ void AssetManager::CreateAsset(const std::string& path, Object* object)
 	FileManager::Write(path, serializedData);
 }
 
-void AssetManager::CreateInstance(const std::string& directry, const std::string& fileName)
+void AssetManager::CreateInstanceDataVector(std::vector<InstanceData>& outInstanceDataVec, std::unordered_map<std::string, Object*>& id2PtrMap, const std::vector<std::string> contentVector)
 {
-	// ディレクトリからAssetFolderを探索
-	std::function<AssetFolder*(std::string, AssetFolder*)> findAssetFolder = [&](const std::string& directry, AssetFolder* currentAssetFolder) -> AssetFolder* {
-		std::smatch smatch;
-		if (std::regex_match(directry, smatch, std::regex(R"(.*/(.+)(/.*))")))
-		{
-			auto map = currentAssetFolder->name2Datamp;
-			auto nextAssetFolder = std::get<AssetFolder*>(map[smatch[1].str()]);
-			
-			return findAssetFolder(smatch[2].str(), nextAssetFolder);
-		}
-		return currentAssetFolder;
-	};
-	AssetFolder* targetAssetFolder = findAssetFolder(directry, &assetFolder);
-
-	std::string path = directry + fileName;
-
-	// ファイルの中身を読む込む
-	std::vector<std::string> contentVector;
-	FileManager::Read(contentVector, path);
-
-
-	struct InstanceData
-	{
-		Object* object = nullptr;
-		std::vector<std::string> yamlVector;
-	};
-	std::vector<InstanceData> instanceDataVector;
-
 	bool isPacking = false;
 	std::string instanceID;
 	for (std::string content : contentVector)
@@ -264,7 +237,7 @@ void AssetManager::CreateInstance(const std::string& directry, const std::string
 		{
 			if (std::regex_match(content, m, std::regex(R"(\s{2}(.+))")))
 			{
-				instanceDataVector.back().yamlVector.push_back(m[1].str());
+				outInstanceDataVec.back().yamlVector.push_back(m[1].str());
 			}
 		}
 
@@ -286,18 +259,43 @@ void AssetManager::CreateInstance(const std::string& directry, const std::string
 				continue;
 			}
 			instanceData.object->instanceID = instanceID;
-			instanceData.object->name = fileName;
-			instanceID2PointerMap[instanceID] = instanceData.object;
+			id2PtrMap[instanceID] = instanceData.object; // こいつを外でやれば良かった。
 
-			AssetFile* assetFile = new AssetFile();
-			assetFile->instanceID = instanceID;
-			assetFile->object = instanceData.object;
-
-			targetAssetFolder->name2Datamp[fileName] = assetFile;
-
-			instanceDataVector.push_back(instanceData);
+			outInstanceDataVec.push_back(instanceData);
 		}
 	}
+}
+
+void AssetManager::InstantiateAsset(const std::string& directry, const std::string& fileName, std::unordered_map<std::string, Object*>& id2PtrMap)
+{
+	// ディレクトリからAssetFolderを探索
+	std::function<AssetFolder*(std::string, AssetFolder*)> findAssetFolder = [&](const std::string& directry, AssetFolder* currentAssetFolder) -> AssetFolder* {
+		std::smatch smatch;
+		if (std::regex_match(directry, smatch, std::regex(R"(.*/(.+)(/.*))")))
+		{
+			auto map = currentAssetFolder->name2Datamp;
+			auto nextAssetFolder = std::get<AssetFolder*>(map[smatch[1].str()]);
+			
+			return findAssetFolder(smatch[2].str(), nextAssetFolder);
+		}
+		return currentAssetFolder;
+	};
+	AssetFolder* targetAssetFolder = findAssetFolder(directry, &assetFolder);
+
+	std::string path = directry + fileName;
+
+	// ファイルの中身を読む込む
+	std::vector<std::string> contentVector;
+	FileManager::Read(contentVector, path);
+
+	std::vector<InstanceData> instanceDataVector;
+	CreateInstanceDataVector(instanceDataVector, id2PtrMap, contentVector);
+
+	// アセットファイルの作成
+	AssetFile* assetFile = new AssetFile();
+	assetFile->instanceID = instanceDataVector[0].object->instanceID;
+	assetFile->object = instanceDataVector[0].object;
+	targetAssetFolder->name2Datamp[fileName] = assetFile;
 
 	// 保持しておいたyamlを元にデシリアライズ
 	for (InstanceData& instanceData : instanceDataVector)
@@ -329,6 +327,7 @@ void AssetManager::SerializeGameObject(std::string& outSerializedData, GameObjec
 	}
 }
 
+
 void AssetManager::SerializeGameObject(std::vector<std::string>& outSerializedData, GameObject* gameObject)
 {
 	// GameObject
@@ -346,6 +345,22 @@ void AssetManager::SerializeGameObject(std::vector<std::string>& outSerializedDa
 		std::vector<std::string> serializedData = component->Serialize();
 		outSerializedData.insert(outSerializedData.end(), serializedData.begin(), serializedData.end());
 	}
+}
+
+void AssetManager::SerializeGameObjectInChildren(std::vector<std::string>& outSerializedData, GameObject* gameObject)
+{
+	// 再帰的にシリアライズ
+	std::function<void(GameObject*)> serializeGameObject_Recursively = [&](GameObject* targetGameObject) -> void {
+		SerializeGameObject(outSerializedData, targetGameObject);
+
+		// 子要素のシリアライズ
+		for (auto transform : targetGameObject->GetTransform()->GetChildVector())
+		{
+			serializeGameObject_Recursively(transform->gameObject);
+		}
+		};
+
+	serializeGameObject_Recursively(gameObject);
 }
 
 std::unordered_map<std::string, Object*> AssetManager::instanceID2PointerMap;

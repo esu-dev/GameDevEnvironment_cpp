@@ -197,8 +197,9 @@ void Physics2D::Update()
 				if (!isKinematic) rigidbodyB->AddImpulse(-impulse);
 
 				// デバッグ描画
-				float length = 1;
-				if (impulse.GetMagnitude() >= 1)
+				float minLength = 0.5f;
+				float length = minLength;
+				if (impulse.GetMagnitude() >= minLength)
 				{
 					length = 1 * log2(impulse.GetMagnitude());
 				}

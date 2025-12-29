@@ -41,6 +41,7 @@ void GameSystem::Execute()
 	_delayedExecutionEvent.RemoveAllListener();
 	OnUpdateListener.Invoke();
 
+	// staticクラスのUpdate処理
 	Input::Update();
 	Physics2D::Update();
 	InputSystem::Update();
@@ -50,8 +51,15 @@ void GameSystem::Execute()
 	Scene* activeScene = SceneManager::GetActiveScene();
 	if (activeScene != nullptr)
 	{
-		activeScene->Start();
-		activeScene->Update();
+		if (SceneEditor::GetIsEditMode())
+		{
+			activeScene->EditorUpdate();
+		}
+		else
+		{
+			activeScene->Start();
+			activeScene->Update();
+		}
 	}
 
 	// 登録されたレンダリング関数を order 順に実行する

@@ -1,0 +1,92 @@
+--- 918857390=1989093505=1033184184
+GameObject:
+  name: Parent
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)1911867762=1692746606=1382175474
+  - (instanceID)1520828945=131119909=1598602029
+  _isActive: true
+--- 1911867762=1692746606=1382175474
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)918857390=1989093505=1033184184
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 1
+  - (instanceID)1962610663=1747593853=1290377309
+  position:
+    _variable:
+      x: 4.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 1520828945=131119909=1598602029
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)918857390=1989093505=1033184184
+  _order: 0
+  m_texture: (instanceID)nullptr
+--- 1064519419=620531483=1925477257
+GameObject:
+  name: Child
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)1962610663=1747593853=1290377309
+  - (instanceID)706157595=169109330=862511461
+  _isActive: true
+--- 1962610663=1747593853=1290377309
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1064519419=620531483=1925477257
+  _parentProperty: (instanceID)1911867762=1692746606=1382175474
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 4.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 706157595=169109330=862511461
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1064519419=620531483=1925477257
+  _order: 0
+  m_texture: (instanceID)nullptr
+

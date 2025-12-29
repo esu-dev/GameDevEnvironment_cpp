@@ -6,6 +6,8 @@
 #include "Property.h"
 #include "Component.h"
 
+class Vector3;
+
 class Transform : public Component
 {
 public:
@@ -18,20 +20,24 @@ public:
 		SERIALIZE_FIELD3(_childVector),
 		SERIALIZE_FIELD3(position),
 		SERIALIZE_FIELD3(_localPosition),
+		SERIALIZE_FIELD3(_eulerRotation),
+		SERIALIZE_FIELD3(_localEulerRotation),
 		SERIALIZE_FIELD3(scale)
 	)
 
 	Transform();
-	~Transform() override {} // クラスのデストラクタが呼ばれないと、メンバ変数のデストラクタも呼ばれない。
+	~Transform() override; // クラスのデストラクタが呼ばれないと、メンバ変数のデストラクタも呼ばれない。
 
 	void OnValidate() override;
 	void Update() override;
+	void EditorUpdate() override;
 
 	Vector3 GetUp();
 	Vector3 GetForward();
 	void SetPosition(float x, float y);
 	void SetLocalPosition(Vector3& vector);
 	Vector3 GetLocalPosition();
+	void SetLocalRotation(Quaternion localRotation);
 	Transform* GetParent();
 	void SetParent(Transform* parent);
 	const std::vector<Transform*>& GetChildVector();
@@ -43,6 +49,13 @@ public:
 
 private:
 	Vector3 _localPosition = Vector3(0, 0, 0);
+	Vector3 _localEulerRotation;
+	Property<Vector3> _eulerRotation = {
+		[this]() -> Vector3 { return this->rotation.GetEulerAngles(); },
+		[this](Vector3 eulerRotation) -> void {
+			this->rotation = Quaternion::Euler(eulerRotation);
+		}
+	};
 	Transform* _parent = nullptr;
 	Property<Transform*> _parentProperty = {
 		[this]() -> Transform* { return this->_parent; },

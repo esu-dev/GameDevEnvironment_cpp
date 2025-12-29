@@ -8,6 +8,7 @@ class SceneEditor : public Editor
 {
 public:
 	static int FieldID;
+	static bool GetIsEditMode();
 	static void Initialize();
 	static void Update();
 

@@ -8,7 +8,6 @@
 
 SpriteRenderer::SpriteRenderer() : _color(DirectX::XMFLOAT4(1, 1, 1, 1)), m_texture { nullptr }
 {
-	
 }
 
 void SpriteRenderer::SetCanMove(bool canMove)
@@ -30,8 +29,12 @@ void SpriteRenderer::Update()
 {
 	// Update ‚ÍˆÊ’u‚âó‘Ô‚ÌXV‚¾‚¯‚É‚µ‚ÄA•`‰æ“o˜^‚ðs‚¤
 	// “o˜^ŠÖ”‚ðì¬‚µ‚Ä GameSystem ‚É‡˜•t‚«‚Å“n‚·
-	int order = _order;
-	GameSystem::GetInstance().AddRenderingData(order, [this]() -> void { this->Render(); });
+	GameSystem::GetInstance().AddRenderingData(_order, [this]() -> void { this->Render(); });
+}
+
+void SpriteRenderer::EditorUpdate()
+{
+	GameSystem::GetInstance().AddRenderingData(_order, [this]() -> void { this->Render(); });
 }
 
 void SpriteRenderer::Render()

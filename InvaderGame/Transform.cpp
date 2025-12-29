@@ -5,26 +5,20 @@ Transform::Transform()
 	rotation = Quaternion::AngleAxis(0, Vector3::forward);
 }
 
+Transform::~Transform()
+{
+	// 子オブジェクトの親をなくす
+	for (auto child : _childVector)
+	{
+		child->_parent = nullptr;
+	}
+
+	this->_parentProperty = nullptr;
+}
+
 void Transform::OnValidate()
 {
-	// 親子関係の更新
-	//if (_parent == nullptr)
-	//{
-	//	return;
-	//}
-
-	//// 親の子リストに自分が入っていなければ追加する
-	//auto& parentChildVector = _parent->GetChildVector();
-	//if (std::find(parentChildVector.begin(), parentChildVector.end(), this) == parentChildVector.end())
-	//{
-	//	_parent->AddChild(this);
-	//}
-	// 親の子リストに自分が入っているならば、削除する
-	/*auto& parentChildVector = _preParent->GetChildVector();
-	if (std::find(parentChildVector.begin(), parentChildVector.end(), this) != parentChildVector.end())
-	{
-		_preParent->RemoveChild(this);
-	}*/
+	
 }
 
 void Transform::Update()
@@ -35,7 +29,19 @@ void Transform::Update()
 	}
 
 	//_localPosition = position - parent->position;
-	position = _parent->position + _localPosition;
+	rotation = Quaternion::Euler(_parent->rotation.GetEulerAngles() + _localEulerRotation);
+	position = _parent->position + _parent->rotation * _localPosition;
+}
+
+void Transform::EditorUpdate()
+{
+	if (_parent == nullptr)
+	{
+		return;
+	}
+
+	rotation = Quaternion::Euler(_parent->rotation.GetEulerAngles() + _localEulerRotation);
+	position = _parent->position + _parent->rotation * _localPosition;
 }
 
 Vector3 Transform::GetUp()
@@ -76,6 +82,11 @@ void Transform::SetLocalPosition(Vector3& vector)
 Vector3 Transform::GetLocalPosition()
 {
 	return _localPosition;
+}
+
+void Transform::SetLocalRotation(Quaternion localRotation)
+{
+	_localEulerRotation = localRotation.GetEulerAngles();
 }
 
 Transform* Transform::GetParent()

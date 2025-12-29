@@ -3,6 +3,36 @@
 #include "GameEngine.h"
 
 
+float Vector3::Dot(const Vector3& vectorA, const Vector3& vectorB)
+{
+	return vectorA.x * vectorB.x + vectorA.y * vectorB.y + vectorA.z * vectorB.z;
+}
+
+Vector3 Vector3::Cross(const Vector3& vectorA, const Vector3& vectorB)
+{
+	return Vector3(
+		vectorA.y * vectorB.z - vectorA.z * vectorB.y,
+		vectorA.z * vectorB.x - vectorA.x * vectorB.z,
+		vectorA.x * vectorB.y - vectorA.y * vectorB.x);
+}
+
+float Vector3::Angle(Vector3 vectorA, Vector3 vectorB)
+{
+	float rad = DirectX::XMScalarACos(Dot(vectorA, vectorB) / (vectorA.GetMagnitude() * vectorB.GetMagnitude()));
+	return DirectX::XMConvertToDegrees(rad);
+}
+
+float Vector3::SignedAngle(Vector3 from, Vector3 to, const Vector3& axis)
+{
+	Vector3 cross = Cross(from, to);
+	float dot = Dot(cross, axis);
+	if (dot < 0)
+	{
+		return Angle(from, to);
+	}
+	return 360.0f - Angle(from, to);
+}
+
 Vector3::Vector3()
 {
 	this->x = 0;
@@ -34,7 +64,7 @@ Vector3 Vector3::AddZ(float value)
 
 float Vector3::GetMagnitude()
 {
-	return sqrt((x + y) * (x + y) + z * z);
+	return sqrt(x * x + y * y + z * z);
 }
 
 Vector3 Vector3::GetNormalized()
@@ -82,6 +112,11 @@ Vector3 Vector3::operator/ (const float& value) const
 {
 	const Vector3 v = Vector3(this->x / value, this->y / value, this->z / value);
 	return v;
+}
+
+bool Vector3::operator==(const Vector3& vector) const
+{
+	return this->x == vector.x && this->y == vector.y && this->z == vector.z;
 }
 
 const Vector3 Vector3::zero = Vector3(0, 0, 0);

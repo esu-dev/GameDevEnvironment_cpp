@@ -27,4 +27,5 @@ public:
 	)
 
 	virtual std::string GetName() { return "not overrided"; };
+	virtual void EditorUpdate() {}
 };

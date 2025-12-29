@@ -18,6 +18,7 @@ public:
 	void SetTexture(Texture* texture);
 	void SetColor(DirectX::XMFLOAT4 color);
 	void Update() override;
+	void EditorUpdate() override;
 
 	void SetFlip(bool flip);
 	bool GetFlip() const;

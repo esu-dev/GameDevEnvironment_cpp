@@ -1,6 +1,7 @@
 #include "GameObject.h"
 
 #include "GameSystem.h"
+#include "SceneEditor.h"
 #include "GameEngine.h"
 #include "Transform.h"
 
@@ -91,6 +92,11 @@ bool GameObject::ActiveSelf()
 
 void GameObject::Start()
 {
+	/*if (SceneEditor::GetIsEditMode())
+	{
+		return;
+	}*/
+
 	if (!_isActive)
 	{
 		return;
@@ -118,6 +124,12 @@ void GameObject::Update()
 		return;
 	}
 
+	// 親が非アクティブならUpdateしない
+	if (this->GetTransform()->GetParent() != nullptr && !this->GetTransform()->GetParent()->gameObject->ActiveSelf())
+	{
+		return;
+	}
+
 	// コンポーネントのUpdateを呼び出す
 	for (auto component : _componentVector)
 	{
@@ -127,5 +139,24 @@ void GameObject::Update()
 		}
 
 		component->Update();
+	}
+}
+
+void GameObject::EditorUpdate()
+{
+	if (!_isActive)
+	{
+		return;
+	}
+
+	// コンポーネントのUpdateを呼び出す
+	for (auto component : _componentVector)
+	{
+		if (!component->enabled)
+		{
+			continue;
+		}
+
+		component->EditorUpdate();
 	}
 }

@@ -25,6 +25,14 @@ Transform:
     x: 0.000000
     y: 0.000000
     z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 1.000000
     y: 1.000000
@@ -59,6 +67,14 @@ Transform:
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
     x: 0.000000
     y: 0.000000
     z: 0.000000
@@ -121,6 +137,14 @@ Transform:
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
     x: 0.000000
     y: 0.000000
     z: 0.000000
@@ -212,9 +236,17 @@ Transform:
     x: 0.000000
     y: 0.000000
     z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
-    x: 2.000000
-    y: 2.000000
+    x: 2.500000
+    y: 2.500000
     z: 1.000000
 --- 49295729=1781617583=1358331618
 SpriteRenderer:
@@ -222,7 +254,7 @@ SpriteRenderer:
   enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
   _order: 0
-  m_texture: (instanceID)nullptr
+  m_texture: (instanceID)792955701=2031660049=1079902562
 --- 1499966935=2004788885=708744623
 BoxCollider2D:
   name: initial name
@@ -247,6 +279,7 @@ DemoRewinder:
   name: initial name
   enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
+  _clockPrefab: (instanceID)1902359079=1161364369=1715518886
 --- 334835115=1784456080=1665319366
 GameObject:
   name: GroundChecker
@@ -275,6 +308,14 @@ Transform:
   _localPosition:
     x: 0.000000
     y: -2.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
     z: 0.000000
   scale:
     x: 1.000000
@@ -339,6 +380,14 @@ Transform:
     x: 0.000000
     y: 0.000000
     z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 5.000000
     y: 7.000000
@@ -395,6 +444,14 @@ Transform:
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
     x: 0.000000
     y: 0.000000
     z: 0.000000
@@ -465,6 +522,14 @@ Transform:
     x: 0.000000
     y: 0.000000
     z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 1.000000
     y: 1.000000
@@ -526,6 +591,14 @@ Transform:
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
     x: 0.000000
     y: 0.000000
     z: 0.000000
@@ -592,6 +665,14 @@ Transform:
     x: 0.000000
     y: 0.000000
     z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 3.000000
     y: 17.000000
@@ -647,6 +728,14 @@ Transform:
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
     x: 0.000000
     y: 0.000000
     z: 0.000000
@@ -708,6 +797,14 @@ Transform:
     x: 0.000000
     y: 0.000000
     z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 3.000000
     y: 17.000000
@@ -763,6 +860,14 @@ Transform:
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
     x: 0.000000
     y: 0.000000
     z: 0.000000
@@ -824,6 +929,14 @@ Transform:
     x: 0.000000
     y: 0.000000
     z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
   scale:
     x: 1.000000
     y: 0.250000
@@ -854,4 +967,95 @@ Rigidbody2D:
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
+--- 1877011052=2065036128=1101571353
+GameObject:
+  name: Clock
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)137303806=73437271=159547994
+  - (instanceID)1697155420=1974554266=172243104
+  _isActive: true
+--- 137303806=73437271=159547994
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1877011052=2065036128=1101571353
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 1
+  - (instanceID)839390380=820693042=153393821
+  position:
+    _variable:
+      x: 2.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.250000
+    y: 0.250000
+    z: 1.000000
+--- 1697155420=1974554266=172243104
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1877011052=2065036128=1101571353
+  _order: 0
+  m_texture: (instanceID)1194511168=1983697167=1980983536
+--- 1656093106=1946479578=1442924928
+GameObject:
+  name: Default
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)839390380=820693042=153393821
+  - (instanceID)509983192=830578142=728126570
+  _isActive: true
+--- 839390380=820693042=153393821
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1656093106=1946479578=1442924928
+  _parentProperty: (instanceID)137303806=73437271=159547994
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 2.000000
+      y: 0.500000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.500000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.100000
+    y: 1.000000
+    z: 1.000000
+--- 509983192=830578142=728126570
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1656093106=1946479578=1442924928
+  _order: 0
+  m_texture: (instanceID)nullptr
 

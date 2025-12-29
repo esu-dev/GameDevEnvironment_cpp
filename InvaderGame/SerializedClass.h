@@ -188,6 +188,17 @@ protected:
 					serializedDataVector.push_back(indent + name + ": (instanceID)" + value.Get()->instanceID);
 				}
 			}
+			// シリアライズ可能
+			else if constexpr (std::is_base_of<SerializedClass, typename T::value_type>())
+			{
+				serializedDataVector.push_back(indent + name + ":");
+				std::vector<std::string> subSerializeDataVector = value.Get().Serialize(indentNum + 1);
+				serializedDataVector.insert(serializedDataVector.end(), subSerializeDataVector.begin(), subSerializeDataVector.end());
+			}
+			else
+			{
+				Debug::Log("Property内の型を追加してください。(type: %s) [SerializeField()]", typeid(typename T::value_type).name());
+			}
 		}
 
 		return serializedDataVector;
@@ -422,6 +433,18 @@ protected:
 
 					variable = (typename T::value_type)object;
 				}
+			}
+			// シリアライズできる場合(ex. Record)
+			else if constexpr (std::is_base_of<SerializedClass, typename T::value_type>())
+			{
+				// 代入しないとプロパティのセッターが呼ばれない
+				typename T::value_type propertyField = variable.Get();
+				propertyField.Deserialize(instanceData->memberVector);
+				variable = propertyField;
+			}
+			else
+			{
+				Debug::Log("Property内の型を追加してください。(type: %s) [DeserializeField()]", typeid(typename T::value_type).name());
 			}
 		}
 		else

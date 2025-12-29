@@ -88,6 +88,7 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	scDesc.BufferDesc.Width = width;						// 画面の幅
 	scDesc.BufferDesc.Height = height;						// 画面の高さ
 	scDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;	// バッファの形式。アルファを含むチャネルあたり 8 ビットをサポートする 4 コンポーネントの 32 ビット符号なし正規化整数形式。一般的な256だから分かりやすい
+	//scDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;	// 逆ガンマ補正をかけるフォーマット。jpeg,pngはガンマ補正されて保存されている。
 	scDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED; // スキャンライン（走査線）の指定
 	scDesc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED; // ウィンドウ描画時のスケーリングの指定
 	scDesc.BufferDesc.RefreshRate.Numerator = 0; // リフレッシュレートの分子
@@ -210,7 +211,7 @@ void Direct3D::ChangeMode_2D()
 	{
 		// 異方性フィルタリング補間、Wrapモード
 		D3D11_SAMPLER_DESC desc = {};
-		//desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;	// 線形フィルタリング
+		//desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;	// 線形フィルタリング ドット絵には向かない設定
 		desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;	// ポイントサンプリング
 		desc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;		// テクスチャアドレッシングモードをWrapに
 		desc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;		// テクスチャアドレッシングモードをWrapに

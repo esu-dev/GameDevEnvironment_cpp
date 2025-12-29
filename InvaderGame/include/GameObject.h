@@ -69,6 +69,7 @@ public:
 	bool ActiveSelf();
 	void Start();
 	void Update();
+	void EditorUpdate() override;
 	
 
 private:

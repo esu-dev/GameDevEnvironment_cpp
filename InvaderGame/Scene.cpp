@@ -61,4 +61,14 @@ namespace SceneManagement
 			num = _gameObjectVector.size();
 		}
 	}
+
+	void Scene::EditorUpdate()
+	{
+		int num = _gameObjectVector.size();
+		for (int i = 0; i < num; i++)
+		{
+			_gameObjectVector[i]->EditorUpdate();
+			num = _gameObjectVector.size();
+		}
+	}
 }

@@ -2,6 +2,8 @@
 
 #include "Direct3D.h"
 #include "Vector3.h"
+#include "Camera.h"
+#include "Transform.h"
 
 void Debug::Log(LPCWSTR log, ...)
 {
@@ -44,6 +46,8 @@ void Debug::DrawLine(const Vector3& start, const Vector3& end, const DirectX::XM
 	Vector3 position = start + v / 2;
 	float length = v.GetMagnitude();
 
-	Direct3D::GetInstance().SetRect(position.x, position.y, length, 0.25f, Quaternion::FromToRotation(Vector3::right, v));
+	Vector3 drawPosition = position - Camera::get_main()->GetTransform()->position;
+
+	Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, length, 0.25f, Quaternion::FromToRotation(Vector3::right, v));
 	Direct3D::GetInstance().Draw2D();
 }

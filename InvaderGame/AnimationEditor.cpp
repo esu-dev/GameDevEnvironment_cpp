@@ -54,7 +54,7 @@ void AnimationEditor::Update()
 				std::string path = directry + fileName;
 				AssetManager::CreateAsset(path, _animationClip);
 
-				AssetManager::CreateInstance(directry, fileName);
+				AssetManager::InstantiateAsset(directry, fileName, AssetManager::GetInstanceID2PointerMap());
 
 				// window‚ð•Â‚¶‚é
 				isEditMode = false;
