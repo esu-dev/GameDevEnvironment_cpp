@@ -35,7 +35,6 @@ private:
 
 	int _textureIndex = 0;
 	float _playingTime = 0;
-	SpriteRenderer* _spriteRenderer;
 	AnimationState _currentAnimation;
 	std::vector<AnimationState> _animationVector;
 };

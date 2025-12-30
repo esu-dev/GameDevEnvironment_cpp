@@ -92,11 +92,6 @@ bool GameObject::ActiveSelf()
 
 void GameObject::Start()
 {
-	/*if (SceneEditor::GetIsEditMode())
-	{
-		return;
-	}*/
-
 	if (!_isActive)
 	{
 		return;
@@ -114,6 +109,11 @@ void GameObject::Start()
 			component->Start();
 			component.get()->Started = true;
 		}
+	}
+
+	for (auto child : this->GetTransform()->GetChildVector())
+	{
+		child->gameObject->Start();
 	}
 }
 
@@ -163,6 +163,6 @@ void GameObject::EditorUpdate()
 	// 子オブジェクトのUpdateを行う
 	for (auto child : this->GetTransform()->GetChildVector())
 	{
-		child->gameObject->Update();
+		child->gameObject->EditorUpdate();
 	}
 }

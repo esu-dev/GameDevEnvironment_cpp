@@ -47,6 +47,11 @@ namespace SceneManagement
 		int num = _gameObjectVector.size();
 		for (int i = 0; i < num; i++)
 		{
+			// e‚ª‚¢‚é‚È‚çStart()‚ðŒÄ‚Î‚È‚¢
+			if (_gameObjectVector[i]->GetTransform()->GetParent() != nullptr)
+			{
+				continue;
+			}
 			_gameObjectVector[i]->Start();
 			num = _gameObjectVector.size();
 		}

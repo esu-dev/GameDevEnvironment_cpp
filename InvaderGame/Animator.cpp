@@ -19,7 +19,10 @@ void Animator::Play(std::string animationName)
 
 	std::vector<std::string> result;
 	std::transform(_animationVector.begin(), _animationVector.end(), std::back_inserter(result),
-		[](AnimationState animation) { return animation.AnimationClip->GetAnimationName(); });
+		[](AnimationState animation) {
+			if (animation.AnimationClip == nullptr) return std::string();
+			return animation.AnimationClip->GetAnimationName();
+		});
 
 	auto itr = std::find(result.begin(), result.end(), animationName);
 	__int64 index = std::distance(result.begin(), itr);
@@ -34,8 +37,6 @@ void Animator::Play(std::string animationName)
 
 void Animator::Start()
 {
-	_spriteRenderer = this->GetComponent<SpriteRenderer>();
-
 	if (_animationVector.size() == 0)
 	{
 		return;
@@ -67,7 +68,7 @@ void Animator::Update()
 	if (_playingTime >= _currentAnimation.AnimationClip->GetAnimDataSetVec()[_textureIndex].time / _currentAnimation.Time)
 	{
 		//Debug::Log(L"%d", _textureIndex);
-		_spriteRenderer->SetTexture(_currentAnimation.AnimationClip->GetAnimDataSetVec()[_textureIndex].texture);
+		this->GetComponent<SpriteRenderer>()->SetTexture(_currentAnimation.AnimationClip->GetAnimDataSetVec()[_textureIndex].texture);
 		_textureIndex++;
 	}
 

@@ -1,0 +1,4 @@
+--- 20914912=1775566912=256221169
+Texture:
+  name: initial name
+

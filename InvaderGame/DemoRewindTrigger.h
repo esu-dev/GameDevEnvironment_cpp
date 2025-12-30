@@ -13,6 +13,7 @@ public:
 	void OnTriggerStay2D(GameObject* other) override;
 	void Update() override;
 
+	void RecordTriggerOn();
 	void Rewind();
 
 

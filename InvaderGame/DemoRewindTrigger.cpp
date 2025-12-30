@@ -1,11 +1,12 @@
 #include "DemoRewindTrigger.h"
 
 #include "EngineTime.h"
+#include "Animator.h"
 #include "DemoRewinder.h"
 
 void DemoRewindTrigger::OnEnable()
 {
-	_timer = 1;
+	
 }
 
 void DemoRewindTrigger::OnTriggerStay2D(GameObject* other)
@@ -25,6 +26,16 @@ void DemoRewindTrigger::Update()
 	}
 
 	_timer -= EngineTime::GetDeltaTime();
+}
+
+void DemoRewindTrigger::RecordTriggerOn()
+{
+	this->gameObject->SetActive(true);
+
+	_timer = 1;
+
+	// AnimationÄ¶
+	this->GetComponent<Animator>()->Play("RecordAnimation");
 }
 
 void DemoRewindTrigger::Rewind()
