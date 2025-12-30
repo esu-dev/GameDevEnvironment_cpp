@@ -124,12 +124,6 @@ void GameObject::Update()
 		return;
 	}
 
-	// 親が非アクティブならUpdateしない
-	if (this->GetTransform()->GetParent() != nullptr && !this->GetTransform()->GetParent()->gameObject->ActiveSelf())
-	{
-		return;
-	}
-
 	// コンポーネントのUpdateを呼び出す
 	for (auto component : _componentVector)
 	{
@@ -139,6 +133,12 @@ void GameObject::Update()
 		}
 
 		component->Update();
+	}
+
+	// 子オブジェクトのUpdateを行う
+	for (auto child : this->GetTransform()->GetChildVector())
+	{
+		child->gameObject->Update();
 	}
 }
 
@@ -158,5 +158,11 @@ void GameObject::EditorUpdate()
 		}
 
 		component->EditorUpdate();
+	}
+
+	// 子オブジェクトのUpdateを行う
+	for (auto child : this->GetTransform()->GetChildVector())
+	{
+		child->gameObject->Update();
 	}
 }

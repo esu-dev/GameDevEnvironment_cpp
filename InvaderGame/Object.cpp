@@ -6,14 +6,9 @@
 
 GameObject* Object::Instantiate(GameObject* original)
 {
-	if (original->IsPrefab)
-	{
-		std::vector<std::string> serializedData;
-		AssetManager::SerializeGameObjectInChildren(serializedData, original);
-		return SceneDataManager::LoadGameObjectsClone(SceneManagement::SceneManager::GetActiveScene(), serializedData);
-	}
-
-	return nullptr;
+	std::vector<std::string> serializedData;
+	AssetManager::SerializeGameObjectInChildren(serializedData, original);
+	return SceneDataManager::LoadGameObjectsClone(SceneManagement::SceneManager::GetActiveScene(), serializedData);
 }
 
 void Object::Destroy(GameObject* gameObject)

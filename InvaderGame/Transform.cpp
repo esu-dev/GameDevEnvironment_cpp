@@ -91,7 +91,7 @@ void Transform::SetLocalRotation(Quaternion localRotation)
 
 Transform* Transform::GetParent()
 {
-	return _parentProperty;
+	return _parent;
 }
 
 void Transform::SetParent(Transform* parent)

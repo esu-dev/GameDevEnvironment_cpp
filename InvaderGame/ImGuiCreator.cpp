@@ -3,6 +3,7 @@
 #include "imgui_impl_dx11.h"
 #include "Object.h"
 #include "Component.h"
+#include "Transform.h"
 #include "SceneEditor.h"
 #include "SceneDataManager.h"
 
@@ -16,13 +17,58 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 	{
 		ImGui::OpenPopup("select_instanceID_popup");
 	}
-	ImGui::SetNextWindowSize(ImVec2(500, 600));
+	ImGui::SetNextWindowSize(ImVec2(0, 600));
 	if (ImGui::BeginPopup("select_instanceID_popup"))
 	{
 		if (ImGui::BeginTabBar("TabVar"))
 		{
 			if (ImGui::BeginTabItem("Scene"))
 			{
+				// Noneの配置
+				if (ImGui::Selectable("none"))
+				{
+					outHasChanged = true;
+
+					serializedData = serializedVarName + "nullptr";
+				}
+
+				std::function<void(GameObject*)> putSceneInstance = [&](GameObject* go) -> void {
+						// 親TreeNode
+						ImGui::PushID(go->instanceID.c_str());
+						bool isTreeOpen = ImGui::TreeNodeEx(go->name.c_str(), ImGuiTreeNodeFlags_OpenOnArrow);
+						if (ImGui::IsItemClicked())
+						{
+							outHasChanged = true;
+
+							serializedData = serializedVarName + "(instanceID)" + go->instanceID;
+						}
+						ImGui::PopID();
+
+						if (isTreeOpen)
+						{
+							// コンポーネントを列挙
+							for (auto& component : go->GetComponentVector())
+							{
+								std::string componentID = component.get()->instanceID;
+								if (ImGui::Selectable((component.get()->GetName() + " (" + componentID + ")").c_str()))
+								{
+									outHasChanged = true;
+
+									serializedData = serializedVarName + "(instanceID)" + componentID;
+								}
+							}
+
+							// 子オブジェクトに対して再帰的に実行
+							for (auto& child : go->GetTransform()->GetChildVector())
+							{
+								putSceneInstance(child->gameObject);
+							}
+
+							ImGui::TreePop();
+						}
+					};
+
+
 				for (auto& pair : SceneDataManager::GetInstanceID2PointerMap())
 				{
 					if (pair.second == nullptr)
@@ -30,15 +76,14 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 						continue;
 					}
 
-					// ここでエラーが出たら、おそらくオブジェクトが削除されているのにmapに残っている
-					if (ImGui::Selectable((pair.second->name + " (" + pair.second->GetName() + ") (" + pair.first + ")").c_str()))
+					if (GameObject* gameObject = dynamic_cast<GameObject*>(pair.second))
 					{
-						outHasChanged = true;
-
-						serializedData = serializedVarName + "(instanceID)" + pair.first;
-						//ImGui::CloseCurrentPopup();
+						if (gameObject->GetTransform()->GetParent() != nullptr)
+						{
+							continue;
+						}
+						putSceneInstance(gameObject);
 					}
-					//ImGui::PopID();
 				}
 				ImGui::EndTabItem();
 			}

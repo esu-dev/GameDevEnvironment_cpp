@@ -57,6 +57,11 @@ namespace SceneManagement
 		int num = _gameObjectVector.size();
 		for (int i = 0; i < num; i++)
 		{
+			// e‚ª‚¢‚é‚È‚çUpdate‚µ‚È‚¢
+			if (_gameObjectVector[i]->GetTransform()->GetParent() != nullptr)
+			{
+				continue;
+			}
 			_gameObjectVector[i]->Update();
 			num = _gameObjectVector.size();
 		}
@@ -67,6 +72,11 @@ namespace SceneManagement
 		int num = _gameObjectVector.size();
 		for (int i = 0; i < num; i++)
 		{
+			// e‚ª‚¢‚é‚È‚çUpdate‚µ‚È‚¢
+			if (_gameObjectVector[i]->GetTransform()->GetParent() != nullptr)
+			{
+				continue;
+			}
 			_gameObjectVector[i]->EditorUpdate();
 			num = _gameObjectVector.size();
 		}

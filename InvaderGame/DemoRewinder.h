@@ -22,6 +22,5 @@ private:
 	bool _isRewinding = false;
 	float _recordStartTime = 0.0f;
 	float _rewindTime = 0.0f;
-	float _rewindStartTime;
 	GameObject* _clock;
 };

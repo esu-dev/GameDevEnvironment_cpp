@@ -431,7 +431,10 @@ protected:
 					// インスタンスの検索
 					Object* object = getInstanceFromID(instanceID);
 
-					variable = (typename T::value_type)object;
+					if (typename T::value_type v = dynamic_cast<typename T::value_type>(object))
+					{
+						variable = v;
+					}
 				}
 			}
 			// シリアライズできる場合(ex. Record)

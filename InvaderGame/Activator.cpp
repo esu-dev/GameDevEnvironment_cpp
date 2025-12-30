@@ -9,6 +9,7 @@
 #include "Shutter.h"
 #include "DemoRewindTrigger.h"
 #include "DemoRewinder.h"
+#include "DemoClock.h"
 
 #define REGISTER_TYPE(type) \
 	nameToInstanceMap[#type] = []() -> Object* { return new type(); }
@@ -32,6 +33,7 @@ void Activator::Initialize()
 	REGISTER_TYPE(Shutter);
 	REGISTER_TYPE(DemoRewindTrigger);
 	REGISTER_TYPE(DemoRewinder);
+	REGISTER_TYPE(DemoClock);
 }
 
 Object* Activator::CreateInstance(std::string typeString)

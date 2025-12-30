@@ -279,7 +279,7 @@ DemoRewinder:
   name: initial name
   enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
-  _clockPrefab: (instanceID)1902359079=1161364369=1715518886
+  _clockPrefab: (instanceID)368448661=1525734141=50673468
 --- 334835115=1784456080=1665319366
 GameObject:
   name: GroundChecker
@@ -967,26 +967,28 @@ Rigidbody2D:
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
---- 1877011052=2065036128=1101571353
+--- 1303206683=1695757821=1782838871
 GameObject:
-  name: Clock
+  name: Clock5
   IsPrefab: true
   tag: Untagged
-  (vector)_componentVector: 2
-  - (instanceID)137303806=73437271=159547994
-  - (instanceID)1697155420=1974554266=172243104
+  (vector)_componentVector: 3
+  - (instanceID)2063540702=678194951=1996428522
+  - (instanceID)1874985750=938248560=362570720
+  - (instanceID)326308845=1456808299=627716510
   _isActive: true
---- 137303806=73437271=159547994
+--- 2063540702=678194951=1996428522
 Transform:
   name: GameObject.prefab
   enabled: true
-  gameObject: (instanceID)1877011052=2065036128=1101571353
+  gameObject: (instanceID)1303206683=1695757821=1782838871
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector: 1
-  - (instanceID)839390380=820693042=153393821
+  (vector)_childVector: 2
+  - (instanceID)1542385421=1598856568=847803208
+  - (instanceID)1614944605=530902992=193089434
   position:
     _variable:
-      x: 2.000000
+      x: 6.000000
       y: 0.000000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
@@ -1006,32 +1008,160 @@ Transform:
     x: 0.250000
     y: 0.250000
     z: 1.000000
---- 1697155420=1974554266=172243104
+--- 1874985750=938248560=362570720
 SpriteRenderer:
   name: GameObject.prefab
   enabled: true
-  gameObject: (instanceID)1877011052=2065036128=1101571353
+  gameObject: (instanceID)1303206683=1695757821=1782838871
   _order: 0
   m_texture: (instanceID)1194511168=1983697167=1980983536
---- 1656093106=1946479578=1442924928
+--- 326308845=1456808299=627716510
+DemoClock:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)1303206683=1695757821=1782838871
+  _minuteHandParent: (instanceID)1618235810=1142196447=1814506518
+  _secondHandParent: (instanceID)2001735598=1284891704=1873479399
+--- 1618235810=1142196447=1814506518
 GameObject:
-  name: Default
+  name: MinuteHandParent
   IsPrefab: true
   tag: Untagged
-  (vector)_componentVector: 2
-  - (instanceID)839390380=820693042=153393821
-  - (instanceID)509983192=830578142=728126570
+  (vector)_componentVector: 1
+  - (instanceID)1542385421=1598856568=847803208
   _isActive: true
---- 839390380=820693042=153393821
+--- 1542385421=1598856568=847803208
 Transform:
   name: GameObject.prefab
   enabled: true
-  gameObject: (instanceID)1656093106=1946479578=1442924928
-  _parentProperty: (instanceID)137303806=73437271=159547994
+  gameObject: (instanceID)1618235810=1142196447=1814506518
+  _parentProperty: (instanceID)2063540702=678194951=1996428522
+  (vector)_childVector: 1
+  - (instanceID)994151677=943370042=155126295
+  position:
+    _variable:
+      x: 6.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 1016146509=545777097=45671010
+GameObject:
+  name: MinuteHand
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)994151677=943370042=155126295
+  - (instanceID)2011434667=1262833714=1177981621
+  _isActive: true
+--- 994151677=943370042=155126295
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1016146509=545777097=45671010
+  _parentProperty: (instanceID)1542385421=1598856568=847803208
   (vector)_childVector: 0
   position:
     _variable:
-      x: 2.000000
+      x: 6.000000
+      y: 0.250000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.250000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.100000
+    y: 0.500000
+    z: 1.000000
+--- 2011434667=1262833714=1177981621
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1016146509=545777097=45671010
+  _order: 0
+  m_texture: (instanceID)nullptr
+--- 2001735598=1284891704=1873479399
+GameObject:
+  name: SecondHandParent
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 1
+  - (instanceID)1614944605=530902992=193089434
+  _isActive: true
+--- 1614944605=530902992=193089434
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)2001735598=1284891704=1873479399
+  _parentProperty: (instanceID)2063540702=678194951=1996428522
+  (vector)_childVector: 1
+  - (instanceID)142253766=1815545516=1826544086
+  position:
+    _variable:
+      x: 6.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 753617799=280151199=73900224
+GameObject:
+  name: SecondHand
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)142253766=1815545516=1826544086
+  - (instanceID)1756611112=632209980=658157025
+  _isActive: true
+--- 142253766=1815545516=1826544086
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)753617799=280151199=73900224
+  _parentProperty: (instanceID)1614944605=530902992=193089434
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 6.000000
       y: 0.500000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
@@ -1051,11 +1181,84 @@ Transform:
     x: 0.100000
     y: 1.000000
     z: 1.000000
---- 509983192=830578142=728126570
+--- 1756611112=632209980=658157025
 SpriteRenderer:
   name: GameObject.prefab
   enabled: true
-  gameObject: (instanceID)1656093106=1946479578=1442924928
+  gameObject: (instanceID)753617799=280151199=73900224
   _order: 0
   m_texture: (instanceID)nullptr
+--- 1754185402=2007776418=1614416016
+GameObject:
+  name: GimmickBox
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 5
+  - (instanceID)287446978=763981253=1469764706
+  - (instanceID)2076079544=610082941=194838484
+  - (instanceID)1858647210=348203097=818967792
+  - (instanceID)1372543117=996947551=1471962411
+  - (instanceID)736547332=1605084122=450565839
+  _isActive: true
+--- 287446978=763981253=1469764706
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1754185402=2007776418=1614416016
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 8.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 2.500000
+    y: 2.500000
+    z: 1.000000
+--- 2076079544=610082941=194838484
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1754185402=2007776418=1614416016
+  _order: 0
+  m_texture: (instanceID)792955701=2031660049=1079902562
+--- 1858647210=348203097=818967792
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)1754185402=2007776418=1614416016
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1372543117=996947551=1471962411
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)1754185402=2007776418=1614416016
+  IsKinematic: false
+  IsTrigger: false
+  GravityScale: 1.000000
+--- 736547332=1605084122=450565839
+DemoRewinder:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)1754185402=2007776418=1614416016
+  _clockPrefab: (instanceID)368448661=1525734141=50673468
 

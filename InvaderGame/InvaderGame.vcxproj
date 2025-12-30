@@ -205,6 +205,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="DemoClock.cpp" />
     <ClCompile Include="DemoPhysicsManager.cpp" />
     <ClCompile Include="DemoPhysicsSceneAsset.cpp" />
     <ClCompile Include="DemoRewinder.cpp" />
@@ -329,6 +330,7 @@
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="CircleCollider2D.h" />
     <ClInclude Include="CommonExtension.h" />
+    <ClInclude Include="DemoClock.h" />
     <ClInclude Include="DemoPhysicsManager.h" />
     <ClInclude Include="DemoPhysicsSceneAsset.h" />
     <ClInclude Include="DemoRewinder.h" />

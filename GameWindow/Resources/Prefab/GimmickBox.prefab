@@ -1,0 +1,74 @@
+--- 890107419=408267702=1775497643
+GameObject:
+  name: GimmickBox
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 5
+  - (instanceID)1619447062=528024578=1024881459
+  - (instanceID)49295729=1781617583=1358331618
+  - (instanceID)1499966935=2004788885=708744623
+  - (instanceID)30106322=1800156485=1003418034
+  - (instanceID)153492873=74805102=452843053
+  _isActive: true
+--- 1619447062=528024578=1024881459
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 3.000000
+      y: -6.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 2.500000
+    y: 2.500000
+    z: 1.000000
+--- 49295729=1781617583=1358331618
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _order: 0
+  m_texture: (instanceID)792955701=2031660049=1079902562
+--- 1499966935=2004788885=708744623
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 30106322=1800156485=1003418034
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  IsKinematic: false
+  IsTrigger: false
+  GravityScale: 1.000000
+--- 153492873=74805102=452843053
+DemoRewinder:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _clockPrefab: (instanceID)368448661=1525734141=50673468
+

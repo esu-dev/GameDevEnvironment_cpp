@@ -137,7 +137,7 @@ void SceneEditor::Update()
 				if (ImGui::Selectable("Duplicate"))
 				{
 					GameObject* newGameObject = Object::Instantiate(go);
-					SceneManager::GetActiveScene()->AddGameObject(newGameObject);
+					//SceneManager::GetActiveScene()->AddGameObject(newGameObject); Instantiate()‚ÅŠù‚ÉƒV[ƒ“‚É’Ç‰Á‚³‚ê‚Ä‚¢‚éB
 				}
 				if (ImGui::Selectable("Delete"))
 				{

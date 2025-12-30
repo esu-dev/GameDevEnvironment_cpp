@@ -291,6 +291,9 @@
     <ClCompile Include="DemoRewinder.cpp">
       <Filter>Source\Demo</Filter>
     </ClCompile>
+    <ClCompile Include="DemoClock.cpp">
+      <Filter>Source\Demo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -569,6 +572,9 @@
       <Filter>Source\Demo</Filter>
     </ClInclude>
     <ClInclude Include="DemoRewinder.h">
+      <Filter>Source\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoClock.h">
       <Filter>Source\Demo</Filter>
     </ClInclude>
   </ItemGroup>

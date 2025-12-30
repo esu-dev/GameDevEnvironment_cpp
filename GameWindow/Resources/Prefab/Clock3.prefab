@@ -1,0 +1,222 @@
+--- 255299954=2012637925=719624369
+GameObject:
+  name: Clock3
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 3
+  - (instanceID)1710143559=311473483=1822337014
+  - (instanceID)548725512=1116289303=75843628
+  - (instanceID)2048660796=1592061250=1074753635
+  _isActive: true
+--- 1710143559=311473483=1822337014
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)255299954=2012637925=719624369
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 2
+  - (instanceID)1749687160=1123591469=868431487
+  - (instanceID)573044714=1437004769=1840672745
+  position:
+    _variable:
+      x: 3.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.250000
+    y: 0.250000
+    z: 1.000000
+--- 548725512=1116289303=75843628
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)255299954=2012637925=719624369
+  _order: 0
+  m_texture: (instanceID)1194511168=1983697167=1980983536
+--- 2048660796=1592061250=1074753635
+DemoClock:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)255299954=2012637925=719624369
+  _minuteHandParent: (instanceID)135409423=233476037=1844803954
+  _secondHandParent: (instanceID)347600382=360002352=1940714379
+--- 135409423=233476037=1844803954
+GameObject:
+  name: MinuteHandParent
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 1
+  - (instanceID)1749687160=1123591469=868431487
+  _isActive: true
+--- 1749687160=1123591469=868431487
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)135409423=233476037=1844803954
+  _parentProperty: (instanceID)1710143559=311473483=1822337014
+  (vector)_childVector: 1
+  - (instanceID)987495837=1907851110=1438249013
+  position:
+    _variable:
+      x: 3.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 1386076855=1384549119=191182359
+GameObject:
+  name: MinuteHand
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)987495837=1907851110=1438249013
+  - (instanceID)730845998=1315371843=1521514257
+  _isActive: true
+--- 987495837=1907851110=1438249013
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1386076855=1384549119=191182359
+  _parentProperty: (instanceID)1749687160=1123591469=868431487
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 3.000000
+      y: 0.500000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.500000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.100000
+    y: 1.000000
+    z: 1.000000
+--- 730845998=1315371843=1521514257
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1386076855=1384549119=191182359
+  _order: 0
+  m_texture: (instanceID)nullptr
+--- 347600382=360002352=1940714379
+GameObject:
+  name: SecondHandParent
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 1
+  - (instanceID)573044714=1437004769=1840672745
+  _isActive: true
+--- 573044714=1437004769=1840672745
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)347600382=360002352=1940714379
+  _parentProperty: (instanceID)1710143559=311473483=1822337014
+  (vector)_childVector: 1
+  - (instanceID)1251603219=302373511=315957083
+  position:
+    _variable:
+      x: 3.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 47.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 47.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 1451893171=1578123232=116117627
+GameObject:
+  name: SecondHand
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)1251603219=302373511=315957083
+  - (instanceID)821342038=1666520976=1114537346
+  _isActive: true
+--- 1251603219=302373511=315957083
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1451893171=1578123232=116117627
+  _parentProperty: (instanceID)573044714=1437004769=1840672745
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 2.817162
+      y: 0.170500
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.250000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 47.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.100000
+    y: 0.500000
+    z: 1.000000
+--- 821342038=1666520976=1114537346
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1451893171=1578123232=116117627
+  _order: 0
+  m_texture: (instanceID)nullptr
+
