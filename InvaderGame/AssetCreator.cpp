@@ -16,7 +16,7 @@ void AssetCreator::CreateSceneAsset()
 	// シーン内の全てのゲームオブジェクトに対してシリアライズを実行
 	// 最終的な文字列を書き込む
 	std::string serializedData = sceneName + "\n";
-	for (GameObject* gameObject : SceneManager::GetActiveScene()->GetGameObjectVector())
+	for (GameObject* gameObject : scene->GetGameObjectVector())
 	{
 		AssetManager::SerializeGameObject(serializedData, gameObject);
 	}

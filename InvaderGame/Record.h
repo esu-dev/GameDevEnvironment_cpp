@@ -37,9 +37,9 @@ public:
 	{
 		if (_timeVariableSetVector.size() == 0) return;
 
-		for (int i = 0; i < (int)_timeVariableSetVector.size(); i++)
+		for (int i = (int)_timeVariableSetVector.size() - 1; i >= 0; i--)
 		{
-			if (time - _timeVariableSetVector[i].time < RECORD_INTERVAL)
+			if (time > _timeVariableSetVector[i].time)
 			{
 				_variable = _timeVariableSetVector[i].variable;
 
@@ -52,9 +52,9 @@ public:
 	{
 		if (_timeVariableSetVector.size() == 0) return 0;
 
-		for (int i = 0; i < (int)_timeVariableSetVector.size(); i++)
+		for (int i = (int)_timeVariableSetVector.size() - 1; i >= 0; i--)
 		{
-			if (time - _timeVariableSetVector[i].time < RECORD_INTERVAL)
+			if (time > _timeVariableSetVector[i].time)
 			{
 				// 以降のデータを削除
 				_timeVariableSetVector.erase(_timeVariableSetVector.begin() + i + 1, _timeVariableSetVector.end());
@@ -63,7 +63,7 @@ public:
 			}
 		}
 
-		return 0;
+		return _timeVariableSetVector.back().time;
 	}
 
 	Record()
@@ -88,9 +88,9 @@ public:
 
 	T& GetRecord(float time)
 	{
-		for (int i = 0; i < _timeVariableSetVector.size(); i++)
+		for (int i = (int)_timeVariableSetVector.size() - 1; i >= 0; i--)
 		{
-			if (time - _timeVariableSetVector[i].time < RECORD_INTERVAL)
+			if (time > _timeVariableSetVector[i].time)
 			{
 				return _variable = _timeVariableSetVector[i].variable;
 			}
@@ -98,6 +98,36 @@ public:
 
 		// 最初を返す
 		return _timeVariableSetVector.front().variable;
+	}
+
+	std::pair<std::pair<float, const T&>, std::pair<float, const T&>> GetTimeVarSetPair(float time)
+	{
+		for (int i = (int)_timeVariableSetVector.size() - 1; i >= 0; i--)
+		{
+			if (time > _timeVariableSetVector[i].time)
+			{
+				if (i + 1 < _timeVariableSetVector.size())
+				{
+					return {
+						{ _timeVariableSetVector[i].time, _timeVariableSetVector[i].variable },
+						{ _timeVariableSetVector[i + 1].time, _timeVariableSetVector[i + 1].variable }
+					};
+				}
+				else
+				{
+					return {
+						{ _timeVariableSetVector[i].time, _timeVariableSetVector[i].variable },
+						{ _timeVariableSetVector[i].time, _timeVariableSetVector[i].variable}
+					};
+				}
+			}
+		}
+
+		// 最初を返す
+		return {
+			{ _timeVariableSetVector[0].time, _timeVariableSetVector[0].variable },
+			{ _timeVariableSetVector[1].time, _timeVariableSetVector[1].variable}
+		};
 	}
 
 	operator T() { return _variable; }
@@ -151,6 +181,11 @@ private:
 			timeVariableSet.time = EngineTime::GetTotalTime();
 			timeVariableSet.variable = _variable;
 			_timeVariableSetVector.push_back(timeVariableSet);
+		}
+		// 追加するほど時間がたっていないなら更新
+		else if (_timeVariableSetVector.size() > 0)
+		{
+			_timeVariableSetVector.back().variable = _variable;
 		}
 	}
 };

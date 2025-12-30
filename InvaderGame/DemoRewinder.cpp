@@ -25,8 +25,37 @@ void DemoRewinder::Update()
 	// 位置の巻き戻し
 	Transform* tr = this->GetTransform();
 	if (tr == nullptr) return;
-	tr->position = tr->position.GetRecord(_rewindTime);
 	
+	// 線形補完
+	auto timeVerSetPair = tr->position.GetTimeVarSetPair(_rewindTime);
+	float timeA = timeVerSetPair.first.first;
+	float timeB = timeVerSetPair.second.first;
+	Vector3 posA = timeVerSetPair.first.second;
+	Vector3 posB = timeVerSetPair.second.second;
+
+	// 時間の差を求める
+	float timeRange = timeB - timeA;
+
+	// 最新データで補完できないなら
+	if (timeRange == 0)
+	{
+		tr->position = posA;
+	}
+	else
+	{
+		// 補完時間位置を求める
+		float t = (_rewindTime - timeA) / timeRange;
+
+		// 位置の差を求める
+		Vector3 positionRange = posB - posA;
+
+		// 補完した位置を求める
+		Vector3 supprementedPos = posA + positionRange * t;
+
+		tr->position = supprementedPos;
+	}
+
+
 	if (_rewindTime <= _recordStartTime)
 	{
 		_isRewinding = false;

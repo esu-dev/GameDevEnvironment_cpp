@@ -2,6 +2,7 @@
 
 #include "EngineTime.h"
 #include "Animator.h"
+#include "BoxCollider2D.h"
 #include "DemoRewinder.h"
 
 void DemoRewindTrigger::OnEnable()
@@ -22,7 +23,7 @@ void DemoRewindTrigger::Update()
 {
 	if (_timer <= 0)
 	{
-		this->gameObject->SetActive(false);
+		this->GetComponent<BoxCollider2D>()->enabled = false;
 	}
 
 	_timer -= EngineTime::GetDeltaTime();
@@ -30,7 +31,7 @@ void DemoRewindTrigger::Update()
 
 void DemoRewindTrigger::RecordTriggerOn()
 {
-	this->gameObject->SetActive(true);
+	this->GetComponent<BoxCollider2D>()->enabled = true;
 
 	_timer = 1;
 

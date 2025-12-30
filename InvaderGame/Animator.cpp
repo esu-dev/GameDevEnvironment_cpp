@@ -47,14 +47,14 @@ void Animator::Start()
 
 void Animator::Update()
 {
-	if (_currentAnimation.AnimationClip == nullptr)
+	if (_currentAnimation.Get().AnimationClip == nullptr)
 	{
 		return;
 	}
 
-	if (_textureIndex >= _currentAnimation.AnimationClip->GetAnimDataSetVec().size())
+	if (_textureIndex >= _currentAnimation.Get().AnimationClip->GetAnimDataSetVec().size())
 	{
-		if (_currentAnimation.AnimationClip->_loopTime)
+		if (_currentAnimation.Get().AnimationClip->_loopTime)
 		{
 			_playingTime = 0;
 			_textureIndex = 0;
@@ -65,11 +65,11 @@ void Animator::Update()
 		}
 	}
 
-	if (_playingTime >= _currentAnimation.AnimationClip->GetAnimDataSetVec()[_textureIndex].time / _currentAnimation.Time)
+	if (_playingTime >= _currentAnimation.Get().AnimationClip->GetAnimDataSetVec()[_textureIndex].time / _currentAnimation.Get().Time)
 	{
 		//Debug::Log(L"%d", _textureIndex);
-		this->GetComponent<SpriteRenderer>()->SetTexture(_currentAnimation.AnimationClip->GetAnimDataSetVec()[_textureIndex].texture);
-		_textureIndex++;
+		this->GetComponent<SpriteRenderer>()->SetTexture(_currentAnimation.Get().AnimationClip->GetAnimDataSetVec()[_textureIndex].texture);
+		_textureIndex += 1;
 	}
 
 	_playingTime += EngineTime::GetDeltaTime();

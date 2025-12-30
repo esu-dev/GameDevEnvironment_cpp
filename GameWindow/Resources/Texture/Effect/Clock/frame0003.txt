@@ -1,0 +1,4 @@
+--- 677464387=721611829=161171066
+Texture:
+  name: initial name
+

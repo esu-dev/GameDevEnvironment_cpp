@@ -5,22 +5,25 @@
 #include "SceneManager.h"
 #include "AssetCreator.h"
 #include "imgui_impl_dx11.h"
+#include "ImGuiCreator.h"
 #include "Object.h"
 
 using namespace SceneManagement;
 
 void AssetExplorer::Update()
 {
+	static Object* selectedObject = nullptr;
+
 	std::function<void(AssetManager::AssetFolder)> createAssetGui = [&](const AssetManager::AssetFolder& assetFolder) -> void {
 		for (auto& pair : assetFolder.name2Datamp)
 		{
-			std::string folderName = pair.first;
+			std::string assetName = pair.first;
 			auto assetData = pair.second;
 
 			// Folder
 			if (std::holds_alternative<AssetManager::AssetFolder*>(assetData))
 			{
-				if (ImGui::TreeNode(folderName.c_str()))
+				if (ImGui::TreeNode(assetName.c_str()))
 				{
 					auto childAssetFolder = *std::get<AssetManager::AssetFolder*>(assetData);
 					createAssetGui(childAssetFolder);
@@ -31,9 +34,25 @@ void AssetExplorer::Update()
 			else
 			{
 				auto assetFile = std::get<AssetManager::AssetFile*>(assetData);
-				if (ImGui::Selectable((folderName + "  (" + assetFile->instanceID + ")").c_str()))
+				if (ImGui::Selectable((assetName + "  (" + assetFile->instanceID + ")").c_str()))
 				{
+					// 拡張子の取得
+					std::string extension;
+					std::smatch smatch;
+					if (std::regex_match(assetName, smatch, std::regex(R"(.+\.(\w+))")))
+					{
+						extension = smatch[1].str();
+					}
 
+					// Scene
+					if (extension == "scene")
+					{
+						Debug::Log("エディターで%sを読み込みます。", assetName.c_str());
+						SceneDataManager::Load("Resources/Scenes/" + assetName); // これは良くない
+					}
+
+
+					selectedObject = assetFile->object;
 				}
 			}
 		}
@@ -52,4 +71,18 @@ void AssetExplorer::Update()
 
 	createAssetGui(AssetManager::GetAssetFolder());
 	ImGui::End();
+
+
+	if (selectedObject == nullptr)
+	{
+		return;
+	}
+
+	// Asset Inspectorウィンドウの生成
+	if (SerializedClass* serializedObject = dynamic_cast<SerializedClass*>(selectedObject))
+	{
+		ImGui::Begin("Asset Inspector");
+		ImGuiCreator::Create(serializedObject);
+		ImGui::End();
+	}
 }

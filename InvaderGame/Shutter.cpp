@@ -15,11 +15,11 @@ void Shutter::Start()
 			this->_isOpening = true;
 
 			// “–‚½‚è”»’è‚Ì–³Œø‰»
-			Collider2D* collider = this->GetComponent<Collider2D>();
+			/*Collider2D* collider = this->GetComponent<Collider2D>();
 			if (collider != nullptr)
 			{
 				collider->enabled = false;
-			}
+			}*/
 		});
 	}
 }

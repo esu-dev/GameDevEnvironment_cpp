@@ -180,7 +180,7 @@ void AssetManager::Initialize()
 		};
 
 	// Scene
-	createAssetFolder_Scene("Resources", "Scenes", "txt", &assetFolder);
+	createAssetFolder_Scene("Resources", "Scenes", "scene", &assetFolder);
 }
 
 Object* AssetManager::GetInstance(const std::string& instanceID)

@@ -30,7 +30,7 @@ void Transform::Update()
 
 	//_localPosition = position - parent->position;
 	rotation = Quaternion::Euler(_parent->rotation.GetEulerAngles() + _localEulerRotation);
-	position = _parent->position + _parent->rotation * _localPosition;
+	position.Get() = _parent->position + _parent->rotation * _localPosition;
 }
 
 void Transform::EditorUpdate()
@@ -41,7 +41,7 @@ void Transform::EditorUpdate()
 	}
 
 	rotation = Quaternion::Euler(_parent->rotation.GetEulerAngles() + _localEulerRotation);
-	position = _parent->position + _parent->rotation * _localPosition;
+	position.Get() = _parent->position + _parent->rotation * _localPosition;
 }
 
 Vector3 Transform::GetUp()

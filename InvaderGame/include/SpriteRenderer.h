@@ -1,6 +1,7 @@
 #pragma once
 
 #include "DirectX.h"
+#include "Record.h"
 #include "Component.h"
 #include "Texture.h"
 
@@ -10,7 +11,8 @@ public:
 	NAME(SpriteRenderer)
 	SERIALIZE3(Component,
 		SERIALIZE_FIELD3(_order),
-		SERIALIZE_FIELD3(m_texture)
+		SERIALIZE_FIELD3(m_texture),
+		SERIALIZE_FIELD3(_isFlipX)
 	)
 
 	SpriteRenderer();
@@ -21,7 +23,7 @@ public:
 	void EditorUpdate() override;
 
 	void SetFlip(bool flip);
-	bool GetFlip() const;
+	bool GetFlip();
 	void Render();
 
 private:
@@ -29,7 +31,7 @@ private:
 
 	bool _canMove = true;
 	DirectX::XMFLOAT4 _color;
-	Texture* m_texture;
-	bool _isFlipX = false;
+	Record<Texture*> m_texture;
+	Record<bool> _isFlipX = false;
 };
 

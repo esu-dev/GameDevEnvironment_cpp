@@ -55,6 +55,9 @@ void Physics2D::Update()
 			Collider2D* colliderA = gameObjectVector[i]->GetComponent<Collider2D>();
 			if (colliderA == nullptr) continue;
 
+			// enableならスキップ
+			if (colliderA->enabled == false) continue;
+
 			for (int j = i + 1; j < gameObjectVector.size(); j++)
 			{
 				// 非アクティブならスキップ
@@ -62,6 +65,9 @@ void Physics2D::Update()
 
 				Collider2D* colliderB = gameObjectVector[j]->GetComponent<Collider2D>();
 				if (colliderB == nullptr) continue;
+
+				// enableならスキップ
+				if (colliderB->enabled == false) continue;
 
 				// 両方キネマティックなら衝突判定しない
 				if (colliderA->GetComponent<Rigidbody2D>()->IsKinematic && colliderB->GetComponent<Rigidbody2D>()->IsKinematic)
@@ -179,7 +185,7 @@ void Physics2D::Update()
 				// めり込み補正
 				if (collisionData->depth > 0)
 				{
-					float power = rigidbodyA->mass * 1 * collisionData->depth;
+					float power = rigidbodyA->mass * 2 * collisionData->depth;
 
 					float down = relNormalSpeed * 1 * EngineTime::GetDeltaTime();
 					if (power + down < 0)

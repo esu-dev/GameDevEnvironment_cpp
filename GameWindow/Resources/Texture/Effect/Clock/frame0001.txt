@@ -1,0 +1,4 @@
+--- 284183439=621036251=832319354
+Texture:
+  name: initial name
+

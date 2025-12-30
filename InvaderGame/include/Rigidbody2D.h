@@ -22,7 +22,8 @@ public:
 	SERIALIZE3(Component,
 		SERIALIZE_FIELD3(IsKinematic),
 		SERIALIZE_FIELD3(IsTrigger),
-		SERIALIZE_FIELD3(GravityScale)
+		SERIALIZE_FIELD3(GravityScale),
+		SERIALIZE_FIELD3(_isSleeping)
 	)
 
 	~Rigidbody2D() override {}
@@ -30,6 +31,7 @@ public:
 	void Start() override;
 	void Update() override;
 
+	bool IsSleeping();
 	void SetUseGravity(bool useGravity);
 	void SetKinematic();
 	void SetFreeze();
@@ -42,6 +44,8 @@ public:
 	
 
 private:
+	Record<bool> _isSleeping;
+	float _sleepTimer = 0;
 	Collider2D* _collider2D;
 	b2FixtureDef fixtureDef;
 };

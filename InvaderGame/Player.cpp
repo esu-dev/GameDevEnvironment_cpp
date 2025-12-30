@@ -84,13 +84,14 @@ void Player::Update()
 	// 記録開始
 	if (Input::GetKeyDown('Z'))
 	{
-		_rewindCircle->GetComponent<DemoRewindTrigger>()->RecordTriggerOn();
+		_recordCircle->GetComponent<DemoRewindTrigger>()->RecordTriggerOn();
 	}
 
 	// 巻き戻し開始
 	if (Input::GetKeyDown('X'))
 	{
-		_rewindCircle->GetComponent<DemoRewindTrigger>()->Rewind();
+		_recordCircle->GetComponent<DemoRewindTrigger>()->Rewind();
+		_rewindCircle->GetComponent<Animator>()->Play("RewindAnimation");
 	}
 
 

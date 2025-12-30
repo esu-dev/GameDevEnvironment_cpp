@@ -1,0 +1,4621 @@
+DemoGameScene
+--- 000
+GameObject:
+  name: MainCamera
+  IsPrefab: false
+  tag: MainCamera
+  (vector)_componentVector: 2
+  - (instanceID)001
+  - (instanceID)002
+  _isActive: true
+--- 001
+Transform:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)000
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 2.000000
+      y: -1.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 2.000000
+          y: -1.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 002
+Camera:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)000
+--- 497196057=906531225=817251284
+GameObject:
+  name: Stage
+  IsPrefab: false
+  tag: Untagged
+  (vector)_componentVector: 4
+  - (instanceID)1799500956=137508752=642793527
+  - (instanceID)1509651495=882491034=462321931
+  - (instanceID)195784630=193413168=2014331585
+  - (instanceID)746408839=1785363155=2049907163
+  _isActive: true
+--- 1799500956=137508752=642793527
+Transform:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)497196057=906531225=817251284
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 1.000000
+      y: -9.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 1.000000
+          y: -9.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 13.000000
+    y: 3.000000
+    z: 1.000000
+--- 1509651495=882491034=462321931
+SpriteRenderer:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)497196057=906531225=817251284
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 195784630=193413168=2014331585
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)497196057=906531225=817251284
+  IsKinematic: true
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 746408839=1785363155=2049907163
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)497196057=906531225=817251284
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 147560529=380564109=1893899489
+GameObject:
+  name: Player
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 6
+  - (instanceID)1401248970=231768062=1184301228
+  - (instanceID)1654603363=848023440=205348381
+  - (instanceID)397732447=1670649184=1016027375
+  - (instanceID)6872234=179677836=1737315805
+  - (instanceID)1329810691=1773115153=2142410842
+  - (instanceID)1509751976=961373694=1662533778
+  _isActive: true
+--- 1401248970=231768062=1184301228
+Transform:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 3
+  - (instanceID)1144962052=231822179=1508855639
+  - (instanceID)214431009=801859099=1164764792
+  - (instanceID)1660112007=1826137525=1761606654
+  position:
+    _variable:
+      x: 8.402186
+      y: -1.700881
+      z: 0.000000
+    (vector)_timeVariableSetVector: 41
+    - 0:
+        time: 0.000000
+        variable:
+          x: 0.000000
+          y: -0.061313
+          z: 0.000000
+    - 1:
+        time: 0.500000
+        variable:
+          x: 0.000000
+          y: -2.575126
+          z: 0.000000
+    - 2:
+        time: 1.015000
+        variable:
+          x: -0.287556
+          y: -5.707633
+          z: 0.000000
+    - 3:
+        time: 1.515000
+        variable:
+          x: 1.084376
+          y: -3.006605
+          z: 0.000000
+    - 4:
+        time: 2.015001
+        variable:
+          x: 1.069556
+          y: -4.666057
+          z: 0.000000
+    - 5:
+        time: 2.515002
+        variable:
+          x: 0.876714
+          y: -5.700525
+          z: 0.000000
+    - 6:
+        time: 3.015002
+        variable:
+          x: 0.984523
+          y: -4.736049
+          z: 0.000000
+    - 7:
+        time: 3.515003
+        variable:
+          x: 2.609523
+          y: -2.872211
+          z: 0.000000
+    - 8:
+        time: 4.015004
+        variable:
+          x: 4.854083
+          y: -3.321911
+          z: 0.000000
+    - 9:
+        time: 4.531001
+        variable:
+          x: 6.636022
+          y: -3.601457
+          z: 0.000000
+    - 10:
+        time: 5.046998
+        variable:
+          x: 6.398939
+          y: -5.500680
+          z: 0.000000
+    - 11:
+        time: 5.561994
+        variable:
+          x: 6.398939
+          y: -5.474327
+          z: 0.000000
+    - 12:
+        time: 6.077992
+        variable:
+          x: 6.398939
+          y: -5.464139
+          z: 0.000000
+    - 13:
+        time: 6.592993
+        variable:
+          x: 6.018872
+          y: -5.458188
+          z: 0.000000
+    - 14:
+        time: 7.108992
+        variable:
+          x: 5.104333
+          y: -5.455270
+          z: 0.000000
+    - 15:
+        time: 7.624991
+        variable:
+          x: 3.278766
+          y: -5.723180
+          z: 0.000000
+    - 16:
+        time: 8.139989
+        variable:
+          x: 1.195434
+          y: -3.828630
+          z: 0.000000
+    - 17:
+        time: 8.655989
+        variable:
+          x: -1.054566
+          y: -3.087645
+          z: 0.000000
+    - 18:
+        time: 9.155989
+        variable:
+          x: -3.135541
+          y: -3.348824
+          z: 0.000000
+    - 19:
+        time: 9.671988
+        variable:
+          x: -4.655663
+          y: -3.704794
+          z: 0.000000
+    - 20:
+        time: 10.171988
+        variable:
+          x: -4.226266
+          y: -5.506699
+          z: 0.000000
+    - 21:
+        time: 10.686989
+        variable:
+          x: -3.712252
+          y: -5.478653
+          z: 0.000000
+    - 22:
+        time: 11.202989
+        variable:
+          x: -2.632761
+          y: -5.465143
+          z: 0.000000
+    - 23:
+        time: 11.717989
+        variable:
+          x: -0.832996
+          y: -5.724349
+          z: 0.000000
+    - 24:
+        time: 12.249988
+        variable:
+          x: 1.000338
+          y: -5.715536
+          z: 0.000000
+    - 25:
+        time: 12.764988
+        variable:
+          x: 2.347607
+          y: -3.593334
+          z: 0.000000
+    - 26:
+        time: 13.264988
+        variable:
+          x: 2.273512
+          y: -4.299776
+          z: 0.000000
+    - 27:
+        time: 13.764988
+        variable:
+          x: 2.222240
+          y: -5.267792
+          z: 0.000000
+    - 28:
+        time: 14.280988
+        variable:
+          x: 2.277092
+          y: -3.287308
+          z: 0.000000
+    - 29:
+        time: 14.796988
+        variable:
+          x: 3.615274
+          y: -3.327551
+          z: 0.000000
+    - 30:
+        time: 15.296988
+        variable:
+          x: 5.948610
+          y: -1.235096
+          z: 0.000000
+    - 31:
+        time: 15.796988
+        variable:
+          x: 8.298615
+          y: -0.899970
+          z: 0.000000
+    - 32:
+        time: 16.296991
+        variable:
+          x: 8.525343
+          y: -1.748782
+          z: 0.000000
+    - 33:
+        time: 16.796999
+        variable:
+          x: 8.402186
+          y: -1.721287
+          z: 0.000000
+    - 34:
+        time: 17.297003
+        variable:
+          x: 8.402186
+          y: -1.709155
+          z: 0.000000
+    - 35:
+        time: 17.797009
+        variable:
+          x: 8.402186
+          y: -1.704842
+          z: 0.000000
+    - 36:
+        time: 18.297014
+        variable:
+          x: 8.402186
+          y: -1.702996
+          z: 0.000000
+    - 37:
+        time: 18.797018
+        variable:
+          x: 8.402186
+          y: -1.701994
+          z: 0.000000
+    - 38:
+        time: 19.297020
+        variable:
+          x: 8.402186
+          y: -1.700943
+          z: 0.000000
+    - 39:
+        time: 19.812025
+        variable:
+          x: 8.402186
+          y: -1.700881
+          z: 0.000000
+    - 40:
+        time: 26.562096
+        variable:
+          x: 8.402186
+          y: -1.700881
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 6.000000
+    y: 6.000000
+    z: 1.000000
+--- 1654603363=848023440=205348381
+SpriteRenderer:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  _order: 2
+  m_texture:
+    _variable: (instanceID)1764565274=1785524425=1390510615
+    (vector)_timeVariableSetVector: 50
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1764565274=1785524425=1390510615
+    - 1:
+        time: 0.500000
+        variable: (instanceID)1960766088=1607266263=1477523126
+    - 2:
+        time: 1.062000
+        variable: (instanceID)1194103524=1207469568=1388878756
+    - 3:
+        time: 1.594000
+        variable: (instanceID)40812298=202681549=958210038
+    - 4:
+        time: 2.203001
+        variable: (instanceID)2031896239=1692424211=1578972974
+    - 5:
+        time: 2.703002
+        variable: (instanceID)332588791=2059679822=288817757
+    - 6:
+        time: 3.218003
+        variable: (instanceID)1983095956=2033714070=1213949151
+    - 7:
+        time: 3.812004
+        variable: (instanceID)538845876=1891773905=1803661750
+    - 8:
+        time: 4.359002
+        variable: (instanceID)2031896239=1692424211=1578972974
+    - 9:
+        time: 4.905999
+        variable: (instanceID)2095014155=563386411=505079811
+    - 10:
+        time: 5.467994
+        variable: (instanceID)1044349734=1785633780=2137578299
+    - 11:
+        time: 6.030993
+        variable: (instanceID)517183641=540203736=848411744
+    - 12:
+        time: 6.561993
+        variable: (instanceID)1847433675=1986100641=5753002
+    - 13:
+        time: 7.061993
+        variable: (instanceID)1474515897=161949187=831993811
+    - 14:
+        time: 7.624991
+        variable: (instanceID)1304254592=1347570060=80994693
+    - 15:
+        time: 8.139989
+        variable: (instanceID)1930007326=447448078=2091855469
+    - 16:
+        time: 8.671988
+        variable: (instanceID)1474515897=161949187=831993811
+    - 17:
+        time: 9.171988
+        variable: (instanceID)1906349570=410055801=2111393094
+    - 18:
+        time: 9.671988
+        variable: (instanceID)1085732539=225019827=1627339705
+    - 19:
+        time: 10.171988
+        variable: (instanceID)1474515897=161949187=831993811
+    - 20:
+        time: 10.686989
+        variable: (instanceID)1304254592=1347570060=80994693
+    - 21:
+        time: 11.202989
+        variable: (instanceID)704835421=1453194705=1298267531
+    - 22:
+        time: 11.733989
+        variable: (instanceID)1085732539=225019827=1627339705
+    - 23:
+        time: 12.296988
+        variable: (instanceID)476474173=2121329135=1048846096
+    - 24:
+        time: 12.827988
+        variable: (instanceID)944236499=701281158=1988151881
+    - 25:
+        time: 13.374988
+        variable: (instanceID)1434001069=765174939=217521873
+    - 26:
+        time: 14.014988
+        variable: (instanceID)1930007326=447448078=2091855469
+    - 27:
+        time: 14.577988
+        variable: (instanceID)1474515897=161949187=831993811
+    - 28:
+        time: 15.108988
+        variable: (instanceID)1667799944=872565693=651547555
+    - 29:
+        time: 15.686988
+        variable: (instanceID)40812298=202681549=958210038
+    - 30:
+        time: 16.186989
+        variable: (instanceID)1194103524=1207469568=1388878756
+    - 31:
+        time: 16.717997
+        variable: (instanceID)1764565274=1785524425=1390510615
+    - 32:
+        time: 17.265001
+        variable: (instanceID)1789584765=1241305035=2101053243
+    - 33:
+        time: 17.843008
+        variable: (instanceID)1528966789=1686466474=989448226
+    - 34:
+        time: 18.390013
+        variable: (instanceID)654135200=837953956=31975346
+    - 35:
+        time: 18.890018
+        variable: (instanceID)1789584765=1241305035=2101053243
+    - 36:
+        time: 19.390018
+        variable: (instanceID)1528966789=1686466474=989448226
+    - 37:
+        time: 19.937025
+        variable: (instanceID)654135200=837953956=31975346
+    - 38:
+        time: 20.453033
+        variable: (instanceID)1960766088=1607266263=1477523126
+    - 39:
+        time: 21.015039
+        variable: (instanceID)2099705770=752103909=827542598
+    - 40:
+        time: 21.531044
+        variable: (instanceID)1014905135=625518459=1738408576
+    - 41:
+        time: 22.078053
+        variable: (instanceID)1960766088=1607266263=1477523126
+    - 42:
+        time: 22.578058
+        variable: (instanceID)2031896239=1692424211=1578972974
+    - 43:
+        time: 23.156065
+        variable: (instanceID)1497303522=967450884=2107102157
+    - 44:
+        time: 23.718069
+        variable: (instanceID)44845966=345435009=699777667
+    - 45:
+        time: 24.265074
+        variable: (instanceID)2095014155=563386411=505079811
+    - 46:
+        time: 24.797077
+        variable: (instanceID)1044349734=1785633780=2137578299
+    - 47:
+        time: 25.359081
+        variable: (instanceID)517183641=540203736=848411744
+    - 48:
+        time: 25.890089
+        variable: (instanceID)1194103524=1207469568=1388878756
+    - 49:
+        time: 26.422094
+        variable: (instanceID)1764565274=1785524425=1390510615
+  _isFlipX:
+    _variable: true
+    (vector)_timeVariableSetVector: 28
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.125000
+        variable: false
+    - 2:
+        time: 1.640000
+        variable: false
+    - 3:
+        time: 2.437001
+        variable: true
+    - 4:
+        time: 3.078002
+        variable: false
+    - 5:
+        time: 3.578003
+        variable: false
+    - 6:
+        time: 4.078003
+        variable: false
+    - 7:
+        time: 4.593001
+        variable: false
+    - 8:
+        time: 5.124997
+        variable: true
+    - 9:
+        time: 6.608993
+        variable: true
+    - 10:
+        time: 7.155992
+        variable: true
+    - 11:
+        time: 7.671991
+        variable: true
+    - 12:
+        time: 8.186989
+        variable: true
+    - 13:
+        time: 8.686989
+        variable: true
+    - 14:
+        time: 9.186989
+        variable: true
+    - 15:
+        time: 9.686989
+        variable: false
+    - 16:
+        time: 10.186989
+        variable: false
+    - 17:
+        time: 10.686989
+        variable: false
+    - 18:
+        time: 11.202989
+        variable: false
+    - 19:
+        time: 11.717989
+        variable: false
+    - 20:
+        time: 12.249988
+        variable: false
+    - 21:
+        time: 12.764988
+        variable: false
+    - 22:
+        time: 13.264988
+        variable: false
+    - 23:
+        time: 14.436988
+        variable: false
+    - 24:
+        time: 14.936988
+        variable: false
+    - 25:
+        time: 15.436988
+        variable: false
+    - 26:
+        time: 15.936988
+        variable: true
+    - 27:
+        time: 16.436993
+        variable: true
+--- 397732447=1670649184=1016027375
+Animator:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  (vector)_animationVector: 3
+  - 0:
+      Time: 1.250000
+      Name: NewState
+      AnimationClip: (instanceID)1991957285=1117206255=592262650
+  - 1:
+      Time: 2.500000
+      Name: NewState
+      AnimationClip: (instanceID)1969032072=449929844=1896361220
+  - 2:
+      Time: 10.000000
+      Name: NewState
+      AnimationClip: (instanceID)1882825050=783300963=986042454
+  _textureIndex:
+    _variable: 5
+    (vector)_timeVariableSetVector: 50
+    - 0:
+        time: 0.000000
+        variable: 5
+    - 1:
+        time: 0.500000
+        variable: 13
+    - 2:
+        time: 1.062000
+        variable: 3
+    - 3:
+        time: 1.578000
+        variable: 6
+    - 4:
+        time: 2.093001
+        variable: 0
+    - 5:
+        time: 2.593002
+        variable: 0
+    - 6:
+        time: 3.109002
+        variable: 2
+    - 7:
+        time: 3.609004
+        variable: 8
+    - 8:
+        time: 4.125003
+        variable: 13
+    - 9:
+        time: 4.672000
+        variable: 1
+    - 10:
+        time: 5.186997
+        variable: 6
+    - 11:
+        time: 5.780993
+        variable: 13
+    - 12:
+        time: 6.342993
+        variable: 5
+    - 13:
+        time: 6.842993
+        variable: 18
+    - 14:
+        time: 7.389991
+        variable: 11
+    - 15:
+        time: 7.936990
+        variable: 1
+    - 16:
+        time: 8.452989
+        variable: 6
+    - 17:
+        time: 8.952989
+        variable: 10
+    - 18:
+        time: 9.452989
+        variable: 0
+    - 19:
+        time: 9.952989
+        variable: 2
+    - 20:
+        time: 10.483989
+        variable: 11
+    - 21:
+        time: 11.014989
+        variable: 3
+    - 22:
+        time: 11.530989
+        variable: 16
+    - 23:
+        time: 12.046988
+        variable: 8
+    - 24:
+        time: 12.592988
+        variable: 3
+    - 25:
+        time: 13.155988
+        variable: 8
+    - 26:
+        time: 14.014988
+        variable: 3
+    - 27:
+        time: 14.577988
+        variable: 3
+    - 28:
+        time: 15.108988
+        variable: 2
+    - 29:
+        time: 15.686988
+        variable: 7
+    - 30:
+        time: 16.186989
+        variable: 3
+    - 31:
+        time: 16.686996
+        variable: 4
+    - 32:
+        time: 17.187002
+        variable: 11
+    - 33:
+        time: 17.750008
+        variable: 17
+    - 34:
+        time: 18.250013
+        variable: 4
+    - 35:
+        time: 18.750017
+        variable: 11
+    - 36:
+        time: 19.312019
+        variable: 18
+    - 37:
+        time: 19.859026
+        variable: 5
+    - 38:
+        time: 20.359032
+        variable: 12
+    - 39:
+        time: 20.922039
+        variable: 18
+    - 40:
+        time: 21.422043
+        variable: 5
+    - 41:
+        time: 21.953051
+        variable: 12
+    - 42:
+        time: 22.500057
+        variable: 19
+    - 43:
+        time: 23.047064
+        variable: 6
+    - 44:
+        time: 23.562067
+        variable: 13
+    - 45:
+        time: 24.109072
+        variable: 20
+    - 46:
+        time: 24.609076
+        variable: 7
+    - 47:
+        time: 25.172081
+        variable: 14
+    - 48:
+        time: 25.750088
+        variable: 1
+    - 49:
+        time: 26.281092
+        variable: 5
+  _playingTime:
+    _variable: 0.375000
+    (vector)_timeVariableSetVector: 53
+    - 0:
+        time: 0.000000
+        variable: 0.484000
+    - 1:
+        time: 0.500000
+        variable: 1.000000
+    - 2:
+        time: 1.015000
+        variable: 0.140000
+    - 3:
+        time: 1.515000
+        variable: 0.532000
+    - 4:
+        time: 2.015001
+        variable: 0.063000
+    - 5:
+        time: 2.515002
+        variable: 0.406000
+    - 6:
+        time: 3.015002
+        variable: 0.110000
+    - 7:
+        time: 3.515003
+        variable: 0.610000
+    - 8:
+        time: 4.015004
+        variable: 0.390000
+    - 9:
+        time: 4.531001
+        variable: 0.250000
+    - 10:
+        time: 5.046998
+        variable: 0.282000
+    - 11:
+        time: 5.561994
+        variable: 0.782000
+    - 12:
+        time: 6.077992
+        variable: 1.297000
+    - 13:
+        time: 6.592993
+        variable: 0.484000
+    - 14:
+        time: 7.108992
+        variable: 0.140000
+    - 15:
+        time: 7.624991
+        variable: 0.672000
+    - 16:
+        time: 8.139989
+        variable: 0.297000
+    - 17:
+        time: 8.655989
+        variable: 0.094000
+    - 18:
+        time: 9.155989
+        variable: 0.609000
+    - 19:
+        time: 9.671988
+        variable: 0.047000
+    - 20:
+        time: 10.171988
+        variable: 0.125000
+    - 21:
+        time: 10.686989
+        variable: 0.641000
+    - 22:
+        time: 11.202989
+        variable: 0.312000
+    - 23:
+        time: 11.717989
+        variable: 0.000000
+    - 24:
+        time: 12.249988
+        variable: 0.516000
+    - 25:
+        time: 12.764988
+        variable: 0.406000
+    - 26:
+        time: 13.264988
+        variable: 0.719000
+    - 27:
+        time: 14.014988
+        variable: 0.266000
+    - 28:
+        time: 14.530988
+        variable: 0.062000
+    - 29:
+        time: 15.030988
+        variable: 0.047000
+    - 30:
+        time: 15.530988
+        variable: 0.547000
+    - 31:
+        time: 16.030989
+        variable: 0.062000
+    - 32:
+        time: 16.530994
+        variable: 0.172000
+    - 33:
+        time: 17.031000
+        variable: 0.672000
+    - 34:
+        time: 17.531004
+        variable: 1.172000
+    - 35:
+        time: 18.031012
+        variable: 0.125000
+    - 36:
+        time: 18.531013
+        variable: 0.625000
+    - 37:
+        time: 19.031019
+        variable: 1.125000
+    - 38:
+        time: 19.531021
+        variable: 0.063000
+    - 39:
+        time: 20.031027
+        variable: 0.578000
+    - 40:
+        time: 20.531033
+        variable: 1.078000
+    - 41:
+        time: 21.031040
+        variable: 1.563000
+    - 42:
+        time: 21.531044
+        variable: 0.500000
+    - 43:
+        time: 22.031052
+        variable: 1.015000
+    - 44:
+        time: 22.531057
+        variable: 1.500000
+    - 45:
+        time: 23.031063
+        variable: 0.468000
+    - 46:
+        time: 23.531067
+        variable: 0.968000
+    - 47:
+        time: 24.031071
+        variable: 1.468000
+    - 48:
+        time: 24.547075
+        variable: 0.438000
+    - 49:
+        time: 25.062080
+        variable: 0.954000
+    - 50:
+        time: 25.562084
+        variable: 1.454000
+    - 51:
+        time: 26.062088
+        variable: 0.375000
+    - 52:
+        time: 26.562096
+        variable: 0.375000
+--- 6872234=179677836=1737315805
+Player:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  _moveAcceleration: 15.000000
+  _maxSpeed: 5.000000
+  _stopAcceleration: 15.000000
+  _jumpTime: 0.125000
+  _jumpPower: 9.000000
+  _recordCircle: (instanceID)116941363=1899623809=284380306
+  _rewindCircle: (instanceID)797730932=1938781617=926194059
+--- 1329810691=1773115153=2142410842
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 0.275000
+    y: 0.600000
+--- 1509751976=961373694=1662533778
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  IsKinematic: false
+  IsTrigger: false
+  GravityScale: 1.500000
+  _isSleeping:
+    _variable: false
+    (vector)_timeVariableSetVector: 44
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 0.500000
+        variable: false
+    - 2:
+        time: 1.015000
+        variable: false
+    - 3:
+        time: 1.656000
+        variable: false
+    - 4:
+        time: 2.156001
+        variable: false
+    - 5:
+        time: 3.156003
+        variable: false
+    - 6:
+        time: 3.656003
+        variable: false
+    - 7:
+        time: 4.172003
+        variable: false
+    - 8:
+        time: 4.687000
+        variable: false
+    - 9:
+        time: 5.202997
+        variable: false
+    - 10:
+        time: 6.733993
+        variable: false
+    - 11:
+        time: 7.264992
+        variable: false
+    - 12:
+        time: 7.780991
+        variable: false
+    - 13:
+        time: 8.296988
+        variable: false
+    - 14:
+        time: 8.796988
+        variable: false
+    - 15:
+        time: 9.311989
+        variable: false
+    - 16:
+        time: 9.827989
+        variable: false
+    - 17:
+        time: 10.327989
+        variable: false
+    - 18:
+        time: 10.842989
+        variable: false
+    - 19:
+        time: 11.358989
+        variable: false
+    - 20:
+        time: 11.858989
+        variable: false
+    - 21:
+        time: 12.374988
+        variable: false
+    - 22:
+        time: 12.874988
+        variable: false
+    - 23:
+        time: 13.421988
+        variable: false
+    - 24:
+        time: 13.921988
+        variable: false
+    - 25:
+        time: 14.436988
+        variable: false
+    - 26:
+        time: 14.936988
+        variable: false
+    - 27:
+        time: 15.436988
+        variable: false
+    - 28:
+        time: 15.936988
+        variable: false
+    - 29:
+        time: 16.436993
+        variable: false
+    - 30:
+        time: 19.843025
+        variable: true
+    - 31:
+        time: 20.343031
+        variable: true
+    - 32:
+        time: 20.843037
+        variable: true
+    - 33:
+        time: 21.343044
+        variable: true
+    - 34:
+        time: 21.843048
+        variable: true
+    - 35:
+        time: 22.343056
+        variable: true
+    - 36:
+        time: 22.843060
+        variable: true
+    - 37:
+        time: 23.359066
+        variable: true
+    - 38:
+        time: 23.875071
+        variable: true
+    - 39:
+        time: 24.390076
+        variable: true
+    - 40:
+        time: 24.906078
+        variable: true
+    - 41:
+        time: 25.406082
+        variable: true
+    - 42:
+        time: 25.922089
+        variable: true
+    - 43:
+        time: 26.422094
+        variable: false
+--- 890107419=408267702=1775497643
+GameObject:
+  name: GimmickBox
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 5
+  - (instanceID)1619447062=528024578=1024881459
+  - (instanceID)49295729=1781617583=1358331618
+  - (instanceID)1499966935=2004788885=708744623
+  - (instanceID)30106322=1800156485=1003418034
+  - (instanceID)153492873=74805102=452843053
+  _isActive: true
+--- 1619447062=528024578=1024881459
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 1
+  - (instanceID)1187044708=120397715=240244498
+  position:
+    _variable:
+      x: 4.247602
+      y: -6.252821
+      z: 0.000000
+    (vector)_timeVariableSetVector: 52
+    - 0:
+        time: 0.000000
+        variable:
+          x: 3.000000
+          y: -6.040875
+          z: 0.000000
+    - 1:
+        time: 0.500000
+        variable:
+          x: 3.000000
+          y: -6.269226
+          z: 0.000000
+    - 2:
+        time: 1.015000
+        variable:
+          x: 3.000000
+          y: -6.258193
+          z: 0.000000
+    - 3:
+        time: 1.515000
+        variable:
+          x: 3.636892
+          y: -6.252845
+          z: 0.000000
+    - 4:
+        time: 2.015001
+        variable:
+          x: 4.256946
+          y: -6.251827
+          z: 0.000000
+    - 5:
+        time: 2.515002
+        variable:
+          x: 4.252877
+          y: -6.251695
+          z: 0.000000
+    - 6:
+        time: 3.015002
+        variable:
+          x: 4.251192
+          y: -6.251474
+          z: 0.000000
+    - 7:
+        time: 3.515003
+        variable:
+          x: 4.250432
+          y: -6.250845
+          z: 0.000000
+    - 8:
+        time: 4.015004
+        variable:
+          x: 4.250173
+          y: -6.328942
+          z: 0.000000
+    - 9:
+        time: 4.531001
+        variable:
+          x: 4.247602
+          y: -6.310689
+          z: 0.000000
+    - 10:
+        time: 5.046998
+        variable:
+          x: 4.247602
+          y: -6.298095
+          z: 0.000000
+    - 11:
+        time: 5.561994
+        variable:
+          x: 4.247602
+          y: -6.281946
+          z: 0.000000
+    - 12:
+        time: 6.077992
+        variable:
+          x: 4.247602
+          y: -6.267530
+          z: 0.000000
+    - 13:
+        time: 6.592993
+        variable:
+          x: 3.979084
+          y: -6.259480
+          z: 0.000000
+    - 14:
+        time: 7.108992
+        variable:
+          x: 3.074473
+          y: -6.255579
+          z: 0.000000
+    - 15:
+        time: 7.624991
+        variable:
+          x: 1.209082
+          y: -6.253207
+          z: 0.000000
+    - 16:
+        time: 8.139989
+        variable:
+          x: -0.871149
+          y: -6.252057
+          z: 0.000000
+    - 17:
+        time: 8.655989
+        variable:
+          x: -2.211558
+          y: -6.251357
+          z: 0.000000
+    - 18:
+        time: 9.155989
+        variable:
+          x: -2.207787
+          y: -6.336832
+          z: 0.000000
+    - 19:
+        time: 9.671988
+        variable:
+          x: -2.203815
+          y: -6.308383
+          z: 0.000000
+    - 20:
+        time: 10.171988
+        variable:
+          x: -2.170236
+          y: -6.289770
+          z: 0.000000
+    - 21:
+        time: 10.686989
+        variable:
+          x: -1.678396
+          y: -6.270177
+          z: 0.000000
+    - 22:
+        time: 11.202989
+        variable:
+          x: -0.604439
+          y: -6.260736
+          z: 0.000000
+    - 23:
+        time: 11.717989
+        variable:
+          x: 1.241625
+          y: -6.255854
+          z: 0.000000
+    - 24:
+        time: 12.249988
+        variable:
+          x: 3.055165
+          y: -6.253745
+          z: 0.000000
+    - 25:
+        time: 12.764988
+        variable:
+          x: 4.277742
+          y: -6.252779
+          z: 0.000000
+    - 26:
+        time: 13.264988
+        variable:
+          x: 4.256555
+          y: -6.252779
+          z: 0.000000
+    - 27:
+        time: 13.764988
+        variable:
+          x: 4.251131
+          y: -6.252770
+          z: 0.000000
+    - 28:
+        time: 14.280988
+        variable:
+          x: 4.249581
+          y: -6.252630
+          z: 0.000000
+    - 29:
+        time: 14.796988
+        variable:
+          x: 4.249581
+          y: -6.318480
+          z: 0.000000
+    - 30:
+        time: 15.296988
+        variable:
+          x: 4.249581
+          y: -6.311983
+          z: 0.000000
+    - 31:
+        time: 15.796988
+        variable:
+          x: 4.249580
+          y: -6.221061
+          z: 0.000000
+    - 32:
+        time: 16.296991
+        variable:
+          x: 4.249580
+          y: -6.253036
+          z: 0.000000
+    - 33:
+        time: 16.796999
+        variable:
+          x: -nan(ind)
+          y: -nan(ind)
+          z: -nan(ind)
+    - 34:
+        time: 17.297003
+        variable:
+          x: -nan(ind)
+          y: -nan(ind)
+          z: -nan(ind)
+    - 35:
+        time: 17.797009
+        variable:
+          x: 4.249580
+          y: -6.256698
+          z: 0.000000
+    - 36:
+        time: 18.297014
+        variable:
+          x: 4.249581
+          y: -6.317778
+          z: 0.000000
+    - 37:
+        time: 18.797018
+        variable:
+          x: 4.250054
+          y: -6.252673
+          z: 0.000000
+    - 38:
+        time: 19.297020
+        variable:
+          x: 4.255621
+          y: -6.252777
+          z: 0.000000
+    - 39:
+        time: 19.812025
+        variable:
+          x: 3.831464
+          y: -6.253131
+          z: 0.000000
+    - 40:
+        time: 20.312031
+        variable:
+          x: 1.613211
+          y: -6.255422
+          z: 0.000000
+    - 41:
+        time: 20.812037
+        variable:
+          x: -0.816732
+          y: -6.262602
+          z: 0.000000
+    - 42:
+        time: 21.312044
+        variable:
+          x: -2.022210
+          y: -6.283873
+          z: 0.000000
+    - 43:
+        time: 21.812048
+        variable:
+          x: -2.204546
+          y: -6.313621
+          z: 0.000000
+    - 44:
+        time: 22.312056
+        variable:
+          x: -2.210088
+          y: -6.284690
+          z: 0.000000
+    - 45:
+        time: 22.812059
+        variable:
+          x: -0.616613
+          y: -6.252197
+          z: 0.000000
+    - 46:
+        time: 23.312065
+        variable:
+          x: 2.286454
+          y: -6.254577
+          z: 0.000000
+    - 47:
+        time: 23.812071
+        variable:
+          x: 3.965101
+          y: -6.259420
+          z: 0.000000
+    - 48:
+        time: 24.312075
+        variable:
+          x: 4.247602
+          y: -6.273872
+          z: 0.000000
+    - 49:
+        time: 25.172081
+        variable:
+          x: 4.247602
+          y: -6.254829
+          z: 0.000000
+    - 50:
+        time: 25.672087
+        variable:
+          x: 4.247602
+          y: -6.252821
+          z: 0.000000
+    - 51:
+        time: 26.172091
+        variable:
+          x: 4.247602
+          y: -6.252821
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 2.500000
+    y: 2.500000
+    z: 1.000000
+--- 49295729=1781617583=1358331618
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 1499966935=2004788885=708744623
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 30106322=1800156485=1003418034
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  IsKinematic: false
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: false
+    (vector)_timeVariableSetVector: 22
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 0.515000
+        variable: false
+    - 2:
+        time: 1.750000
+        variable: false
+    - 3:
+        time: 2.265001
+        variable: false
+    - 4:
+        time: 4.234002
+        variable: false
+    - 5:
+        time: 6.921993
+        variable: false
+    - 6:
+        time: 7.452991
+        variable: false
+    - 7:
+        time: 7.967989
+        variable: false
+    - 8:
+        time: 8.483989
+        variable: false
+    - 9:
+        time: 9.217989
+        variable: false
+    - 10:
+        time: 10.811989
+        variable: false
+    - 11:
+        time: 11.311989
+        variable: false
+    - 12:
+        time: 11.827989
+        variable: false
+    - 13:
+        time: 12.342988
+        variable: false
+    - 14:
+        time: 12.842988
+        variable: false
+    - 15:
+        time: 16.014988
+        variable: false
+    - 16:
+        time: 17.359003
+        variable: false
+    - 17:
+        time: 18.015011
+        variable: false
+    - 18:
+        time: 21.265043
+        variable: true
+    - 19:
+        time: 21.781048
+        variable: false
+    - 20:
+        time: 24.797077
+        variable: false
+    - 21:
+        time: 26.562096
+        variable: false
+--- 153492873=74805102=452843053
+DemoRewinder:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _clockPrefab: (instanceID)368448661=1525734141=50673468
+--- 334835115=1784456080=1665319366
+GameObject:
+  name: GroundChecker
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 5
+  - (instanceID)1144962052=231822179=1508855639
+  - (instanceID)498869748=334414102=20240684
+  - (instanceID)987323884=1493656018=1135970640
+  - (instanceID)1128932613=856139598=794314602
+  - (instanceID)111522592=1152779983=986174074
+  _isActive: true
+--- 1144962052=231822179=1508855639
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)334835115=1784456080=1665319366
+  _parentProperty: (instanceID)1401248970=231768062=1184301228
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 8.402186
+      y: -3.700881
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 0.000000
+          y: -2.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: -2.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 0.100000
+    z: 1.000000
+--- 498869748=334414102=20240684
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: false
+  gameObject: (instanceID)334835115=1784456080=1665319366
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 987323884=1493656018=1135970640
+GroundChecker:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)334835115=1784456080=1665319366
+--- 1128932613=856139598=794314602
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)334835115=1784456080=1665319366
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 111522592=1152779983=986174074
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)334835115=1784456080=1665319366
+  IsKinematic: false
+  IsTrigger: true
+  GravityScale: 0.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 660199241=572228906=1018028808
+GameObject:
+  name: DefaultStage
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 4
+  - (instanceID)1810307803=1050922664=2001804855
+  - (instanceID)1827141856=1257888055=1178530741
+  - (instanceID)1438045471=94100770=1112695615
+  - (instanceID)1640646792=2105263272=132995643
+  _isActive: true
+--- 1810307803=1050922664=2001804855
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)660199241=572228906=1018028808
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 10.000000
+      y: -7.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 10.000000
+          y: -7.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 5.000000
+    y: 7.000000
+    z: 1.000000
+--- 1827141856=1257888055=1178530741
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)660199241=572228906=1018028808
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 1438045471=94100770=1112695615
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)660199241=572228906=1018028808
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1640646792=2105263272=132995643
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)660199241=572228906=1018028808
+  IsKinematic: true
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 334318009=1860016338=1767387823
+GameObject:
+  name: Shutter
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 5
+  - (instanceID)738428193=767931706=81327258
+  - (instanceID)1761975552=432106473=121860397
+  - (instanceID)50367500=615469093=1027278146
+  - (instanceID)1920240787=1633577486=86918562
+  - (instanceID)1699338209=622239389=658941422
+  _isActive: true
+--- 738428193=767931706=81327258
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)334318009=1860016338=1767387823
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 10.000000
+      y: -2.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 10.000000
+          y: -2.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 3.000000
+    z: 1.000000
+--- 1761975552=432106473=121860397
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)334318009=1860016338=1767387823
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 50367500=615469093=1027278146
+Shutter:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)334318009=1860016338=1767387823
+  _openSpeed: 3.000000
+  _openDistance: 4.500000
+  _gimmickTrigger: (instanceID)220179420=1740506888=1732060206
+--- 1920240787=1633577486=86918562
+BoxCollider2D:
+  name: initial name
+  enabled: false
+  gameObject: (instanceID)334318009=1860016338=1767387823
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1699338209=622239389=658941422
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)334318009=1860016338=1767387823
+  IsKinematic: true
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 594748402=1574792866=1069403906
+GameObject:
+  name: GimmickTrigger
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 5
+  - (instanceID)1004943698=1777140712=1194973901
+  - (instanceID)956385127=996781569=838053284
+  - (instanceID)397698515=921189810=1480861003
+  - (instanceID)1668899630=1805059461=1317313416
+  - (instanceID)220179420=1740506888=1732060206
+  _isActive: true
+--- 1004943698=1777140712=1194973901
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)594748402=1574792866=1069403906
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: -1.000000
+      y: -7.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -1.000000
+          y: -7.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 956385127=996781569=838053284
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)594748402=1574792866=1069403906
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 397698515=921189810=1480861003
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)594748402=1574792866=1069403906
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1668899630=1805059461=1317313416
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)594748402=1574792866=1069403906
+  IsKinematic: true
+  IsTrigger: true
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 220179420=1740506888=1732060206
+GimmickTrigger:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)594748402=1574792866=1069403906
+--- 116941363=1899623809=284380306
+GameObject:
+  name: RecordCircle
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 6
+  - (instanceID)214431009=801859099=1164764792
+  - (instanceID)1451225346=1604343145=1266552738
+  - (instanceID)2044907468=605035024=336969862
+  - (instanceID)78277159=799468258=1132150830
+  - (instanceID)1284479894=919169410=1986298817
+  - (instanceID)1446647268=714232456=1497798755
+  _isActive: true
+--- 214431009=801859099=1164764792
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+  _parentProperty: (instanceID)1401248970=231768062=1184301228
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 8.402186
+      y: -1.700881
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 0.000000
+          y: 0.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 5.000000
+    y: 5.000000
+    z: 1.000000
+--- 1451225346=1604343145=1266552738
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+  _order: 1
+  m_texture:
+    _variable: (instanceID)1244095655=768721352=423438383
+    (vector)_timeVariableSetVector: 3
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1244095655=768721352=423438383
+    - 1:
+        time: 5.842993
+        variable: (instanceID)1469747879=619174671=453568935
+    - 2:
+        time: 6.358993
+        variable: (instanceID)1244095655=768721352=423438383
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 2044907468=605035024=336969862
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+  IsKinematic: true
+  IsTrigger: true
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 78277159=799468258=1132150830
+BoxCollider2D:
+  name: initial name
+  enabled: false
+  gameObject: (instanceID)116941363=1899623809=284380306
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1284479894=919169410=1986298817
+DemoRewindTrigger:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+--- 1446647268=714232456=1497798755
+Animator:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+  (vector)_animationVector: 2
+  - 0:
+      Time: 1.000000
+      Name: Empty
+      AnimationClip: (instanceID)nullptr
+  - 1:
+      Time: 25.000000
+      Name: NewState
+      AnimationClip: (instanceID)471440613=1646999092=245871592
+  _textureIndex:
+    _variable: 18
+    (vector)_timeVariableSetVector: 3
+    - 0:
+        time: 0.000000
+        variable: 0
+    - 1:
+        time: 5.842993
+        variable: 13
+    - 2:
+        time: 6.358993
+        variable: 18
+  _playingTime:
+    _variable: 0.735000
+    (vector)_timeVariableSetVector: 4
+    - 0:
+        time: 0.000000
+        variable: 0.000000
+    - 1:
+        time: 5.842993
+        variable: 0.516000
+    - 2:
+        time: 6.342993
+        variable: 0.735000
+    - 3:
+        time: 26.562096
+        variable: 0.516000
+--- 888262907=508753448=1593350804
+GameObject:
+  name: DefaultStage
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 4
+  - (instanceID)919403330=1923829778=1616889876
+  - (instanceID)1404354776=38421914=1142471347
+  - (instanceID)599011416=1129288345=2136398583
+  - (instanceID)2016904585=505734764=1486702690
+  _isActive: true
+--- 919403330=1923829778=1616889876
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)888262907=508753448=1593350804
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: -7.000000
+      y: -2.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -7.000000
+          y: -2.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 3.000000
+    y: 17.000000
+    z: 1.000000
+--- 1404354776=38421914=1142471347
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)888262907=508753448=1593350804
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 599011416=1129288345=2136398583
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)888262907=508753448=1593350804
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 2016904585=505734764=1486702690
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)888262907=508753448=1593350804
+  IsKinematic: true
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 422284339=383024916=61925684
+GameObject:
+  name: DefaultStage
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 4
+  - (instanceID)587131200=1521579628=1618114229
+  - (instanceID)1904943896=1055925068=1308775728
+  - (instanceID)262604502=1760241896=1281241367
+  - (instanceID)1119207995=1728657898=657397407
+  _isActive: true
+--- 587131200=1521579628=1618114229
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)422284339=383024916=61925684
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 3.500000
+      y: 5.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 3.500000
+          y: 5.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 18.000000
+    y: 3.000000
+    z: 1.000000
+--- 1904943896=1055925068=1308775728
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)422284339=383024916=61925684
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 262604502=1760241896=1281241367
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)422284339=383024916=61925684
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1119207995=1728657898=657397407
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)422284339=383024916=61925684
+  IsKinematic: true
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 1191737536=547853773=851201240
+GameObject:
+  name: DefaultStage
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 4
+  - (instanceID)1767545385=2099698436=168441107
+  - (instanceID)2109039921=793623829=606666949
+  - (instanceID)1874455155=1011910309=1694262774
+  - (instanceID)1367485179=1983645237=1036329098
+  _isActive: true
+--- 1767545385=2099698436=168441107
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1191737536=547853773=851201240
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 14.000000
+      y: -2.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 14.000000
+          y: -2.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 3.000000
+    y: 17.000000
+    z: 1.000000
+--- 2109039921=793623829=606666949
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1191737536=547853773=851201240
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 1874455155=1011910309=1694262774
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)1191737536=547853773=851201240
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1367485179=1983645237=1036329098
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)1191737536=547853773=851201240
+  IsKinematic: true
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 829808381=485146313=1292376636
+GameObject:
+  name: DefaultStage
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 4
+  - (instanceID)1578393535=650385841=1471849165
+  - (instanceID)437431387=759971559=200215603
+  - (instanceID)1289291173=1451176930=478927638
+  - (instanceID)1670877662=616611846=393494931
+  _isActive: true
+--- 1578393535=650385841=1471849165
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)829808381=485146313=1292376636
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: -4.000000
+      y: -7.375000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -4.000000
+          y: -7.375000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 0.250000
+    z: 1.000000
+--- 437431387=759971559=200215603
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)829808381=485146313=1292376636
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 1289291173=1451176930=478927638
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)829808381=485146313=1292376636
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1670877662=616611846=393494931
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)829808381=485146313=1292376636
+  IsKinematic: true
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 1340848554=1288212688=1250136929
+GameObject:
+  name: DefaultStage
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 4
+  - (instanceID)1755944459=431380890=1650803771
+  - (instanceID)952899062=1819028692=1833483770
+  - (instanceID)1087677577=664884420=787077428
+  - (instanceID)867421620=333900935=1859365701
+  _isActive: true
+--- 1755944459=431380890=1650803771
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1340848554=1288212688=1250136929
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 6.000000
+      y: -7.375000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 6.000000
+          y: -7.375000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 0.250000
+    z: 1.000000
+--- 952899062=1819028692=1833483770
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1340848554=1288212688=1250136929
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 1087677577=664884420=787077428
+BoxCollider2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)1340848554=1288212688=1250136929
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 867421620=333900935=1859365701
+Rigidbody2D:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)1340848554=1288212688=1250136929
+  IsKinematic: true
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: true
+    (vector)_timeVariableSetVector: 51
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.734000
+        variable: true
+    - 2:
+        time: 2.234001
+        variable: true
+    - 3:
+        time: 2.750002
+        variable: true
+    - 4:
+        time: 3.250003
+        variable: true
+    - 5:
+        time: 3.750004
+        variable: true
+    - 6:
+        time: 4.265002
+        variable: true
+    - 7:
+        time: 4.781000
+        variable: true
+    - 8:
+        time: 5.296996
+        variable: true
+    - 9:
+        time: 5.811993
+        variable: true
+    - 10:
+        time: 6.327993
+        variable: true
+    - 11:
+        time: 6.842993
+        variable: true
+    - 12:
+        time: 7.389991
+        variable: true
+    - 13:
+        time: 7.905990
+        variable: true
+    - 14:
+        time: 8.421988
+        variable: true
+    - 15:
+        time: 8.921988
+        variable: true
+    - 16:
+        time: 9.421988
+        variable: true
+    - 17:
+        time: 9.936989
+        variable: true
+    - 18:
+        time: 10.436989
+        variable: true
+    - 19:
+        time: 10.936989
+        variable: true
+    - 20:
+        time: 11.436989
+        variable: true
+    - 21:
+        time: 11.936989
+        variable: true
+    - 22:
+        time: 12.467988
+        variable: true
+    - 23:
+        time: 12.967988
+        variable: true
+    - 24:
+        time: 13.467988
+        variable: true
+    - 25:
+        time: 13.967988
+        variable: true
+    - 26:
+        time: 14.467988
+        variable: true
+    - 27:
+        time: 14.983988
+        variable: true
+    - 28:
+        time: 15.499988
+        variable: true
+    - 29:
+        time: 16.014988
+        variable: true
+    - 30:
+        time: 16.514994
+        variable: true
+    - 31:
+        time: 17.014999
+        variable: true
+    - 32:
+        time: 17.515003
+        variable: true
+    - 33:
+        time: 18.015011
+        variable: true
+    - 34:
+        time: 18.515013
+        variable: true
+    - 35:
+        time: 19.015018
+        variable: true
+    - 36:
+        time: 19.515020
+        variable: true
+    - 37:
+        time: 20.031027
+        variable: true
+    - 38:
+        time: 20.531033
+        variable: true
+    - 39:
+        time: 21.031040
+        variable: true
+    - 40:
+        time: 21.531044
+        variable: true
+    - 41:
+        time: 22.031052
+        variable: true
+    - 42:
+        time: 22.531057
+        variable: true
+    - 43:
+        time: 23.031063
+        variable: true
+    - 44:
+        time: 23.531067
+        variable: true
+    - 45:
+        time: 24.031071
+        variable: true
+    - 46:
+        time: 24.547075
+        variable: true
+    - 47:
+        time: 25.062080
+        variable: true
+    - 48:
+        time: 25.562084
+        variable: true
+    - 49:
+        time: 26.062088
+        variable: true
+    - 50:
+        time: 26.562096
+        variable: true
+--- 797730932=1938781617=926194059
+GameObject:
+  name: RewindCircle
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 3
+  - (instanceID)1660112007=1826137525=1761606654
+  - (instanceID)331565663=759100966=819782443
+  - (instanceID)1484692936=1364014913=1180558528
+  _isActive: true
+--- 1660112007=1826137525=1761606654
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)797730932=1938781617=926194059
+  _parentProperty: (instanceID)1401248970=231768062=1184301228
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 8.402186
+      y: -1.700881
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 0.000000
+          y: 0.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 5.000000
+    y: 5.000000
+    z: 1.000000
+--- 331565663=759100966=819782443
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)797730932=1938781617=926194059
+  _order: 1
+  m_texture:
+    _variable: (instanceID)1244095655=768721352=423438383
+    (vector)_timeVariableSetVector: 5
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1244095655=768721352=423438383
+    - 1:
+        time: 17.218002
+        variable: (instanceID)506370641=522285335=1484473465
+    - 2:
+        time: 17.750008
+        variable: (instanceID)525181853=746666937=1781857163
+    - 3:
+        time: 18.281013
+        variable: (instanceID)1268947030=457538320=1276458524
+    - 4:
+        time: 18.828018
+        variable: (instanceID)1244095655=768721352=423438383
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 1484692936=1364014913=1180558528
+Animator:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)797730932=1938781617=926194059
+  (vector)_animationVector: 2
+  - 0:
+      Time: 1.000000
+      Name: NewState
+      AnimationClip: (instanceID)nullptr
+  - 1:
+      Time: 15.000000
+      Name: NewState
+      AnimationClip: (instanceID)1290421775=277455505=1694098709
+  _textureIndex:
+    _variable: 30
+    (vector)_timeVariableSetVector: 5
+    - 0:
+        time: 0.000000
+        variable: 0
+    - 1:
+        time: 17.218002
+        variable: 8
+    - 2:
+        time: 17.750008
+        variable: 16
+    - 3:
+        time: 18.281013
+        variable: 24
+    - 4:
+        time: 18.828018
+        variable: 30
+  _playingTime:
+    _variable: 1.969000
+    (vector)_timeVariableSetVector: 6
+    - 0:
+        time: 0.000000
+        variable: 0.000000
+    - 1:
+        time: 17.218002
+        variable: 0.516000
+    - 2:
+        time: 17.734007
+        variable: 1.031000
+    - 3:
+        time: 18.250013
+        variable: 1.547000
+    - 4:
+        time: 18.750017
+        variable: 1.969000
+    - 5:
+        time: 26.562096
+        variable: 1.547000
+--- 510563625=553199891=668734865
+GameObject:
+  name: Clock5
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 3
+  - (instanceID)1187044708=120397715=240244498
+  - (instanceID)814189080=1078630784=1108163542
+  - (instanceID)506721646=223240778=939155469
+  _isActive: false
+--- 1187044708=120397715=240244498
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)510563625=553199891=668734865
+  _parentProperty: (instanceID)1619447062=528024578=1024881459
+  (vector)_childVector: 2
+  - (instanceID)163042301=1498236058=1768669894
+  - (instanceID)274551032=268301364=1964315571
+  position:
+    _variable:
+      x: 4.247602
+      y: -6.273244
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.250000
+    y: 0.250000
+    z: 1.000000
+--- 814189080=1078630784=1108163542
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)510563625=553199891=668734865
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 506721646=223240778=939155469
+DemoClock:
+  name: initial name
+  enabled: true
+  gameObject: (instanceID)510563625=553199891=668734865
+  _minuteHandParent: (instanceID)1985359674=1342419944=653196346
+  _secondHandParent: (instanceID)341583318=1132285405=135129000
+--- 1985359674=1342419944=653196346
+GameObject:
+  name: MinuteHandParent
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 1
+  - (instanceID)163042301=1498236058=1768669894
+  _isActive: true
+--- 163042301=1498236058=1768669894
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1985359674=1342419944=653196346
+  _parentProperty: (instanceID)1187044708=120397715=240244498
+  (vector)_childVector: 1
+  - (instanceID)850771723=772058270=437666221
+  position:
+    _variable:
+      x: 4.247602
+      y: -6.273244
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.449805
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.449805
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 1023613419=722626453=3755145
+GameObject:
+  name: MinuteHand
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)850771723=772058270=437666221
+  - (instanceID)1533747102=1734236388=1503866701
+  _isActive: true
+--- 850771723=772058270=437666221
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1023613419=722626453=3755145
+  _parentProperty: (instanceID)163042301=1498236058=1768669894
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 4.245639
+      y: -6.023252
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.250000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.449369
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.100000
+    y: 0.500000
+    z: 1.000000
+--- 1533747102=1734236388=1503866701
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)1023613419=722626453=3755145
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 341583318=1132285405=135129000
+GameObject:
+  name: SecondHandParent
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 1
+  - (instanceID)274551032=268301364=1964315571
+  _isActive: true
+--- 274551032=268301364=1964315571
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)341583318=1132285405=135129000
+  _parentProperty: (instanceID)1187044708=120397715=240244498
+  (vector)_childVector: 1
+  - (instanceID)496823834=1573568992=750015961
+  position:
+    _variable:
+      x: 4.247602
+      y: -6.273244
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 5.518604
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 5.518640
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 45152140=1223860052=123729037
+GameObject:
+  name: SecondHand
+  IsPrefab: true
+  tag: Untagged
+  (vector)_componentVector: 2
+  - (instanceID)496823834=1573568992=750015961
+  - (instanceID)574350968=1607008700=1192036542
+  _isActive: true
+--- 496823834=1573568992=750015961
+Transform:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)45152140=1223860052=123729037
+  _parentProperty: (instanceID)274551032=268301364=1964315571
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 4.199517
+      y: -5.775561
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.500000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 5.518604
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.100000
+    y: 1.000000
+    z: 1.000000
+--- 574350968=1607008700=1192036542
+SpriteRenderer:
+  name: GameObject.prefab
+  enabled: true
+  gameObject: (instanceID)45152140=1223860052=123729037
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+

@@ -2,6 +2,11 @@
 
 #include "GameEngine.h"
 
+bool Rigidbody2D::IsSleeping()
+{
+	return _isSleeping;
+}
+
 void Rigidbody2D::SetUseGravity(bool useGravity)
 {
 	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
@@ -66,6 +71,31 @@ void Rigidbody2D::Update()
 	// 自作物理エンジン
 	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
 	{
+		if (velocity.Get().GetMagnitude() < 1)
+		{
+			_sleepTimer += EngineTime::GetDeltaTime();
+
+			if (_sleepTimer >= 3)
+			{
+				_isSleeping = true;
+			}
+		}
+		else
+		{
+			_isSleeping = false;
+			_sleepTimer = 0;
+		}
+
+		if (velocity.Get().GetMagnitude() == 0)
+		{
+			return;
+		}
+
+		if (_isSleeping)
+		{
+			return;
+		}
+		
 		// 位置の更新
 		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position.Get() + ((Vector2)velocity).ToVector3() * EngineTime::GetFixedDeltaTime();
 
@@ -86,6 +116,11 @@ void Rigidbody2D::Update()
 void Rigidbody2D::ApplyGravity()
 {
 	if (IsKinematic)
+	{
+		return;
+	}
+
+	if (_isSleeping)
 	{
 		return;
 	}

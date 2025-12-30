@@ -81,7 +81,7 @@ void SpriteRenderer::SetFlip(bool flip)
 	_isFlipX = flip;
 }
 
-bool SpriteRenderer::GetFlip() const
+bool SpriteRenderer::GetFlip()
 {
-	return _isFlipX;
+	return _isFlipX.Get();
 }

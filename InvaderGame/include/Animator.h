@@ -1,6 +1,7 @@
 #pragma once
 
 #include "framework.h"
+#include "Record.h"
 #include "Component.h"
 #include "AnimationClip.h"
 
@@ -14,7 +15,9 @@ public:
 
 	NAME(Animator)
 	SERIALIZE3(Component,
-		SERIALIZE_FIELD3(_animationVector)
+		SERIALIZE_FIELD3(_animationVector),
+		SERIALIZE_FIELD3(_textureIndex),
+		SERIALIZE_FIELD3(_playingTime)
 	)
 
 
@@ -33,8 +36,8 @@ private:
 		)
 	};
 
-	int _textureIndex = 0;
-	float _playingTime = 0;
-	AnimationState _currentAnimation;
+	Record<int> _textureIndex = 0;
+	Record<float> _playingTime = 0;
+	Record<AnimationState> _currentAnimation;
 	std::vector<AnimationState> _animationVector;
 };
