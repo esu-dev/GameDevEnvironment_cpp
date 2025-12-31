@@ -8,6 +8,35 @@
 #include "SceneDataManager.h"
 
 
+void ImGuiCreator::CreateAssetGui(const AssetManager::AssetFolder& assetFolder, const std::function<void(const std::string& assetName, AssetManager::AssetFile* assetFile)>& selectedAction)
+{
+	for (auto& pair : assetFolder.name2Datamp)
+	{
+		std::string folderName = pair.first;
+		auto assetData = pair.second;
+
+		// Folder
+		if (std::holds_alternative<AssetManager::AssetFolder*>(assetData))
+		{
+			if (ImGui::TreeNode(folderName.c_str()))
+			{
+				auto childAssetFolder = *std::get<AssetManager::AssetFolder*>(assetData);
+				CreateAssetGui(childAssetFolder, selectedAction);
+				ImGui::TreePop();
+			}
+		}
+		// AssetFile
+		else
+		{
+			auto assetFile = std::get<AssetManager::AssetFile*>(assetData);
+			if (ImGui::Selectable((folderName + "  (" + assetFile->instanceID + ")").c_str()))
+			{
+				selectedAction(folderName, assetFile);
+			}
+		}
+	}
+}
+
 bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::string& serializedVarName, const std::string& label, const std::string& instanceID)
 {
 	bool outHasChanged = false;
@@ -96,37 +125,11 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 					serializedData = serializedVarName + "nullptr";
 				}
 
-				std::function<void(AssetManager::AssetFolder)> createAssetGui = [&](const AssetManager::AssetFolder& assetFolder) -> void {
-					for (auto& pair : assetFolder.name2Datamp)
-					{
-						std::string folderName = pair.first;
-						auto assetData = pair.second;
+				CreateAssetGui(AssetManager::GetAssetFolder(), [&](const std::string& assetName, AssetManager::AssetFile* assetFile) -> void {
+						outHasChanged = true;
 
-						// Folder
-						if (std::holds_alternative<AssetManager::AssetFolder*>(assetData))
-						{
-							if (ImGui::TreeNode(folderName.c_str()))
-							{
-								auto childAssetFolder = *std::get<AssetManager::AssetFolder*>(assetData);
-								createAssetGui(childAssetFolder);
-								ImGui::TreePop();
-							}
-						}
-						// AssetFile
-						else
-						{
-							auto assetFile = std::get<AssetManager::AssetFile*>(assetData);
-							if (ImGui::Selectable((folderName + "  (" + assetFile->instanceID + ")").c_str()))
-							{
-								outHasChanged = true;
-
-								serializedData = serializedVarName + "(instanceID)" + assetFile->instanceID;
-							}
-						}
-					}
-				};
-
-				createAssetGui(AssetManager::GetAssetFolder());
+						serializedData = serializedVarName + "(instanceID)" + assetFile->instanceID;
+					});
 
 				ImGui::EndTabItem();
 			}

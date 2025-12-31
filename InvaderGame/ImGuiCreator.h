@@ -7,6 +7,7 @@
 class ImGuiCreator
 {
 public:
+	static void CreateAssetGui(const AssetManager::AssetFolder& assetFolder, const std::function<void(const std::string& assetName, AssetManager::AssetFile* assetFile)>& selectedAction);
 	static bool PutPointerField(std::string& serializedData, const std::string& serializedVarName, const std::string& label, const std::string& instanceID);
 	static void Create(SerializedClass* serializedObject);
 
