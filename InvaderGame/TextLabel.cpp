@@ -50,12 +50,13 @@ void TextLabel::Update()
 
 		MakeShaderResourceViewOf(c, &_textCharacterVector[i].ShaderResourceView);
 		
-		Vector3 drawPosition = rotation.Mult(Vector3(textStartPos.x + i * FontSize / Camera::Magnification, textStartPos.y, 0));
+		float width = FontSize / Camera::Magnification * 0.9f;
+		Vector3 drawPosition = rotation.Mult(Vector3(textStartPos.x + i * width, textStartPos.y, 0));
 		if (_canMove)
 		{
 			drawPosition = drawPosition - Camera::get_main()->get_transform()->position;
 		}
-		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, FontSize / Camera::Magnification, FontSize / Camera::Magnification, rotation);
+		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, width, FontSize / Camera::Magnification, rotation);
 		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView);
 		
 		i++;
@@ -64,24 +65,29 @@ void TextLabel::Update()
 	_textCharacterVector.clear();
 }
 
+void TextLabel::EditorUpdate()
+{
+	Update();
+}
+
 void TextLabel::MakeShaderResourceViewOf(wchar_t c, ComPtr<ID3D11ShaderResourceView> *srv)
 {
 	// -----------------------
 	// フォントハンドルの生成
 	// -----------------------
 	// フォントハンドル...フォントを操作するためのもの？
-	int fontWeight = 1000;
+	int fontWeight = FW_NORMAL;
 
 	// LOGFONT.. フォントの属性を定義する構造体
 	LOGFONT logFont = {
-		FontSize * _resolution, 0, 0, 0,
-		fontWeight, 0, 0, 0,
-		SHIFTJIS_CHARSET,
-		OUT_TT_ONLY_PRECIS,
-		CLIP_DEFAULT_PRECIS,
-		PROOF_QUALITY,
-		DEFAULT_PITCH | FF_MODERN,
-		TEXT("ⅯＳ　Ｐ明朝")
+		-FontSize * _resolution, 0, 0, 0, // height, width, Escapement, Orientation
+		fontWeight, 0, 0, 0, // Weight(0~1000)...太字, Italic, Underline, StrikeOut（取り消し線）
+		ANSI_CHARSET, // CharSet...文字コードみたいな
+		OUT_TT_ONLY_PRECIS, // OutPrecision...出力精度
+		CLIP_DEFAULT_PRECIS, // ClipPrecision...クリッピングの有効桁数
+		CLEARTYPE_QUALITY, // Quality...出力品質
+		DEFAULT_PITCH | FF_MODERN, // PitchAndFamily...フォントのピッチとファミリ
+		TEXT("Georgia") //TEXT("ⅯＳ　Ｐ明朝") // FaceName...フォントの書体名を指定する文字列
 	};
 
 	// フォントハンドルを生成

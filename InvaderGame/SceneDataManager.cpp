@@ -1,5 +1,6 @@
 #include "SceneDataManager.h"
 
+#include <filesystem>
 #include "Utility.h"
 #include "GameEngine.h"
 
@@ -171,7 +172,12 @@ void SceneDataManager::Save()
 	{
 		AssetManager::SerializeGameObject(serializedData, gameObject);
 	}
-	FileManager::Write(_path, serializedData);
+
+	// ƒtƒ@ƒCƒ‹–¼‚ğ‘‚«Š·‚¦‚é
+	std::filesystem::path path = _path;
+	path.replace_filename(sceneName + ".scene");
+
+	FileManager::Write(path, serializedData);
 }
 
 void SceneDataManager::SaveRecord()

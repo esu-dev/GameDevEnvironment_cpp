@@ -212,6 +212,8 @@
     <ClCompile Include="DemoRewindTrigger.cpp" />
     <ClCompile Include="DemoSceneAsset.cpp" />
     <ClCompile Include="DemoSoundPlayer.cpp" />
+    <ClCompile Include="DemoTextFlash.cpp" />
+    <ClCompile Include="DemoTitleSceneManager.cpp" />
     <ClCompile Include="Direct3D.cpp" />
     <ClCompile Include="DirectSound.cpp" />
     <ClCompile Include="Editor.cpp" />
@@ -336,6 +338,8 @@
     <ClInclude Include="DemoRewinder.h" />
     <ClInclude Include="DemoRewindTrigger.h" />
     <ClInclude Include="DemoSoundPlayer.h" />
+    <ClInclude Include="DemoTextFlash.h" />
+    <ClInclude Include="DemoTitleSceneManager.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="EngineBehaviour.h" />
     <ClInclude Include="FileManager.h" />
@@ -400,6 +404,7 @@
     <ClInclude Include="Record.h" />
     <ClInclude Include="RecordBase.h" />
     <ClInclude Include="RecordManager.h" />
+    <ClInclude Include="RecordSample.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SamplePrefabAsset.h" />
     <ClInclude Include="SceneDataManager.h" />

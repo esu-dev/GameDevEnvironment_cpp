@@ -1,0 +1,218 @@
+TestScene
+--- 1602166509=393192857=475249296
+GameObject:
+  name: "GameObject"
+  IsPrefab: false
+  tag: "MainCamera"
+  (vector)_componentVector: 2
+  - (instanceID)425312772=253273613=1208135490
+  - (instanceID)641509593=1904255759=2068131901
+  _isActive: true
+--- 425312772=253273613=1208135490
+Transform:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)1602166509=393192857=475249296
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 0.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 641509593=1904255759=2068131901
+Camera:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)1602166509=393192857=475249296
+--- 1288899121=21313438=78335873
+GameObject:
+  name: "Title"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 2
+  - (instanceID)2012672605=708262002=8684947
+  - (instanceID)277216343=1898561792=183984598
+  _isActive: true
+--- 2012672605=708262002=8684947
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)1288899121=21313438=78335873
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 0.000000
+      y: 5.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 32.000000
+    y: 10.000000
+    z: 1.000000
+--- 277216343=1898561792=183984598
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)1288899121=21313438=78335873
+  _order: 0
+  m_texture:
+    _variable: (instanceID)1737674412=15871333=1722494784
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 742824503=1006085125=1200531296
+GameObject:
+  name: "StartText"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 4
+  - (instanceID)19833633=479598376=714810045
+  - (instanceID)875857043=2071017064=410537656
+  - (instanceID)1650927147=1478389379=1890546045
+  - (instanceID)1264988097=1578810498=79716590
+  _isActive: true
+--- 19833633=479598376=714810045
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)742824503=1006085125=1200531296
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 0.000000
+      y: -10.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 875857043=2071017064=410537656
+SpriteRenderer:
+  name: ""GameObject.prefab""
+  enabled: false
+  gameObject: (instanceID)742824503=1006085125=1200531296
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 1650927147=1478389379=1890546045
+TextLabel:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)742824503=1006085125=1200531296
+  _canMove: false
+  FontSize: 24
+  _text: "- Press Any Key -"
+--- 1264988097=1578810498=79716590
+DemoTextFlash:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)742824503=1006085125=1200531296
+  _visibleTime: 1.250000
+  _invisibleTime: 0.400000
+--- 376452878=639209369=1269949458
+GameObject:
+  name: "SceneManager"
+  IsPrefab: true
+  tag: "ntagge"
+  (vector)_componentVector: 3
+  - (instanceID)1319482966=2006313376=421897725
+  - (instanceID)1911001826=1091969365=1654682244
+  - (instanceID)487268212=767812042=253299092
+  _isActive: true
+--- 1319482966=2006313376=421897725
+Transform:
+  name: "ameObject.prefa"
+  enabled: true
+  gameObject: (instanceID)376452878=639209369=1269949458
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 0.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 1911001826=1091969365=1654682244
+SpriteRenderer:
+  name: "ameObject.prefa"
+  enabled: true
+  gameObject: (instanceID)376452878=639209369=1269949458
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 487268212=767812042=253299092
+DemoTitleSceneManager:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)376452878=639209369=1269949458
+

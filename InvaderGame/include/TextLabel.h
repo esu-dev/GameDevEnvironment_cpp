@@ -8,6 +8,13 @@ class TextCharacter;
 class TextLabel : public Component
 {
 public:
+	NAME(TextLabel)
+	SERIALIZE3(Component,
+		SERIALIZE_FIELD3(_canMove),
+		SERIALIZE_FIELD3(FontSize),
+		SERIALIZE_FIELD3(_text)
+	)
+
 	enum TextAlign
 	{
 		Left,
@@ -15,18 +22,19 @@ public:
 		Right
 	};
 
-public:
 	TextLabel();
 	void SetCanMove(bool canMove);
 	void SetText(std::string text);
 	void SetFontSize(int fontSize);
 	void SetTextAlign(TextAlign textAlign);
 	void Update() override;
+	void EditorUpdate() override;
+
 
 private:
 	bool _canMove = false;
 	int FontSize = 16;
-	int _resolution = 10;
+	int _resolution = 20;
 	TextAlign _textAlign = TextAlign::Center;
 	std::string _text = "new_text";
 	std::vector<TextCharacter> _textCharacterVector;

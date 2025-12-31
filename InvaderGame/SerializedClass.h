@@ -171,7 +171,7 @@ protected:
 		// 文字列
 		else if constexpr (std_extension::is_string_v<T>)
 		{
-			serializedDataVector.push_back(indent + name + ": " + value);
+			serializedDataVector.push_back(indent + name + ": \"" + value + "\"");
 		}
 		// Property
 		else if constexpr (std::is_base_of<PropertyBase, T>())
@@ -413,7 +413,21 @@ protected:
 		// 文字列
 		else if constexpr (std_extension::is_string_v<T>)
 		{
-			variable = instanceData->memberVector[0];
+			// 二重引用符の除去
+			/*std::string value = instanceData->memberVector[0];
+			value = value.substr(1, value.length() - 2);*/
+
+			// 思ったより変更の影響範囲がでかいため、正規表現にする
+			// 下方互換性の維持
+			std::smatch smatch;
+			if (std::regex_match(instanceData->memberVector[0], smatch, std::regex(R"(\"(.*)\")")))
+			{
+				variable = smatch[1].str();
+			}
+			else
+			{
+				variable = instanceData->memberVector[0];
+			}
 		}
 		// Property
 		else if constexpr (std::is_base_of<PropertyBase, T>())

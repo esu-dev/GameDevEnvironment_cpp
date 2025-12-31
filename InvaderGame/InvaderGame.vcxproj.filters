@@ -294,6 +294,12 @@
     <ClCompile Include="DemoClock.cpp">
       <Filter>Source\Demo</Filter>
     </ClCompile>
+    <ClCompile Include="DemoTextFlash.cpp">
+      <Filter>Source\Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoTitleSceneManager.cpp">
+      <Filter>Source\Demo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -575,6 +581,15 @@
       <Filter>Source\Demo</Filter>
     </ClInclude>
     <ClInclude Include="DemoClock.h">
+      <Filter>Source\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordSample.h">
+      <Filter>Source\DebugAssets</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoTextFlash.h">
+      <Filter>Source\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoTitleSceneManager.h">
       <Filter>Source\Demo</Filter>
     </ClInclude>
   </ItemGroup>

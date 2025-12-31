@@ -2,6 +2,7 @@
 
 #include "Utility.h"
 #include "GameEngine.h"
+#include "GameSystem.h"
 
 namespace SceneManagement
 {
@@ -64,5 +65,10 @@ namespace SceneManagement
 	{
 		Scene* loadingScene = std_extension::Find<Scene*>(_sceneVector, [&](Scene* x) { return x->GetName() == sceneName; });
 		SetActiveScene(loadingScene);
+	}
+
+	void SceneManager::LoadSceneAsset(const std::string& assetName)
+	{
+		GameSystem::GetInstance().AddDelayedExecution([=]() -> void { SceneDataManager::Load("Resources/Scenes/" + assetName + ".scene"); });
 	}
 }

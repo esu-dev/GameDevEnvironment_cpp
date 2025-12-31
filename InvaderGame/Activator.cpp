@@ -10,6 +10,8 @@
 #include "DemoRewindTrigger.h"
 #include "DemoRewinder.h"
 #include "DemoClock.h"
+#include "DemoTextFlash.h"
+#include "DemoTitleSceneManager.h"
 
 #define REGISTER_TYPE(type) \
 	nameToInstanceMap[#type] = []() -> Object* { return new type(); }
@@ -23,6 +25,7 @@ void Activator::Initialize()
 	REGISTER_TYPE(Animator);
 	REGISTER_TYPE(Rigidbody2D);
 	REGISTER_TYPE(BoxCollider2D);
+	REGISTER_TYPE(TextLabel);
 	REGISTER_TYPE(AnimationClip);
 
 	REGISTER_TYPE(VelocityController);
@@ -34,6 +37,8 @@ void Activator::Initialize()
 	REGISTER_TYPE(DemoRewindTrigger);
 	REGISTER_TYPE(DemoRewinder);
 	REGISTER_TYPE(DemoClock);
+	REGISTER_TYPE(DemoTextFlash);
+	REGISTER_TYPE(DemoTitleSceneManager);
 }
 
 Object* Activator::CreateInstance(std::string typeString)
