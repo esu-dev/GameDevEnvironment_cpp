@@ -71,6 +71,7 @@ void SceneEditor::Update()
 
 			// TimeScaleで管理すると、無駄な処理がずっと走ることになるから、要検討
 			EngineTime::TimeScale = 1;
+			EngineTime::ResetDeltaTime();
 		}
 	}
 
@@ -147,6 +148,14 @@ void SceneEditor::Update()
 				{
 					// 選択を外す
 					Selection::gameObject = nullptr;
+
+					// Sceneのインスタンスから除外する
+					SceneDataManager::GetInstanceID2PointerMap().erase(go->instanceID);
+
+					for (auto component : go->GetComponentVector())
+					{
+						SceneDataManager::GetInstanceID2PointerMap().erase(component.get()->instanceID);
+					}
 
 					Object::Destroy(go);
 				}

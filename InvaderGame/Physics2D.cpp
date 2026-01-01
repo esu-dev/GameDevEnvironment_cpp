@@ -29,8 +29,8 @@ void Physics2D::Update()
 	if (_libraryType == LibraryType::Original)
 	{
 		static float g = GRAVITATIONAL_ACCELERATION;
-		static float e = 0.1f;
-		static float mu = 0.5f;
+		static float e = 0.0f;
+		static float mu = 0.75f;
 
 		auto gameObjectVector = SceneManager::GetActiveScene()->GetGameObjectVector();
 
@@ -168,16 +168,17 @@ void Physics2D::Update()
 				Vector2 impulse = -collision->Normal * (1 + e) / forum1 * relNormalSpeed / collisionDataNum;
 
 				// 重力キャンセル
+				// これあるとぶっ飛ぶ
 				//if (isKinematic)
-				{
+				/*{
 					float gravityCancelScaler = Vector2::Dot(Vector2(0, 1) * rigidbodyA->mass * g * EngineTime::GetFixedDeltaTime() / collisionDataNum, collision->Normal);
 					Vector2 gravityCancelImpulse = (-collision->Normal * relNormalSpeed).Normalized() * gravityCancelScaler;
 					impulse -= gravityCancelImpulse;
-				}
+				}*/
 
 				// 速度反転が起きないなら速度を０にする撃力を与える
 				// 条件にimpulseを使っているためか挙動がおかしくなる
-				if (isKinematic && impulse.GetMagnitude() < (relativeVelocity * rigidbodyA->mass).GetMagnitude() / collisionDataNum)
+				if (impulse.GetMagnitude() < (relativeVelocity * rigidbodyA->mass).GetMagnitude() / collisionDataNum)
 				{
 					impulse = -collision->Normal * relNormalSpeed * rigidbodyA->mass / collisionDataNum;
 				}
@@ -185,12 +186,12 @@ void Physics2D::Update()
 				// めり込み補正
 				if (collisionData->depth > 0)
 				{
-					float power = rigidbodyA->mass * 2 * collisionData->depth;
+					float power = rigidbodyA->mass * 3 * collisionData->depth;
 
-					float down = relNormalSpeed * 1 * EngineTime::GetDeltaTime();
+					float down = relNormalSpeed * 10 * EngineTime::GetDeltaTime();
 					if (power + down < 0)
 					{
-						down = 0;
+						down = -power * 0.9f;
 					}
 
 					impulse += (collision->Normal * (power + down)) / collisionDataNum;

@@ -151,7 +151,7 @@ TextLabel:
   gameObject: (instanceID)742824503=1006085125=1200531296
   _canMove: false
   FontSize: 24
-  _text: "- Press Any Key -"
+  _text: "- Press Space Key -"
 --- 1264988097=1578810498=79716590
 DemoTextFlash:
   name: "initial name"

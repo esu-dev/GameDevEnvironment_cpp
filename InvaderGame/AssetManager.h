@@ -23,7 +23,7 @@ public:
 
 	struct AssetFolder
 	{
-		std::unordered_map<std::string, std::variant<AssetFile*, AssetFolder*>> name2Datamp;
+		std::map<std::string, std::variant<AssetFile*, AssetFolder*>> name2Datamp;
 	};
 
 	static void Initialize();

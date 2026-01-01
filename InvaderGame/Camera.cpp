@@ -5,7 +5,7 @@
 #include "Matrix.h"
 
 
-DirectX::XMFLOAT4 Camera::backgroundColor = DirectX::XMFLOAT4(0, 0.25, 0.25, 1);
+DirectX::XMFLOAT4 Camera::backgroundColor = DirectX::XMFLOAT4(0, 0, 0, 0);
 
 // Transform‚Ì’l‚ð‚Ç‚ê‚¾‚¯Šg‘å‚·‚é‚©
 const float Camera::Magnification = 24.0f;

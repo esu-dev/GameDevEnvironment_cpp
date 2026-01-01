@@ -71,7 +71,7 @@ void Rigidbody2D::Update()
 	// 自作物理エンジン
 	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
 	{
-		if (velocity.Get().GetMagnitude() < 1)
+		/*if (velocity.Get().GetMagnitude() < 1)
 		{
 			_sleepTimer += EngineTime::GetDeltaTime();
 
@@ -84,17 +84,17 @@ void Rigidbody2D::Update()
 		{
 			_isSleeping = false;
 			_sleepTimer = 0;
-		}
+		}*/
 
 		if (velocity.Get().GetMagnitude() == 0)
 		{
 			return;
 		}
 
-		if (_isSleeping)
+		/*if (_isSleeping)
 		{
 			return;
-		}
+		}*/
 		
 		// 位置の更新
 		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position.Get() + ((Vector2)velocity).ToVector3() * EngineTime::GetFixedDeltaTime();
@@ -120,10 +120,11 @@ void Rigidbody2D::ApplyGravity()
 		return;
 	}
 
-	if (_isSleeping)
+	// スリープで落下しないようになると困る
+	/*if (_isSleeping)
 	{
 		return;
-	}
+	}*/
 
 	velocity += Vector2(0, -Physics2D::GRAVITATIONAL_ACCELERATION) * GravityScale * EngineTime::GetFixedDeltaTime();
 }

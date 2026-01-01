@@ -223,7 +223,7 @@ BoxCollider2D:
 --- 1509751976=961373694=1662533778
 Rigidbody2D:
   name: "initial name"
-  enabled: false
+  enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
   IsKinematic: false
   IsTrigger: false

@@ -2,7 +2,7 @@
 
 #include "GameSystem.h"
 
-const float EngineTime::_fixedDeltaTime = 1 / 60.0f;
+const float EngineTime::_fixedDeltaTime = 1 / 30.0f;
 float EngineTime::TimeScale = 1;
 
 void EngineTime::Initialize()
@@ -44,7 +44,8 @@ void EngineTime::ResetDeltaTime()
 
 float EngineTime::GetFixedDeltaTime()
 {
-	return _fixedDeltaTime * TimeScale;
+	//return _fixedDeltaTime * TimeScale;
+	return _deltaTime;
 }
 
 float EngineTime::GetEngineDeltaTime()
