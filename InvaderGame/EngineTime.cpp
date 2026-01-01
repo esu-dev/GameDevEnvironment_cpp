@@ -14,6 +14,7 @@ void EngineTime::Initialize()
 		{
 			ULONGLONG time = GetTickCount64();
 			_deltaTime = (time - updatedTime) / 1000.0f * TimeScale;
+			_engineDeltaTime = (time - updatedTime) / 1000.0f;
 			updatedTime = time;
 
 			_totalTime += _deltaTime;
@@ -46,6 +47,11 @@ float EngineTime::GetFixedDeltaTime()
 	return _fixedDeltaTime * TimeScale;
 }
 
+float EngineTime::GetEngineDeltaTime()
+{
+	return _engineDeltaTime;
+}
+
 float EngineTime::GetTotalTime()
 {
 	return _totalTime;
@@ -64,5 +70,6 @@ void EngineTime::SetIsPause(bool isPause)
 
 bool EngineTime::_isPause = false;
 float EngineTime::_deltaTime = 0;
+float EngineTime::_engineDeltaTime = 0;
 float EngineTime::_totalTime = 0;
 ULONGLONG EngineTime::updatedTime = 0;

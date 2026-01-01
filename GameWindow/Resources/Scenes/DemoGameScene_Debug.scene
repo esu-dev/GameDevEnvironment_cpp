@@ -1,4 +1,4 @@
-DemoGameScene
+DemoGameScene_Debug
 --- 000
 GameObject:
   name: "MainCamera"
@@ -142,7 +142,7 @@ Transform:
   position:
     _variable:
       x: 0.000000
-      y: -1.000000
+      y: -3.000000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
@@ -334,7 +334,7 @@ Transform:
   position:
     _variable:
       x: 0.000000
-      y: -3.000000
+      y: -5.000000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
@@ -652,7 +652,7 @@ Transform:
   position:
     _variable:
       x: 0.000000
-      y: -1.000000
+      y: -3.000000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
@@ -1120,7 +1120,7 @@ Transform:
   position:
     _variable:
       x: 0.000000
-      y: -1.000000
+      y: -3.000000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
@@ -1229,7 +1229,7 @@ GameObject:
   (vector)_componentVector: 2
   - (instanceID)638124128=5859953=646249462
   - (instanceID)1096084434=1759593135=505479298
-  _isActive: true
+  _isActive: false
 --- 638124128=5859953=646249462
 Transform:
   name: "GameObject.prefab"
@@ -1279,7 +1279,7 @@ GameObject:
   (vector)_componentVector: 2
   - (instanceID)26468377=904195193=623699699
   - (instanceID)940021865=205248439=1241698250
-  _isActive: true
+  _isActive: false
 --- 26468377=904195193=623699699
 Transform:
   name: "GameObject.prefab"
@@ -1412,7 +1412,7 @@ Transform:
 --- 1079864875=2014252071=1582300192
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)589309547=1709819280=1531874442
   _order: 3
   m_texture:
@@ -1462,7 +1462,7 @@ Transform:
 --- 151533521=694660845=1106640522
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)312139970=1885466842=414515924
   _order: 3
   m_texture:
@@ -1512,7 +1512,7 @@ Transform:
 --- 1626729676=1211994363=466600497
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)1576049666=1313029169=600105988
   _order: 3
   m_texture:
@@ -1562,7 +1562,7 @@ Transform:
 --- 329049549=789330640=1944522672
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)484734571=784918813=948434037
   _order: 3
   m_texture:
@@ -1693,7 +1693,7 @@ Transform:
 --- 1052757590=1372438575=1090994373
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)305494918=1119676737=1347174022
   _order: 3
   m_texture:
@@ -1743,7 +1743,7 @@ Transform:
 --- 1811698635=1476224986=1472384611
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)1733225516=637018245=325182870
   _order: 3
   m_texture:
@@ -1793,7 +1793,7 @@ Transform:
 --- 853245299=1531343393=1207221012
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)355399392=831049859=1013447319
   _order: 3
   m_texture:
@@ -1843,7 +1843,7 @@ Transform:
 --- 1586635313=1616604926=548470064
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)144488370=2056081730=770245372
   _order: 3
   m_texture:
@@ -1946,7 +1946,7 @@ Transform:
 --- 912562097=1506851243=1996476333
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)341274674=939437537=1593343032
   _order: 3
   m_texture:
@@ -1996,7 +1996,7 @@ Transform:
 --- 106436356=1807406878=219815952
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)1746929265=1278075119=1535328932
   _order: 3
   m_texture:
@@ -2099,7 +2099,7 @@ Transform:
 --- 1640998116=1175701161=725810939
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)1527033646=359420710=296585808
   _order: 3
   m_texture:
@@ -2149,7 +2149,7 @@ Transform:
 --- 2007610967=1107882944=1920560522
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)402302792=958843584=123749264
   _order: 3
   m_texture:
@@ -2199,7 +2199,7 @@ Transform:
 --- 320636876=2052715182=625940101
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)717926989=2056405307=567345552
   _order: 3
   m_texture:
@@ -2288,7 +2288,7 @@ Transform:
 --- 362179461=1603460059=74560278
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)436709801=1144377417=735898196
   _order: 3
   m_texture:
@@ -2338,7 +2338,7 @@ Transform:
 --- 1671460722=1723633410=92962183
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)114128546=795905505=1379057732
   _order: 3
   m_texture:
@@ -2352,9 +2352,8 @@ GameObject:
   name: "Corner_RightDown_Inverse"
   IsPrefab: true
   tag: "Untagged"
-  (vector)_componentVector: 2
+  (vector)_componentVector: 1
   - (instanceID)488243062=1896485411=330329326
-  - (instanceID)201500344=1400855750=539122415
   _isActive: true
 --- 488243062=1896485411=330329326
 Transform:
@@ -2388,18 +2387,6 @@ Transform:
     x: 1.000000
     y: 1.000000
     z: 1.000000
---- 201500344=1400855750=539122415
-SpriteRenderer:
-  name: "GameObject.prefab"
-  enabled: true
-  gameObject: (instanceID)1452326926=1900775810=1064945822
-  _order: 0
-  m_texture:
-    _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
-  _isFlipX:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
 --- 122163986=1003093772=570490462
 GameObject:
   name: "RIghtDown_Inverse"
@@ -2441,7 +2428,7 @@ Transform:
 --- 483519326=1671344341=1500775540
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)122163986=1003093772=570490462
   _order: 3
   m_texture:
@@ -2491,7 +2478,7 @@ Transform:
 --- 258749997=935639395=1941216325
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)575638629=412637237=1810140416
   _order: 3
   m_texture:
@@ -2541,7 +2528,7 @@ Transform:
 --- 299267565=962107308=973654554
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)888189656=326499267=233936064
   _order: 3
   m_texture:
@@ -2630,7 +2617,7 @@ Transform:
 --- 998197467=2017608345=158418278
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)223865669=242231744=2009485623
   _order: 3
   m_texture:
@@ -2680,7 +2667,7 @@ Transform:
 --- 1169245024=1580068093=1555223794
 SpriteRenderer:
   name: "GameObject.prefab"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)1096183271=420946107=1038377530
   _order: 3
   m_texture:
@@ -2696,7 +2683,7 @@ GameObject:
   tag: "Untagged"
   (vector)_componentVector: 1
   - (instanceID)1770778802=1417477143=1774646935
-  _isActive: true
+  _isActive: false
 --- 1770778802=1417477143=1774646935
 Transform:
   name: "GameObject.prefab"
@@ -2886,7 +2873,7 @@ GameObject:
   tag: "Untagged"
   (vector)_componentVector: 1
   - (instanceID)2042037070=209780167=1349690830
-  _isActive: true
+  _isActive: false
 --- 2042037070=209780167=1349690830
 Transform:
   name: "GameObject.prefab"
@@ -3025,7 +3012,7 @@ GameObject:
   tag: "Untagged"
   (vector)_componentVector: 1
   - (instanceID)317713555=1282746662=58859322
-  _isActive: true
+  _isActive: false
 --- 317713555=1282746662=58859322
 Transform:
   name: "GameObject.prefab"
@@ -3215,7 +3202,7 @@ GameObject:
   tag: "Untagged"
   (vector)_componentVector: 1
   - (instanceID)1579344448=1114366423=632119712
-  _isActive: true
+  _isActive: false
 --- 1579344448=1114366423=632119712
 Transform:
   name: "GameObject.prefab"
@@ -3456,7 +3443,7 @@ GameObject:
   tag: "Untagged"
   (vector)_componentVector: 1
   - (instanceID)50950024=1665099290=1804298091
-  _isActive: true
+  _isActive: false
 --- 50950024=1665099290=1804298091
 Transform:
   name: "GameObject.prefab"

@@ -16,6 +16,7 @@ public:
 	)
 
 	SpriteRenderer();
+	void SetOrder(int order);
 	void SetCanMove(bool canMove);
 	void SetTexture(Texture* texture);
 	void SetColor(DirectX::XMFLOAT4 color);
@@ -24,7 +25,6 @@ public:
 
 	void SetFlip(bool flip);
 	bool GetFlip();
-	void Render();
 
 private:
 	int _order = 0;
@@ -33,5 +33,7 @@ private:
 	DirectX::XMFLOAT4 _color;
 	Record<Texture*> m_texture;
 	Record<bool> _isFlipX = false;
+
+	void Render(const Vector3& cameraPosition);
 };
 

@@ -11,6 +11,7 @@
 #include "AnimationEditor.h"
 #include "TimeController.h"
 #include "AssetExplorer.h"
+#include "EditorCamera.h"
 
 #include "imgui_internal.h"
 #include "imgui_impl_win32.h"
@@ -28,11 +29,13 @@ void SceneEditor::Initialize()
 {
 	_focusFrame = GameObject::Create();
 	_focusFrame->AddComponent<SpriteRenderer>()->SetTexture(new Texture("Resources/Texture/Frame3.png"));
+	_focusFrame->GetComponent<SpriteRenderer>()->SetOrder(100);
 
 	EngineTime::TimeScale = 0;
 
 	// 他のエディタの初期化処理
 	LevelEditor::Initialize();
+	EditorCamera::Start();
 }
 
 void SceneEditor::Update()
@@ -107,6 +110,7 @@ void SceneEditor::Update()
 	LevelEditor::Update();
 	AnimationEditor::Update();
 	AssetExplorer::Update();
+	EditorCamera::Update();
 
 	// imguiデモ表示
 	ImGui::ShowDemoWindow();
@@ -328,7 +332,7 @@ void SceneEditor::Update()
 	{
 		_focusFrame->GetTransform()->position = Selection::gameObject->GetTransform()->position;
 		_focusFrame->GetTransform()->scale = Selection::gameObject->GetTransform()->scale + Vector3::one;
-		_focusFrame->Update();
+		_focusFrame->EditorUpdate();
 	}
 
 

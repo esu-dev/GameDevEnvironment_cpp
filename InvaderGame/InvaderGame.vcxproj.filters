@@ -300,6 +300,12 @@
     <ClCompile Include="DemoTitleSceneManager.cpp">
       <Filter>Source\Demo</Filter>
     </ClCompile>
+    <ClCompile Include="EditorCamera.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -591,6 +597,12 @@
     </ClInclude>
     <ClInclude Include="DemoTitleSceneManager.h">
       <Filter>Source\Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorCamera.h">
+      <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Source\Editor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

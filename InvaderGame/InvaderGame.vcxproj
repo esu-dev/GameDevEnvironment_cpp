@@ -217,6 +217,7 @@
     <ClCompile Include="Direct3D.cpp" />
     <ClCompile Include="DirectSound.cpp" />
     <ClCompile Include="Editor.cpp" />
+    <ClCompile Include="EditorCamera.cpp" />
     <ClCompile Include="Event.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebug</RuntimeLibrary>
@@ -230,6 +231,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameSystem.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MultiThreadedDebug</RuntimeLibrary>
@@ -343,6 +345,7 @@
     <ClInclude Include="Editor.h" />
     <ClInclude Include="EngineBehaviour.h" />
     <ClInclude Include="FileManager.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="GimmickTrigger.h" />
     <ClInclude Include="GroundChecker.h" />
     <ClInclude Include="ImGuiCreator.h" />
@@ -407,6 +410,7 @@
     <ClInclude Include="RecordSample.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SamplePrefabAsset.h" />
+    <ClInclude Include="EditorCamera.h" />
     <ClInclude Include="SceneDataManager.h" />
     <ClInclude Include="SceneEditor.h" />
     <ClInclude Include="Selection.h" />

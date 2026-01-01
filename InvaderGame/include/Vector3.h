@@ -32,6 +32,7 @@ public:
 	Vector2 ToVector2();
 
 	Vector3 operator+(const Vector3& vector) const;
+	void operator+=(const Vector3& vector);
 	Vector3 operator-() const;
 	Vector3 operator-(const Vector3& vector) const;
 	Vector3 operator*(const float& value) const;

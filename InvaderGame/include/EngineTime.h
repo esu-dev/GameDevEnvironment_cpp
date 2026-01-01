@@ -13,6 +13,7 @@ public:
 	static float GetDeltaTime();
 	static void ResetDeltaTime();
 	static float GetFixedDeltaTime();
+	static float GetEngineDeltaTime();
 	static float GetTotalTime();
 	static void SetTotalTime(float totalTime);
 	static void SetIsPause(bool isPause);
@@ -23,6 +24,7 @@ private:
 
 	static bool _isPause;
 	static float _deltaTime;
+	static float _engineDeltaTime;
 	static float _totalTime;
 	static ULONGLONG updatedTime;
 };

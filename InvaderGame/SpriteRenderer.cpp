@@ -1,5 +1,6 @@
 #include "SpriteRenderer.h"
 
+#include "EditorCamera.h"
 #include "GameObject.h"
 #include "Transform.h"
 #include "Vector2.h"
@@ -8,6 +9,11 @@
 
 SpriteRenderer::SpriteRenderer() : _color(DirectX::XMFLOAT4(1, 1, 1, 1)), m_texture { nullptr }
 {
+}
+
+void SpriteRenderer::SetOrder(int order)
+{
+	_order = order;
 }
 
 void SpriteRenderer::SetCanMove(bool canMove)
@@ -29,21 +35,21 @@ void SpriteRenderer::Update()
 {
 	// Update は位置や状態の更新だけにして、描画登録を行う
 	// 登録関数を作成して GameSystem に順序付きで渡す
-	GameSystem::GetInstance().AddRenderingData(_order, [this]() -> void { this->Render(); });
+	GameSystem::GetInstance().AddRenderingData(_order, [this]() -> void { this->Render(Camera::get_main()->GetTransform()->position); });
 }
 
 void SpriteRenderer::EditorUpdate()
 {
-	GameSystem::GetInstance().AddRenderingData(_order, [this]() -> void { this->Render(); });
+	GameSystem::GetInstance().AddRenderingData(_order, [this]() -> void { this->Render(EditorCamera::GetPosition()); });
 }
 
-void SpriteRenderer::Render()
+void SpriteRenderer::Render(const Vector3& cameraPosition)
 {
 	Transform* transform = this->gameObject->GetTransform();
 	Vector3 draw_position = transform->position;
 	if (_canMove)
 	{
-		draw_position = transform->position - Camera::get_main()->get_transform()->position;
+		draw_position = transform->position - cameraPosition;
 	}
 
 	// カメラの描画範囲外なら描画しない

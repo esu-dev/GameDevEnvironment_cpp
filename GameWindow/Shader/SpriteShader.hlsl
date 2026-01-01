@@ -20,6 +20,23 @@ struct VSOutput
 	float2 UV : TEXCOORD0; // UV座標
 };
 
+struct VS_INPUT
+{
+    float4 pos : POSITION;
+    float2 uv : TEXUV;
+	
+    float4 color : INSTANCE_COLOR;
+};
+
+struct VS_OUTPUT
+{
+	float4 pos : SV_Position;
+    float2 uv : TEXCOORD0;
+    float4 color : COLOR0;
+};
+
+
+// 頂点シェーダー
 VSOutput VS(float4 pos : POSITION, float2 uv : TEXUV)
 {
 	VSOutput Out;

@@ -20,7 +20,13 @@ Transform:
       x: 2.000000
       y: -1.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 2.000000
+          y: -1.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -65,7 +71,13 @@ Transform:
       x: 3.000000
       y: -9.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 3.000000
+          y: -9.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -90,10 +102,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 195784630=193413168=2014331585
 Rigidbody2D:
   name: "initial name"
@@ -103,8 +121,71 @@ Rigidbody2D:
   IsTrigger: false
   GravityScale: 1.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 746408839=1785363155=2049907163
 BoxCollider2D:
   name: "initial name"
@@ -141,10 +222,160 @@ Transform:
   - (instanceID)1660112007=1826137525=1761606654
   position:
     _variable:
-      x: 0.000000
-      y: -1.000000
+      x: -3.830425
+      y: -5.466999
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 25
+    - 0:
+        time: 0.000000
+        variable:
+          x: 0.000000
+          y: -5.000000
+          z: 0.000000
+    - 1:
+        time: 1.250000
+        variable:
+          x: -0.016667
+          y: -5.733286
+          z: 0.000000
+    - 2:
+        time: 1.765000
+        variable:
+          x: -0.052802
+          y: -5.024000
+          z: 0.000000
+    - 3:
+        time: 2.296999
+        variable:
+          x: 0.809698
+          y: -3.637542
+          z: 0.000000
+    - 4:
+        time: 2.811999
+        variable:
+          x: 1.790444
+          y: -4.078348
+          z: 0.000000
+    - 5:
+        time: 3.327998
+        variable:
+          x: 2.079105
+          y: -5.706628
+          z: 0.000000
+    - 6:
+        time: 3.842998
+        variable:
+          x: 2.079105
+          y: -4.654488
+          z: 0.000000
+    - 7:
+        time: 4.342999
+        variable:
+          x: 2.016605
+          y: -3.571594
+          z: 0.000000
+    - 8:
+        time: 4.858999
+        variable:
+          x: 0.954105
+          y: -4.254499
+          z: 0.000000
+    - 9:
+        time: 5.359000
+        variable:
+          x: 0.057048
+          y: -5.782477
+          z: 0.000000
+    - 10:
+        time: 5.875002
+        variable:
+          x: -0.222895
+          y: -5.741914
+          z: 0.000000
+    - 11:
+        time: 6.390002
+        variable:
+          x: -0.679381
+          y: -5.727034
+          z: 0.000000
+    - 12:
+        time: 6.906003
+        variable:
+          x: -0.302231
+          y: -5.718251
+          z: 0.000000
+    - 13:
+        time: 7.406003
+        variable:
+          x: 0.859423
+          y: -3.963811
+          z: 0.000000
+    - 14:
+        time: 7.906004
+        variable:
+          x: 2.274695
+          y: -3.633460
+          z: 0.000000
+    - 15:
+        time: 8.406005
+        variable:
+          x: 2.305758
+          y: -4.266315
+          z: 0.000000
+    - 16:
+        time: 8.906005
+        variable:
+          x: 1.645270
+          y: -5.782894
+          z: 0.000000
+    - 17:
+        time: 9.422005
+        variable:
+          x: 0.698741
+          y: -5.751254
+          z: 0.000000
+    - 18:
+        time: 9.937004
+        variable:
+          x: -0.551259
+          y: -4.684435
+          z: 0.000000
+    - 19:
+        time: 10.453004
+        variable:
+          x: -1.884592
+          y: -3.617151
+          z: 0.000000
+    - 20:
+        time: 10.953004
+        variable:
+          x: -3.276258
+          y: -4.011888
+          z: 0.000000
+    - 21:
+        time: 11.468004
+        variable:
+          x: -3.830425
+          y: -5.494322
+          z: 0.000000
+    - 22:
+        time: 11.968004
+        variable:
+          x: -3.830425
+          y: -5.474786
+          z: 0.000000
+    - 23:
+        time: 12.468004
+        variable:
+          x: -3.830425
+          y: -5.466999
+          z: 0.000000
+    - 24:
+        time: 13.000003
+        variable:
+          x: -3.830425
+          y: -5.466999
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -168,11 +399,125 @@ SpriteRenderer:
   gameObject: (instanceID)147560529=380564109=1893899489
   _order: 2
   m_texture:
-    _variable: (instanceID)2031896239=1692424211=1578972974
-    (vector)_timeVariableSetVector: 0
+    _variable: (instanceID)1789584765=1241305035=2101053243
+    (vector)_timeVariableSetVector: 19
+    - 0:
+        time: 0.000000
+        variable: (instanceID)2031896239=1692424211=1578972974
+    - 1:
+        time: 1.281000
+        variable: (instanceID)332588791=2059679822=288817757
+    - 2:
+        time: 1.797000
+        variable: (instanceID)1667799944=872565693=651547555
+    - 3:
+        time: 2.389999
+        variable: (instanceID)1434001069=765174939=217521873
+    - 4:
+        time: 3.749998
+        variable: (instanceID)1225070578=1551418483=1326230118
+    - 5:
+        time: 4.249998
+        variable: (instanceID)297908898=948624703=1358608438
+    - 6:
+        time: 4.764999
+        variable: (instanceID)1434001069=765174939=217521873
+    - 7:
+        time: 5.687001
+        variable: (instanceID)1863096655=928646444=758227727
+    - 8:
+        time: 6.265002
+        variable: (instanceID)2095014155=563386411=505079811
+    - 9:
+        time: 6.781003
+        variable: (instanceID)992060010=1404677563=1416563342
+    - 10:
+        time: 7.281004
+        variable: (instanceID)1983095956=2033714070=1213949151
+    - 11:
+        time: 7.859004
+        variable: (instanceID)1434001069=765174939=217521873
+    - 12:
+        time: 9.281005
+        variable: (instanceID)302686379=1157681739=438818441
+    - 13:
+        time: 9.828004
+        variable: (instanceID)1225070578=1551418483=1326230118
+    - 14:
+        time: 10.343004
+        variable: (instanceID)297908898=948624703=1358608438
+    - 15:
+        time: 10.859004
+        variable: (instanceID)1434001069=765174939=217521873
+    - 16:
+        time: 11.828004
+        variable: (instanceID)654135200=837953956=31975346
+    - 17:
+        time: 12.359004
+        variable: (instanceID)1789584765=1241305035=2101053243
+    - 18:
+        time: 12.859004
+        variable: (instanceID)1789584765=1241305035=2101053243
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 19
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.672000
+        variable: true
+    - 2:
+        time: 2.233999
+        variable: false
+    - 3:
+        time: 2.764999
+        variable: false
+    - 4:
+        time: 3.483998
+        variable: true
+    - 5:
+        time: 4.702999
+        variable: true
+    - 6:
+        time: 5.218000
+        variable: true
+    - 7:
+        time: 5.937002
+        variable: true
+    - 8:
+        time: 6.437002
+        variable: false
+    - 9:
+        time: 6.937003
+        variable: false
+    - 10:
+        time: 7.437004
+        variable: false
+    - 11:
+        time: 7.937005
+        variable: false
+    - 12:
+        time: 8.453005
+        variable: true
+    - 13:
+        time: 8.968005
+        variable: true
+    - 14:
+        time: 9.484005
+        variable: true
+    - 15:
+        time: 10.000004
+        variable: true
+    - 16:
+        time: 10.515004
+        variable: true
+    - 17:
+        time: 11.015004
+        variable: true
+    - 18:
+        time: 11.703004
+        variable: false
 --- 397732447=1670649184=1016027375
 Animator:
   name: "initial name"
@@ -192,11 +537,128 @@ Animator:
       Name: "NewState"
       AnimationClip: (instanceID)1882825050=783300963=986042454
   _textureIndex:
-    _variable: 0
-    (vector)_timeVariableSetVector: 0
+    _variable: 12
+    (vector)_timeVariableSetVector: 19
+    - 0:
+        time: 0.000000
+        variable: 1
+    - 1:
+        time: 1.281000
+        variable: 2
+    - 2:
+        time: 1.797000
+        variable: 2
+    - 3:
+        time: 2.389999
+        variable: 8
+    - 4:
+        time: 3.749998
+        variable: 1
+    - 5:
+        time: 4.249998
+        variable: 6
+    - 6:
+        time: 4.764999
+        variable: 8
+    - 7:
+        time: 5.687001
+        variable: 6
+    - 8:
+        time: 6.265002
+        variable: 2
+    - 9:
+        time: 6.781003
+        variable: 11
+    - 10:
+        time: 7.281004
+        variable: 4
+    - 11:
+        time: 7.859004
+        variable: 8
+    - 12:
+        time: 9.281005
+        variable: 12
+    - 13:
+        time: 9.828004
+        variable: 1
+    - 14:
+        time: 10.343004
+        variable: 6
+    - 15:
+        time: 10.859004
+        variable: 8
+    - 16:
+        time: 11.828004
+        variable: 6
+    - 17:
+        time: 12.359004
+        variable: 12
+    - 18:
+        time: 12.859004
+        variable: 12
   _playingTime:
-    _variable: 0.000000
-    (vector)_timeVariableSetVector: 0
+    _variable: 0.954000
+    (vector)_timeVariableSetVector: 20
+    - 0:
+        time: 0.000000
+        variable: 0.000000
+    - 1:
+        time: 1.250000
+        variable: 0.062000
+    - 2:
+        time: 1.765000
+        variable: 0.125000
+    - 3:
+        time: 2.296999
+        variable: 0.657000
+    - 4:
+        time: 2.811999
+        variable: 0.735000
+    - 5:
+        time: 3.749998
+        variable: 0.125000
+    - 6:
+        time: 4.249998
+        variable: 0.625000
+    - 7:
+        time: 4.764999
+        variable: 0.750000
+    - 8:
+        time: 5.687001
+        variable: 0.235000
+    - 9:
+        time: 6.218002
+        variable: 0.141000
+    - 10:
+        time: 6.734003
+        variable: 0.421000
+    - 11:
+        time: 7.250004
+        variable: 0.328000
+    - 12:
+        time: 7.765004
+        variable: 0.719000
+    - 13:
+        time: 9.281005
+        variable: 0.469000
+    - 14:
+        time: 9.797004
+        variable: 0.094000
+    - 15:
+        time: 10.328004
+        variable: 0.625000
+    - 16:
+        time: 10.859004
+        variable: 0.735000
+    - 17:
+        time: 11.828004
+        variable: 0.438000
+    - 18:
+        time: 12.328004
+        variable: 0.954000
+    - 19:
+        time: 12.828004
+        variable: 0.954000
 --- 6872234=179677836=1737315805
 Player:
   name: "initial name"
@@ -223,14 +685,80 @@ BoxCollider2D:
 --- 1509751976=961373694=1662533778
 Rigidbody2D:
   name: "initial name"
-  enabled: false
+  enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
   IsKinematic: false
   IsTrigger: false
   GravityScale: 2.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 22
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.343000
+        variable: false
+    - 2:
+        time: 2.140000
+        variable: false
+    - 3:
+        time: 2.671999
+        variable: false
+    - 4:
+        time: 3.202999
+        variable: false
+    - 5:
+        time: 3.717998
+        variable: false
+    - 6:
+        time: 4.233998
+        variable: false
+    - 7:
+        time: 4.733999
+        variable: false
+    - 8:
+        time: 5.250000
+        variable: false
+    - 9:
+        time: 5.750001
+        variable: false
+    - 10:
+        time: 6.265002
+        variable: false
+    - 11:
+        time: 7.047003
+        variable: false
+    - 12:
+        time: 7.547004
+        variable: false
+    - 13:
+        time: 8.047005
+        variable: false
+    - 14:
+        time: 8.547005
+        variable: false
+    - 15:
+        time: 9.047005
+        variable: false
+    - 16:
+        time: 9.547005
+        variable: false
+    - 17:
+        time: 10.062004
+        variable: false
+    - 18:
+        time: 10.578004
+        variable: false
+    - 19:
+        time: 11.109004
+        variable: false
+    - 20:
+        time: 11.625004
+        variable: false
+    - 21:
+        time: 13.218003
+        variable: false
 --- 890107419=408267702=1775497643
 GameObject:
   name: "GimmickBox"
@@ -249,13 +777,128 @@ Transform:
   enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector: 0
+  (vector)_childVector: 1
+  - (instanceID)67950857=266036679=1600359044
   position:
     _variable:
-      x: 3.000000
-      y: -6.000000
+      x: 4.250057
+      y: -6.250150
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 19
+    - 0:
+        time: 0.000000
+        variable:
+          x: 3.000000
+          y: -6.000000
+          z: 0.000000
+    - 1:
+        time: 1.250000
+        variable:
+          x: 3.000000
+          y: -6.284115
+          z: 0.000000
+    - 2:
+        time: 1.765000
+        variable:
+          x: 3.000000
+          y: -6.270608
+          z: 0.000000
+    - 3:
+        time: 2.296999
+        variable:
+          x: 3.000000
+          y: -6.262105
+          z: 0.000000
+    - 4:
+        time: 2.811999
+        variable:
+          x: 3.839626
+          y: -6.257805
+          z: 0.000000
+    - 5:
+        time: 3.327998
+        variable:
+          x: 4.223200
+          y: -6.255964
+          z: 0.000000
+    - 6:
+        time: 3.842998
+        variable:
+          x: 4.209458
+          y: -6.254488
+          z: 0.000000
+    - 7:
+        time: 4.342999
+        variable:
+          x: 4.209458
+          y: -6.253363
+          z: 0.000000
+    - 8:
+        time: 4.858999
+        variable:
+          x: 4.209458
+          y: -6.252849
+          z: 0.000000
+    - 9:
+        time: 5.359000
+        variable:
+          x: 4.209458
+          y: -6.252685
+          z: 0.000000
+    - 10:
+        time: 5.875002
+        variable:
+          x: 4.209458
+          y: -6.251786
+          z: 0.000000
+    - 11:
+        time: 6.390002
+        variable:
+          x: 4.209458
+          y: -6.251559
+          z: 0.000000
+    - 12:
+        time: 8.359005
+        variable:
+          x: 4.253454
+          y: -6.251218
+          z: 0.000000
+    - 13:
+        time: 8.875005
+        variable:
+          x: 4.250450
+          y: -6.250951
+          z: 0.000000
+    - 14:
+        time: 9.375005
+        variable:
+          x: 4.250271
+          y: -6.250607
+          z: 0.000000
+    - 15:
+        time: 9.906004
+        variable:
+          x: 4.250163
+          y: -6.250385
+          z: 0.000000
+    - 16:
+        time: 10.422004
+        variable:
+          x: 4.250094
+          y: -6.250237
+          z: 0.000000
+    - 17:
+        time: 10.922004
+        variable:
+          x: 4.250057
+          y: -6.250150
+          z: 0.000000
+    - 18:
+        time: 13.218003
+        variable:
+          x: 4.250057
+          y: -6.250150
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -280,10 +923,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)792955701=2031660049=1079902562
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)792955701=2031660049=1079902562
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1499966935=2004788885=708744623
 BoxCollider2D:
   name: "initial name"
@@ -305,7 +954,43 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 12
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 1.437000
+        variable: false
+    - 2:
+        time: 2.874999
+        variable: false
+    - 3:
+        time: 3.389998
+        variable: false
+    - 4:
+        time: 6.531003
+        variable: true
+    - 5:
+        time: 7.047003
+        variable: true
+    - 6:
+        time: 7.547004
+        variable: true
+    - 7:
+        time: 8.047005
+        variable: false
+    - 8:
+        time: 11.375004
+        variable: true
+    - 9:
+        time: 11.890004
+        variable: true
+    - 10:
+        time: 12.390004
+        variable: true
+    - 11:
+        time: 12.890004
+        variable: false
 --- 153492873=74805102=452843053
 DemoRewinder:
   name: "initial name"
@@ -333,10 +1018,16 @@ Transform:
   (vector)_childVector: 0
   position:
     _variable:
-      x: 0.000000
-      y: -3.000000
+      x: -3.830425
+      y: -7.466999
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 0.000000
+          y: -7.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: -2.000000
@@ -361,10 +1052,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 987323884=1493656018=1135970640
 GroundChecker:
   name: "initial name"
@@ -390,8 +1087,71 @@ Rigidbody2D:
   IsTrigger: true
   GravityScale: 0.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 660199241=572228906=1018028808
 GameObject:
   name: "DefaultStage"
@@ -415,7 +1175,13 @@ Transform:
       x: 13.000000
       y: -7.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 13.000000
+          y: -7.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -440,10 +1206,16 @@ SpriteRenderer:
   _order: 1
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1438045471=94100770=1112695615
 BoxCollider2D:
   name: "initial name"
@@ -464,8 +1236,71 @@ Rigidbody2D:
   IsTrigger: false
   GravityScale: 1.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 334318009=1860016338=1767387823
 GameObject:
   name: "Shutter"
@@ -490,7 +1325,13 @@ Transform:
       x: 10.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 10.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -515,10 +1356,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 50367500=615469093=1027278146
 Shutter:
   name: "initial name"
@@ -547,8 +1394,71 @@ Rigidbody2D:
   IsTrigger: false
   GravityScale: 1.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 594748402=1574792866=1069403906
 GameObject:
   name: "GimmickTrigger"
@@ -573,7 +1483,13 @@ Transform:
       x: -1.000000
       y: -7.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -1.000000
+          y: -7.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -598,10 +1514,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 397698515=921189810=1480861003
 BoxCollider2D:
   name: "initial name"
@@ -622,8 +1544,71 @@ Rigidbody2D:
   IsTrigger: true
   GravityScale: 1.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 220179420=1740506888=1732060206
 GimmickTrigger:
   name: "initial name"
@@ -651,10 +1636,16 @@ Transform:
   (vector)_childVector: 0
   position:
     _variable:
-      x: 0.000000
-      y: -1.000000
+      x: -3.830425
+      y: -5.466999
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 0.000000
+          y: -5.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -679,10 +1670,16 @@ SpriteRenderer:
   _order: 1
   m_texture:
     _variable: (instanceID)1244095655=768721352=423438383
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1244095655=768721352=423438383
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 2044907468=605035024=336969862
 Rigidbody2D:
   name: "initial name"
@@ -692,12 +1689,75 @@ Rigidbody2D:
   IsTrigger: true
   GravityScale: 1.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 78277159=799468258=1132150830
 BoxCollider2D:
   name: "initial name"
-  enabled: true
+  enabled: false
   gameObject: (instanceID)116941363=1899623809=284380306
   _offset:
     x: 0.000000
@@ -726,10 +1786,16 @@ Animator:
       AnimationClip: (instanceID)471440613=1646999092=245871592
   _textureIndex:
     _variable: 0
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: 0
   _playingTime:
     _variable: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: 0.000000
 --- 888262907=508753448=1593350804
 GameObject:
   name: "DefaultStage"
@@ -753,7 +1819,13 @@ Transform:
       x: -7.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -7.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -778,10 +1850,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 599011416=1129288345=2136398583
 BoxCollider2D:
   name: "initial name"
@@ -802,8 +1880,71 @@ Rigidbody2D:
   IsTrigger: false
   GravityScale: 1.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 422284339=383024916=61925684
 GameObject:
   name: "DefaultStage"
@@ -827,7 +1968,13 @@ Transform:
       x: 3.500000
       y: 5.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 3.500000
+          y: 5.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -852,10 +1999,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 262604502=1760241896=1281241367
 BoxCollider2D:
   name: "initial name"
@@ -876,8 +2029,71 @@ Rigidbody2D:
   IsTrigger: false
   GravityScale: 1.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 1191737536=547853773=851201240
 GameObject:
   name: "DefaultStage"
@@ -901,7 +2117,13 @@ Transform:
       x: 14.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 14.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -926,10 +2148,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1874455155=1011910309=1694262774
 BoxCollider2D:
   name: "initial name"
@@ -950,8 +2178,71 @@ Rigidbody2D:
   IsTrigger: false
   GravityScale: 1.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 829808381=485146313=1292376636
 GameObject:
   name: "DefaultStage"
@@ -975,7 +2266,13 @@ Transform:
       x: -4.000000
       y: -7.375000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -4.000000
+          y: -7.375000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1000,10 +2297,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1289291173=1451176930=478927638
 BoxCollider2D:
   name: "initial name"
@@ -1024,8 +2327,71 @@ Rigidbody2D:
   IsTrigger: false
   GravityScale: 1.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 1340848554=1288212688=1250136929
 GameObject:
   name: "DefaultStage"
@@ -1049,7 +2415,13 @@ Transform:
       x: 6.000000
       y: -7.375000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 6.000000
+          y: -7.375000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1074,10 +2446,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1087677577=664884420=787077428
 BoxCollider2D:
   name: "initial name"
@@ -1098,8 +2476,71 @@ Rigidbody2D:
   IsTrigger: false
   GravityScale: 1.000000
   _isSleeping:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
+    _variable: true
+    (vector)_timeVariableSetVector: 21
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 3.030999
+        variable: true
+    - 2:
+        time: 3.546998
+        variable: true
+    - 3:
+        time: 4.077998
+        variable: true
+    - 4:
+        time: 4.592999
+        variable: true
+    - 5:
+        time: 5.109000
+        variable: true
+    - 6:
+        time: 5.625001
+        variable: true
+    - 7:
+        time: 6.125002
+        variable: true
+    - 8:
+        time: 6.625003
+        variable: true
+    - 9:
+        time: 7.140004
+        variable: true
+    - 10:
+        time: 7.640004
+        variable: true
+    - 11:
+        time: 8.172005
+        variable: true
+    - 12:
+        time: 8.672005
+        variable: true
+    - 13:
+        time: 9.172005
+        variable: true
+    - 14:
+        time: 9.687004
+        variable: true
+    - 15:
+        time: 10.187004
+        variable: true
+    - 16:
+        time: 10.703004
+        variable: true
+    - 17:
+        time: 11.218004
+        variable: true
+    - 18:
+        time: 11.734004
+        variable: true
+    - 19:
+        time: 12.250004
+        variable: true
+    - 20:
+        time: 12.750004
+        variable: true
 --- 797730932=1938781617=926194059
 GameObject:
   name: "RewindCircle"
@@ -1119,10 +2560,16 @@ Transform:
   (vector)_childVector: 0
   position:
     _variable:
-      x: 0.000000
-      y: -1.000000
+      x: -3.830425
+      y: -5.466999
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 0.000000
+          y: -5.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1147,10 +2594,16 @@ SpriteRenderer:
   _order: 1
   m_texture:
     _variable: (instanceID)1244095655=768721352=423438383
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1244095655=768721352=423438383
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1484692936=1364014913=1180558528
 Animator:
   name: "initial name"
@@ -1167,10 +2620,16 @@ Animator:
       AnimationClip: (instanceID)1290421775=277455505=1694098709
   _textureIndex:
     _variable: 0
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: 0
   _playingTime:
     _variable: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: 0.000000
 --- 1694275889=297475389=1408660225
 GameObject:
   name: "Stage_Long"
@@ -1192,7 +2651,13 @@ Transform:
       x: 2.000000
       y: -10.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 2.000000
+          y: -10.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1217,10 +2682,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1641816972=201768058=236153817
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1641816972=201768058=236153817
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 478731400=1097234443=128181731
 GameObject:
   name: "Rock"
@@ -1242,7 +2713,13 @@ Transform:
       x: -3.000000
       y: -5.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -3.000000
+          y: -5.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1267,10 +2744,16 @@ SpriteRenderer:
   _order: -1
   m_texture:
     _variable: (instanceID)27590078=1372041917=1333095268
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)27590078=1372041917=1333095268
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1930688615=1717025850=1383786900
 GameObject:
   name: "Stage_Long"
@@ -1292,7 +2775,13 @@ Transform:
       x: 26.000000
       y: -10.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 26.000000
+          y: -10.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1317,10 +2806,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1641816972=201768058=236153817
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1641816972=201768058=236153817
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 2144448981=291600220=1318409598
 GameObject:
   name: "TileTemplate"
@@ -1342,7 +2837,13 @@ Transform:
       x: 4.000000
       y: -1.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 4.000000
+          y: -1.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1367,10 +2868,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1386856610=1023559114=1189473343
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1386856610=1023559114=1189473343
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 589309547=1709819280=1531874442
 GameObject:
   name: "Up1"
@@ -1392,7 +2899,13 @@ Transform:
       x: -5.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -5.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: -3.000000
     y: 0.000000
@@ -1417,10 +2930,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1340811458=71075637=1448548859
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1340811458=71075637=1448548859
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 312139970=1885466842=414515924
 GameObject:
   name: "Up2"
@@ -1442,7 +2961,13 @@ Transform:
       x: -3.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -3.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -1467,10 +2992,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)284790209=1190495078=709005223
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)284790209=1190495078=709005223
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1576049666=1313029169=600105988
 GameObject:
   name: "Up3"
@@ -1492,7 +3023,13 @@ Transform:
       x: -1.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -1.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -1517,10 +3054,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)988538936=53375498=1081506022
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)988538936=53375498=1081506022
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 484734571=784918813=948434037
 GameObject:
   name: "Up4"
@@ -1542,7 +3085,13 @@ Transform:
       x: 1.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 1.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: 3.000000
     y: 0.000000
@@ -1567,10 +3116,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1058205684=1981702125=905794294
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1058205684=1981702125=905794294
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1758669023=1026246354=1826692743
 GameObject:
   name: "Up_4_Normal"
@@ -1595,7 +3150,13 @@ Transform:
       x: -2.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -2.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1635,7 +3196,13 @@ Transform:
       x: 6.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 6.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1673,7 +3240,13 @@ Transform:
       x: 3.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 3.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: -3.000000
     y: 0.000000
@@ -1698,10 +3271,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1340811458=71075637=1448548859
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1340811458=71075637=1448548859
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1733225516=637018245=325182870
 GameObject:
   name: "Up2"
@@ -1723,7 +3302,13 @@ Transform:
       x: 5.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 5.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -1748,10 +3333,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)284790209=1190495078=709005223
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)284790209=1190495078=709005223
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 355399392=831049859=1013447319
 GameObject:
   name: "Up3"
@@ -1773,7 +3364,13 @@ Transform:
       x: 7.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 7.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -1798,10 +3395,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)988538936=53375498=1081506022
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)988538936=53375498=1081506022
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 144488370=2056081730=770245372
 GameObject:
   name: "RIghtDown_Inverse"
@@ -1823,7 +3426,13 @@ Transform:
       x: 11.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 11.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1848,10 +3457,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1002214360=62280928=1223044261
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1002214360=62280928=1223044261
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1336205416=1532896535=984970164
 GameObject:
   name: "Corner_RightDown_Inverse"
@@ -1876,7 +3491,13 @@ Transform:
       x: 11.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 11.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1901,10 +3522,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 341274674=939437537=1593343032
 GameObject:
   name: "Right"
@@ -1926,7 +3553,13 @@ Transform:
       x: 11.000000
       y: -6.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 11.000000
+          y: -6.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 2.000000
@@ -1951,10 +3584,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1386856610=1023559114=1189473343
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1386856610=1023559114=1189473343
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1746929265=1278075119=1535328932
 GameObject:
   name: "Up4_Inverse"
@@ -1976,7 +3615,13 @@ Transform:
       x: 9.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 9.000000
+          y: -8.000000
+          z: 0.000000
   _localPosition:
     x: -2.000000
     y: 0.000000
@@ -2001,10 +3646,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1488480237=1205210116=1150986257
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1488480237=1205210116=1150986257
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 640974497=1577347983=238398253
 GameObject:
   name: "Corner_LeftUp_Inverse"
@@ -2029,7 +3680,13 @@ Transform:
       x: 13.000000
       y: -4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 13.000000
+          y: -4.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2054,10 +3711,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1527033646=359420710=296585808
 GameObject:
   name: "RIghtDown_Inverse"
@@ -2079,7 +3742,13 @@ Transform:
       x: 11.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 11.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: -2.000000
     y: 2.000000
@@ -2104,10 +3773,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)785505556=472500270=1046712315
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)785505556=472500270=1046712315
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 402302792=958843584=123749264
 GameObject:
   name: "Right"
@@ -2129,7 +3804,13 @@ Transform:
       x: 13.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 13.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 2.000000
@@ -2154,10 +3835,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1340811458=71075637=1448548859
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1340811458=71075637=1448548859
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 717926989=2056405307=567345552
 GameObject:
   name: "Up4_Inverse"
@@ -2179,7 +3866,13 @@ Transform:
       x: 11.000000
       y: -4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 11.000000
+          y: -4.000000
+          z: 0.000000
   _localPosition:
     x: -2.000000
     y: 0.000000
@@ -2204,10 +3897,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)748729736=1801220044=739974685
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)748729736=1801220044=739974685
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 339049517=1265390626=673728873
 GameObject:
   name: "Up_2-3_Normal"
@@ -2230,7 +3929,13 @@ Transform:
       x: 16.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 16.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2268,7 +3973,13 @@ Transform:
       x: 15.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 15.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -2293,10 +4004,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)284790209=1190495078=709005223
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)284790209=1190495078=709005223
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 114128546=795905505=1379057732
 GameObject:
   name: "Up3"
@@ -2318,7 +4035,13 @@ Transform:
       x: 17.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 17.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -2343,10 +4066,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)988538936=53375498=1081506022
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)988538936=53375498=1081506022
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1452326926=1900775810=1064945822
 GameObject:
   name: "Corner_RightDown_Inverse"
@@ -2371,7 +4100,13 @@ Transform:
       x: 21.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 21.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2396,10 +4131,16 @@ SpriteRenderer:
   _order: 0
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)nullptr
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 122163986=1003093772=570490462
 GameObject:
   name: "RIghtDown_Inverse"
@@ -2421,7 +4162,13 @@ Transform:
       x: 21.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 21.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2446,10 +4193,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1002214360=62280928=1223044261
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1002214360=62280928=1223044261
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 575638629=412637237=1810140416
 GameObject:
   name: "Right"
@@ -2471,7 +4224,13 @@ Transform:
       x: 21.000000
       y: 0.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 21.000000
+          y: 0.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 2.000000
@@ -2496,10 +4255,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1386856610=1023559114=1189473343
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1386856610=1023559114=1189473343
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 888189656=326499267=233936064
 GameObject:
   name: "Up4_Inverse"
@@ -2521,7 +4286,13 @@ Transform:
       x: 19.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 19.000000
+          y: -2.000000
+          z: 0.000000
   _localPosition:
     x: -2.000000
     y: 0.000000
@@ -2546,10 +4317,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1488480237=1205210116=1150986257
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1488480237=1205210116=1150986257
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1325980737=1159517851=1031008334
 GameObject:
   name: "Left_2-3_Normal"
@@ -2572,7 +4349,13 @@ Transform:
       x: 21.000000
       y: 3.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 21.000000
+          y: 3.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2610,7 +4393,13 @@ Transform:
       x: 21.000000
       y: 4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 21.000000
+          y: 4.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 1.000000
@@ -2635,10 +4424,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1646279221=1340990038=1767113539
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1646279221=1340990038=1767113539
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1096183271=420946107=1038377530
 GameObject:
   name: "Left3"
@@ -2660,7 +4455,13 @@ Transform:
       x: 21.000000
       y: 2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 21.000000
+          y: 2.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: -1.000000
@@ -2685,10 +4486,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)212801423=1884271856=2065021270
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)212801423=1884271856=2065021270
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1533291291=274527115=1149836197
 GameObject:
   name: "Corner_RightUp_Inverse"
@@ -2712,7 +4519,13 @@ Transform:
       x: 21.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 21.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2750,7 +4563,13 @@ Transform:
       x: 21.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 21.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2775,10 +4594,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1395600945=2124311525=1442060992
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1395600945=2124311525=1442060992
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1908448546=1753907175=1980305601
 GameObject:
   name: "Right_Inv"
@@ -2800,7 +4625,13 @@ Transform:
       x: 21.000000
       y: 6.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 21.000000
+          y: 6.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: -2.000000
@@ -2825,10 +4656,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1386856610=1023559114=1189473343
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1386856610=1023559114=1189473343
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1774279937=1874793355=1033405597
 GameObject:
   name: "Up4_Inverse"
@@ -2850,7 +4687,13 @@ Transform:
       x: 19.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 19.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: -2.000000
     y: 0.000000
@@ -2875,10 +4718,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1396685563=11855302=1903596312
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1396685563=11855302=1903596312
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 228866174=1579005035=495620542
 GameObject:
   name: "Up_2-3_Inv"
@@ -2901,7 +4750,13 @@ Transform:
       x: 16.000000
       y: 12.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 16.000000
+          y: 12.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2939,7 +4794,13 @@ Transform:
       x: 15.000000
       y: 12.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 15.000000
+          y: 12.000000
+          z: 0.000000
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -2964,10 +4825,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)284790209=1190495078=709005223
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)284790209=1190495078=709005223
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1256133289=772572920=2046298189
 GameObject:
   name: "Up3"
@@ -2989,7 +4856,13 @@ Transform:
       x: 17.000000
       y: 12.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 17.000000
+          y: 12.000000
+          z: 0.000000
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -3014,10 +4887,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)988538936=53375498=1081506022
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)988538936=53375498=1081506022
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 411385698=924848761=723416847
 GameObject:
   name: "Up_1-3_Inv"
@@ -3041,7 +4920,13 @@ Transform:
       x: 15.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 15.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -3079,7 +4964,13 @@ Transform:
       x: 13.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 13.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: -2.000000
     y: 0.000000
@@ -3104,10 +4995,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1048850283=2095153860=1951394510
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1048850283=2095153860=1951394510
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1923324438=2094316058=1688384123
 GameObject:
   name: "Up2"
@@ -3129,7 +5026,13 @@ Transform:
       x: 15.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 15.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -3154,10 +5057,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)2145419292=100847595=862704421
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)2145419292=100847595=862704421
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 93799367=724604187=1705017661
 GameObject:
   name: "Up3"
@@ -3179,7 +5088,13 @@ Transform:
       x: 17.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 17.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 2.000000
     y: 0.000000
@@ -3204,10 +5119,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1767809968=1538349478=1991160810
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1767809968=1538349478=1991160810
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1263627845=849112413=909459930
 GameObject:
   name: "Up_1-4_Inv"
@@ -3232,7 +5153,13 @@ Transform:
       x: 8.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 8.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -3270,7 +5197,13 @@ Transform:
       x: 5.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 5.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: -3.000000
     y: 0.000000
@@ -3295,10 +5228,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1048850283=2095153860=1951394510
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1048850283=2095153860=1951394510
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 837581531=579930351=1517261078
 GameObject:
   name: "Up2"
@@ -3320,7 +5259,13 @@ Transform:
       x: 7.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 7.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -3345,10 +5290,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)2145419292=100847595=862704421
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)2145419292=100847595=862704421
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 839865061=65758402=815797446
 GameObject:
   name: "Up3"
@@ -3370,7 +5321,13 @@ Transform:
       x: 9.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 9.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -3395,10 +5352,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1767809968=1538349478=1991160810
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1767809968=1538349478=1991160810
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1740314113=17476448=18970399
 GameObject:
   name: "Up4"
@@ -3420,7 +5383,13 @@ Transform:
       x: 11.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 11.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 3.000000
     y: 0.000000
@@ -3445,10 +5414,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1396685563=11855302=1903596312
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1396685563=11855302=1903596312
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 937875833=970686787=573829363
 GameObject:
   name: "Up_1-4_Inv"
@@ -3473,7 +5448,13 @@ Transform:
       x: 0.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 0.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -3511,7 +5492,13 @@ Transform:
       x: -3.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -3.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: -3.000000
     y: 0.000000
@@ -3536,10 +5523,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1048850283=2095153860=1951394510
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1048850283=2095153860=1951394510
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1857052816=1662362200=930662988
 GameObject:
   name: "Up2"
@@ -3561,7 +5554,13 @@ Transform:
       x: -1.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -1.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -3586,10 +5585,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)2145419292=100847595=862704421
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)2145419292=100847595=862704421
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1254394392=353530221=1921158462
 GameObject:
   name: "Up3"
@@ -3611,7 +5616,13 @@ Transform:
       x: 1.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 1.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -3636,10 +5647,16 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1767809968=1538349478=1991160810
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1767809968=1538349478=1991160810
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
 --- 1033601584=1373628101=1618941457
 GameObject:
   name: "Up4"
@@ -3661,7 +5678,13 @@ Transform:
       x: 3.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 0
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: 3.000000
+          y: 8.000000
+          z: 0.000000
   _localPosition:
     x: 3.000000
     y: 0.000000
@@ -3686,6 +5709,248 @@ SpriteRenderer:
   _order: 3
   m_texture:
     _variable: (instanceID)1396685563=11855302=1903596312
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1396685563=11855302=1903596312
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 2145659447=1205587696=1435175681
+GameObject:
+  name: "Clock5"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 3
+  - (instanceID)67950857=266036679=1600359044
+  - (instanceID)557722151=683883347=1409486153
+  - (instanceID)68614818=1624720593=264097565
+  _isActive: false
+--- 67950857=266036679=1600359044
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)2145659447=1205587696=1435175681
+  _parentProperty: (instanceID)1619447062=528024578=1024881459
+  (vector)_childVector: 2
+  - (instanceID)1483553837=121179171=1122458199
+  - (instanceID)235646909=1847113453=1511689949
+  position:
+    _variable:
+      x: 3.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.250000
+    y: 0.250000
+    z: 1.000000
+--- 557722151=683883347=1409486153
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)2145659447=1205587696=1435175681
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 68614818=1624720593=264097565
+DemoClock:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)2145659447=1205587696=1435175681
+  _minuteHandParent: (instanceID)1118831234=1540508778=748028321
+  _secondHandParent: (instanceID)288087623=1474818737=1918094625
+--- 1118831234=1540508778=748028321
+GameObject:
+  name: "MinuteHandParent"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 1
+  - (instanceID)1483553837=121179171=1122458199
+  _isActive: true
+--- 1483553837=121179171=1122458199
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)1118831234=1540508778=748028321
+  _parentProperty: (instanceID)67950857=266036679=1600359044
+  (vector)_childVector: 1
+  - (instanceID)2057676200=326304944=1986996392
+  position:
+    _variable:
+      x: 3.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 916912865=129795667=451755710
+GameObject:
+  name: "MinuteHand"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 2
+  - (instanceID)2057676200=326304944=1986996392
+  - (instanceID)2143883071=1751769479=432097065
+  _isActive: true
+--- 2057676200=326304944=1986996392
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)916912865=129795667=451755710
+  _parentProperty: (instanceID)1483553837=121179171=1122458199
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 3.000000
+      y: 0.250000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.250000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.100000
+    y: 0.500000
+    z: 1.000000
+--- 2143883071=1751769479=432097065
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)916912865=129795667=451755710
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 288087623=1474818737=1918094625
+GameObject:
+  name: "SecondHandParent"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 1
+  - (instanceID)235646909=1847113453=1511689949
+  _isActive: true
+--- 235646909=1847113453=1511689949
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)288087623=1474818737=1918094625
+  _parentProperty: (instanceID)67950857=266036679=1600359044
+  (vector)_childVector: 1
+  - (instanceID)1685048265=526823347=532478637
+  position:
+    _variable:
+      x: 3.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 2028873754=1135623932=1068855461
+GameObject:
+  name: "SecondHand"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 2
+  - (instanceID)1685048265=526823347=532478637
+  - (instanceID)717737095=87966981=487589609
+  _isActive: true
+--- 1685048265=526823347=532478637
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)2028873754=1135623932=1068855461
+  _parentProperty: (instanceID)235646909=1847113453=1511689949
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 3.000000
+      y: 0.500000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.500000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 0.100000
+    y: 1.000000
+    z: 1.000000
+--- 717737095=87966981=487589609
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)2028873754=1135623932=1068855461
+  _order: 0
+  m_texture:
+    _variable: (instanceID)nullptr
     (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false

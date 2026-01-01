@@ -4,6 +4,7 @@
 #include "GameEngine.h"
 #include "AssetManager.h"
 #include "SceneEditor.h"
+#include "GameState.h"
 
 #include "ImGuiUtility.h"
 
@@ -46,6 +47,7 @@ void GameSystem::Execute()
 	Physics2D::Update();
 	InputSystem::Update();
 	SceneEditor::Update();
+	GameState::Update();
 
 	// Updateèàóù
 	Scene* activeScene = SceneManager::GetActiveScene();
