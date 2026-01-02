@@ -10,5 +10,5 @@ public:
 	static void Update();
 
 private:
-	static Vector3 editorCameraPos;
+	static Vector3 _editorCameraPos;
 };

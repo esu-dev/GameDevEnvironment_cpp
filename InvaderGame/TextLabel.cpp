@@ -1,6 +1,7 @@
 ﻿#include "TextLabel.h"
 
 #include "GameEngine.h"
+#include "EditorCamera.h"
 
 TextLabel::TextLabel()
 {
@@ -29,45 +30,12 @@ void TextLabel::SetTextAlign(TextAlign textAlign)
 
 void TextLabel::Update()
 {
-	Quaternion rotation = gameObject->GetTransform()->rotation;
-
-	int i = 0;
-
-	Vector3 textStartPos = gameObject->GetTransform()->position;
-	if (_textAlign == TextAlign::Center)
-	{
-		textStartPos = gameObject->GetTransform()->position.Get().AddX(-((_text.length() - 1) * FontSize / Camera::Magnification / 2));
-	}
-	else if (_textAlign == TextAlign::Right)
-	{
-		textStartPos = gameObject->GetTransform()->position.Get().AddX(-((_text.length() - 1) * FontSize / Camera::Magnification));
-	}
-
-	for (wchar_t c : _text)
-	{
-		_textCharacterVector.push_back(TextCharacter());
-		_textCharacterVector[i].fontSize = FontSize;
-
-		MakeShaderResourceViewOf(c, &_textCharacterVector[i].ShaderResourceView);
-		
-		float width = FontSize / Camera::Magnification * 0.9f;
-		Vector3 drawPosition = rotation.Mult(Vector3(textStartPos.x + i * width, textStartPos.y, 0));
-		if (_canMove)
-		{
-			drawPosition = drawPosition - Camera::get_main()->get_transform()->position;
-		}
-		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, width, FontSize / Camera::Magnification, rotation);
-		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView);
-		
-		i++;
-	}
-
-	_textCharacterVector.clear();
+	Render(Camera::get_main()->GetTransform()->position);
 }
 
 void TextLabel::EditorUpdate()
 {
-	Update();
+	Render(EditorCamera::GetPosition());
 }
 
 void TextLabel::MakeShaderResourceViewOf(wchar_t c, ComPtr<ID3D11ShaderResourceView> *srv)
@@ -221,4 +189,42 @@ void TextLabel::MakeShaderResourceViewOf(wchar_t c, ComPtr<ID3D11ShaderResourceV
 		MessageBox(NULL, L"シェーダーリソースビューを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
 		return;
 	}
+}
+
+void TextLabel::Render(const Vector3& cameraPosition)
+{
+	Quaternion rotation = gameObject->GetTransform()->rotation;
+
+	int i = 0;
+	float width = FontSize / Camera::Magnification * 0.8f;
+
+	Vector3 textStartPos = gameObject->GetTransform()->position;
+	if (_textAlign == TextAlign::Center)
+	{
+		textStartPos = gameObject->GetTransform()->position.Get().AddX(-((_text.length() - 1) * width / 2));
+	}
+	else if (_textAlign == TextAlign::Right)
+	{
+		textStartPos = gameObject->GetTransform()->position.Get().AddX(-((_text.length() - 1) * width));
+	}
+
+	for (wchar_t c : _text)
+	{
+		_textCharacterVector.push_back(TextCharacter());
+		_textCharacterVector[i].fontSize = FontSize;
+
+		MakeShaderResourceViewOf(c, &_textCharacterVector[i].ShaderResourceView);
+		
+		Vector3 drawPosition = rotation.Mult(Vector3(textStartPos.x + i * width, textStartPos.y, 0));
+		if (_canMove)
+		{
+			drawPosition = drawPosition - cameraPosition;
+		}
+		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, width, FontSize / Camera::Magnification, rotation);
+		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView);
+
+		i++;
+	}
+
+	_textCharacterVector.clear();
 }

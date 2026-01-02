@@ -1,34 +1,19 @@
 #pragma once
 
 #include "framework.h"
-#include "Component.h"
+#include "EngineBehaviour.h"
 #include "Vector3.h"
 
-class SerializedSample : public Component
+class SerializedSample : public EngineBehaviour
 {
 public:
-	class Foo : public SerializedClass
-	{
-	public:
-		float a = 0;
-
-		SERIALIZE3(SerializedClass,
-			SERIALIZE_FIELD3(a)
-		)
-	};
-
-	int hoo = 0;
-	float hoge = 0;
-	Vector3 fuga = Vector3();
-	std::vector<int> intVector = {};
-	std::vector<Foo> fooVector = {};
+	int _int;
+	float _float;
+	std::string _string;
 
 	NAME(SerializedSample)
-	SERIALIZE3(Component,
-		SERIALIZE_FIELD3(hoo),
-		SERIALIZE_FIELD3(hoge),
-		SERIALIZE_FIELD3(fuga),
-		SERIALIZE_FIELD3(intVector),
-		SERIALIZE_FIELD3(fooVector)
+	SERIALIZE3(SerializedClass,
+		SERIALIZE_FIELD3(_int),
+		SERIALIZE_FIELD3(_string)
 	)
 };

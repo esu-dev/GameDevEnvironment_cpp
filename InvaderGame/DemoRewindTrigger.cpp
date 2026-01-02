@@ -23,7 +23,7 @@ void DemoRewindTrigger::Update()
 {
 	if (_timer <= 0)
 	{
-		this->GetComponent<BoxCollider2D>()->enabled = false;
+		this->gameObject->SetActive(false);
 	}
 
 	_timer -= EngineTime::GetDeltaTime();
@@ -31,7 +31,7 @@ void DemoRewindTrigger::Update()
 
 void DemoRewindTrigger::RecordTriggerOn()
 {
-	this->GetComponent<BoxCollider2D>()->enabled = true;
+	this->gameObject->SetActive(true);
 
 	_timer = 1;
 

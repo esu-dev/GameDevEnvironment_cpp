@@ -69,6 +69,10 @@ namespace SceneManagement
 
 	void SceneManager::LoadSceneAsset(const std::string& assetName)
 	{
-		GameSystem::GetInstance().AddDelayedExecution([=]() -> void { SceneDataManager::Load("Resources/Scenes/" + assetName + ".scene"); });
+		GameSystem::GetInstance().AddDelayedExecution([=]() -> void {
+			SceneDataManager::Load("Resources/Scenes/" + assetName + ".scene");
+			EngineTime::ResetDeltaTime();
+			EngineTime::SetTotalTime(0);
+			});
 	}
 }

@@ -12,7 +12,7 @@ class Transform : public Component
 {
 public:
 	Record<Vector3> position;
-	Quaternion rotation = Quaternion();
+	Record<Quaternion> rotation = Quaternion();
 	Vector3 scale = Vector3(1, 1, 1);
 
 	SERIALIZE3(Component,
@@ -51,7 +51,7 @@ private:
 	Vector3 _localPosition = Vector3(0, 0, 0);
 	Vector3 _localEulerRotation;
 	Property<Vector3> _eulerRotation = {
-		[this]() -> Vector3 { return this->rotation.GetEulerAngles(); },
+		[this]() -> Vector3 { return this->rotation.Get().GetEulerAngles(); },
 		[this](Vector3 eulerRotation) -> void {
 			this->rotation = Quaternion::Euler(eulerRotation);
 		}

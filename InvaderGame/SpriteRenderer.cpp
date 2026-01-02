@@ -7,7 +7,7 @@
 #include "Camera.h"
 #include "GameSystem.h"
 
-SpriteRenderer::SpriteRenderer() : _color(DirectX::XMFLOAT4(1, 1, 1, 1)), m_texture { nullptr }
+SpriteRenderer::SpriteRenderer() : m_texture { nullptr }
 {
 }
 
@@ -28,7 +28,7 @@ void SpriteRenderer::SetTexture(Texture* texture)
 
 void SpriteRenderer::SetColor(DirectX::XMFLOAT4 color)
 {
-	_color = color;
+	_color = Color(color.x, color.y, color.z, color.w);
 }
 
 void SpriteRenderer::Update()
@@ -62,7 +62,7 @@ void SpriteRenderer::Render(const Vector3& cameraPosition)
 		return;
 	}
 
-	D3D.SetColor(_color);
+	D3D.SetColor({_color.r, _color.g, _color.b, _color.a});
 	D3D.SetRect(draw_position.x, draw_position.y, transform->scale.x, transform->scale.y, transform->rotation);
 
 	if (m_texture == nullptr)

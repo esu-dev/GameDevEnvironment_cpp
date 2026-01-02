@@ -40,6 +40,7 @@ private:
 	std::vector<TextCharacter> _textCharacterVector;
 
 	void MakeShaderResourceViewOf(wchar_t code, ComPtr<ID3D11ShaderResourceView> *srv);
+	void Render(const Vector3& cameraPosition);
 };
 
 class TextCharacter

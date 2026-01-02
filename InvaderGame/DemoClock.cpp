@@ -8,13 +8,13 @@ void DemoClock::Update()
 {
 	if (_isAdvance)
 	{
-		_secondHandParent->GetTransform()->SetLocalRotation(Quaternion::Euler(_secondHandParent->GetTransform()->rotation.GetEulerAngles() - Vector3::forward * _rotationSpeed * EngineTime::GetDeltaTime()));
-		_minuteHandParent->GetTransform()->SetLocalRotation(Quaternion::Euler(_minuteHandParent->GetTransform()->rotation.GetEulerAngles() - Vector3::forward * _rotationSpeed / 12 * EngineTime::GetDeltaTime()));
+		_secondHandParent->GetTransform()->SetLocalRotation(Quaternion::Euler(_secondHandParent->GetTransform()->rotation.Get().GetEulerAngles() - Vector3::forward * _rotationSpeed * EngineTime::GetDeltaTime()));
+		_minuteHandParent->GetTransform()->SetLocalRotation(Quaternion::Euler(_minuteHandParent->GetTransform()->rotation.Get().GetEulerAngles() - Vector3::forward * _rotationSpeed / 12 * EngineTime::GetDeltaTime()));
 	}
 	else
 	{
-		_secondHandParent->GetTransform()->SetLocalRotation(Quaternion::Euler(_secondHandParent->GetTransform()->rotation.GetEulerAngles() + Vector3::forward * _rotationSpeed * EngineTime::GetDeltaTime() * 1.5f));
-		_minuteHandParent->GetTransform()->SetLocalRotation(Quaternion::Euler(_minuteHandParent->GetTransform()->rotation.GetEulerAngles() + Vector3::forward * _rotationSpeed / 12 * EngineTime::GetDeltaTime() * 1.5f));
+		_secondHandParent->GetTransform()->SetLocalRotation(Quaternion::Euler(_secondHandParent->GetTransform()->rotation.Get().GetEulerAngles() + Vector3::forward * _rotationSpeed * EngineTime::GetDeltaTime() * 1.5f));
+		_minuteHandParent->GetTransform()->SetLocalRotation(Quaternion::Euler(_minuteHandParent->GetTransform()->rotation.Get().GetEulerAngles() + Vector3::forward * _rotationSpeed / 12 * EngineTime::GetDeltaTime() * 1.5f));
 	}
 }
 

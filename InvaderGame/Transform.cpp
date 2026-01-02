@@ -29,8 +29,8 @@ void Transform::Update()
 	}
 
 	//_localPosition = position - parent->position;
-	rotation = Quaternion::Euler(_parent->rotation.GetEulerAngles() + _localEulerRotation);
-	position.Get() = _parent->position + _parent->rotation * _localPosition;
+	rotation = Quaternion::Euler(_parent->rotation.Get().GetEulerAngles() + _localEulerRotation);
+	position.Get() = _parent->position + _parent->rotation.Get() * _localPosition;
 }
 
 void Transform::EditorUpdate()
@@ -40,18 +40,18 @@ void Transform::EditorUpdate()
 		return;
 	}
 
-	rotation = Quaternion::Euler(_parent->rotation.GetEulerAngles() + _localEulerRotation);
-	position.Get() = _parent->position + _parent->rotation * _localPosition;
+	rotation = Quaternion::Euler(_parent->rotation.Get().GetEulerAngles() + _localEulerRotation);
+	position.Get() = _parent->position + _parent->rotation.Get() * _localPosition;
 }
 
 Vector3 Transform::GetUp()
 {
-	return this->rotation * Vector3::up;
+	return this->rotation.Get() * Vector3::up;
 }
 
 Vector3 Transform::GetForward()
 {
-	return this->rotation.Mult(Vector3::forward);
+	return this->rotation.Get().Mult(Vector3::forward);
 }
 
 void Transform::SetPosition(float x, float y)

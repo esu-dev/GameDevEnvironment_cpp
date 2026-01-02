@@ -86,6 +86,11 @@ SpriteRenderer:
   enabled: true
   gameObject: (instanceID)1288899121=21313438=78335873
   _order: 0
+  _color:
+    r: 1.000000
+    g: 1.000000
+    b: 1.000000
+    a: 1.000000
   m_texture:
     _variable: (instanceID)1737674412=15871333=1722494784
     (vector)_timeVariableSetVector: 0
@@ -138,6 +143,11 @@ SpriteRenderer:
   enabled: false
   gameObject: (instanceID)742824503=1006085125=1200531296
   _order: 0
+  _color:
+    r: 1.000000
+    g: 1.000000
+    b: 1.000000
+    a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
     (vector)_timeVariableSetVector: 0
@@ -164,9 +174,8 @@ GameObject:
   name: "SceneManager"
   IsPrefab: true
   tag: "ntagge"
-  (vector)_componentVector: 3
+  (vector)_componentVector: 2
   - (instanceID)1319482966=2006313376=421897725
-  - (instanceID)1911001826=1091969365=1654682244
   - (instanceID)487268212=767812042=253299092
   _isActive: true
 --- 1319482966=2006313376=421897725
@@ -198,18 +207,6 @@ Transform:
     x: 1.000000
     y: 1.000000
     z: 1.000000
---- 1911001826=1091969365=1654682244
-SpriteRenderer:
-  name: "ameObject.prefa"
-  enabled: true
-  gameObject: (instanceID)376452878=639209369=1269949458
-  _order: 0
-  m_texture:
-    _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector: 0
-  _isFlipX:
-    _variable: false
-    (vector)_timeVariableSetVector: 0
 --- 487268212=767812042=253299092
 DemoTitleSceneManager:
   name: "initial name"

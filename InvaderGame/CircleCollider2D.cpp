@@ -16,7 +16,7 @@ bool CircleCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D*
 	Vector2 relativePosition = (this->gameObject->GetTransform()->position - boxTransform->position).ToVector2();
 
 	// ‰ñ“]‚ðl—¶
-	relativePosition = (-boxTransform->rotation * relativePosition.ToVector3()).ToVector2();
+	relativePosition = (-boxTransform->rotation.Get() * relativePosition.ToVector3()).ToVector2();
 	Vector2 relativePosition_Abs = Vector2(fabsf(relativePosition.x), fabsf(relativePosition.y));
 	Vector2 positionOnBoxCoordinate = relativePosition + boxTransform->position.Get().ToVector2();
 
@@ -55,7 +55,7 @@ bool CircleCollider2D::DetectCollision(Collision2D* outCollision, BoxCollider2D*
 
 
 	// ‰ñ“]‚ð‰ðÁ
-	outCollision->Normal = (boxTransform->rotation * outCollision->Normal.ToVector3()).ToVector2();
+	outCollision->Normal = (boxTransform->rotation.Get() * outCollision->Normal.ToVector3()).ToVector2();
 
 	//Debug::Log(L"Õ“Ë–@üF (%f, %f)", outCollision->NormalVector.x, outCollision->NormalVector.y);
 

@@ -19,8 +19,18 @@ void AssetManager::Initialize()
 		std::function<void(std::string, std::string, AssetFolder*) > createTextureInstance = [&](std::string rootDirectry, std::string folderName, AssetFolder* currentAssetFolder) -> void {
 			std::string directry = rootDirectry + "/" + folderName + "/";
 
-			AssetFolder* newAssetFolder = new AssetFolder();
-			currentAssetFolder->name2Datamp[folderName] = newAssetFolder;
+			AssetFolder* assetFolder;
+
+			// アセットフォルダーが存在しないなら生成
+			if (currentAssetFolder->name2Datamp.find(folderName) == currentAssetFolder->name2Datamp.end())
+			{
+				assetFolder = new AssetFolder();
+				currentAssetFolder->name2Datamp[folderName] = assetFolder;
+			}
+			else
+			{
+				assetFolder = std::get<AssetFolder*>(currentAssetFolder->name2Datamp[folderName]);
+			}
 
 
 			// ファイル
@@ -29,6 +39,13 @@ void AssetManager::Initialize()
 			// すべてのファイルについて処理
 			for (std::string fileName : fileNameVector_png)
 			{
+				// すでにインスタンス化されているならスキップ
+				if (assetFolder->name2Datamp.find(fileName) != assetFolder->name2Datamp.end())
+				{
+					continue;
+				}
+
+
 				// Textureの生成
 				std::string imgPath = directry + fileName;
 				Texture* object = new Texture(imgPath);
@@ -45,6 +62,7 @@ void AssetManager::Initialize()
 					Debug::Log(L"拡張子を変更できませんでした．");
 					return;
 				}
+
 
 				// アセットが存在するか確認
 				std::string path = directry + textFileName;
@@ -86,7 +104,7 @@ void AssetManager::Initialize()
 				assetFile->instanceID = object->instanceID;
 				assetFile->object = object;
 
-				newAssetFolder->name2Datamp[fileName] = assetFile;
+				assetFolder->name2Datamp[fileName] = assetFile;
 			}
 
 
@@ -96,11 +114,11 @@ void AssetManager::Initialize()
 			// 再帰処理
 			for (std::string folderName : folderNameVector)
 			{
-				createTextureInstance(directry, folderName, newAssetFolder);
+				createTextureInstance(directry, folderName, assetFolder);
 			}
 		};
 
-		createTextureInstance("Resources", "Texture", &assetFolder);
+		createTextureInstance("Resources", "Texture", &_assetFolder);
 	}
 
 
@@ -137,10 +155,10 @@ void AssetManager::Initialize()
 	};
 
 	// AnimationClip
-	createAssetFolder("Resources", "Animation", "txt", &assetFolder);
+	createAssetFolder("Resources", "Animation", "txt", &_assetFolder);
 	
 	// Prefab
-	createAssetFolder("Resources", "Prefab", "prefab", &assetFolder);
+	createAssetFolder("Resources", "Prefab", "prefab", &_assetFolder);
 
 
 	std::function<void(std::string, std::string, std::string, AssetFolder*) > createAssetFolder_Scene = [&](std::string rootDirectry, std::string folderName, std::string extension, AssetFolder* currentAssetFolder) -> void {
@@ -180,7 +198,12 @@ void AssetManager::Initialize()
 		};
 
 	// Scene
-	createAssetFolder_Scene("Resources", "Scenes", "scene", &assetFolder);
+	createAssetFolder_Scene("Resources", "Scenes", "scene", &_assetFolder);
+}
+
+void AssetManager::UpdateAssetFolder()
+{
+	// 既存のデータを削除し、再生成
 }
 
 Object* AssetManager::GetInstance(const std::string& instanceID)
@@ -199,7 +222,7 @@ std::unordered_map<std::string, Object*>& AssetManager::GetInstanceID2PointerMap
 
 const AssetManager::AssetFolder& AssetManager::GetAssetFolder()
 {
-	return assetFolder;
+	return _assetFolder;
 }
 
 // アセットの作成
@@ -280,7 +303,7 @@ void AssetManager::InstantiateAsset(const std::string& directry, const std::stri
 		}
 		return currentAssetFolder;
 	};
-	AssetFolder* targetAssetFolder = findAssetFolder(directry, &assetFolder);
+	AssetFolder* targetAssetFolder = findAssetFolder(directry, &_assetFolder);
 
 	std::string path = directry + fileName;
 
@@ -364,4 +387,4 @@ void AssetManager::SerializeGameObjectInChildren(std::vector<std::string>& outSe
 }
 
 std::unordered_map<std::string, Object*> AssetManager::instanceID2PointerMap;
-AssetManager::AssetFolder AssetManager::assetFolder;
+AssetManager::AssetFolder AssetManager::_assetFolder;

@@ -17,7 +17,13 @@ void AssetExplorer::Update()
 	// windowの生成
 	ImGui::Begin("Asset Explorer");
 
-	if (ImGui::Button("Add"))
+	// 更新ボタン
+	if (ImGui::Button("Update"))
+	{
+		AssetManager::Initialize();
+	}
+
+	if (ImGui::Button("Add Scene"))
 	{
 		// メニュー表示
 

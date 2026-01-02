@@ -95,6 +95,6 @@ void Collider2D::GetOBBvertices(Vector2 outVertices[4])
 
 	for (int i = 0; i < 4; i++)
 	{
-		outVertices[i] = (transform->rotation * outVertices[i].ToVector3() + transform->position).ToVector2();
+		outVertices[i] = (transform->rotation.Get() * outVertices[i].ToVector3() + transform->position).ToVector2();
 	}
 }

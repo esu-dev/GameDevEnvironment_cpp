@@ -2,6 +2,7 @@
 
 #include "framework.h"
 #include "Utility.h"
+#include "Record.h"
 
 #include "Object.h"
 #include "Scene.h"
@@ -73,7 +74,7 @@ public:
 	
 
 private:
-	bool _isActive = true;
+	Record<bool> _isActive = true;
 	std::vector<std::shared_ptr<Component>> _componentVector;
 };
 //REGISTER_TYPE(GameObject);

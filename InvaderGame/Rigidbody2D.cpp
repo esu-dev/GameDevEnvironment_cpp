@@ -137,6 +137,6 @@ void Rigidbody2D::AddForce(Vector2 force)
 void Rigidbody2D::AddImpulse(Vector2 impulse)
 {
 	if (IsKinematic) return;
-
+	//Debug::Log("(%g, %f)", impulse.x, impulse.y);
 	velocity += impulse / mass;
 }

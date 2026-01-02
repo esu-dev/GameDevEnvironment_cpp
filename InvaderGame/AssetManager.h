@@ -27,6 +27,7 @@ public:
 	};
 
 	static void Initialize();
+	static void UpdateAssetFolder();
 	static Object* GetInstance(const std::string& instanceID);
 	static std::unordered_map<std::string, Object*>& GetInstanceID2PointerMap();
 	static const AssetFolder& GetAssetFolder();
@@ -40,5 +41,5 @@ public:
 
 private:
 	static std::unordered_map<std::string, Object*> instanceID2PointerMap;
-	static AssetFolder assetFolder;
+	static AssetFolder _assetFolder;
 };

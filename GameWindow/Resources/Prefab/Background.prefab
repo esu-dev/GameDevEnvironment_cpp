@@ -1,0 +1,58 @@
+--- 1553644635=1018847361=456102306
+GameObject:
+  name: "Background"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 2
+  - (instanceID)221910841=329721712=918976430
+  - (instanceID)944502382=708843560=593020690
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector: 0
+--- 221910841=329721712=918976430
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)1553644635=1018847361=456102306
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 1.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 20.000000
+    y: 16.000000
+    z: 1.000000
+--- 944502382=708843560=593020690
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)1553644635=1018847361=456102306
+  _order: -10
+  _color:
+    r: 0.102000
+    g: 0.310000
+    b: 0.305000
+    a: 1.000000
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+

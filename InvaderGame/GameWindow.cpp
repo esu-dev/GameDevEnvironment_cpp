@@ -64,7 +64,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //DemoSceneAsset::load();
     //SceneDataManager::Load("Resources/yaml_test.txt");
     //SceneDataManager::Load("Resources/YamlTestScene.txt");
-    SceneDataManager::Load("Resources/Scenes/DemoGameScene.scene");
+    //SceneDataManager::Load("Resources/Scenes/DemoGameScene.scene");
+    SceneDataManager::Load("Resources/Scenes/DemoGameScene_Demo2.scene");
     //SceneDataManager::Load("Resources/Scenes/TestScene.scene");
     //SceneDataManager::Load("Resources/DemoScene.txt");
 

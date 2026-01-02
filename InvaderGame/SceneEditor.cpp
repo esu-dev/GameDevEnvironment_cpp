@@ -114,7 +114,7 @@ void SceneEditor::Update()
 	EditorCamera::Update();
 
 	// imguiデモ表示
-	ImGui::ShowDemoWindow();
+	//ImGui::ShowDemoWindow();
 
 
 	// ヒエラルキー

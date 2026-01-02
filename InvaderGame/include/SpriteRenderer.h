@@ -2,6 +2,7 @@
 
 #include "DirectX.h"
 #include "Record.h"
+#include "Color.h"
 #include "Component.h"
 #include "Texture.h"
 
@@ -11,6 +12,7 @@ public:
 	NAME(SpriteRenderer)
 	SERIALIZE3(Component,
 		SERIALIZE_FIELD3(_order),
+		SERIALIZE_FIELD3(_color),
 		SERIALIZE_FIELD3(m_texture),
 		SERIALIZE_FIELD3(_isFlipX)
 	)
@@ -28,11 +30,11 @@ public:
 
 private:
 	int _order = 0;
-
-	bool _canMove = true;
-	DirectX::XMFLOAT4 _color;
+	Color _color = Color(1, 1, 1, 1);
 	Record<Texture*> m_texture;
 	Record<bool> _isFlipX = false;
+
+	bool _canMove = true;
 
 	void Render(const Vector3& cameraPosition);
 };

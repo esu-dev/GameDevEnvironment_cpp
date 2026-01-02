@@ -7,7 +7,7 @@
 
 const Vector3& EditorCamera::GetPosition()
 {
-	return editorCameraPos;
+	return _editorCameraPos;
 }
 
 void EditorCamera::Start()
@@ -19,6 +19,7 @@ void EditorCamera::Update()
 {
 	static bool isEditorCameraOn;
 	static float moveSpeed = 7;
+	static Vector3 savedCameraPos;
 
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('C'))
 	{
@@ -27,17 +28,19 @@ void EditorCamera::Update()
 		// カメラ起動
 		if (isEditorCameraOn)
 		{
-
+			_editorCameraPos = savedCameraPos;
 		}
 		else
 		{
-
+			savedCameraPos = _editorCameraPos;
+			_editorCameraPos = Camera::get_main()->GetTransform()->position;
 		}
 	}
 
 	// カメラ起動中
 	if (!isEditorCameraOn)
 	{
+		_editorCameraPos = Camera::get_main()->GetTransform()->position;
 		return;
 	}
 
@@ -45,19 +48,19 @@ void EditorCamera::Update()
 	// カメラの移動
 	if (Input::GetKey('W'))
 	{
-		editorCameraPos += Vector3::up * moveSpeed * EngineTime::GetEngineDeltaTime();
+		_editorCameraPos += Vector3::up * moveSpeed * EngineTime::GetEngineDeltaTime();
 	}
 	else if (Input::GetKey('A'))
 	{
-		editorCameraPos += -Vector3::right * moveSpeed * EngineTime::GetEngineDeltaTime();
+		_editorCameraPos += -Vector3::right * moveSpeed * EngineTime::GetEngineDeltaTime();
 	}
 	else if (Input::GetKey('S'))
 	{
-		editorCameraPos += -Vector3::up * moveSpeed * EngineTime::GetEngineDeltaTime();
+		_editorCameraPos += -Vector3::up * moveSpeed * EngineTime::GetEngineDeltaTime();
 	}
 	else if (Input::GetKey('D'))
 	{
-		editorCameraPos += Vector3::right * moveSpeed * EngineTime::GetEngineDeltaTime();
+		_editorCameraPos += Vector3::right * moveSpeed * EngineTime::GetEngineDeltaTime();
 	}
 
 
@@ -68,4 +71,4 @@ void EditorCamera::Update()
 	ImGui::End();
 }
 
-Vector3 EditorCamera::editorCameraPos;
+Vector3 EditorCamera::_editorCameraPos;

@@ -26,6 +26,10 @@ void Physics2D::Update()
 {
 	if (EngineTime::TimeScale <= 0) return;
 
+	// deltaTime‚ª‚Ü‚ê‚É‚O‚É‚È‚é‚±‚Æ‚ª‚ ‚é
+	// ‚fps‚Ì‚Æ‚«‚É‚¨‚±‚é
+	if (EngineTime::GetDeltaTime() == 0) return;
+
 	if (_libraryType == LibraryType::Original)
 	{
 		static float g = GRAVITATIONAL_ACCELERATION;
@@ -210,7 +214,7 @@ void Physics2D::Update()
 				{
 					length = 1 * log2(impulse.GetMagnitude());
 				}
-				Debug::DrawLine(collisionData->contact.ToVector3(), (collisionData->contact + impulse.Normalized() * length).ToVector3(), DirectX::XMFLOAT4(0.5, 0.5, 0, 1));
+				//Debug::DrawLine(collisionData->contact.ToVector3(), (collisionData->contact + impulse.Normalized() * length).ToVector3(), DirectX::XMFLOAT4(0.5, 0.5, 0, 1));
 			}
 
 			//Debug::Log(L"Õ“Ë–@üF (%f, %f)", collision->Normal.x, collision->Normal.y);
@@ -227,6 +231,7 @@ void Physics2D::Update()
 			{
 				friction = -maxForce;
 			}
+			Debug::Log("(%f, %f), %f", friction.x, friction.y, EngineTime::GetFixedDeltaTime());
 			rigidbodyA->AddImpulse(friction * EngineTime::GetFixedDeltaTime());
 
 

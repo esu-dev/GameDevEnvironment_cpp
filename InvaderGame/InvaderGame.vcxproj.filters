@@ -306,6 +306,9 @@
     <ClCompile Include="GameState.cpp">
       <Filter>Source\Editor</Filter>
     </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Source\GameEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -603,6 +606,9 @@
     </ClInclude>
     <ClInclude Include="GameState.h">
       <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Source\GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

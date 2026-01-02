@@ -1,0 +1,55 @@
+--- 260886131=2118823149=1375313861
+AnimationClip:
+  name: "initial name"
+  _animationName: "BlueFlower1Animation_15f"
+  _loopTime: true
+  (vector)_animationDataSetVector: 16
+  - 0:
+      time: 0.000000
+      texture: (instanceID)1297568820=1151050119=347104476
+  - 1:
+      time: 1.000000
+      texture: (instanceID)196216537=820419287=119401576
+  - 2:
+      time: 2.000000
+      texture: (instanceID)1825608468=1373151654=1824400655
+  - 3:
+      time: 3.000000
+      texture: (instanceID)998967054=428602205=1567893893
+  - 4:
+      time: 4.000000
+      texture: (instanceID)324715670=113529363=78900631
+  - 5:
+      time: 5.000000
+      texture: (instanceID)2072732583=1424466068=1557893292
+  - 6:
+      time: 6.000000
+      texture: (instanceID)528504834=557725319=1477062571
+  - 7:
+      time: 7.000000
+      texture: (instanceID)746696247=1484238972=1303521173
+  - 8:
+      time: 8.000000
+      texture: (instanceID)862989380=2133148999=1188577280
+  - 9:
+      time: 9.000000
+      texture: (instanceID)224955685=170506393=1235936398
+  - 10:
+      time: 10.000000
+      texture: (instanceID)120640437=140021761=910287707
+  - 11:
+      time: 11.000000
+      texture: (instanceID)841285436=1372859304=107079756
+  - 12:
+      time: 12.000000
+      texture: (instanceID)941156396=434581928=2023598141
+  - 13:
+      time: 13.000000
+      texture: (instanceID)1152499934=1346910685=154386246
+  - 14:
+      time: 14.000000
+      texture: (instanceID)630053067=827723351=842958841
+  - 15:
+      time: 15.000000
+      texture: (instanceID)1297568820=1151050119=347104476
+

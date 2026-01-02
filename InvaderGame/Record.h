@@ -148,6 +148,13 @@ public:
 		UpdateValue();
 	}
 
+	void operator-= (const T variable)
+	{
+		_variable = _variable - variable;
+
+		UpdateValue();
+	}
+
 
 private:
 	struct TimeVariableSet : public SerializedClass

@@ -35,6 +35,7 @@ public:
 	void operator+=(const Vector3& vector);
 	Vector3 operator-() const;
 	Vector3 operator-(const Vector3& vector) const;
+	void operator-=(const Vector3& vector);
 	Vector3 operator*(const float& value) const;
 	Vector3 operator/(const float& value) const;
 	bool operator==(const Vector3& vector) const;

@@ -7,19 +7,16 @@
 
 void Shutter::Start()
 {
-	_startPositionY = this->GetTransform()->position.Get().y;
+	// デシリアライズで上書きされないように
+	if (_startPositionY == 0)
+	{
+		_startPositionY = this->GetTransform()->position.Get().y;
+	}
 
 	if (_gimmickTrigger != nullptr)
 	{
 		_gimmickTrigger->SetTriggerAction([this]() {
 			this->_isOpening = true;
-
-			// 当たり判定の無効化
-			/*Collider2D* collider = this->GetComponent<Collider2D>();
-			if (collider != nullptr)
-			{
-				collider->enabled = false;
-			}*/
 		});
 	}
 }
@@ -40,7 +37,7 @@ void Shutter::Update()
 		}
 
 		// 移動
-		this->GetTransform()->position.Get().y += move;
+		this->GetTransform()->position += Vector3::up * move;
 	}
 	else
 	{
@@ -51,6 +48,6 @@ void Shutter::Update()
 		}
 
 		// 移動
-		this->GetTransform()->position.Get().y -= move;
+		this->GetTransform()->position -= Vector3::up * move;
 	}
 }

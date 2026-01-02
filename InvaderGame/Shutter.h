@@ -11,7 +11,8 @@ public:
 	SERIALIZE3(EngineBehaviour,
 		SERIALIZE_FIELD3(_openSpeed),
 		SERIALIZE_FIELD3(_openDistance),
-		SERIALIZE_FIELD3(_gimmickTrigger)
+		SERIALIZE_FIELD3(_gimmickTrigger),
+		SERIALIZE_FIELD3(_startPositionY)
 	)
 
 	void Start() override;

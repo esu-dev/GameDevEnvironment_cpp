@@ -76,7 +76,7 @@ void DemoRewinder::Record()
 		_isRecording = true;
 	}
 	_clock->SetActive(true);
-	_clock->GetComponent<DemoClock>()->SetRotationSpeed(240);
+	_clock->GetComponent<DemoClock>()->SetRotationSpeed(360);
 }
 
 void DemoRewinder::Rewind()

@@ -1,0 +1,788 @@
+DemoGameScene_Demo2
+--- 000
+GameObject:
+  name: "MainCamera"
+  IsPrefab: false
+  tag: "MainCamera"
+  (vector)_componentVector: 2
+  - (instanceID)001
+  - (instanceID)002
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector: 0
+--- 001
+Transform:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)000
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 2.000000
+      y: 5.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 002
+Camera:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)000
+--- 147560529=380564109=1893899489
+GameObject:
+  name: "Player"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 6
+  - (instanceID)1401248970=231768062=1184301228
+  - (instanceID)1654603363=848023440=205348381
+  - (instanceID)397732447=1670649184=1016027375
+  - (instanceID)6872234=179677836=1737315805
+  - (instanceID)1329810691=1773115153=2142410842
+  - (instanceID)1509751976=961373694=1662533778
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector: 0
+--- 1401248970=231768062=1184301228
+Transform:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 3
+  - (instanceID)1144962052=231822179=1508855639
+  - (instanceID)214431009=801859099=1164764792
+  - (instanceID)1660112007=1826137525=1761606654
+  position:
+    _variable:
+      x: -5.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 6.000000
+    y: 6.000000
+    z: 1.000000
+--- 1654603363=848023440=205348381
+SpriteRenderer:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  _order: 2
+  _color:
+    r: 1.000000
+    g: 1.000000
+    b: 1.000000
+    a: 1.000000
+  m_texture:
+    _variable: (instanceID)2031896239=1692424211=1578972974
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 397732447=1670649184=1016027375
+Animator:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  (vector)_animationVector: 3
+  - 0:
+      Time: 1.250000
+      Name: "NewState"
+      AnimationClip: (instanceID)1991957285=1117206255=592262650
+  - 1:
+      Time: 2.500000
+      Name: "NewState"
+      AnimationClip: (instanceID)1969032072=449929844=1896361220
+  - 2:
+      Time: 10.000000
+      Name: "NewState"
+      AnimationClip: (instanceID)1882825050=783300963=986042454
+  _textureIndex:
+    _variable: 0
+    (vector)_timeVariableSetVector: 0
+  _playingTime:
+    _variable: 0.000000
+    (vector)_timeVariableSetVector: 0
+--- 6872234=179677836=1737315805
+Player:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  _moveAcceleration: 15.000000
+  _maxSpeed: 5.000000
+  _stopAcceleration: 15.000000
+  _jumpTime: 0.125000
+  _jumpPower: 10.000000
+  _recordCircle: (instanceID)116941363=1899623809=284380306
+  _rewindCircle: (instanceID)797730932=1938781617=926194059
+--- 1329810691=1773115153=2142410842
+BoxCollider2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 0.275000
+    y: 0.600000
+--- 1509751976=961373694=1662533778
+Rigidbody2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)147560529=380564109=1893899489
+  IsKinematic: false
+  IsTrigger: false
+  GravityScale: 1.500000
+  _isSleeping:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 890107419=408267702=1775497643
+GameObject:
+  name: "GimmickBox"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 5
+  - (instanceID)1619447062=528024578=1024881459
+  - (instanceID)49295729=1781617583=1358331618
+  - (instanceID)1499966935=2004788885=708744623
+  - (instanceID)30106322=1800156485=1003418034
+  - (instanceID)153492873=74805102=452843053
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector: 0
+--- 1619447062=528024578=1024881459
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 1.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 3.000000
+    y: 3.000000
+    z: 1.000000
+--- 49295729=1781617583=1358331618
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _order: 0
+  _color:
+    r: 1.000000
+    g: 1.000000
+    b: 1.000000
+    a: 1.000000
+  m_texture:
+    _variable: (instanceID)792955701=2031660049=1079902562
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 1499966935=2004788885=708744623
+BoxCollider2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 30106322=1800156485=1003418034
+Rigidbody2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  IsKinematic: false
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 153492873=74805102=452843053
+DemoRewinder:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)890107419=408267702=1775497643
+  _clockPrefab: (instanceID)1544266501=1767485143=660742493
+--- 334835115=1784456080=1665319366
+GameObject:
+  name: "GroundChecker"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 5
+  - (instanceID)1144962052=231822179=1508855639
+  - (instanceID)498869748=334414102=20240684
+  - (instanceID)987323884=1493656018=1135970640
+  - (instanceID)1128932613=856139598=794314602
+  - (instanceID)111522592=1152779983=986174074
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector: 0
+--- 1144962052=231822179=1508855639
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)334835115=1784456080=1665319366
+  _parentProperty: (instanceID)1401248970=231768062=1184301228
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: -5.000000
+      y: -2.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: -2.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 0.100000
+    z: 1.000000
+--- 498869748=334414102=20240684
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: false
+  gameObject: (instanceID)334835115=1784456080=1665319366
+  _order: 0
+  _color:
+    r: 1.000000
+    g: 1.000000
+    b: 1.000000
+    a: 1.000000
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 987323884=1493656018=1135970640
+GroundChecker:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)334835115=1784456080=1665319366
+--- 1128932613=856139598=794314602
+BoxCollider2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)334835115=1784456080=1665319366
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 111522592=1152779983=986174074
+Rigidbody2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)334835115=1784456080=1665319366
+  IsKinematic: false
+  IsTrigger: true
+  GravityScale: 0.000000
+  _isSleeping:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 116941363=1899623809=284380306
+GameObject:
+  name: "RecordCircle"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 6
+  - (instanceID)214431009=801859099=1164764792
+  - (instanceID)1451225346=1604343145=1266552738
+  - (instanceID)2044907468=605035024=336969862
+  - (instanceID)78277159=799468258=1132150830
+  - (instanceID)1284479894=919169410=1986298817
+  - (instanceID)1446647268=714232456=1497798755
+  _isActive:
+    _variable: false
+    (vector)_timeVariableSetVector: 4
+    - 0:
+        time: 0.000000
+        variable: false
+    - 1:
+        time: 21.359055
+        variable: true
+    - 2:
+        time: 22.406063
+        variable: false
+    - 3:
+        time: 46.562447
+        variable: false
+--- 214431009=801859099=1164764792
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+  _parentProperty: (instanceID)1401248970=231768062=1184301228
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: -5.000000
+      y: -5.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -5.000000
+          y: -5.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 5.000000
+    y: 5.000000
+    z: 1.000000
+--- 1451225346=1604343145=1266552738
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+  _order: 1
+  _color:
+    r: 1.000000
+    g: 1.000000
+    b: 1.000000
+    a: 1.000000
+  m_texture:
+    _variable: (instanceID)1244095655=768721352=423438383
+    (vector)_timeVariableSetVector: 4
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1244095655=768721352=423438383
+    - 1:
+        time: 21.359055
+        variable: (instanceID)370246748=1961254705=378814219
+    - 2:
+        time: 21.875059
+        variable: (instanceID)1244095655=768721352=423438383
+    - 3:
+        time: 46.562447
+        variable: (instanceID)1249965347=941682478=1431985412
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 2044907468=605035024=336969862
+Rigidbody2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+  IsKinematic: true
+  IsTrigger: true
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 78277159=799468258=1132150830
+BoxCollider2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1284479894=919169410=1986298817
+DemoRewindTrigger:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+--- 1446647268=714232456=1497798755
+Animator:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)116941363=1899623809=284380306
+  (vector)_animationVector: 2
+  - 0:
+      Time: 1.000000
+      Name: "Empty"
+      AnimationClip: (instanceID)nullptr
+  - 1:
+      Time: 25.000000
+      Name: "NewState"
+      AnimationClip: (instanceID)471440613=1646999092=245871592
+  _textureIndex:
+    _variable: 18
+    (vector)_timeVariableSetVector: 4
+    - 0:
+        time: 0.000000
+        variable: 0
+    - 1:
+        time: 21.359055
+        variable: 10
+    - 2:
+        time: 21.875059
+        variable: 18
+    - 3:
+        time: 46.562447
+        variable: 11
+  _playingTime:
+    _variable: 0.938000
+    (vector)_timeVariableSetVector: 4
+    - 0:
+        time: 0.000000
+        variable: 0.000000
+    - 1:
+        time: 21.359055
+        variable: 0.516000
+    - 2:
+        time: 21.875059
+        variable: 0.938000
+    - 3:
+        time: 46.562447
+        variable: 0.516000
+--- 797730932=1938781617=926194059
+GameObject:
+  name: "RewindCircle"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 3
+  - (instanceID)1660112007=1826137525=1761606654
+  - (instanceID)331565663=759100966=819782443
+  - (instanceID)1484692936=1364014913=1180558528
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: true
+--- 1660112007=1826137525=1761606654
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)797730932=1938781617=926194059
+  _parentProperty: (instanceID)1401248970=231768062=1184301228
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: -5.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable:
+          x: -5.000000
+          y: -5.000000
+          z: 0.000000
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 5.000000
+    y: 5.000000
+    z: 1.000000
+--- 331565663=759100966=819782443
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)797730932=1938781617=926194059
+  _order: 1
+  _color:
+    r: 1.000000
+    g: 1.000000
+    b: 1.000000
+    a: 1.000000
+  m_texture:
+    _variable: (instanceID)1244095655=768721352=423438383
+    (vector)_timeVariableSetVector: 5
+    - 0:
+        time: 0.000000
+        variable: (instanceID)1244095655=768721352=423438383
+    - 1:
+        time: 22.781069
+        variable: (instanceID)506370641=522285335=1484473465
+    - 2:
+        time: 23.343077
+        variable: (instanceID)525181853=746666937=1781857163
+    - 3:
+        time: 23.859085
+        variable: (instanceID)1128231454=41407261=956303582
+    - 4:
+        time: 24.359093
+        variable: (instanceID)1244095655=768721352=423438383
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 1
+    - 0:
+        time: 0.000000
+        variable: false
+--- 1484692936=1364014913=1180558528
+Animator:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)797730932=1938781617=926194059
+  (vector)_animationVector: 2
+  - 0:
+      Time: 1.000000
+      Name: "NewState"
+      AnimationClip: (instanceID)nullptr
+  - 1:
+      Time: 15.000000
+      Name: "NewState"
+      AnimationClip: (instanceID)1290421775=277455505=1694098709
+  _textureIndex:
+    _variable: 30
+    (vector)_timeVariableSetVector: 5
+    - 0:
+        time: 0.000000
+        variable: 0
+    - 1:
+        time: 22.781069
+        variable: 8
+    - 2:
+        time: 23.343077
+        variable: 16
+    - 3:
+        time: 23.859085
+        variable: 23
+    - 4:
+        time: 24.359093
+        variable: 30
+  _playingTime:
+    _variable: 1.984001
+    (vector)_timeVariableSetVector: 6
+    - 0:
+        time: 0.000000
+        variable: 0.000000
+    - 1:
+        time: 22.781069
+        variable: 0.516000
+    - 2:
+        time: 23.296076
+        variable: 1.031000
+    - 3:
+        time: 23.812084
+        variable: 1.531000
+    - 4:
+        time: 24.312092
+        variable: 1.984001
+    - 5:
+        time: 46.562447
+        variable: 0.516000
+--- 157755149=590618028=2116587666
+GameObject:
+  name: "Background"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 2
+  - (instanceID)131718278=1142979424=2087140462
+  - (instanceID)1313820182=887146142=145366195
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector: 0
+--- 131718278=1142979424=2087140462
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)157755149=590618028=2116587666
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 2.000000
+      y: 6.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 20.000000
+    y: 17.000000
+    z: 1.000000
+--- 1313820182=887146142=145366195
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)157755149=590618028=2116587666
+  _order: -10
+  _color:
+    r: 0.102000
+    g: 0.310000
+    b: 0.305000
+    a: 1.000000
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 1595269397=1481659757=480956569
+GameObject:
+  name: "DefaultStage"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 4
+  - (instanceID)205124289=2129678705=867111775
+  - (instanceID)2134272214=864693792=1023486811
+  - (instanceID)442445882=2008086289=1646870177
+  - (instanceID)1443378432=2089806233=1299982771
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector: 0
+--- 205124289=2129678705=867111775
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)1595269397=1481659757=480956569
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 2.000000
+      y: -4.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 20.000000
+    y: 3.000000
+    z: 1.000000
+--- 2134272214=864693792=1023486811
+SpriteRenderer:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)1595269397=1481659757=480956569
+  _order: 0
+  _color:
+    r: 1.000000
+    g: 1.000000
+    b: 1.000000
+    a: 1.000000
+  m_texture:
+    _variable: (instanceID)nullptr
+    (vector)_timeVariableSetVector: 0
+  _isFlipX:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 442445882=2008086289=1646870177
+BoxCollider2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)1595269397=1481659757=480956569
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1443378432=2089806233=1299982771
+Rigidbody2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)1595269397=1481659757=480956569
+  IsKinematic: true
+  IsTrigger: false
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+
