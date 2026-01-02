@@ -656,7 +656,7 @@ GameObject:
   - (instanceID)131718278=1142979424=2087140462
   - (instanceID)1313820182=887146142=145366195
   _isActive:
-    _variable: true
+    _variable: false
     (vector)_timeVariableSetVector: 0
 --- 131718278=1142979424=2087140462
 Transform:
