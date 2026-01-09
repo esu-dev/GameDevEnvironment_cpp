@@ -1,4 +1,4 @@
-DemoGameScene
+DemoGameScene_Demo
 --- 000
 GameObject:
   name: "MainCamera"
@@ -189,291 +189,117 @@ Transform:
   - (instanceID)1660112007=1826137525=1761606654
   position:
     _variable:
-      x: 11.895377
-      y: 0.275117
+      x: 7.150568
+      y: -2.217637
       z: 0.000000
-    (vector)_timeVariableSetVector: 47
+    (vector)_timeVariableSetVector: 18
     - 0:
         time: 0.000000
         variable:
           x: -5.000000
-          y: -5.805921
+          y: -5.739839
           z: 0.000000
     - 1:
         time: 0.547000
         variable:
           x: -5.000000
-          y: -5.781392
+          y: -5.733935
           z: 0.000000
     - 2:
         time: 1.078000
         variable:
-          x: -3.811847
-          y: -5.767776
+          x: -4.968260
+          y: -5.728907
           z: 0.000000
     - 3:
-        time: 1.578000
+        time: 1.609000
         variable:
-          x: -2.610878
-          y: -4.445472
+          x: -3.266612
+          y: -5.724733
           z: 0.000000
     - 4:
-        time: 2.094001
+        time: 2.125000
         variable:
-          x: -0.602058
-          y: -2.098144
+          x: -1.215570
+          y: -5.718354
           z: 0.000000
     - 5:
-        time: 2.641000
+        time: 2.656000
         variable:
-          x: 1.953544
-          y: -2.910488
+          x: -0.844643
+          y: -5.715704
           z: 0.000000
     - 6:
         time: 3.171999
         variable:
-          x: 4.451238
-          y: -3.485207
+          x: 1.610489
+          y: -5.713303
           z: 0.000000
     - 7:
-        time: 3.687998
+        time: 3.718998
         variable:
-          x: 4.353405
-          y: -5.983278
+          x: 2.205622
+          y: -5.709946
           z: 0.000000
     - 8:
-        time: 4.202998
+        time: 4.233998
         variable:
-          x: 3.038124
-          y: -5.746003
+          x: 2.418098
+          y: -4.403883
           z: 0.000000
     - 9:
-        time: 4.718997
+        time: 4.780997
         variable:
-          x: 3.038124
-          y: -5.739362
+          x: 4.721788
+          y: -2.069536
           z: 0.000000
     - 10:
-        time: 5.233997
+        time: 5.311997
         variable:
-          x: 2.111704
-          y: -5.733529
+          x: 7.150568
+          y: -2.217637
           z: 0.000000
     - 11:
-        time: 5.765996
+        time: 5.811997
         variable:
-          x: 0.926960
-          y: -2.436787
+          x: 9.805565
+          y: 0.530967
           z: 0.000000
     - 12:
-        time: 6.296996
+        time: 6.327997
         variable:
-          x: -1.728040
-          y: -2.786381
+          x: 11.872366
+          y: 0.264499
           z: 0.000000
     - 13:
-        time: 6.827995
+        time: 6.874996
         variable:
-          x: -4.312118
-          y: -2.909148
+          x: 11.889009
+          y: 0.269624
           z: 0.000000
     - 14:
-        time: 7.358995
+        time: 7.390996
         variable:
-          x: -5.759529
-          y: -4.677467
+          x: 11.889009
+          y: 0.274001
           z: 0.000000
     - 15:
-        time: 7.890995
+        time: 7.905995
         variable:
-          x: -5.558117
-          y: -5.807801
+          x: 11.889009
+          y: 0.277754
           z: 0.000000
     - 16:
-        time: 8.405993
+        time: 8.421994
         variable:
-          x: -5.245744
-          y: -5.797308
+          x: 11.889009
+          y: 0.280965
           z: 0.000000
     - 17:
-        time: 8.952992
+        time: 8.936993
         variable:
-          x: -5.245744
-          y: -5.782089
-          z: 0.000000
-    - 18:
-        time: 9.499991
-        variable:
-          x: -5.214004
-          y: -5.769909
-          z: 0.000000
-    - 19:
-        time: 10.030990
-        variable:
-          x: -4.219625
-          y: -5.752365
-          z: 0.000000
-    - 20:
-        time: 10.546988
-        variable:
-          x: -2.256417
-          y: -5.736257
-          z: 0.000000
-    - 21:
-        time: 11.062986
-        variable:
-          x: 0.267847
-          y: -5.731031
-          z: 0.000000
-    - 22:
-        time: 11.577987
-        variable:
-          x: 1.228569
-          y: -5.726552
-          z: 0.000000
-    - 23:
-        time: 12.093986
-        variable:
-          x: 3.569178
-          y: -3.201325
-          z: 0.000000
-    - 24:
-        time: 12.640985
-        variable:
-          x: 6.144179
-          y: -2.149227
-          z: 0.000000
-    - 25:
-        time: 13.155983
-        variable:
-          x: 7.667058
-          y: -1.978422
-          z: 0.000000
-    - 26:
-        time: 13.702982
-        variable:
-          x: 10.201221
-          y: 0.550614
-          z: 0.000000
-    - 27:
-        time: 14.218982
-        variable:
-          x: 11.895377
-          y: 0.188127
-          z: 0.000000
-    - 28:
-        time: 14.765980
-        variable:
-          x: 11.895377
-          y: 0.197913
-          z: 0.000000
-    - 29:
-        time: 15.280978
-        variable:
-          x: 11.895377
-          y: 0.213075
-          z: 0.000000
-    - 30:
-        time: 15.812978
-        variable:
-          x: 11.895377
-          y: 0.225600
-          z: 0.000000
-    - 31:
-        time: 16.327982
-        variable:
-          x: 11.895377
-          y: 0.236340
-          z: 0.000000
-    - 32:
-        time: 16.843990
-        variable:
-          x: 11.895377
-          y: 0.245530
-          z: 0.000000
-    - 33:
-        time: 17.358997
-        variable:
-          x: 11.895377
-          y: 0.253379
-          z: 0.000000
-    - 34:
-        time: 17.875006
-        variable:
-          x: 11.895377
-          y: 0.260109
-          z: 0.000000
-    - 35:
-        time: 18.391014
-        variable:
-          x: 11.895377
-          y: 0.265857
-          z: 0.000000
-    - 36:
-        time: 18.922020
-        variable:
-          x: 11.895377
-          y: 0.270928
-          z: 0.000000
-    - 37:
-        time: 19.438028
-        variable:
-          x: 11.895377
-          y: 0.275117
-          z: 0.000000
-    - 38:
-        time: 19.953035
-        variable:
-          x: 12.942986
-          y: 0.278709
-          z: 0.000000
-    - 39:
-        time: 20.469044
-        variable:
-          x: 15.584195
-          y: 0.281866
-          z: 0.000000
-    - 40:
-        time: 21.000050
-        variable:
-          x: 18.239199
-          y: 0.284555
-          z: 0.000000
-    - 41:
-        time: 21.531055
-        variable:
-          x: 19.130112
-          y: 0.286720
-          z: 0.000000
-    - 42:
-        time: 22.031061
-        variable:
-          x: 18.474545
-          y: 0.288637
-          z: 0.000000
-    - 43:
-        time: 22.547070
-        variable:
-          x: 18.474545
-          y: 0.290230
-          z: 0.000000
-    - 44:
-        time: 23.047075
-        variable:
-          x: 18.474545
-          y: 0.291640
-          z: 0.000000
-    - 45:
-        time: 23.563084
-        variable:
-          x: 18.474545
-          y: 0.292845
-          z: 0.000000
-    - 46:
-        time: 24.078091
-        variable:
-          x: 11.895377
-          y: 0.275117
+          x: 7.150568
+          y: -2.217637
           z: 0.000000
   _localPosition:
     x: 0.000000
@@ -504,8 +330,8 @@ SpriteRenderer:
     b: 1.000000
     a: 1.000000
   m_texture:
-    _variable: (instanceID)654135200=837953956=31975346
-    (vector)_timeVariableSetVector: 45
+    _variable: (instanceID)1225070578=1551418483=1326230118
+    (vector)_timeVariableSetVector: 18
     - 0:
         time: 0.000000
         variable: (instanceID)654135200=837953956=31975346
@@ -513,218 +339,86 @@ SpriteRenderer:
         time: 0.547000
         variable: (instanceID)1960766088=1607266263=1477523126
     - 2:
-        time: 1.125000
-        variable: (instanceID)364872384=1968564276=109719858
+        time: 1.109000
+        variable: (instanceID)1528966789=1686466474=989448226
     - 3:
-        time: 1.625000
-        variable: (instanceID)1225070578=1551418483=1326230118
+        time: 1.609000
+        variable: (instanceID)992060010=1404677563=1416563342
     - 4:
-        time: 2.141001
-        variable: (instanceID)40812298=202681549=958210038
+        time: 2.125000
+        variable: (instanceID)1085732539=225019827=1627339705
     - 5:
-        time: 2.718999
-        variable: (instanceID)621445208=1748334848=403855278
+        time: 2.656000
+        variable: (instanceID)196497060=1964353169=2026701523
     - 6:
-        time: 3.249999
-        variable: (instanceID)2095014155=563386411=505079811
+        time: 3.171999
+        variable: (instanceID)1304254592=1347570060=80994693
     - 7:
-        time: 3.780998
-        variable: (instanceID)1847433675=1986100641=5753002
+        time: 3.718998
+        variable: (instanceID)1194103524=1207469568=1388878756
     - 8:
-        time: 4.296998
-        variable: (instanceID)2031896239=1692424211=1578972974
+        time: 4.233998
+        variable: (instanceID)1225070578=1551418483=1326230118
     - 9:
-        time: 4.812997
-        variable: (instanceID)1497303522=967450884=2107102157
+        time: 4.827997
+        variable: (instanceID)40812298=202681549=958210038
     - 10:
-        time: 5.374997
+        time: 5.390997
         variable: (instanceID)1225070578=1551418483=1326230118
     - 11:
-        time: 5.983996
+        time: 5.936997
         variable: (instanceID)40812298=202681549=958210038
     - 12:
-        time: 6.562995
-        variable: (instanceID)1863096655=928646444=758227727
+        time: 6.515996
+        variable: (instanceID)1756474024=14424981=427691685
     - 13:
-        time: 7.108995
-        variable: (instanceID)2031896239=1692424211=1578972974
+        time: 7.061996
+        variable: (instanceID)573373595=895812192=1711964713
     - 14:
-        time: 7.671995
-        variable: (instanceID)2031896239=1692424211=1578972974
+        time: 7.577995
+        variable: (instanceID)1198375054=447786410=2116462767
     - 15:
-        time: 8.265994
-        variable: (instanceID)2031896239=1692424211=1578972974
-    - 16:
-        time: 8.780993
-        variable: (instanceID)1497303522=967450884=2107102157
-    - 17:
-        time: 9.390991
-        variable: (instanceID)517183641=540203736=848411744
-    - 18:
-        time: 9.983990
-        variable: (instanceID)1847433675=1986100641=5753002
-    - 19:
-        time: 10.546988
-        variable: (instanceID)1334288845=1232825997=931523667
-    - 20:
-        time: 11.062986
-        variable: (instanceID)364872384=1968564276=109719858
-    - 21:
-        time: 11.577987
-        variable: (instanceID)1474515897=161949187=831993811
-    - 22:
-        time: 12.093986
-        variable: (instanceID)1930007326=447448078=2091855469
-    - 23:
-        time: 12.687984
-        variable: (instanceID)1434001069=765174939=217521873
-    - 24:
-        time: 13.296983
-        variable: (instanceID)1667799944=872565693=651547555
-    - 25:
-        time: 13.874982
-        variable: (instanceID)1434001069=765174939=217521873
-    - 26:
-        time: 14.390981
-        variable: (instanceID)1764565274=1785524425=1390510615
-    - 27:
-        time: 14.952979
-        variable: (instanceID)1789584765=1241305035=2101053243
-    - 28:
-        time: 15.515978
-        variable: (instanceID)1528966789=1686466474=989448226
-    - 29:
-        time: 16.093979
-        variable: (instanceID)654135200=837953956=31975346
-    - 30:
-        time: 16.655987
-        variable: (instanceID)1960766088=1607266263=1477523126
-    - 31:
-        time: 17.218996
-        variable: (instanceID)2099705770=752103909=827542598
-    - 32:
-        time: 17.734003
-        variable: (instanceID)654135200=837953956=31975346
-    - 33:
-        time: 18.250011
-        variable: (instanceID)1960766088=1607266263=1477523126
-    - 34:
-        time: 18.813021
-        variable: (instanceID)2099705770=752103909=827542598
-    - 35:
-        time: 19.344027
-        variable: (instanceID)654135200=837953956=31975346
-    - 36:
-        time: 19.859034
-        variable: (instanceID)1863096655=928646444=758227727
-    - 37:
-        time: 20.375042
-        variable: (instanceID)1333071075=706255289=1067605032
-    - 38:
-        time: 20.906048
-        variable: (instanceID)621445208=1748334848=403855278
-    - 39:
-        time: 21.422054
+        time: 8.093995
         variable: (instanceID)1194103524=1207469568=1388878756
-    - 40:
-        time: 21.938061
-        variable: (instanceID)2031896239=1692424211=1578972974
-    - 41:
-        time: 22.500069
-        variable: (instanceID)1014905135=625518459=1738408576
-    - 42:
-        time: 23.000074
-        variable: (instanceID)2034579692=679764987=624371462
-    - 43:
-        time: 23.563084
-        variable: (instanceID)2031896239=1692424211=1578972974
-    - 44:
-        time: 24.078091
-        variable: (instanceID)332588791=2059679822=288817757
+    - 16:
+        time: 8.608994
+        variable: (instanceID)573373595=895812192=1711964713
+    - 17:
+        time: 9.171992
+        variable: (instanceID)1044349734=1785633780=2137578299
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector: 27
+    (vector)_timeVariableSetVector: 10
     - 0:
         time: 0.000000
         variable: false
     - 1:
-        time: 1.125000
+        time: 1.562000
         variable: false
     - 2:
-        time: 1.625000
+        time: 2.078001
         variable: false
     - 3:
-        time: 2.141001
+        time: 2.937000
         variable: false
     - 4:
-        time: 2.687999
+        time: 3.483999
         variable: false
     - 5:
-        time: 3.218999
+        time: 4.280998
         variable: false
     - 6:
-        time: 3.812998
-        variable: true
+        time: 4.827997
+        variable: false
     - 7:
-        time: 4.343998
-        variable: true
+        time: 5.343997
+        variable: false
     - 8:
-        time: 5.327997
-        variable: true
+        time: 5.858997
+        variable: false
     - 9:
-        time: 5.952996
-        variable: true
-    - 10:
-        time: 6.468996
-        variable: true
-    - 11:
-        time: 7.015995
-        variable: true
-    - 12:
-        time: 7.937994
+        time: 6.374997
         variable: false
-    - 13:
-        time: 8.452993
-        variable: false
-    - 14:
-        time: 9.983990
-        variable: false
-    - 15:
-        time: 10.546988
-        variable: false
-    - 16:
-        time: 11.062986
-        variable: false
-    - 17:
-        time: 11.577987
-        variable: false
-    - 18:
-        time: 12.093986
-        variable: false
-    - 19:
-        time: 12.640985
-        variable: false
-    - 20:
-        time: 13.155983
-        variable: false
-    - 21:
-        time: 13.702982
-        variable: false
-    - 22:
-        time: 14.218982
-        variable: false
-    - 23:
-        time: 20.047037
-        variable: false
-    - 24:
-        time: 20.563046
-        variable: false
-    - 25:
-        time: 21.094051
-        variable: false
-    - 26:
-        time: 22.078062
-        variable: true
 --- 397732447=1670649184=1016027375
 Animator:
   name: "initial name"
@@ -745,8 +439,8 @@ Animator:
       Name: "NewState"
       AnimationClip: (instanceID)1882825050=783300963=986042454
   _textureIndex:
-    _variable: 6
-    (vector)_timeVariableSetVector: 46
+    _variable: 1
+    (vector)_timeVariableSetVector: 18
     - 0:
         time: 0.000000
         variable: 6
@@ -754,140 +448,56 @@ Animator:
         time: 0.547000
         variable: 13
     - 2:
-        time: 1.125000
-        variable: 9
+        time: 1.109000
+        variable: 0
     - 3:
-        time: 1.625000
-        variable: 1
+        time: 1.609000
+        variable: 11
     - 4:
-        time: 2.141001
-        variable: 7
+        time: 2.125000
+        variable: 0
     - 5:
-        time: 2.718999
-        variable: 7
+        time: 2.656000
+        variable: 4
     - 6:
-        time: 3.249999
-        variable: 2
+        time: 3.171999
+        variable: 16
     - 7:
-        time: 3.780998
-        variable: 10
+        time: 3.718998
+        variable: 3
     - 8:
-        time: 4.296998
+        time: 4.233998
         variable: 1
     - 9:
-        time: 4.812997
-        variable: 8
+        time: 4.827997
+        variable: 7
     - 10:
-        time: 5.327997
-        variable: 0
+        time: 5.390997
+        variable: 1
     - 11:
-        time: 5.858996
-        variable: 5
+        time: 5.936997
+        variable: 7
     - 12:
-        time: 6.390996
-        variable: 2
+        time: 6.515996
+        variable: 4
     - 13:
-        time: 6.921995
-        variable: 13
+        time: 7.061996
+        variable: 10
     - 14:
-        time: 7.452995
-        variable: 0
-    - 15:
-        time: 7.983994
-        variable: 0
-    - 16:
-        time: 8.499993
-        variable: 4
-    - 17:
-        time: 9.062992
-        variable: 11
-    - 18:
-        time: 9.608991
-        variable: 2
-    - 19:
-        time: 10.140989
-        variable: 13
-    - 20:
-        time: 10.702988
-        variable: 2
-    - 21:
-        time: 11.233987
-        variable: 1
-    - 22:
-        time: 11.765986
-        variable: 7
-    - 23:
-        time: 12.280985
-        variable: 4
-    - 24:
-        time: 12.812984
-        variable: 1
-    - 25:
-        time: 13.421983
-        variable: 3
-    - 26:
-        time: 13.968982
-        variable: 1
-    - 27:
-        time: 14.483980
-        variable: 6
-    - 28:
-        time: 15.046979
-        variable: 13
-    - 29:
-        time: 15.624978
-        variable: 20
-    - 30:
-        time: 16.140980
-        variable: 6
-    - 31:
-        time: 16.655987
-        variable: 13
-    - 32:
-        time: 17.218996
-        variable: 20
-    - 33:
-        time: 17.734003
-        variable: 6
-    - 34:
-        time: 18.250011
-        variable: 13
-    - 35:
-        time: 18.813021
-        variable: 20
-    - 36:
-        time: 19.344027
-        variable: 6
-    - 37:
-        time: 19.859034
-        variable: 6
-    - 38:
-        time: 20.375042
+        time: 7.577995
         variable: 17
-    - 39:
-        time: 20.906048
-        variable: 7
-    - 40:
-        time: 21.422054
+    - 15:
+        time: 8.093995
         variable: 3
-    - 41:
-        time: 21.938061
-        variable: 1
-    - 42:
-        time: 22.500069
-        variable: 7
-    - 43:
-        time: 23.000074
-        variable: 14
-    - 44:
-        time: 23.563084
-        variable: 1
-    - 45:
-        time: 24.078091
-        variable: 2
+    - 16:
+        time: 8.608994
+        variable: 10
+    - 17:
+        time: 9.171992
+        variable: 9
   _playingTime:
-    _variable: 0.234000
-    (vector)_timeVariableSetVector: 47
+    _variable: 0.000000
+    (vector)_timeVariableSetVector: 18
     - 0:
         time: 0.000000
         variable: 0.500000
@@ -896,139 +506,52 @@ Animator:
         variable: 1.031000
     - 2:
         time: 1.078000
-        variable: 0.406000
+        variable: 0.000000
     - 3:
-        time: 1.578000
-        variable: 0.094000
+        time: 1.609000
+        variable: 0.516000
     - 4:
-        time: 2.094001
-        variable: 0.641000
+        time: 2.125000
+        variable: 0.000000
     - 5:
-        time: 2.641000
-        variable: 0.234000
+        time: 2.656000
+        variable: 0.188000
     - 6:
         time: 3.171999
-        variable: 0.093000
+        variable: 0.735000
     - 7:
-        time: 3.687998
-        variable: 0.343000
-    - 8:
-        time: 4.202998
-        variable: 0.000000
-    - 9:
-        time: 4.718997
-        variable: 0.516000
-    - 10:
-        time: 5.233997
-        variable: 0.047000
-    - 11:
-        time: 5.765996
-        variable: 0.437000
-    - 12:
-        time: 6.296996
-        variable: 0.000000
-    - 13:
-        time: 6.827995
-        variable: 0.532000
-    - 14:
-        time: 7.358995
-        variable: 0.344000
-    - 15:
-        time: 7.890995
-        variable: 0.234000
-    - 16:
-        time: 8.405993
-        variable: 0.250000
-    - 17:
-        time: 8.952992
-        variable: 0.812000
-    - 18:
-        time: 9.499991
-        variable: 0.000000
-    - 19:
-        time: 10.030990
-        variable: 0.500000
-    - 20:
-        time: 10.546988
-        variable: 1.032000
-    - 21:
-        time: 11.062986
-        variable: 0.468000
-    - 22:
-        time: 11.577987
-        variable: 0.141000
-    - 23:
-        time: 12.093986
-        variable: 0.266000
-    - 24:
-        time: 12.640985
-        variable: 0.750000
-    - 25:
-        time: 13.296983
-        variable: 0.188000
-    - 26:
-        time: 13.827982
-        variable: 0.704000
-    - 27:
-        time: 14.358981
-        variable: 0.375000
-    - 28:
-        time: 14.905979
-        variable: 0.891000
-    - 29:
-        time: 15.421978
-        variable: 1.422000
-    - 30:
-        time: 15.952977
-        variable: 0.328000
-    - 31:
-        time: 16.468985
-        variable: 0.844000
-    - 32:
-        time: 16.983992
-        variable: 1.359000
-    - 33:
-        time: 17.500000
+        time: 3.718998
         variable: 0.281000
-    - 34:
-        time: 18.016008
-        variable: 0.796000
-    - 35:
-        time: 18.531015
-        variable: 1.328000
-    - 36:
-        time: 19.063023
-        variable: 0.234000
-    - 37:
-        time: 19.578030
+    - 8:
+        time: 4.233998
+        variable: 0.093000
+    - 9:
+        time: 4.780997
+        variable: 0.625000
+    - 10:
+        time: 5.311997
         variable: 0.000000
-    - 38:
-        time: 20.094038
-        variable: 0.516000
-    - 39:
-        time: 20.609045
-        variable: 0.047000
-    - 40:
-        time: 21.141052
+    - 11:
+        time: 5.811997
+        variable: 0.531000
+    - 12:
+        time: 6.327997
+        variable: 0.141000
+    - 13:
+        time: 6.874996
+        variable: 0.657000
+    - 14:
+        time: 7.390996
+        variable: 1.172000
+    - 15:
+        time: 7.905995
+        variable: 0.094000
+    - 16:
+        time: 8.421994
+        variable: 0.610000
+    - 17:
+        time: 8.936993
         variable: 0.000000
-    - 41:
-        time: 21.656055
-        variable: 0.047000
-    - 42:
-        time: 22.172064
-        variable: 0.282000
-    - 43:
-        time: 22.688072
-        variable: 0.782000
-    - 44:
-        time: 23.188078
-        variable: 1.297000
-    - 45:
-        time: 23.703085
-        variable: 0.234000
-    - 46:
-        time: 24.219093
-        variable: 0.234000
 --- 6872234=179677836=1737315805
 Player:
   name: "initial name"
@@ -1094,13 +617,13 @@ Transform:
   Started: true
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 1
-  - (instanceID)1684179322=1507745031=223257183
+  - (instanceID)676078448=523155291=1896994225
   position:
     _variable:
-      x: -2.339701
-      y: -6.001810
+      x: 7.000683
+      y: -6.010832
       z: 0.000000
-    (vector)_timeVariableSetVector: 47
+    (vector)_timeVariableSetVector: 18
     - 0:
         time: 0.000000
         variable:
@@ -1111,277 +634,103 @@ Transform:
         time: 0.547000
         variable:
           x: 1.000000
-          y: -5.486792
+          y: -5.486645
           z: 0.000000
     - 2:
         time: 1.078000
         variable:
           x: 1.000000
-          y: -5.707148
+          y: -5.990156
           z: 0.000000
     - 3:
-        time: 1.578000
+        time: 1.609000
         variable:
           x: 1.000000
-          y: -6.015776
+          y: -6.024276
           z: 0.000000
     - 4:
-        time: 2.094001
+        time: 2.125000
         variable:
-          x: 1.000000
-          y: -6.013375
+          x: 1.652503
+          y: -6.020679
           z: 0.000000
     - 5:
-        time: 2.641000
+        time: 2.656000
         variable:
-          x: 1.000000
-          y: -6.011392
+          x: 3.434707
+          y: -6.017695
           z: 0.000000
     - 6:
         time: 3.171999
         variable:
-          x: 1.000000
-          y: -6.009704
+          x: 4.255571
+          y: -6.015008
           z: 0.000000
     - 7:
-        time: 3.687998
+        time: 3.718998
         variable:
-          x: 1.000000
-          y: -6.008345
+          x: 6.043599
+          y: -6.012846
           z: 0.000000
     - 8:
-        time: 4.202998
+        time: 4.233998
         variable:
-          x: 0.335916
-          y: -6.007122
+          x: 7.019117
+          y: -6.011515
           z: 0.000000
     - 9:
-        time: 4.718997
+        time: 4.780997
         variable:
-          x: -1.470916
-          y: -6.006089
+          x: 7.003440
+          y: -6.011515
           z: 0.000000
     - 10:
-        time: 5.233997
+        time: 5.311997
         variable:
-          x: -2.305983
-          y: -6.005183
+          x: 7.000683
+          y: -6.010832
           z: 0.000000
     - 11:
-        time: 5.765996
+        time: 5.811997
         variable:
-          x: -2.353888
-          y: -6.004416
+          x: 7.000124
+          y: -6.009418
           z: 0.000000
     - 12:
-        time: 6.296996
+        time: 6.327997
         variable:
-          x: -2.353888
-          y: -6.003761
+          x: 7.000022
+          y: -6.008056
           z: 0.000000
     - 13:
-        time: 6.827995
+        time: 6.874996
         variable:
-          x: -2.353888
-          y: -6.003202
+          x: 7.000004
+          y: -6.006899
           z: 0.000000
     - 14:
-        time: 7.358995
+        time: 7.390996
         variable:
-          x: -2.339701
-          y: -6.002727
+          x: 7.000001
+          y: -6.005906
           z: 0.000000
     - 15:
-        time: 7.890995
+        time: 7.905995
         variable:
-          x: -2.339701
-          y: -6.002334
+          x: 7.000001
+          y: -6.005054
           z: 0.000000
     - 16:
-        time: 8.405993
+        time: 8.421994
         variable:
-          x: -2.339701
-          y: -6.001988
+          x: 7.000001
+          y: -6.004325
           z: 0.000000
     - 17:
-        time: 8.952992
+        time: 8.936993
         variable:
-          x: -2.339701
-          y: -6.001677
-          z: 0.000000
-    - 18:
-        time: 9.499991
-        variable:
-          x: -2.339701
-          y: -6.001428
-          z: 0.000000
-    - 19:
-        time: 10.030990
-        variable:
-          x: -1.705235
-          y: -6.001174
-          z: 0.000000
-    - 20:
-        time: 10.546988
-        variable:
-          x: 0.015862
-          y: -6.001004
-          z: 0.000000
-    - 21:
-        time: 11.062986
-        variable:
-          x: 2.541691
-          y: -6.000840
-          z: 0.000000
-    - 22:
-        time: 11.577987
-        variable:
-          x: 4.801751
-          y: -6.000901
-          z: 0.000000
-    - 23:
-        time: 12.093986
-        variable:
-          x: 6.136081
-          y: -6.000764
-          z: 0.000000
-    - 24:
-        time: 12.640985
-        variable:
-          x: 6.407729
-          y: -6.000568
-          z: 0.000000
-    - 25:
-        time: 13.155983
-        variable:
-          x: 6.407729
-          y: -6.000482
-          z: 0.000000
-    - 26:
-        time: 13.702982
-        variable:
-          x: 6.407729
-          y: -6.000412
-          z: 0.000000
-    - 27:
-        time: 14.218982
-        variable:
-          x: 6.407729
-          y: -6.000350
-          z: 0.000000
-    - 28:
-        time: 14.765980
-        variable:
-          x: 6.407729
-          y: -6.000299
-          z: 0.000000
-    - 29:
-        time: 15.280978
-        variable:
-          x: 6.407729
-          y: -6.000330
-          z: 0.000000
-    - 30:
-        time: 15.812978
-        variable:
-          x: 6.407729
-          y: -6.000417
-          z: 0.000000
-    - 31:
-        time: 16.327982
-        variable:
-          x: 6.407729
-          y: -6.000526
-          z: 0.000000
-    - 32:
-        time: 16.843990
-        variable:
-          x: 6.147491
-          y: -6.000756
-          z: 0.000000
-    - 33:
-        time: 17.358997
-        variable:
-          x: 3.776922
-          y: -6.000873
-          z: 0.000000
-    - 34:
-        time: 17.875006
-        variable:
-          x: 0.130734
-          y: -6.000996
-          z: 0.000000
-    - 35:
-        time: 18.391014
-        variable:
-          x: -1.985475
-          y: -6.001287
-          z: 0.000000
-    - 36:
-        time: 18.922020
-        variable:
-          x: -2.339701
-          y: -6.001655
-          z: 0.000000
-    - 37:
-        time: 19.438028
-        variable:
-          x: -2.339701
-          y: -6.001638
-          z: 0.000000
-    - 38:
-        time: 19.953035
-        variable:
-          x: -2.339701
-          y: -6.001402
-          z: 0.000000
-    - 39:
-        time: 20.469044
-        variable:
-          x: -2.339701
-          y: -6.001194
-          z: 0.000000
-    - 40:
-        time: 21.000050
-        variable:
-          x: -2.339701
-          y: -6.001018
-          z: 0.000000
-    - 41:
-        time: 21.531055
-        variable:
-          x: -2.339701
-          y: -6.000875
-          z: 0.000000
-    - 42:
-        time: 22.031061
-        variable:
-          x: -2.339701
-          y: -6.000749
-          z: 0.000000
-    - 43:
-        time: 22.547070
-        variable:
-          x: -2.339701
-          y: -6.000643
-          z: 0.000000
-    - 44:
-        time: 23.047075
-        variable:
-          x: -2.339701
-          y: -6.000550
-          z: 0.000000
-    - 45:
-        time: 23.563084
-        variable:
-          x: -2.339701
-          y: -6.000471
-          z: 0.000000
-    - 46:
-        time: 24.078091
-        variable:
-          x: -2.339701
-          y: -6.001810
+          x: 7.000683
+          y: -6.010832
           z: 0.000000
   _localPosition:
     x: 0.000000
@@ -1484,8 +833,8 @@ Transform:
   (vector)_childVector: 0
   position:
     _variable:
-      x: 11.895377
-      y: -1.724883
+      x: 7.150568
+      y: -4.217637
       z: 0.000000
     (vector)_timeVariableSetVector: 1
     - 0:
@@ -1595,9 +944,9 @@ Transform:
   position:
     _variable:
       x: 15.000000
-      y: 7.124997
+      y: 3.000000
       z: 0.000000
-    (vector)_timeVariableSetVector: 47
+    (vector)_timeVariableSetVector: 18
     - 0:
         time: 0.000000
         variable:
@@ -1614,25 +963,25 @@ Transform:
         time: 1.078000
         variable:
           x: 15.000000
-          y: 3.561000
+          y: 3.000000
           z: 0.000000
     - 3:
-        time: 1.578000
+        time: 1.609000
         variable:
           x: 15.000000
-          y: 5.108999
+          y: 3.891000
           z: 0.000000
     - 4:
-        time: 2.094001
+        time: 2.125000
         variable:
           x: 15.000000
-          y: 3.750000
+          y: 4.643999
           z: 0.000000
     - 5:
-        time: 2.641000
+        time: 2.656000
         variable:
           x: 15.000000
-          y: 3.000000
+          y: 3.096000
           z: 0.000000
     - 6:
         time: 3.171999
@@ -1641,244 +990,70 @@ Transform:
           y: 3.000000
           z: 0.000000
     - 7:
-        time: 3.687998
+        time: 3.718998
         variable:
           x: 15.000000
           y: 3.000000
           z: 0.000000
     - 8:
-        time: 4.202998
+        time: 4.233998
         variable:
           x: 15.000000
           y: 3.000000
           z: 0.000000
     - 9:
-        time: 4.718997
+        time: 4.780997
         variable:
           x: 15.000000
-          y: 3.705000
+          y: 3.000000
           z: 0.000000
     - 10:
-        time: 5.233997
+        time: 5.311997
         variable:
           x: 15.000000
-          y: 5.297998
+          y: 3.000000
           z: 0.000000
     - 11:
-        time: 5.765996
+        time: 5.811997
         variable:
           x: 15.000000
-          y: 6.890996
+          y: 3.000000
           z: 0.000000
     - 12:
-        time: 6.296996
+        time: 6.327997
         variable:
           x: 15.000000
-          y: 8.483994
+          y: 3.000000
           z: 0.000000
     - 13:
-        time: 6.827995
+        time: 6.874996
         variable:
           x: 15.000000
-          y: 9.000000
+          y: 3.000000
           z: 0.000000
     - 14:
-        time: 7.358995
+        time: 7.390996
         variable:
           x: 15.000000
-          y: 9.000000
+          y: 3.000000
           z: 0.000000
     - 15:
-        time: 7.890995
+        time: 7.905995
         variable:
           x: 15.000000
-          y: 9.000000
+          y: 3.000000
           z: 0.000000
     - 16:
-        time: 8.405993
+        time: 8.421994
         variable:
           x: 15.000000
-          y: 9.000000
+          y: 3.000000
           z: 0.000000
     - 17:
-        time: 8.952992
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 18:
-        time: 9.499991
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 19:
-        time: 10.030990
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 20:
-        time: 10.546988
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 21:
-        time: 11.062986
-        variable:
-          x: 15.000000
-          y: 8.109001
-          z: 0.000000
-    - 22:
-        time: 11.577987
-        variable:
-          x: 15.000000
-          y: 6.561003
-          z: 0.000000
-    - 23:
-        time: 12.093986
-        variable:
-          x: 15.000000
-          y: 4.920005
-          z: 0.000000
-    - 24:
-        time: 12.640985
-        variable:
-          x: 15.000000
-          y: 3.375006
-          z: 0.000000
-    - 25:
-        time: 13.155983
+        time: 8.936993
         variable:
           x: 15.000000
           y: 3.000000
-          z: 0.000000
-    - 26:
-        time: 13.702982
-        variable:
-          x: 15.000000
-          y: 3.000000
-          z: 0.000000
-    - 27:
-        time: 14.218982
-        variable:
-          x: 15.000000
-          y: 3.000000
-          z: 0.000000
-    - 28:
-        time: 14.765980
-        variable:
-          x: 15.000000
-          y: 3.000000
-          z: 0.000000
-    - 29:
-        time: 15.280978
-        variable:
-          x: 15.000000
-          y: 3.000000
-          z: 0.000000
-    - 30:
-        time: 15.812978
-        variable:
-          x: 15.000000
-          y: 3.000000
-          z: 0.000000
-    - 31:
-        time: 16.327982
-        variable:
-          x: 15.000000
-          y: 3.000000
-          z: 0.000000
-    - 32:
-        time: 16.843990
-        variable:
-          x: 15.000000
-          y: 3.000000
-          z: 0.000000
-    - 33:
-        time: 17.358997
-        variable:
-          x: 15.000000
-          y: 3.000000
-          z: 0.000000
-    - 34:
-        time: 17.875006
-        variable:
-          x: 15.000000
-          y: 3.000000
-          z: 0.000000
-    - 35:
-        time: 18.391014
-        variable:
-          x: 15.000000
-          y: 3.984000
-          z: 0.000000
-    - 36:
-        time: 18.922020
-        variable:
-          x: 15.000000
-          y: 5.579998
-          z: 0.000000
-    - 37:
-        time: 19.438028
-        variable:
-          x: 15.000000
-          y: 7.124997
-          z: 0.000000
-    - 38:
-        time: 19.953035
-        variable:
-          x: 15.000000
-          y: 8.672995
-          z: 0.000000
-    - 39:
-        time: 20.469044
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 40:
-        time: 21.000050
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 41:
-        time: 21.531055
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 42:
-        time: 22.031061
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 43:
-        time: 22.547070
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 44:
-        time: 23.047075
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 45:
-        time: 23.563084
-        variable:
-          x: 15.000000
-          y: 9.000000
-          z: 0.000000
-    - 46:
-        time: 24.078091
-        variable:
-          x: 15.000000
-          y: 7.124997
           z: 0.000000
   _localPosition:
     x: 0.000000
@@ -2024,8 +1199,8 @@ SpriteRenderer:
     b: 1.000000
     a: 1.000000
   m_texture:
-    _variable: (instanceID)1796071122=1810763234=2041733843
-    (vector)_timeVariableSetVector: 46
+    _variable: (instanceID)1924696087=1768481199=694222412
+    (vector)_timeVariableSetVector: 18
     - 0:
         time: 0.000000
         variable: (instanceID)713606516=1441085232=703080509
@@ -2033,137 +1208,53 @@ SpriteRenderer:
         time: 0.594000
         variable: (instanceID)1469438134=1812976256=261817514
     - 2:
-        time: 1.125000
-        variable: (instanceID)1796071122=1810763234=2041733843
+        time: 1.109000
+        variable: (instanceID)804209360=437756323=2083317809
     - 3:
-        time: 1.672001
-        variable: (instanceID)462443120=2080123353=961201426
+        time: 1.609000
+        variable: (instanceID)1114868137=2094345245=537655613
     - 4:
-        time: 2.188000
-        variable: (instanceID)1721864159=363816041=1431216951
+        time: 2.125000
+        variable: (instanceID)833136267=214706370=524277000
     - 5:
-        time: 2.718999
-        variable: (instanceID)1969993881=1380141523=589990522
+        time: 2.656000
+        variable: (instanceID)807148309=352095870=1533661721
     - 6:
-        time: 3.249999
+        time: 3.218999
         variable: (instanceID)782600846=200406172=150677589
     - 7:
-        time: 3.812998
+        time: 3.811998
         variable: (instanceID)333768767=1096862792=317575298
     - 8:
-        time: 4.343998
+        time: 4.327998
         variable: (instanceID)1180726774=195100507=1988349814
     - 9:
-        time: 4.858997
+        time: 4.874997
         variable: (instanceID)508354465=236209111=948117172
     - 10:
-        time: 5.421997
+        time: 5.390997
         variable: (instanceID)1924696087=1768481199=694222412
     - 11:
-        time: 5.952996
+        time: 5.890997
         variable: (instanceID)850664551=941993657=1995917024
     - 12:
-        time: 6.468996
-        variable: (instanceID)1794730311=728172172=1756480161
+        time: 6.468997
+        variable: (instanceID)333768767=1096862792=317575298
     - 13:
-        time: 7.015995
-        variable: (instanceID)1157409583=1527208968=185006990
-    - 14:
-        time: 7.546995
-        variable: (instanceID)1574960856=38916677=702561093
-    - 15:
-        time: 8.077994
-        variable: (instanceID)804209360=437756323=2083317809
-    - 16:
-        time: 8.593993
-        variable: (instanceID)1180726774=195100507=1988349814
-    - 17:
-        time: 9.108992
-        variable: (instanceID)833136267=214706370=524277000
-    - 18:
-        time: 9.671990
-        variable: (instanceID)1924696087=1768481199=694222412
-    - 19:
-        time: 10.187989
-        variable: (instanceID)850664551=941993657=1995917024
-    - 20:
-        time: 10.749988
-        variable: (instanceID)1794730311=728172172=1756480161
-    - 21:
-        time: 11.280987
-        variable: (instanceID)1157409583=1527208968=185006990
-    - 22:
-        time: 11.812986
-        variable: (instanceID)1574960856=38916677=702561093
-    - 23:
-        time: 12.374985
-        variable: (instanceID)804209360=437756323=2083317809
-    - 24:
-        time: 12.905984
-        variable: (instanceID)1114868137=2094345245=537655613
-    - 25:
-        time: 13.421983
-        variable: (instanceID)833136267=214706370=524277000
-    - 26:
-        time: 13.968982
-        variable: (instanceID)807148309=352095870=1533661721
-    - 27:
-        time: 14.483980
-        variable: (instanceID)1886438682=677382329=2019045448
-    - 28:
-        time: 15.046979
-        variable: (instanceID)333768767=1096862792=317575298
-    - 29:
-        time: 15.562978
+        time: 7.015996
         variable: (instanceID)713606516=1441085232=703080509
-    - 30:
-        time: 16.140980
+    - 14:
+        time: 7.577995
         variable: (instanceID)1469438134=1812976256=261817514
-    - 31:
-        time: 16.655987
+    - 15:
+        time: 8.093995
         variable: (instanceID)1796071122=1810763234=2041733843
-    - 32:
-        time: 17.218996
+    - 16:
+        time: 8.655993
         variable: (instanceID)462443120=2080123353=961201426
-    - 33:
-        time: 17.734003
-        variable: (instanceID)1721864159=363816041=1431216951
-    - 34:
-        time: 18.297012
-        variable: (instanceID)1969993881=1380141523=589990522
-    - 35:
-        time: 18.813021
-        variable: (instanceID)782600846=200406172=150677589
-    - 36:
-        time: 19.344027
+    - 17:
+        time: 9.171992
         variable: (instanceID)333768767=1096862792=317575298
-    - 37:
-        time: 19.906034
-        variable: (instanceID)1180726774=195100507=1988349814
-    - 38:
-        time: 20.422043
-        variable: (instanceID)508354465=236209111=948117172
-    - 39:
-        time: 20.953049
-        variable: (instanceID)1924696087=1768481199=694222412
-    - 40:
-        time: 21.531055
-        variable: (instanceID)850664551=941993657=1995917024
-    - 41:
-        time: 22.078062
-        variable: (instanceID)1794730311=728172172=1756480161
-    - 42:
-        time: 22.594070
-        variable: (instanceID)1157409583=1527208968=185006990
-    - 43:
-        time: 23.141077
-        variable: (instanceID)1574960856=38916677=702561093
-    - 44:
-        time: 23.656084
-        variable: (instanceID)804209360=437756323=2083317809
-    - 45:
-        time: 24.172092
-        variable: (instanceID)1796071122=1810763234=2041733843
   _isFlipX:
     _variable: false
     (vector)_timeVariableSetVector: 1
@@ -2215,8 +1306,8 @@ Animator:
       Name: "NewState"
       AnimationClip: (instanceID)162372098=600006563=249103163
   _textureIndex:
-    _variable: 3
-    (vector)_timeVariableSetVector: 46
+    _variable: 4
+    (vector)_timeVariableSetVector: 18
     - 0:
         time: 0.000000
         variable: 8
@@ -2224,140 +1315,56 @@ Animator:
         time: 0.594000
         variable: 16
     - 2:
-        time: 1.125000
-        variable: 3
+        time: 1.109000
+        variable: 2
     - 3:
-        time: 1.672001
-        variable: 11
+        time: 1.609000
+        variable: 10
     - 4:
-        time: 2.188000
-        variable: 19
+        time: 2.125000
+        variable: 18
     - 5:
-        time: 2.718999
-        variable: 6
+        time: 2.656000
+        variable: 5
     - 6:
-        time: 3.249999
+        time: 3.218999
         variable: 14
     - 7:
-        time: 3.812998
+        time: 3.811998
         variable: 1
     - 8:
-        time: 4.343998
+        time: 4.327998
         variable: 9
     - 9:
-        time: 4.858997
+        time: 4.874997
         variable: 17
     - 10:
-        time: 5.421997
+        time: 5.390997
         variable: 4
     - 11:
-        time: 5.952996
+        time: 5.890997
         variable: 12
     - 12:
-        time: 6.468996
-        variable: 20
-    - 13:
-        time: 7.015995
-        variable: 7
-    - 14:
-        time: 7.546995
-        variable: 15
-    - 15:
-        time: 8.077994
-        variable: 2
-    - 16:
-        time: 8.593993
-        variable: 9
-    - 17:
-        time: 9.108992
-        variable: 18
-    - 18:
-        time: 9.671990
-        variable: 4
-    - 19:
-        time: 10.187989
-        variable: 12
-    - 20:
-        time: 10.749988
-        variable: 20
-    - 21:
-        time: 11.280987
-        variable: 7
-    - 22:
-        time: 11.812986
-        variable: 15
-    - 23:
-        time: 12.374985
-        variable: 2
-    - 24:
-        time: 12.905984
-        variable: 10
-    - 25:
-        time: 13.421983
-        variable: 18
-    - 26:
-        time: 13.968982
-        variable: 5
-    - 27:
-        time: 14.483980
-        variable: 13
-    - 28:
-        time: 15.046979
+        time: 6.468997
         variable: 21
-    - 29:
-        time: 15.562978
+    - 13:
+        time: 7.015996
         variable: 8
-    - 30:
-        time: 16.140980
+    - 14:
+        time: 7.577995
         variable: 16
-    - 31:
-        time: 16.655987
+    - 15:
+        time: 8.093995
         variable: 3
-    - 32:
-        time: 17.218996
+    - 16:
+        time: 8.655993
         variable: 11
-    - 33:
-        time: 17.734003
-        variable: 19
-    - 34:
-        time: 18.297012
-        variable: 6
-    - 35:
-        time: 18.813021
-        variable: 14
-    - 36:
-        time: 19.344027
+    - 17:
+        time: 9.171992
         variable: 1
-    - 37:
-        time: 19.906034
-        variable: 9
-    - 38:
-        time: 20.422043
-        variable: 17
-    - 39:
-        time: 20.953049
-        variable: 4
-    - 40:
-        time: 21.531055
-        variable: 12
-    - 41:
-        time: 22.078062
-        variable: 20
-    - 42:
-        time: 22.594070
-        variable: 7
-    - 43:
-        time: 23.141077
-        variable: 15
-    - 44:
-        time: 23.656084
-        variable: 2
-    - 45:
-        time: 24.172092
-        variable: 3
   _playingTime:
-    _variable: 0.140000
-    (vector)_timeVariableSetVector: 47
+    _variable: 0.188000
+    (vector)_timeVariableSetVector: 18
     - 0:
         time: 0.000000
         variable: 0.500000
@@ -2366,139 +1373,52 @@ Animator:
         variable: 1.031000
     - 2:
         time: 1.078000
-        variable: 0.140000
+        variable: 0.171000
     - 3:
-        time: 1.578000
-        variable: 0.656000
+        time: 1.609000
+        variable: 0.687000
     - 4:
-        time: 2.094001
-        variable: 1.203000
+        time: 2.125000
+        variable: 1.218000
     - 5:
-        time: 2.641000
-        variable: 0.312000
+        time: 2.656000
+        variable: 0.328000
     - 6:
         time: 3.171999
-        variable: 0.843000
+        variable: 0.875000
     - 7:
-        time: 3.687998
-        variable: 1.343000
+        time: 3.718998
+        variable: 1.390000
     - 8:
-        time: 4.202998
-        variable: 0.469000
+        time: 4.233998
+        variable: 0.547000
     - 9:
-        time: 4.718997
-        variable: 0.985000
+        time: 4.780997
+        variable: 1.079000
     - 10:
-        time: 5.233997
-        variable: 0.094000
+        time: 5.311997
+        variable: 0.188000
     - 11:
-        time: 5.765996
-        variable: 0.625000
+        time: 5.811997
+        variable: 0.719000
     - 12:
-        time: 6.296996
-        variable: 1.156000
+        time: 6.327997
+        variable: 1.250000
     - 13:
-        time: 6.827995
-        variable: 0.297000
-    - 14:
-        time: 7.358995
-        variable: 0.828000
-    - 15:
-        time: 7.890995
-        variable: 1.343000
-    - 16:
-        time: 8.405993
-        variable: 0.485000
-    - 17:
-        time: 8.952992
-        variable: 1.047000
-    - 18:
-        time: 9.499991
-        variable: 0.140000
-    - 19:
-        time: 10.030990
-        variable: 0.640000
-    - 20:
-        time: 10.546988
-        variable: 1.172000
-    - 21:
-        time: 11.062986
-        variable: 0.250000
-    - 22:
-        time: 11.577987
-        variable: 0.766000
-    - 23:
-        time: 12.093986
-        variable: 1.313000
-    - 24:
-        time: 12.640985
-        variable: 0.421000
-    - 25:
-        time: 13.155983
-        variable: 0.968000
-    - 26:
-        time: 13.702982
-        variable: 0.078000
-    - 27:
-        time: 14.218982
-        variable: 0.625000
-    - 28:
-        time: 14.765980
-        variable: 1.140000
-    - 29:
-        time: 15.280978
-        variable: 0.250000
-    - 30:
-        time: 15.812978
-        variable: 0.765000
-    - 31:
-        time: 16.327982
-        variable: 1.281000
-    - 32:
-        time: 16.843990
+        time: 6.874996
         variable: 0.375000
-    - 33:
-        time: 17.358997
+    - 14:
+        time: 7.390996
         variable: 0.890000
-    - 34:
-        time: 17.875006
+    - 15:
+        time: 7.905995
         variable: 1.406000
-    - 35:
-        time: 18.391014
-        variable: 0.515000
-    - 36:
-        time: 18.922020
-        variable: 1.047000
-    - 37:
-        time: 19.438028
-        variable: 0.140000
-    - 38:
-        time: 19.953035
-        variable: 0.656000
-    - 39:
-        time: 20.469044
-        variable: 1.187000
-    - 40:
-        time: 21.000050
-        variable: 0.296000
-    - 41:
-        time: 21.531055
-        variable: 0.796000
-    - 42:
-        time: 22.031061
-        variable: 1.312000
-    - 43:
-        time: 22.547070
-        variable: 0.406000
-    - 44:
-        time: 23.047075
-        variable: 0.922000
-    - 45:
-        time: 23.563084
-        variable: 0.047000
-    - 46:
-        time: 24.078091
-        variable: 0.140000
+    - 16:
+        time: 8.421994
+        variable: 0.516000
+    - 17:
+        time: 8.936993
+        variable: 0.188000
 --- 116941363=1899623809=284380306
 GameObject:
   name: "RecordCircle"
@@ -2513,18 +1433,9 @@ GameObject:
   - (instanceID)1446647268=714232456=1497798755
   _isActive:
     _variable: false
-    (vector)_timeVariableSetVector: 4
+    (vector)_timeVariableSetVector: 1
     - 0:
         time: 0.000000
-        variable: false
-    - 1:
-        time: 8.733993
-        variable: true
-    - 2:
-        time: 9.780991
-        variable: false
-    - 3:
-        time: 24.313095
         variable: false
 --- 214431009=801859099=1164764792
 Transform:
@@ -2576,19 +1487,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1244095655=768721352=423438383
-    (vector)_timeVariableSetVector: 4
+    (vector)_timeVariableSetVector: 1
     - 0:
         time: 0.000000
         variable: (instanceID)1244095655=768721352=423438383
-    - 1:
-        time: 8.733993
-        variable: (instanceID)370246748=1961254705=378814219
-    - 2:
-        time: 9.280992
-        variable: (instanceID)1244095655=768721352=423438383
-    - 3:
-        time: 24.313095
-        variable: (instanceID)1249965347=941682478=1431985412
   _isFlipX:
     _variable: false
     (vector)_timeVariableSetVector: 1
@@ -2644,35 +1546,17 @@ Animator:
       Name: "NewState"
       AnimationClip: (instanceID)471440613=1646999092=245871592
   _textureIndex:
-    _variable: 18
-    (vector)_timeVariableSetVector: 4
+    _variable: 0
+    (vector)_timeVariableSetVector: 1
     - 0:
         time: 0.000000
         variable: 0
-    - 1:
-        time: 8.733993
-        variable: 10
-    - 2:
-        time: 9.280992
-        variable: 18
-    - 3:
-        time: 24.313095
-        variable: 11
   _playingTime:
-    _variable: 0.984000
-    (vector)_timeVariableSetVector: 4
+    _variable: 0.000000
+    (vector)_timeVariableSetVector: 1
     - 0:
         time: 0.000000
         variable: 0.000000
-    - 1:
-        time: 8.733993
-        variable: 0.546000
-    - 2:
-        time: 9.280992
-        variable: 0.984000
-    - 3:
-        time: 24.313095
-        variable: 0.546000
 --- 797730932=1938781617=926194059
 GameObject:
   name: "RewindCircle"
@@ -2698,8 +1582,8 @@ Transform:
   (vector)_childVector: 0
   position:
     _variable:
-      x: 11.895377
-      y: 0.275117
+      x: 7.150568
+      y: -2.217637
       z: 0.000000
     (vector)_timeVariableSetVector: 1
     - 0:
@@ -2738,21 +1622,9 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1244095655=768721352=423438383
-    (vector)_timeVariableSetVector: 5
+    (vector)_timeVariableSetVector: 1
     - 0:
         time: 0.000000
-        variable: (instanceID)1244095655=768721352=423438383
-    - 1:
-        time: 15.233978
-        variable: (instanceID)506370641=522285335=1484473465
-    - 2:
-        time: 15.812978
-        variable: (instanceID)525181853=746666937=1781857163
-    - 3:
-        time: 16.327982
-        variable: (instanceID)1268947030=457538320=1276458524
-    - 4:
-        time: 16.843990
         variable: (instanceID)1244095655=768721352=423438383
   _isFlipX:
     _variable: false
@@ -2776,44 +1648,17 @@ Animator:
       Name: "NewState"
       AnimationClip: (instanceID)1290421775=277455505=1694098709
   _textureIndex:
-    _variable: 30
-    (vector)_timeVariableSetVector: 5
+    _variable: 0
+    (vector)_timeVariableSetVector: 1
     - 0:
         time: 0.000000
         variable: 0
-    - 1:
-        time: 15.233978
-        variable: 8
-    - 2:
-        time: 15.812978
-        variable: 16
-    - 3:
-        time: 16.327982
-        variable: 24
-    - 4:
-        time: 16.843990
-        variable: 30
   _playingTime:
-    _variable: 1.984001
-    (vector)_timeVariableSetVector: 6
+    _variable: 0.000000
+    (vector)_timeVariableSetVector: 1
     - 0:
         time: 0.000000
         variable: 0.000000
-    - 1:
-        time: 15.233978
-        variable: 0.531000
-    - 2:
-        time: 15.765978
-        variable: 1.046000
-    - 3:
-        time: 16.280981
-        variable: 1.562000
-    - 4:
-        time: 16.796989
-        variable: 1.984001
-    - 5:
-        time: 24.313095
-        variable: 1.562000
 --- 478731400=1097234443=128181731
 GameObject:
   name: "Rock"
@@ -8459,19 +7304,19 @@ SpriteRenderer:
     b: 1.000000
     a: 1.000000
   m_texture:
-    _variable: (instanceID)528504834=557725319=1477062571
-    (vector)_timeVariableSetVector: 40
+    _variable: (instanceID)1152499934=1346910685=154386246
+    (vector)_timeVariableSetVector: 16
     - 0:
         time: 0.000000
         variable: (instanceID)1825608468=1373151654=1824400655
     - 1:
-        time: 0.688000
+        time: 0.687000
         variable: (instanceID)2072732583=1424466068=1557893292
     - 2:
         time: 1.250000
         variable: (instanceID)862989380=2133148999=1188577280
     - 3:
-        time: 1.859001
+        time: 1.875001
         variable: (instanceID)841285436=1372859304=107079756
     - 4:
         time: 2.469000
@@ -8480,107 +7325,35 @@ SpriteRenderer:
         time: 3.077999
         variable: (instanceID)1825608468=1373151654=1824400655
     - 6:
-        time: 3.733998
+        time: 3.765998
         variable: (instanceID)2072732583=1424466068=1557893292
     - 7:
-        time: 4.343998
+        time: 4.327998
         variable: (instanceID)862989380=2133148999=1188577280
     - 8:
         time: 4.952997
         variable: (instanceID)841285436=1372859304=107079756
     - 9:
-        time: 5.577996
+        time: 5.530997
         variable: (instanceID)630053067=827723351=842958841
     - 10:
-        time: 6.171996
+        time: 6.155997
         variable: (instanceID)1825608468=1373151654=1824400655
     - 11:
-        time: 6.827995
+        time: 6.827996
         variable: (instanceID)2072732583=1424466068=1557893292
     - 12:
-        time: 7.452995
+        time: 7.436996
         variable: (instanceID)862989380=2133148999=1188577280
     - 13:
-        time: 8.030994
+        time: 8.046995
         variable: (instanceID)841285436=1372859304=107079756
     - 14:
-        time: 8.640993
+        time: 8.608994
         variable: (instanceID)630053067=827723351=842958841
     - 15:
-        time: 9.280992
-        variable: (instanceID)1825608468=1373151654=1824400655
-    - 16:
-        time: 9.937990
-        variable: (instanceID)2072732583=1424466068=1557893292
-    - 17:
-        time: 10.546988
-        variable: (instanceID)862989380=2133148999=1188577280
-    - 18:
-        time: 11.171987
-        variable: (instanceID)841285436=1372859304=107079756
-    - 19:
-        time: 11.765986
-        variable: (instanceID)630053067=827723351=842958841
-    - 20:
-        time: 12.374985
-        variable: (instanceID)1825608468=1373151654=1824400655
-    - 21:
-        time: 13.030983
-        variable: (instanceID)2072732583=1424466068=1557893292
-    - 22:
-        time: 13.655982
-        variable: (instanceID)862989380=2133148999=1188577280
-    - 23:
-        time: 14.265982
-        variable: (instanceID)841285436=1372859304=107079756
-    - 24:
-        time: 14.858979
-        variable: (instanceID)630053067=827723351=842958841
-    - 25:
-        time: 15.468978
-        variable: (instanceID)1825608468=1373151654=1824400655
-    - 26:
-        time: 16.140980
-        variable: (instanceID)2072732583=1424466068=1557893292
-    - 27:
-        time: 16.749989
-        variable: (instanceID)862989380=2133148999=1188577280
-    - 28:
-        time: 17.358997
-        variable: (instanceID)841285436=1372859304=107079756
-    - 29:
-        time: 17.922007
-        variable: (instanceID)630053067=827723351=842958841
-    - 30:
-        time: 18.531015
-        variable: (instanceID)1825608468=1373151654=1824400655
-    - 31:
-        time: 19.203024
-        variable: (instanceID)2072732583=1424466068=1557893292
-    - 32:
-        time: 19.813034
-        variable: (instanceID)862989380=2133148999=1188577280
-    - 33:
-        time: 20.422043
-        variable: (instanceID)841285436=1372859304=107079756
-    - 34:
-        time: 21.000050
-        variable: (instanceID)630053067=827723351=842958841
-    - 35:
-        time: 21.609055
-        variable: (instanceID)1825608468=1373151654=1824400655
-    - 36:
-        time: 22.266066
-        variable: (instanceID)2072732583=1424466068=1557893292
-    - 37:
-        time: 22.859072
-        variable: (instanceID)862989380=2133148999=1188577280
-    - 38:
-        time: 23.469082
-        variable: (instanceID)841285436=1372859304=107079756
-    - 39:
-        time: 24.078091
-        variable: (instanceID)528504834=557725319=1477062571
+        time: 9.218992
+        variable: (instanceID)1152499934=1346910685=154386246
   _isFlipX:
     _variable: true
     (vector)_timeVariableSetVector: 1
@@ -8599,19 +7372,19 @@ Animator:
       Name: "NewState"
       AnimationClip: (instanceID)260886131=2118823149=1375313861
   _textureIndex:
-    _variable: 7
-    (vector)_timeVariableSetVector: 40
+    _variable: 14
+    (vector)_timeVariableSetVector: 16
     - 0:
         time: 0.000000
         variable: 3
     - 1:
-        time: 0.688000
+        time: 0.687000
         variable: 6
     - 2:
         time: 1.250000
         variable: 9
     - 3:
-        time: 1.859001
+        time: 1.875001
         variable: 12
     - 4:
         time: 2.469000
@@ -8620,110 +7393,38 @@ Animator:
         time: 3.077999
         variable: 3
     - 6:
-        time: 3.733998
+        time: 3.765998
         variable: 6
     - 7:
-        time: 4.343998
+        time: 4.327998
         variable: 9
     - 8:
         time: 4.952997
         variable: 12
     - 9:
-        time: 5.577996
+        time: 5.530997
         variable: 15
     - 10:
-        time: 6.171996
+        time: 6.155997
         variable: 3
     - 11:
-        time: 6.827995
+        time: 6.827996
         variable: 6
     - 12:
-        time: 7.452995
+        time: 7.436996
         variable: 9
     - 13:
-        time: 8.030994
+        time: 8.046995
         variable: 12
     - 14:
-        time: 8.640993
+        time: 8.608994
         variable: 15
     - 15:
-        time: 9.280992
-        variable: 3
-    - 16:
-        time: 9.937990
-        variable: 6
-    - 17:
-        time: 10.546988
-        variable: 9
-    - 18:
-        time: 11.171987
-        variable: 12
-    - 19:
-        time: 11.765986
-        variable: 15
-    - 20:
-        time: 12.374985
-        variable: 3
-    - 21:
-        time: 13.030983
-        variable: 6
-    - 22:
-        time: 13.655982
-        variable: 9
-    - 23:
-        time: 14.265982
-        variable: 12
-    - 24:
-        time: 14.858979
-        variable: 15
-    - 25:
-        time: 15.468978
-        variable: 3
-    - 26:
-        time: 16.140980
-        variable: 6
-    - 27:
-        time: 16.749989
-        variable: 9
-    - 28:
-        time: 17.358997
-        variable: 12
-    - 29:
-        time: 17.922007
-        variable: 15
-    - 30:
-        time: 18.531015
-        variable: 3
-    - 31:
-        time: 19.203024
-        variable: 6
-    - 32:
-        time: 19.813034
-        variable: 9
-    - 33:
-        time: 20.422043
-        variable: 12
-    - 34:
-        time: 21.000050
-        variable: 15
-    - 35:
-        time: 21.609055
-        variable: 3
-    - 36:
-        time: 22.266066
-        variable: 6
-    - 37:
-        time: 22.859072
-        variable: 9
-    - 38:
-        time: 23.469082
-        variable: 12
-    - 39:
-        time: 24.078091
-        variable: 7
+        time: 9.218992
+        variable: 14
   _playingTime:
-    _variable: 1.375000
-    (vector)_timeVariableSetVector: 47
+    _variable: 2.688000
+    (vector)_timeVariableSetVector: 18
     - 0:
         time: 0.000000
         variable: 0.500000
@@ -8732,139 +7433,52 @@ Animator:
         variable: 1.031000
     - 2:
         time: 1.078000
-        variable: 1.531000
+        variable: 1.562000
     - 3:
-        time: 1.578000
-        variable: 2.047001
+        time: 1.609000
+        variable: 2.078001
     - 4:
-        time: 2.094001
-        variable: 2.594000
+        time: 2.125000
+        variable: 2.609000
     - 5:
-        time: 2.641000
+        time: 2.656000
         variable: 0.047000
     - 6:
         time: 3.171999
-        variable: 0.578000
+        variable: 0.594000
     - 7:
-        time: 3.687998
-        variable: 1.078000
+        time: 3.718998
+        variable: 1.109000
     - 8:
-        time: 4.202998
-        variable: 1.594000
+        time: 4.233998
+        variable: 1.656000
     - 9:
-        time: 4.718997
-        variable: 2.110001
+        time: 4.780997
+        variable: 2.188000
     - 10:
-        time: 5.233997
-        variable: 2.641000
+        time: 5.311997
+        variable: 2.688000
     - 11:
-        time: 5.765996
-        variable: 0.078000
+        time: 5.811997
+        variable: 0.141000
     - 12:
-        time: 6.296996
-        variable: 0.609000
+        time: 6.327997
+        variable: 0.672000
     - 13:
-        time: 6.827995
-        variable: 1.141000
+        time: 6.874996
+        variable: 1.188000
     - 14:
-        time: 7.358995
-        variable: 1.672001
+        time: 7.390996
+        variable: 1.703001
     - 15:
-        time: 7.890995
-        variable: 2.187001
+        time: 7.905995
+        variable: 2.219001
     - 16:
-        time: 8.405993
-        variable: 2.719000
+        time: 8.421994
+        variable: 2.735000
     - 17:
-        time: 8.952992
-        variable: 0.172000
-    - 18:
-        time: 9.499991
-        variable: 0.703000
-    - 19:
-        time: 10.030990
-        variable: 1.203000
-    - 20:
-        time: 10.546988
-        variable: 1.735000
-    - 21:
-        time: 11.062986
-        variable: 2.250000
-    - 22:
-        time: 11.577987
-        variable: 2.765999
-    - 23:
-        time: 12.093986
-        variable: 0.219000
-    - 24:
-        time: 12.640985
-        variable: 0.734000
-    - 25:
-        time: 13.155983
-        variable: 1.281000
-    - 26:
-        time: 13.702982
-        variable: 1.797001
-    - 27:
-        time: 14.218982
-        variable: 2.344000
-    - 28:
-        time: 14.765980
-        variable: 2.859000
-    - 29:
-        time: 15.280978
-        variable: 0.297000
-    - 30:
-        time: 15.812978
-        variable: 0.812000
-    - 31:
-        time: 16.327982
-        variable: 1.328000
-    - 32:
-        time: 16.843990
-        variable: 1.844001
-    - 33:
-        time: 17.358997
-        variable: 2.359000
-    - 34:
-        time: 17.875006
-        variable: 2.875000
-    - 35:
-        time: 18.391014
-        variable: 0.328000
-    - 36:
-        time: 18.922020
-        variable: 0.860000
-    - 37:
-        time: 19.438028
-        variable: 1.375000
-    - 38:
-        time: 19.953035
-        variable: 1.891001
-    - 39:
-        time: 20.469044
-        variable: 2.422000
-    - 40:
-        time: 21.000050
-        variable: 2.953000
-    - 41:
-        time: 21.531055
-        variable: 0.375000
-    - 42:
-        time: 22.031061
-        variable: 0.891000
-    - 43:
-        time: 22.547070
-        variable: 1.391000
-    - 44:
-        time: 23.047075
-        variable: 1.907001
-    - 45:
-        time: 23.563084
-        variable: 2.422000
-    - 46:
-        time: 24.078091
-        variable: 1.375000
+        time: 8.936993
+        variable: 2.688000
 --- 232384226=1292732281=1650132236
 GameObject:
   name: "Hill1"
@@ -9105,7 +7719,7 @@ GameObject:
         time: 0.000000
         variable: true
     - 1:
-        time: 21.234053
+        time: 6.546997
         variable: false
 --- 1975303871=1978504876=1433865962
 Transform:
@@ -9117,14 +7731,14 @@ Transform:
   (vector)_childVector: 0
   position:
     _variable:
-      x: 18.500000
+      x: 12.500000
       y: 0.500000
       z: 0.000000
     (vector)_timeVariableSetVector: 1
     - 0:
         time: 0.000000
         variable:
-          x: 18.500000
+          x: 12.500000
           y: 0.500000
           z: 0.000000
   _localPosition:
@@ -9449,44 +8063,32 @@ DemoStageManager:
   gameObject: (instanceID)1507891366=1789108358=1936307866
   Started: true
   _gameClearTextGO: (instanceID)1659179802=654795890=630138907
---- 678068561=1107506254=667117519
+--- 477310024=748303553=309579772
 GameObject:
   name: "Clock6"
   IsPrefab: true
   tag: "Untagged"
   (vector)_componentVector: 3
-  - (instanceID)1684179322=1507745031=223257183
-  - (instanceID)2049544838=1179529519=1470372278
-  - (instanceID)1013991902=1165512547=808917427
+  - (instanceID)676078448=523155291=1896994225
+  - (instanceID)652286731=2082611980=1584550214
+  - (instanceID)371777685=142697829=920398160
   _isActive:
     _variable: false
-    (vector)_timeVariableSetVector: 4
-    - 0:
-        time: 8.780993
-        variable: true
-    - 1:
-        time: 9.343991
-        variable: true
-    - 2:
-        time: 19.578030
-        variable: false
-    - 3:
-        time: 24.313095
-        variable: false
---- 1684179322=1507745031=223257183
+    (vector)_timeVariableSetVector: 0
+--- 676078448=523155291=1896994225
 Transform:
   name: "GameObject.prefab"
   enabled: true
-  gameObject: (instanceID)678068561=1107506254=667117519
-  Started: true
+  gameObject: (instanceID)477310024=748303553=309579772
+  Started: false
   _parentProperty: (instanceID)1619447062=528024578=1024881459
   (vector)_childVector: 2
-  - (instanceID)1284500361=532865074=1630284557
-  - (instanceID)702269321=1185346177=536371617
+  - (instanceID)1023569577=1889327339=779426660
+  - (instanceID)2045057051=1652144181=892032805
   position:
     _variable:
-      x: -2.339701
-      y: -6.001655
+      x: 6.000000
+      y: 1.000000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
@@ -9505,12 +8107,12 @@ Transform:
     x: 0.250000
     y: 0.250000
     z: 1.000000
---- 2049544838=1179529519=1470372278
+--- 652286731=2082611980=1584550214
 SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
-  gameObject: (instanceID)678068561=1107506254=667117519
-  Started: true
+  gameObject: (instanceID)477310024=748303553=309579772
+  Started: false
   _order: 2
   _color:
     r: 1.000000
@@ -9523,37 +8125,37 @@ SpriteRenderer:
   _isFlipX:
     _variable: false
     (vector)_timeVariableSetVector: 0
---- 1013991902=1165512547=808917427
+--- 371777685=142697829=920398160
 DemoClock:
   name: "initial name"
   enabled: true
-  gameObject: (instanceID)678068561=1107506254=667117519
-  Started: true
-  _minuteHandParent: (instanceID)522553863=1120506840=2037042683
-  _secondHandParent: (instanceID)1430206925=2116478025=1597218425
---- 522553863=1120506840=2037042683
+  gameObject: (instanceID)477310024=748303553=309579772
+  Started: false
+  _minuteHandParent: (instanceID)1725480370=1418302663=463936915
+  _secondHandParent: (instanceID)1289583008=1795410349=1050708796
+--- 1725480370=1418302663=463936915
 GameObject:
   name: "MinuteHandParent"
   IsPrefab: true
   tag: "Untagged"
   (vector)_componentVector: 1
-  - (instanceID)1284500361=532865074=1630284557
+  - (instanceID)1023569577=1889327339=779426660
   _isActive:
     _variable: true
     (vector)_timeVariableSetVector: 0
---- 1284500361=532865074=1630284557
+--- 1023569577=1889327339=779426660
 Transform:
   name: "GameObject.prefab"
   enabled: true
-  gameObject: (instanceID)522553863=1120506840=2037042683
-  Started: true
-  _parentProperty: (instanceID)1684179322=1507745031=223257183
+  gameObject: (instanceID)1725480370=1418302663=463936915
+  Started: false
+  _parentProperty: (instanceID)676078448=523155291=1896994225
   (vector)_childVector: 1
-  - (instanceID)1629700092=536082077=1535063904
+  - (instanceID)216376578=1933810708=2083718390
   position:
     _variable:
-      x: -2.339701
-      y: -6.001655
+      x: 6.000000
+      y: 1.000000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
@@ -9563,38 +8165,38 @@ Transform:
   _eulerRotation:
     x: 0.000000
     y: 0.000000
-    z: 1.814883
+    z: 360.000000
   _localEulerRotation:
     x: 0.000000
     y: 0.000000
-    z: 349.169708
+    z: 360.000000
   scale:
     x: 1.000000
     y: 1.000000
     z: 1.000000
---- 1697404277=1329111669=259310287
+--- 685673463=1261272417=625856367
 GameObject:
   name: "MinuteHand"
   IsPrefab: true
   tag: "Untagged"
   (vector)_componentVector: 2
-  - (instanceID)1629700092=536082077=1535063904
-  - (instanceID)606065463=828228062=320995082
+  - (instanceID)216376578=1933810708=2083718390
+  - (instanceID)1501514806=1090238617=213024905
   _isActive:
     _variable: true
     (vector)_timeVariableSetVector: 0
---- 1629700092=536082077=1535063904
+--- 216376578=1933810708=2083718390
 Transform:
   name: "GameObject.prefab"
   enabled: true
-  gameObject: (instanceID)1697404277=1329111669=259310287
-  Started: true
-  _parentProperty: (instanceID)1284500361=532865074=1630284557
+  gameObject: (instanceID)685673463=1261272417=625856367
+  Started: false
+  _parentProperty: (instanceID)1023569577=1889327339=779426660
   (vector)_childVector: 0
   position:
     _variable:
-      x: -2.292726
-      y: -5.756108
+      x: 6.000000
+      y: 1.250000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
@@ -9604,7 +8206,7 @@ Transform:
   _eulerRotation:
     x: 0.000000
     y: 0.000000
-    z: 1.814883
+    z: 360.000000
   _localEulerRotation:
     x: 0.000000
     y: 0.000000
@@ -9613,12 +8215,12 @@ Transform:
     x: 0.100000
     y: 0.500000
     z: 1.000000
---- 606065463=828228062=320995082
+--- 1501514806=1090238617=213024905
 SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
-  gameObject: (instanceID)1697404277=1329111669=259310287
-  Started: true
+  gameObject: (instanceID)685673463=1261272417=625856367
+  Started: false
   _order: 2
   _color:
     r: 1.000000
@@ -9631,29 +8233,29 @@ SpriteRenderer:
   _isFlipX:
     _variable: false
     (vector)_timeVariableSetVector: 0
---- 1430206925=2116478025=1597218425
+--- 1289583008=1795410349=1050708796
 GameObject:
   name: "SecondHandParent"
   IsPrefab: true
   tag: "Untagged"
   (vector)_componentVector: 1
-  - (instanceID)702269321=1185346177=536371617
+  - (instanceID)2045057051=1652144181=892032805
   _isActive:
     _variable: true
     (vector)_timeVariableSetVector: 0
---- 702269321=1185346177=536371617
+--- 2045057051=1652144181=892032805
 Transform:
   name: "GameObject.prefab"
   enabled: true
-  gameObject: (instanceID)1430206925=2116478025=1597218425
-  Started: true
-  _parentProperty: (instanceID)1684179322=1507745031=223257183
+  gameObject: (instanceID)1289583008=1795410349=1050708796
+  Started: false
+  _parentProperty: (instanceID)676078448=523155291=1896994225
   (vector)_childVector: 1
-  - (instanceID)526524698=1528947009=1480871407
+  - (instanceID)453470628=1534571045=1123279002
   position:
     _variable:
-      x: -2.339701
-      y: -6.001655
+      x: 6.000000
+      y: 1.000000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
@@ -9663,38 +8265,38 @@ Transform:
   _eulerRotation:
     x: 0.000000
     y: 0.000000
-    z: 21.780405
+    z: 360.000000
   _localEulerRotation:
     x: 0.000000
     y: 0.000000
-    z: 230.040451
+    z: 360.000000
   scale:
     x: 1.000000
     y: 1.000000
     z: 1.000000
---- 58303925=1092611159=1960577759
+--- 254557956=2015417243=861667376
 GameObject:
   name: "SecondHand"
   IsPrefab: true
   tag: "Untagged"
   (vector)_componentVector: 2
-  - (instanceID)526524698=1528947009=1480871407
-  - (instanceID)130097096=60312547=826577278
+  - (instanceID)453470628=1534571045=1123279002
+  - (instanceID)1386886028=1691276706=1165475212
   _isActive:
     _variable: true
     (vector)_timeVariableSetVector: 0
---- 526524698=1528947009=1480871407
+--- 453470628=1534571045=1123279002
 Transform:
   name: "GameObject.prefab"
   enabled: true
-  gameObject: (instanceID)58303925=1092611159=1960577759
-  Started: true
-  _parentProperty: (instanceID)702269321=1185346177=536371617
+  gameObject: (instanceID)254557956=2015417243=861667376
+  Started: false
+  _parentProperty: (instanceID)2045057051=1652144181=892032805
   (vector)_childVector: 0
   position:
     _variable:
-      x: -1.956452
-      y: -6.322778
+      x: 6.000000
+      y: 1.500000
       z: 0.000000
     (vector)_timeVariableSetVector: 0
   _localPosition:
@@ -9704,7 +8306,7 @@ Transform:
   _eulerRotation:
     x: 0.000000
     y: 0.000000
-    z: 21.780396
+    z: 360.000000
   _localEulerRotation:
     x: 0.000000
     y: 0.000000
@@ -9713,12 +8315,12 @@ Transform:
     x: 0.100000
     y: 1.000000
     z: 1.000000
---- 130097096=60312547=826577278
+--- 1386886028=1691276706=1165475212
 SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
-  gameObject: (instanceID)58303925=1092611159=1960577759
-  Started: true
+  gameObject: (instanceID)254557956=2015417243=861667376
+  Started: false
   _order: 2
   _color:
     r: 1.000000

@@ -102,7 +102,7 @@ void Physics2D::Update()
 						{
 							collisionVector.push_back(std::shared_ptr<Collision2D>(collision));
 							return true;
-							Debug::Log(L"衝突検出（ナローフェーズ）");
+							//Debug::Log(L"衝突検出（ナローフェーズ）");
 						}
 					}
 					return false;
@@ -231,7 +231,7 @@ void Physics2D::Update()
 			{
 				friction = -maxForce;
 			}
-			Debug::Log("(%f, %f), %f", friction.x, friction.y, EngineTime::GetFixedDeltaTime());
+			//Debug::Log("(%f, %f), %f", friction.x, friction.y, EngineTime::GetFixedDeltaTime());
 			rigidbodyA->AddImpulse(friction * EngineTime::GetFixedDeltaTime());
 
 

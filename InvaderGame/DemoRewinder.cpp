@@ -66,7 +66,7 @@ void DemoRewinder::Update()
 	_rewindTime -= EngineTime::GetDeltaTime() * 1.5f;
 }
 
-void DemoRewinder::Record()
+void DemoRewinder::StartRecording()
 {
 	// ˜A‘±‚ÅŒÄ‚Î‚ê‚é‰Â”\«‚ ‚è
 	if (!_isRecording)

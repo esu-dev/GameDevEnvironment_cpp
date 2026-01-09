@@ -15,7 +15,7 @@ void DemoRewindTrigger::OnTriggerStay2D(GameObject* other)
 	if (DemoRewinder* rewinder = other->GetComponent<DemoRewinder>())
 	{
 		_rewindObjectVec.push_back(rewinder);
-		rewinder->Record();
+		rewinder->StartRecording();
 	}
 }
 

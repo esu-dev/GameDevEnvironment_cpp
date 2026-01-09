@@ -207,12 +207,14 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ClCompile Include="DemoClock.cpp" />
+    <ClCompile Include="DemoCrystal.cpp" />
     <ClCompile Include="DemoPhysicsManager.cpp" />
     <ClCompile Include="DemoPhysicsSceneAsset.cpp" />
     <ClCompile Include="DemoRewinder.cpp" />
     <ClCompile Include="DemoRewindTrigger.cpp" />
     <ClCompile Include="DemoSceneAsset.cpp" />
     <ClCompile Include="DemoSoundPlayer.cpp" />
+    <ClCompile Include="DemoStageManager.cpp" />
     <ClCompile Include="DemoTextFlash.cpp" />
     <ClCompile Include="DemoTitleSceneManager.cpp" />
     <ClCompile Include="Direct3D.cpp" />
@@ -337,11 +339,13 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="CommonExtension.h" />
     <ClInclude Include="DemoClock.h" />
+    <ClInclude Include="DemoCrystal.h" />
     <ClInclude Include="DemoPhysicsManager.h" />
     <ClInclude Include="DemoPhysicsSceneAsset.h" />
     <ClInclude Include="DemoRewinder.h" />
     <ClInclude Include="DemoRewindTrigger.h" />
     <ClInclude Include="DemoSoundPlayer.h" />
+    <ClInclude Include="DemoStageManager.h" />
     <ClInclude Include="DemoTextFlash.h" />
     <ClInclude Include="DemoTitleSceneManager.h" />
     <ClInclude Include="Editor.h" />

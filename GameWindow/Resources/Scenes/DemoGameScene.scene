@@ -490,6 +490,7 @@ Shutter:
   _openSpeed: 3.000000
   _openDistance: 6.000000
   _gimmickTrigger: (instanceID)220179420=1740506888=1732060206
+  _startPositionY: 0.000000
 --- 1920240787=1633577486=86918562
 BoxCollider2D:
   name: "initial name"
@@ -5398,10 +5399,13 @@ SpriteRenderer:
 GameObject:
   name: "Crystal"
   IsPrefab: true
-  tag: "Untagged"
-  (vector)_componentVector: 2
+  tag: "Crystal"
+  (vector)_componentVector: 5
   - (instanceID)1975303871=1978504876=1433865962
   - (instanceID)1950287571=931861092=1250586480
+  - (instanceID)1384232299=1071942702=377849589
+  - (instanceID)1753538164=29582210=1195731496
+  - (instanceID)344446478=614929293=1933875258
   _isActive:
     _variable: true
     (vector)_timeVariableSetVector: 0
@@ -5451,6 +5455,33 @@ SpriteRenderer:
   _isFlipX:
     _variable: false
     (vector)_timeVariableSetVector: 0
+--- 1384232299=1071942702=377849589
+BoxCollider2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)1145865073=1474099379=1814883608
+  _offset:
+    x: 0.000000
+    y: 0.000000
+  _size:
+    x: 1.000000
+    y: 1.000000
+--- 1753538164=29582210=1195731496
+Rigidbody2D:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)1145865073=1474099379=1814883608
+  IsKinematic: true
+  IsTrigger: true
+  GravityScale: 1.000000
+  _isSleeping:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 344446478=614929293=1933875258
+DemoCrystal:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)1145865073=1474099379=1814883608
 --- 1117086937=1842805983=1737286240
 GameObject:
   name: "CrystalIcon"
@@ -5556,4 +5587,98 @@ TextLabel:
   _canMove: true
   FontSize: 26
   _text: "Get a Crystal!!"
+--- 1659179802=654795890=630138907
+GameObject:
+  name: "ClearText"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 2
+  - (instanceID)1997821663=1696603594=1275687244
+  - (instanceID)140552748=1981169110=292425761
+  _isActive:
+    _variable: false
+    (vector)_timeVariableSetVector: 0
+--- 1997821663=1696603594=1275687244
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)1659179802=654795890=630138907
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 5.000000
+      y: 1.500000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 140552748=1981169110=292425761
+TextLabel:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)1659179802=654795890=630138907
+  _canMove: true
+  FontSize: 55
+  _text: "Stage Clear!!!"
+--- 1507891366=1789108358=1936307866
+GameObject:
+  name: "StageManager"
+  IsPrefab: true
+  tag: "Untagged"
+  (vector)_componentVector: 2
+  - (instanceID)729866163=2096367992=1802219774
+  - (instanceID)1565077547=2085044453=664821861
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector: 0
+--- 729866163=2096367992=1802219774
+Transform:
+  name: "GameObject.prefab"
+  enabled: true
+  gameObject: (instanceID)1507891366=1789108358=1936307866
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 5.000000
+      y: -1.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 1565077547=2085044453=664821861
+DemoStageManager:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)1507891366=1789108358=1936307866
+  _gameClearTextGO: (instanceID)1659179802=654795890=630138907
 

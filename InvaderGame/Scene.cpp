@@ -57,6 +57,21 @@ namespace SceneManagement
 		}
 	}
 
+	void Scene::Restart()
+	{
+		int num = _gameObjectVector.size();
+		for (int i = 0; i < num; i++)
+		{
+			// e‚ª‚¢‚é‚È‚çStart()‚ðŒÄ‚Î‚È‚¢
+			if (_gameObjectVector[i]->GetTransform()->GetParent() != nullptr)
+			{
+				continue;
+			}
+			_gameObjectVector[i]->Restart();
+			num = _gameObjectVector.size();
+		}
+	}
+
 	void Scene::Update()
 	{
 		int num = _gameObjectVector.size();

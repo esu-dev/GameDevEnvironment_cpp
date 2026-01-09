@@ -12,6 +12,8 @@
 #include "DemoClock.h"
 #include "DemoTextFlash.h"
 #include "DemoTitleSceneManager.h"
+#include "DemoCrystal.h"
+#include "DemoStageManager.h"
 
 #define REGISTER_TYPE(type) \
 	nameToInstanceMap[#type] = []() -> Object* { return new type(); }
@@ -39,6 +41,8 @@ void Activator::Initialize()
 	REGISTER_TYPE(DemoClock);
 	REGISTER_TYPE(DemoTextFlash);
 	REGISTER_TYPE(DemoTitleSceneManager);
+	REGISTER_TYPE(DemoCrystal);
+	REGISTER_TYPE(DemoStageManager);
 }
 
 Object* Activator::CreateInstance(std::string typeString)

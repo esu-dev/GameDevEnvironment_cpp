@@ -69,6 +69,7 @@ public:
 	void SetActive(bool isActive);
 	bool ActiveSelf();
 	void Start();
+	void Restart();
 	void Update();
 	void EditorUpdate() override;
 	

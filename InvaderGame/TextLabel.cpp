@@ -2,6 +2,8 @@
 
 #include "GameEngine.h"
 #include "EditorCamera.h"
+#include "GameSystem.h"
+#include <climits>
 
 TextLabel::TextLabel()
 {
@@ -30,12 +32,12 @@ void TextLabel::SetTextAlign(TextAlign textAlign)
 
 void TextLabel::Update()
 {
-	Render(Camera::get_main()->GetTransform()->position);
+	GameSystem::GetInstance().AddRenderingData(INT_MAX, [this]() -> void { this->Render(Camera::get_main()->GetTransform()->position); });
 }
 
 void TextLabel::EditorUpdate()
 {
-	Render(EditorCamera::GetPosition());
+	GameSystem::GetInstance().AddRenderingData(INT_MAX, [this]() -> void { this->Render(EditorCamera::GetPosition()); });
 }
 
 void TextLabel::MakeShaderResourceViewOf(wchar_t c, ComPtr<ID3D11ShaderResourceView> *srv)

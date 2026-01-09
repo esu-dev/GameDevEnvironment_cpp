@@ -47,7 +47,7 @@ void GameSystem::Execute()
 	Physics2D::Update();
 	InputSystem::Update();
 	SceneEditor::Update();
-	GameState::Update();
+	//GameState::Update();
 
 	// Updateˆ—
 	Scene* activeScene = SceneManager::GetActiveScene();

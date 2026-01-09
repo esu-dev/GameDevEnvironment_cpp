@@ -24,6 +24,10 @@ std::vector<GameObject*> GameObject::FindGameObjectsWithTag(std::string tag)
 
 	for (GameObject* g : scene->GetGameObjectVector())
 	{
+		if (!g->ActiveSelf())
+		{
+			continue;
+		}
 		if (g->tag == tag)
 		{
 			gameObjectVector.push_back(g);
@@ -114,6 +118,30 @@ void GameObject::Start()
 	for (auto child : this->GetTransform()->GetChildVector())
 	{
 		child->gameObject->Start();
+	}
+}
+
+void GameObject::Restart()
+{
+	if (!_isActive)
+	{
+		return;
+	}
+
+	for (auto component : _componentVector)
+	{
+		if (!component->enabled)
+		{
+			continue;
+		}
+
+		component->Restart();
+		component.get()->Started = true;
+	}
+
+	for (auto child : this->GetTransform()->GetChildVector())
+	{
+		child->gameObject->Restart();
 	}
 }
 

@@ -281,6 +281,14 @@ void SceneEditor::Update()
 			Selection::gameObject->name = std::string(buf);
 		}
 
+		// タグ
+		static char tagBuf[64];
+		strcpy_s(tagBuf, Selection::gameObject->tag.c_str());
+		if (ImGui::InputText("Tag", tagBuf, IM_ARRAYSIZE(tagBuf)))
+		{
+			Selection::gameObject->tag = std::string(tagBuf);
+		}
+
 		// Componentの配置
 		for (auto& component : Selection::gameObject->GetComponentVector())
 		{

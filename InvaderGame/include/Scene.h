@@ -17,6 +17,7 @@ namespace SceneManagement
 		void AddGameObject(GameObject* gameObject);
 		void RemoveGameObject(GameObject* gameObject);
 		void Start();
+		void Restart();
 		void Update();
 		void EditorUpdate();
 

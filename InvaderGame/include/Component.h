@@ -41,7 +41,8 @@ public:
 
 	SERIALIZE3(Object,
 		SERIALIZE_FIELD3(enabled),
-		SERIALIZE_FIELD3(gameObject)
+		SERIALIZE_FIELD3(gameObject),
+		SERIALIZE_FIELD3(Started),
 	)
 
 	virtual ~Component() { /*Debug::Log("Destructor is nor overrided. [%s]", GetName().c_str());*/ }
@@ -49,6 +50,7 @@ public:
 	virtual void OnDisable() {}
 	virtual void OnValidate() {}
 	virtual void Start() {}
+	virtual void Restart() { Start(); }
 	virtual void Update() {}
 	virtual void SelectTime(float time) {}
 	virtual void DecideTime(float time) {}

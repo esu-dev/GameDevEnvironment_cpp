@@ -152,7 +152,9 @@ Scene* SceneDataManager::LoadRecord()
 	// Šg’£q‚ğŠO‚·
 	std::string fileName = FileManager::RemoveExtension(_path);
 
-	return LoadScene(fileName + "_record.txt");
+	Scene* scene = LoadScene(fileName + "_record.txt");
+	scene->Restart();
+	return scene;
 }
 
 Scene* SceneDataManager::Reload()
