@@ -30,12 +30,18 @@ void GameSystem::Initialize()
 
 void GameSystem::Execute()
 {
+	ULONGLONG startTime = GetTickCount64();
+
 	// 背景色の設定
 	const auto& bg = Camera::backgroundColor;
 	float color[4] = { bg.x, bg.y, bg.z, bg.w };
 	D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 
+	Debug::Log("%d", (int)(GetTickCount64() - startTime));
+
 	ImGuiUtility::BeginFrame();
+
+	startTime = GetTickCount64();
 
 	// イベント処理
 	_delayedExecutionEvent.Invoke();
@@ -48,6 +54,9 @@ void GameSystem::Execute()
 	InputSystem::Update();
 	SceneEditor::Update();
 	//GameState::Update();
+
+	Debug::Log("%d", (int)(GetTickCount64() - startTime));
+	startTime = GetTickCount64();
 
 	// Update処理
 	Scene* activeScene = SceneManager::GetActiveScene();
@@ -64,6 +73,9 @@ void GameSystem::Execute()
 		}
 	}
 
+	Debug::Log("Update：%d", (int)(GetTickCount64() - startTime));
+	startTime = GetTickCount64();
+
 	// 登録されたレンダリング関数を order 順に実行する
 	for (RenderingData* rd : _renderingDataVector)
 	{
@@ -75,9 +87,14 @@ void GameSystem::Execute()
 	}
 	_renderingDataVector.clear();
 
+	Debug::Log("レンダリング：%d", (int)(GetTickCount64() - startTime));
+	startTime = GetTickCount64();
+
 	// ImGui描画
 	// これを最後に持ってこないと、オブジェクトの下にGUIが表示されてしまう。
 	ImGuiUtility::Render();
+
+	Debug::Log("ImGui：%d", (int)(GetTickCount64() - startTime));
 
     D3D.m_swapChain->Present(1, 0);
 }
