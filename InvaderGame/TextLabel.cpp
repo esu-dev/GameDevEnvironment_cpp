@@ -4,6 +4,9 @@
 #include "EditorCamera.h"
 #include "GameSystem.h"
 #include <climits>
+#include <map>
+
+std::map<TextLabel::CacheKey, ComPtr<ID3D11ShaderResourceView>> TextLabel::_srvCache;
 
 TextLabel::TextLabel()
 {
@@ -91,20 +94,6 @@ void TextLabel::MakeShaderResourceViewOf(wchar_t c, ComPtr<ID3D11ShaderResourceV
 	// GetGlyphOutlineW関数の戻り値はバッファーサイズ
 	DWORD size = GetGlyphOutlineW(hdc, code, GGO_GRAY4_BITMAP, &glyphmetrics, 0, NULL, &mat);
 
-	// 原因はGDIリソースのリークだった。
-	// フォントハンドルを開放することで解決した。
-	/*if (size == GDI_ERROR)
-	{
-		OutputDebugStringW(L"エラー GDI_ERROR\n");
-		OutputDebugStringW(&c);
-		OutputDebugStringW(L"\n");
-
-		DWORD error = GetLastError();
-		wchar_t buffer[256];
-		int n = swprintf(buffer, 256, L"code: %x\n", code);
-		OutputDebugStringW(buffer);
-		return;
-	}*/
 
 	// BYTE...unnsigned charの定義
 	// BMP...BitMaP
@@ -212,21 +201,32 @@ void TextLabel::Render(const Vector3& cameraPosition)
 
 	for (wchar_t c : _text)
 	{
-		_textCharacterVector.push_back(TextCharacter());
-		_textCharacterVector[i].fontSize = FontSize;
+		CacheKey key = { c, FontSize };
+		if (_srvCache.find(key) == _srvCache.end())
+		{
+			ComPtr<ID3D11ShaderResourceView> srv;
+			MakeShaderResourceViewOf(c, &srv);
+			_srvCache[key] = srv;
+		}
 
-		MakeShaderResourceViewOf(c, &_textCharacterVector[i].ShaderResourceView);
+		ComPtr<ID3D11ShaderResourceView> srv = _srvCache[key];
 		
 		Vector3 drawPosition = rotation.Mult(Vector3(textStartPos.x + i * width, textStartPos.y, 0));
 		if (_canMove)
 		{
 			drawPosition = drawPosition - cameraPosition;
 		}
-		Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, width, FontSize / Camera::Magnification, rotation);
-		Direct3D::GetInstance().DrawChar(_textCharacterVector[i].ShaderResourceView);
+
+		Direct3D::GetInstance().SetInstanceData(
+			{ drawPosition.x, drawPosition.y },
+			{ width, FontSize / Camera::Magnification },
+			rotation,
+			{ 1, 1, 1, 1 },
+			false
+		);
+
+		Direct3D::GetInstance().DrawChar(srv);
 
 		i++;
 	}
-
-	_textCharacterVector.clear();
 }

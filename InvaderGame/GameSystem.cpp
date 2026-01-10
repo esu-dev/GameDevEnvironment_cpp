@@ -37,7 +37,7 @@ void GameSystem::Execute()
 	float color[4] = { bg.x, bg.y, bg.z, bg.w };
 	D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 
-	Debug::Log("%d", (int)(GetTickCount64() - startTime));
+	//Debug::Log("%d", (int)(GetTickCount64() - startTime));
 
 	ImGuiUtility::BeginFrame();
 
@@ -50,12 +50,16 @@ void GameSystem::Execute()
 
 	// staticƒNƒ‰ƒX‚ÌUpdateˆ—
 	Input::Update();
-	Physics2D::Update();
-	InputSystem::Update();
-	SceneEditor::Update();
-	//GameState::Update();
 
-	Debug::Log("%d", (int)(GetTickCount64() - startTime));
+	ULONGLONG startTime_physics = GetTickCount64();
+	Physics2D::Update();
+	Debug::Log("static Update(physics):%d", (int)(GetTickCount64() - startTime_physics));
+
+	//InputSystem::Update();
+	SceneEditor::Update();
+	GameState::Update();
+
+	Debug::Log("static Update(total):%d", (int)(GetTickCount64() - startTime));
 	startTime = GetTickCount64();
 
 	// Updateˆ—
@@ -77,6 +81,13 @@ void GameSystem::Execute()
 	startTime = GetTickCount64();
 
 	// “o˜^‚³‚ê‚½ƒŒƒ“ƒ_ƒŠƒ“ƒOŠÖ”‚ð order ‡‚ÉŽÀs‚·‚é
+	/*for (RenderingData* rd : _renderingDataVector)
+	{
+		if (rd && rd->setDataAct)
+		{
+			rd->setDataAct();
+		}
+	}*/
 	for (RenderingData* rd : _renderingDataVector)
 	{
 		if (rd && rd->function)
@@ -109,6 +120,28 @@ void GameSystem::AddRenderingData(int order, std::function<void()> func)
 	auto it = std::find_if(_renderingDataVector.begin(), _renderingDataVector.end(), [&](RenderingData* rd) {
 		return rd->order > order;
 	});
+
+	if (it != _renderingDataVector.end())
+	{
+		_renderingDataVector.insert(it, renderData);
+	}
+	else
+	{
+		_renderingDataVector.push_back(renderData);
+	}
+}
+
+void GameSystem::AddRenderingData2(int order, std::function<void()> setDataAct, std::function<void()> renderingAct)
+{
+	RenderingData* renderData = new RenderingData();
+	renderData->order = order;
+	renderData->setDataAct = setDataAct;
+	renderData->function = renderingAct;
+
+	// ‘}“üˆÊ’u‚ð order ¸‡‚ÅŒŸõ‚µ‚Ä‘}“ü‚·‚é
+	auto it = std::find_if(_renderingDataVector.begin(), _renderingDataVector.end(), [&](RenderingData* rd) {
+		return rd->order > order;
+		});
 
 	if (it != _renderingDataVector.end())
 	{

@@ -75,6 +75,18 @@ void SceneEditor::Update()
 		}
 	}
 
+
+	// エディタを開いていないならば
+	if (!_isEditMode)
+	{
+		TimeController::Update();
+
+		return;
+	}
+
+
+	// 以下エディタ中の処理 ---------------------------
+
 	// レコードシーンを読み込む
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('R'))
 	{
@@ -96,16 +108,6 @@ void SceneEditor::Update()
 		//Debug::Log("TotalTimeを%sに設定しました。", contentVector[0].c_str());
 		Debug::Log("TotalTime: %f", EngineTime::GetTotalTime());
 	}
-
-	// エディタを開いていないならば
-	if (!_isEditMode)
-	{
-		TimeController::Update();
-
-		return;
-	}
-
-	
 
 	// 他エディタのUpdate処理
 	LevelEditor::Update();

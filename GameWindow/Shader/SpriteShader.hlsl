@@ -22,10 +22,14 @@ struct VSOutput
 
 struct VS_INPUT
 {
+	// スロット０
     float4 pos : POSITION;
     float2 uv : TEXUV;
 	
-    float4 color : INSTANCE_COLOR;
+	// スロット１
+    float4x4 wvpMatrix : INST_MATRIX; // wvp = (World * View * Projection)
+    float4 color : INST_COLOR;
+    float flipX : INST_FLIPX;
 };
 
 struct VS_OUTPUT
@@ -58,6 +62,18 @@ VSOutput VS_Flip(float4 pos : POSITION, float2 uv : TEXUV)
 	return Out;
 }
 
+VS_OUTPUT VS_New(VS_INPUT input)
+{
+    VS_OUTPUT output;
+    output.pos = mul(input.pos, input.wvpMatrix);
+    output.uv.x = input.uv.x + input.flipX * (1.0 - 2.0 * input.uv.x);
+    output.uv.y = input.uv.y;
+	
+    output.color = input.color;
+	
+    return output;
+}
+
 float4 PS(VSOutput In) : SV_Target0
 {
 	float4 color = Texture.Sample(Sampler, In.UV);
@@ -73,4 +89,16 @@ float4 PS(VSOutput In) : SV_Target0
 float4 PS_Color(VSOutput In) : SV_Target0
 {
     return color;
+}
+
+float4 PS_New(VS_OUTPUT input) : SV_Target0
+{
+    float4 color = Texture.Sample(Sampler, input.uv);
+
+    return color * input.color;
+}
+
+float4 PS_New_Color(VS_OUTPUT input) : SV_Target0
+{
+    return input.color;
 }

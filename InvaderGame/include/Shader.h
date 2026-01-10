@@ -9,6 +9,7 @@ public:
 	const ComPtr<ID3D11VertexShader> GetVertexShader();
 	const ComPtr<ID3D11PixelShader> GetPixelShader();
 	const ComPtr<ID3D11InputLayout> GetInputLayout();
+	const ComPtr<ID3D11InputLayout> GetInputLayout_Batch();
 	void CreateShader(ID3D11Device& device);
 
 private:
@@ -18,4 +19,5 @@ private:
 	ComPtr<ID3D11VertexShader> _vertexShader;
 	ComPtr<ID3D11PixelShader> _pixelShader;
 	ComPtr<ID3D11InputLayout> _inputLayout;
+	ComPtr<ID3D11InputLayout> _inputLayout_Batch;
 };

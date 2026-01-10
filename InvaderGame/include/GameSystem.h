@@ -38,6 +38,7 @@ public:
 	void Initialize();
 	void Execute();
 	void AddRenderingData(int order, std::function<void()> func);
+	void AddRenderingData2(int order, std::function<void()> setDataAct, std::function<void()> renderingAct);
 
 
 private:
@@ -45,6 +46,7 @@ private:
 	struct RenderingData
 	{
 		int order = 0;
+		std::function<void()> setDataAct;
 		std::function<void()> function;
 	};
 

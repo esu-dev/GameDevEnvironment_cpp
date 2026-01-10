@@ -15,6 +15,7 @@ Transform:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)000
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -44,6 +45,7 @@ Camera:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)000
+  Started: false
 --- 497196057=906531225=817251284
 GameObject:
   name: "ColliderTemplate"
@@ -62,6 +64,7 @@ Transform:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)497196057=906531225=817251284
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -91,6 +94,7 @@ SpriteRenderer:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)497196057=906531225=817251284
+  Started: false
   _order: 4
   _color:
     r: 1.000000
@@ -108,6 +112,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)497196057=906531225=817251284
+  Started: false
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
@@ -119,6 +124,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)497196057=906531225=817251284
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -145,6 +151,7 @@ Transform:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 3
   - (instanceID)1144962052=231822179=1508855639
@@ -177,6 +184,7 @@ SpriteRenderer:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
+  Started: false
   _order: 2
   _color:
     r: 1.000000
@@ -194,6 +202,7 @@ Animator:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
+  Started: false
   (vector)_animationVector: 3
   - 0:
       Time: 1.250000
@@ -218,6 +227,7 @@ Player:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
+  Started: false
   _moveAcceleration: 15.000000
   _maxSpeed: 5.000000
   _stopAcceleration: 15.000000
@@ -230,6 +240,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -241,6 +252,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)147560529=380564109=1893899489
+  Started: false
   IsKinematic: false
   IsTrigger: false
   GravityScale: 1.500000
@@ -266,6 +278,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -295,6 +308,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
+  Started: false
   _order: 0
   _color:
     r: 1.000000
@@ -312,6 +326,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -323,6 +338,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
+  Started: false
   IsKinematic: false
   IsTrigger: false
   GravityScale: 1.000000
@@ -334,6 +350,7 @@ DemoRewinder:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)890107419=408267702=1775497643
+  Started: false
   _clockPrefab: (instanceID)1544266501=1767485143=660742493
 --- 334835115=1784456080=1665319366
 GameObject:
@@ -354,6 +371,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)334835115=1784456080=1665319366
+  Started: false
   _parentProperty: (instanceID)1401248970=231768062=1184301228
   (vector)_childVector: 0
   position:
@@ -383,6 +401,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: false
   gameObject: (instanceID)334835115=1784456080=1665319366
+  Started: false
   _order: 0
   _color:
     r: 1.000000
@@ -400,11 +419,13 @@ GroundChecker:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)334835115=1784456080=1665319366
+  Started: false
 --- 1128932613=856139598=794314602
 BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)334835115=1784456080=1665319366
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -416,6 +437,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)334835115=1784456080=1665319366
+  Started: false
   IsKinematic: false
   IsTrigger: true
   GravityScale: 0.000000
@@ -441,6 +463,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)334318009=1860016338=1767387823
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -470,6 +493,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)334318009=1860016338=1767387823
+  Started: false
   _order: 0
   _color:
     r: 1.000000
@@ -487,6 +511,7 @@ Shutter:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)334318009=1860016338=1767387823
+  Started: false
   _openSpeed: 3.000000
   _openDistance: 6.000000
   _gimmickTrigger: (instanceID)220179420=1740506888=1732060206
@@ -496,6 +521,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)334318009=1860016338=1767387823
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -507,6 +533,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)334318009=1860016338=1767387823
+  Started: false
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
@@ -533,6 +560,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -562,6 +590,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
+  Started: false
   _order: -1
   _color:
     r: 1.000000
@@ -579,6 +608,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -590,6 +620,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
+  Started: false
   IsKinematic: true
   IsTrigger: true
   GravityScale: 1.000000
@@ -601,11 +632,13 @@ GimmickTrigger:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
+  Started: false
 --- 607120668=121556865=1079057951
 Animator:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)594748402=1574792866=1069403906
+  Started: false
   (vector)_animationVector: 1
   - 0:
       Time: 15.000000
@@ -637,6 +670,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
+  Started: false
   _parentProperty: (instanceID)1401248970=231768062=1184301228
   (vector)_childVector: 0
   position:
@@ -666,6 +700,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
+  Started: false
   _order: 1
   _color:
     r: 1.000000
@@ -683,6 +718,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
+  Started: false
   IsKinematic: true
   IsTrigger: true
   GravityScale: 1.000000
@@ -694,6 +730,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -705,11 +742,13 @@ DemoRewindTrigger:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
+  Started: false
 --- 1446647268=714232456=1497798755
 Animator:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)116941363=1899623809=284380306
+  Started: false
   (vector)_animationVector: 2
   - 0:
       Time: 1.000000
@@ -742,6 +781,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)797730932=1938781617=926194059
+  Started: false
   _parentProperty: (instanceID)1401248970=231768062=1184301228
   (vector)_childVector: 0
   position:
@@ -771,6 +811,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)797730932=1938781617=926194059
+  Started: false
   _order: 1
   _color:
     r: 1.000000
@@ -788,6 +829,7 @@ Animator:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)797730932=1938781617=926194059
+  Started: false
   (vector)_animationVector: 2
   - 0:
       Time: 1.000000
@@ -819,6 +861,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)478731400=1097234443=128181731
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -848,6 +891,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)478731400=1097234443=128181731
+  Started: false
   _order: -2
   _color:
     r: 1.000000
@@ -876,6 +920,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)2144448981=291600220=1318409598
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -905,6 +950,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)2144448981=291600220=1318409598
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -933,6 +979,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)589309547=1709819280=1531874442
+  Started: false
   _parentProperty: (instanceID)877544060=102364500=1289885294
   (vector)_childVector: 0
   position:
@@ -962,6 +1009,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)589309547=1709819280=1531874442
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -990,6 +1038,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)312139970=1885466842=414515924
+  Started: false
   _parentProperty: (instanceID)877544060=102364500=1289885294
   (vector)_childVector: 0
   position:
@@ -1019,6 +1068,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)312139970=1885466842=414515924
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1047,6 +1097,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1576049666=1313029169=600105988
+  Started: false
   _parentProperty: (instanceID)877544060=102364500=1289885294
   (vector)_childVector: 0
   position:
@@ -1076,6 +1127,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1576049666=1313029169=600105988
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1104,6 +1156,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)484734571=784918813=948434037
+  Started: false
   _parentProperty: (instanceID)877544060=102364500=1289885294
   (vector)_childVector: 0
   position:
@@ -1133,6 +1186,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)484734571=784918813=948434037
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1160,6 +1214,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1758669023=1026246354=1826692743
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 28
   - (instanceID)104094391=1219101617=2057977959
@@ -1227,6 +1282,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)156080770=796107901=345364982
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 3
   - (instanceID)972064263=1204696327=939248708
@@ -1270,6 +1326,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)305494918=1119676737=1347174022
+  Started: false
   _parentProperty: (instanceID)1835451941=1560070673=1125532735
   (vector)_childVector: 0
   position:
@@ -1299,6 +1356,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)305494918=1119676737=1347174022
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1327,6 +1385,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1733225516=637018245=325182870
+  Started: false
   _parentProperty: (instanceID)1835451941=1560070673=1125532735
   (vector)_childVector: 0
   position:
@@ -1356,6 +1415,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1733225516=637018245=325182870
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1384,6 +1444,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)355399392=831049859=1013447319
+  Started: false
   _parentProperty: (instanceID)1835451941=1560070673=1125532735
   (vector)_childVector: 0
   position:
@@ -1413,6 +1474,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)355399392=831049859=1013447319
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1441,6 +1503,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)144488370=2056081730=770245372
+  Started: false
   _parentProperty: (instanceID)723990368=4404989=1575571294
   (vector)_childVector: 0
   position:
@@ -1470,6 +1533,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)144488370=2056081730=770245372
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1498,6 +1562,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1336205416=1532896535=984970164
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 3
   - (instanceID)689859816=468321897=1000630367
@@ -1530,6 +1595,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1336205416=1532896535=984970164
+  Started: false
   _order: 0
   _color:
     r: 1.000000
@@ -1558,6 +1624,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)341274674=939437537=1593343032
+  Started: false
   _parentProperty: (instanceID)723990368=4404989=1575571294
   (vector)_childVector: 0
   position:
@@ -1587,6 +1654,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)341274674=939437537=1593343032
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1615,6 +1683,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1746929265=1278075119=1535328932
+  Started: false
   _parentProperty: (instanceID)723990368=4404989=1575571294
   (vector)_childVector: 0
   position:
@@ -1644,6 +1713,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1746929265=1278075119=1535328932
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1671,6 +1741,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)640974497=1577347983=238398253
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 3
   - (instanceID)2144056068=225485315=1400794645
@@ -1714,6 +1785,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1527033646=359420710=296585808
+  Started: false
   _parentProperty: (instanceID)1991500037=2114228128=2140381839
   (vector)_childVector: 0
   position:
@@ -1743,6 +1815,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1527033646=359420710=296585808
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1771,6 +1844,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)402302792=958843584=123749264
+  Started: false
   _parentProperty: (instanceID)1991500037=2114228128=2140381839
   (vector)_childVector: 0
   position:
@@ -1800,6 +1874,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)402302792=958843584=123749264
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1828,6 +1903,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)717926989=2056405307=567345552
+  Started: false
   _parentProperty: (instanceID)1991500037=2114228128=2140381839
   (vector)_childVector: 0
   position:
@@ -1857,6 +1933,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)717926989=2056405307=567345552
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1884,6 +1961,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)339049517=1265390626=673728873
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 2
   - (instanceID)1430268362=1255324088=912996817
@@ -1926,6 +2004,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)436709801=1144377417=735898196
+  Started: false
   _parentProperty: (instanceID)739713634=259687171=182647217
   (vector)_childVector: 0
   position:
@@ -1955,6 +2034,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)436709801=1144377417=735898196
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -1983,6 +2063,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)114128546=795905505=1379057732
+  Started: false
   _parentProperty: (instanceID)739713634=259687171=182647217
   (vector)_childVector: 0
   position:
@@ -2012,6 +2093,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)114128546=795905505=1379057732
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2040,6 +2122,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1452326926=1900775810=1064945822
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 3
   - (instanceID)15917670=1830213919=1066505430
@@ -2072,6 +2155,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1452326926=1900775810=1064945822
+  Started: false
   _order: 0
   _color:
     r: 1.000000
@@ -2100,6 +2184,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)122163986=1003093772=570490462
+  Started: false
   _parentProperty: (instanceID)488243062=1896485411=330329326
   (vector)_childVector: 0
   position:
@@ -2129,6 +2214,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)122163986=1003093772=570490462
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2157,6 +2243,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)575638629=412637237=1810140416
+  Started: false
   _parentProperty: (instanceID)488243062=1896485411=330329326
   (vector)_childVector: 0
   position:
@@ -2186,6 +2273,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)575638629=412637237=1810140416
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2214,6 +2302,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)888189656=326499267=233936064
+  Started: false
   _parentProperty: (instanceID)488243062=1896485411=330329326
   (vector)_childVector: 0
   position:
@@ -2243,6 +2332,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)888189656=326499267=233936064
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2270,6 +2360,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1325980737=1159517851=1031008334
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 2
   - (instanceID)1966819732=1381939210=1202667705
@@ -2312,6 +2403,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)223865669=242231744=2009485623
+  Started: false
   _parentProperty: (instanceID)1773915756=1590280576=1297138682
   (vector)_childVector: 0
   position:
@@ -2341,6 +2433,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)223865669=242231744=2009485623
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2369,6 +2462,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1096183271=420946107=1038377530
+  Started: false
   _parentProperty: (instanceID)1773915756=1590280576=1297138682
   (vector)_childVector: 0
   position:
@@ -2398,6 +2492,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1096183271=420946107=1038377530
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2425,6 +2520,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1533291291=274527115=1149836197
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 3
   - (instanceID)1165438741=2066739197=1872428834
@@ -2468,6 +2564,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)728346598=85295496=1530767102
+  Started: false
   _parentProperty: (instanceID)1770778802=1417477143=1774646935
   (vector)_childVector: 0
   position:
@@ -2497,6 +2594,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)728346598=85295496=1530767102
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2525,6 +2623,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1908448546=1753907175=1980305601
+  Started: false
   _parentProperty: (instanceID)1770778802=1417477143=1774646935
   (vector)_childVector: 0
   position:
@@ -2554,6 +2653,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1908448546=1753907175=1980305601
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2582,6 +2682,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1774279937=1874793355=1033405597
+  Started: false
   _parentProperty: (instanceID)1770778802=1417477143=1774646935
   (vector)_childVector: 0
   position:
@@ -2611,6 +2712,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1774279937=1874793355=1033405597
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2638,6 +2740,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)411385698=924848761=723416847
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 3
   - (instanceID)1969853475=1748363241=1579894157
@@ -2681,6 +2784,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1626391407=1760803968=443724019
+  Started: false
   _parentProperty: (instanceID)317713555=1282746662=58859322
   (vector)_childVector: 0
   position:
@@ -2710,6 +2814,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1626391407=1760803968=443724019
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2738,6 +2843,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1923324438=2094316058=1688384123
+  Started: false
   _parentProperty: (instanceID)317713555=1282746662=58859322
   (vector)_childVector: 0
   position:
@@ -2767,6 +2873,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1923324438=2094316058=1688384123
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2795,6 +2902,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)93799367=724604187=1705017661
+  Started: false
   _parentProperty: (instanceID)317713555=1282746662=58859322
   (vector)_childVector: 0
   position:
@@ -2824,6 +2932,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)93799367=724604187=1705017661
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2851,6 +2960,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1263627845=849112413=909459930
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 4
   - (instanceID)718464078=1084369977=387194797
@@ -2895,6 +3005,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1512990226=308024713=1881223464
+  Started: false
   _parentProperty: (instanceID)1579344448=1114366423=632119712
   (vector)_childVector: 0
   position:
@@ -2924,6 +3035,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1512990226=308024713=1881223464
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -2952,6 +3064,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)837581531=579930351=1517261078
+  Started: false
   _parentProperty: (instanceID)1579344448=1114366423=632119712
   (vector)_childVector: 0
   position:
@@ -2981,6 +3094,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)837581531=579930351=1517261078
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3009,6 +3123,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)839865061=65758402=815797446
+  Started: false
   _parentProperty: (instanceID)1579344448=1114366423=632119712
   (vector)_childVector: 0
   position:
@@ -3038,6 +3153,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)839865061=65758402=815797446
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3066,6 +3182,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1740314113=17476448=18970399
+  Started: false
   _parentProperty: (instanceID)1579344448=1114366423=632119712
   (vector)_childVector: 0
   position:
@@ -3095,6 +3212,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1740314113=17476448=18970399
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3122,6 +3240,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)937875833=970686787=573829363
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 4
   - (instanceID)600590592=180813828=1744099296
@@ -3166,6 +3285,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)76717411=698042285=796759219
+  Started: false
   _parentProperty: (instanceID)50950024=1665099290=1804298091
   (vector)_childVector: 0
   position:
@@ -3195,6 +3315,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)76717411=698042285=796759219
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3223,6 +3344,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1857052816=1662362200=930662988
+  Started: false
   _parentProperty: (instanceID)50950024=1665099290=1804298091
   (vector)_childVector: 0
   position:
@@ -3252,6 +3374,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1857052816=1662362200=930662988
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3280,6 +3403,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1254394392=353530221=1921158462
+  Started: false
   _parentProperty: (instanceID)50950024=1665099290=1804298091
   (vector)_childVector: 0
   position:
@@ -3309,6 +3433,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1254394392=353530221=1921158462
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3337,6 +3462,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1033601584=1373628101=1618941457
+  Started: false
   _parentProperty: (instanceID)50950024=1665099290=1804298091
   (vector)_childVector: 0
   position:
@@ -3366,6 +3492,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1033601584=1373628101=1618941457
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3393,6 +3520,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1129690439=2034622264=1722594317
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 3
   - (instanceID)876112737=529278527=2120143368
@@ -3436,6 +3564,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)701543489=1156377995=604999635
+  Started: false
   _parentProperty: (instanceID)585053992=1437822113=1964476191
   (vector)_childVector: 0
   position:
@@ -3465,6 +3594,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)701543489=1156377995=604999635
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3493,6 +3623,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)763609755=715944179=632356393
+  Started: false
   _parentProperty: (instanceID)585053992=1437822113=1964476191
   (vector)_childVector: 0
   position:
@@ -3522,6 +3653,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)763609755=715944179=632356393
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3550,6 +3682,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1245261536=1115043130=432217098
+  Started: false
   _parentProperty: (instanceID)585053992=1437822113=1964476191
   (vector)_childVector: 0
   position:
@@ -3579,6 +3712,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1245261536=1115043130=432217098
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3606,6 +3740,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)677285593=1155815187=644602689
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 3
   - (instanceID)322032662=352164511=1072888239
@@ -3649,6 +3784,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)544484970=1727050116=68459735
+  Started: false
   _parentProperty: (instanceID)185637696=1556937315=30783400
   (vector)_childVector: 0
   position:
@@ -3678,6 +3814,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)544484970=1727050116=68459735
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3706,6 +3843,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)644822443=659698188=1941248833
+  Started: false
   _parentProperty: (instanceID)185637696=1556937315=30783400
   (vector)_childVector: 0
   position:
@@ -3735,6 +3873,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)644822443=659698188=1941248833
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3763,6 +3902,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1318311976=451490286=602162428
+  Started: false
   _parentProperty: (instanceID)185637696=1556937315=30783400
   (vector)_childVector: 0
   position:
@@ -3792,6 +3932,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1318311976=451490286=602162428
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3819,6 +3960,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)604125654=1530524473=1004989376
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 2
   - (instanceID)944486274=469924153=1533201774
@@ -3861,6 +4003,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)340577640=581478214=1261118505
+  Started: false
   _parentProperty: (instanceID)571005147=1416193121=1033677784
   (vector)_childVector: 0
   position:
@@ -3890,6 +4033,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)340577640=581478214=1261118505
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3918,6 +4062,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)231630747=863323350=815650909
+  Started: false
   _parentProperty: (instanceID)571005147=1416193121=1033677784
   (vector)_childVector: 0
   position:
@@ -3947,6 +4092,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)231630747=863323350=815650909
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -3975,6 +4121,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1661651390=1563255848=1036533492
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -4004,6 +4151,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1661651390=1563255848=1036533492
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -4031,6 +4179,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)428927954=162445982=1370079233
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 3
   - (instanceID)178087952=1303529155=22949756
@@ -4074,6 +4223,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)854798971=531532708=552127638
+  Started: false
   _parentProperty: (instanceID)491247783=493405474=712336550
   (vector)_childVector: 0
   position:
@@ -4103,6 +4253,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)854798971=531532708=552127638
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -4131,6 +4282,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)765514700=1932471683=1658441020
+  Started: false
   _parentProperty: (instanceID)491247783=493405474=712336550
   (vector)_childVector: 0
   position:
@@ -4160,6 +4312,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)765514700=1932471683=1658441020
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -4188,6 +4341,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1347023300=705900137=2109523242
+  Started: false
   _parentProperty: (instanceID)491247783=493405474=712336550
   (vector)_childVector: 0
   position:
@@ -4217,6 +4371,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1347023300=705900137=2109523242
+  Started: false
   _order: 3
   _color:
     r: 1.000000
@@ -4244,6 +4399,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)711036678=1322269444=708535055
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 6
   - (instanceID)1980452400=1108220995=55850007
@@ -4292,6 +4448,7 @@ Transform:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)769664446=1037129585=1475442000
+  Started: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
   (vector)_childVector: 0
   position:
@@ -4321,6 +4478,7 @@ SpriteRenderer:
   name: "initial name"
   enabled: false
   gameObject: (instanceID)769664446=1037129585=1475442000
+  Started: false
   _order: 4
   _color:
     r: 1.000000
@@ -4338,6 +4496,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)769664446=1037129585=1475442000
+  Started: false
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
@@ -4349,6 +4508,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)769664446=1037129585=1475442000
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -4373,6 +4533,7 @@ Transform:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)386477885=1281687018=848536880
+  Started: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
   (vector)_childVector: 0
   position:
@@ -4402,6 +4563,7 @@ SpriteRenderer:
   name: "initial name"
   enabled: false
   gameObject: (instanceID)386477885=1281687018=848536880
+  Started: false
   _order: 4
   _color:
     r: 1.000000
@@ -4419,6 +4581,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)386477885=1281687018=848536880
+  Started: false
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
@@ -4430,6 +4593,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)386477885=1281687018=848536880
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -4447,13 +4611,14 @@ GameObject:
   - (instanceID)596626278=1063091402=731515047
   - (instanceID)1867332128=1078996109=1526521997
   _isActive:
-    _variable: true
+    _variable: false
     (vector)_timeVariableSetVector: 0
 --- 374534417=794817743=321413641
 Transform:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)2087706999=136931799=1037523503
+  Started: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
   (vector)_childVector: 0
   position:
@@ -4483,12 +4648,13 @@ SpriteRenderer:
   name: "initial name"
   enabled: false
   gameObject: (instanceID)2087706999=136931799=1037523503
+  Started: false
   _order: 4
   _color:
-    r: 1.000000
-    g: 1.000000
-    b: 1.000000
-    a: 1.000000
+    r: 0.000000
+    g: 0.000000
+    b: 0.000000
+    a: 0.000000
   m_texture:
     _variable: (instanceID)nullptr
     (vector)_timeVariableSetVector: 0
@@ -4500,6 +4666,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)2087706999=136931799=1037523503
+  Started: false
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
@@ -4511,6 +4678,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)2087706999=136931799=1037523503
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -4535,6 +4703,7 @@ Transform:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1852191043=761465770=122808261
+  Started: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
   (vector)_childVector: 0
   position:
@@ -4564,6 +4733,7 @@ SpriteRenderer:
   name: "initial name"
   enabled: false
   gameObject: (instanceID)1852191043=761465770=122808261
+  Started: false
   _order: 4
   _color:
     r: 1.000000
@@ -4581,6 +4751,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1852191043=761465770=122808261
+  Started: false
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
@@ -4592,6 +4763,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1852191043=761465770=122808261
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -4616,6 +4788,7 @@ Transform:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)973748058=999692179=725312071
+  Started: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
   (vector)_childVector: 0
   position:
@@ -4645,6 +4818,7 @@ SpriteRenderer:
   name: "initial name"
   enabled: false
   gameObject: (instanceID)973748058=999692179=725312071
+  Started: false
   _order: 4
   _color:
     r: 1.000000
@@ -4662,6 +4836,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)973748058=999692179=725312071
+  Started: false
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
@@ -4673,6 +4848,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)973748058=999692179=725312071
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -4697,6 +4873,7 @@ Transform:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1989708651=1611187811=1060526173
+  Started: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
   (vector)_childVector: 0
   position:
@@ -4726,6 +4903,7 @@ SpriteRenderer:
   name: "initial name"
   enabled: false
   gameObject: (instanceID)1989708651=1611187811=1060526173
+  Started: false
   _order: 4
   _color:
     r: 1.000000
@@ -4743,6 +4921,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1989708651=1611187811=1060526173
+  Started: false
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
@@ -4754,6 +4933,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1989708651=1611187811=1060526173
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -4778,6 +4958,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)429393164=268550102=1598079812
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -4807,6 +4988,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)429393164=268550102=1598079812
+  Started: false
   _order: 0
   _color:
     r: 1.000000
@@ -4824,6 +5006,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)429393164=268550102=1598079812
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -4835,6 +5018,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)429393164=268550102=1598079812
+  Started: false
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
@@ -4859,6 +5043,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1419546338=2120428819=953089353
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -4888,6 +5073,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1419546338=2120428819=953089353
+  Started: false
   _order: 0
   _color:
     r: 1.000000
@@ -4905,6 +5091,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1419546338=2120428819=953089353
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -4916,6 +5103,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1419546338=2120428819=953089353
+  Started: false
   IsKinematic: true
   IsTrigger: false
   GravityScale: 1.000000
@@ -4938,6 +5126,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1061431517=1920456826=1810656232
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -4967,6 +5156,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1061431517=1920456826=1810656232
+  Started: false
   _order: 0
   _color:
     r: 0.000000
@@ -4995,6 +5185,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1553644635=1018847361=456102306
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5024,6 +5215,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1553644635=1018847361=456102306
+  Started: false
   _order: -10
   _color:
     r: 0.102000
@@ -5052,6 +5244,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1044827152=36539983=1721696889
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5081,6 +5274,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1044827152=36539983=1721696889
+  Started: false
   _order: -10
   _color:
     r: 0.102000
@@ -5109,6 +5303,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1940160167=1320714474=55547213
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5138,6 +5333,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1940160167=1320714474=55547213
+  Started: false
   _order: 0
   _color:
     r: 1.000000
@@ -5167,6 +5363,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1914629750=1969209324=1345361932
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5196,6 +5393,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1914629750=1969209324=1345361932
+  Started: false
   _order: -3
   _color:
     r: 1.000000
@@ -5213,6 +5411,7 @@ Animator:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1914629750=1969209324=1345361932
+  Started: false
   (vector)_animationVector: 1
   - 0:
       Time: 5.000000
@@ -5240,6 +5439,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)232384226=1292732281=1650132236
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5269,6 +5469,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)232384226=1292732281=1650132236
+  Started: false
   _order: 4
   _color:
     r: 1.000000
@@ -5297,6 +5498,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)2123642819=1744735713=1501699558
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5326,6 +5528,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)2123642819=1744735713=1501699558
+  Started: false
   _order: 0
   _color:
     r: 1.000000
@@ -5354,6 +5557,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1392574130=616755987=1143783210
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5383,6 +5587,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1392574130=616755987=1143783210
+  Started: false
   _order: -1
   _color:
     r: 1.000000
@@ -5414,6 +5619,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1145865073=1474099379=1814883608
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5443,6 +5649,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1145865073=1474099379=1814883608
+  Started: false
   _order: 0
   _color:
     r: 1.000000
@@ -5460,6 +5667,7 @@ BoxCollider2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1145865073=1474099379=1814883608
+  Started: false
   _offset:
     x: 0.000000
     y: 0.000000
@@ -5471,6 +5679,7 @@ Rigidbody2D:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1145865073=1474099379=1814883608
+  Started: false
   IsKinematic: true
   IsTrigger: true
   GravityScale: 1.000000
@@ -5482,6 +5691,7 @@ DemoCrystal:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1145865073=1474099379=1814883608
+  Started: false
 --- 1117086937=1842805983=1737286240
 GameObject:
   name: "CrystalIcon"
@@ -5491,13 +5701,14 @@ GameObject:
   - (instanceID)2047426486=1833228623=328696203
   - (instanceID)368933886=152324439=1540106484
   _isActive:
-    _variable: false
+    _variable: true
     (vector)_timeVariableSetVector: 0
 --- 2047426486=1833228623=328696203
 Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1117086937=1842805983=1737286240
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5527,6 +5738,7 @@ SpriteRenderer:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1117086937=1842805983=1737286240
+  Started: false
   _order: -1
   _color:
     r: 1.000000
@@ -5548,13 +5760,14 @@ GameObject:
   - (instanceID)1001619561=525891416=1317636239
   - (instanceID)1730379556=1597726593=1727892226
   _isActive:
-    _variable: false
+    _variable: true
     (vector)_timeVariableSetVector: 0
 --- 1001619561=525891416=1317636239
 Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)714568730=168293298=410608805
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5584,6 +5797,7 @@ TextLabel:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)714568730=168293298=410608805
+  Started: false
   _canMove: true
   FontSize: 26
   _text: "Get a Crystal!!"
@@ -5603,6 +5817,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1659179802=654795890=630138907
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5632,6 +5847,7 @@ TextLabel:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1659179802=654795890=630138907
+  Started: false
   _canMove: true
   FontSize: 55
   _text: "Stage Clear!!!"
@@ -5651,6 +5867,7 @@ Transform:
   name: "GameObject.prefab"
   enabled: true
   gameObject: (instanceID)1507891366=1789108358=1936307866
+  Started: false
   _parentProperty: (instanceID)nullptr
   (vector)_childVector: 0
   position:
@@ -5680,5 +5897,6 @@ DemoStageManager:
   name: "initial name"
   enabled: true
   gameObject: (instanceID)1507891366=1789108358=1936307866
+  Started: false
   _gameClearTextGO: (instanceID)1659179802=654795890=630138907
 

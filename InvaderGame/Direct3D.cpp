@@ -12,7 +12,9 @@
 Direct3D::Direct3D() :
 	_textureShader(new Shader(L"Shader/SpriteShader.hlsl", "VS", "PS")),
 	_colorShader(new Shader(L"Shader/SpriteShader.hlsl", "VS", "PS_Color")),
-	_textureShaderFlip(new Shader(L"Shader/SpriteShader.hlsl", "VS_Flip", "PS")) {}
+	_textureShaderFlip(new Shader(L"Shader/SpriteShader.hlsl", "VS_Flip", "PS")),
+	_texShader_Batch(new Shader(L"Shader/SpriteShader.hlsl", "VS_New", "PS_New")),
+	_colorShader_Batch(new Shader(L"Shader/SpriteShader.hlsl", "VS_New", "PS_New_Color")) {}
 
 bool Direct3D::Initialize(HWND hWnd, int width, int height)
 {
@@ -143,6 +145,8 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	_textureShader->CreateShader(*m_device.Get());
 	_colorShader->CreateShader(*m_device.Get());
 	_textureShaderFlip->CreateShader(*m_device.Get());
+	_texShader_Batch->CreateShader(*m_device.Get());
+	_colorShader_Batch->CreateShader(*m_device.Get());
 
 	return true;
 }
@@ -167,9 +171,37 @@ void Direct3D::ChangeMode_2D()
 	UINT offset = 0;
 	D3D.m_deviceContext->IASetVertexBuffers(0, 1, m_vbSquare.GetAddressOf(), &stride, &offset); // デバイスコンテキストに頂点バッファをセット
 
+
+	// 固定頂点バッファの作成
+	// 1. 頂点データ（四角形）の準備
+	VertexType2D vertices[] = {
+		{ {-0.5f,  0.5f, 0.0f}, {0.0f, 0.0f} }, // 左上
+		{ { 0.5f,  0.5f, 0.0f}, {1.0f, 0.0f} }, // 右上
+		{ {-0.5f, -0.5f, 0.0f}, {0.0f, 1.0f} }, // 左下
+		{ { 0.5f, -0.5f, 0.0f}, {1.0f, 1.0f} }, // 右下
+	};
+
+	// 2. バッファの設定（不変なバッファとして作成）
+	D3D11_BUFFER_DESC vDesc = {};
+	vDesc.Usage = D3D11_USAGE_IMMUTABLE; // 書き換えない
+	vDesc.ByteWidth = sizeof(VertexType2D) * 4;
+	vDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	vDesc.CPUAccessFlags = 0;
+
+	D3D11_SUBRESOURCE_DATA vData = {};
+	vData.pSysMem = vertices;
+
+	// 3. 生成
+	m_device->CreateBuffer(&vDesc, &vData, _quadVertexBuffer.GetAddressOf());
+
+
 	// プロミティブ・トポロジーをセット
+	// ４頂点で四角形を描画できる設定
 	D3D.m_deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
+
+	// 定数バッファの作成
+	// 使用しているのかは不明
 	// 定数情報の追加
 	D3D11_BUFFER_DESC bufferDesk = {};
 	bufferDesk.Usage = D3D11_USAGE_DEFAULT;
@@ -202,6 +234,17 @@ void Direct3D::ChangeMode_2D()
 		MessageBox(NULL, L"カラー定数バッファを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
 		return;
 	}
+
+
+	// インスタンスバッファの作成
+	D3D11_BUFFER_DESC instanceBufferDesk = {};
+	instanceBufferDesk.Usage = D3D11_USAGE_DYNAMIC;
+	instanceBufferDesk.ByteWidth = sizeof(InstanceBuffer) * 1000; // 1000個の配列にできるということか？
+	instanceBufferDesk.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	instanceBufferDesk.CPUAccessFlags = D3D10_CPU_ACCESS_WRITE;
+
+	m_device->CreateBuffer(&instanceBufferDesk, nullptr, _instanceBuffer.GetAddressOf());
+
 
 	// 初期値設定
 	SetColor(DirectX::XMFLOAT4(1, 1, 1, 1));
@@ -344,6 +387,41 @@ void Direct3D::SetColor(DirectX::XMFLOAT4 color)
 	m_deviceContext->PSSetConstantBuffers(1, 1, _colorBuffer.GetAddressOf());
 }
 
+void Direct3D::SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Quaternion rotation, DirectX::XMFLOAT4 color, bool isFlipX)
+{
+	// スケールを行列化
+	DirectX::XMMATRIX scaleMatrix = DirectX::XMMatrixScaling(scale.x, scale.y, 1);
+
+	// 回転
+	DirectX::XMVECTOR q = DirectX::XMVectorSet(rotation.x, rotation.y, rotation.z, rotation.w);
+	DirectX::XMMATRIX rotationMatrix = DirectX::XMMatrixRotationQuaternion(q);
+
+	// 移動を行列化
+	DirectX::XMMATRIX transformMatrix = DirectX::XMMatrixTranslation(pos.x, pos.y, 0.0f);
+
+	
+	// ワールド行列の作成
+	DirectX::XMMATRIX worldMatrix = scaleMatrix * rotationMatrix * transformMatrix;
+
+	// プロジェクション行列の作成
+	DirectX::XMMATRIX projectionMat = DirectX::XMMatrixOrthographicLH(GameSystem::WINDOW_WIDTH / Camera::Magnification, GameSystem::WINDOW_HEIGHT / Camera::Magnification, 0.0f, 1.0f);
+
+	// 行列の合成
+	DirectX::XMMATRIX wvpMatrix = worldMatrix * projectionMat;
+
+
+	// インスタンスデータの作成
+	InstanceBuffer instanceBuffer;
+	instanceBuffer.matrix = DirectX::XMMatrixTranspose(wvpMatrix); // 転置
+	instanceBuffer.color = color;
+	instanceBuffer.flipX = isFlipX ? 1.0f : 0.0f;
+
+
+	// vectorに追加
+	_instBufVec.push_back(instanceBuffer);
+}
+
+
 void Direct3D::Draw2D()
 {
 	m_deviceContext->VSSetShader(_colorShader->GetVertexShader().Get(), 0, 0);
@@ -383,6 +461,91 @@ void Direct3D::Draw2D_Flip(const Texture* texture)
     m_deviceContext->Draw(4, 0);
 }
 
+void Direct3D::Draw2D_Batch()
+{
+	// GPUにデータを転送
+	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
+
+	// サブリソースに含まれるデータへのポインターを取得し、そのサブリソースへの GPU アクセスを拒否します。
+	// D3D11_MAP_WRITE_DISCARD...以前のバッファ内容を破棄して新しく書き込む
+	if (SUCCEEDED(m_deviceContext->Map(_instanceBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
+	{
+		// vectorの内容をGPUのメモリへコピー
+		memcpy(mappedSubresource.pData, _instBufVec.data(), sizeof(InstanceBuffer) * _instBufVec.size());
+		m_deviceContext->Unmap(_instanceBuffer.Get(), 0);
+	}
+	else
+	{
+		Debug::Log("GPUへのデータ転送失敗[Direct3D::Draw2D_Batch()]");
+		return;
+	}
+
+
+	// GPUパイプラインへのセット
+	// スロット０：基本の形（四角形メッシュ）
+	// スロット１：インスタンスデータ
+	ID3D11Buffer* vBuffers[] = { _quadVertexBuffer.Get(), _instanceBuffer.Get() };
+	UINT strides[] = { sizeof(VertexType2D), sizeof(InstanceBuffer) };
+	UINT offsets[] = { 0, 0 };
+	m_deviceContext->IASetVertexBuffers(0, 2, vBuffers, strides, offsets);
+
+
+	m_deviceContext->VSSetShader(_colorShader_Batch->GetVertexShader().Get(), 0, 0);
+	m_deviceContext->PSSetShader(_colorShader_Batch->GetPixelShader().Get(), 0, 0);
+	m_deviceContext->IASetInputLayout(_colorShader_Batch->GetInputLayout_Batch().Get());
+
+	
+	// 描画
+	m_deviceContext->DrawInstanced(4, _instBufVec.size(), 0, 0);
+
+
+	_instBufVec.clear();
+}
+
+void Direct3D::Draw2D_Batch(const Texture* texture)
+{
+	// GPUにデータを転送
+	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
+
+	// サブリソースに含まれるデータへのポインターを取得し、そのサブリソースへの GPU アクセスを拒否します。
+	// D3D11_MAP_WRITE_DISCARD...以前のバッファ内容を破棄して新しく書き込む
+	if (SUCCEEDED(m_deviceContext->Map(_instanceBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
+	{
+		// vectorの内容をGPUのメモリへコピー
+		memcpy(mappedSubresource.pData, _instBufVec.data(), sizeof(InstanceBuffer) * _instBufVec.size());
+		m_deviceContext->Unmap(_instanceBuffer.Get(), 0);
+	}
+	else
+	{
+		Debug::Log("GPUへのデータ転送失敗[Direct3D::Draw2D_Batch()]");
+		return;
+	}
+
+
+	// GPUパイプラインへのセット
+	// スロット０：基本の形（四角形メッシュ）
+	// スロット１：インスタンスデータ
+	ID3D11Buffer* vBuffers[] = { _quadVertexBuffer.Get(), _instanceBuffer.Get() };
+	UINT strides[] = { sizeof(VertexType2D), sizeof(InstanceBuffer) };
+	UINT offsets[] = { 0, 0 };
+	m_deviceContext->IASetVertexBuffers(0, 2, vBuffers, strides, offsets);
+
+
+	m_deviceContext->VSSetShader(_texShader_Batch->GetVertexShader().Get(), 0, 0);
+	m_deviceContext->PSSetShader(_texShader_Batch->GetPixelShader().Get(), 0, 0);
+	m_deviceContext->IASetInputLayout(_texShader_Batch->GetInputLayout_Batch().Get());
+
+	// テクスチャを、ピクセルシェーダーのスロット0にセット
+	m_deviceContext->PSSetShaderResources(0, 1, texture->m_shaderResourceview.GetAddressOf());
+
+
+	// 描画
+	m_deviceContext->DrawInstanced(4, _instBufVec.size(), 0, 0);
+
+
+	_instBufVec.clear();
+}
+
 void Direct3D::DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color)
 {
 	SetColor(color);
@@ -392,13 +555,44 @@ void Direct3D::DrawRect(const Vector2& center, const Vector2& size, const Quater
 
 void Direct3D::DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView)
 {
-	m_deviceContext->VSSetShader(_textureShader->GetVertexShader().Get(), 0, 0);
-	m_deviceContext->PSSetShader(_textureShader->GetPixelShader().Get(), 0, 0);
-	m_deviceContext->IASetInputLayout(_textureShader->GetInputLayout().Get());
+	// GPUにデータを転送
+	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
+
+	// サブリソースに含まれるデータへのポインターを取得し、そのサブリソースへの GPU アクセスを拒否します。
+	// D3D11_MAP_WRITE_DISCARD...以前のバッファ内容を破棄して新しく書き込む
+	if (SUCCEEDED(m_deviceContext->Map(_instanceBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
+	{
+		// vectorの内容をGPUのメモリへコピー
+		memcpy(mappedSubresource.pData, _instBufVec.data(), sizeof(InstanceBuffer) * _instBufVec.size());
+		m_deviceContext->Unmap(_instanceBuffer.Get(), 0);
+	}
+	else
+	{
+		Debug::Log("GPUへのデータ転送失敗[Direct3D::Draw2D_Batch()]");
+		return;
+	}
+
+
+	// GPUパイプラインへのセット
+	// スロット０：基本の形（四角形メッシュ）
+	// スロット１：インスタンスデータ
+	ID3D11Buffer* vBuffers[] = { _quadVertexBuffer.Get(), _instanceBuffer.Get() };
+	UINT strides[] = { sizeof(VertexType2D), sizeof(InstanceBuffer) };
+	UINT offsets[] = { 0, 0 };
+	m_deviceContext->IASetVertexBuffers(0, 2, vBuffers, strides, offsets);
+
+
+	m_deviceContext->VSSetShader(_texShader_Batch->GetVertexShader().Get(), 0, 0);
+	m_deviceContext->PSSetShader(_texShader_Batch->GetPixelShader().Get(), 0, 0);
+	m_deviceContext->IASetInputLayout(_texShader_Batch->GetInputLayout_Batch().Get());
 
 	// テクスチャを、ピクセルシェーダーのスロット0にセット
 	m_deviceContext->PSSetShaderResources(0, 1, shaderResourceView.GetAddressOf());
 
-	// デバイスコンテキストくん、上記のセットした内容で描画してください、とお願いする
-	m_deviceContext->Draw(4, 0); // 頂点の数
+
+	// 描画
+	m_deviceContext->DrawInstanced(4, _instBufVec.size(), 0, 0);
+
+
+	_instBufVec.clear();
 }

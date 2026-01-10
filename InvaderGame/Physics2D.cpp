@@ -51,30 +51,36 @@ void Physics2D::Update()
 		std::vector<std::pair<Collider2D*, Collider2D*>> collisionPairVector;
 		
 		// 衝突検出（ブロードフェーズ）
-		for (int i = 0; i < gameObjectVector.size(); i++)
+		// 判定が必要なGameObjectを検索
+		struct PhysicsData
+		{
+			Collider2D* collider;
+			Rigidbody2D* rigidbody;
+		};
+		std::vector<PhysicsData> goVecToCheck;
+		for (GameObject* gameObject : gameObjectVector)
 		{
 			// 非アクティブならスキップ
-			if (gameObjectVector[i]->ActiveSelf() == false) continue;
-
-			Collider2D* colliderA = gameObjectVector[i]->GetComponent<Collider2D>();
-			if (colliderA == nullptr) continue;
+			if (gameObject->ActiveSelf() == false) continue;
+			Collider2D* collider = gameObject->GetComponent<Collider2D>();
+			if (collider == nullptr) continue;
 
 			// enableならスキップ
-			if (colliderA->enabled == false) continue;
+			if (collider->enabled == false) continue;
 
-			for (int j = i + 1; j < gameObjectVector.size(); j++)
+			goVecToCheck.push_back({ collider, gameObject->GetComponent<Rigidbody2D>() });
+		}
+
+		for (int i = 0; i < goVecToCheck.size(); i++)
+		{
+			Collider2D* colliderA = goVecToCheck[i].collider;
+
+			for (int j = i + 1; j < goVecToCheck.size(); j++)
 			{
-				// 非アクティブならスキップ
-				if (gameObjectVector[j]->ActiveSelf() == false) continue;
-
-				Collider2D* colliderB = gameObjectVector[j]->GetComponent<Collider2D>();
-				if (colliderB == nullptr) continue;
-
-				// enableならスキップ
-				if (colliderB->enabled == false) continue;
+				Collider2D* colliderB = goVecToCheck[j].collider;
 
 				// 両方キネマティックなら衝突判定しない
-				if (colliderA->GetComponent<Rigidbody2D>()->IsKinematic && colliderB->GetComponent<Rigidbody2D>()->IsKinematic)
+				if (goVecToCheck[i].rigidbody->IsKinematic && goVecToCheck[j].rigidbody->IsKinematic)
 				{
 					continue;
 				}
@@ -93,30 +99,25 @@ void Physics2D::Update()
 		// 衝突検出（ナローフェーズ）
 		for (auto collisionPair : collisionPairVector)
 		{
-			Collision2D* collision = new Collision2D(collisionPair.first, collisionPair.second);
 
 			std::function<bool(Collider2D*, Collider2D*)> detectCollision = [&](Collider2D* colliderA, Collider2D* colliderB) -> bool {
 					if (BoxCollider2D* boxCollider = dynamic_cast<BoxCollider2D*>(colliderB))
 					{
+						Collision2D* collision = new Collision2D(collisionPair.first, collisionPair.second);
 						if (colliderA->DetectCollision(collision, boxCollider))
 						{
 							collisionVector.push_back(std::shared_ptr<Collision2D>(collision));
 							return true;
-							//Debug::Log(L"衝突検出（ナローフェーズ）");
 						}
+						delete collision;
 					}
 					return false;
 				};
-
-			/*if (detectCollision(collisionPair.first, collisionPair.second) ||
-				detectCollision(collisionPair.second, collisionPair.first)) continue;*/
 
 			if (detectCollision(collisionPair.first, collisionPair.second))
 			{
 				continue;
 			}
-
-			delete collision;
 		}
 
 
@@ -214,7 +215,7 @@ void Physics2D::Update()
 				{
 					length = 1 * log2(impulse.GetMagnitude());
 				}
-				Debug::DrawLine(collisionData->contact.ToVector3(), (collisionData->contact + impulse.Normalized() * length).ToVector3(), DirectX::XMFLOAT4(0.5, 0.5, 0, 1));
+				//Debug::DrawLine(collisionData->contact.ToVector3(), (collisionData->contact + impulse.Normalized() * length).ToVector3(), DirectX::XMFLOAT4(0.5, 0.5, 0, 1));
 			}
 
 			//Debug::Log(L"衝突法線： (%f, %f)", collision->Normal.x, collision->Normal.y);
@@ -236,20 +237,20 @@ void Physics2D::Update()
 
 
 			// イベント発火
-			for (auto& component : collision->collider->gameObject->GetComponentVector())
-			{
-				if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
-				{
-					engineBehaviour->OnCollisionEnter2D(collision->otherCollider->gameObject);
-				}
-			}
-			for (auto& component : collision->otherCollider->gameObject->GetComponentVector())
-			{
-				if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
-				{
-					engineBehaviour->OnCollisionEnter2D(collision->collider->gameObject);
-				}
-			}
+			// for (auto& component : collision->collider->gameObject->GetComponentVector())
+			// {
+			// 	if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
+			// 	{
+			// 		engineBehaviour->OnCollisionEnter2D(collision->otherCollider->gameObject);
+			// 	}
+			// }
+			// for (auto& component : collision->otherCollider->gameObject->GetComponentVector())
+			// {
+			// 	if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
+			// 	{
+			// 		engineBehaviour->OnCollisionEnter2D(collision->collider->gameObject);
+			// 	}
+			// }
 		}
 
 		// イベント発火
@@ -258,26 +259,23 @@ void Physics2D::Update()
 			Rigidbody2D* rigidbody = collision->collider->GetComponent<Rigidbody2D>();
 			Rigidbody2D* rigidbody_Other = collision->otherCollider->GetComponent<Rigidbody2D>();
 
+			auto callTriggerStay2D = [](Collider2D* collider, Collider2D* other) -> void {
+				for (auto& component : collider->gameObject->GetComponentVector())
+				{
+					if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
+					{
+						engineBehaviour->OnTriggerStay2D(other->gameObject);
+					}
+				}
+			};
+
 			if (rigidbody->IsTrigger)
 			{
-				for (auto& component : collision->collider->gameObject->GetComponentVector())
-				{
-					if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
-					{
-						engineBehaviour->OnTriggerStay2D(collision->otherCollider->gameObject);
-					}
-				}
+				callTriggerStay2D(collision->collider, collision->otherCollider);
 			}
-
 			if (rigidbody_Other->IsTrigger)
 			{
-				for (auto& component : collision->otherCollider->gameObject->GetComponentVector())
-				{
-					if (EngineBehaviour* engineBehaviour = dynamic_cast<EngineBehaviour*>(component.get()))
-					{
-						engineBehaviour->OnTriggerStay2D(collision->collider->gameObject);
-					}
-				}
+				callTriggerStay2D(collision->otherCollider, collision->collider);
 			}
 		}
 

@@ -30,6 +30,14 @@ struct ColorBuffer
 	DirectX::XMFLOAT4 color;
 };
 
+struct InstanceBuffer
+{
+	DirectX::XMMATRIX matrix; // 48 byte
+	DirectX::XMFLOAT4 color; // 16 byte
+	float flipX; // 4 byte
+	float padding[3]; // 12 byte
+};
+
 //=========================================
 // Direct3Dクラス
 //=========================================
@@ -67,34 +75,40 @@ public:
 	Shader* _textureShader;
 	Shader* _colorShader;
 	Shader* _textureShaderFlip;
+	Shader* _texShader_Batch;
+	Shader* _colorShader_Batch;
 
 	/*ComPtr<ID3D11VertexShader> m_spriteVS = nullptr;
 	ComPtr<ID3D11PixelShader> m_spritePS = nullptr;
 	ComPtr<ID3D11InputLayout> m_spriteInputLayout = nullptr;*/
 
-	ComPtr <ID3D11Buffer> m_vbSquare; // 四角形用頂点バッファ
+	// バッファ
+	ComPtr<ID3D11Buffer> m_vbSquare; // 四角形用頂点バッファ。CPU側で頂点位置を設定するとき用
+	ComPtr<ID3D11Buffer> _quadVertexBuffer;
 	ComPtr<ID3D11Buffer> _constantBuffer;
 	ComPtr<ID3D11Buffer> _colorBuffer;
+	ComPtr<ID3D11Buffer> _instanceBuffer;
 
 	// 2D描画モードにする
 	void ChangeMode_2D();
 
-	/// <summary>
-	/// 使用不可
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <param name="w"></param>
-	/// <param name="h"></param>
+	
+	// 情報のセット
+	// 使用不可
 	void SetRect(float x, float y, float w, float h);
 	void SetRect(float x, float y, float w, float h, Quaternion quaternion);
 
 	void SetColor(DirectX::XMFLOAT4 color);
 
+	void SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Quaternion rotation, DirectX::XMFLOAT4 color, bool isFlipX);
+
+
 	// 2D描画
 	void Draw2D();
 	void Draw2D(const Texture* texture);
 	void Draw2D_Flip(const Texture* texture);
+	void Draw2D_Batch();
+	void Draw2D_Batch(const Texture* texture);
 
 	void DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color);
 
@@ -111,8 +125,12 @@ private:
 	// 呼び出し時に関数先に行かずに関数側が呼び出し側に展開される
 	static inline Direct3D* s_instance;
 
+	std::vector<InstanceBuffer> _instBufVec;
+
 	// コンストラクタはprivateにする
 	Direct3D();
+
+
 public:
 	// インスタンス作成
 	static void CreateInstance()

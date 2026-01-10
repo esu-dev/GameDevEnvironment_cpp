@@ -3,8 +3,6 @@
 #include "DirectX.h"
 #include "Component.h"
 
-class TextCharacter;
-
 class TextLabel : public Component
 {
 public:
@@ -37,17 +35,19 @@ private:
 	int _resolution = 20;
 	TextAlign _textAlign = TextAlign::Center;
 	std::string _text = "new_text";
-	std::vector<TextCharacter> _textCharacterVector;
-
-	void MakeShaderResourceViewOf(wchar_t code, ComPtr<ID3D11ShaderResourceView> *srv);
+	void MakeShaderResourceViewOf(wchar_t c, ComPtr<ID3D11ShaderResourceView>* srv);
 	void Render(const Vector3& cameraPosition);
-};
 
-class TextCharacter
-{
-public:
-	ComPtr<ID3D11ShaderResourceView> ShaderResourceView;
-	int fontSize;
+	struct CacheKey
+	{
+		wchar_t character;
+		int fontSize;
 
-	TextCharacter() : fontSize(0) {}
+		bool operator<(const CacheKey& other) const
+		{
+			if (character != other.character) return character < other.character;
+			return fontSize < other.fontSize;
+		}
+	};
+	static std::map<CacheKey, ComPtr<ID3D11ShaderResourceView>> _srvCache;
 };
