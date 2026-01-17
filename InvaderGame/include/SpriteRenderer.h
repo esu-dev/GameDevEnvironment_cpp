@@ -36,7 +36,6 @@ private:
 
 	bool _canMove = true;
 
-	void Render(const Vector3& cameraPosition);
 	void Render2(const Vector3& cameraPosition);
 };
 

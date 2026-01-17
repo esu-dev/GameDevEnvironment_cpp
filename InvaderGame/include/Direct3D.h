@@ -22,7 +22,7 @@ struct VertexType2D
 
 struct CameraBuffer
 {
-	DirectX::XMMATRIX projMat;
+	DirectX::XMMATRIX viewProjMat;
 };
 
 struct ColorBuffer
@@ -92,7 +92,8 @@ public:
 	// 2D描画モードにする
 	void ChangeMode_2D();
 
-	
+	void StartRendering(DirectX::XMVECTOR cameraPos);
+
 	// 情報のセット
 	// 使用不可
 	void SetRect(float x, float y, float w, float h);

@@ -6,7 +6,7 @@ SamplerState Sampler : register(s0);
 
 cbuffer ConstantBuffer : register(b0)
 {
-	matrix wp;
+    matrix viewProjMat;
 };
 
 cbuffer ColorBuffer : register(b1)
@@ -27,7 +27,7 @@ struct VS_INPUT
     float2 uv : TEXUV;
 	
 	// ÉXÉçÉbÉgÇP
-    float4x4 wvpMatrix : INST_MATRIX; // wvp = (World * View * Projection)
+    float4x4 worldMat : INST_MATRIX; // wvp = (World * View * Projection)
     float4 color : INST_COLOR;
     float flipX : INST_FLIPX;
 };
@@ -65,8 +65,7 @@ VSOutput VS_Flip(float4 pos : POSITION, float2 uv : TEXUV)
 VS_OUTPUT VS_New(VS_INPUT input)
 {
     VS_OUTPUT output;
-    output.pos = mul(input.pos, input.wvpMatrix);
-    output.pos = mul(output.pos, wp);
+    output.pos = mul(mul(input.pos, input.worldMat), viewProjMat);
     output.uv.x = input.uv.x + input.flipX * (1.0 - 2.0 * input.uv.x);
     output.uv.y = input.uv.y;
 	

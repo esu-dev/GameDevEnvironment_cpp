@@ -5,6 +5,7 @@
 #include "AssetManager.h"
 #include "SceneEditor.h"
 #include "GameState.h"
+#include "EditorCamera.h"
 
 #include "ImGuiUtility.h"
 
@@ -80,14 +81,16 @@ void GameSystem::Execute()
 	Debug::Log("UpdateF%d", (int)(GetTickCount64() - startTime));
 	startTime = GetTickCount64();
 
-	// “o˜^‚³‚ê‚½ƒŒƒ“ƒ_ƒŠƒ“ƒOŠÖ”‚ð order ‡‚ÉŽÀs‚·‚é
-	/*for (RenderingData* rd : _renderingDataVector)
+	if (SceneEditor::GetIsEditMode())
 	{
-		if (rd && rd->setDataAct)
-		{
-			rd->setDataAct();
-		}
-	}*/
+		Direct3D::GetInstance().StartRendering(EditorCamera::GetPosition().ToXMVECTOR());
+	}
+	else
+	{
+		Direct3D::GetInstance().StartRendering(Camera::get_main()->GetTransform()->position.Get().ToXMVECTOR());
+	}
+
+	// “o˜^‚³‚ê‚½ƒŒƒ“ƒ_ƒŠƒ“ƒOŠÖ”‚ð order ‡‚ÉŽÀs‚·‚é
 	for (RenderingData* rd : _renderingDataVector)
 	{
 		if (rd && rd->function)

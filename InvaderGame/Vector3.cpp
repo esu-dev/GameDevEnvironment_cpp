@@ -84,6 +84,12 @@ Vector2 Vector3::ToVector2()
 	return Vector2(this->x, this->y);
 }
 
+DirectX::XMVECTOR Vector3::ToXMVECTOR()
+{
+	return DirectX::XMVectorSet(this->x, this->y, this->z, 0);
+}
+
+
 Vector3 Vector3::operator+ (const Vector3& vector) const
 {
 	const Vector3 v = Vector3(this->x + vector.x, this->y + vector.y, this->z + vector.z);

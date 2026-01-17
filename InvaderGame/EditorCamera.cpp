@@ -5,7 +5,7 @@
 #include "Transform.h"
 #include "imgui_impl_dx11.h"
 
-const Vector3& EditorCamera::GetPosition()
+Vector3 EditorCamera::GetPosition()
 {
 	return _editorCameraPos;
 }
@@ -19,7 +19,6 @@ void EditorCamera::Update()
 {
 	static bool isEditorCameraOn;
 	static float moveSpeed = 7;
-	static Vector3 savedCameraPos;
 
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('C'))
 	{
@@ -72,3 +71,4 @@ void EditorCamera::Update()
 }
 
 Vector3 EditorCamera::_editorCameraPos;
+Vector3 EditorCamera::savedCameraPos = Vector3(0, 0, -10);

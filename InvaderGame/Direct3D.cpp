@@ -212,25 +212,6 @@ void Direct3D::ChangeMode_2D()
 		return;
 	}
 
-	// 定数バッファへの書き込み
-	// よく考えたら将来的には、毎フレーム更新が必須だわ
-	CameraBuffer constantBuffer;
-	constantBuffer.projMat = DirectX::XMMatrixOrthographicLH(GameSystem::WINDOW_WIDTH / Camera::Magnification, GameSystem::WINDOW_HEIGHT / Camera::Magnification, 0.0f, 1.0f);
-	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
-	if (SUCCEEDED(m_deviceContext->Map(_cameraBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
-	{
-		memcpy(mappedSubresource.pData, &constantBuffer, sizeof(CameraBuffer));
-		m_deviceContext->Unmap(_cameraBuffer.Get(), 0);
-	}
-	else
-	{
-		MessageBox(NULL, L"定数バッファを設定できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
-		return;
-	}
-
-	// 頂点シェーダーに定数バッファを設定
-	m_deviceContext->VSSetConstantBuffers(0, 1, _cameraBuffer.GetAddressOf());
-
 
 	// カラー定数バッファの作成
 	// 定数情報の追加
@@ -316,6 +297,31 @@ void Direct3D::ChangeMode_2D()
 	// ブレンドをセット
 	FLOAT blendFactor[4] = { D3D11_BLEND_ZERO, D3D11_BLEND_ZERO, D3D11_BLEND_ZERO, D3D11_BLEND_ZERO };
 	m_deviceContext->OMSetBlendState(blendState.Get(), blendFactor, 0xffffffff);
+}
+
+void Direct3D::StartRendering(DirectX::XMVECTOR cameraPos)
+{
+	DirectX::XMMATRIX viewMat = DirectX::XMMatrixLookAtLH(cameraPos, DirectX::XMVectorAdd(cameraPos, DirectX::XMVectorSet(0, 0, 1, 0)), ((Vector3)Vector3::up).ToXMVECTOR());
+	DirectX::XMMATRIX projMat = DirectX::XMMatrixOrthographicLH(GameSystem::WINDOW_WIDTH / Camera::Magnification, GameSystem::WINDOW_HEIGHT / Camera::Magnification, 0.0f, 1000.0f);
+	//DirectX::XMMATRIX projMat = DirectX::XMMatrixPerspectiveFovLH(DirectX::XMConvertToRadians(60), (float)GameSystem::WINDOW_WIDTH / (float)GameSystem::WINDOW_HEIGHT, 0.1f, 1000);
+
+	// 定数バッファへの書き込み
+	CameraBuffer constantBuffer;
+	constantBuffer.viewProjMat = DirectX::XMMatrixTranspose(viewMat * projMat);
+	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
+	if (SUCCEEDED(m_deviceContext->Map(_cameraBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
+	{
+		memcpy(mappedSubresource.pData, &constantBuffer, sizeof(CameraBuffer));
+		m_deviceContext->Unmap(_cameraBuffer.Get(), 0);
+	}
+	else
+	{
+		MessageBox(NULL, L"定数バッファを設定できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
+		return;
+	}
+
+	// 頂点シェーダーに定数バッファを設定
+	m_deviceContext->VSSetConstantBuffers(0, 1, _cameraBuffer.GetAddressOf());
 }
 
 void Direct3D::SetRect(float x, float y, float w, float h)

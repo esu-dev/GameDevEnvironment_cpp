@@ -30,6 +30,7 @@ public:
 	float GetMagnitude();
 	Vector3 GetNormalized();
 	Vector2 ToVector2();
+	DirectX::XMVECTOR ToXMVECTOR();
 
 	Vector3 operator+(const Vector3& vector) const;
 	void operator+=(const Vector3& vector);
