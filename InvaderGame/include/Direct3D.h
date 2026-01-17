@@ -20,9 +20,9 @@ struct VertexType2D
 	DirectX::XMFLOAT2 UV; // UV座標
 };
 
-struct ConstantBuffer
+struct CameraBuffer
 {
-	DirectX::XMMATRIX m_WP;
+	DirectX::XMMATRIX projMat;
 };
 
 struct ColorBuffer
@@ -85,7 +85,7 @@ public:
 	// バッファ
 	ComPtr<ID3D11Buffer> m_vbSquare; // 四角形用頂点バッファ。CPU側で頂点位置を設定するとき用
 	ComPtr<ID3D11Buffer> _quadVertexBuffer;
-	ComPtr<ID3D11Buffer> _constantBuffer;
+	ComPtr<ID3D11Buffer> _cameraBuffer;
 	ComPtr<ID3D11Buffer> _colorBuffer;
 	ComPtr<ID3D11Buffer> _instanceBuffer;
 

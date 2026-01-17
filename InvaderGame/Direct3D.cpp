@@ -201,20 +201,35 @@ void Direct3D::ChangeMode_2D()
 
 
 	// 定数バッファの作成
-	// 使用しているのかは不明
-	// 定数情報の追加
 	D3D11_BUFFER_DESC bufferDesk = {};
-	bufferDesk.Usage = D3D11_USAGE_DEFAULT;
-	bufferDesk.ByteWidth = sizeof(ConstantBuffer);
+	bufferDesk.Usage = D3D11_USAGE_DYNAMIC;
+	bufferDesk.ByteWidth = sizeof(CameraBuffer);
 	bufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	bufferDesk.CPUAccessFlags = 0;
-
-	// 定数バッファの設定
-	if (FAILED(m_device->CreateBuffer(&bufferDesk, nullptr, _constantBuffer.GetAddressOf())))
+	bufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	if (FAILED(m_device->CreateBuffer(&bufferDesk, nullptr, _cameraBuffer.GetAddressOf())))
 	{
 		MessageBox(NULL, L"定数バッファを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
 		return;
 	}
+
+	// 定数バッファへの書き込み
+	// よく考えたら将来的には、毎フレーム更新が必須だわ
+	CameraBuffer constantBuffer;
+	constantBuffer.projMat = DirectX::XMMatrixOrthographicLH(GameSystem::WINDOW_WIDTH / Camera::Magnification, GameSystem::WINDOW_HEIGHT / Camera::Magnification, 0.0f, 1.0f);
+	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
+	if (SUCCEEDED(m_deviceContext->Map(_cameraBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
+	{
+		memcpy(mappedSubresource.pData, &constantBuffer, sizeof(CameraBuffer));
+		m_deviceContext->Unmap(_cameraBuffer.Get(), 0);
+	}
+	else
+	{
+		MessageBox(NULL, L"定数バッファを設定できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
+		return;
+	}
+
+	// 頂点シェーダーに定数バッファを設定
+	m_deviceContext->VSSetConstantBuffers(0, 1, _cameraBuffer.GetAddressOf());
 
 
 	// カラー定数バッファの作成
@@ -222,7 +237,7 @@ void Direct3D::ChangeMode_2D()
 	D3D11_BUFFER_DESC colorBufferDesk = {};
 	ZeroMemory(&colorBufferDesk, sizeof(D3D11_BUFFER_DESC));
 	colorBufferDesk.Usage = D3D11_USAGE_DYNAMIC;
-	colorBufferDesk.ByteWidth = sizeof(ConstantBuffer);
+	colorBufferDesk.ByteWidth = sizeof(CameraBuffer);
 	colorBufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	colorBufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	colorBufferDesk.MiscFlags = 0;
@@ -399,20 +414,13 @@ void Direct3D::SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Q
 	// 移動を行列化
 	DirectX::XMMATRIX transformMatrix = DirectX::XMMatrixTranslation(pos.x, pos.y, 0.0f);
 
-	
 	// ワールド行列の作成
 	DirectX::XMMATRIX worldMatrix = scaleMatrix * rotationMatrix * transformMatrix;
-
-	// プロジェクション行列の作成
-	DirectX::XMMATRIX projectionMat = DirectX::XMMatrixOrthographicLH(GameSystem::WINDOW_WIDTH / Camera::Magnification, GameSystem::WINDOW_HEIGHT / Camera::Magnification, 0.0f, 1.0f);
-
-	// 行列の合成
-	DirectX::XMMATRIX wvpMatrix = worldMatrix * projectionMat;
 
 
 	// インスタンスデータの作成
 	InstanceBuffer instanceBuffer;
-	instanceBuffer.matrix = DirectX::XMMatrixTranspose(wvpMatrix); // 転置
+	instanceBuffer.matrix = DirectX::XMMatrixTranspose(worldMatrix); // 転置
 	instanceBuffer.color = color;
 	instanceBuffer.flipX = isFlipX ? 1.0f : 0.0f;
 

@@ -66,6 +66,7 @@ VS_OUTPUT VS_New(VS_INPUT input)
 {
     VS_OUTPUT output;
     output.pos = mul(input.pos, input.wvpMatrix);
+    output.pos = mul(output.pos, wp);
     output.uv.x = input.uv.x + input.flipX * (1.0 - 2.0 * input.uv.x);
     output.uv.y = input.uv.y;
 	
