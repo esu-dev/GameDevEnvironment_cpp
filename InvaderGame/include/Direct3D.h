@@ -1,6 +1,3 @@
-// 参考　https://gamesgard.com/directx11_lesson02/
-
-// 一度しかインクルードされないようにコンパイラに指定する
 #pragma once
 
 #include "DirectX.h"
@@ -12,22 +9,16 @@ class Texture;
 class Quaternion;
 class Shader;
 
+struct CameraBuffer
+{
+	DirectX::XMMATRIX viewProjMat;
+};
 
 // 2D用頂点構造体
 struct VertexType2D
 {
 	DirectX::XMFLOAT3 Pos; // 座標
 	DirectX::XMFLOAT2 UV; // UV座標
-};
-
-struct CameraBuffer
-{
-	DirectX::XMMATRIX viewProjMat;
-};
-
-struct ColorBuffer
-{
-	DirectX::XMFLOAT4 color;
 };
 
 struct InstanceBuffer
@@ -38,102 +29,58 @@ struct InstanceBuffer
 	float padding[3]; // 12 byte
 };
 
-//=========================================
-// Direct3Dクラス
-//=========================================
+
 class Direct3D
 {
 public:
-
-	// ※変数は今回は全てpublicにしますが、本来はprivateで隠すべき※
-
-	// Direct3Dデバイス
 	ComPtr<ID3D11Device> m_device;
-
-	// Direct3Dデバイスコンテキスト
-	// ディスプレイの描画属性に関する情報を保持する Windows のデータ構造体
 	ComPtr<ID3D11DeviceContext>	m_deviceContext;
-
-	// スワップチェイン
-	// ひとつにデバイスから複数のビューを表現できる
 	ComPtr<IDXGISwapChain> m_swapChain;
-
-	// バックバッファーのRTビュー
-	// RenderTargetView:レンダリングパイプラインからアウトプットされるピクセル情報を保存するViewです。
-	// レンダリングパイプラインとは、モデルデータの入力から出力までのレンダリングのための加工手順のこと
 	ComPtr<ID3D11RenderTargetView> m_backBufferView;
 
-	//--------------------------------------------
-	// Direct3Dを初期化し、使用できるようにする関数
-	// hWnd		: ウィンドウハンドル
-	// width	: 画面の幅
-	// height	: 画面の高さ
-	//--------------------------------------------
-	bool Initialize(HWND hWnd, int width, int height);
 
 	// 2D描画用のシェーダー
-	Shader* _textureShader;
-	Shader* _colorShader;
-	Shader* _textureShaderFlip;
 	Shader* _texShader_Batch;
 	Shader* _colorShader_Batch;
 
-	/*ComPtr<ID3D11VertexShader> m_spriteVS = nullptr;
-	ComPtr<ID3D11PixelShader> m_spritePS = nullptr;
-	ComPtr<ID3D11InputLayout> m_spriteInputLayout = nullptr;*/
-
 	// バッファ
-	ComPtr<ID3D11Buffer> m_vbSquare; // 四角形用頂点バッファ。CPU側で頂点位置を設定するとき用
 	ComPtr<ID3D11Buffer> _quadVertexBuffer;
 	ComPtr<ID3D11Buffer> _cameraBuffer;
+	ComPtr<ID3D11Buffer> _indexBuffer;
 	ComPtr<ID3D11Buffer> _colorBuffer;
 	ComPtr<ID3D11Buffer> _instanceBuffer;
+
+
+	bool Initialize(HWND hWnd, int width, int height);
+
 
 	// 2D描画モードにする
 	void ChangeMode_2D();
 
+
 	void StartRendering(DirectX::XMVECTOR cameraPos);
 
 	// 情報のセット
-	// 使用不可
-	void SetRect(float x, float y, float w, float h);
-	void SetRect(float x, float y, float w, float h, Quaternion quaternion);
-
-	void SetColor(DirectX::XMFLOAT4 color);
-
 	void SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Quaternion rotation, DirectX::XMFLOAT4 color, bool isFlipX);
 
 
 	// 2D描画
-	void Draw2D();
-	void Draw2D(const Texture* texture);
-	void Draw2D_Flip(const Texture* texture);
 	void Draw2D_Batch();
 	void Draw2D_Batch(const Texture* texture);
-
 	void DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color);
-
 	void DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView);
 
-	//=========================================
-	// 今回このクラスは、どこからでもアクセスできるように
-	// シングルトンパターンにします
-	// ↓↓↓以下、シングルトンパターンのコード
-	//=========================================
+
 private:
-	// 唯一のインスタンス用のポインタ
-	// 処理の高速化で使用される手法のひとつ
-	// 呼び出し時に関数先に行かずに関数側が呼び出し側に展開される
 	static inline Direct3D* s_instance;
 
 	std::vector<InstanceBuffer> _instBufVec;
 
-	// コンストラクタはprivateにする
 	Direct3D();
+	void SetGpuData();
 
 
 public:
-	// インスタンス作成
 	static void CreateInstance()
 	{
 		DeleteInstance();
@@ -141,26 +88,19 @@ public:
 		s_instance = new Direct3D();
 	}
 
-	// インスタンス削除
 	static void DeleteInstance()
 	{
-		// nullptr:ヌルポインタ値
 		if (s_instance != nullptr)
 		{
-			// delete演算子
-			// new演算子で生成されたオブジェクトにブロックを開放する
 			delete s_instance;
 			s_instance = nullptr;
 		}
 	}
 
-	// 唯一のインスタンスを取得
-	// &はポインタ
 	static Direct3D& GetInstance()
 	{
 		return *s_instance;
 	}
 };
 
-// Direct3Dの唯一のインスタンスを簡単に取得するためのマクロ
 #define D3D Direct3D::GetInstance()

@@ -9,16 +9,6 @@ cbuffer ConstantBuffer : register(b0)
     matrix viewProjMat;
 };
 
-cbuffer ColorBuffer : register(b1)
-{
-    float4 color;
-}
-
-struct VSOutput
-{
-	float4 Pos : SV_Position;
-	float2 UV : TEXCOORD0; // UV座標
-};
 
 struct VS_INPUT
 {
@@ -40,28 +30,6 @@ struct VS_OUTPUT
 };
 
 
-// 頂点シェーダー
-VSOutput VS(float4 pos : POSITION, float2 uv : TEXUV)
-{
-	VSOutput Out;
-	Out.Pos = pos;
-
-	// 頂点のUV座標を何も加工せずそのまま出力
-	Out.UV = uv;
-	return Out;
-}
-
-// 左右反転して描画する頂点シェーダー
-VSOutput VS_Flip(float4 pos : POSITION, float2 uv : TEXUV)
-{
-	VSOutput Out;
-	Out.Pos = pos;
-
-	// UV の X を反転して渡す（左右反転）
-	Out.UV = float2(1.0 - uv.x, uv.y);
-	return Out;
-}
-
 VS_OUTPUT VS_New(VS_INPUT input)
 {
     VS_OUTPUT output;
@@ -72,23 +40,6 @@ VS_OUTPUT VS_New(VS_INPUT input)
     output.color = input.color;
 	
     return output;
-}
-
-float4 PS(VSOutput In) : SV_Target0
-{
-	float4 color = Texture.Sample(Sampler, In.UV);
-
-	/*if (color.a == 0)
-	{
-		color = float4(1.0, 1.0, 0, 1.0);
-	}*/
-
-	return color;
-}
-
-float4 PS_Color(VSOutput In) : SV_Target0
-{
-    return color;
 }
 
 float4 PS_New(VS_OUTPUT input) : SV_Target0

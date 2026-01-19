@@ -10,9 +10,6 @@
 
 
 Direct3D::Direct3D() :
-	_textureShader(new Shader(L"Shader/SpriteShader.hlsl", "VS", "PS")),
-	_colorShader(new Shader(L"Shader/SpriteShader.hlsl", "VS", "PS_Color")),
-	_textureShaderFlip(new Shader(L"Shader/SpriteShader.hlsl", "VS_Flip", "PS")),
 	_texShader_Batch(new Shader(L"Shader/SpriteShader.hlsl", "VS_New", "PS_New")),
 	_colorShader_Batch(new Shader(L"Shader/SpriteShader.hlsl", "VS_New", "PS_New_Color")) {}
 
@@ -130,7 +127,6 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	//=====================================================
 	// デバイスコンテキストに描画に関する設定を行っておく
 	//=====================================================
-
 	// バックバッファをRTとしてセット
 	// ここでGetAddressOf()を使うのは、ComPtrでは&がオーバーロードされているから
 	m_deviceContext->OMSetRenderTargets(1, m_backBufferView.GetAddressOf(), nullptr);
@@ -142,36 +138,41 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	//=====================================================
 	// シェーダーの作成
 	//=====================================================
-	_textureShader->CreateShader(*m_device.Get());
-	_colorShader->CreateShader(*m_device.Get());
-	_textureShaderFlip->CreateShader(*m_device.Get());
 	_texShader_Batch->CreateShader(*m_device.Get());
 	_colorShader_Batch->CreateShader(*m_device.Get());
+
+
+	// カメラ定数バッファの作成
+	D3D11_BUFFER_DESC bufferDesk = {};
+	bufferDesk.Usage = D3D11_USAGE_DYNAMIC;
+	bufferDesk.ByteWidth = sizeof(CameraBuffer);
+	bufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	bufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	if (FAILED(m_device->CreateBuffer(&bufferDesk, nullptr, _cameraBuffer.GetAddressOf())))
+	{
+		MessageBox(NULL, L"定数バッファを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
+		return false;
+	}
+
+
+	// インデックスバッファの作成
+	// 四角形1つ分のインデックス
+	unsigned short indices[] = { 0, 1, 2, 1, 3, 2 };
+
+	CD3D11_BUFFER_DESC indexBufferDesc = {};
+	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	indexBufferDesc.ByteWidth = sizeof(indices);
+	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+
+	D3D11_SUBRESOURCE_DATA indexBufSRdata = {};
+	indexBufSRdata.pSysMem = indices;
+	m_device->CreateBuffer(&indexBufferDesc, &indexBufSRdata, _indexBuffer.GetAddressOf());
 
 	return true;
 }
 
 void Direct3D::ChangeMode_2D()
 {
-	// 四角形用頂点バッファを作成
-	if (m_vbSquare == nullptr)
-	{
-		D3D11_BUFFER_DESC vbDesc = {};
-		vbDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;	// デバイスにバインドするときの種類(頂点バッファ、インデックスバッファ、定数バッファなど)
-		vbDesc.ByteWidth = sizeof(VertexType2D) * 4;	// 作成するバッファのバイトサイズ
-		vbDesc.MiscFlags = 0;							// その他のフラグ
-		vbDesc.Usage = D3D11_USAGE_DYNAMIC;				// 作成するバッファの使用法
-		vbDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-
-		m_device->CreateBuffer(&vbDesc, nullptr, &m_vbSquare);
-	}
-
-	// 頂点バッファを描画で使えるようにセットする
-	UINT stride = sizeof(VertexType2D); // １頂点のバイトサイズを教える
-	UINT offset = 0;
-	D3D.m_deviceContext->IASetVertexBuffers(0, 1, m_vbSquare.GetAddressOf(), &stride, &offset); // デバイスコンテキストに頂点バッファをセット
-
-
 	// 固定頂点バッファの作成
 	// 1. 頂点データ（四角形）の準備
 	VertexType2D vertices[] = {
@@ -196,21 +197,7 @@ void Direct3D::ChangeMode_2D()
 
 
 	// プロミティブ・トポロジーをセット
-	// ４頂点で四角形を描画できる設定
-	D3D.m_deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
-
-
-	// 定数バッファの作成
-	D3D11_BUFFER_DESC bufferDesk = {};
-	bufferDesk.Usage = D3D11_USAGE_DYNAMIC;
-	bufferDesk.ByteWidth = sizeof(CameraBuffer);
-	bufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	bufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	if (FAILED(m_device->CreateBuffer(&bufferDesk, nullptr, _cameraBuffer.GetAddressOf())))
-	{
-		MessageBox(NULL, L"定数バッファを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
-		return;
-	}
+	D3D.m_deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST); // 三角形メッシュ
 
 
 	// カラー定数バッファの作成
@@ -240,10 +227,6 @@ void Direct3D::ChangeMode_2D()
 	instanceBufferDesk.CPUAccessFlags = D3D10_CPU_ACCESS_WRITE;
 
 	m_device->CreateBuffer(&instanceBufferDesk, nullptr, _instanceBuffer.GetAddressOf());
-
-
-	// 初期値設定
-	SetColor(DirectX::XMFLOAT4(1, 1, 1, 1));
 
 
 	// サンプラーステートを作成しセットする
@@ -324,90 +307,6 @@ void Direct3D::StartRendering(DirectX::XMVECTOR cameraPos)
 	m_deviceContext->VSSetConstantBuffers(0, 1, _cameraBuffer.GetAddressOf());
 }
 
-void Direct3D::SetRect(float x, float y, float w, float h)
-{
-	float hW = w * 0.5f;
-	float hH = h * 0.5f;
-
-	// 頂点データ作成
-	VertexType2D v[4] = {
-		{{x - hW, y - hH, 0}, {0, 1}},	// 左下
-		{{x - hW, y + hH, 0}, {0, 0}},	// 左上
-		{{x + hW, y - hH, 0}, {1, 1}},	// 右下
-		{{x + hW, y + hH, 0}, {1, 0}},	// 右上
-	};
-
-	// 頂点バッファにデータを書き込む
-	D3D11_MAPPED_SUBRESOURCE pData;
-	if (SUCCEEDED(m_deviceContext->Map(m_vbSquare.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &pData)))
-	{
-		// データコピー
-		memcpy_s(pData.pData, sizeof(v), &v[0], sizeof(v));
-
-		m_deviceContext->Unmap(m_vbSquare.Get(), 0);
-	}
-}
-
-void Direct3D::SetRect(float x, float y, float w, float h, Quaternion quaternion)
-{
-	float hW = w * 0.5f;
-	float hH = h * 0.5f;
-
-	Vector3 position = Camera::WorldToViewportPoint(Vector3(x, y, 0));
-
-	Vector3 direction_leftDown = Vector3(-hW, -hH, 0);
-	Vector3 direction_leftUp = Vector3(-hW, hH, 0);
-	Vector3 direction_rightDown = Vector3(hW, -hH, 0);
-	Vector3 direction_rightUp = Vector3(hW, hH, 0);
-
-	Vector3 leftDown = position + Camera::WorldToViewportPoint(quaternion.Mult(direction_leftDown));
-	Vector3 leftUp = position + Camera::WorldToViewportPoint(quaternion.Mult(direction_leftUp));
-	Vector3 rightDown = position + Camera::WorldToViewportPoint(quaternion.Mult(direction_rightDown));
-	Vector3 rightUp = position + Camera::WorldToViewportPoint(quaternion.Mult(direction_rightUp));
-
-	// 頂点データ作成
-	VertexType2D v[4] = {
-		{{leftDown.x, leftDown.y, 0}, {0, 1}},	// 左下
-		{{leftUp.x, leftUp.y, 0}, {0, 0}},	// 左上
-		{{rightDown.x, rightDown.y, 0}, {1, 1}},	// 右下
-		{{rightUp.x, rightUp.y, 0}, {1, 0}},	// 右上
-	};
-
-	// 頂点バッファにデータを書き込む
-	D3D11_MAPPED_SUBRESOURCE pData;
-	// Map...サブリソースに含まれるデータへのポインターを取得し、そのサブリソースへの GPU アクセスを拒否します。
-	if (SUCCEEDED(m_deviceContext->Map(m_vbSquare.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &pData)))
-	{
-		// 頂点データをサブリソースにコピー
-		memcpy_s(pData.pData, sizeof(v), &v[0], sizeof(v));
-
-		m_deviceContext->Unmap(m_vbSquare.Get(), 0);
-	}
-}
-
-void Direct3D::SetColor(DirectX::XMFLOAT4 color)
-{
-	// 更新するデータを用意
-	ColorBuffer colorBuffer;
-	colorBuffer.color = color;
-
-	// 定数バッファにデータを書き込む
-	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
-	if (SUCCEEDED(m_deviceContext->Map(_colorBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
-	{
-		memcpy(mappedSubresource.pData, &colorBuffer, sizeof(ColorBuffer));
-		m_deviceContext->Unmap(_colorBuffer.Get(), 0);
-	}
-	else
-	{
-		MessageBox(NULL, L"カラー設定時に、定数バッファを更新できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
-		return;
-	}
-
-	// ピクセルシェーダーに定数バッファを設定
-	m_deviceContext->PSSetConstantBuffers(1, 1, _colorBuffer.GetAddressOf());
-}
-
 void Direct3D::SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Quaternion rotation, DirectX::XMFLOAT4 color, bool isFlipX)
 {
 	// スケールを行列化
@@ -435,115 +334,23 @@ void Direct3D::SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Q
 	_instBufVec.push_back(instanceBuffer);
 }
 
-
-void Direct3D::Draw2D()
-{
-	m_deviceContext->VSSetShader(_colorShader->GetVertexShader().Get(), 0, 0);
-	m_deviceContext->PSSetShader(_colorShader->GetPixelShader().Get(), 0, 0);
-	m_deviceContext->IASetInputLayout(_colorShader->GetInputLayout().Get());
-
-	m_deviceContext->Draw(4, 0);
-}
-
-void Direct3D::Draw2D(const Texture* texture)
-{
-	m_deviceContext->VSSetShader(_textureShader->GetVertexShader().Get(), 0, 0);
-	m_deviceContext->PSSetShader(_textureShader->GetPixelShader().Get(), 0, 0);
-	m_deviceContext->IASetInputLayout(_textureShader->GetInputLayout().Get());
-
-	// テクスチャを、ピクセルシェーダーのスロット0にセット
-	m_deviceContext->PSSetShaderResources(0, 1, texture->m_shaderResourceview.GetAddressOf());
-
-	// デバイスコンテキストくん、上記のセットした内容で描画してください、とお願いする
-	m_deviceContext->Draw(4, 0); // 頂点の数
-}
-
-/// <summary>
-/// フリップ用シェーダーを使用して2Dテクスチャを描画します
-/// </summary>
-/// <param name="texture">描画するテクスチャへのポインタ</param>
-void Direct3D::Draw2D_Flip(const Texture* texture)
-{
-    m_deviceContext->VSSetShader(_textureShaderFlip->GetVertexShader().Get(), 0, 0);
-    m_deviceContext->PSSetShader(_textureShaderFlip->GetPixelShader().Get(), 0, 0);
-    m_deviceContext->IASetInputLayout(_textureShaderFlip->GetInputLayout().Get());
-
-    // テクスチャを、ピクセルシェーダーのスロット0にセット
-    m_deviceContext->PSSetShaderResources(0, 1, texture->m_shaderResourceview.GetAddressOf());
-
-	// 描画
-    m_deviceContext->Draw(4, 0);
-}
-
 void Direct3D::Draw2D_Batch()
 {
-	// GPUにデータを転送
-	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
-
-	// サブリソースに含まれるデータへのポインターを取得し、そのサブリソースへの GPU アクセスを拒否します。
-	// D3D11_MAP_WRITE_DISCARD...以前のバッファ内容を破棄して新しく書き込む
-	if (SUCCEEDED(m_deviceContext->Map(_instanceBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
-	{
-		// vectorの内容をGPUのメモリへコピー
-		memcpy(mappedSubresource.pData, _instBufVec.data(), sizeof(InstanceBuffer) * _instBufVec.size());
-		m_deviceContext->Unmap(_instanceBuffer.Get(), 0);
-	}
-	else
-	{
-		Debug::Log("GPUへのデータ転送失敗[Direct3D::Draw2D_Batch()]");
-		return;
-	}
-
-
-	// GPUパイプラインへのセット
-	// スロット０：基本の形（四角形メッシュ）
-	// スロット１：インスタンスデータ
-	ID3D11Buffer* vBuffers[] = { _quadVertexBuffer.Get(), _instanceBuffer.Get() };
-	UINT strides[] = { sizeof(VertexType2D), sizeof(InstanceBuffer) };
-	UINT offsets[] = { 0, 0 };
-	m_deviceContext->IASetVertexBuffers(0, 2, vBuffers, strides, offsets);
-
+	SetGpuData();
 
 	m_deviceContext->VSSetShader(_colorShader_Batch->GetVertexShader().Get(), 0, 0);
 	m_deviceContext->PSSetShader(_colorShader_Batch->GetPixelShader().Get(), 0, 0);
 	m_deviceContext->IASetInputLayout(_colorShader_Batch->GetInputLayout_Batch().Get());
-
 	
 	// 描画
-	m_deviceContext->DrawInstanced(4, _instBufVec.size(), 0, 0);
-
+	m_deviceContext->DrawIndexedInstanced(6, _instBufVec.size(), 0, 0, 0);
 
 	_instBufVec.clear();
 }
 
 void Direct3D::Draw2D_Batch(const Texture* texture)
 {
-	// GPUにデータを転送
-	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
-
-	// サブリソースに含まれるデータへのポインターを取得し、そのサブリソースへの GPU アクセスを拒否します。
-	// D3D11_MAP_WRITE_DISCARD...以前のバッファ内容を破棄して新しく書き込む
-	if (SUCCEEDED(m_deviceContext->Map(_instanceBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
-	{
-		// vectorの内容をGPUのメモリへコピー
-		memcpy(mappedSubresource.pData, _instBufVec.data(), sizeof(InstanceBuffer) * _instBufVec.size());
-		m_deviceContext->Unmap(_instanceBuffer.Get(), 0);
-	}
-	else
-	{
-		Debug::Log("GPUへのデータ転送失敗[Direct3D::Draw2D_Batch()]");
-		return;
-	}
-
-
-	// GPUパイプラインへのセット
-	// スロット０：基本の形（四角形メッシュ）
-	// スロット１：インスタンスデータ
-	ID3D11Buffer* vBuffers[] = { _quadVertexBuffer.Get(), _instanceBuffer.Get() };
-	UINT strides[] = { sizeof(VertexType2D), sizeof(InstanceBuffer) };
-	UINT offsets[] = { 0, 0 };
-	m_deviceContext->IASetVertexBuffers(0, 2, vBuffers, strides, offsets);
-
+	SetGpuData();
 
 	m_deviceContext->VSSetShader(_texShader_Batch->GetVertexShader().Get(), 0, 0);
 	m_deviceContext->PSSetShader(_texShader_Batch->GetPixelShader().Get(), 0, 0);
@@ -552,49 +359,20 @@ void Direct3D::Draw2D_Batch(const Texture* texture)
 	// テクスチャを、ピクセルシェーダーのスロット0にセット
 	m_deviceContext->PSSetShaderResources(0, 1, texture->m_shaderResourceview.GetAddressOf());
 
-
 	// 描画
-	m_deviceContext->DrawInstanced(4, _instBufVec.size(), 0, 0);
-
+	m_deviceContext->DrawIndexedInstanced(6, _instBufVec.size(), 0, 0, 0);
 
 	_instBufVec.clear();
 }
 
 void Direct3D::DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color)
 {
-	SetColor(color);
-	SetRect(center.x, center.y, size.x, size.y, rotation);
-	Draw2D();
+	Debug::Log(L"実装を追加してください。");
 }
 
 void Direct3D::DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView)
 {
-	// GPUにデータを転送
-	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
-
-	// サブリソースに含まれるデータへのポインターを取得し、そのサブリソースへの GPU アクセスを拒否します。
-	// D3D11_MAP_WRITE_DISCARD...以前のバッファ内容を破棄して新しく書き込む
-	if (SUCCEEDED(m_deviceContext->Map(_instanceBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
-	{
-		// vectorの内容をGPUのメモリへコピー
-		memcpy(mappedSubresource.pData, _instBufVec.data(), sizeof(InstanceBuffer) * _instBufVec.size());
-		m_deviceContext->Unmap(_instanceBuffer.Get(), 0);
-	}
-	else
-	{
-		Debug::Log("GPUへのデータ転送失敗[Direct3D::Draw2D_Batch()]");
-		return;
-	}
-
-
-	// GPUパイプラインへのセット
-	// スロット０：基本の形（四角形メッシュ）
-	// スロット１：インスタンスデータ
-	ID3D11Buffer* vBuffers[] = { _quadVertexBuffer.Get(), _instanceBuffer.Get() };
-	UINT strides[] = { sizeof(VertexType2D), sizeof(InstanceBuffer) };
-	UINT offsets[] = { 0, 0 };
-	m_deviceContext->IASetVertexBuffers(0, 2, vBuffers, strides, offsets);
-
+	SetGpuData();
 
 	m_deviceContext->VSSetShader(_texShader_Batch->GetVertexShader().Get(), 0, 0);
 	m_deviceContext->PSSetShader(_texShader_Batch->GetPixelShader().Get(), 0, 0);
@@ -603,10 +381,40 @@ void Direct3D::DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView)
 	// テクスチャを、ピクセルシェーダーのスロット0にセット
 	m_deviceContext->PSSetShaderResources(0, 1, shaderResourceView.GetAddressOf());
 
-
 	// 描画
-	m_deviceContext->DrawInstanced(4, _instBufVec.size(), 0, 0);
-
+	m_deviceContext->DrawIndexedInstanced(6, _instBufVec.size(), 0, 0, 0);
 
 	_instBufVec.clear();
+}
+
+void Direct3D::SetGpuData()
+{
+	// GPUにデータを転送
+	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
+
+	// サブリソースに含まれるデータへのポインターを取得し、そのサブリソースへの GPU アクセスを拒否します。
+	// D3D11_MAP_WRITE_DISCARD...以前のバッファ内容を破棄して新しく書き込む
+	if (SUCCEEDED(m_deviceContext->Map(_instanceBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
+	{
+		// vectorの内容をGPUのメモリへコピー
+		memcpy(mappedSubresource.pData, _instBufVec.data(), sizeof(InstanceBuffer) * _instBufVec.size());
+		m_deviceContext->Unmap(_instanceBuffer.Get(), 0);
+	}
+	else
+	{
+		Debug::Log("GPUへのデータ転送失敗[Direct3D::Draw2D_Batch()]");
+		return;
+	}
+
+	// GPUパイプラインへのセット
+	// スロット０：基本の形（四角形メッシュ）
+	// スロット１：インスタンスデータ
+	ID3D11Buffer* vBuffers[] = { _quadVertexBuffer.Get(), _instanceBuffer.Get() };
+	UINT strides[] = { sizeof(VertexType2D), sizeof(InstanceBuffer) };
+	UINT offsets[] = { 0, 0 };
+	m_deviceContext->IASetVertexBuffers(0, 2, vBuffers, strides, offsets);
+
+
+	// インデックスバッファのセット
+	m_deviceContext->IASetIndexBuffer(_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
 }

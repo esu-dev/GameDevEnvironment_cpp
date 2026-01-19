@@ -40,7 +40,7 @@ void Debug::Log(const char* log, ...)
 
 void Debug::DrawLine(const Vector3& start, const Vector3& end, const DirectX::XMFLOAT4& color)
 {
-	Direct3D::GetInstance().SetColor(color);
+	/*Direct3D::GetInstance().SetColor(color);
 
 	Vector3 v = end - start;
 	Vector3 position = start + v / 2;
@@ -49,5 +49,7 @@ void Debug::DrawLine(const Vector3& start, const Vector3& end, const DirectX::XM
 	Vector3 drawPosition = position - Camera::get_main()->GetTransform()->position;
 
 	Direct3D::GetInstance().SetRect(drawPosition.x, drawPosition.y, length, 0.25f, Quaternion::FromToRotation(Vector3::right, v));
-	Direct3D::GetInstance().Draw2D();
+	Direct3D::GetInstance().Draw2D();*/
+
+	Log(L"À‘•‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B");
 }

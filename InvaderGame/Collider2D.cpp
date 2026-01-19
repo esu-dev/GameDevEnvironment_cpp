@@ -8,7 +8,7 @@ void Collider2D::Update()
 	Transform* transform = this->gameObject->GetTransform();
 	auto AABB = GetAABB();
 	Vector2 size = AABB.second - AABB.first;
-	Direct3D::GetInstance().DrawRect(transform->position.Get().ToVector2(), size, Quaternion::AngleAxis(0, Vector3(0, 0, 1)), DirectX::XMFLOAT4(0, 0, 1, 1));
+	//Direct3D::GetInstance().DrawRect(transform->position.Get().ToVector2(), size, Quaternion::AngleAxis(0, Vector3(0, 0, 1)), DirectX::XMFLOAT4(0, 0, 1, 1));
 }
 
 void Collider2D::SetOffset(Vector2 centerPos)
