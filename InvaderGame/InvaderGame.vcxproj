@@ -258,6 +258,7 @@
     <ClCompile Include="MathUtility.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="DemoMovement.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Physics2D.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -405,6 +406,8 @@
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="MathUtility.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshFilter.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Property.h" />
     <ClInclude Include="PropertyBase.h" />
