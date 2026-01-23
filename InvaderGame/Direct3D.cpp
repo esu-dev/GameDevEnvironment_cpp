@@ -418,3 +418,13 @@ void Direct3D::SetGpuData()
 	// インデックスバッファのセット
 	m_deviceContext->IASetIndexBuffer(_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
 }
+
+void Direct3D::AddMeshData(const std::vector<VertexType3D>& vertexVec)
+{
+	_vertexVec = vertexVec;
+}
+
+void Direct3D::Draw()
+{
+
+}

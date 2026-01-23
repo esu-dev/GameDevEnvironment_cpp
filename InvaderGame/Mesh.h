@@ -1,15 +1,7 @@
 #pragma once
 
-#include <string>
-#include <vector>
-#include <DirectXMath.h>
-
-struct VertexType3D
-{
-	DirectX::XMFLOAT3 Pos;
-	DirectX::XMFLOAT3 Normal;
-	DirectX::XMFLOAT2 UV;
-};
+#include "framework.h"
+#include "Direct3D.h"
 
 class Mesh
 {

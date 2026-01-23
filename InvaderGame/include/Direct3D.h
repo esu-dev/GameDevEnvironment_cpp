@@ -21,6 +21,13 @@ struct VertexType2D
 	DirectX::XMFLOAT2 UV; // UV座標
 };
 
+struct VertexType3D
+{
+	DirectX::XMFLOAT3 Pos;
+	DirectX::XMFLOAT3 Normal;
+	DirectX::XMFLOAT2 UV;
+};
+
 struct InstanceBuffer
 {
 	DirectX::XMMATRIX matrix; // 48 byte
@@ -43,13 +50,6 @@ public:
 	Shader* _texShader_Batch;
 	Shader* _colorShader_Batch;
 
-	// バッファ
-	ComPtr<ID3D11Buffer> _quadVertexBuffer;
-	ComPtr<ID3D11Buffer> _cameraBuffer;
-	ComPtr<ID3D11Buffer> _indexBuffer;
-	ComPtr<ID3D11Buffer> _colorBuffer;
-	ComPtr<ID3D11Buffer> _instanceBuffer;
-
 
 	bool Initialize(HWND hWnd, int width, int height);
 
@@ -70,11 +70,27 @@ public:
 	void DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color);
 	void DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView);
 
+	// 3D描画
+	void AddMeshData(const std::vector<VertexType3D>& vertexVec);
+	void Draw();
+
 
 private:
 	static inline Direct3D* s_instance;
 
+	// バッファ
+	ComPtr<ID3D11Buffer> _quadVertexBuffer;
+	ComPtr<ID3D11Buffer> _cameraBuffer;
+	ComPtr<ID3D11Buffer> _indexBuffer;
+	ComPtr<ID3D11Buffer> _colorBuffer;
+	ComPtr<ID3D11Buffer> _instanceBuffer;
+
+	ComPtr<ID3D11Buffer> _vertexBuffer;
+
+	
 	std::vector<InstanceBuffer> _instBufVec;
+	
+	std::vector<VertexType3D> _vertexVec;
 
 	Direct3D();
 	void SetGpuData();

@@ -14,10 +14,11 @@ struct VS_INPUT
 {
 	// スロット０
     float4 pos : POSITION;
-    float2 uv : TEXUV;
+    float3 normal : NORMAL;
+    float2 uv : TEXCOORD0;
 	
 	// スロット１
-    float4x4 worldMat : INST_MATRIX; // wvp = (World * View * Projection)
+    float4x4 worldMat : INST_MATRIX;
     float4 color : INST_COLOR;
 };
 
