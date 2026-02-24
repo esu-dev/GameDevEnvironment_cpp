@@ -1,7 +1,5 @@
 #pragma once
 
-#include <box2d.h>
-
 #include "framework.h"
 #include "Component.h"
 #include "Vector2.h"
@@ -32,11 +30,8 @@ public:
 	void Update() override;
 
 	bool IsSleeping();
-	void SetUseGravity(bool useGravity);
 	void SetKinematic();
-	void SetFreeze();
 	void SetDynamic();
-	void SetVelocity(Vector2 velocity);
 
 	void ApplyGravity();
 	void AddForce(Vector2 force);
@@ -47,5 +42,4 @@ private:
 	Record<bool> _isSleeping;
 	float _sleepTimer = 0;
 	Collider2D* _collider2D;
-	b2FixtureDef fixtureDef;
 };

@@ -131,8 +131,7 @@
       <AdditionalLibraryDirectories>.\lib\Box2D\2.4.1\bin\Debug;.\lib\DirectXTex\Bin\Debug</AdditionalLibraryDirectories>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libfbxsdk.lib;libxml2.lib;zlib.lib</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>

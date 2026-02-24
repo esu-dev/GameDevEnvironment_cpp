@@ -54,7 +54,6 @@ Scene* SampleSceneAssets::load_scene_asset_impl()
 	_testObject->AddComponent<BoxCollider2D>()->SetSize(Vector2(2.0f, 2.0f));
 	_testObject->AddComponent<Rigidbody2D>();
 	Rigidbody2D* r = _testObject->GetComponent<SpriteRenderer>()->GetComponent<Rigidbody2D>();
-	r->SetUseGravity(false);
 	//r->SetVelocity(Vector2(0, -0.1));
 	_testObject->GetTransform()->position = Vector3(8, 0, 0);
 	_testObject->GetTransform()->scale = { 2, 2, 0.0f };

@@ -5,44 +5,29 @@
 
 BoxCollider2D::BoxCollider2D()
 {
-	_bodyDef.type = b2BodyType::b2_dynamicBody;
-	_bodyDef.position.Set(0, 0);
-	_body = Physics2D::GetBox2DWorld()->CreateBody(&_bodyDef);
-
 	SetSize(Vector2(1.0f, 1.0f));
 }
 
 BoxCollider2D::~BoxCollider2D()
 {
-	Physics2D::GetBox2DWorld()->DestroyBody(_body);
-
-	//Debug::Log(L"BoxCollider2D Destractor");
 }
 
 void BoxCollider2D::SetSize(Vector2 size)
 {
 	_size = size;
-
-	Vector2 v = Camera::WorldToBox2DWorld(size.ToVector3() * 0.5f);
-	dynamicBox.SetAsBox(v.x, v.y);
 }
 
 void BoxCollider2D::SynchronizeBodyWithGameObject()
 {
 	Vector2 colliderPos = Camera::WorldToBox2DWorld(this->gameObject->GetTransform()->position) + _offset;
-	_body->SetTransform(b2Vec2{ colliderPos.x, colliderPos.y }, _body->GetAngle());
-
-	//Debug::Log(L"pos: %f, colliderPos: %f", this->gameObject->GetTransform()->position.y, colliderPos.y);
 }
 
 void BoxCollider2D::OnEnable()
 {
-	GAMESYS.AddDelayedExecution([&]() { _body->SetEnabled(true); });
 }
 
 void BoxCollider2D::OnDisable()
 {
-	GAMESYS.AddDelayedExecution([&]() { _body->SetEnabled(false); });
 }
 
 void BoxCollider2D::Start()

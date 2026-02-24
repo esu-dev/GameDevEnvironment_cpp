@@ -19,7 +19,7 @@ void DemoPhysicsManager::Update()
 	{
 		_timer = 0;
 
-		_cube->GetComponent<Rigidbody2D>()->SetVelocity(Vector2(0, -0.1f));
+		_cube->GetComponent<Rigidbody2D>()->velocity = Vector2(0, -0.1f);
 		_cube->GetTransform()->SetPosition(this->get_transform()->position.Get().x, this->get_transform()->position.Get().y);
 		_cube->GetComponent<Rigidbody2D>()->SetDynamic();
 	}

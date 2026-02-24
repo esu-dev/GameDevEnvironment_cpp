@@ -69,7 +69,7 @@ void Player::Update()
 	if (_canJump && Input::GetKeyDown(VK_SPACE)) // getkeydown‚ª‚È‚º‚©‚¸‚Á‚Ætrue
 	{
 		_canJump = false;
-		rigidbody->SetVelocity(Vector2(0, 0));
+		rigidbody->velocity = Vector2(0, 0);
 		rigidbody->AddImpulse(Vector2::up * _jumpPower);
 		ChangeState(_jumpingState);
 	}

@@ -7,110 +7,51 @@ bool Rigidbody2D::IsSleeping()
 	return _isSleeping;
 }
 
-void Rigidbody2D::SetUseGravity(bool useGravity)
-{
-	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
-	if (useGravity)
-	{
-		_collider2D->Getb2Body()->SetGravityScale(1);
-	}
-	else
-	{
-		_collider2D->Getb2Body()->SetGravityScale(0);
-	}
-}
-
 void Rigidbody2D::SetKinematic()
 {
 	IsKinematic = true;
-	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
-	{
-		return;
-	}
-
-	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
-	_collider2D->Getb2Body()->SetType(b2BodyType::b2_kinematicBody);
-}
-
-void Rigidbody2D::SetFreeze()
-{
-	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
-	_collider2D->Getb2Body()->SetType(b2BodyType::b2_staticBody);
 }
 
 void Rigidbody2D::SetDynamic()
 {
 	IsKinematic = false;
-	_collider2D = this->gameObject->GetComponent<BoxCollider2D>();
-	_collider2D->Getb2Body()->SetType(b2BodyType::b2_dynamicBody);
-}
-
-void Rigidbody2D::SetVelocity(Vector2 velocity)
-{
-	Vector2 box2DVelocity = Camera::WorldToBox2DWorld(velocity.ToVector3());
-	b2Vec2 v = b2Vec2{ box2DVelocity.x, box2DVelocity.y };
-	_collider2D->Getb2Body()->SetLinearVelocity(v);
 }
 
 void Rigidbody2D::Start()
 {
 	_collider2D = this->gameObject->GetComponent<Collider2D>();
-
-	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Box2D)
-	{
-		fixtureDef.shape = _collider2D->Getb2PolygonShape();
-		fixtureDef.density = 1.0f;
-		fixtureDef.friction = 0.3f;
-
-		_collider2D->Getb2Body()->CreateFixture(&fixtureDef);
-	}
 }
 
 void Rigidbody2D::Update()
 {
 	// 自作物理エンジン
-	if (Physics2D::GetLibraryType() == Physics2D::LibraryType::Original)
+	/*if (velocity.Get().GetMagnitude() < 1)
 	{
-		/*if (velocity.Get().GetMagnitude() < 1)
-		{
-			_sleepTimer += EngineTime::GetDeltaTime();
+		_sleepTimer += EngineTime::GetDeltaTime();
 
-			if (_sleepTimer >= 3)
-			{
-				_isSleeping = true;
-			}
+		if (_sleepTimer >= 3)
+		{
+			_isSleeping = true;
 		}
-		else
-		{
-			_isSleeping = false;
-			_sleepTimer = 0;
-		}*/
+	}
+	else
+	{
+		_isSleeping = false;
+		_sleepTimer = 0;
+	}*/
 
-		if (velocity.Get().GetMagnitude() == 0)
-		{
-			return;
-		}
-
-		/*if (_isSleeping)
-		{
-			return;
-		}*/
-		
-		// 位置の更新
-		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position.Get() + ((Vector2)velocity).ToVector3() * EngineTime::GetFixedDeltaTime();
-
+	if (velocity.Get().GetMagnitude() == 0)
+	{
 		return;
 	}
 
-	// 位置の更新
-	if (_collider2D != nullptr)
+	/*if (_isSleeping)
 	{
-		b2Vec2 velocity = _collider2D->Getb2Body()->GetLinearVelocity();
-		Vector2 v = Vector2(velocity.x, velocity.y);
-		this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position + Camera::Box2DWorldToWorld(v) * EngineTime::GetFixedDeltaTime();
-
-		//Debug::Log(L"pos: %f, delta: %f", this->gameObject->GetTransform()->position.y, Time::GetDelataTime());
-	}
+		return;
+	}*/
+		
+	// 位置の更新
+	this->gameObject->GetTransform()->position = this->gameObject->GetTransform()->position.Get() + ((Vector2)velocity).ToVector3() * EngineTime::GetFixedDeltaTime();
 }
 
 void Rigidbody2D::ApplyGravity()
