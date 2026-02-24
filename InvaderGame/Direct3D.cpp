@@ -421,7 +421,7 @@ void Direct3D::SetGpuData()
 
 void Direct3D::AddMeshData(const std::vector<VertexType3D>& vertexVec)
 {
-	_vertexVec = vertexVec;
+	_vertexVec.push_back(vertexVec);
 }
 
 void Direct3D::Draw()

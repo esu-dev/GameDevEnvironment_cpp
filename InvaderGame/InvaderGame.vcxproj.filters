@@ -631,5 +631,8 @@
     <ClInclude Include="MeshFilter.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
+    <ClInclude Include="MeshRenderer.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

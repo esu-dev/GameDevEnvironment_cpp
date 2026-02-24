@@ -90,7 +90,7 @@ private:
 	
 	std::vector<InstanceBuffer> _instBufVec;
 	
-	std::vector<VertexType3D> _vertexVec;
+	std::vector<std::vector<VertexType3D>> _vertexVec;
 
 	Direct3D();
 	void SetGpuData();
