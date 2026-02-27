@@ -27,7 +27,6 @@
 #include <memory>
 #include <tchar.h>
 #include <locale.h>
-#include <box2d.h>
 
 #include <string>
 #include <vector>

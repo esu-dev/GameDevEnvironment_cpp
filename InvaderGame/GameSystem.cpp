@@ -1,11 +1,13 @@
 #include "GameSystem.h"
 
+#include <chrono>
 #include "DirectX.h"
 #include "GameEngine.h"
 #include "AssetManager.h"
 #include "SceneEditor.h"
 #include "GameState.h"
 #include "EditorCamera.h"
+#include "Profiler.h"
 
 #include "ImGuiUtility.h"
 
@@ -31,7 +33,7 @@ void GameSystem::Initialize()
 
 void GameSystem::Execute()
 {
-	ULONGLONG startTime = GetTickCount64();
+	auto startTime = std::chrono::high_resolution_clock::now();
 
 	// 背景色の設定
 	const auto& bg = Camera::backgroundColor;
@@ -42,8 +44,7 @@ void GameSystem::Execute()
 
 	ImGuiUtility::BeginFrame();
 
-	startTime = GetTickCount64();
-
+	
 	// イベント処理
 	_delayedExecutionEvent.Invoke();
 	_delayedExecutionEvent.RemoveAllListener();
@@ -52,16 +53,19 @@ void GameSystem::Execute()
 	// staticクラスのUpdate処理
 	Input::Update();
 
-	ULONGLONG startTime_physics = GetTickCount64();
+	auto st_physics = std::chrono::high_resolution_clock::now();
 	Physics2D::Update();
-	Debug::Log("static Update(physics):%d", (int)(GetTickCount64() - startTime_physics));
+	auto et_physics = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<float, std::milli> duration_physics = et_physics - st_physics;
+
+	Profiler::FrameData frameData;
+	frameData.categoryTimes["Physics"] = duration_physics.count();
 
 	//InputSystem::Update();
 	SceneEditor::Update();
 	GameState::Update();
 
-	Debug::Log("static Update(total):%d", (int)(GetTickCount64() - startTime));
-	startTime = GetTickCount64();
+	auto st_scripts = std::chrono::high_resolution_clock::now();
 
 	// Update処理
 	Scene* activeScene = SceneManager::GetActiveScene();
@@ -78,8 +82,11 @@ void GameSystem::Execute()
 		}
 	}
 
-	Debug::Log("Update：%d", (int)(GetTickCount64() - startTime));
-	startTime = GetTickCount64();
+	auto et_scripts = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<float, std::milli> duration_scripts = et_scripts - st_scripts;
+	frameData.categoryTimes["Scripts"] = duration_scripts.count();
+	
+	auto st_rendering = std::chrono::high_resolution_clock::now();
 
 	if (SceneEditor::GetIsEditMode())
 	{
@@ -101,14 +108,20 @@ void GameSystem::Execute()
 	}
 	_renderingDataVector.clear();
 
-	Debug::Log("レンダリング：%d", (int)(GetTickCount64() - startTime));
-	startTime = GetTickCount64();
+	auto et_rendering = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<float, std::milli> duration_rendering = et_rendering - st_rendering;
+	frameData.categoryTimes["Rendering"] = duration_rendering.count();
+
+	auto endTime = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<float, std::milli> duration = endTime - startTime;
+	frameData.totalFrameTime = duration.count();
+
+	Profiler::AddFrameData(frameData);
+	Profiler::Render();
 
 	// ImGui描画
 	// これを最後に持ってこないと、オブジェクトの下にGUIが表示されてしまう。
 	ImGuiUtility::Render();
-
-	Debug::Log("ImGui：%d", (int)(GetTickCount64() - startTime));
 
     D3D.m_swapChain->Present(1, 0);
 }
