@@ -23,7 +23,7 @@ public:
 	Object* original = nullptr;
 
 	SERIALIZE3(SerializedClass,
-		SERIALIZE_FIELD3(name)
+		SERIALIZE_FIELD3(name, HIDE_INSPECTOR)
 	)
 
 	virtual std::string GetName() { return "not overrided"; };

@@ -1,5 +1,15 @@
 #include "SerializedClass.h"
 
+std::vector<SerializedClass::FieldInfo> SerializedClass::GetFieldInfoVector()
+{
+	std::vector<FieldInfo> fieldInfoVector;
+	for (auto& serializeFunc : GetSerializeFuncData())
+	{
+		fieldInfoVector.push_back(serializeFunc->getFieldFunc());
+	}
+	return fieldInfoVector;
+}
+
 void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVector, const std::vector<std::shared_ptr<SerializeFuncData>>& functionVector)
 {
 	bool isPacking = false;

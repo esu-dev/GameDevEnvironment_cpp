@@ -62,11 +62,11 @@ void TimeController::Update()
 		return;
 	}
 
-	ImGui::SetNextWindowPos(ImVec2(GameSystem::WINDOW_WIDTH - width - 10, GameSystem::WINDOW_HEIGHT - height - 10));
-	ImGui::SetNextWindowSize(ImVec2(width, height));
+	ImGui::SetNextWindowPos(ImVec2((float)(GameSystem::WINDOW_WIDTH - width - 10), (float)(GameSystem::WINDOW_HEIGHT - height - 10)));
+	ImGui::SetNextWindowSize(ImVec2((float)width, (float)height));
 	if (ImGui::Begin("Time Controller"))
 	{
-		int totalTime_int = EngineTime::GetTotalTime() / RecordBase::RECORD_INTERVAL;
+		int totalTime_int = (int)(EngineTime::GetTotalTime() / RecordBase::RECORD_INTERVAL);
 		if (ImGui::SliderInt("-", &time, 0, totalTime_int))
 		{
 			_time = time * RecordBase::RECORD_INTERVAL;

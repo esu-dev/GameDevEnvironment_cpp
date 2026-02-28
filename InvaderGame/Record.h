@@ -12,7 +12,7 @@ class Record : public RecordBase
 public:
 	SERIALIZE3(RecordBase,
 		SERIALIZE_FIELD3(_variable),
-		SERIALIZE_FIELD3(_timeVariableSetVector)
+		SERIALIZE_FIELD3(_timeVariableSetVector, HIDE_INSPECTOR)
 	)
 
 	void Initialize() override
@@ -160,7 +160,7 @@ private:
 	struct TimeVariableSet : public SerializedClass
 	{
 		float time = 0;
-		T variable;
+		T variable = T();
 
 		SERIALIZE3(SerializedClass,
 			SERIALIZE_FIELD3(time),
@@ -168,7 +168,7 @@ private:
 		)
 	};
 	
-	T _variable;
+	T _variable = T();
 	std::vector<TimeVariableSet> _timeVariableSetVector;
 
 	void UpdateValue()

@@ -3,7 +3,13 @@
 #include "Input.h"
 #include "Camera.h"
 #include "Transform.h"
+#include "imgui.h"
 #include "imgui_impl_dx11.h"
+
+float EditorCamera::GetSize()
+{
+	return _size;
+}
 
 Vector3 EditorCamera::GetPosition()
 {
@@ -12,19 +18,20 @@ Vector3 EditorCamera::GetPosition()
 
 void EditorCamera::Start()
 {
-	//editorCameraPos = Camera::get_main()->GetTransform()->position;
+
 }
 
 void EditorCamera::Update()
 {
 	static bool isEditorCameraOn;
-	static float moveSpeed = 7;
+	static float moveSpeed = 4;
+
 
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('C'))
 	{
 		isEditorCameraOn = !isEditorCameraOn;
 		
-		// ƒJƒƒ‰‹N“®
+		// ã‚«ãƒ¡ãƒ©èµ·å‹•
 		if (isEditorCameraOn)
 		{
 			_editorCameraPos = savedCameraPos;
@@ -32,43 +39,44 @@ void EditorCamera::Update()
 		else
 		{
 			savedCameraPos = _editorCameraPos;
-			_editorCameraPos = Camera::get_main()->GetTransform()->position;
+			_editorCameraPos = Camera::GetMain()->GetTransform()->position;
 		}
 	}
 
-	// ƒJƒƒ‰‹N“®’†
+	// ã‚«ãƒ¡ãƒ©èµ·å‹•ä¸­
 	if (!isEditorCameraOn)
 	{
-		_editorCameraPos = Camera::get_main()->GetTransform()->position;
+		_editorCameraPos = Camera::GetMain()->GetTransform()->position;
 		return;
 	}
 
 
-	// ƒJƒƒ‰‚ÌˆÚ“®
-	if (Input::GetKey('W'))
+	// ãƒã‚¦ã‚¹ã«ã‚ˆã‚‹ç§»å‹• (å³ã‚¯ãƒªãƒƒã‚¯ãƒ‰ãƒ©ãƒƒã‚°ã§ç§»å‹•)
+	if (ImGui::IsMouseDown(ImGuiMouseButton_Right))
 	{
-		_editorCameraPos += Vector3::up * moveSpeed * EngineTime::GetEngineDeltaTime();
+		ImVec2 delta = ImGui::GetIO().MouseDelta;
+		_editorCameraPos += -Vector3::right * delta.x * moveSpeed * 0.01f;
+		_editorCameraPos += Vector3::up * delta.y * moveSpeed * 0.01f;
 	}
-	else if (Input::GetKey('A'))
+
+	// ã‚ºãƒ¼ãƒ 
+	if (!ImGui::GetIO().WantCaptureMouse)
 	{
-		_editorCameraPos += -Vector3::right * moveSpeed * EngineTime::GetEngineDeltaTime();
-	}
-	else if (Input::GetKey('S'))
-	{
-		_editorCameraPos += -Vector3::up * moveSpeed * EngineTime::GetEngineDeltaTime();
-	}
-	else if (Input::GetKey('D'))
-	{
-		_editorCameraPos += Vector3::right * moveSpeed * EngineTime::GetEngineDeltaTime();
+		float zoomAmount = ImGui::GetIO().MouseWheel * 0.1f;
+		if (zoomAmount != 0)
+		{
+			_size += zoomAmount;
+		}
 	}
 
 
-	// ƒEƒBƒ“ƒhƒE
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 	ImGui::SetNextWindowSize(ImVec2(200, 100));
-	ImGui::Begin("Editr Camera");
+	ImGui::Begin("Editor Camera");
 	ImGui::DragFloat("Move Speed", &moveSpeed);
 	ImGui::End();
 }
 
+float EditorCamera::_size = 1.0f;
 Vector3 EditorCamera::_editorCameraPos;
 Vector3 EditorCamera::savedCameraPos = Vector3(0, 0, -10);

@@ -17,7 +17,7 @@ public:
 
 	SERIALIZE3(Component,
 		SERIALIZE_FIELD3(_parentProperty),
-		SERIALIZE_FIELD3(_childVector),
+		SERIALIZE_FIELD3(_childVector, HIDE_INSPECTOR),
 		SERIALIZE_FIELD3(position),
 		SERIALIZE_FIELD3(_localPosition),
 		SERIALIZE_FIELD3(_eulerRotation),
@@ -34,6 +34,7 @@ public:
 
 	Vector3 GetUp();
 	Vector3 GetForward();
+	const Vector3& GetPosition();
 	void SetPosition(float x, float y);
 	void SetLocalPosition(Vector3& vector);
 	Vector3 GetLocalPosition();

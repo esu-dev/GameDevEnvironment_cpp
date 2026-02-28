@@ -159,13 +159,11 @@ Vector2 BoxCollider2D::GetClosestPointByVertex(const Vector2 vertices[4], int ta
 		else return closestPoints[1];
 	}
 
-	for (int j = 0; j < 2; j++)
+	if (complete[0])
 	{
-		if (complete[j])
-		{
-			return closestPoints[j];
-		}
+		return closestPoints[0];
 	}
+	return closestPoints[1];
 }
 
 bool BoxCollider2D::IsPointIn(Vector2& point)

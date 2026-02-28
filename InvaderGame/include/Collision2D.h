@@ -10,7 +10,7 @@ class Collision2D
 public:
 	struct CollisionData
 	{
-		float depth;
+		float depth = 0;
 		Vector2 contact;
 	};
 

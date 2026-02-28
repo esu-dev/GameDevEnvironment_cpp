@@ -41,8 +41,8 @@ public:
 
 	SERIALIZE3(Object,
 		SERIALIZE_FIELD3(enabled),
-		SERIALIZE_FIELD3(gameObject),
-		SERIALIZE_FIELD3(Started),
+		SERIALIZE_FIELD3(gameObject, HIDE_INSPECTOR),
+		SERIALIZE_FIELD3(Started, HIDE_INSPECTOR),
 	)
 
 	virtual ~Component() { /*Debug::Log("Destructor is nor overrided. [%s]", GetName().c_str());*/ }

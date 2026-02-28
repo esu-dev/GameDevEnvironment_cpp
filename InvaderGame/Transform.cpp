@@ -54,6 +54,11 @@ Vector3 Transform::GetForward()
 	return this->rotation.Get().Mult(Vector3::forward);
 }
 
+const Vector3& Transform::GetPosition()
+{
+	return position.Get();
+}
+
 void Transform::SetPosition(float x, float y)
 {
 	position.Get().x = x;

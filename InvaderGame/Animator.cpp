@@ -27,7 +27,7 @@ void Animator::Play(std::string animationName)
 	auto itr = std::find(result.begin(), result.end(), animationName);
 	__int64 index = std::distance(result.begin(), itr);
 
-	if (index >= _animationVector.size())
+	if (index >= (int)_animationVector.size())
 	{
 		return;
 	}

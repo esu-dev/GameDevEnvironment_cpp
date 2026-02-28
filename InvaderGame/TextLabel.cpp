@@ -35,7 +35,7 @@ void TextLabel::SetTextAlign(TextAlign textAlign)
 
 void TextLabel::Update()
 {
-	GameSystem::GetInstance().AddRenderingData(INT_MAX, [this]() -> void { this->Render(Camera::get_main()->GetTransform()->position); });
+	GameSystem::GetInstance().AddRenderingData(INT_MAX, [this]() -> void { this->Render(Camera::GetMain()->GetTransform()->position); });
 }
 
 void TextLabel::EditorUpdate()

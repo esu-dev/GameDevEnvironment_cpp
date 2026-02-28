@@ -5798,7 +5798,7 @@ TextLabel:
   enabled: true
   gameObject: (instanceID)714568730=168293298=410608805
   Started: false
-  _canMove: true
+  _canMove: false
   FontSize: 26
   _text: "Get a Crystal!!"
 --- 1659179802=654795890=630138907

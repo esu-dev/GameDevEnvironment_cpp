@@ -23,4 +23,13 @@ bool Input::GetKeyDown(int vkey)
 	return _isVkeyDown[vkey];
 }
 
+bool Input::AnyKeyDown()
+{
+	for (bool isDown : _isVkeyDown)
+	{
+		if (isDown) return true;
+	}
+	return false;
+}
+
 bool Input::_isVkeyDown[150] = {};

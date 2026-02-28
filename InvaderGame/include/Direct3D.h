@@ -58,7 +58,7 @@ public:
 	void ChangeMode_2D();
 
 
-	void StartRendering(DirectX::XMVECTOR cameraPos);
+	void StartRendering(DirectX::XMVECTOR cameraPos, float size);
 
 	// èÓïÒÇÃÉZÉbÉg
 	void SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Quaternion rotation, DirectX::XMFLOAT4 color, bool isFlipX);

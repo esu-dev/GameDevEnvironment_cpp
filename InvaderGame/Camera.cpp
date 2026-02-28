@@ -60,7 +60,12 @@ Vector3 Camera::Box2DWorldToWorld(Vector2 worldPos)
 	return Vector3(result.g_matrix[0][0], result.g_matrix[1][0], result.g_matrix[2][0]);
 }
 
-Camera* Camera::get_main()
+Camera* Camera::GetMain()
 {
 	return GameObject::FindGameObjectsWithTag("MainCamera")[0]->GetComponent<Camera>();
+}
+
+float Camera::GetSize()
+{
+	return _size;
 }

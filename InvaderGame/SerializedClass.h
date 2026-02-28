@@ -1,10 +1,12 @@
 #pragma once
 
-#define SERIALIZE_FIELD3(v) \
+#define HIDE_INSPECTOR SerializedClass::FieldInfo::Attribute::HideInInspector
+
+#define SERIALIZE_FIELD3(v, ...) \
 	std::make_shared<SerializeFuncData>( \
 		[&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, indentNum); }, \
 		[&](InstanceData* instanceData) -> void { DeserializeField(v, instanceData); }, \
-		[&]() -> FieldInfo { return SerializedClass::CreateFieldInfo(#v, typeid(v).name(), v); }, \
+		[&]() -> FieldInfo { return SerializedClass::FieldInfo(#v, {__VA_ARGS__}); }, \
 		[&](std::string name) -> void { }) \
 
 #define SERIALIZE3(p, ...) \
@@ -51,15 +53,26 @@ class SerializedClass
 public:
 	struct FieldInfo
 	{
+		enum Attribute
+		{
+			HideInInspector,
+		};
+
 		std::string name;
-		std::string type;
-		SerializedClass* field = nullptr;
+		std::vector<Attribute> AttributeVec;
+
+		FieldInfo(std::string name, std::vector<Attribute> attributeVec)
+		{
+			this->name = name;
+			AttributeVec = attributeVec;
+		}
 	};
 	
 	virtual std::vector<std::string> Serialize(const int indentNum = 1) { return { "" }; }
 	virtual int Deserialize(std::vector<std::string> v) { return 0; } // intを返すのは、親クラスの処理数を教えるため
 
 	SerializedClass() {}
+	std::vector<FieldInfo> GetFieldInfoVector();
 
 
 protected:
@@ -470,21 +483,6 @@ protected:
 		}
 	}
 	
-	template <typename T>
-	static FieldInfo CreateFieldInfo(const std::string& name, const std::string& type, const T& field)
-	{
-		FieldInfo fieldInfo;
-		fieldInfo.name = name;
-		fieldInfo.type = type;
-		
-		if constexpr (std::is_base_of<SerializedClass, T>())
-		{
-			fieldInfo.field = (SerializedClass*)&field;
-		}
-
-		return fieldInfo;
-	}
-
 	static void InputValue3(const std::vector<std::string>& instanceDataVector, const std::vector<std::shared_ptr<SerializeFuncData>>& functionVector);
 
 	virtual std::vector<std::shared_ptr<SerializeFuncData>> GetSerializeFuncData() { return std::vector<std::shared_ptr<SerializeFuncData>>(); }

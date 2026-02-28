@@ -1,5 +1,6 @@
 #include "ImGuiCreator.h"
 
+#include "framework.h"
 #include "imgui_impl_dx11.h"
 #include "Object.h"
 #include "Component.h"
@@ -146,8 +147,11 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 	bool hasChanged = false;
 	std::vector<std::string> serializedDataVec = serializedObject->Serialize();
 
+
 	for (int i = 0; i < serializedDataVec.size(); i++)
 	{
+		static std::string vectorName = "";
+
 		std::function<void()> createContents = [&]() -> void {
 			if (i >= serializedDataVec.size())
 			{
@@ -160,6 +164,20 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 
 			ImGui::PushID(i);
 
+			std::function<bool(const std::string&)> isHideInspector = [&](const std::string& name) -> bool {
+					auto fieldInfoVec = serializedObject->GetFieldInfoVector();
+					auto result = std::find_if(fieldInfoVec.begin(), fieldInfoVec.end(), [&](SerializedClass::FieldInfo fieldInfo) -> bool {
+						return fieldInfo.name == name;
+						});
+					if (result != fieldInfoVec.end())
+					{
+						return (std::find_if(result->AttributeVec.begin(), result->AttributeVec.end(), [](SerializedClass::FieldInfo::Attribute attribute) -> bool {
+							return attribute == HIDE_INSPECTOR;
+							}) != result->AttributeVec.end());
+					}
+					return false;
+				};
+
 			// 値
 			if (std::regex_match(serializedData, smatch, std::regex(R"((\s*)(\w+):\s(.+))")))
 			{
@@ -169,6 +187,11 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 
 				std::string serializedVarName = indent + label + ": ";
 
+				if (isHideInspector(label))
+				{
+					goto skipCreateField;
+				}
+
 				if (ArithmeticField(serializedData, serializedVarName, label, value))
 				{
 					hasChanged = true;
@@ -177,14 +200,26 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 			// クラス、構造体
 			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*(\w+):)")))
 			{
+				/*std::string label = smatch[1].str();
+				if (isHideInspector(label))
+				{
+					goto skipCreateField;
+				}*/
+
 				ImGui::Text(serializedData.c_str());
 			}
 			// vector
-			else if (std::regex_match(serializedData, smatch, std::regex(R"((\s*\(vector\)(\w+:)\s)(\d+))")))
+			else if (std::regex_match(serializedData, smatch, std::regex(R"((\s*\(vector\)(\w+):\s)(\d+))")))
 			{
 				std::string serializedVarName = smatch[1].str();
 				std::string label = smatch[2].str();
 				int size = std::stoi(smatch[3].str());
+
+				if (isHideInspector(label))
+				{
+					vectorName = label;
+					goto skipCreateField;
+				}
 
 				// ラベル
 				ImGui::Text(label.c_str());
@@ -200,6 +235,11 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 			// vectorの要素
 			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*-\s(.+))")))
 			{
+				if (isHideInspector(vectorName))
+				{
+					goto skipCreateField;
+				}
+
 				// 要素が値
 				if (std::regex_match(serializedData, smatch, std::regex(R"((\s*)-\s([^:]+))")))
 				{
@@ -233,7 +273,7 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 			{
 				ImGui::Text(serializedData.c_str());
 			}
-
+skipCreateField:
 			ImGui::PopID();
 		};
 

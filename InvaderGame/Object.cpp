@@ -15,9 +15,20 @@ void Object::Destroy(GameObject* gameObject)
 {
 	GAMESYS.AddDelayedExecution([=]() -> void
 		{
-			gameObject->scene->RemoveGameObject(gameObject);
+			std::function<void(GameObject*)> deleteGameObject = [&](GameObject* target = nullptr) -> void
+				{
+					if (target == nullptr) return;
 
-			delete gameObject;
+					for (Transform* child : target->GetTransform()->GetChildVector())
+					{
+						deleteGameObject(child->gameObject);
+					}
+
+					target->scene->RemoveGameObject(target);
+					delete target;
+				};
+
+			deleteGameObject(gameObject);
 		});
 }
 

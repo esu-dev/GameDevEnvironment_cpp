@@ -64,7 +64,7 @@ void GameSystem::Execute()
 
 	//InputSystem::Update();
 	SceneEditor::Update();
-	GameState::Update();
+	//GameState::Update();
 
 	auto* cd_scripts = new Profiler::FrameData();
 	frameData->categories["Scripts"] = cd_scripts;
@@ -94,11 +94,11 @@ void GameSystem::Execute()
 
 	if (SceneEditor::GetIsEditMode())
 	{
-		Direct3D::GetInstance().StartRendering(EditorCamera::GetPosition().ToXMVECTOR());
+		Direct3D::GetInstance().StartRendering(EditorCamera::GetPosition().ToXMVECTOR(), EditorCamera::GetSize());
 	}
 	else
 	{
-		Direct3D::GetInstance().StartRendering(Camera::get_main()->GetTransform()->position.Get().ToXMVECTOR());
+		Direct3D::GetInstance().StartRendering(Camera::GetMain()->GetTransform()->position.Get().ToXMVECTOR(), Camera::GetMain()->GetSize());
 	}
 
 	// 登録されたレンダリング関数を order 順に実行する
@@ -123,7 +123,10 @@ void GameSystem::Execute()
 	std::chrono::duration<float, std::milli> duration = endTime - startTime;
 	frameData->totalTime = duration.count();
 
-	Profiler::Render();
+	if (!SceneEditor::GetIsEditMode())
+	{
+		Profiler::Render();
+	}
 
 	// ImGui描画
 	// これを最後に持ってこないと、オブジェクトの下にGUIが表示されてしまう。

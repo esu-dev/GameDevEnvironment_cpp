@@ -282,10 +282,10 @@ void Direct3D::ChangeMode_2D()
 	m_deviceContext->OMSetBlendState(blendState.Get(), blendFactor, 0xffffffff);
 }
 
-void Direct3D::StartRendering(DirectX::XMVECTOR cameraPos)
+void Direct3D::StartRendering(DirectX::XMVECTOR cameraPos, float size)
 {
 	DirectX::XMMATRIX viewMat = DirectX::XMMatrixLookAtLH(cameraPos, DirectX::XMVectorAdd(cameraPos, DirectX::XMVectorSet(0, 0, 1, 0)), ((Vector3)Vector3::up).ToXMVECTOR());
-	DirectX::XMMATRIX projMat = DirectX::XMMatrixOrthographicLH(GameSystem::WINDOW_WIDTH / Camera::Magnification, GameSystem::WINDOW_HEIGHT / Camera::Magnification, 0.0f, 1000.0f);
+	DirectX::XMMATRIX projMat = DirectX::XMMatrixOrthographicLH(GameSystem::WINDOW_WIDTH / Camera::Magnification / size, GameSystem::WINDOW_HEIGHT / Camera::Magnification / size, 0.0f, 1000.0f);
 	//DirectX::XMMATRIX projMat = DirectX::XMMatrixPerspectiveFovLH(DirectX::XMConvertToRadians(60), (float)GameSystem::WINDOW_WIDTH / (float)GameSystem::WINDOW_HEIGHT, 0.1f, 1000);
 
 	// ’è”ƒoƒbƒtƒ@‚Ö‚Ì‘‚«ž‚Ý
@@ -343,7 +343,7 @@ void Direct3D::Draw2D_Batch()
 	m_deviceContext->IASetInputLayout(_colorShader_Batch->GetInputLayout_Batch().Get());
 	
 	// •`‰æ
-	m_deviceContext->DrawIndexedInstanced(6, _instBufVec.size(), 0, 0, 0);
+	m_deviceContext->DrawIndexedInstanced(6, (UINT)_instBufVec.size(), 0, 0, 0);
 
 	_instBufVec.clear();
 }
@@ -360,7 +360,7 @@ void Direct3D::Draw2D_Batch(const Texture* texture)
 	m_deviceContext->PSSetShaderResources(0, 1, texture->m_shaderResourceview.GetAddressOf());
 
 	// •`‰æ
-	m_deviceContext->DrawIndexedInstanced(6, _instBufVec.size(), 0, 0, 0);
+	m_deviceContext->DrawIndexedInstanced(6, (UINT)_instBufVec.size(), 0, 0, 0);
 
 	_instBufVec.clear();
 }
@@ -382,7 +382,7 @@ void Direct3D::DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView)
 	m_deviceContext->PSSetShaderResources(0, 1, shaderResourceView.GetAddressOf());
 
 	// •`‰æ
-	m_deviceContext->DrawIndexedInstanced(6, _instBufVec.size(), 0, 0, 0);
+	m_deviceContext->DrawIndexedInstanced(6, (UINT)_instBufVec.size(), 0, 0, 0);
 
 	_instBufVec.clear();
 }

@@ -35,7 +35,7 @@ void SpriteRenderer::Update()
 {
 	// Update ‚ÍˆÊ’u‚âó‘Ô‚ÌXV‚¾‚¯‚É‚µ‚ÄA•`‰æ“o˜^‚ðs‚¤
 	// “o˜^ŠÖ”‚ðì¬‚µ‚Ä GameSystem ‚É‡˜•t‚«‚Å“n‚·
-	GameSystem::GetInstance().AddRenderingData(_order, [this]() -> void { this->Render2(Camera::get_main()->GetTransform()->position); });
+	GameSystem::GetInstance().AddRenderingData(_order, [this]() -> void { this->Render2(Camera::GetMain()->GetTransform()->position); });
 }
 
 void SpriteRenderer::EditorUpdate()

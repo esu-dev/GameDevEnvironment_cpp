@@ -182,14 +182,14 @@ void Physics2D::Update()
 			forum1 = 1 / rigidbodyA->mass + 1 / rigidbodyB->mass;
 		}
 
-		int collisionDataNum = collision->collisionDataVector.size();
+		int collisionDataNum = (int)collision->collisionDataVector.size();
 
 		for (auto collisionData : collision->collisionDataVector)
 		{
 			// 法線方向の相対速度
 			float relNormalSpeed = min(Vector2::Dot(relativeVelocity, collision->Normal), 0);
 
-			Vector2 impulse = -collision->Normal * (1 + e) / forum1 * relNormalSpeed / collisionDataNum;
+			Vector2 impulse = -collision->Normal * (1 + e) / forum1 * relNormalSpeed / (float)collisionDataNum;
 
 			// 重力キャンセル
 			// これあるとぶっ飛ぶ
@@ -204,7 +204,7 @@ void Physics2D::Update()
 			// 条件にimpulseを使っているためか挙動がおかしくなる
 			if (impulse.GetMagnitude() < (relativeVelocity * rigidbodyA->mass).GetMagnitude() / collisionDataNum)
 			{
-				impulse = -collision->Normal * relNormalSpeed * rigidbodyA->mass / collisionDataNum;
+				impulse = -collision->Normal * relNormalSpeed * rigidbodyA->mass / (float)collisionDataNum;
 			}
 
 			// めり込み補正
@@ -218,7 +218,7 @@ void Physics2D::Update()
 					down = -power * 0.9f;
 				}
 
-				impulse += (collision->Normal * (power + down)) / collisionDataNum;
+				impulse += (collision->Normal * (power + down)) / (float)collisionDataNum;
 			}
 
 			//Debug::Log(L"撃力： (%f, %f)", impulse.x, impulse.y);
@@ -245,7 +245,7 @@ void Physics2D::Update()
 		Vector2 collisionLineVelocity = collisionLineVector * Vector2::Dot(collisionLineVector, rigidbodyA->velocity);
 		Vector2 direction = -collisionLineVelocity.Normalized();
 
-		Vector2 friction = direction * mu * (sumImpulse / collisionDataNum).GetMagnitude() / EngineTime::GetFixedDeltaTime();
+		Vector2 friction = direction * mu * (sumImpulse / (float)collisionDataNum).GetMagnitude() / EngineTime::GetFixedDeltaTime();
 		Vector2 maxForce = collisionLineVelocity * rigidbodyA->mass / EngineTime::GetFixedDeltaTime();
 		if (friction.GetMagnitude() > maxForce.GetMagnitude())
 		{

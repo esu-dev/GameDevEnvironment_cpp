@@ -8,6 +8,8 @@ class Vector3;
 class Vector2 : public SerializedClass
 {
 public:
+	static const Vector2 zero;
+	static const Vector2 one;
 	static const Vector2 up;
 	static const Vector2 down;
 	static const Vector2 right;

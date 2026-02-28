@@ -234,9 +234,6 @@
     <ClCompile Include="imgui\backends\imgui_impl_win32.cpp">
       <Filter>ソース ファイル\imgui\backends</Filter>
     </ClCompile>
-    <ClCompile Include="SceneEditor.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Editor.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -319,6 +316,9 @@
       <Filter>Source\GameEngine</Filter>
     </ClCompile>
     <ClCompile Include="Profiler.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEditor.cpp">
       <Filter>Source\Editor</Filter>
     </ClCompile>
   </ItemGroup>
@@ -538,9 +538,6 @@
     <ClInclude Include="UuidGenerator.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="SceneEditor.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Editor.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -638,6 +635,9 @@
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
     <ClInclude Include="Profiler.h">
+      <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEditor.h">
       <Filter>Source\Editor</Filter>
     </ClInclude>
   </ItemGroup>

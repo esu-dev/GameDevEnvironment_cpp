@@ -44,7 +44,7 @@ namespace SceneManagement
 
 	void Scene::Start()
 	{
-		int num = _gameObjectVector.size();
+		int num = (int)_gameObjectVector.size();
 		for (int i = 0; i < num; i++)
 		{
 			// 親がいるならStart()を呼ばない
@@ -53,13 +53,13 @@ namespace SceneManagement
 				continue;
 			}
 			_gameObjectVector[i]->Start();
-			num = _gameObjectVector.size();
+			num = (int)_gameObjectVector.size();
 		}
 	}
 
 	void Scene::Restart()
 	{
-		int num = _gameObjectVector.size();
+		int num = (int)_gameObjectVector.size();
 		for (int i = 0; i < num; i++)
 		{
 			// 親がいるならStart()を呼ばない
@@ -68,13 +68,13 @@ namespace SceneManagement
 				continue;
 			}
 			_gameObjectVector[i]->Restart();
-			num = _gameObjectVector.size();
+			num = (int)_gameObjectVector.size();
 		}
 	}
 
 	void Scene::Update()
 	{
-		int num = _gameObjectVector.size();
+		int num = (int)_gameObjectVector.size();
 		for (int i = 0; i < num; i++)
 		{
 			// 親がいるならUpdateしない
@@ -83,13 +83,13 @@ namespace SceneManagement
 				continue;
 			}
 			_gameObjectVector[i]->Update();
-			num = _gameObjectVector.size();
+			num = (int)_gameObjectVector.size();
 		}
 	}
 
 	void Scene::EditorUpdate()
 	{
-		int num = _gameObjectVector.size();
+		int num = (int)_gameObjectVector.size();
 		for (int i = 0; i < num; i++)
 		{
 			// 親がいるならUpdateしない
@@ -98,7 +98,7 @@ namespace SceneManagement
 				continue;
 			}
 			_gameObjectVector[i]->EditorUpdate();
-			num = _gameObjectVector.size();
+			num = (int)_gameObjectVector.size();
 		}
 	}
 }

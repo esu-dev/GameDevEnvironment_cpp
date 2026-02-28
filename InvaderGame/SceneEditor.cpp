@@ -41,6 +41,7 @@ void SceneEditor::Initialize()
 void SceneEditor::Update()
 {
 	static bool isAssetBrowserOpen = false;
+	static bool isShowingWindow = true;
 
 	// シーンエディタの切り替え
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('E'))
@@ -109,6 +110,16 @@ void SceneEditor::Update()
 		Debug::Log("TotalTime: %f", EngineTime::GetTotalTime());
 	}
 
+
+	// 非表示にする
+	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown(VK_SPACE))
+	{
+		isShowingWindow = !isShowingWindow;
+	}
+
+	if (!isShowingWindow) return;
+
+
 	// 他エディタのUpdate処理
 	LevelEditor::Update();
 	AnimationEditor::Update();
@@ -122,6 +133,7 @@ void SceneEditor::Update()
 	// ヒエラルキー
 	ImGui::SetNextWindowPos(ImVec2(0, 0));
 	//ImGui::SetNextWindowSize(ImVec2(200, 500));
+	//ImGui::PushStyleVar(ImGuiStyleVar_Alpha, 0.25f);
 	ImGui::Begin("Hierarchy");
 
 	// シーン名の配置
@@ -205,6 +217,8 @@ void SceneEditor::Update()
 			// 同じ名前はIDが同じになってしまう。IDを付与する必要がある。
 			ImGui::PushID(id);
 
+			bool isActive = go->ActiveSelf() && (go->GetTransform()->GetParent() == nullptr || go->GetTransform()->GetParent()->gameObject->ActiveSelf());
+
 			// 子要素があるならTreeNodeExを使う
 			if (go->GetTransform()->GetChildVector().size() > 0)
 			{
@@ -216,7 +230,9 @@ void SceneEditor::Update()
 				}
 
 				// 親TreeNode
+				if (!isActive) ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyleColorVec4(ImGuiCol_TextDisabled));
 				bool isTreeOpen = ImGui::TreeNodeEx(go->name.c_str(), flags);
+				if (!isActive) ImGui::PopStyleColor();
 				if (ImGui::IsItemClicked())
 				{
 					selected = id;
@@ -239,11 +255,15 @@ void SceneEditor::Update()
 			}
 			else
 			{
+				ImGui::Indent(ImGui::GetTreeNodeToLabelSpacing());
+				if (!isActive) ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyleColorVec4(ImGuiCol_TextDisabled));
 				if (ImGui::Selectable(go->name.c_str(), selected == id))
 				{
 					selected = id;
 					Selection::gameObject = go;
 				}
+				if (!isActive) ImGui::PopStyleColor();
+				ImGui::Unindent(ImGui::GetTreeNodeToLabelSpacing());
 
 				putPopup(go);
 			}
@@ -344,6 +364,7 @@ void SceneEditor::Update()
 		}
 	}
 	ImGui::End();
+	//ImGui::PopStyleVar();
 
 
 	// フォーカスフレーム
