@@ -1,11 +1,15 @@
 #include "Profiler.h"
 #include "imgui.h"
-#include <algorithm>
 
-std::vector<Profiler::FrameData> Profiler::_history;
+std::vector<Profiler::FrameData*> Profiler::_history;
 int Profiler::_selectedFrameIndex = -1;
 
-void Profiler::AddFrameData(const FrameData& data)
+Profiler::FrameData* Profiler::GetLastFrameData()
+{
+	return _history[_history.size() - 1];
+}
+
+void Profiler::AddFrameData(FrameData* data)
 {
 	_history.push_back(data);
 	if (_history.size() > _maxHistory)
@@ -48,7 +52,7 @@ void Profiler::Render()
 	float maxTime = 16.67f; // 60FPSを基準
 	for (const auto& frame : _history)
 	{
-		maxTime = std::max(maxTime, frame.totalFrameTime);
+		maxTime = max(maxTime, frame->totalTime);
 	}
 	maxTime *= 1.2f; // 上部に少し余裕を持たせる
 
@@ -67,9 +71,9 @@ void Profiler::Render()
 			return IM_COL32(158, 158, 158, 255);                        // Gray (Other)
 		};
 
-		for (const auto& pair : frame.categoryTimes)
+		for (const auto& pair : frame->categories)
 		{
-			float h = (pair.second / maxTime) * graphHeight;
+			float h = (pair.second->totalTime / maxTime) * graphHeight;
 			drawList->AddRectFilled(
 				ImVec2(x, canvasPos.y + canvasSize.y - yOffset - h),
 				ImVec2(x + frameWidth - 1.0f, canvasPos.y + canvasSize.y - yOffset),
@@ -109,29 +113,85 @@ void Profiler::Render()
 	// 詳細表示
 	if (_selectedFrameIndex >= 0 && _selectedFrameIndex < (int)_history.size())
 	{
-		const FrameData& selectedFrame = _history[_selectedFrameIndex];
-		ImGui::Text("Selected Frame: %d | Total: %.2f ms (%.1f FPS)", _selectedFrameIndex, selectedFrame.totalFrameTime, 1000.0f / selectedFrame.totalFrameTime);
+		const FrameData* selectedFrame = _history[_selectedFrameIndex];
+		ImGui::Text("Selected Frame: %d | Total: %.2f ms (%.1f FPS)", _selectedFrameIndex, selectedFrame->totalTime, 1000.0f / selectedFrame->totalTime);
 		
-		if (ImGui::BeginTable("DetailedTiming", 3, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg))
+		static ImGuiTableFlags flags = ImGuiTableFlags_BordersV | ImGuiTableFlags_BordersOuterH | ImGuiTableFlags_Resizable | ImGuiTableFlags_RowBg | ImGuiTableFlags_NoBordersInBody;
+
+		if (ImGui::BeginTable("DetailedHierarchy", 3, flags))
 		{
-			ImGui::TableSetupColumn("Category");
-			ImGui::TableSetupColumn("Time (ms)");
-			ImGui::TableSetupColumn("Percentage");
+			ImGui::TableSetupColumn("Category", ImGuiTableColumnFlags_NoHide);
+			ImGui::TableSetupColumn("Time (ms)", ImGuiTableColumnFlags_WidthFixed, 100.0f);
+			ImGui::TableSetupColumn("Percentage", ImGuiTableColumnFlags_WidthFixed, 100.0f);
 			ImGui::TableHeadersRow();
 
-			for (const auto& pair : selectedFrame.categoryTimes)
-			{
-				ImGui::TableNextRow();
-				ImGui::TableSetColumnIndex(0);
-				ImGui::Text("%s", pair.first.c_str());
-				
-				ImGui::TableSetColumnIndex(1);
-				ImGui::Text("%.3f ms", pair.second);
-				
-				ImGui::TableSetColumnIndex(2);
-				float pct = (pair.second / selectedFrame.totalFrameTime) * 100.0f;
-				ImGui::Text("%.1f%%", pct);
-			}
+			float totalTime = selectedFrame->totalTime;
+			std::function<void(const FrameData*, int)> showCategory = [&](const FrameData* frameData, int indent) -> void
+				{
+					for (const auto& categoryPair : frameData->categories)
+					{
+						const std::string& categoryName = categoryPair.first;
+						const auto& categoryData = categoryPair.second;
+
+						ImGui::TableNextRow();
+						ImGui::TableNextColumn();
+
+						bool hasSubcategories = !categoryData->categories.empty();
+						bool open = false;
+						if (hasSubcategories)
+						{
+							open = ImGui::TreeNodeEx(categoryName.c_str(), ImGuiTreeNodeFlags_SpanFullWidth);
+						}
+						else
+						{
+							ImGui::TreeNodeEx(categoryName.c_str(), ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_Bullet | ImGuiTreeNodeFlags_NoTreePushOnOpen | ImGuiTreeNodeFlags_SpanFullWidth);
+						}
+
+						if (indent == 0)
+						{
+							ImGui::TableNextColumn();
+							ImGui::Text("%.3f ms", categoryData->totalTime);
+							ImGui::TableNextColumn();
+							ImGui::Text("%.1f%%", (categoryData->totalTime / totalTime) * 100.0f);
+						}
+						else
+						{
+							ImGui::TableNextColumn();
+							ImGui::Indent(indent * 10);
+							ImGui::TextDisabled("%.3f ms", categoryData->totalTime);
+							ImGui::Unindent(indent * 10);
+
+							ImGui::TableNextColumn();
+							ImGui::Indent(indent * 10);
+							ImGui::TextDisabled("%.1f%%", (categoryData->totalTime / totalTime) * 100.0f);
+							ImGui::Unindent(indent * 10);
+						}
+
+						if (hasSubcategories && open)
+						{
+							showCategory(categoryData, indent + 1);
+
+							/*for (const auto& subPair : categoryData->categories)
+							{
+
+								ImGui::TableNextRow();
+								ImGui::TableNextColumn();
+								ImGui::Indent(ImGui::GetTreeNodeToLabelSpacing());
+								ImGui::TextDisabled("%s", subPair.first.c_str());
+								ImGui::Unindent(ImGui::GetTreeNodeToLabelSpacing());
+
+								ImGui::TableNextColumn();
+								ImGui::TextDisabled("%.3f ms", subPair.second->totalTime);
+								ImGui::TableNextColumn();
+								ImGui::TextDisabled("%.1f%%", (subPair.second->totalTime / totalTime) * 100.0f);
+							}*/
+							ImGui::TreePop();
+						}
+					}
+				};
+
+			showCategory(selectedFrame, 0);
+
 			ImGui::EndTable();
 		}
 	}

@@ -1,6 +1,5 @@
 #include "GameSystem.h"
 
-#include <chrono>
 #include "DirectX.h"
 #include "GameEngine.h"
 #include "AssetManager.h"
@@ -33,6 +32,8 @@ void GameSystem::Initialize()
 
 void GameSystem::Execute()
 {
+	Profiler::AddFrameData(new Profiler::FrameData());
+	auto* frameData = Profiler::GetLastFrameData();
 	auto startTime = std::chrono::high_resolution_clock::now();
 
 	// ”wŒiF‚ÌÝ’è
@@ -53,18 +54,20 @@ void GameSystem::Execute()
 	// staticƒNƒ‰ƒX‚ÌUpdateˆ—
 	Input::Update();
 
+	auto* cd_physics = new Profiler::FrameData();
+	frameData->categories["Physics"] = cd_physics;
 	auto st_physics = std::chrono::high_resolution_clock::now();
 	Physics2D::Update();
 	auto et_physics = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> duration_physics = et_physics - st_physics;
-
-	Profiler::FrameData frameData;
-	frameData.categoryTimes["Physics"] = duration_physics.count();
+	cd_physics->totalTime = duration_physics.count();
 
 	//InputSystem::Update();
 	SceneEditor::Update();
 	GameState::Update();
 
+	auto* cd_scripts = new Profiler::FrameData();
+	frameData->categories["Scripts"] = cd_scripts;
 	auto st_scripts = std::chrono::high_resolution_clock::now();
 
 	// Updateˆ—
@@ -81,11 +84,12 @@ void GameSystem::Execute()
 			activeScene->Update();
 		}
 	}
-
+	
 	auto et_scripts = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> duration_scripts = et_scripts - st_scripts;
-	frameData.categoryTimes["Scripts"] = duration_scripts.count();
+	cd_scripts->totalTime = duration_scripts.count();
 	
+
 	auto st_rendering = std::chrono::high_resolution_clock::now();
 
 	if (SceneEditor::GetIsEditMode())
@@ -108,15 +112,17 @@ void GameSystem::Execute()
 	}
 	_renderingDataVector.clear();
 
+	auto* cd_rendering = new Profiler::FrameData();
+	frameData->categories["Rendering"] = cd_rendering;
 	auto et_rendering = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> duration_rendering = et_rendering - st_rendering;
-	frameData.categoryTimes["Rendering"] = duration_rendering.count();
+	cd_rendering->totalTime = duration_rendering.count();
+
 
 	auto endTime = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> duration = endTime - startTime;
-	frameData.totalFrameTime = duration.count();
+	frameData->totalTime = duration.count();
 
-	Profiler::AddFrameData(frameData);
 	Profiler::Render();
 
 	// ImGui•`‰æ

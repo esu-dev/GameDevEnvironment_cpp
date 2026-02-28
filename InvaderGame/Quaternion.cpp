@@ -3,6 +3,8 @@
 #include "Vector3.h"
 #include "Matrix.h"
 
+using namespace DirectX;
+
 Quaternion Quaternion::Identity()
 {
 	return AngleAxis(0, Vector3::forward);
@@ -56,42 +58,38 @@ Vector3 Quaternion::Mult(Vector3 vector)
 {
 	// クォータニオン行列×ベクトル
 
-	Matrix quaternionMatrix = this->ToXMMATRIX();
+	DirectX::XMMATRIX quaternionMatrix = this->ToXMMATRIX();
 
-	Matrix vectorMatrix = Matrix();
-	vectorMatrix.g_matrix = {
-		{ vector.x },
-		{ vector.y },
-		{ vector.z },
-		{ 0 }
-	};
+	DirectX::XMMATRIX vectorMatrix = DirectX::XMMATRIX(
+		vector.x, 0, 0, 0,
+		vector.y, 0, 0, 0,
+		vector.z, 0, 0, 0,
+		0, 0, 0, 0);
 
-	Matrix result1 = quaternionMatrix * vectorMatrix;
+	DirectX::XMMATRIX result1 = quaternionMatrix * vectorMatrix;
 
-	// result1をクォータニオンに戻す
+	//// result1をクォータニオンに戻す
 	Quaternion quaternion = Quaternion();
-	quaternion.x = result1.g_matrix[0][0];
-	quaternion.y = result1.g_matrix[1][0];
-	quaternion.z = result1.g_matrix[2][0];
-	quaternion.w = result1.g_matrix[3][0];
+	quaternion.x = XMVectorGetX(result1.r[0]);
+	quaternion.y = XMVectorGetX(result1.r[1]);
+	quaternion.z = XMVectorGetX(result1.r[2]);
+	quaternion.w = XMVectorGetX(result1.r[3]);
 
 	// 4*4行列にする
-	Matrix quaternionMatrix2 = quaternion.ToXMMATRIX();
+	DirectX::XMMATRIX quaternionMatrix2 = quaternion.ToXMMATRIX();
 
-	Quaternion inverseQuaternion = Quaternion::Inverse(*this);
-	Matrix inverseQuaternionMatrix = Matrix();
-	inverseQuaternionMatrix.g_matrix = {
-		{ inverseQuaternion.x },
-		{ inverseQuaternion.y },
-		{ inverseQuaternion.z },
-		{ inverseQuaternion.w }
-	};
+	Quaternion invQuat = Quaternion::Inverse(*this);
+	DirectX::XMMATRIX invQuatMatrix = DirectX::XMMATRIX(
+		invQuat.x, 0, 0, 0,
+		invQuat.y, 0, 0, 0,
+		invQuat.z, 0, 0, 0,
+		invQuat.w, 0, 0, 0);
 
 	// 逆回転と掛け算する
-	Matrix result2 = quaternionMatrix2 * inverseQuaternionMatrix;
+	DirectX::XMMATRIX result2 = quaternionMatrix2 * invQuatMatrix;
 
 	// ベクトルに直す
-	Vector3 v = Vector3(result2.g_matrix[0][0], result2.g_matrix[1][0], result2.g_matrix[2][0]); // resultでインデックスエラー
+	Vector3 v = Vector3(XMVectorGetX(result2.r[0]), XMVectorGetX(result2.r[1]), XMVectorGetX(result2.r[2]));
 
 	return v;
 }
@@ -106,28 +104,14 @@ Vector3 Quaternion::operator*(const Vector3& vector)
 	return this->Mult(vector);
 }
 
-Matrix Quaternion::ToXMMATRIX()
+DirectX::XMMATRIX Quaternion::ToXMMATRIX()
 {
-	Matrix matrix = Matrix();
+	DirectX::XMMATRIX matrix;
 
-	matrix.g_matrix = {
-		{ this->w, -this->z, this->y, this->x },
-		{ this->z, this->w, -this->x, this->y },
-		{ -this->y, this->x, this->w, this->z },
-		{ -this->x, -this->y, -this->z, this->w }
-	};
+	matrix.r[0] = DirectX::XMVectorSet(this->w, -this->z, this->y, this->x);
+	matrix.r[1] = DirectX::XMVectorSet(this->z, this->w, -this->x, this->y);
+	matrix.r[2] = DirectX::XMVectorSet(-this->y, this->x, this->w, this->z);
+	matrix.r[3] = DirectX::XMVectorSet(-this->x, -this->y, -this->z, this->w);
 
 	return matrix;
 }
-
-//Matrix::Matrix(int rowNum, int columnNum)
-//{
-//	for (int i = 0; i < rowNum; i++)
-//	{
-//		g_matrix.push_back(new std::vector<float>());
-//		for (int j = 0; j < columnNum; j++)
-//		{
-//			g_matrix[i]->push_back(0);
-//		}
-//	}
-//}

@@ -44,4 +44,7 @@
 // 疑似乱数
 #include <random>
 
+// 計測
+#include <chrono>
+
 using namespace std::literals::string_literals;

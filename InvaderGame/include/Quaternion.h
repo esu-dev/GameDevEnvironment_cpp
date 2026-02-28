@@ -22,5 +22,5 @@ public:
 	Quaternion operator-();
 	Vector3 operator* (const Vector3& vector);
 
-	Matrix ToXMMATRIX();
+	DirectX::XMMATRIX ToXMMATRIX();
 };

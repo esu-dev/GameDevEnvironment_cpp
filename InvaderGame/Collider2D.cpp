@@ -40,7 +40,6 @@ bool Collider2D::IsAABB_Collided(Collider2D* collider)
 // private
 std::pair<Vector2, Vector2> Collider2D::GetAABB()
 {
-	//Debug::Log("%s", this->gameObject->tag);
 	Transform* transform = this->gameObject->GetTransform();
 
 	// ’¸“_‚ÌŽæ“¾
