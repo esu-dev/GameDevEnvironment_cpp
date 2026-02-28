@@ -60,6 +60,7 @@ public:
 
 		std::string name;
 		std::vector<Attribute> AttributeVec;
+		std::vector<FieldInfo> subFieldInfoVec;
 
 		FieldInfo(std::string name, std::vector<Attribute> attributeVec)
 		{
