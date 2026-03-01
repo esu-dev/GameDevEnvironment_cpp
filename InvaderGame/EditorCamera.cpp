@@ -51,8 +51,8 @@ void EditorCamera::Update()
 	}
 
 
-	// マウスによる移動 (右クリックドラッグで移動)
-	if (ImGui::IsMouseDown(ImGuiMouseButton_Right))
+	// マウスによる移動 (中央クリックドラッグで移動)
+	if (ImGui::IsMouseDown(ImGuiMouseButton_Middle))
 	{
 		ImVec2 delta = ImGui::GetIO().MouseDelta;
 		_editorCameraPos += -Vector3::right * delta.x * moveSpeed * 0.01f;
