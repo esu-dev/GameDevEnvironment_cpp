@@ -1,4 +1,4 @@
-#include "SceneEditor.h"
+ï»¿#include "SceneEditor.h"
 
 #include "framework.h"
 #include "Utility.h"
@@ -16,7 +16,6 @@
 #include "imgui_internal.h"
 #include "imgui_impl_win32.h"
 #include "imgui_impl_dx11.h"
-#include "ImGuizmo.h"
 
 using namespace SceneManagement;
 
@@ -34,7 +33,7 @@ void SceneEditor::Initialize()
 
 	EngineTime::TimeScale = 0;
 
-	// ‘¼‚ÌƒGƒfƒBƒ^‚Ì‰Šú‰»ˆ—
+	// ä»–ã®ã‚¨ãƒ‡ã‚£ã‚¿ã®åˆæœŸåŒ–å‡¦ç†
 	LevelEditor::Initialize();
 	EditorCamera::Start();
 }
@@ -44,12 +43,12 @@ void SceneEditor::Update()
 	static bool isAssetBrowserOpen = false;
 	static bool isShowingWindow = true;
 
-	// ƒV[ƒ“ƒGƒfƒBƒ^‚ÌØ‚è‘Ö‚¦
+	// ã‚·ãƒ¼ãƒ³ã‚¨ãƒ‡ã‚£ã‚¿ã®åˆ‡ã‚Šæ›¿ãˆ
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('E'))
 	{
 		_isEditMode = !_isEditMode;
 
-		// ƒV[ƒ“‚ğÄ¶¬‚·‚é
+		// ã‚·ãƒ¼ãƒ³ã‚’å†ç”Ÿæˆã™ã‚‹
 		SceneDataManager::Reload();
 
 		if (_isEditMode)
@@ -63,22 +62,22 @@ void SceneEditor::Update()
 		}
 		else
 		{
-			// ‚±‚±‚ÅRecord‚ğ‰Šú‰»‚·‚é
-			// ‰Šú‰»ƒ^ƒCƒ~ƒ“ƒO‚ğStart()ˆÈ~‚É‚µ‚È‚¢‚Æ‚¢‚¯‚È‚¢‚Ì‚Å‚ÍH
-			// Start()‚Åİ’è‚³‚ê‚È‚©‚Á‚½•Ï”‚ğ‰Šú‰»‚·‚é
+			// ã“ã“ã§Recordã‚’åˆæœŸåŒ–ã™ã‚‹
+			// åˆæœŸåŒ–ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚’Start()ä»¥é™ã«ã—ãªã„ã¨ã„ã‘ãªã„ã®ã§ã¯ï¼Ÿ
+			// Start()ã§è¨­å®šã•ã‚Œãªã‹ã£ãŸå¤‰æ•°ã‚’åˆæœŸåŒ–ã™ã‚‹
 			for (RecordBase* record : RecordManager::RecordVector)
 			{
 				record->Initialize();
 			}
 
-			// TimeScale‚ÅŠÇ—‚·‚é‚ÆA–³‘Ê‚Èˆ—‚ª‚¸‚Á‚Æ‘–‚é‚±‚Æ‚É‚È‚é‚©‚çA—vŒŸ“¢
+			// TimeScaleã§ç®¡ç†ã™ã‚‹ã¨ã€ç„¡é§„ãªå‡¦ç†ãŒãšã£ã¨èµ°ã‚‹ã“ã¨ã«ãªã‚‹ã‹ã‚‰ã€è¦æ¤œè¨
 			EngineTime::TimeScale = 1;
 			EngineTime::ResetDeltaTime();
 		}
 	}
 
 
-	// ƒGƒfƒBƒ^‚ğŠJ‚¢‚Ä‚¢‚È‚¢‚È‚ç‚Î
+	// ã‚¨ãƒ‡ã‚£ã‚¿ã‚’é–‹ã„ã¦ã„ãªã„ãªã‚‰ã°
 	if (!_isEditMode)
 	{
 		TimeController::Update();
@@ -87,32 +86,32 @@ void SceneEditor::Update()
 	}
 
 
-	// ˆÈ‰ºƒGƒfƒBƒ^’†‚Ìˆ— ---------------------------
+	// ä»¥ä¸‹ã‚¨ãƒ‡ã‚£ã‚¿ä¸­ã®å‡¦ç† ---------------------------
 
-	// ƒŒƒR[ƒhƒV[ƒ“‚ğ“Ç‚İ‚Ş
+	// ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚·ãƒ¼ãƒ³ã‚’èª­ã¿è¾¼ã‚€
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('R'))
 	{
-		Debug::Log("RecordScene‚Ì“Ç‚İ‚İ‚ğŠJn‚µ‚Ü‚µ‚½B");
+		Debug::Log("RecordSceneã®èª­ã¿è¾¼ã¿ã‚’é–‹å§‹ã—ã¾ã—ãŸã€‚");
 
 		_isEditMode = false;
 
 		SceneDataManager::LoadRecord();
 
-		// TimeScale‚ÅŠÇ—‚·‚é‚ÆA–³‘Ê‚Èˆ—‚ª‚¸‚Á‚Æ‘–‚é‚±‚Æ‚É‚È‚é‚©‚çA—vŒŸ“¢
+		// TimeScaleã§ç®¡ç†ã™ã‚‹ã¨ã€ç„¡é§„ãªå‡¦ç†ãŒãšã£ã¨èµ°ã‚‹ã“ã¨ã«ãªã‚‹ã‹ã‚‰ã€è¦æ¤œè¨
 		EngineTime::TimeScale = 1;
 
-		// TotalTime‚Ì•œŒ³
+		// TotalTimeã®å¾©å…ƒ
 		std::vector<std::string> contentVector;
 		FileManager::Read(contentVector, "Resources/Scenes/" + SceneManager::GetActiveScene()->GetName() + "_time.txt");
 		EngineTime::SetTotalTime(std::stof(contentVector[0]));
 		EngineTime::ResetDeltaTime();
-		Debug::Log("RecordScene‚Ì“Ç‚İ‚İ‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
-		//Debug::Log("TotalTime‚ğ%s‚Éİ’è‚µ‚Ü‚µ‚½B", contentVector[0].c_str());
+		Debug::Log("RecordSceneã®èª­ã¿è¾¼ã¿ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
+		//Debug::Log("TotalTimeã‚’%sã«è¨­å®šã—ã¾ã—ãŸã€‚", contentVector[0].c_str());
 		Debug::Log("TotalTime: %f", EngineTime::GetTotalTime());
 	}
 
 
-	// ”ñ•\¦‚É‚·‚é
+	// éè¡¨ç¤ºã«ã™ã‚‹
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown(VK_SPACE))
 	{
 		isShowingWindow = !isShowingWindow;
@@ -121,23 +120,23 @@ void SceneEditor::Update()
 	if (!isShowingWindow) return;
 
 
-	// ‘¼ƒGƒfƒBƒ^‚ÌUpdateˆ—
+	// ä»–ã‚¨ãƒ‡ã‚£ã‚¿ã®Updateå‡¦ç†
 	LevelEditor::Update();
 	AnimationEditor::Update();
 	AssetExplorer::Update();
 	EditorCamera::Update();
 
-	// imguiƒfƒ‚•\¦
+	// imguiãƒ‡ãƒ¢è¡¨ç¤º
 	//ImGui::ShowDemoWindow();
 
 
-	// ƒqƒGƒ‰ƒ‹ƒL[
+	// ãƒ’ã‚¨ãƒ©ãƒ«ã‚­ãƒ¼
 	ImGui::SetNextWindowPos(ImVec2(0, 0));
 	//ImGui::SetNextWindowSize(ImVec2(200, 500));
 	//ImGui::PushStyleVar(ImGuiStyleVar_Alpha, 0.25f);
 	ImGui::Begin("Hierarchy");
 
-	// ƒV[ƒ“–¼‚Ì”z’u
+	// ã‚·ãƒ¼ãƒ³åã®é…ç½®
 	static char buf[64];
 	strcpy_s(buf, SceneManager::GetActiveScene()->GetName().c_str());
 	if (ImGui::InputText("SceneName", buf, IM_ARRAYSIZE(buf)))
@@ -146,7 +145,7 @@ void SceneEditor::Update()
 		SceneManager::GetActiveScene()->SetName(newName);
 	}
 
-	// “WŠJ‚³‚ê‚Ä‚¢‚éó‘Ô‚Ì‚Æ‚«True‚ğ•Ô‚·‚©‚çA“ü‚êq‚ªÀŒ»‚Å‚«‚é
+	// å±•é–‹ã•ã‚Œã¦ã„ã‚‹çŠ¶æ…‹ã®ã¨ãTrueã‚’è¿”ã™ã‹ã‚‰ã€å…¥ã‚Œå­ãŒå®Ÿç¾ã§ãã‚‹
 	if (ImGui::CollapsingHeader(SceneManager::GetActiveScene()->GetName().c_str()))
 	{
 		static int selected = -1;
@@ -157,14 +156,14 @@ void SceneEditor::Update()
 				if (ImGui::Selectable("Duplicate"))
 				{
 					GameObject* newGameObject = Object::Instantiate(go);
-					//SceneManager::GetActiveScene()->AddGameObject(newGameObject); Instantiate()‚ÅŠù‚ÉƒV[ƒ“‚É’Ç‰Á‚³‚ê‚Ä‚¢‚éB
+					//SceneManager::GetActiveScene()->AddGameObject(newGameObject); Instantiate()ã§æ—¢ã«ã‚·ãƒ¼ãƒ³ã«è¿½åŠ ã•ã‚Œã¦ã„ã‚‹ã€‚
 				}
 				if (ImGui::Selectable("Delete"))
 				{
-					// ‘I‘ğ‚ğŠO‚·
+					// é¸æŠã‚’å¤–ã™
 					Selection::gameObject = nullptr;
 
-					// Scene‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚©‚çœŠO‚·‚é
+					// Sceneã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‹ã‚‰é™¤å¤–ã™ã‚‹
 					SceneDataManager::GetInstanceID2PointerMap().erase(go->instanceID);
 
 					for (auto component : go->GetComponentVector())
@@ -176,17 +175,17 @@ void SceneEditor::Update()
 				}
 				if (ImGui::Selectable("Create Prefab"))
 				{
-					// ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ÌƒVƒŠƒAƒ‰ƒCƒY
-					// q—v‘f‚às‚¤•K—v‚ª‚ ‚é
+					// ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚º
+					// å­è¦ç´ ã‚‚è¡Œã†å¿…è¦ãŒã‚ã‚‹
 					std::string serializedData = "";
 					GameObject* gameObject = go;
 					gameObject->IsPrefab = true;
 
-					// Ä‹A“I‚ÉƒVƒŠƒAƒ‰ƒCƒY
+					// å†å¸°çš„ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚º
 					std::function<void(GameObject*)> serializeGameObject_Recursively = [&](GameObject* targetGameObject) -> void {
 						AssetManager::SerializeGameObject(serializedData, targetGameObject);
 
-						// q—v‘f‚ÌƒVƒŠƒAƒ‰ƒCƒY
+						// å­è¦ç´ ã®ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚º
 						for (auto transform : targetGameObject->GetTransform()->GetChildVector())
 						{
 							serializeGameObject_Recursively(transform->gameObject);
@@ -207,30 +206,30 @@ void SceneEditor::Update()
 			}
 		};
 
-		// q—v‘f‚àŠÜ‚ß‚½GameObject‚Ì”z’u
+		// å­è¦ç´ ã‚‚å«ã‚ãŸGameObjectã®é…ç½®
 		std::function<void(int, int, GameObject*)> putGameObject = [&](int id, int depth, GameObject* go) -> void {
-			// [‚³‚O‚Åe‚ª‚¢‚é‚È‚ç”z’u‚µ‚È‚¢
+			// æ·±ã•ï¼ã§è¦ªãŒã„ã‚‹ãªã‚‰é…ç½®ã—ãªã„
 			if (depth == 0 && go->GetTransform()->GetParent() != nullptr)
 			{
 				return;
 			}
 			
-			// “¯‚¶–¼‘O‚ÍID‚ª“¯‚¶‚É‚È‚Á‚Ä‚µ‚Ü‚¤BID‚ğ•t—^‚·‚é•K—v‚ª‚ ‚éB
+			// åŒã˜åå‰ã¯IDãŒåŒã˜ã«ãªã£ã¦ã—ã¾ã†ã€‚IDã‚’ä»˜ä¸ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚
 			ImGui::PushID(id);
 
 			bool isActive = go->ActiveSelf() && (go->GetTransform()->GetParent() == nullptr || go->GetTransform()->GetParent()->gameObject->ActiveSelf());
 
-			// q—v‘f‚ª‚ ‚é‚È‚çTreeNodeEx‚ğg‚¤
+			// å­è¦ç´ ãŒã‚ã‚‹ãªã‚‰TreeNodeExã‚’ä½¿ã†
 			if (go->GetTransform()->GetChildVector().size() > 0)
 			{
-				// –îˆó‚ğƒNƒŠƒbƒN‚µ‚½‚Æ‚«‚É“WŠJ‚·‚é‚æ‚¤‚É‚·‚é
+				// çŸ¢å°ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ãŸã¨ãã«å±•é–‹ã™ã‚‹ã‚ˆã†ã«ã™ã‚‹
 				ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow;
 				if (selected == id)
 				{
 					flags |= ImGuiTreeNodeFlags_Selected;
 				}
 
-				// eTreeNode
+				// è¦ªTreeNode
 				if (!isActive) ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyleColorVec4(ImGuiCol_TextDisabled));
 				bool isTreeOpen = ImGui::TreeNodeEx(go->name.c_str(), flags);
 				if (!isActive) ImGui::PopStyleColor();
@@ -244,7 +243,7 @@ void SceneEditor::Update()
 
 				if (isTreeOpen)
 				{
-					// Ä‹A“I‚Éq—v‘f‚ğ”z’u
+					// å†å¸°çš„ã«å­è¦ç´ ã‚’é…ç½®
 					int childID = 0;
 					for (auto& child : go->GetTransform()->GetChildVector())
 					{
@@ -269,7 +268,7 @@ void SceneEditor::Update()
 				putPopup(go);
 			}
 			
-			// ƒ|ƒbƒvƒAƒbƒv
+			// ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—
 			
 			ImGui::PopID();
 		};
@@ -283,7 +282,7 @@ void SceneEditor::Update()
 	ImGui::End();
 
 
-	// ƒCƒ“ƒXƒyƒNƒ^[
+	// ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼
 	//ImGui::SetNextWindowPos(ImVec2(210, 0));
 	ImGui::SetNextWindowSize(ImVec2(0, 0));
 	ImGui::Begin("Inspector");
@@ -296,7 +295,7 @@ void SceneEditor::Update()
 			Selection::gameObject->SetActive(isActive);
 		}
 
-		// ƒIƒuƒWƒFƒNƒg–¼‚Ì”z’u
+		// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã®é…ç½®
 		static char buf[64];
 		strcpy_s(buf, Selection::gameObject->name.c_str());
 		if (ImGui::InputText("Name", buf, IM_ARRAYSIZE(buf)))
@@ -304,7 +303,7 @@ void SceneEditor::Update()
 			Selection::gameObject->name = std::string(buf);
 		}
 
-		// ƒ^ƒO
+		// ã‚¿ã‚°
 		static char tagBuf[64];
 		strcpy_s(tagBuf, Selection::gameObject->tag.c_str());
 		if (ImGui::InputText("Tag", tagBuf, IM_ARRAYSIZE(tagBuf)))
@@ -312,7 +311,7 @@ void SceneEditor::Update()
 			Selection::gameObject->tag = std::string(tagBuf);
 		}
 
-		// Component‚Ì”z’u
+		// Componentã®é…ç½®
 		for (auto& component : Selection::gameObject->GetComponentVector())
 		{
 			// Component
@@ -368,7 +367,7 @@ void SceneEditor::Update()
 	//ImGui::PopStyleVar();
 
 
-	// ƒtƒH[ƒJƒXƒtƒŒ[ƒ€
+	// ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ãƒ•ãƒ¬ãƒ¼ãƒ 
 	if (Selection::gameObject != nullptr)
 	{
 		_focusFrame->GetTransform()->position = Selection::gameObject->GetTransform()->position;
@@ -377,11 +376,7 @@ void SceneEditor::Update()
 	}
 
 
-	// ImGuizmo
-	ImGuizmo::IsUsing();
-
-
-	// ƒZ[ƒu
+	// ã‚»ãƒ¼ãƒ–
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('S'))
 	{
 		SceneDataManager::Save();

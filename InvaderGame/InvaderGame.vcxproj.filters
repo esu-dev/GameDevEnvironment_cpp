@@ -49,6 +49,9 @@
     <Filter Include="Source\Demo">
       <UniqueIdentifier>{1be0e894-46da-4907-8f15-a30c2aaf422e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\imgui\ImGuizmo">
+      <UniqueIdentifier>{c871b000-d63e-422a-b380-a0cbbdb92d35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioClip.cpp">
@@ -320,6 +323,9 @@
     </ClCompile>
     <ClCompile Include="SceneEditor.cpp">
       <Filter>Source\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\imgui\ImGuizmo\ImGuizmo.cpp">
+      <Filter>ソース ファイル\imgui\ImGuizmo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -11,12 +11,12 @@
 
 void ImGuiCreator::CreateAssetGui(const AssetManager::AssetFolder& assetFolder, const std::function<void(const std::string& assetName, AssetManager::AssetFile* assetFile)>& selectedAction)
 {
+	// 1. まずフォルダをツリー形式で表示
 	for (auto& pair : assetFolder.name2Datamp)
 	{
 		std::string folderName = pair.first;
 		auto assetData = pair.second;
 
-		// Folder
 		if (std::holds_alternative<AssetManager::AssetFolder*>(assetData))
 		{
 			if (ImGui::TreeNode(folderName.c_str()))
@@ -26,16 +26,96 @@ void ImGuiCreator::CreateAssetGui(const AssetManager::AssetFolder& assetFolder, 
 				ImGui::TreePop();
 			}
 		}
-		// AssetFile
-		else
+	}
+
+	// 2. 次にファイルをアイテム（アイコン）形式でグリッド表示
+	float thumbnailSize = 64.0f;
+	float padding = 16.0f;
+	float cellSize = thumbnailSize + padding;
+
+	float windowWidth = ImGui::GetContentRegionAvail().x;
+	int columnCount = (int)(windowWidth / cellSize);
+	if (columnCount < 1) columnCount = 1;
+
+	ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(padding * 0.5f, padding * 0.5f));
+	if (ImGui::BeginTable("AssetIconGrid", columnCount))
+	{
+		for (auto& pair : assetFolder.name2Datamp)
 		{
-			auto assetFile = std::get<AssetManager::AssetFile*>(assetData);
-			if (ImGui::Selectable((folderName + "  (" + assetFile->instanceID + ")").c_str()))
+			std::string assetName = pair.first;
+			auto assetData = pair.second;
+
+			if (std::holds_alternative<AssetManager::AssetFile*>(assetData))
 			{
-				selectedAction(folderName, assetFile);
+				ImGui::TableNextColumn();
+				auto assetFile = std::get<AssetManager::AssetFile*>(assetData);
+
+				ImGui::PushID(assetName.c_str());
+				ImGui::BeginGroup();
+
+				// アイコンの背景色をファイルタイプ別に設定（Unityの風の色分け）
+				ImU32 iconColor = IM_COL32(80, 80, 80, 255); // デフォルト：ダークグレー
+				if (assetFile->object) {
+					std::string typeName = assetFile->object->GetName();
+					if (typeName == "Texture") iconColor = IM_COL32(50, 100, 200, 255);      // テクスチャ：青
+					else if (typeName == "AudioClip") iconColor = IM_COL32(50, 200, 100, 255);   // オーディオ：緑
+					else if (typeName == "GameObject") iconColor = IM_COL32(100, 150, 255, 255); // プレハブ：水色
+					else if (typeName == "SceneAsset") iconColor = IM_COL32(200, 100, 100, 255); // シーン：赤
+					else if (typeName == "Mesh") iconColor = IM_COL32(150, 150, 150, 255);       // メッシュ：明るいグレー
+				}
+
+				
+				// アイコンボタン
+				ImVec2 cursorPos = ImGui::GetCursorPos();
+
+				// Textureの場合はサムネイルを表示、それ以外は色付きの矩形と名前で表示
+				if (assetFile->object != nullptr && assetFile->object->GetName() == "Texture")
+				{
+					Texture* texture = dynamic_cast<Texture*>(assetFile->object);
+					if (texture == nullptr)
+					{
+						ImGui::Text("Invalid Texture");
+					}
+					else if (ImGui::ImageButton("##", (ImTextureID)texture->m_shaderResourceview.Get(), ImVec2(thumbnailSize, thumbnailSize)))
+					{
+						selectedAction(assetName, assetFile);
+					}
+				}
+				else
+				{
+					if (ImGui::Button("##", ImVec2(thumbnailSize, thumbnailSize)))
+					{
+						selectedAction(assetName, assetFile);
+					}
+
+					// アイコンの装飾（色付き矩形と枠線）
+					ImDrawList* drawList = ImGui::GetWindowDrawList();
+					ImVec2 screenPos = ImGui::GetItemRectMin();
+					ImVec2 screenMax = ImGui::GetItemRectMax();
+					drawList->AddRectFilled(ImVec2(screenPos.x + 4, screenPos.y + 4), ImVec2(screenMax.x - 4, screenMax.y - 4), iconColor, 5.0f);
+					drawList->AddRect(ImVec2(screenPos.x + 4, screenPos.y + 4), ImVec2(screenMax.x - 4, screenMax.y - 4), IM_COL32(255, 255, 255, 100), 5.0f, 0, 1.0f);
+				}
+
+				// 名前ラベル（折り返し表示）
+				ImGui::SetCursorPosX(cursorPos.x);
+				ImGui::PushTextWrapPos(cursorPos.x + thumbnailSize);
+				ImGui::TextWrapped("%s", assetName.c_str());
+				ImGui::PopTextWrapPos();
+
+				ImGui::EndGroup();
+
+				// ホバー時に詳細（インスタンスID）を表示
+				if (ImGui::IsItemHovered())
+				{
+					ImGui::SetTooltip("%s\n(ID: %s)", assetName.c_str(), assetFile->instanceID.c_str());
+				}
+
+				ImGui::PopID();
 			}
 		}
+		ImGui::EndTable();
 	}
+	ImGui::PopStyleVar();
 }
 
 bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::string& serializedVarName, const std::string& label, const std::string& instanceID)

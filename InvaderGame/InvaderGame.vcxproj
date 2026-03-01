@@ -119,7 +119,7 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>.\;.\include;.\lib\Box2D\2.4.1\include;.\lib\DirectXTex;.\lib\imgui\include;.\lib\imgui\include\backends;.\lib\FBX SDK\2020.3.7\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\include;.\lib\Box2D\2.4.1\include;.\lib\DirectXTex;.\lib\imgui\include;.\lib\imgui\include\backends;.\lib\FBX SDK\2020.3.7\include;.\lib\imgui\ImGuizmo</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -256,6 +256,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="LevelEditor.cpp" />
+    <ClCompile Include="lib\imgui\ImGuizmo\ImGuizmo.cpp" />
     <ClCompile Include="MathUtility.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="DemoMovement.cpp" />
