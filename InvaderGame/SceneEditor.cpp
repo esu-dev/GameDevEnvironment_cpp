@@ -369,16 +369,43 @@ void SceneEditor::Update()
 
 
 	// フォーカスフレーム
-	if (Selection::gameObject != nullptr)
+	/*if (Selection::gameObject != nullptr)
 	{
 		_focusFrame->GetTransform()->position = Selection::gameObject->GetTransform()->position;
 		_focusFrame->GetTransform()->scale = Selection::gameObject->GetTransform()->scale + Vector3::one;
 		_focusFrame->EditorUpdate();
-	}
+	}*/
 
 
 	// ImGuizmo
-	ImGuizmo::IsUsing();
+	ImGuizmo::BeginFrame();
+	ImGuizmo::SetOrthographic(true);
+	ImGuizmo::SetRect(0, 0, GameSystem::WINDOW_WIDTH, GameSystem::WINDOW_HEIGHT);
+	if (Selection::gameObject != nullptr)
+	{
+		float viewMat[16];
+		float projMat[16];
+		float worldMat[16];
+		EditorCamera::GetViewMatrix(viewMat);
+		EditorCamera::GetProjMatrix(projMat);
+		Selection::gameObject->GetTransform()->GetWorldMatrix(worldMat);
+
+		if (ImGuizmo::Manipulate(
+			viewMat,
+			projMat,
+			ImGuizmo::OPERATION::TRANSLATE,
+			ImGuizmo::MODE::LOCAL,
+			worldMat
+		))
+		{
+			float matrixTranslation[3], matrixRotation[3], matrixScale[3];
+			ImGuizmo::DecomposeMatrixToComponents(worldMat, matrixTranslation, matrixRotation, matrixScale);
+
+			Selection::gameObject->GetTransform()->position = Vector3(matrixTranslation[0], matrixTranslation[1], matrixTranslation[2]);
+			Selection::gameObject->GetTransform()->rotation = Quaternion::Euler(Vector3(matrixRotation[0], matrixRotation[1], matrixRotation[2]));
+			Selection::gameObject->GetTransform()->scale = Vector3(matrixScale[0], matrixScale[1], matrixScale[2]);
+		}
+	}
 
 
 	// セーブ

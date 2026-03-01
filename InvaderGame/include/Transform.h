@@ -39,6 +39,9 @@ public:
 	void SetLocalPosition(Vector3& vector);
 	Vector3 GetLocalPosition();
 	void SetLocalRotation(Quaternion localRotation);
+	void GetWorldMatrix(float outMat[16]);
+
+	// êeéqä÷åW
 	Transform* GetParent();
 	void SetParent(Transform* parent);
 	const std::vector<Transform*>& GetChildVector();

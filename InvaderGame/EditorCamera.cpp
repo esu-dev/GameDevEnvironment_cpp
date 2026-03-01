@@ -1,10 +1,13 @@
 #include "EditorCamera.h"
 
 #include "Input.h"
+#include "GameSystem.h"
 #include "Camera.h"
 #include "Transform.h"
 #include "imgui.h"
 #include "imgui_impl_dx11.h"
+
+using namespace DirectX;
 
 float EditorCamera::GetSize()
 {
@@ -13,7 +16,21 @@ float EditorCamera::GetSize()
 
 Vector3 EditorCamera::GetPosition()
 {
-	return _editorCameraPos;
+	return _position;
+}
+
+void EditorCamera::GetViewMatrix(float outMat[16])
+{
+	XMVECTOR cameraPos = _position.ToXMVECTOR();
+	DirectX::XMMATRIX viewMat = DirectX::XMMatrixLookAtLH(cameraPos, DirectX::XMVectorAdd(cameraPos, DirectX::XMVectorSet(0, 0, 1, 0)), ((Vector3)Vector3::up).ToXMVECTOR());
+	XMStoreFloat4x4(reinterpret_cast<XMFLOAT4X4*>(outMat), viewMat);
+}
+
+void EditorCamera::GetProjMatrix(float outMat[16])
+{
+	XMVECTOR cameraPos = _position.ToXMVECTOR();
+	DirectX::XMMATRIX projMat = DirectX::XMMatrixOrthographicLH(GameSystem::WINDOW_WIDTH / Camera::Magnification / _size, GameSystem::WINDOW_HEIGHT / Camera::Magnification / _size, 0.0f, 1000.0f);
+	XMStoreFloat4x4(reinterpret_cast<XMFLOAT4X4*>(outMat), projMat);
 }
 
 void EditorCamera::Start()
@@ -34,19 +51,19 @@ void EditorCamera::Update()
 		// カメラ起動
 		if (isEditorCameraOn)
 		{
-			_editorCameraPos = savedCameraPos;
+			_position = savedCameraPos;
 		}
 		else
 		{
-			savedCameraPos = _editorCameraPos;
-			_editorCameraPos = Camera::GetMain()->GetTransform()->position;
+			savedCameraPos = _position;
+			_position = Camera::GetMain()->GetTransform()->position;
 		}
 	}
 
 	// カメラ起動中
 	if (!isEditorCameraOn)
 	{
-		_editorCameraPos = Camera::GetMain()->GetTransform()->position;
+		_position = Camera::GetMain()->GetTransform()->position;
 		return;
 	}
 
@@ -55,8 +72,8 @@ void EditorCamera::Update()
 	if (ImGui::IsMouseDown(ImGuiMouseButton_Middle))
 	{
 		ImVec2 delta = ImGui::GetIO().MouseDelta;
-		_editorCameraPos += -Vector3::right * delta.x * moveSpeed * 0.01f;
-		_editorCameraPos += Vector3::up * delta.y * moveSpeed * 0.01f;
+		_position += -Vector3::right * delta.x * moveSpeed * 0.01f;
+		_position += Vector3::up * delta.y * moveSpeed * 0.01f;
 	}
 
 	// ズーム
@@ -78,5 +95,5 @@ void EditorCamera::Update()
 }
 
 float EditorCamera::_size = 1.0f;
-Vector3 EditorCamera::_editorCameraPos;
+Vector3 EditorCamera::_position;
 Vector3 EditorCamera::savedCameraPos = Vector3(0, 0, -10);

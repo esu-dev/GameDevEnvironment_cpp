@@ -1,5 +1,7 @@
 #include "Transform.h"
 
+using namespace DirectX;
+
 Transform::Transform()
 {
 	rotation = Quaternion::AngleAxis(0, Vector3::forward);
@@ -92,6 +94,24 @@ Vector3 Transform::GetLocalPosition()
 void Transform::SetLocalRotation(Quaternion localRotation)
 {
 	_localEulerRotation = localRotation.GetEulerAngles();
+}
+
+void Transform::GetWorldMatrix(float outMat[16])
+{
+	// スケールを行列化
+	DirectX::XMMATRIX scaleMatrix = DirectX::XMMatrixScaling(scale.x, scale.y, 1);
+
+	// 回転
+	DirectX::XMVECTOR q = DirectX::XMVectorSet(rotation.Get().x, rotation.Get().y, rotation.Get().z, rotation.Get().w);
+	DirectX::XMMATRIX rotationMatrix = DirectX::XMMatrixRotationQuaternion(q);
+
+	// 移動を行列化
+	DirectX::XMMATRIX transformMatrix = DirectX::XMMatrixTranslation(position.Get().x, position.Get().y, 0.0f);
+
+	// ワールド行列の作成
+	DirectX::XMMATRIX worldMatrix = scaleMatrix * rotationMatrix * transformMatrix;
+
+	XMStoreFloat4x4(reinterpret_cast<XMFLOAT4X4*>(outMat), worldMatrix);
 }
 
 Transform* Transform::GetParent()
