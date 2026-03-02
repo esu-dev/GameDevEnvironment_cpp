@@ -2,6 +2,8 @@
 
 #include <fstream>
 #include <iostream>
+#include <ctime>
+#include <iomanip>
 #include "Utility.h"
 
 #include "GameEngine.h"
@@ -179,7 +181,12 @@ void FileManager::Write(const std::string& path, const std::string& content)
 
 	file.close();
 
-	Debug::Log("Writing file is completed. (path: %s)", path.c_str());
+	time_t now = time(nullptr);
+	tm lt;
+	localtime_s(&lt, &now);
+	char timeBuf[64];
+	strftime(timeBuf, sizeof(timeBuf), "%H:%M:%S", &lt);
+	Debug::Log("[%s] Writing file is completed. (path: %s)", timeBuf, path.c_str());
 }
 
 void FileManager::Write(const std::wstring& path, const std::string& content)
@@ -196,7 +203,12 @@ void FileManager::Write(const std::wstring& path, const std::string& content)
 
 	file.close();
 
-	Debug::Log(L"ファイル書き込みが完了しました。");
+	time_t now = time(nullptr);
+	tm lt;
+	localtime_s(&lt, &now);
+	wchar_t timeBuf[64];
+	wcsftime(timeBuf, sizeof(timeBuf), L"%H:%M:%S", &lt);
+	Debug::Log(L"[%s] ファイル書き込みが完了しました。", timeBuf);
 }
 
 std::string FileManager::RemoveExtension(const std::string& path)

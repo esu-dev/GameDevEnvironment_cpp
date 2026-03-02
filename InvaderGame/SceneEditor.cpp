@@ -220,64 +220,111 @@ void SceneEditor::Update()
 
 			bool isActive = go->ActiveSelf() && (go->GetTransform()->GetParent() == nullptr || go->GetTransform()->GetParent()->gameObject->ActiveSelf());
 
+			bool isTreeOpen = false;
+			bool isSelected = (selected == id);
+
 			// 子要素があるならTreeNodeExを使う
 			if (go->GetTransform()->GetChildVector().size() > 0)
 			{
 				// 矢印をクリックしたときに展開するようにする
 				ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow;
-				if (selected == id)
-				{
-					flags |= ImGuiTreeNodeFlags_Selected;
-				}
+				if (isSelected) flags |= ImGuiTreeNodeFlags_Selected;
 
 				// 親TreeNode
 				if (!isActive) ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyleColorVec4(ImGuiCol_TextDisabled));
-				bool isTreeOpen = ImGui::TreeNodeEx(go->name.c_str(), flags);
+				isTreeOpen = ImGui::TreeNodeEx(go->name.c_str(), flags);
 				if (!isActive) ImGui::PopStyleColor();
+				
 				if (ImGui::IsItemClicked())
 				{
 					selected = id;
 					Selection::gameObject = go;
-				}
-
-				putPopup(go);
-
-				if (isTreeOpen)
-				{
-					// 再帰的に子要素を配置
-					int childID = 0;
-					for (auto& child : go->GetTransform()->GetChildVector())
-					{
-						putGameObject(std::stoi(std::to_string(id) + "0") + childID++, depth + 1, child->gameObject);
-					}
-
-					ImGui::TreePop();
 				}
 			}
 			else
 			{
 				ImGui::Indent(ImGui::GetTreeNodeToLabelSpacing());
 				if (!isActive) ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyleColorVec4(ImGuiCol_TextDisabled));
-				if (ImGui::Selectable(go->name.c_str(), selected == id))
+				if (ImGui::Selectable(go->name.c_str(), isSelected))
 				{
 					selected = id;
 					Selection::gameObject = go;
 				}
 				if (!isActive) ImGui::PopStyleColor();
 				ImGui::Unindent(ImGui::GetTreeNodeToLabelSpacing());
-
-				putPopup(go);
 			}
-			
-			// ポップアップ
-			
+
+			// ドラッグ＆ドロップの処理
+			if (ImGui::BeginDragDropSource())
+			{
+				ImGui::SetDragDropPayload("GAMEOBJECT_PTR", &go, sizeof(GameObject*));
+				ImGui::Text("%s", go->name.c_str());
+				ImGui::EndDragDropSource();
+			}
+
+			if (ImGui::BeginDragDropTarget())
+			{
+				if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("GAMEOBJECT_PTR"))
+				{
+					GameObject* draggedGo = *(GameObject**)payload->Data;
+					if (draggedGo != go)
+					{
+						// 循環参照のチェック（goがdraggedGoの子孫でないか）
+						bool isDescendant = false;
+						Transform* checkParent = go->GetTransform()->GetParent();
+						while (checkParent != nullptr)
+						{
+							if (checkParent->gameObject == draggedGo)
+							{
+								isDescendant = true;
+								break;
+							}
+							checkParent = checkParent->GetParent();
+						}
+
+						if (!isDescendant)
+						{
+							draggedGo->GetTransform()->SetParent(go->GetTransform());
+						}
+					}
+				}
+				ImGui::EndDragDropTarget();
+			}
+
+			putPopup(go);
+
+			if (isTreeOpen)
+			{
+				// 再帰的に子要素を配置
+				int childID = 0;
+				for (auto& child : go->GetTransform()->GetChildVector())
+				{
+					putGameObject(std::stoi(std::to_string(id) + "0") + childID++, depth + 1, child->gameObject);
+				}
+
+				ImGui::TreePop();
+			}
+
 			ImGui::PopID();
 		};
 
 		auto gameObjectVector = SceneManagement::SceneManager::GetActiveScene()->GetGameObjectVector();
-		for (int i = 0; i < gameObjectVector.size(); i++)
+		for (int i = 0; i < (int)gameObjectVector.size(); i++)
 		{
 			putGameObject(i, 0, gameObjectVector[i]);
+		}
+
+		// 何もないところへのドロップで親を解除
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1.0f), "(Drop here to unparent)");
+		if (ImGui::BeginDragDropTarget())
+		{
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("GAMEOBJECT_PTR"))
+			{
+				GameObject* draggedGo = *(GameObject**)payload->Data;
+				draggedGo->GetTransform()->SetParent(nullptr);
+			}
+			ImGui::EndDragDropTarget();
 		}
 	}
 	ImGui::End();
@@ -368,14 +415,13 @@ void SceneEditor::Update()
 	//ImGui::PopStyleVar();
 
 
-	// フォーカスフレーム
-	/*if (Selection::gameObject != nullptr)
+	// ギズモ操作の切替
+	if (!Input::GetKey(VK_CONTROL))
 	{
-		_focusFrame->GetTransform()->position = Selection::gameObject->GetTransform()->position;
-		_focusFrame->GetTransform()->scale = Selection::gameObject->GetTransform()->scale + Vector3::one;
-		_focusFrame->EditorUpdate();
-	}*/
-
+		if (Input::GetKeyDown('T')) _gizmoOperation = ImGuizmo::OPERATION::TRANSLATE;
+		if (Input::GetKeyDown('R')) _gizmoOperation = ImGuizmo::OPERATION::ROTATE;
+		if (Input::GetKeyDown('S')) _gizmoOperation = ImGuizmo::OPERATION::SCALE;
+	}
 
 	// ImGuizmo
 	ImGuizmo::BeginFrame();
@@ -393,7 +439,7 @@ void SceneEditor::Update()
 		if (ImGuizmo::Manipulate(
 			viewMat,
 			projMat,
-			ImGuizmo::OPERATION::TRANSLATE,
+			(ImGuizmo::OPERATION)_gizmoOperation,
 			ImGuizmo::MODE::LOCAL,
 			worldMat
 		))
@@ -418,3 +464,4 @@ void SceneEditor::Update()
 int SceneEditor::FieldID = 0;
 bool SceneEditor::_isEditMode = true;
 GameObject* SceneEditor::_focusFrame = nullptr;
+int SceneEditor::_gizmoOperation = ImGuizmo::OPERATION::TRANSLATE;

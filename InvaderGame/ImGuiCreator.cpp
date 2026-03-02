@@ -7,6 +7,7 @@
 #include "Transform.h"
 #include "SceneEditor.h"
 #include "SceneDataManager.h"
+#include "AnimationClip.h"
 
 
 void ImGuiCreator::CreateAssetGui(const AssetManager::AssetFolder& assetFolder, const std::function<void(const std::string& assetName, AssetManager::AssetFile* assetFile)>& selectedAction)
@@ -62,21 +63,34 @@ void ImGuiCreator::CreateAssetGui(const AssetManager::AssetFolder& assetFolder, 
 					else if (typeName == "GameObject") iconColor = IM_COL32(100, 150, 255, 255); // プレハブ：水色
 					else if (typeName == "SceneAsset") iconColor = IM_COL32(200, 100, 100, 255); // シーン：赤
 					else if (typeName == "Mesh") iconColor = IM_COL32(150, 150, 150, 255);       // メッシュ：明るいグレー
+					else if (typeName == "AnimationClip") iconColor = IM_COL32(255, 150, 50, 255); // アニメーション
 				}
 
 				
 				// アイコンボタン
 				ImVec2 cursorPos = ImGui::GetCursorPos();
 
-				// Textureの場合はサムネイルを表示、それ以外は色付きの矩形と名前で表示
-				if (assetFile->object != nullptr && assetFile->object->GetName() == "Texture")
+				// Texture または AnimationClip の場合は画像をボタンに割り当てる
+				Texture* displayTexture = nullptr;
+				if (assetFile->object != nullptr)
 				{
-					Texture* texture = dynamic_cast<Texture*>(assetFile->object);
-					if (texture == nullptr)
+					if (assetFile->object->GetName() == "Texture")
 					{
-						ImGui::Text("Invalid Texture");
+						displayTexture = dynamic_cast<Texture*>(assetFile->object);
 					}
-					else if (ImGui::ImageButton("##", (ImTextureID)texture->m_shaderResourceview.Get(), ImVec2(thumbnailSize, thumbnailSize)))
+					else if (assetFile->object->GetName() == "AnimationClip")
+					{
+						AnimationClip* clip = dynamic_cast<AnimationClip*>(assetFile->object);
+						if (clip && !clip->GetAnimDataSetVec().empty())
+						{
+							displayTexture = clip->GetAnimDataSetVec()[0].texture;
+						}
+					}
+				}
+
+				if (displayTexture != nullptr)
+				{
+					if (ImGui::ImageButton("##", (ImTextureID)displayTexture->m_shaderResourceview.Get(), ImVec2(thumbnailSize, thumbnailSize)))
 					{
 						selectedAction(assetName, assetFile);
 					}

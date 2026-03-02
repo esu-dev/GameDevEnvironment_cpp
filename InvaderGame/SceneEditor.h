@@ -15,5 +15,6 @@ public:
 private:
 	static bool _isEditMode;
 	static GameObject* _focusFrame;
+	static int _gizmoOperation;
 };
 

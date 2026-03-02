@@ -65,7 +65,7 @@ private:
 		[this]() -> Transform* { return this->_parent; },
 		[&](Transform* parent) -> void {
 			// e‚ÌŒÂƒŠƒXƒg‚É“ü‚Á‚Ä‚¢‚ê‚Îíœ‚·‚é
-			if (parent == nullptr)
+			if (parent == nullptr || parent != _parent)
 			{
 				if (_parent != nullptr)
 				{
