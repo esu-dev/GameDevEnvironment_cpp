@@ -1,6 +1,6 @@
 #pragma once
 
-#include "framework.h"
+#include "EngineFramework.h"
 #include "Component.h"
 #include "Vector2.h"
 #include "Collider2D.h"

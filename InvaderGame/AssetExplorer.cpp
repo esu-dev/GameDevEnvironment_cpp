@@ -1,6 +1,6 @@
 #include "AssetExplorer.h"
 
-#include "framework.h"
+#include "EngineFramework.h"
 #include "AssetManager.h"
 #include "SceneManager.h"
 #include "AssetCreator.h"

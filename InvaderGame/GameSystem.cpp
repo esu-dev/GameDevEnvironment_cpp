@@ -12,6 +12,7 @@
 
 using namespace SceneManagement;
 
+typedef void (*HELLO_WORLD)();
 
 void GameSystem::AddDelayedExecution(std::function<void()> func)
 {
@@ -28,6 +29,15 @@ void GameSystem::Initialize()
 	SceneEditor::Initialize();
 
 	D3D.ChangeMode_2D();
+
+	// Ç±Ç±Ç≈DLLì«Ç›çûÇ›
+	HMODULE hModule = LoadLibrary(L"C:/Users/har14/source/repos/Dll_Test/x64/Debug/Dll_Test.dll");
+
+	if (hModule != NULL)
+	{
+		 HELLO_WORLD helloWorldFunc = (HELLO_WORLD)GetProcAddress(hModule, "HelloWorld");
+		 helloWorldFunc();
+	}
 }
 
 void GameSystem::Execute()

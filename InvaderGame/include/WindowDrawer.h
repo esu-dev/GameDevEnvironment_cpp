@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DirectX.h"
-#include "framework.h"
+#include "EngineFramework.h"
 
 class WindowDrawer
 {

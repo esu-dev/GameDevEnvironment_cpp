@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stdarg.h>
-#include "framework.h"
+#include "EngineFramework.h"
 //#include "DirectX.h"
 #include <DirectXMath.h>
 

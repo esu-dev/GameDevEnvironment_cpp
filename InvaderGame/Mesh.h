@@ -1,6 +1,6 @@
 #pragma once
 
-#include "framework.h"
+#include "EngineFramework.h"
 #include "Direct3D.h"
 
 class Mesh

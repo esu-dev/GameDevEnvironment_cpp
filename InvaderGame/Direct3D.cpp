@@ -1,6 +1,6 @@
 // Ql@https://gamesgard.com/directx11_lesson02/
 
-#include "framework.h"
+#include "EngineFramework.h"
 
 #include "Direct3D.h"
 #include "Shader.h"

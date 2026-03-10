@@ -379,7 +379,7 @@
     <ClInclude Include="include\Event.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
-    <ClInclude Include="include\framework.h">
+    <ClInclude Include="include\EngineFramework.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="include\Input.h">

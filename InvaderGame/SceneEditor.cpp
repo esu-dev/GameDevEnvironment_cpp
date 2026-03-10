@@ -1,6 +1,6 @@
 #include "SceneEditor.h"
 
-#include "framework.h"
+#include "EngineFramework.h"
 #include "Utility.h"
 #include "GameEngine.h"
 #include "ImGuiUtility.h"
