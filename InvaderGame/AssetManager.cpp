@@ -87,7 +87,7 @@ void AssetManager::Initialize()
 				// なければアセットの作成
 				else
 				{
-					std::string  serializedData =
+					std::string serializedData =
 						"--- " + object->instanceID + "\n" +
 						object->GetName() + ":\n";
 					serializedData += std_extension::StringVector2String(object->Serialize());

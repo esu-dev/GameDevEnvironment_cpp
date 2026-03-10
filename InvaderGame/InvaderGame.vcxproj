@@ -301,6 +301,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="EString.cpp" />
     <ClCompile Include="TextLabel.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="EngineTime.cpp" />
@@ -352,6 +353,7 @@
     <ClInclude Include="DemoTextFlash.h" />
     <ClInclude Include="DemoTitleSceneManager.h" />
     <ClInclude Include="Editor.h" />
+    <ClInclude Include="EStringTest.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GimmickTrigger.h" />
@@ -430,6 +432,7 @@
     <ClInclude Include="Selection.h" />
     <ClInclude Include="SerializedSample.h" />
     <ClInclude Include="Shutter.h" />
+    <ClInclude Include="EString.h" />
     <ClInclude Include="TimeController.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="UuidGenerator.h" />

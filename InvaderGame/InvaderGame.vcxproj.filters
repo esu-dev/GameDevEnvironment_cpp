@@ -327,6 +327,9 @@
     <ClCompile Include="lib\imgui\ImGuizmo\ImGuizmo.cpp">
       <Filter>ソース ファイル\imgui\ImGuizmo</Filter>
     </ClCompile>
+    <ClCompile Include="EString.cpp">
+      <Filter>Source\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -642,6 +645,12 @@
     </ClInclude>
     <ClInclude Include="include\Activator.h">
       <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="EString.h">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="EStringTest.h">
+      <Filter>Source\DebugAssets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

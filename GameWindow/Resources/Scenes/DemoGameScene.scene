@@ -5856,9 +5856,10 @@ GameObject:
   name: "StageManager"
   IsPrefab: true
   tag: "Untagged"
-  (vector)_componentVector: 2
+  (vector)_componentVector: 3
   - (instanceID)729866163=2096367992=1802219774
   - (instanceID)1565077547=2085044453=664821861
+  - (instanceID)1677470049=1401328408=482327882
   _isActive:
     _variable: true
     (vector)_timeVariableSetVector: 0
@@ -5899,4 +5900,10 @@ DemoStageManager:
   gameObject: (instanceID)1507891366=1789108358=1936307866
   Started: false
   _gameClearTextGO: (instanceID)1659179802=654795890=630138907
+--- 1677470049=1401328408=482327882
+EStringTest:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)1507891366=1789108358=1936307866
+  Started: false
 

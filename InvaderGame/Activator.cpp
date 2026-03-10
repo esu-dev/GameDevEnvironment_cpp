@@ -1,6 +1,9 @@
 #include "Activator.h"
 
 #include "GameEngine.h"
+
+#include "EStringTest.h"
+
 #include "VelocityController.h"
 #include "SerializedSample.h"
 #include "Player.h"
@@ -41,6 +44,8 @@ Activator::Activator()
 	REGISTER_TYPE(BoxCollider2D);
 	REGISTER_TYPE(TextLabel);
 	REGISTER_TYPE(AnimationClip);
+
+	REGISTER_TYPE(EStringTest);
 
 	REGISTER_TYPE(VelocityController);
 	REGISTER_TYPE(SerializedSample);
