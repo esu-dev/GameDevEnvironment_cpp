@@ -13,6 +13,7 @@
 using namespace SceneManagement;
 
 typedef void (*HELLO_WORLD)();
+typedef void (*INIT_PROJ_FUNC)(Activator*);
 
 void GameSystem::AddDelayedExecution(std::function<void()> func)
 {
@@ -37,6 +38,9 @@ void GameSystem::Initialize()
 	{
 		 HELLO_WORLD helloWorldFunc = (HELLO_WORLD)GetProcAddress(hModule, "HelloWorld");
 		 helloWorldFunc();
+
+		 INIT_PROJ_FUNC initProjFunc = (INIT_PROJ_FUNC)GetProcAddress(hModule, "InitProj");
+		 initProjFunc(Activator::Instance);
 	}
 }
 

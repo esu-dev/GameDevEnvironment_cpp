@@ -363,7 +363,7 @@ void SceneEditor::Update()
 		for (auto& component : Selection::gameObject->GetComponentVector())
 		{
 			// Component
-			if (ImGui::CollapsingHeader(component.get()->GetName().c_str()))
+			if (ImGui::CollapsingHeader(component.get()->GetName()))
 			{
 				ImGuiCreator::Create(component.get());
 			}
@@ -385,7 +385,7 @@ void SceneEditor::Update()
 		}
 		if (ImGui::BeginPopup("add_component_popup"))
 		{
-			std::vector<std::string> componentNameVec = Activator::GetObjectNameVec();
+			std::vector<std::string> componentNameVec = Activator::Instance->GetObjectNameVec();
 			static int selectedIndex = 0;
 			const char* comboPreviewValue = componentNameVec[selectedIndex].c_str();
 			if (ImGui::BeginCombo("-", comboPreviewValue))
@@ -403,7 +403,7 @@ void SceneEditor::Update()
 
 			if (ImGui::Button("Add Component"))
 			{
-				Component* component = dynamic_cast<Component*>(Activator::CreateInstance(componentNameVec[selectedIndex]));
+				Component* component = dynamic_cast<Component*>(Activator::Instance->CreateInstance(componentNameVec[selectedIndex]));
 				Selection::gameObject->AddComponent(component);
 				ImGui::CloseCurrentPopup();
 			}

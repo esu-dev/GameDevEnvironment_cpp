@@ -333,7 +333,6 @@
     <Image Include="WindowsProjectDirectX11_2.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Activator.h" />
     <ClInclude Include="AnimationClip.h" />
     <ClInclude Include="AnimationEditor.h" />
     <ClInclude Include="AssetCreator.h" />
@@ -353,13 +352,13 @@
     <ClInclude Include="DemoTextFlash.h" />
     <ClInclude Include="DemoTitleSceneManager.h" />
     <ClInclude Include="Editor.h" />
-    <ClInclude Include="EngineBehaviour.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GimmickTrigger.h" />
     <ClInclude Include="GroundChecker.h" />
     <ClInclude Include="ImGuiCreator.h" />
     <ClInclude Include="ImGuiUtility.h" />
+    <ClInclude Include="include\Activator.h" />
     <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\Animator.h" />
     <ClInclude Include="include\Asset.h" />
@@ -376,6 +375,7 @@
     <ClInclude Include="include\Direct3D.h" />
     <ClInclude Include="include\DirectSound.h" />
     <ClInclude Include="include\DirectX.h" />
+    <ClInclude Include="include\EngineBehaviour.h" />
     <ClInclude Include="include\Event.h" />
     <ClInclude Include="include\EngineFramework.h" />
     <ClInclude Include="include\GameEngine.h" />
@@ -393,11 +393,11 @@
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\SceneAsset.h" />
     <ClInclude Include="include\SceneManager.h" />
+    <ClInclude Include="include\SerializedClass.h" />
     <ClInclude Include="include\Shader.h" />
     <ClInclude Include="include\SpriteRenderer.h" />
     <ClInclude Include="include\std_extension.h" />
     <ClInclude Include="include\StringConverter.h" />
-    <ClInclude Include="include\targetver.h" />
     <ClInclude Include="include\TextLabel.h" />
     <ClInclude Include="include\Texture.h" />
     <ClInclude Include="include\EngineTime.h" />
@@ -428,7 +428,6 @@
     <ClInclude Include="SceneDataManager.h" />
     <ClInclude Include="SceneEditor.h" />
     <ClInclude Include="Selection.h" />
-    <ClInclude Include="SerializedClass.h" />
     <ClInclude Include="SerializedSample.h" />
     <ClInclude Include="Shutter.h" />
     <ClInclude Include="TimeController.h" />

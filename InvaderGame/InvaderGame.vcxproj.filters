@@ -433,9 +433,6 @@
     <ClInclude Include="include\StringConverter.h">
       <Filter>Source\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="include\targetver.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="include\TextLabel.h">
       <Filter>Source\DirectX</Filter>
     </ClInclude>
@@ -529,13 +526,7 @@
     <ClInclude Include="Utility.h">
       <Filter>Source\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Activator.h">
-      <Filter>Source\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="SceneDataManager.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="SerializedClass.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>
     <ClInclude Include="Random.h">
@@ -579,9 +570,6 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Source\Demo</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineBehaviour.h">
-      <Filter>Source\GameEngine</Filter>
     </ClInclude>
     <ClInclude Include="GroundChecker.h">
       <Filter>Source\Demo</Filter>
@@ -645,6 +633,15 @@
     </ClInclude>
     <ClInclude Include="SceneEditor.h">
       <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EngineBehaviour.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SerializedClass.h">
+      <Filter>Source\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Activator.h">
+      <Filter>Source\Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

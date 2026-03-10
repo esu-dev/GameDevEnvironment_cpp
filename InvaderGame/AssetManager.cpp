@@ -276,7 +276,7 @@ void AssetManager::CreateInstanceDataVector(std::vector<InstanceData>& outInstan
 			InstanceData instanceData = InstanceData();
 
 			// インスタンス生成
-			instanceData.object = Activator::CreateInstance(typeString);
+			instanceData.object = Activator::Instance->CreateInstance(typeString);
 			if (instanceData.object == nullptr)
 			{
 				continue;
@@ -331,7 +331,7 @@ void AssetManager::SerializeGameObject(std::string& outSerializedData, GameObjec
 {
 	// GameObject
 	outSerializedData += "--- " + gameObject->instanceID + "\n";
-	outSerializedData += gameObject->GetName() + ":\n";
+	outSerializedData += std::string(gameObject->GetName()) + ":\n";
 	for (std::string line : gameObject->Serialize())
 	{
 		outSerializedData += line + "\n";
@@ -342,7 +342,7 @@ void AssetManager::SerializeGameObject(std::string& outSerializedData, GameObjec
 	{
 		Component* component = componentPtr.get();
 		outSerializedData += "--- " + component->instanceID + "\n";
-		outSerializedData += component->GetName() + ":\n";
+		outSerializedData += std::string(component->GetName()) + ":\n";
 		for (std::string line : component->Serialize())
 		{
 			outSerializedData += line + "\n";
@@ -355,7 +355,7 @@ void AssetManager::SerializeGameObject(std::vector<std::string>& outSerializedDa
 {
 	// GameObject
 	outSerializedData.push_back("--- " + gameObject->instanceID);
-	outSerializedData.push_back(gameObject->GetName() + ":");
+	outSerializedData.push_back(std::string(gameObject->GetName()) + ":");
 	std::vector<std::string> serializedData = gameObject->Serialize();
 	outSerializedData.insert(outSerializedData.end(), serializedData.begin(), serializedData.end());
 
@@ -364,7 +364,7 @@ void AssetManager::SerializeGameObject(std::vector<std::string>& outSerializedDa
 	{
 		Component* component = componentPtr.get();
 		outSerializedData.push_back("--- " + component->instanceID);
-		outSerializedData.push_back(component->GetName() + ":");
+		outSerializedData.push_back(std::string(component->GetName()) + ":");
 		std::vector<std::string> serializedData = component->Serialize();
 		outSerializedData.insert(outSerializedData.end(), serializedData.begin(), serializedData.end());
 	}

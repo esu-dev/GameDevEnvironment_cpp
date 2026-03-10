@@ -88,7 +88,7 @@ GameObject* SceneDataManager::LoadGameObjectsClone(Scene* scene, const std::vect
 			std::string typeString = m[1].str();
 
 			// インスタンス生成
-			Object* object = Activator::CreateInstance(typeString);
+			Object* object = Activator::Instance->CreateInstance(typeString);
 			object->original = instanceID2PointerMap[originalInstanceID];
 			originalID2newIDmap[originalInstanceID] = object->instanceID;
 			instanceID2PointerMap[object->instanceID] = object;

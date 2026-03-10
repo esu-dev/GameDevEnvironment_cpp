@@ -9,7 +9,7 @@
 // mmio(multimedia IO)に関するライブラリを追加
 #pragma comment(lib, "winmm.lib")
 
-#include "targetver.h"
+//#include "targetver.h"
 #define WIN32_LEAN_AND_MEAN             // Windows ヘッダーからほとんど使用されていない部分を除外する
 
 // Windows ヘッダー ファイル

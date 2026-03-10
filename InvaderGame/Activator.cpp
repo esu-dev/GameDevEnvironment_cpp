@@ -18,7 +18,19 @@
 #define REGISTER_TYPE(type) \
 	nameToInstanceMap[#type] = []() -> Object* { return new type(); }
 
+Activator* Activator::Instance = nullptr;
+
 void Activator::Initialize()
+{
+	if (Instance != nullptr)
+	{
+		MessageBoxA(NULL, "Activator was Instantiated already.", "Activator", MB_OK);
+		return;
+	}
+	Instance = new Activator();
+}
+
+Activator::Activator()
 {
 	REGISTER_TYPE(GameObject);
 	REGISTER_TYPE(Camera);
@@ -67,4 +79,9 @@ std::vector<std::string> Activator::GetObjectNameVec()
 	return objectNameVec;
 }
 
-std::unordered_map<std::string, std::function<Object* ()>> Activator::nameToInstanceMap;
+void Activator::AddNameToInstMap(std::string typeName, std::function<Object* ()> instFunc)
+{
+	Debug::Log("AddNameToInstMap()");
+	nameToInstanceMap[typeName] = instFunc;
+	GetObjectNameVec();
+}

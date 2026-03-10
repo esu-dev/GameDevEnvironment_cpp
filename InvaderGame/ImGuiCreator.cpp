@@ -174,7 +174,7 @@ bool ImGuiCreator::PutPointerField(std::string& serializedData, const std::strin
 							for (auto& component : go->GetComponentVector())
 							{
 								std::string componentID = component.get()->instanceID;
-								if (ImGui::Selectable((component.get()->GetName() + " (" + componentID + ")").c_str()))
+								if (ImGui::Selectable((std::string(component.get()->GetName()) + " (" + componentID + ")").c_str()))
 								{
 									outHasChanged = true;
 

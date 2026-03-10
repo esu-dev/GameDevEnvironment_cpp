@@ -1,0 +1,49 @@
+NewScene
+--- 372662467=897276098=500114479
+GameObject:
+  name: "GameObject"
+  IsPrefab: false
+  tag: "MainCamera"
+  (vector)_componentVector: 2
+  - (instanceID)1997639752=1747040751=749223039
+  - (instanceID)96693867=71696276=1867938516
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector: 0
+--- 1997639752=1747040751=749223039
+Transform:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)372662467=897276098=500114479
+  Started: false
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector: 0
+  position:
+    _variable:
+      x: 0.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 96693867=71696276=1867938516
+Camera:
+  name: "initial name"
+  enabled: true
+  gameObject: (instanceID)372662467=897276098=500114479
+  Started: false
+
