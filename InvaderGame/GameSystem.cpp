@@ -1,6 +1,7 @@
 #include "GameSystem.h"
 
 #include "DirectX.h"
+#include "EString.h"
 #include "GameEngine.h"
 #include "AssetManager.h"
 #include "SceneEditor.h"
@@ -13,6 +14,7 @@
 using namespace SceneManagement;
 
 typedef void (*HELLO_WORLD)();
+typedef std::string(*GET_STRING_FUNC)();
 typedef void (*INIT_PROJ_FUNC)(Activator*);
 
 void GameSystem::AddDelayedExecution(std::function<void()> func)
@@ -38,6 +40,9 @@ void GameSystem::Initialize()
 	{
 		 HELLO_WORLD helloWorldFunc = (HELLO_WORLD)GetProcAddress(hModule, "HelloWorld");
 		 helloWorldFunc();
+
+		 GET_STRING_FUNC getStringFunc = (GET_STRING_FUNC)GetProcAddress(hModule, "GetString");
+		 Debug::Log("GetStringFunc: %s", getStringFunc().c_str());
 
 		 INIT_PROJ_FUNC initProjFunc = (INIT_PROJ_FUNC)GetProcAddress(hModule, "InitProj");
 		 initProjFunc(Activator::Instance);

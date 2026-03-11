@@ -6,6 +6,7 @@ class EString
 {
 public:
 	EString(const char* data);
+	EString(const EString& other);
 	~EString();
 	void operator=(const EString& other);
 	const char* c_str();

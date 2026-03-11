@@ -134,13 +134,13 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>.\;..\InvaderGame\include;..\InvaderGame\lib\DirectXTex;..\InvaderGame\lib\Box2D\2.4.1\include;..\InvaderGame\lib\imgui\include;..\InvaderGame\lib\imgui\include\backends</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\InvaderGame\lib\Box2D\2.4.1\bin\Debug;..\InvaderGame\lib\DirectXTex\Bin\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\InvaderGame\lib\Box2D\2.4.1\bin\Debug;..\InvaderGame\lib\DirectXTex\Bin\Desktop_2026\x64\Debug</AdditionalLibraryDirectories>
       <AdditionalDependencies>legacy_stdio_definitions.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

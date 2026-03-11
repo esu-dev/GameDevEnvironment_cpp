@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EString.h"
+//#include "EString.h"
 #include "Debug.h"
 #include "EngineBehaviour.h"
 
@@ -11,7 +11,12 @@ public:
 
 	void Start() override
 	{
-		EString string = "aiueo";
-		Debug::Log("EStringTest: output = %s", string.c_str());
+		/*EString string = "aiueo";
+		Debug::Log("EStringTest: output = %s", Get().c_str());*/
 	};
+
+	/*EString Get()
+	{
+		return "kakikukkeo";
+	}*/
 };

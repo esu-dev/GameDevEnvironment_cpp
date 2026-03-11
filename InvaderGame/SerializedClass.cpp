@@ -1,5 +1,7 @@
 #include "SerializedClass.h"
 
+std::string SerializedClass::Attribute::HideInInspector = "HideInspector";
+
 std::vector<SerializedClass::FieldInfo> SerializedClass::GetFieldInfoVector()
 {
 	std::vector<FieldInfo> fieldInfoVector;
@@ -19,6 +21,7 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 		std::smatch m;
 
 		// うしろに持って行った方が良いのでは？
+		// 構造体などの要素
 		if (isPacking)
 		{
 			// リストの要素
@@ -61,7 +64,7 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 		}
 
 
-		// 空白がないなら
+		// 要素ではないなら＝先頭が空白ではないなら
 		std::regex re(R"(^([^\s]+):(\s*)(.*))");
 		if (std::regex_search(instanceData, m, re))
 		{
@@ -72,9 +75,13 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 
 			// 変数名の代入
 			std::string label = m[1].str();
-			if (std::regex_match(label, smatch, std::regex(R"((\(\w+\))?([^\s]+))")))
+			if (std::regex_match(label, smatch, std::regex(R"((\(\w+\))?([\w\d_]+)(\[\w+\])?)")))
 			{
 				subInstanceDataVector.back()->variableName = smatch[2].str();
+			}
+			else
+			{
+				MessageBoxW(NULL, L"変数名を抽出できていません．", L"SerializedClass::InputValue3()", MB_OK);
 			}
 
 
@@ -84,7 +91,7 @@ void SerializedClass::InputValue3(const std::vector<std::string>& instanceDataVe
 				isPacking = true;
 			}
 			// vector
-			else if (std::regex_match(instanceData, smatch, std::regex(R"(\(vector\)\w+:\s(\d+))")))
+			else if (std::regex_match(instanceData, smatch, std::regex(R"(\(vector\)[\w_\[\]]+:\s(\d+))")))
 			{
 				// 要素があるならまとめる
 				if (std::stoi(smatch[1].str()) > 0)

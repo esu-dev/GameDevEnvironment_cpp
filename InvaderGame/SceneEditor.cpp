@@ -363,7 +363,7 @@ void SceneEditor::Update()
 		for (auto& component : Selection::gameObject->GetComponentVector())
 		{
 			// Component
-			if (ImGui::CollapsingHeader(component.get()->GetNameEString().c_str()))
+			if (ImGui::CollapsingHeader(component.get()->GetName()))
 			{
 				ImGuiCreator::Create(component.get());
 			}

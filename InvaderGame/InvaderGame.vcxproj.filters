@@ -622,9 +622,6 @@
     <ClInclude Include="DemoStageManager.h">
       <Filter>Source\Demo</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Source\GameEngine</Filter>
-    </ClInclude>
     <ClInclude Include="MeshFilter.h">
       <Filter>Source\GameEngine</Filter>
     </ClInclude>

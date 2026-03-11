@@ -1,12 +1,12 @@
 #pragma once
 
-#define HIDE_INSPECTOR SerializedClass::FieldInfo::Attribute::HideInInspector
+#define HIDE_INSPECTOR SerializedClass::Attribute::HideInInspector
 
 #define SERIALIZE_FIELD3(v, ...) \
 	std::make_shared<SerializeFuncData>( \
-		[&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, indentNum); }, \
+		[&](int indentNum) -> std::vector<std::string> { return SerializedClass::SerializeField(#v, v, { __VA_ARGS__ }, indentNum); }, \
 		[&](InstanceData* instanceData) -> void { DeserializeField(v, instanceData); }, \
-		[&]() -> FieldInfo { return SerializedClass::FieldInfo(#v, {__VA_ARGS__}); }, \
+		[&]() -> FieldInfo { return SerializedClass::FieldInfo(#v); }, \
 		[&](std::string name) -> void { }) \
 
 #define SERIALIZE3(p, ...) \
@@ -51,21 +51,20 @@ class Component;
 class SerializedClass
 {
 public:
+	struct Attribute
+	{
+		static std::string HideInInspector;
+	};
+
 	struct FieldInfo
 	{
-		enum Attribute
-		{
-			HideInInspector,
-		};
-
 		std::string name;
 		std::vector<Attribute> AttributeVec;
 		std::vector<FieldInfo> subFieldInfoVec;
 
-		FieldInfo(std::string name, std::vector<Attribute> attributeVec)
+		FieldInfo(std::string name)
 		{
 			this->name = name;
-			AttributeVec = attributeVec;
 		}
 	};
 	
@@ -104,7 +103,7 @@ protected:
 	};
 
 	template <typename T>
-	static std::vector<std::string> SerializeField(const std::string& name, T& value, const int indentNum = 1)
+	static std::vector<std::string> SerializeField(const std::string& name, T& value, std::vector<std::string> attributeVec, const int indentNum = 1)
 	{
 		std::vector<std::string> serializedDataVector;
 
@@ -114,35 +113,49 @@ protected:
 			indent += "  ";
 		}
 
+		std::string attributes = "";
+		if (attributeVec.size() > 0)
+		{
+			for (int i = 0; i < attributeVec.size(); i++)
+			{
+				attributes += attributeVec[i];
+				if (i < attributeVec.size() - 1)
+				{
+					attributes += ", ";
+				}
+			}
+			attributes = "[" + attributes + "]";
+		}
+
 		// 値
 		if constexpr (std::is_arithmetic<T>())
 		{
 			if (typeid(T) == typeid(bool))
 			{
-				serializedDataVector.push_back(indent + name + ": " + (std::to_string(value) == "0" ? "false" : "true"));
+				serializedDataVector.push_back(indent + name + attributes + ": " + (std::to_string(value) == "0" ? "false" : "true"));
 			}
 			else
 			{
-				serializedDataVector.push_back(indent + name + ": " + std::to_string(value));
+				serializedDataVector.push_back(indent + name + attributes + ": " + std::to_string(value));
 			}
 		}
 		// ポインタ
 		else if constexpr (std::is_pointer<T>())
 		{
-			if (value == nullptr) serializedDataVector.push_back(indent + name + ": (instanceID)nullptr");
-			else serializedDataVector.push_back(indent + name + ": (instanceID)" + value->instanceID);
+			if (value == nullptr) serializedDataVector.push_back(indent + name + attributes + ": (instanceID)nullptr");
+			else serializedDataVector.push_back(indent + name + attributes + ": (instanceID)" + value->instanceID);
 		}
 		// シリアライズ可能
 		else if constexpr (std::is_base_of<SerializedClass, T>())
 		{
-			serializedDataVector.push_back(indent + name + ":");
+			serializedDataVector.push_back(indent + name + attributes + ":");
 			std::vector<std::string> subSerializeDataVector = value.Serialize(indentNum + 1);
 			serializedDataVector.insert(serializedDataVector.end(), subSerializeDataVector.begin(), subSerializeDataVector.end());
 		}
 		// vector
 		else if constexpr (std_extension::is_vector_v<T>)
 		{
-			serializedDataVector.push_back(indent + "(vector)" + name + ": " + std::to_string(value.size()));
+			serializedDataVector.push_back(indent + "(vector)" + name + attributes + ": " + std::to_string(value.size()));
 			for (int i = 0; i < value.size(); i++)
 			{
 				// 値
@@ -185,7 +198,7 @@ protected:
 		// 文字列
 		else if constexpr (std_extension::is_string_v<T>)
 		{
-			serializedDataVector.push_back(indent + name + ": \"" + value + "\"");
+			serializedDataVector.push_back(indent + name + attributes + ": \"" + value + "\"");
 		}
 		// Property
 		else if constexpr (std::is_base_of<PropertyBase, T>())
@@ -195,17 +208,17 @@ protected:
 			{
 				if (value.Get() == nullptr)
 				{
-					serializedDataVector.push_back(indent + name + ": (instanceID)nullptr");
+					serializedDataVector.push_back(indent + name + attributes + ": (instanceID)nullptr");
 				}
 				else
 				{
-					serializedDataVector.push_back(indent + name + ": (instanceID)" + value.Get()->instanceID);
+					serializedDataVector.push_back(indent + name + attributes + ": (instanceID)" + value.Get()->instanceID);
 				}
 			}
 			// シリアライズ可能
 			else if constexpr (std::is_base_of<SerializedClass, typename T::value_type>())
 			{
-				serializedDataVector.push_back(indent + name + ":");
+				serializedDataVector.push_back(indent + name + attributes + ":");
 				std::vector<std::string> subSerializeDataVector = value.Get().Serialize(indentNum + 1);
 				serializedDataVector.insert(serializedDataVector.end(), subSerializeDataVector.begin(), subSerializeDataVector.end());
 			}

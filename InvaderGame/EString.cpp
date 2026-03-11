@@ -9,6 +9,13 @@ EString::EString(const char* data)
 	memcpy(_data, data, _length + 1);
 }
 
+EString::EString(const EString& other)
+{
+	_length = other._length;
+	_data = new char[_length + 1];
+	memcpy(_data, other._data, _length + 1);
+}
+
 EString::~EString()
 {
 	delete[] _data;

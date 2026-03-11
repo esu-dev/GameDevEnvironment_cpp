@@ -1,4 +1,4 @@
-DemoGameScene
+DemoGameScene_Test
 --- 000
 GameObject:
   name[HideInspector]: "MainCamera"
@@ -9,7 +9,7 @@ GameObject:
   - (instanceID)002
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 001
 Transform:
   name[HideInspector]: "initial name"
@@ -17,13 +17,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)000
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 6.000000
       y: 1.000000
       z: -1.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -58,7 +58,7 @@ GameObject:
   - (instanceID)746408839=1785363155=2049907163
   _isActive:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1799500956=137508752=642793527
 Transform:
   name[HideInspector]: "initial name"
@@ -66,13 +66,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)497196057=906531225=817251284
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 1.000000
       y: 0.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -3.000000
     y: 5.000000
@@ -103,10 +103,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 195784630=193413168=2014331585
 Rigidbody2D:
   name[HideInspector]: "initial name"
@@ -118,7 +118,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 746408839=1785363155=2049907163
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -145,7 +145,7 @@ GameObject:
   - (instanceID)1509751976=961373694=1662533778
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1401248970=231768062=1184301228
 Transform:
   name[HideInspector]: "initial name"
@@ -153,7 +153,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)147560529=380564109=1893899489
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 3
+  (vector)_childVector: 3
   - (instanceID)1144962052=231822179=1508855639
   - (instanceID)214431009=801859099=1164764792
   - (instanceID)1660112007=1826137525=1761606654
@@ -162,7 +162,7 @@ Transform:
       x: -5.000000
       y: -5.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -193,10 +193,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)2031896239=1692424211=1578972974
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 397732447=1670649184=1016027375
 Animator:
   name[HideInspector]: "initial name"
@@ -218,10 +218,10 @@ Animator:
       AnimationClip: (instanceID)1882825050=783300963=986042454
   _textureIndex:
     _variable: 0
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _playingTime:
     _variable: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 6872234=179677836=1737315805
 Player:
   name[HideInspector]: "initial name"
@@ -258,7 +258,7 @@ Rigidbody2D:
   GravityScale: 1.500000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 890107419=408267702=1775497643
 GameObject:
   name[HideInspector]: "GimmickBox"
@@ -272,7 +272,7 @@ GameObject:
   - (instanceID)153492873=74805102=452843053
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1619447062=528024578=1024881459
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -280,13 +280,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)890107419=408267702=1775497643
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 1.000000
       y: 0.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -317,10 +317,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)792955701=2031660049=1079902562
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1499966935=2004788885=708744623
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -344,7 +344,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 153492873=74805102=452843053
 DemoRewinder:
   name[HideInspector]: "initial name"
@@ -365,7 +365,7 @@ GameObject:
   - (instanceID)111522592=1152779983=986174074
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1144962052=231822179=1508855639
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -373,13 +373,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)334835115=1784456080=1665319366
   Started[HideInspector]: false
   _parentProperty: (instanceID)1401248970=231768062=1184301228
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -5.000000
       y: -7.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: -2.000000
@@ -410,10 +410,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 987323884=1493656018=1135970640
 GroundChecker:
   name[HideInspector]: "initial name"
@@ -443,7 +443,7 @@ Rigidbody2D:
   GravityScale: 0.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 334318009=1860016338=1767387823
 GameObject:
   name[HideInspector]: "Shutter"
@@ -457,7 +457,7 @@ GameObject:
   - (instanceID)1699338209=622239389=658941422
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 738428193=767931706=81327258
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -465,13 +465,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)334318009=1860016338=1767387823
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 15.000000
       y: 3.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -502,10 +502,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1369336590=1979597621=1091512994
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 50367500=615469093=1027278146
 Shutter:
   name[HideInspector]: "initial name"
@@ -539,7 +539,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 594748402=1574792866=1069403906
 GameObject:
   name[HideInspector]: "GimmickTrigger"
@@ -554,7 +554,7 @@ GameObject:
   - (instanceID)607120668=121556865=1079057951
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1004943698=1777140712=1194973901
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -562,13 +562,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)594748402=1574792866=1069403906
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -3.000000
       y: -7.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -599,10 +599,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)333768767=1096862792=317575298
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 397698515=921189810=1480861003
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -626,7 +626,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 220179420=1740506888=1732060206
 GimmickTrigger:
   name[HideInspector]: "initial name"
@@ -646,10 +646,10 @@ Animator:
       AnimationClip: (instanceID)162372098=600006563=249103163
   _textureIndex:
     _variable: 0
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _playingTime:
     _variable: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 116941363=1899623809=284380306
 GameObject:
   name[HideInspector]: "RecordCircle"
@@ -664,7 +664,7 @@ GameObject:
   - (instanceID)1446647268=714232456=1497798755
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 214431009=801859099=1164764792
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -672,13 +672,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)116941363=1899623809=284380306
   Started[HideInspector]: false
   _parentProperty: (instanceID)1401248970=231768062=1184301228
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -5.000000
       y: -5.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -709,10 +709,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1244095655=768721352=423438383
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 2044907468=605035024=336969862
 Rigidbody2D:
   name[HideInspector]: "initial name"
@@ -724,7 +724,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 78277159=799468258=1132150830
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -760,10 +760,10 @@ Animator:
       AnimationClip: (instanceID)471440613=1646999092=245871592
   _textureIndex:
     _variable: 0
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _playingTime:
     _variable: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 797730932=1938781617=926194059
 GameObject:
   name[HideInspector]: "RewindCircle"
@@ -775,7 +775,7 @@ GameObject:
   - (instanceID)1484692936=1364014913=1180558528
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1660112007=1826137525=1761606654
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -783,13 +783,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)797730932=1938781617=926194059
   Started[HideInspector]: false
   _parentProperty: (instanceID)1401248970=231768062=1184301228
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -5.000000
       y: -5.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -820,10 +820,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1244095655=768721352=423438383
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1484692936=1364014913=1180558528
 Animator:
   name[HideInspector]: "initial name"
@@ -841,10 +841,10 @@ Animator:
       AnimationClip: (instanceID)1290421775=277455505=1694098709
   _textureIndex:
     _variable: 0
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _playingTime:
     _variable: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 478731400=1097234443=128181731
 GameObject:
   name[HideInspector]: "Rock"
@@ -855,7 +855,7 @@ GameObject:
   - (instanceID)1096084434=1759593135=505479298
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 638124128=5859953=646249462
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -863,13 +863,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)478731400=1097234443=128181731
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -4.000000
       y: -6.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -900,10 +900,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)27590078=1372041917=1333095268
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 2144448981=291600220=1318409598
 GameObject:
   name[HideInspector]: "TileTemplate"
@@ -914,7 +914,7 @@ GameObject:
   - (instanceID)556125865=978918547=248499878
   _isActive:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 851826084=154128679=190080755
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -922,13 +922,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)2144448981=291600220=1318409598
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 4.000000
       y: -1.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -959,10 +959,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1386856610=1023559114=1189473343
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 589309547=1709819280=1531874442
 GameObject:
   name[HideInspector]: "Up1"
@@ -973,7 +973,7 @@ GameObject:
   - (instanceID)1079864875=2014252071=1582300192
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 104094391=1219101617=2057977959
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -981,13 +981,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)589309547=1709819280=1531874442
   Started[HideInspector]: false
   _parentProperty: (instanceID)877544060=102364500=1289885294
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -5.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -3.000000
     y: 0.000000
@@ -1018,10 +1018,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1340811458=71075637=1448548859
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 312139970=1885466842=414515924
 GameObject:
   name[HideInspector]: "Up2"
@@ -1032,7 +1032,7 @@ GameObject:
   - (instanceID)151533521=694660845=1106640522
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1671785625=544919112=372188005
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1040,13 +1040,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)312139970=1885466842=414515924
   Started[HideInspector]: false
   _parentProperty: (instanceID)877544060=102364500=1289885294
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -3.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -1077,10 +1077,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)284790209=1190495078=709005223
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1576049666=1313029169=600105988
 GameObject:
   name[HideInspector]: "Up3"
@@ -1091,7 +1091,7 @@ GameObject:
   - (instanceID)1626729676=1211994363=466600497
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 299515405=1884784993=1245005352
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1099,13 +1099,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1576049666=1313029169=600105988
   Started[HideInspector]: false
   _parentProperty: (instanceID)877544060=102364500=1289885294
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -1.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -1136,10 +1136,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)988538936=53375498=1081506022
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 484734571=784918813=948434037
 GameObject:
   name[HideInspector]: "Up4"
@@ -1150,7 +1150,7 @@ GameObject:
   - (instanceID)329049549=789330640=1944522672
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1686830054=1998307348=1354835614
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1158,13 +1158,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)484734571=784918813=948434037
   Started[HideInspector]: false
   _parentProperty: (instanceID)877544060=102364500=1289885294
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 1.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 3.000000
     y: 0.000000
@@ -1195,10 +1195,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1058205684=1981702125=905794294
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1758669023=1026246354=1826692743
 GameObject:
   name[HideInspector]: "Up_4_Normal"
@@ -1208,7 +1208,7 @@ GameObject:
   - (instanceID)877544060=102364500=1289885294
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 877544060=102364500=1289885294
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1216,7 +1216,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)1758669023=1026246354=1826692743
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 28
+  (vector)_childVector: 28
   - (instanceID)104094391=1219101617=2057977959
   - (instanceID)1671785625=544919112=372188005
   - (instanceID)299515405=1884784993=1245005352
@@ -1250,7 +1250,7 @@ Transform:
       x: -2.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1276,7 +1276,7 @@ GameObject:
   - (instanceID)1835451941=1560070673=1125532735
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1835451941=1560070673=1125532735
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1284,7 +1284,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)156080770=796107901=345364982
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 3
+  (vector)_childVector: 3
   - (instanceID)972064263=1204696327=939248708
   - (instanceID)640254254=70795754=41238423
   - (instanceID)1376491233=937494807=1830755603
@@ -1293,7 +1293,7 @@ Transform:
       x: 6.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1320,7 +1320,7 @@ GameObject:
   - (instanceID)1052757590=1372438575=1090994373
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 972064263=1204696327=939248708
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1328,13 +1328,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)305494918=1119676737=1347174022
   Started[HideInspector]: false
   _parentProperty: (instanceID)1835451941=1560070673=1125532735
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 3.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -3.000000
     y: 0.000000
@@ -1365,10 +1365,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1340811458=71075637=1448548859
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1733225516=637018245=325182870
 GameObject:
   name[HideInspector]: "Up2"
@@ -1379,7 +1379,7 @@ GameObject:
   - (instanceID)1811698635=1476224986=1472384611
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 640254254=70795754=41238423
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1387,13 +1387,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1733225516=637018245=325182870
   Started[HideInspector]: false
   _parentProperty: (instanceID)1835451941=1560070673=1125532735
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 5.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -1424,10 +1424,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)284790209=1190495078=709005223
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 355399392=831049859=1013447319
 GameObject:
   name[HideInspector]: "Up3"
@@ -1438,7 +1438,7 @@ GameObject:
   - (instanceID)853245299=1531343393=1207221012
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1376491233=937494807=1830755603
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1446,13 +1446,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)355399392=831049859=1013447319
   Started[HideInspector]: false
   _parentProperty: (instanceID)1835451941=1560070673=1125532735
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 7.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -1483,10 +1483,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)988538936=53375498=1081506022
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 144488370=2056081730=770245372
 GameObject:
   name[HideInspector]: "RIghtDown_Inverse"
@@ -1497,7 +1497,7 @@ GameObject:
   - (instanceID)1586635313=1616604926=548470064
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 689859816=468321897=1000630367
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1505,13 +1505,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)144488370=2056081730=770245372
   Started[HideInspector]: false
   _parentProperty: (instanceID)723990368=4404989=1575571294
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 11.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1542,10 +1542,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1002214360=62280928=1223044261
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1336205416=1532896535=984970164
 GameObject:
   name[HideInspector]: "Corner_RightDown_Inverse"
@@ -1556,7 +1556,7 @@ GameObject:
   - (instanceID)1670020208=1783788909=204383473
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 723990368=4404989=1575571294
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1564,7 +1564,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)1336205416=1532896535=984970164
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 3
+  (vector)_childVector: 3
   - (instanceID)689859816=468321897=1000630367
   - (instanceID)1954417565=1282040475=1008445826
   - (instanceID)301486097=198007081=73884757
@@ -1573,7 +1573,7 @@ Transform:
       x: 11.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1604,10 +1604,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 341274674=939437537=1593343032
 GameObject:
   name[HideInspector]: "Right"
@@ -1618,7 +1618,7 @@ GameObject:
   - (instanceID)912562097=1506851243=1996476333
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1954417565=1282040475=1008445826
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1626,13 +1626,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)341274674=939437537=1593343032
   Started[HideInspector]: false
   _parentProperty: (instanceID)723990368=4404989=1575571294
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 11.000000
       y: -6.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 2.000000
@@ -1663,10 +1663,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1386856610=1023559114=1189473343
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1746929265=1278075119=1535328932
 GameObject:
   name[HideInspector]: "Up4_Inverse"
@@ -1677,7 +1677,7 @@ GameObject:
   - (instanceID)106436356=1807406878=219815952
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 301486097=198007081=73884757
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1685,13 +1685,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1746929265=1278075119=1535328932
   Started[HideInspector]: false
   _parentProperty: (instanceID)723990368=4404989=1575571294
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 9.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -2.000000
     y: 0.000000
@@ -1722,10 +1722,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1488480237=1205210116=1150986257
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 640974497=1577347983=238398253
 GameObject:
   name[HideInspector]: "Corner_LeftUp_Inverse"
@@ -1735,7 +1735,7 @@ GameObject:
   - (instanceID)1991500037=2114228128=2140381839
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1991500037=2114228128=2140381839
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1743,7 +1743,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)640974497=1577347983=238398253
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 3
+  (vector)_childVector: 3
   - (instanceID)2144056068=225485315=1400794645
   - (instanceID)1762331353=625993788=1869447108
   - (instanceID)1144512274=1638199712=762169650
@@ -1752,7 +1752,7 @@ Transform:
       x: 13.000000
       y: -4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1779,7 +1779,7 @@ GameObject:
   - (instanceID)1640998116=1175701161=725810939
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 2144056068=225485315=1400794645
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1787,13 +1787,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1527033646=359420710=296585808
   Started[HideInspector]: false
   _parentProperty: (instanceID)1991500037=2114228128=2140381839
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 11.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -2.000000
     y: 2.000000
@@ -1824,10 +1824,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)785505556=472500270=1046712315
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 402302792=958843584=123749264
 GameObject:
   name[HideInspector]: "Right"
@@ -1838,7 +1838,7 @@ GameObject:
   - (instanceID)2007610967=1107882944=1920560522
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1762331353=625993788=1869447108
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1846,13 +1846,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)402302792=958843584=123749264
   Started[HideInspector]: false
   _parentProperty: (instanceID)1991500037=2114228128=2140381839
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 13.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 2.000000
@@ -1883,10 +1883,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1340811458=71075637=1448548859
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 717926989=2056405307=567345552
 GameObject:
   name[HideInspector]: "Up4_Inverse"
@@ -1897,7 +1897,7 @@ GameObject:
   - (instanceID)320636876=2052715182=625940101
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1144512274=1638199712=762169650
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1905,13 +1905,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)717926989=2056405307=567345552
   Started[HideInspector]: false
   _parentProperty: (instanceID)1991500037=2114228128=2140381839
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 11.000000
       y: -4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -2.000000
     y: 0.000000
@@ -1942,10 +1942,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)748729736=1801220044=739974685
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 339049517=1265390626=673728873
 GameObject:
   name[HideInspector]: "Up_2-3_Normal"
@@ -1955,7 +1955,7 @@ GameObject:
   - (instanceID)739713634=259687171=182647217
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 739713634=259687171=182647217
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -1963,7 +1963,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)339049517=1265390626=673728873
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 2
+  (vector)_childVector: 2
   - (instanceID)1430268362=1255324088=912996817
   - (instanceID)257532889=588548416=1901817939
   position:
@@ -1971,7 +1971,7 @@ Transform:
       x: 16.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -1998,7 +1998,7 @@ GameObject:
   - (instanceID)362179461=1603460059=74560278
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1430268362=1255324088=912996817
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2006,13 +2006,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)436709801=1144377417=735898196
   Started[HideInspector]: false
   _parentProperty: (instanceID)739713634=259687171=182647217
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 15.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -2043,10 +2043,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)284790209=1190495078=709005223
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 114128546=795905505=1379057732
 GameObject:
   name[HideInspector]: "Up3"
@@ -2057,7 +2057,7 @@ GameObject:
   - (instanceID)1671460722=1723633410=92962183
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 257532889=588548416=1901817939
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2065,13 +2065,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)114128546=795905505=1379057732
   Started[HideInspector]: false
   _parentProperty: (instanceID)739713634=259687171=182647217
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 17.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -2102,10 +2102,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)988538936=53375498=1081506022
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1452326926=1900775810=1064945822
 GameObject:
   name[HideInspector]: "Corner_RightDown_Inverse"
@@ -2116,7 +2116,7 @@ GameObject:
   - (instanceID)201500344=1400855750=539122415
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 488243062=1896485411=330329326
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2124,7 +2124,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)1452326926=1900775810=1064945822
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 3
+  (vector)_childVector: 3
   - (instanceID)15917670=1830213919=1066505430
   - (instanceID)1133299563=1109029091=1354066407
   - (instanceID)1513581167=1084306494=1819655803
@@ -2133,7 +2133,7 @@ Transform:
       x: 21.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2164,10 +2164,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 122163986=1003093772=570490462
 GameObject:
   name[HideInspector]: "RIghtDown_Inverse"
@@ -2178,7 +2178,7 @@ GameObject:
   - (instanceID)483519326=1671344341=1500775540
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 15917670=1830213919=1066505430
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2186,13 +2186,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)122163986=1003093772=570490462
   Started[HideInspector]: false
   _parentProperty: (instanceID)488243062=1896485411=330329326
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 21.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2223,10 +2223,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1002214360=62280928=1223044261
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 575638629=412637237=1810140416
 GameObject:
   name[HideInspector]: "Right"
@@ -2237,7 +2237,7 @@ GameObject:
   - (instanceID)258749997=935639395=1941216325
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1133299563=1109029091=1354066407
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2245,13 +2245,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)575638629=412637237=1810140416
   Started[HideInspector]: false
   _parentProperty: (instanceID)488243062=1896485411=330329326
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 21.000000
       y: 0.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 2.000000
@@ -2282,10 +2282,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1386856610=1023559114=1189473343
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 888189656=326499267=233936064
 GameObject:
   name[HideInspector]: "Up4_Inverse"
@@ -2296,7 +2296,7 @@ GameObject:
   - (instanceID)299267565=962107308=973654554
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1513581167=1084306494=1819655803
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2304,13 +2304,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)888189656=326499267=233936064
   Started[HideInspector]: false
   _parentProperty: (instanceID)488243062=1896485411=330329326
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 19.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -2.000000
     y: 0.000000
@@ -2341,10 +2341,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1488480237=1205210116=1150986257
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1325980737=1159517851=1031008334
 GameObject:
   name[HideInspector]: "Left_2-3_Normal"
@@ -2354,7 +2354,7 @@ GameObject:
   - (instanceID)1773915756=1590280576=1297138682
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1773915756=1590280576=1297138682
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2362,7 +2362,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)1325980737=1159517851=1031008334
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 2
+  (vector)_childVector: 2
   - (instanceID)1966819732=1381939210=1202667705
   - (instanceID)1229964473=792017359=768820298
   position:
@@ -2370,7 +2370,7 @@ Transform:
       x: 21.000000
       y: 3.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2397,7 +2397,7 @@ GameObject:
   - (instanceID)998197467=2017608345=158418278
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1966819732=1381939210=1202667705
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2405,13 +2405,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)223865669=242231744=2009485623
   Started[HideInspector]: false
   _parentProperty: (instanceID)1773915756=1590280576=1297138682
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 21.000000
       y: 4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 1.000000
@@ -2442,10 +2442,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1646279221=1340990038=1767113539
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1096183271=420946107=1038377530
 GameObject:
   name[HideInspector]: "Left3"
@@ -2456,7 +2456,7 @@ GameObject:
   - (instanceID)1169245024=1580068093=1555223794
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1229964473=792017359=768820298
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2464,13 +2464,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1096183271=420946107=1038377530
   Started[HideInspector]: false
   _parentProperty: (instanceID)1773915756=1590280576=1297138682
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 21.000000
       y: 2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: -1.000000
@@ -2501,10 +2501,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)212801423=1884271856=2065021270
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1533291291=274527115=1149836197
 GameObject:
   name[HideInspector]: "Corner_RightUp_Inverse"
@@ -2514,7 +2514,7 @@ GameObject:
   - (instanceID)1770778802=1417477143=1774646935
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1770778802=1417477143=1774646935
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2522,7 +2522,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)1533291291=274527115=1149836197
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 3
+  (vector)_childVector: 3
   - (instanceID)1165438741=2066739197=1872428834
   - (instanceID)1658985918=1092395825=201976843
   - (instanceID)459196808=1251496624=77441474
@@ -2531,7 +2531,7 @@ Transform:
       x: 21.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2558,7 +2558,7 @@ GameObject:
   - (instanceID)496246899=1514679748=1485917971
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1165438741=2066739197=1872428834
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2566,13 +2566,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)728346598=85295496=1530767102
   Started[HideInspector]: false
   _parentProperty: (instanceID)1770778802=1417477143=1774646935
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 21.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2603,10 +2603,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1395600945=2124311525=1442060992
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1908448546=1753907175=1980305601
 GameObject:
   name[HideInspector]: "Right_Inv"
@@ -2617,7 +2617,7 @@ GameObject:
   - (instanceID)289319172=1369585010=228534157
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1658985918=1092395825=201976843
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2625,13 +2625,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1908448546=1753907175=1980305601
   Started[HideInspector]: false
   _parentProperty: (instanceID)1770778802=1417477143=1774646935
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 21.000000
       y: 6.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: -2.000000
@@ -2662,10 +2662,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1386856610=1023559114=1189473343
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1774279937=1874793355=1033405597
 GameObject:
   name[HideInspector]: "Up4_Inverse"
@@ -2676,7 +2676,7 @@ GameObject:
   - (instanceID)469498512=988441533=1349695340
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 459196808=1251496624=77441474
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2684,13 +2684,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1774279937=1874793355=1033405597
   Started[HideInspector]: false
   _parentProperty: (instanceID)1770778802=1417477143=1774646935
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 19.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -2.000000
     y: 0.000000
@@ -2721,10 +2721,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1396685563=11855302=1903596312
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 411385698=924848761=723416847
 GameObject:
   name[HideInspector]: "Up_1-3_Inv"
@@ -2734,7 +2734,7 @@ GameObject:
   - (instanceID)317713555=1282746662=58859322
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 317713555=1282746662=58859322
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2742,7 +2742,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)411385698=924848761=723416847
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 3
+  (vector)_childVector: 3
   - (instanceID)1969853475=1748363241=1579894157
   - (instanceID)1284048427=1195661070=1112179486
   - (instanceID)1165885388=885305832=470140148
@@ -2751,7 +2751,7 @@ Transform:
       x: 15.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2778,7 +2778,7 @@ GameObject:
   - (instanceID)2078429812=1754492252=779980222
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1969853475=1748363241=1579894157
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2786,13 +2786,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1626391407=1760803968=443724019
   Started[HideInspector]: false
   _parentProperty: (instanceID)317713555=1282746662=58859322
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 13.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -2.000000
     y: 0.000000
@@ -2823,10 +2823,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1048850283=2095153860=1951394510
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1923324438=2094316058=1688384123
 GameObject:
   name[HideInspector]: "Up2"
@@ -2837,7 +2837,7 @@ GameObject:
   - (instanceID)1661782493=551182352=1117736937
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1284048427=1195661070=1112179486
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2845,13 +2845,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1923324438=2094316058=1688384123
   Started[HideInspector]: false
   _parentProperty: (instanceID)317713555=1282746662=58859322
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 15.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2882,10 +2882,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)2145419292=100847595=862704421
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 93799367=724604187=1705017661
 GameObject:
   name[HideInspector]: "Up3"
@@ -2896,7 +2896,7 @@ GameObject:
   - (instanceID)755870752=1668765305=659171772
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1165885388=885305832=470140148
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2904,13 +2904,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)93799367=724604187=1705017661
   Started[HideInspector]: false
   _parentProperty: (instanceID)317713555=1282746662=58859322
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 17.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 2.000000
     y: 0.000000
@@ -2941,10 +2941,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1767809968=1538349478=1991160810
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1263627845=849112413=909459930
 GameObject:
   name[HideInspector]: "Up_1-4_Inv"
@@ -2954,7 +2954,7 @@ GameObject:
   - (instanceID)1579344448=1114366423=632119712
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1579344448=1114366423=632119712
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -2962,7 +2962,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)1263627845=849112413=909459930
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 4
+  (vector)_childVector: 4
   - (instanceID)718464078=1084369977=387194797
   - (instanceID)358062885=625842587=717589112
   - (instanceID)2141663467=1643969484=1927362106
@@ -2972,7 +2972,7 @@ Transform:
       x: 8.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -2999,7 +2999,7 @@ GameObject:
   - (instanceID)643584972=1536046433=346328547
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 718464078=1084369977=387194797
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3007,13 +3007,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1512990226=308024713=1881223464
   Started[HideInspector]: false
   _parentProperty: (instanceID)1579344448=1114366423=632119712
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 5.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -3.000000
     y: 0.000000
@@ -3044,10 +3044,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1048850283=2095153860=1951394510
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 837581531=579930351=1517261078
 GameObject:
   name[HideInspector]: "Up2"
@@ -3058,7 +3058,7 @@ GameObject:
   - (instanceID)778694939=1259499851=1039934397
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 358062885=625842587=717589112
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3066,13 +3066,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)837581531=579930351=1517261078
   Started[HideInspector]: false
   _parentProperty: (instanceID)1579344448=1114366423=632119712
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 7.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -3103,10 +3103,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)2145419292=100847595=862704421
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 839865061=65758402=815797446
 GameObject:
   name[HideInspector]: "Up3"
@@ -3117,7 +3117,7 @@ GameObject:
   - (instanceID)675553060=508585855=978498237
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 2141663467=1643969484=1927362106
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3125,13 +3125,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)839865061=65758402=815797446
   Started[HideInspector]: false
   _parentProperty: (instanceID)1579344448=1114366423=632119712
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 9.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -3162,10 +3162,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1767809968=1538349478=1991160810
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1740314113=17476448=18970399
 GameObject:
   name[HideInspector]: "Up4"
@@ -3176,7 +3176,7 @@ GameObject:
   - (instanceID)1749942582=772586266=911297253
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1192294231=1628903254=905704775
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3184,13 +3184,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1740314113=17476448=18970399
   Started[HideInspector]: false
   _parentProperty: (instanceID)1579344448=1114366423=632119712
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 11.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 3.000000
     y: 0.000000
@@ -3221,10 +3221,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1396685563=11855302=1903596312
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 937875833=970686787=573829363
 GameObject:
   name[HideInspector]: "Up_1-4_Inv"
@@ -3234,7 +3234,7 @@ GameObject:
   - (instanceID)50950024=1665099290=1804298091
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 50950024=1665099290=1804298091
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3242,7 +3242,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)937875833=970686787=573829363
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 4
+  (vector)_childVector: 4
   - (instanceID)600590592=180813828=1744099296
   - (instanceID)104619105=16547588=2078894500
   - (instanceID)1964106008=1455583634=265253179
@@ -3252,7 +3252,7 @@ Transform:
       x: 0.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -3279,7 +3279,7 @@ GameObject:
   - (instanceID)904997324=734530873=511192875
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 600590592=180813828=1744099296
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3287,13 +3287,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)76717411=698042285=796759219
   Started[HideInspector]: false
   _parentProperty: (instanceID)50950024=1665099290=1804298091
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -3.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -3.000000
     y: 0.000000
@@ -3324,10 +3324,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1048850283=2095153860=1951394510
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1857052816=1662362200=930662988
 GameObject:
   name[HideInspector]: "Up2"
@@ -3338,7 +3338,7 @@ GameObject:
   - (instanceID)1726680277=1755629091=1552926193
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 104619105=16547588=2078894500
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3346,13 +3346,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1857052816=1662362200=930662988
   Started[HideInspector]: false
   _parentProperty: (instanceID)50950024=1665099290=1804298091
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -1.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -1.000000
     y: 0.000000
@@ -3383,10 +3383,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)2145419292=100847595=862704421
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1254394392=353530221=1921158462
 GameObject:
   name[HideInspector]: "Up3"
@@ -3397,7 +3397,7 @@ GameObject:
   - (instanceID)538650323=1523398224=136609835
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1964106008=1455583634=265253179
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3405,13 +3405,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1254394392=353530221=1921158462
   Started[HideInspector]: false
   _parentProperty: (instanceID)50950024=1665099290=1804298091
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 1.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 1.000000
     y: 0.000000
@@ -3442,10 +3442,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1767809968=1538349478=1991160810
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1033601584=1373628101=1618941457
 GameObject:
   name[HideInspector]: "Up4"
@@ -3456,7 +3456,7 @@ GameObject:
   - (instanceID)1263770654=2114435904=1980138498
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1267027985=190470141=369214484
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3464,13 +3464,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1033601584=1373628101=1618941457
   Started[HideInspector]: false
   _parentProperty: (instanceID)50950024=1665099290=1804298091
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 3.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 3.000000
     y: 0.000000
@@ -3501,10 +3501,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1396685563=11855302=1903596312
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1129690439=2034622264=1722594317
 GameObject:
   name[HideInspector]: "Corner_LeftUp_Inverse"
@@ -3514,7 +3514,7 @@ GameObject:
   - (instanceID)585053992=1437822113=1964476191
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 585053992=1437822113=1964476191
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3522,7 +3522,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)1129690439=2034622264=1722594317
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 3
+  (vector)_childVector: 3
   - (instanceID)876112737=529278527=2120143368
   - (instanceID)1332855500=1329904728=1873263251
   - (instanceID)314704231=893112548=1780120607
@@ -3531,7 +3531,7 @@ Transform:
       x: -9.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -3558,7 +3558,7 @@ GameObject:
   - (instanceID)1164379208=787659090=1108077523
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 876112737=529278527=2120143368
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3566,13 +3566,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)701543489=1156377995=604999635
   Started[HideInspector]: false
   _parentProperty: (instanceID)585053992=1437822113=1964476191
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -9.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -3603,10 +3603,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)2008839930=594619261=1294198583
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 763609755=715944179=632356393
 GameObject:
   name[HideInspector]: "Up"
@@ -3617,7 +3617,7 @@ GameObject:
   - (instanceID)2098353193=338349741=923490026
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1332855500=1329904728=1873263251
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3625,13 +3625,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)763609755=715944179=632356393
   Started[HideInspector]: false
   _parentProperty: (instanceID)585053992=1437822113=1964476191
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -7.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 2.000000
     y: 0.000000
@@ -3662,10 +3662,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1048850283=2095153860=1951394510
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1245261536=1115043130=432217098
 GameObject:
   name[HideInspector]: "Left_Inverse"
@@ -3676,7 +3676,7 @@ GameObject:
   - (instanceID)372903764=1944304599=54715916
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 314704231=893112548=1780120607
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3684,13 +3684,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1245261536=1115043130=432217098
   Started[HideInspector]: false
   _parentProperty: (instanceID)585053992=1437822113=1964476191
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -9.000000
       y: 6.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: -2.000000
@@ -3721,10 +3721,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)869050442=1137439582=2140560128
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 677285593=1155815187=644602689
 GameObject:
   name[HideInspector]: "Left_2-4_Inv"
@@ -3734,7 +3734,7 @@ GameObject:
   - (instanceID)185637696=1556937315=30783400
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 185637696=1556937315=30783400
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3742,7 +3742,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)677285593=1155815187=644602689
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 3
+  (vector)_childVector: 3
   - (instanceID)322032662=352164511=1072888239
   - (instanceID)865181261=1523641235=1178763608
   - (instanceID)533329342=2077575848=792011555
@@ -3751,7 +3751,7 @@ Transform:
       x: -9.000000
       y: 2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -3778,7 +3778,7 @@ GameObject:
   - (instanceID)70984662=1372732326=1165125612
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 322032662=352164511=1072888239
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3786,13 +3786,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)544484970=1727050116=68459735
   Started[HideInspector]: false
   _parentProperty: (instanceID)185637696=1556937315=30783400
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -9.000000
       y: 4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 2.000000
@@ -3823,10 +3823,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)966734902=107936914=2044317531
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 644822443=659698188=1941248833
 GameObject:
   name[HideInspector]: "Left3"
@@ -3837,7 +3837,7 @@ GameObject:
   - (instanceID)1544763521=1695061869=652453873
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 865181261=1523641235=1178763608
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3845,13 +3845,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)644822443=659698188=1941248833
   Started[HideInspector]: false
   _parentProperty: (instanceID)185637696=1556937315=30783400
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -9.000000
       y: 2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -3882,10 +3882,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)903409055=1388482190=1506748191
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1318311976=451490286=602162428
 GameObject:
   name[HideInspector]: "Left4"
@@ -3896,7 +3896,7 @@ GameObject:
   - (instanceID)520430159=992226492=1598033968
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 533329342=2077575848=792011555
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3904,13 +3904,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1318311976=451490286=602162428
   Started[HideInspector]: false
   _parentProperty: (instanceID)185637696=1556937315=30783400
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -9.000000
       y: 0.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: -2.000000
@@ -3941,10 +3941,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)940386519=1109807382=1889037870
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 604125654=1530524473=1004989376
 GameObject:
   name[HideInspector]: "Left_2-3Inv"
@@ -3954,7 +3954,7 @@ GameObject:
   - (instanceID)571005147=1416193121=1033677784
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 571005147=1416193121=1033677784
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -3962,7 +3962,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)604125654=1530524473=1004989376
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 2
+  (vector)_childVector: 2
   - (instanceID)944486274=469924153=1533201774
   - (instanceID)2082887688=1155413427=920634129
   position:
@@ -3970,7 +3970,7 @@ Transform:
       x: -9.000000
       y: -4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -3997,7 +3997,7 @@ GameObject:
   - (instanceID)181007392=19120833=181557028
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 944486274=469924153=1533201774
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -4005,13 +4005,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)340577640=581478214=1261118505
   Started[HideInspector]: false
   _parentProperty: (instanceID)571005147=1416193121=1033677784
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -9.000000
       y: -2.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 2.000000
@@ -4042,10 +4042,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)966734902=107936914=2044317531
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 231630747=863323350=815650909
 GameObject:
   name[HideInspector]: "Left3"
@@ -4056,7 +4056,7 @@ GameObject:
   - (instanceID)2042332769=889209786=1447070394
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 2082887688=1155413427=920634129
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -4064,13 +4064,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)231630747=863323350=815650909
   Started[HideInspector]: false
   _parentProperty: (instanceID)571005147=1416193121=1033677784
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -9.000000
       y: -4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -4101,10 +4101,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)903409055=1388482190=1506748191
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1661651390=1563255848=1036533492
 GameObject:
   name[HideInspector]: "Up2_Inv"
@@ -4115,7 +4115,7 @@ GameObject:
   - (instanceID)1872857493=635779122=2068788964
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1315132166=956430954=281184428
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -4123,13 +4123,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1661651390=1563255848=1036533492
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -5.000000
       y: 8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -4160,10 +4160,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)2145419292=100847595=862704421
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 428927954=162445982=1370079233
 GameObject:
   name[HideInspector]: "Corner_LeftUp_Inverse"
@@ -4173,7 +4173,7 @@ GameObject:
   - (instanceID)491247783=493405474=712336550
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 491247783=493405474=712336550
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -4181,7 +4181,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)428927954=162445982=1370079233
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 3
+  (vector)_childVector: 3
   - (instanceID)178087952=1303529155=22949756
   - (instanceID)1530875348=1831078616=1904291625
   - (instanceID)1637445725=376720964=209569243
@@ -4190,7 +4190,7 @@ Transform:
       x: -9.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -4217,7 +4217,7 @@ GameObject:
   - (instanceID)154684441=21513041=427177128
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 178087952=1303529155=22949756
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -4225,13 +4225,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)854798971=531532708=552127638
   Started[HideInspector]: false
   _parentProperty: (instanceID)491247783=493405474=712336550
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -9.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -4262,10 +4262,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1893810290=1761182377=2014278095
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 765514700=1932471683=1658441020
 GameObject:
   name[HideInspector]: "Up"
@@ -4276,7 +4276,7 @@ GameObject:
   - (instanceID)1078764749=1608720323=758282387
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1530875348=1831078616=1904291625
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -4284,13 +4284,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)765514700=1932471683=1658441020
   Started[HideInspector]: false
   _parentProperty: (instanceID)491247783=493405474=712336550
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -7.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 2.000000
     y: 0.000000
@@ -4321,10 +4321,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1670800401=1125651826=1256137977
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1347023300=705900137=2109523242
 GameObject:
   name[HideInspector]: "Left4_Inverse"
@@ -4335,7 +4335,7 @@ GameObject:
   - (instanceID)1530825142=988644245=204296620
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1637445725=376720964=209569243
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -4343,13 +4343,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1347023300=705900137=2109523242
   Started[HideInspector]: false
   _parentProperty: (instanceID)491247783=493405474=712336550
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -9.000000
       y: -6.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 2.000000
@@ -4380,10 +4380,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)940386519=1109807382=1889037870
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 711036678=1322269444=708535055
 GameObject:
   name[HideInspector]: "Collider"
@@ -4393,7 +4393,7 @@ GameObject:
   - (instanceID)1657606575=1920588215=2018181509
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1657606575=1920588215=2018181509
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -4401,7 +4401,7 @@ Transform:
   gameObject[HideInspector]: (instanceID)711036678=1322269444=708535055
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 6
+  (vector)_childVector: 6
   - (instanceID)1980452400=1108220995=55850007
   - (instanceID)1241421063=1687016270=1977344215
   - (instanceID)374534417=794817743=321413641
@@ -4413,7 +4413,7 @@ Transform:
       x: 4.000000
       y: 0.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -4442,7 +4442,7 @@ GameObject:
   - (instanceID)499479013=533212854=1217748177
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1980452400=1108220995=55850007
 Transform:
   name[HideInspector]: "initial name"
@@ -4450,13 +4450,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)769664446=1037129585=1475442000
   Started[HideInspector]: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -10.000000
       y: 1.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -14.000000
     y: 1.000000
@@ -4487,10 +4487,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 106212821=1070340344=382839315
 Rigidbody2D:
   name[HideInspector]: "initial name"
@@ -4502,7 +4502,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 499479013=533212854=1217748177
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -4527,7 +4527,7 @@ GameObject:
   - (instanceID)1610731971=1533883797=748057727
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1241421063=1687016270=1977344215
 Transform:
   name[HideInspector]: "initial name"
@@ -4535,13 +4535,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)386477885=1281687018=848536880
   Started[HideInspector]: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 1.000000
       y: -9.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: -3.000000
     y: -9.000000
@@ -4572,10 +4572,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 107913122=1894500636=1886908841
 Rigidbody2D:
   name[HideInspector]: "initial name"
@@ -4587,7 +4587,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1610731971=1533883797=748057727
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -4612,7 +4612,7 @@ GameObject:
   - (instanceID)1867332128=1078996109=1526521997
   _isActive:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 374534417=794817743=321413641
 Transform:
   name[HideInspector]: "initial name"
@@ -4620,13 +4620,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)2087706999=136931799=1037523503
   Started[HideInspector]: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 6.000000
       y: 10.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 2.000000
     y: 10.000000
@@ -4657,10 +4657,10 @@ SpriteRenderer:
     a: 0.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 596626278=1063091402=731515047
 Rigidbody2D:
   name[HideInspector]: "initial name"
@@ -4672,7 +4672,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1867332128=1078996109=1526521997
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -4697,7 +4697,7 @@ GameObject:
   - (instanceID)628167454=292183758=175181225
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1099846591=2045389252=1537982665
 Transform:
   name[HideInspector]: "initial name"
@@ -4705,13 +4705,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1852191043=761465770=122808261
   Started[HideInspector]: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 22.000000
       y: 3.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 18.000000
     y: 3.000000
@@ -4742,10 +4742,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 103296269=1609469019=872612616
 Rigidbody2D:
   name[HideInspector]: "initial name"
@@ -4757,7 +4757,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 628167454=292183758=175181225
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -4782,7 +4782,7 @@ GameObject:
   - (instanceID)159511777=1000488639=1640695824
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1388049651=1115916647=2091050354
 Transform:
   name[HideInspector]: "initial name"
@@ -4790,13 +4790,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)973748058=999692179=725312071
   Started[HideInspector]: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 16.000000
       y: -3.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 12.000000
     y: -3.000000
@@ -4827,10 +4827,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1212684565=1458855845=382068508
 Rigidbody2D:
   name[HideInspector]: "initial name"
@@ -4842,7 +4842,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 159511777=1000488639=1640695824
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -4867,7 +4867,7 @@ GameObject:
   - (instanceID)1584998818=317700078=1785496160
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 371169716=1873101461=1931232797
 Transform:
   name[HideInspector]: "initial name"
@@ -4875,13 +4875,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1989708651=1611187811=1060526173
   Started[HideInspector]: false
   _parentProperty: (instanceID)1657606575=1920588215=2018181509
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 12.000000
       y: -6.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 8.000000
     y: -6.000000
@@ -4912,10 +4912,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 2020538648=1289898847=1657608651
 Rigidbody2D:
   name[HideInspector]: "initial name"
@@ -4927,7 +4927,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1584998818=317700078=1785496160
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -4952,7 +4952,7 @@ GameObject:
   - (instanceID)1426377419=728224254=445327634
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 12770944=379282953=1405811253
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -4960,13 +4960,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)429393164=268550102=1598079812
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 9.000000
       y: -7.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -4997,10 +4997,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)97315835=35238147=531710741
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 287750476=1855778918=2048326143
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -5024,7 +5024,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1419546338=2120428819=953089353
 GameObject:
   name[HideInspector]: "Stopper"
@@ -5037,7 +5037,7 @@ GameObject:
   - (instanceID)1209389462=1178946522=400195710
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 204481865=507511860=976010489
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5045,13 +5045,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1419546338=2120428819=953089353
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -7.000000
       y: -7.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5082,10 +5082,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)97315835=35238147=531710741
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 160770495=602510022=1680677289
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -5109,7 +5109,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1061431517=1920456826=1810656232
 GameObject:
   name[HideInspector]: "Cover"
@@ -5120,7 +5120,7 @@ GameObject:
   - (instanceID)1299263938=1242958120=1605188124
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1980537276=1557708087=887741229
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5128,13 +5128,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1061431517=1920456826=1810656232
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 15.000000
       y: 15.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5165,10 +5165,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1553644635=1018847361=456102306
 GameObject:
   name[HideInspector]: "Background"
@@ -5179,7 +5179,7 @@ GameObject:
   - (instanceID)944502382=708843560=593020690
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 221910841=329721712=918976430
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5187,13 +5187,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1553644635=1018847361=456102306
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 1.000000
       y: 0.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5224,10 +5224,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1044827152=36539983=1721696889
 GameObject:
   name[HideInspector]: "Background"
@@ -5238,7 +5238,7 @@ GameObject:
   - (instanceID)971435196=1915961769=1261193802
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 898143333=2042287600=1596184892
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5246,13 +5246,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1044827152=36539983=1721696889
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 16.000000
       y: 3.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5283,10 +5283,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)nullptr
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1940160167=1320714474=55547213
 GameObject:
   name[HideInspector]: "Wood2"
@@ -5297,7 +5297,7 @@ GameObject:
   - (instanceID)672913375=157874884=66311334
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 723373785=1445579912=1643558345
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5305,13 +5305,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1940160167=1320714474=55547213
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -5.000000
       y: 4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5342,10 +5342,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)241888682=1178596311=1418558156
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1914629750=1969209324=1345361932
 GameObject:
   name[HideInspector]: "Circle"
@@ -5357,7 +5357,7 @@ GameObject:
   - (instanceID)1974024896=1286620144=688178436
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1685197513=489213381=1470311545
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5365,13 +5365,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1914629750=1969209324=1345361932
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 0.000000
       y: -4.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5402,10 +5402,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1297568820=1151050119=347104476
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1974024896=1286620144=688178436
 Animator:
   name[HideInspector]: "initial name"
@@ -5419,10 +5419,10 @@ Animator:
       AnimationClip: (instanceID)260886131=2118823149=1375313861
   _textureIndex:
     _variable: 0
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _playingTime:
     _variable: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 232384226=1292732281=1650132236
 GameObject:
   name[HideInspector]: "Hill1"
@@ -5433,7 +5433,7 @@ GameObject:
   - (instanceID)1892307888=1106822600=353264504
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1865899697=1836603044=612751949
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5441,13 +5441,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)232384226=1292732281=1650132236
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 4.000000
       y: -8.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5478,10 +5478,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1264607310=336409216=1080408760
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 2123642819=1744735713=1501699558
 GameObject:
   name[HideInspector]: "HangingPlant1"
@@ -5492,7 +5492,7 @@ GameObject:
   - (instanceID)46102663=967773669=632405651
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1053899266=1179900883=1749555416
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5500,13 +5500,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)2123642819=1744735713=1501699558
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 20.000000
       y: 6.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5537,10 +5537,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)77457443=2009620882=1329717674
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1392574130=616755987=1143783210
 GameObject:
   name[HideInspector]: "Wood4"
@@ -5551,7 +5551,7 @@ GameObject:
   - (instanceID)1312477868=1259294663=915492167
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 392952560=422167329=1188839508
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5559,13 +5559,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1392574130=616755987=1143783210
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 8.000000
       y: 0.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5596,10 +5596,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1580996629=761570575=1789458323
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1145865073=1474099379=1814883608
 GameObject:
   name[HideInspector]: "Crystal"
@@ -5613,7 +5613,7 @@ GameObject:
   - (instanceID)344446478=614929293=1933875258
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1975303871=1978504876=1433865962
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5621,13 +5621,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1145865073=1474099379=1814883608
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 18.500000
       y: 0.500000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5658,10 +5658,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1573855469=975982787=1637498780
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1384232299=1071942702=377849589
 BoxCollider2D:
   name[HideInspector]: "initial name"
@@ -5685,7 +5685,7 @@ Rigidbody2D:
   GravityScale: 1.000000
   _isSleeping:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 344446478=614929293=1933875258
 DemoCrystal:
   name[HideInspector]: "initial name"
@@ -5702,7 +5702,7 @@ GameObject:
   - (instanceID)368933886=152324439=1540106484
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 2047426486=1833228623=328696203
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5710,13 +5710,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1117086937=1842805983=1737286240
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -22.000000
       y: 15.500000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5747,10 +5747,10 @@ SpriteRenderer:
     a: 1.000000
   m_texture:
     _variable: (instanceID)1573855469=975982787=1637498780
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _isFlipX:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 714568730=168293298=410608805
 GameObject:
   name[HideInspector]: "CrystalText"
@@ -5761,7 +5761,7 @@ GameObject:
   - (instanceID)1730379556=1597726593=1727892226
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1001619561=525891416=1317636239
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5769,13 +5769,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)714568730=168293298=410608805
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: -14.500000
       y: 15.500000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5811,7 +5811,7 @@ GameObject:
   - (instanceID)140552748=1981169110=292425761
   _isActive:
     _variable: false
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 1997821663=1696603594=1275687244
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5819,13 +5819,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1659179802=654795890=630138907
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 5.000000
       y: 1.500000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5856,12 +5856,13 @@ GameObject:
   name[HideInspector]: "StageManager"
   IsPrefab: true
   tag: "Untagged"
-  (vector)_componentVector: 2
+  (vector)_componentVector: 3
   - (instanceID)729866163=2096367992=1802219774
   - (instanceID)1565077547=2085044453=664821861
+  - (instanceID)1677470049=1401328408=482327882
   _isActive:
     _variable: true
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
 --- 729866163=2096367992=1802219774
 Transform:
   name[HideInspector]: "GameObject.prefab"
@@ -5869,13 +5870,13 @@ Transform:
   gameObject[HideInspector]: (instanceID)1507891366=1789108358=1936307866
   Started[HideInspector]: false
   _parentProperty: (instanceID)nullptr
-  (vector)_childVector[HideInspector]: 0
+  (vector)_childVector: 0
   position:
     _variable:
       x: 5.000000
       y: -1.000000
       z: 0.000000
-    (vector)_timeVariableSetVector[HideInspector]: 0
+    (vector)_timeVariableSetVector: 0
   _localPosition:
     x: 0.000000
     y: 0.000000
@@ -5899,4 +5900,10 @@ DemoStageManager:
   gameObject[HideInspector]: (instanceID)1507891366=1789108358=1936307866
   Started[HideInspector]: false
   _gameClearTextGO: (instanceID)1659179802=654795890=630138907
+--- 1677470049=1401328408=482327882
+EStringTest:
+  name[HideInspector]: "initial name"
+  enabled: true
+  gameObject[HideInspector]: (instanceID)1507891366=1789108358=1936307866
+  Started[HideInspector]: false
 

@@ -5,10 +5,6 @@
 	{ \
 		return #n; \
 	} \
-	EString GetNameEString() override \
-	{ \
-		return #n; \
-	} \
 
 #include "EString.h"
 #include "SerializedClass.h"
@@ -32,6 +28,6 @@ public:
 	)
 
 	virtual const char* GetName() { return "not overrided"; }
-	virtual EString GetNameEString() { return "not overrided"; }
+	//virtual EString GetNameEString() { return "not overrided"; }
 	virtual void EditorUpdate() {}
 };

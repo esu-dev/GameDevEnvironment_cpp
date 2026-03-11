@@ -244,7 +244,7 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 
 	for (int i = 0; i < serializedDataVec.size(); i++)
 	{
-		static std::string vectorName = "";
+		static std::string vectorAttributes = "";
 
 		std::function<void()> createContents = [&]() -> void {
 			if (i >= serializedDataVec.size())
@@ -258,33 +258,47 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 
 			ImGui::PushID(i);
 
-			/*std::function<bool(const std::string&)> isHideInspector = [&](const std::string& name) -> bool {
-					auto fieldInfoVec = serializedObject->GetFieldInfoVector();
-					auto result = std::find_if(fieldInfoVec.begin(), fieldInfoVec.end(), [&](SerializedClass::FieldInfo fieldInfo) -> bool {
-						return fieldInfo.name == name;
-						});
-					if (result != fieldInfoVec.end())
+			auto extractAttribute = [](std::string attributes) -> std::vector<std::string> {
+				std::vector<std::string> attributeVec;
+
+				// 属性の抽出
+				std::regex regex(R"(\w+)");
+				std::sregex_iterator iterator(attributes.begin(), attributes.end(), regex);
+				std::sregex_iterator end;
+				while (iterator != end)
+				{
+					attributeVec.push_back(iterator->str());
+					iterator++;
+				}
+
+				return attributeVec;
+			};
+
+			auto isHideInspector = [&](std::string attributes) -> bool {
+				for (std::string& attribute : extractAttribute(attributes))
+				{
+					if (attribute == HIDE_INSPECTOR)
 					{
-						return (std::find_if(result->AttributeVec.begin(), result->AttributeVec.end(), [](SerializedClass::FieldInfo::Attribute attribute) -> bool {
-							return attribute == HIDE_INSPECTOR;
-							}) != result->AttributeVec.end());
+						return true;
 					}
-					return false;
-				};*/
+				}
+				return false;
+			};
 
 			// 値
-			if (std::regex_match(serializedData, smatch, std::regex(R"((\s*)(\w+):\s(.+))")))
+			if (std::regex_match(serializedData, smatch, std::regex(R"((\s*)([\w_]+)(\[\w+\])?:\s(.+))")))
 			{
 				std::string indent = smatch[1].str();
 				std::string label = smatch[2].str();
-				std::string value = smatch[3].str();
+				std::string attributes = smatch[3].str();
+				std::string value = smatch[4].str();
 
-				std::string serializedVarName = indent + label + ": ";
-
-				/*if (isHideInspector(label))
+				if (isHideInspector(attributes))
 				{
 					goto skipCreateField;
-				}*/
+				}
+
+				std::string serializedVarName = indent + label + ": ";
 
 				if (ArithmeticField(serializedData, serializedVarName, label, value))
 				{
@@ -292,28 +306,30 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 				}
 			}
 			// クラス、構造体
-			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*(\w+):)")))
+			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*(\w+)(\[\w+\])?:)")))
 			{
-				/*std::string label = smatch[1].str();
-				if (isHideInspector(label))
+				std::string label = smatch[1].str();
+				std::string attributes = smatch[2].str();
+				if (isHideInspector(attributes))
 				{
 					goto skipCreateField;
-				}*/
+				}
 
 				ImGui::Text(serializedData.c_str());
 			}
 			// vector
-			else if (std::regex_match(serializedData, smatch, std::regex(R"((\s*\(vector\)(\w+):\s)(\d+))")))
+			else if (std::regex_match(serializedData, smatch, std::regex(R"((\s*\(vector\)(\w+)(\[\w+\])?:\s)(\d+))")))
 			{
 				std::string serializedVarName = smatch[1].str();
 				std::string label = smatch[2].str();
-				int size = std::stoi(smatch[3].str());
+				std::string attributes = smatch[3].str();
+				int size = std::stoi(smatch[4].str());
 
-				/*if (isHideInspector(label))
+				vectorAttributes = attributes;
+				if (isHideInspector(attributes))
 				{
-					vectorName = label;
 					goto skipCreateField;
-				}*/
+				}
 
 				// ラベル
 				ImGui::Text(label.c_str());
@@ -329,10 +345,10 @@ void ImGuiCreator::Create(SerializedClass* serializedObject)
 			// vectorの要素
 			else if (std::regex_match(serializedData, smatch, std::regex(R"(\s*-\s(.+))")))
 			{
-				/*if (isHideInspector(vectorName))
+				if (isHideInspector(vectorAttributes))
 				{
 					goto skipCreateField;
-				}*/
+				}
 
 				// 要素が値
 				if (std::regex_match(serializedData, smatch, std::regex(R"((\s*)-\s([^:]+))")))
