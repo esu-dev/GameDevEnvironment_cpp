@@ -31,7 +31,7 @@ void GameSystem::Initialize()
 	AssetManager::Initialize();
 	SceneEditor::Initialize();
 
-	D3D.ChangeMode_2D();
+	D3D.InitMode2D();
 
 	// ‚±‚±‚ÅDLL“Ç‚Ýž‚Ý
 	HMODULE hModule = LoadLibrary(L"C:/Users/har14/source/repos/Dll_Test/x64/Debug/Dll_Test.dll");
@@ -113,11 +113,11 @@ void GameSystem::Execute()
 
 	if (SceneEditor::GetIsEditMode())
 	{
-		Direct3D::GetInstance().StartRendering(EditorCamera::GetPosition().ToXMVECTOR(), EditorCamera::GetSize());
+		Direct3D::GetInstance().SetCamMat2D(EditorCamera::GetPosition().ToXMVECTOR(), EditorCamera::GetSize());
 	}
 	else
 	{
-		Direct3D::GetInstance().StartRendering(Camera::GetMain()->GetTransform()->position.Get().ToXMVECTOR(), Camera::GetMain()->GetSize());
+		Direct3D::GetInstance().SetCamMat2D(Camera::GetMain()->GetTransform()->position.Get().ToXMVECTOR(), Camera::GetMain()->GetSize());
 	}
 
 	// “o˜^‚³‚ê‚½ƒŒƒ“ƒ_ƒŠƒ“ƒOŠÖ”‚ð order ‡‚ÉŽÀs‚·‚é

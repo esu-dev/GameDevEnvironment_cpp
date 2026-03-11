@@ -126,7 +126,7 @@ void TextLabel::MakeShaderResourceViewOf(wchar_t c, ComPtr<ID3D11ShaderResourceV
 
 	ComPtr<ID3D11Texture2D> texture = NULL;
 
-	if (FAILED(Direct3D::GetInstance().m_device->CreateTexture2D(&desc, NULL, texture.GetAddressOf())))
+	if (FAILED(Direct3D::GetInstance()._device->CreateTexture2D(&desc, NULL, texture.GetAddressOf())))
 	{
 		// OKボタンと×ボタンのあるメッセージボックスを表示させる。
 		MessageBox(NULL, L"フォント用テクスチャを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
@@ -175,7 +175,7 @@ void TextLabel::MakeShaderResourceViewOf(wchar_t c, ComPtr<ID3D11ShaderResourceV
 	shaderResourceViewDesc.Texture2D.MipLevels = desc.MipLevels; // テクスチャのミップマップレベルの最大数
 	// ミップマップ...LODで処理を高速化する手法のこと
 
-	if (FAILED(Direct3D::GetInstance().m_device->CreateShaderResourceView(texture.Get(), &shaderResourceViewDesc, srv->GetAddressOf())))
+	if (FAILED(Direct3D::GetInstance()._device->CreateShaderResourceView(texture.Get(), &shaderResourceViewDesc, srv->GetAddressOf())))
 	{
 		MessageBox(NULL, L"シェーダーリソースビューを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
 		return;

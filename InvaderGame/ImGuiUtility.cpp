@@ -16,7 +16,7 @@ void ImGuiUtility::Initialize(HWND hWnd)
 	ImGui_ImplDX11_NewFrame();*/
 	
 	ImGui_ImplWin32_Init(hWnd);
-	ImGui_ImplDX11_Init(Direct3D::GetInstance().m_device.Get(), Direct3D::GetInstance().m_deviceContext.Get());
+	ImGui_ImplDX11_Init(Direct3D::GetInstance()._device.Get(), Direct3D::GetInstance().m_deviceContext.Get());
 }
 
 void ImGuiUtility::BeginFrame()

@@ -1,55 +1,66 @@
-// �O�Ԃ̃e�N�X�`���X���b�g���g�p����
-Texture2D Texture : register(t0);
+// 3Dモデル描画用のスタンダードなシェーダー
 
-// �O�Ԃ̃T���v���X���b�g���g�p����
+Texture2D Texture : register(t0);
 SamplerState Sampler : register(s0);
 
-cbuffer ConstantBuffer : register(b0)
+// カメラ関連のバッファ
+cbuffer ConstantBuffer : register(b1)
 {
     matrix viewProjMat;
 };
 
-
 struct VS_INPUT
 {
-	// �X���b�g�O
-    float4 pos : POSITION;
+    // 頂点データ
+    float3 pos : POSITION;
     float3 normal : NORMAL;
-    float2 uv : TEXCOORD0;
-	
-	// �X���b�g�P
+    float2 uv : TEXCOORD;
+    
+    // インスタンスデータ (ワールド行列、カラー)
     float4x4 worldMat : INST_MATRIX;
     float4 color : INST_COLOR;
 };
 
 struct VS_OUTPUT
 {
-	float4 pos : SV_Position;
-    float2 uv : TEXCOORD0;
-    float4 color : COLOR0;
+    float4 pos : SV_Position;
+    float3 normal : NORMAL;
+    float2 uv : TEXCOORD;
+    float4 color : COLOR;
 };
 
-
-VS_OUTPUT VS(VS_INPUT input)
+// 頂点シェーダー
+VS_OUTPUT VS_Main(VS_INPUT input)
 {
     VS_OUTPUT output;
-    output.pos = mul(mul(input.pos, input.worldMat), viewProjMat);
-    output.uv.x = input.uv.x;
-    output.uv.y = input.uv.y;
-	
+    
+    // モデル座標 -> ワールド座標 -> クリッピング座標
+    float4 worldPos = mul(float4(input.pos, 1.0f), input.worldMat);
+    output.pos = mul(worldPos, viewProjMat);
+    
+    // 法線の変換 (拡大縮小を考慮して正規化)
+    output.normal = normalize(mul(input.normal, (float3x3)input.worldMat));
+    
+    output.uv = input.uv;
     output.color = input.color;
-	
+    
     return output;
 }
 
-float4 PS(VS_OUTPUT input) : SV_Target0
+// ピクセルシェーダー
+float4 PS_Main(VS_OUTPUT input) : SV_Target0
 {
-    float4 color = Texture.Sample(Sampler, input.uv);
+    // 簡易的なランバート照明
+    float3 lightDir = normalize(float3(1.0f, -1.0f, 1.0f));
+    float ambient = 0.4f;
+    float diffuse = saturate(dot(input.normal, -lightDir)) * (1.0f - ambient);
+    float3 lighting = ambient + diffuse;
 
-    return color * input.color;
-}
+    // テクスチャサンプリングとライティングの適用
+    float4 texColor = Texture.Sample(Sampler, input.uv);
+    
+    // 透明度が0の場合は破棄（必要に応じて）
+    if(texColor.a < 0.01f) discard;
 
-float4 PS_Color(VS_OUTPUT input) : SV_Target0
-{
-    return input.color;
+    return texColor * input.color * float4(lighting, 1.0f);
 }

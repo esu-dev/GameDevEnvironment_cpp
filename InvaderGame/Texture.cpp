@@ -60,7 +60,7 @@ bool Texture::Load(const std::wstring& path)
 	}
 
 	// リソースとシェーダーリソースビューを作成
-	if (FAILED(DirectX::CreateShaderResourceView(D3D.m_device.Get(), image->GetImages(), image->GetImageCount(), m_texMetaData, &m_shaderResourceview)))
+	if (FAILED(DirectX::CreateShaderResourceView(Direct3D::GetInstance()._device.Get(), image->GetImages(), image->GetImageCount(), m_texMetaData, &m_shaderResourceview)))
 	{
 		// 失敗
 		m_texMetaData = {};

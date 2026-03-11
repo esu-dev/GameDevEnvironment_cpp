@@ -21,6 +21,7 @@ struct VertexType2D
 	DirectX::XMFLOAT2 UV; // UV座標
 };
 
+// 3D用頂点構造体
 struct VertexType3D
 {
 	DirectX::XMFLOAT3 Pos;
@@ -40,25 +41,30 @@ struct InstanceBuffer
 class Direct3D
 {
 public:
-	ComPtr<ID3D11Device> m_device;
+	ComPtr<ID3D11Device> _device;
 	ComPtr<ID3D11DeviceContext>	m_deviceContext;
 	ComPtr<IDXGISwapChain> m_swapChain;
 	ComPtr<ID3D11RenderTargetView> m_backBufferView;
 
 
-	// 2D描画用のシェーダー
-	Shader* _texShader_Batch;
-	Shader* _colorShader_Batch;
+	// シェーダー
+	// 2D描画用
+	Shader* _texShader;
+	Shader* _colorShader;
+
+	// 3D描画用
+	Shader* _meshShader;
 
 
 	bool Initialize(HWND hWnd, int width, int height);
 
 
-	// 2D描画モードにする
-	void ChangeMode_2D();
+	// 描画モードの初期化
+	void InitMode2D();
+	void InitMode3D();
 
-
-	void StartRendering(DirectX::XMVECTOR cameraPos, float size);
+	void SetCamMat2D(DirectX::XMVECTOR cameraPos, float size);
+	void SetCamMat3D(DirectX::XMVECTOR cameraPos, float size);
 
 	// 情報のセット
 	void SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Quaternion rotation, DirectX::XMFLOAT4 color, bool isFlipX);
@@ -67,7 +73,6 @@ public:
 	// 2D描画
 	void Draw2D_Batch();
 	void Draw2D_Batch(const Texture* texture);
-	void DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color);
 	void DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView);
 
 	// 3D描画
@@ -79,17 +84,20 @@ private:
 	static inline Direct3D* s_instance;
 
 	// バッファ
-	ComPtr<ID3D11Buffer> _quadVertexBuffer;
+	// 2D
+	ComPtr<ID3D11Buffer> _quadVertexBuffer; // 固定頂点バッファ
 	ComPtr<ID3D11Buffer> _cameraBuffer;
 	ComPtr<ID3D11Buffer> _indexBuffer;
-	ComPtr<ID3D11Buffer> _colorBuffer;
-	ComPtr<ID3D11Buffer> _instanceBuffer;
+	ComPtr<ID3D11Buffer> _instanceBuffer; // インスタンスバッファ
 
+	// 3D
 	ComPtr<ID3D11Buffer> _vertexBuffer;
 
 	
+	// 同じテクスチャをまとめてGPUに送るためのリスト
 	std::vector<InstanceBuffer> _instBufVec;
 	
+	// モデルごとの頂点データのリスト
 	std::vector<std::vector<VertexType3D>> _vertexVec;
 
 	Direct3D();

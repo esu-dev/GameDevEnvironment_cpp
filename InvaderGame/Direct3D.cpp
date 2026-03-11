@@ -10,23 +10,17 @@
 
 
 Direct3D::Direct3D() :
-	_texShader_Batch(new Shader(L"Shader/SpriteShader.hlsl", "VS_New", "PS_New")),
-	_colorShader_Batch(new Shader(L"Shader/SpriteShader.hlsl", "VS_New", "PS_New_Color")) {}
+	_texShader(new Shader(L"Shader/SpriteShader.hlsl", "VS_New", "PS_New")),
+	_colorShader(new Shader(L"Shader/SpriteShader.hlsl", "VS_New", "PS_New_Color")),
+	_meshShader(new Shader(L"Shader/ModelShader.hlsl", "VS_Main", "PS_Main")) {}
 
 bool Direct3D::Initialize(HWND hWnd, int width, int height)
 {
 	//=====================================================
 	// ファクトリー作成(ビデオ グラフィックの設定の列挙や指定に使用されるオブジェクト)
 	//=====================================================
-	// ComPtrはGenericsということか？
 	ComPtr<IDXGIFactory> factory;
 
-	// Createしようとして効果が無かったら（既にある）何もしない。
-	// COMインターフェース関連の関数の戻り値ではHRESULT型が利用されることが多い。
-	// FAILEDマクロはHRESULT型の戻り値を判定することができる。
-	// メソッドは成功したが、効果が無かったときにs_FALSEが返される。
-	// これを受け取ると、FAILEDマクロはtrueを返す。
-	// HRESULT型はlong型の数値
 	// CreateDXGIFactory1(); DXGIファクトリの生成
 	// IID_PPV_ARGSマクロ インターフェースポインタを取得するために使用される。２つの変数となる
 	if (FAILED(CreateDXGIFactory1(IID_PPV_ARGS(&factory))))
@@ -40,14 +34,10 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	UINT creationFlags = 0;
 
 #ifdef _DEBUG
-	// DEBUGビルド時はDirect3Dのデバッグを有効にする
-	// (すごく重いが細かいエラーがわかる)
-	// D3D11_CREATE_DEVICE_DEBUG:enumの中身のひとつ。
 	// デバッグレイヤーをサポートするデバイスを作成するフラグを立てられる。
 	creationFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
-	// FeatureLevelを配列で保持しておけるもの
 	// FeatureLevelはドライバの機能レベルを指している。
 	// ドライバはOSや周辺機器とPC等のハードを橋渡しし、動作させる役割を果たす。
 	D3D_FEATURE_LEVEL featureLevels[] =
@@ -71,7 +61,7 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 			featureLevels, // D3D_FEATURE_LEVEL*
 			_countof(featureLevels), // UINT
 			D3D11_SDK_VERSION, // UINT
-			&m_device, // ID3D11Device**
+			&_device, // ID3D11Device**
 			&futureLevel, // D3D_FEATURE_LEVEL*
 			&m_deviceContext // ID3D11DeviceContext**
 		)))
@@ -79,10 +69,10 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 		return false;
 	}
 
+
 	//=====================================================
 	// スワップチェイン作成(フロントバッファに表示可能なバックバッファを持つもの)
 	//=====================================================
-	// バックバッファとはディスプレイに表示されない仮想的な画面のこと
 	DXGI_SWAP_CHAIN_DESC scDesc = {};		// スワップチェーンの設定データ
 	scDesc.BufferDesc.Width = width;						// 画面の幅
 	scDesc.BufferDesc.Height = height;						// 画面の高さ
@@ -102,8 +92,7 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	scDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH; // スワップチェインの設定フラグの設定。ウィンドウモードからフルスクリーンに切り替えると、アプリケーションウィンドウのサイズに合わせて解像度が変更される設定
 	
 	// スワップチェインの作成
-	// ComPtrがアロー演算子をオーバーロードしているから
-	if (FAILED(factory->CreateSwapChain(m_device.Get(), &scDesc, &m_swapChain)))
+	if (FAILED(factory->CreateSwapChain(_device.Get(), &scDesc, &m_swapChain)))
 	{
 		return false;
 	}
@@ -119,10 +108,11 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	D3D11_RENDER_TARGET_VIEW_DESC rtvDesc = {};
 	rtvDesc.Format = scDesc.BufferDesc.Format;
 	rtvDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D; // リソースは 2D テクスチャとしてアクセスされます。
-	if (FAILED(m_device->CreateRenderTargetView(pBackBuffer.Get(), &rtvDesc, &m_backBufferView)))
+	if (FAILED(_device->CreateRenderTargetView(pBackBuffer.Get(), &rtvDesc, &m_backBufferView)))
 	{
 		return false;
 	}
+
 
 	//=====================================================
 	// デバイスコンテキストに描画に関する設定を行っておく
@@ -135,11 +125,16 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	D3D11_VIEWPORT vp = { 0.0f, 0.0f, (float)width, (float)height, 0.0f, 1.0f };
 	m_deviceContext->RSSetViewports(1, &vp);
 
+
 	//=====================================================
 	// シェーダーの作成
 	//=====================================================
-	_texShader_Batch->CreateShader(*m_device.Get());
-	_colorShader_Batch->CreateShader(*m_device.Get());
+	// 2D
+	_texShader->CreateShader(*_device.Get());
+	_colorShader->CreateShader(*_device.Get());
+
+	// 3D
+	_meshShader->CreateShader(*_device.Get());
 
 
 	// カメラ定数バッファの作成
@@ -148,7 +143,7 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	bufferDesk.ByteWidth = sizeof(CameraBuffer);
 	bufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	bufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	if (FAILED(m_device->CreateBuffer(&bufferDesk, nullptr, _cameraBuffer.GetAddressOf())))
+	if (FAILED(_device->CreateBuffer(&bufferDesk, nullptr, _cameraBuffer.GetAddressOf())))
 	{
 		MessageBox(NULL, L"定数バッファを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
 		return false;
@@ -166,12 +161,12 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 
 	D3D11_SUBRESOURCE_DATA indexBufSRdata = {};
 	indexBufSRdata.pSysMem = indices;
-	m_device->CreateBuffer(&indexBufferDesc, &indexBufSRdata, _indexBuffer.GetAddressOf());
+	_device->CreateBuffer(&indexBufferDesc, &indexBufSRdata, _indexBuffer.GetAddressOf());
 
 	return true;
 }
 
-void Direct3D::ChangeMode_2D()
+void Direct3D::InitMode2D()
 {
 	// 固定頂点バッファの作成
 	// 1. 頂点データ（四角形）の準備
@@ -193,30 +188,11 @@ void Direct3D::ChangeMode_2D()
 	vData.pSysMem = vertices;
 
 	// 3. 生成
-	m_device->CreateBuffer(&vDesc, &vData, _quadVertexBuffer.GetAddressOf());
+	_device->CreateBuffer(&vDesc, &vData, _quadVertexBuffer.GetAddressOf());
 
 
 	// プロミティブ・トポロジーをセット
 	D3D.m_deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST); // 三角形メッシュ
-
-
-	// カラー定数バッファの作成
-	// 定数情報の追加
-	D3D11_BUFFER_DESC colorBufferDesk = {};
-	ZeroMemory(&colorBufferDesk, sizeof(D3D11_BUFFER_DESC));
-	colorBufferDesk.Usage = D3D11_USAGE_DYNAMIC;
-	colorBufferDesk.ByteWidth = sizeof(CameraBuffer);
-	colorBufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	colorBufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	colorBufferDesk.MiscFlags = 0;
-	colorBufferDesk.StructureByteStride = 0;
-
-	// 定数バッファの設定
-	if (FAILED(m_device->CreateBuffer(&colorBufferDesk, nullptr, _colorBuffer.GetAddressOf())))
-	{
-		MessageBox(NULL, L"カラー定数バッファを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
-		return;
-	}
 
 
 	// インスタンスバッファの作成
@@ -226,7 +202,7 @@ void Direct3D::ChangeMode_2D()
 	instanceBufferDesk.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	instanceBufferDesk.CPUAccessFlags = D3D10_CPU_ACCESS_WRITE;
 
-	m_device->CreateBuffer(&instanceBufferDesk, nullptr, _instanceBuffer.GetAddressOf());
+	_device->CreateBuffer(&instanceBufferDesk, nullptr, _instanceBuffer.GetAddressOf());
 
 
 	// サンプラーステートを作成しセットする
@@ -247,7 +223,7 @@ void Direct3D::ChangeMode_2D()
 
 		// ステートオブジェクト作成
 		ComPtr<ID3D11SamplerState> state;
-		m_device->CreateSamplerState(&desc, &state);
+		_device->CreateSamplerState(&desc, &state);
 
 		// 各シェーダーの0番目にセット(実際は必要なシェーダーだけセットしてください)
 		m_deviceContext->VSSetSamplers(0, 1, state.GetAddressOf()); // 頂点シェーダーの0番目にセット
@@ -255,6 +231,7 @@ void Direct3D::ChangeMode_2D()
 		m_deviceContext->GSSetSamplers(0, 1, state.GetAddressOf()); // ジオメトリシェーダーの0番目にセット
 		m_deviceContext->CSSetSamplers(0, 1, state.GetAddressOf()); // コンピュートシェーダーの0番目にセット
 	}
+
 
 	// ブレンドの設定
 	D3D11_BLEND_DESC blendDesc; // ブレンド状態について設定する構造体
@@ -271,7 +248,7 @@ void Direct3D::ChangeMode_2D()
 
 	// ブレンドステートを作成
 	ComPtr<ID3D11BlendState> blendState;
-	if (FAILED(m_device->CreateBlendState(&blendDesc, blendState.GetAddressOf())))
+	if (FAILED(_device->CreateBlendState(&blendDesc, blendState.GetAddressOf())))
 	{
 		MessageBox(NULL, L"ブレンドステートを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
 		return;
@@ -282,7 +259,12 @@ void Direct3D::ChangeMode_2D()
 	m_deviceContext->OMSetBlendState(blendState.Get(), blendFactor, 0xffffffff);
 }
 
-void Direct3D::StartRendering(DirectX::XMVECTOR cameraPos, float size)
+void Direct3D::InitMode3D()
+{
+
+}
+
+void Direct3D::SetCamMat2D(DirectX::XMVECTOR cameraPos, float size)
 {
 	DirectX::XMMATRIX viewMat = DirectX::XMMatrixLookAtLH(cameraPos, DirectX::XMVectorAdd(cameraPos, DirectX::XMVectorSet(0, 0, 1, 0)), ((Vector3)Vector3::up).ToXMVECTOR());
 	DirectX::XMMATRIX projMat = DirectX::XMMatrixOrthographicLH(GameSystem::WINDOW_WIDTH / Camera::Magnification / size, GameSystem::WINDOW_HEIGHT / Camera::Magnification / size, 0.0f, 1000.0f);
@@ -306,6 +288,32 @@ void Direct3D::StartRendering(DirectX::XMVECTOR cameraPos, float size)
 	// 頂点シェーダーに定数バッファを設定
 	m_deviceContext->VSSetConstantBuffers(0, 1, _cameraBuffer.GetAddressOf());
 }
+
+void Direct3D::SetCamMat3D(DirectX::XMVECTOR cameraPos, float size)
+{
+	DirectX::XMMATRIX viewMat = DirectX::XMMatrixLookAtLH(cameraPos, DirectX::XMVectorAdd(cameraPos, DirectX::XMVectorSet(0, 0, 1, 0)), DirectX::XMVectorSet(0, 1, 0, 0));
+
+	float aspect = (float)GameSystem::WINDOW_WIDTH / (float)GameSystem::WINDOW_HEIGHT;
+	DirectX::XMMATRIX projMat = DirectX::XMMatrixPerspectiveFovLH(DirectX::XMConvertToRadians(60.0f / size), aspect, 0.1f, 1000.0f);
+
+	CameraBuffer constantBuffer;
+	constantBuffer.viewProjMat = DirectX::XMMatrixTranspose(viewMat * projMat);
+
+	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
+	if (SUCCEEDED(m_deviceContext->Map(_cameraBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
+	{
+		memcpy(mappedSubresource.pData, &constantBuffer, sizeof(CameraBuffer));
+		m_deviceContext->Unmap(_cameraBuffer.Get(), 0);
+	}
+	else
+	{
+		MessageBox(NULL, L"定数バッファを設定できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
+		return;
+	}
+
+	m_deviceContext->VSSetConstantBuffers(1, 1, _cameraBuffer.GetAddressOf()); // 第１引数はスロット指定
+}
+
 
 void Direct3D::SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Quaternion rotation, DirectX::XMFLOAT4 color, bool isFlipX)
 {
@@ -338,9 +346,9 @@ void Direct3D::Draw2D_Batch()
 {
 	SetGpuData();
 
-	m_deviceContext->VSSetShader(_colorShader_Batch->GetVertexShader().Get(), 0, 0);
-	m_deviceContext->PSSetShader(_colorShader_Batch->GetPixelShader().Get(), 0, 0);
-	m_deviceContext->IASetInputLayout(_colorShader_Batch->GetInputLayout_Batch().Get());
+	m_deviceContext->VSSetShader(_colorShader->GetVertexShader().Get(), 0, 0);
+	m_deviceContext->PSSetShader(_colorShader->GetPixelShader().Get(), 0, 0);
+	m_deviceContext->IASetInputLayout(_colorShader->GetInputLayout_Batch().Get());
 	
 	// 描画
 	m_deviceContext->DrawIndexedInstanced(6, (UINT)_instBufVec.size(), 0, 0, 0);
@@ -352,9 +360,9 @@ void Direct3D::Draw2D_Batch(const Texture* texture)
 {
 	SetGpuData();
 
-	m_deviceContext->VSSetShader(_texShader_Batch->GetVertexShader().Get(), 0, 0);
-	m_deviceContext->PSSetShader(_texShader_Batch->GetPixelShader().Get(), 0, 0);
-	m_deviceContext->IASetInputLayout(_texShader_Batch->GetInputLayout_Batch().Get());
+	m_deviceContext->VSSetShader(_texShader->GetVertexShader().Get(), 0, 0);
+	m_deviceContext->PSSetShader(_texShader->GetPixelShader().Get(), 0, 0);
+	m_deviceContext->IASetInputLayout(_texShader->GetInputLayout_Batch().Get());
 
 	// テクスチャを、ピクセルシェーダーのスロット0にセット
 	m_deviceContext->PSSetShaderResources(0, 1, texture->m_shaderResourceview.GetAddressOf());
@@ -365,18 +373,13 @@ void Direct3D::Draw2D_Batch(const Texture* texture)
 	_instBufVec.clear();
 }
 
-void Direct3D::DrawRect(const Vector2& center, const Vector2& size, const Quaternion& rotation, DirectX::XMFLOAT4 color)
-{
-	Debug::Log(L"実装を追加してください。");
-}
-
 void Direct3D::DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView)
 {
 	SetGpuData();
 
-	m_deviceContext->VSSetShader(_texShader_Batch->GetVertexShader().Get(), 0, 0);
-	m_deviceContext->PSSetShader(_texShader_Batch->GetPixelShader().Get(), 0, 0);
-	m_deviceContext->IASetInputLayout(_texShader_Batch->GetInputLayout_Batch().Get());
+	m_deviceContext->VSSetShader(_texShader->GetVertexShader().Get(), 0, 0);
+	m_deviceContext->PSSetShader(_texShader->GetPixelShader().Get(), 0, 0);
+	m_deviceContext->IASetInputLayout(_texShader->GetInputLayout_Batch().Get());
 
 	// テクスチャを、ピクセルシェーダーのスロット0にセット
 	m_deviceContext->PSSetShaderResources(0, 1, shaderResourceView.GetAddressOf());
