@@ -77,7 +77,7 @@ public:
 
 	// 3D•`‰æ
 	void AddMeshData(const std::vector<VertexType3D>& vertexVec);
-	void Draw();
+	void Draw3D();
 
 
 private:
