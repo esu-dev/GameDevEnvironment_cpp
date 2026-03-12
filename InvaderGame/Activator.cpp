@@ -1,6 +1,7 @@
 #include "Activator.h"
 
 #include "GameEngine.h"
+#include "MeshRenderer.h"
 
 #include "EStringTest.h"
 
@@ -44,6 +45,7 @@ Activator::Activator()
 	REGISTER_TYPE(BoxCollider2D);
 	REGISTER_TYPE(TextLabel);
 	REGISTER_TYPE(AnimationClip);
+	REGISTER_TYPE(MeshRenderer);
 
 	REGISTER_TYPE(EStringTest);
 

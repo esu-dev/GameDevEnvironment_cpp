@@ -38,7 +38,7 @@ public:
 	void Initialize();
 	void Execute();
 	void AddRenderingData(int order, std::function<void()> func);
-	void AddRenderingData2(int order, std::function<void()> setDataAct, std::function<void()> renderingAct);
+	void AddRenderingFunc(std::function<void()> func);
 
 
 private:
@@ -46,9 +46,12 @@ private:
 	struct RenderingData
 	{
 		int order = 0;
-		std::function<void()> setDataAct;
 		std::function<void()> function;
 	};
 
+	// 2D用
 	std::vector<RenderingData*> _renderingDataVector;
+
+	// 3D用
+	std::vector<std::function<void()>> _renderingFuncVec;
 };

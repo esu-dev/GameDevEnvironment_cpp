@@ -1,0 +1,96 @@
+3DTest
+--- 483019647=200184797=107203763
+GameObject:
+  name[HideInspector]: "MainCamera"
+  IsPrefab: false
+  tag: "MainCamera"
+  (vector)_componentVector: 2
+  - (instanceID)239341511=1746124145=1374461088
+  - (instanceID)864080407=1125877021=253308902
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector[HideInspector]: 0
+--- 239341511=1746124145=1374461088
+Transform:
+  name[HideInspector]: "initial name"
+  enabled: true
+  gameObject[HideInspector]: (instanceID)483019647=200184797=107203763
+  Started[HideInspector]: false
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector[HideInspector]: 0
+  position:
+    _variable:
+      x: 0.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector[HideInspector]: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 864080407=1125877021=253308902
+Camera:
+  name[HideInspector]: "initial name"
+  enabled: true
+  gameObject[HideInspector]: (instanceID)483019647=200184797=107203763
+  Started[HideInspector]: false
+--- 700950085=451011136=1761372256
+GameObject:
+  name[HideInspector]: "MeshRenderer"
+  IsPrefab: false
+  tag: "Untagged"
+  (vector)_componentVector: 2
+  - (instanceID)359857598=973578587=37432469
+  - (instanceID)303864416=689118807=21075265
+  _isActive:
+    _variable: true
+    (vector)_timeVariableSetVector[HideInspector]: 0
+--- 359857598=973578587=37432469
+Transform:
+  name[HideInspector]: "initial name"
+  enabled: true
+  gameObject[HideInspector]: (instanceID)700950085=451011136=1761372256
+  Started[HideInspector]: false
+  _parentProperty: (instanceID)nullptr
+  (vector)_childVector[HideInspector]: 0
+  position:
+    _variable:
+      x: 0.000000
+      y: 0.000000
+      z: 0.000000
+    (vector)_timeVariableSetVector[HideInspector]: 0
+  _localPosition:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  _eulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 360.000000
+  _localEulerRotation:
+    x: 0.000000
+    y: 0.000000
+    z: 0.000000
+  scale:
+    x: 1.000000
+    y: 1.000000
+    z: 1.000000
+--- 303864416=689118807=21075265
+MeshRenderer:
+  name[HideInspector]: "initial name"
+  enabled: true
+  gameObject[HideInspector]: (instanceID)700950085=451011136=1761372256
+  Started[HideInspector]: false
+

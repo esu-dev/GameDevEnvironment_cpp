@@ -253,6 +253,7 @@
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="DemoMovement.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshRenderer.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Physics2D.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -296,6 +297,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="EngineTime.cpp" />
     <ClCompile Include="TimeController.cpp" />
+    <ClCompile Include="TimeMeasurer.cpp" />
     <ClCompile Include="Transform.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
@@ -372,6 +374,7 @@
     <ClInclude Include="include\GameSystem.h" />
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\Matrix.h" />
+    <ClInclude Include="include\MeshRenderer.h" />
     <ClInclude Include="include\MonoBehaviour.h" />
     <ClInclude Include="include\Object.h" />
     <ClInclude Include="include\Physics2D.h" />
@@ -399,7 +402,6 @@
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="MathUtility.h" />
     <ClInclude Include="MeshFilter.h" />
-    <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Profiler.h" />
     <ClInclude Include="Property.h" />
@@ -420,6 +422,7 @@
     <ClInclude Include="Shutter.h" />
     <ClInclude Include="EString.h" />
     <ClInclude Include="TimeController.h" />
+    <ClInclude Include="TimeMeasurer.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="UuidGenerator.h" />
     <ClInclude Include="VelocityController.h" />

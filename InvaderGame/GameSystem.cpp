@@ -1,8 +1,9 @@
 #include "GameSystem.h"
 
 #include "DirectX.h"
-#include "EString.h"
+#include "TimeMeasurer.h"
 #include "GameEngine.h"
+
 #include "AssetManager.h"
 #include "SceneEditor.h"
 #include "GameState.h"
@@ -31,7 +32,10 @@ void GameSystem::Initialize()
 	AssetManager::Initialize();
 	SceneEditor::Initialize();
 
-	D3D.InitMode2D();
+	// 描画機能の初期化
+	Direct3D::GetInstance().InitMode2D();
+	Direct3D::GetInstance().InitMode3D();
+
 
 	// ここでDLL読み込み
 	HMODULE hModule = LoadLibrary(L"C:/Users/har14/source/repos/Dll_Test/x64/Debug/Dll_Test.dll");
@@ -51,6 +55,7 @@ void GameSystem::Initialize()
 
 void GameSystem::Execute()
 {
+	// プロファイラの初期化
 	Profiler::AddFrameData(new Profiler::FrameData());
 	auto* frameData = Profiler::GetLastFrameData();
 	auto startTime = std::chrono::high_resolution_clock::now();
@@ -60,8 +65,7 @@ void GameSystem::Execute()
 	float color[4] = { bg.x, bg.y, bg.z, bg.w };
 	D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 
-	//Debug::Log("%d", (int)(GetTickCount64() - startTime));
-
+	// ImGuiの初期化
 	ImGuiUtility::BeginFrame();
 
 	
@@ -73,6 +77,7 @@ void GameSystem::Execute()
 	// staticクラスのUpdate処理
 	Input::Update();
 
+	// 物理演算
 	auto* cd_physics = new Profiler::FrameData();
 	frameData->categories["Physics"] = cd_physics;
 	auto st_physics = std::chrono::high_resolution_clock::now();
@@ -81,15 +86,18 @@ void GameSystem::Execute()
 	std::chrono::duration<float, std::milli> duration_physics = et_physics - st_physics;
 	cd_physics->totalTime = duration_physics.count();
 
+	// staticクラスのUpdate処理2
+	// 分離させている意味は不明
 	//InputSystem::Update();
 	SceneEditor::Update();
 	//GameState::Update();
 
+	
+	// ScriptsのUpdate処理
 	auto* cd_scripts = new Profiler::FrameData();
 	frameData->categories["Scripts"] = cd_scripts;
 	auto st_scripts = std::chrono::high_resolution_clock::now();
 
-	// Update処理
 	Scene* activeScene = SceneManager::GetActiveScene();
 	if (activeScene != nullptr)
 	{
@@ -109,18 +117,37 @@ void GameSystem::Execute()
 	cd_scripts->totalTime = duration_scripts.count();
 	
 
+	// レンダリング -------------------------------------------------------
+	auto* cd_rendering = new Profiler::FrameData();
+	frameData->categories["Rendering"] = cd_rendering;
 	auto st_rendering = std::chrono::high_resolution_clock::now();
 
+	// カメラ位置の転送
+	auto* subCD_camSetting = new Profiler::FrameData();
+	cd_rendering->categories["CamSetting"] = subCD_camSetting;
+	TimeMeasurer::Start();
+	DirectX::XMVECTOR camPos;
+	int camSize = 1;
 	if (SceneEditor::GetIsEditMode())
 	{
-		Direct3D::GetInstance().SetCamMat2D(EditorCamera::GetPosition().ToXMVECTOR(), EditorCamera::GetSize());
+		camPos = EditorCamera::GetPosition().ToXMVECTOR();
+		camSize = EditorCamera::GetSize();
 	}
 	else
 	{
-		Direct3D::GetInstance().SetCamMat2D(Camera::GetMain()->GetTransform()->position.Get().ToXMVECTOR(), Camera::GetMain()->GetSize());
+		camPos = Camera::GetMain()->GetTransform()->position.Get().ToXMVECTOR();
+		camSize = Camera::GetMain()->GetSize();
 	}
+	Direct3D::GetInstance().SetCamMat2D(camPos, camSize);
+	Direct3D::GetInstance().SetCamMat3D(camPos);
+	subCD_camSetting->totalTime = TimeMeasurer::end();
 
-	// 登録されたレンダリング関数を order 順に実行する
+
+	// 登録されたレンダリング関数を order 順に実行する（２D）
+	auto* subCD_callFunc = new Profiler::FrameData();
+	cd_rendering->categories["CallFunc"] = subCD_callFunc;
+	TimeMeasurer::Start();
+
 	for (RenderingData* rd : _renderingDataVector)
 	{
 		if (rd && rd->function)
@@ -131,17 +158,29 @@ void GameSystem::Execute()
 	}
 	_renderingDataVector.clear();
 
-	auto* cd_rendering = new Profiler::FrameData();
-	frameData->categories["Rendering"] = cd_rendering;
+	// 登録されたレンダリング関数を実行（3D）
+	for (auto& func : _renderingFuncVec)
+	{
+		func();
+	}
+	_renderingFuncVec.clear();
+
+	subCD_callFunc->totalTime = TimeMeasurer::end();
+
+
+	// プロファイラへデータ転送
 	auto et_rendering = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> duration_rendering = et_rendering - st_rendering;
 	cd_rendering->totalTime = duration_rendering.count();
+	// -----------------------------------------------------------------------------------------------
 
 
 	auto endTime = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> duration = endTime - startTime;
 	frameData->totalTime = duration.count();
 
+
+	// プロファイラの描画
 	if (!SceneEditor::GetIsEditMode())
 	{
 		Profiler::Render();
@@ -151,6 +190,7 @@ void GameSystem::Execute()
 	// これを最後に持ってこないと、オブジェクトの下にGUIが表示されてしまう。
 	ImGuiUtility::Render();
 
+	// 画面更新
     D3D.m_swapChain->Present(1, 0);
 }
 
@@ -175,24 +215,7 @@ void GameSystem::AddRenderingData(int order, std::function<void()> func)
 	}
 }
 
-void GameSystem::AddRenderingData2(int order, std::function<void()> setDataAct, std::function<void()> renderingAct)
+void GameSystem::AddRenderingFunc(std::function<void()> func)
 {
-	RenderingData* renderData = new RenderingData();
-	renderData->order = order;
-	renderData->setDataAct = setDataAct;
-	renderData->function = renderingAct;
 
-	// 挿入位置を order 昇順で検索して挿入する
-	auto it = std::find_if(_renderingDataVector.begin(), _renderingDataVector.end(), [&](RenderingData* rd) {
-		return rd->order > order;
-		});
-
-	if (it != _renderingDataVector.end())
-	{
-		_renderingDataVector.insert(it, renderData);
-	}
-	else
-	{
-		_renderingDataVector.push_back(renderData);
-	}
 }

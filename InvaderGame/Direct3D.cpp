@@ -1,4 +1,4 @@
-// 参考　https://gamesgard.com/directx11_lesson02/
+﻿// 参考　https://gamesgard.com/directx11_lesson02/
 
 #include "EngineFramework.h"
 
@@ -137,19 +137,6 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	_meshShader->CreateShader(*_device.Get());
 
 
-	// カメラ定数バッファの作成
-	D3D11_BUFFER_DESC bufferDesk = {};
-	bufferDesk.Usage = D3D11_USAGE_DYNAMIC;
-	bufferDesk.ByteWidth = sizeof(CameraBuffer);
-	bufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	bufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	if (FAILED(_device->CreateBuffer(&bufferDesk, nullptr, _cameraBuffer.GetAddressOf())))
-	{
-		MessageBox(NULL, L"定数バッファを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
-		return false;
-	}
-
-
 	// インデックスバッファの作成
 	// 四角形1つ分のインデックス
 	unsigned short indices[] = { 0, 1, 2, 1, 3, 2 };
@@ -189,6 +176,19 @@ void Direct3D::InitMode2D()
 
 	// 3. 生成
 	_device->CreateBuffer(&vDesc, &vData, _quadVertexBuffer.GetAddressOf());
+
+
+	// カメラ定数バッファの作成
+	D3D11_BUFFER_DESC bufferDesk = {};
+	bufferDesk.Usage = D3D11_USAGE_DYNAMIC;
+	bufferDesk.ByteWidth = sizeof(CameraBuffer);
+	bufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	bufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	if (FAILED(_device->CreateBuffer(&bufferDesk, nullptr, _cameraBuffer.GetAddressOf())))
+	{
+		//MessageBox(NULL, L"定数バッファを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
+		return;
+	}
 
 
 	// プロミティブ・トポロジーをセット
@@ -250,7 +250,7 @@ void Direct3D::InitMode2D()
 	ComPtr<ID3D11BlendState> blendState;
 	if (FAILED(_device->CreateBlendState(&blendDesc, blendState.GetAddressOf())))
 	{
-		MessageBox(NULL, L"ブレンドステートを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
+		//MessageBox(NULL, L"ブレンドステートを作成できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
 		return;
 	}
 
@@ -261,6 +261,19 @@ void Direct3D::InitMode2D()
 
 void Direct3D::InitMode3D()
 {
+	// カメラ定数バッファの作成
+	D3D11_BUFFER_DESC bufferDesk = {};
+	bufferDesk.Usage = D3D11_USAGE_DYNAMIC;
+	bufferDesk.ByteWidth = sizeof(CameraBuffer);
+	bufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	bufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	if (FAILED(_device->CreateBuffer(&bufferDesk, nullptr, _camBuf3D.GetAddressOf())))
+	{
+		MessageBoxW(NULL, L"３D用カメラ定数バッファを作成できませんでした．", L"エラー", MB_OK);
+		return;
+	}
+
+
 	D3D11_BUFFER_DESC vDesc = {};
 	vDesc.Usage = D3D11_USAGE_DYNAMIC;
 	vDesc.ByteWidth = sizeof(VertexType3D) * 100000;
@@ -269,7 +282,7 @@ void Direct3D::InitMode3D()
 
 	if (FAILED(_device->CreateBuffer(&vDesc, nullptr, _vertexBuffer.GetAddressOf())))
 	{
-		Debug::Log("あいうえお");
+		Debug::Log("_vertexBufferの作成に失敗しました．[Direct3D::InitMode3D()]");
 	}
 }
 
@@ -290,7 +303,7 @@ void Direct3D::SetCamMat2D(DirectX::XMVECTOR cameraPos, float size)
 	}
 	else
 	{
-		MessageBox(NULL, L"定数バッファを設定できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
+		//MessageBox(NULL, L"定数バッファを設定できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
 		return;
 	}
 
@@ -298,29 +311,29 @@ void Direct3D::SetCamMat2D(DirectX::XMVECTOR cameraPos, float size)
 	m_deviceContext->VSSetConstantBuffers(0, 1, _cameraBuffer.GetAddressOf());
 }
 
-void Direct3D::SetCamMat3D(DirectX::XMVECTOR cameraPos, float size)
+void Direct3D::SetCamMat3D(DirectX::XMVECTOR cameraPos)
 {
 	DirectX::XMMATRIX viewMat = DirectX::XMMatrixLookAtLH(cameraPos, DirectX::XMVectorAdd(cameraPos, DirectX::XMVectorSet(0, 0, 1, 0)), DirectX::XMVectorSet(0, 1, 0, 0));
 
 	float aspect = (float)GameSystem::WINDOW_WIDTH / (float)GameSystem::WINDOW_HEIGHT;
-	DirectX::XMMATRIX projMat = DirectX::XMMatrixPerspectiveFovLH(DirectX::XMConvertToRadians(60.0f / size), aspect, 0.1f, 1000.0f);
+	DirectX::XMMATRIX projMat = DirectX::XMMatrixPerspectiveFovLH(DirectX::XMConvertToRadians(60.0f), aspect, 0.1f, 1000.0f);
 
-	CameraBuffer constantBuffer;
-	constantBuffer.viewProjMat = DirectX::XMMatrixTranspose(viewMat * projMat);
+	CameraBuffer cameraBuffer;
+	cameraBuffer.viewProjMat = DirectX::XMMatrixTranspose(viewMat * projMat);
 
 	D3D11_MAPPED_SUBRESOURCE mappedSubresource;
-	if (SUCCEEDED(m_deviceContext->Map(_cameraBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
+	if (SUCCEEDED(m_deviceContext->Map(_camBuf3D.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubresource)))
 	{
-		memcpy(mappedSubresource.pData, &constantBuffer, sizeof(CameraBuffer));
-		m_deviceContext->Unmap(_cameraBuffer.Get(), 0);
+		memcpy(mappedSubresource.pData, &cameraBuffer, sizeof(CameraBuffer));
+		m_deviceContext->Unmap(_camBuf3D.Get(), 0);
 	}
 	else
 	{
-		MessageBox(NULL, L"定数バッファを設定できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
+		//MessageBox(NULL, L"定数バッファを設定できませんでした。", L"エラーウィンドウ", MB_OK | MB_ICONERROR);
 		return;
 	}
 
-	m_deviceContext->VSSetConstantBuffers(1, 1, _cameraBuffer.GetAddressOf()); // 第１引数はスロット指定
+	m_deviceContext->VSSetConstantBuffers(1, 1, _camBuf3D.GetAddressOf()); // 第１引数はスロット指定
 }
 
 

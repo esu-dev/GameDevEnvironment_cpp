@@ -37,29 +37,6 @@ void LevelEditor::Update()
 		// Prefab‚Ì‘I‘ð
 		if (ImGui::Begin("Prefab Select Window"))
 		{
-			//static int selectedIndex = 0;
-
-			//int i = 0;
-			//for (auto& pair : AssetManager::GetInstanceID2PointerMap())
-			//{
-			//	GameObject* gameObject = dynamic_cast<GameObject*>(pair.second);
-			//	if (gameObject == nullptr)
-			//	{
-			//		continue;
-			//	}
-
-			//	bool selected = (i == selectedIndex ? true : false);
-			//	if (ImGui::Selectable(pair.second->name.c_str(), &selected))
-			//	{
-			//		selectedIndex = i;
-
-			//		// Prefab‚ÌŽw’è
-			//		puttingPrefab = gameObject;
-			//	}
-
-			//	i++;
-			//}
-
 			ImGuiCreator::CreateAssetGui(AssetManager::GetAssetFolder(), [](const std::string& assetName, AssetManager::AssetFile* assetFile) -> void {
 				if (GameObject* gameObject = dynamic_cast<GameObject*>(assetFile->object))
 				{

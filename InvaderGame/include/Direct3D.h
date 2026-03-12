@@ -64,7 +64,7 @@ public:
 	void InitMode3D();
 
 	void SetCamMat2D(DirectX::XMVECTOR cameraPos, float size);
-	void SetCamMat3D(DirectX::XMVECTOR cameraPos, float size);
+	void SetCamMat3D(DirectX::XMVECTOR cameraPos);
 
 	// 情報のセット
 	void SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Quaternion rotation, DirectX::XMFLOAT4 color, bool isFlipX);
@@ -91,6 +91,7 @@ private:
 	ComPtr<ID3D11Buffer> _instanceBuffer; // インスタンスバッファ
 
 	// 3D
+	ComPtr<ID3D11Buffer> _camBuf3D;
 	ComPtr<ID3D11Buffer> _vertexBuffer;
 
 	
