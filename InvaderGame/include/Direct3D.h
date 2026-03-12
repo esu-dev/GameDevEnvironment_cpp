@@ -37,10 +37,22 @@ struct InstanceBuffer
 	float padding[3]; // 12 byte
 };
 
+struct ObjectData3D
+{
+	DirectX::XMMATRIX matrix;
+	DirectX::XMFLOAT4 color;
+};
+
 
 class Direct3D
 {
 public:
+	struct MeshData
+	{
+		std::vector<VertexType3D> vertexVec;
+		std::vector<unsigned int> _indexVec;
+	};
+
 	ComPtr<ID3D11Device> _device;
 	ComPtr<ID3D11DeviceContext>	m_deviceContext;
 	ComPtr<IDXGISwapChain> m_swapChain;
@@ -63,12 +75,18 @@ public:
 	void InitMode2D();
 	void InitMode3D();
 
+	// カメラ情報の転送
 	void SetCamMat2D(DirectX::XMVECTOR cameraPos, float size);
 	void SetCamMat3D(DirectX::XMVECTOR cameraPos);
 
-	// 情報のセット
+	// 情報のセット（2D）
 	void SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Quaternion rotation, DirectX::XMFLOAT4 color, bool isFlipX);
 
+	void SetMeshData(const std::vector<VertexType3D>& vertexVec, const std::vector<unsigned int>& indexVec);
+	void SetObjectData(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT3 scale, Quaternion rotation, DirectX::XMFLOAT4 color);
+
+	// メッシュデータの追加
+	void AddMeshData(const std::vector<VertexType3D>& vertexVec);
 
 	// 2D描画
 	void Draw2D_Batch();
@@ -76,7 +94,6 @@ public:
 	void DrawChar(ComPtr<ID3D11ShaderResourceView> shaderResourceView);
 
 	// 3D描画
-	void AddMeshData(const std::vector<VertexType3D>& vertexVec);
 	void Draw3D();
 
 
@@ -93,8 +110,11 @@ private:
 	// 3D
 	ComPtr<ID3D11Buffer> _camBuf3D;
 	ComPtr<ID3D11Buffer> _vertexBuffer;
+	ComPtr<ID3D11Buffer> _modelBuffer;
 
-	
+	MeshData _meshData;
+	ObjectData3D _objectData;
+
 	// 同じテクスチャをまとめてGPUに送るためのリスト
 	std::vector<InstanceBuffer> _instBufVec;
 	

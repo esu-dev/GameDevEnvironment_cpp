@@ -262,27 +262,45 @@ void Direct3D::InitMode2D()
 void Direct3D::InitMode3D()
 {
 	// カメラ定数バッファの作成
-	D3D11_BUFFER_DESC bufferDesk = {};
-	bufferDesk.Usage = D3D11_USAGE_DYNAMIC;
-	bufferDesk.ByteWidth = sizeof(CameraBuffer);
-	bufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	bufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	if (FAILED(_device->CreateBuffer(&bufferDesk, nullptr, _camBuf3D.GetAddressOf())))
 	{
-		MessageBoxW(NULL, L"３D用カメラ定数バッファを作成できませんでした．", L"エラー", MB_OK);
-		return;
+		D3D11_BUFFER_DESC bufferDesk = {};
+		bufferDesk.Usage = D3D11_USAGE_DYNAMIC;
+		bufferDesk.ByteWidth = sizeof(CameraBuffer);
+		bufferDesk.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		bufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		if (FAILED(_device->CreateBuffer(&bufferDesk, nullptr, _camBuf3D.GetAddressOf())))
+		{
+			MessageBoxW(NULL, L"３D用カメラ定数バッファを作成できませんでした．", L"エラー", MB_OK);
+			return;
+		}
 	}
 
 
+	// 頂点バッファの作成
 	D3D11_BUFFER_DESC vDesc = {};
 	vDesc.Usage = D3D11_USAGE_DYNAMIC;
-	vDesc.ByteWidth = sizeof(VertexType3D) * 100000;
+	vDesc.ByteWidth = sizeof(VertexType3D) * 100000; // 10万頂点まで対応可能
 	vDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	vDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 
 	if (FAILED(_device->CreateBuffer(&vDesc, nullptr, _vertexBuffer.GetAddressOf())))
 	{
 		Debug::Log("_vertexBufferの作成に失敗しました．[Direct3D::InitMode3D()]");
+	}
+
+
+	// モデルバッファの作成
+	{
+		D3D11_BUFFER_DESC bufferDesk = {};
+		bufferDesk.Usage = D3D11_USAGE_DYNAMIC;
+		bufferDesk.ByteWidth = sizeof(ObjectData3D);
+		bufferDesk.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+		bufferDesk.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		if (FAILED(_device->CreateBuffer(&bufferDesk, nullptr, _modelBuffer.GetAddressOf())))
+		{
+			MessageBoxW(NULL, L"モデル頂点バッファを作成できませんでした．", L"エラー", MB_OK);
+			return;
+		}
 	}
 }
 
@@ -362,6 +380,31 @@ void Direct3D::SetInstanceData(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 scale, Q
 
 	// vectorに追加
 	_instBufVec.push_back(instanceBuffer);
+}
+
+void Direct3D::SetMeshData(const std::vector<VertexType3D>& vertexVec, const std::vector<unsigned int>& indexVec)
+{
+	_meshData.vertexVec = vertexVec;
+	_meshData._indexVec = indexVec;
+}
+
+void Direct3D::SetObjectData(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT3 scale, Quaternion rotation, DirectX::XMFLOAT4 color)
+{
+	// スケールを行列化
+	DirectX::XMMATRIX scaleMatrix = DirectX::XMMatrixScaling(scale.x, scale.y, scale.z);
+
+	// 回転
+	DirectX::XMVECTOR q = DirectX::XMVectorSet(rotation.x, rotation.y, rotation.z, rotation.w);
+	DirectX::XMMATRIX rotationMatrix = DirectX::XMMatrixRotationQuaternion(q);
+
+	// 移動を行列化
+	DirectX::XMMATRIX transformMatrix = DirectX::XMMatrixTranslation(pos.x, pos.y, pos.z);
+
+	// ワールド行列の作成
+	DirectX::XMMATRIX worldMatrix = scaleMatrix * rotationMatrix * transformMatrix;
+
+	_objectData.matrix = worldMatrix;
+	_objectData.color = color;
 }
 
 void Direct3D::Draw2D_Batch()
@@ -461,5 +504,41 @@ void Direct3D::Draw3D()
 	m_deviceContext->IASetInputLayout(_meshShader->GetInputLayout_Batch().Get());
 
 	// ConstantBuffer
-	m_deviceContext->VSSetConstantBuffers(1, 1, _cameraBuffer.GetAddressOf());
+	m_deviceContext->VSSetConstantBuffers(1, 1, _camBuf3D.GetAddressOf());
+
+
+	// 頂点バッファをGPUに転送する
+	D3D11_MAPPED_SUBRESOURCE mappedSubResource; // こいつにデータを載せて転送する
+
+	// GPUのメモリをロックして、CPU側のポインタを取得
+	if (SUCCEEDED(m_deviceContext.Get()->Map(_vertexBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubResource)))
+	{
+		// データをコピー（memcpyなど）
+		memcpy(mappedSubResource.pData, _meshData.vertexVec.data(), sizeof(VertexType3D) * _meshData.vertexVec.size());
+
+		// ロックを解除（この瞬間にGPUへ転送されるイメージ）
+		m_deviceContext->Unmap(_vertexBuffer.Get(), 0);
+	}
+
+
+	// モデル頂点バッファをGPUに転送する
+	D3D11_MAPPED_SUBRESOURCE mappedSR;
+
+	if (SUCCEEDED(m_deviceContext->Map(_modelBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSR)))
+	{
+		memcpy(mappedSR.pData, &_objectData, sizeof(ObjectData3D));
+		m_deviceContext->Unmap(_modelBuffer.Get(), 0);
+	}
+
+
+	// ふたつのバッファを頂点バッファとしてセット
+	ID3D11Buffer* buffers[] = { _vertexBuffer.Get(), _modelBuffer.Get() };
+	UINT strides[] = { sizeof(VertexType3D), sizeof(ObjectData3D) };
+	UINT offsets[] = { 0, 0 };
+	
+	m_deviceContext->IASetVertexBuffers(0, 2, buffers, strides, offsets);
+
+
+	// 描画
+	//m_deviceContext->DrawIndexed();
 }

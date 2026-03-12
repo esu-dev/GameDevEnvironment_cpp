@@ -217,5 +217,5 @@ void GameSystem::AddRenderingData(int order, std::function<void()> func)
 
 void GameSystem::AddRenderingFunc(std::function<void()> func)
 {
-
+	_renderingFuncVec.push_back(func);
 }
