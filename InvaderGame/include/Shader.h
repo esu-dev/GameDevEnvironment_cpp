@@ -5,13 +5,20 @@
 class Shader
 {
 public:
+	enum ShaderType
+	{
+		Normal2D,
+		Instanced2D,
+		Instanced3D
+	};
+
 	Shader(LPCWSTR shaderPath, LPCSTR vsFuncName, LPCSTR psFuncName);
 	const ComPtr<ID3D11VertexShader> GetVertexShader();
 	const ComPtr<ID3D11PixelShader> GetPixelShader();
 	const ComPtr<ID3D11InputLayout> GetInputLayout();
 	const ComPtr<ID3D11InputLayout> GetInputLayout_Batch();
 	const ComPtr<ID3D11InputLayout> GetInputLayout3D();
-	void CreateShader(ID3D11Device& device);
+	void CreateShader(ComPtr<ID3D11Device>& device, ShaderType shaderType);
 
 private:
 	LPCWSTR _shaderPath;

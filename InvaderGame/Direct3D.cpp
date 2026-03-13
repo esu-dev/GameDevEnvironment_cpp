@@ -119,59 +119,59 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	//=====================================================
 	// バックバッファをRTとしてセット
 	// ここでGetAddressOf()を使うのは、ComPtrでは&がオーバーロードされているから
-	//m_deviceContext->OMSetRenderTargets(1, m_backBufferView.GetAddressOf(), nullptr);
+	m_deviceContext->OMSetRenderTargets(1, m_backBufferView.GetAddressOf(), nullptr);
 
-	//// ビューポートの設定
-	//D3D11_VIEWPORT vp = { 0.0f, 0.0f, (float)width, (float)height, 0.0f, 1.0f };
-	//m_deviceContext->RSSetViewports(1, &vp);
-
-	// 深度バッファの作成
-	// 1. テクスチャ（2Dバッファ）の作成
-	D3D11_TEXTURE2D_DESC depthDesc = {};
-	depthDesc.Width = GameSystem::WINDOW_WIDTH;                // ウィンドウ幅
-	depthDesc.Height = GameSystem::WINDOW_HEIGHT;              // ウィンドウ高さ
-	depthDesc.MipLevels = 1;
-	depthDesc.ArraySize = 1;
-	depthDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT; // 一般的な24bit深度
-	depthDesc.SampleDesc.Count = 1;         // マルチサンプルなし
-	depthDesc.SampleDesc.Quality = 0;
-	depthDesc.Usage = D3D11_USAGE_DEFAULT;
-	depthDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
-
-	ComPtr<ID3D11Texture2D> depthBuffer;
-	_device->CreateTexture2D(&depthDesc, nullptr, depthBuffer.GetAddressOf());
-
-	// 2. 深度ステンシルビュー (DSV) の作成
-	_device->CreateDepthStencilView(depthBuffer.Get(), nullptr, m_depthStencilView.GetAddressOf());
-
-	// 第3引数に NULL ではなく DSV を渡す
-	m_deviceContext->OMSetRenderTargets(1, m_backBufferView.GetAddressOf(), m_depthStencilView.Get());
-
-
+	// ビューポートの設定
 	D3D11_VIEWPORT vp = { 0.0f, 0.0f, (float)width, (float)height, 0.0f, 1.0f };
 	m_deviceContext->RSSetViewports(1, &vp);
 
+	// 深度バッファの作成
+	// 1. テクスチャ（2Dバッファ）の作成
+	//D3D11_TEXTURE2D_DESC depthDesc = {};
+	//depthDesc.Width = GameSystem::WINDOW_WIDTH;                // ウィンドウ幅
+	//depthDesc.Height = GameSystem::WINDOW_HEIGHT;              // ウィンドウ高さ
+	//depthDesc.MipLevels = 1;
+	//depthDesc.ArraySize = 1;
+	//depthDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT; // 一般的な24bit深度
+	//depthDesc.SampleDesc.Count = 1;         // マルチサンプルなし
+	//depthDesc.SampleDesc.Quality = 0;
+	//depthDesc.Usage = D3D11_USAGE_DEFAULT;
+	//depthDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+
+	//ComPtr<ID3D11Texture2D> depthBuffer;
+	//_device->CreateTexture2D(&depthDesc, nullptr, depthBuffer.GetAddressOf());
+
+	//// 2. 深度ステンシルビュー (DSV) の作成
+	//_device->CreateDepthStencilView(depthBuffer.Get(), nullptr, m_depthStencilView.GetAddressOf());
+
+	//// 第3引数に NULL ではなく DSV を渡す
+	//m_deviceContext->OMSetRenderTargets(1, m_backBufferView.GetAddressOf(), m_depthStencilView.Get());
+
+
+	//D3D11_VIEWPORT vp = { 0.0f, 0.0f, (float)width, (float)height, 0.0f, 1.0f };
+	//m_deviceContext->RSSetViewports(1, &vp);
+
 
 	// Depth Stencil Stateのセット
-	CD3D11_DEPTH_STENCIL_DESC dsDesc(D3D11_DEFAULT);
-	dsDesc.DepthEnable = TRUE;
-	dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-	dsDesc.DepthFunc = D3D11_COMPARISON_LESS; // 手前にあるものを描く
+	//CD3D11_DEPTH_STENCIL_DESC dsDesc(D3D11_DEFAULT);
+	//dsDesc.DepthEnable = TRUE;
+	//dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+	//dsDesc.DepthFunc = D3D11_COMPARISON_LESS; // 手前にあるものを描く
 
-	ComPtr<ID3D11DepthStencilState> pDSState;
-	_device->CreateDepthStencilState(&dsDesc, pDSState.GetAddressOf());
-	m_deviceContext->OMSetDepthStencilState(pDSState.Get(), 1);
+	//ComPtr<ID3D11DepthStencilState> pDSState;
+	//_device->CreateDepthStencilState(&dsDesc, pDSState.GetAddressOf());
+	//m_deviceContext->OMSetDepthStencilState(pDSState.Get(), 1);
 
 
 	//=====================================================
 	// シェーダーの作成
 	//=====================================================
 	// 2D
-	_texShader->CreateShader(*_device.Get());
-	_colorShader->CreateShader(*_device.Get());
+	_texShader->CreateShader(_device, Shader::ShaderType::Instanced2D);
+	_colorShader->CreateShader(_device, Shader::ShaderType::Instanced2D);
 
 	// 3D
-	_meshShader->CreateShader(*_device.Get());
+	_meshShader->CreateShader(_device, Shader::ShaderType::Instanced3D);
 
 
 	return true;
@@ -302,14 +302,14 @@ void Direct3D::InitMode3D()
 {
 	// ラスタライザの作成
 	// もし２D描画に影響が出るなら、deviceContextを分離する必要があるかも
-	CD3D11_RASTERIZER_DESC rsDesc(D3D11_DEFAULT);
+	/*CD3D11_RASTERIZER_DESC rsDesc(D3D11_DEFAULT);
 	rsDesc.CullMode = D3D11_CULL_NONE;
 	rsDesc.FillMode = D3D11_FILL_SOLID;
 
 	ComPtr<ID3D11RasterizerState> pRS;
 	_device->CreateRasterizerState(&rsDesc, pRS.GetAddressOf());
 
-	m_deviceContext->RSSetState(pRS.Get());
+	m_deviceContext->RSSetState(pRS.Get());*/
 
 
 	// カメラ定数バッファの作成
@@ -558,18 +558,6 @@ void Direct3D::AddMeshData(const std::vector<VertexType3D>& vertexVec)
 
 void Direct3D::Draw3D()
 {
-	if (_vertexVec.empty()) return;
-
-	// --- 追加：3D描画用のステートを強制する ---
-	D3D.m_deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
-	D3D11_VIEWPORT vp = { 0.0f, 0.0f, (float)GameSystem::WINDOW_WIDTH, (float)GameSystem::WINDOW_HEIGHT, 0.0f, 1.0f };
-	m_deviceContext->RSSetViewports(1, &vp);
-
-	// 2D描画の影響を排除（念のため）
-	float blendFactor[4] = { 0, 0, 0, 0 };
-	m_deviceContext->OMSetBlendState(nullptr, blendFactor, 0xffffffff);
-
 	// シェーダーのセット
 	m_deviceContext->VSSetShader(_meshShader->GetVertexShader().Get(), 0, 0);
 	m_deviceContext->PSSetShader(_meshShader->GetPixelShader().Get(), 0, 0);

@@ -66,7 +66,7 @@ void GameSystem::Execute()
 	D3D.m_deviceContext->ClearRenderTargetView(D3D.m_backBufferView.Get(), color);
 
 	// 深度バッファのクリア
-	Direct3D::GetInstance().m_deviceContext->ClearDepthStencilView(Direct3D::GetInstance().m_depthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+	//Direct3D::GetInstance().m_deviceContext->ClearDepthStencilView(Direct3D::GetInstance().m_depthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 
 	// ImGuiの初期化
 	ImGuiUtility::BeginFrame();
