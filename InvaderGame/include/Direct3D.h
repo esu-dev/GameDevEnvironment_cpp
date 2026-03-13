@@ -58,6 +58,9 @@ public:
 	ComPtr<IDXGISwapChain> m_swapChain;
 	ComPtr<ID3D11RenderTargetView> m_backBufferView;
 
+	// 深度バッファ作成用（3D）
+	ComPtr<ID3D11DepthStencilView> m_depthStencilView;
+
 
 	// シェーダー
 	// 2D描画用
@@ -100,19 +103,21 @@ public:
 private:
 	static inline Direct3D* s_instance;
 
+
 	// バッファ
 	// 2D
 	ComPtr<ID3D11Buffer> _quadVertexBuffer; // 固定頂点バッファ
 	ComPtr<ID3D11Buffer> _cameraBuffer;
-	ComPtr<ID3D11Buffer> _indexBuffer;
+	ComPtr<ID3D11Buffer> _indexBuffer; // インデックスバッファ
 	ComPtr<ID3D11Buffer> _instanceBuffer; // インスタンスバッファ
 
 	// 3D
 	ComPtr<ID3D11Buffer> _camBuf3D;
 	ComPtr<ID3D11Buffer> _vertexBuffer;
 	ComPtr<ID3D11Buffer> _modelBuffer;
+	ComPtr<ID3D11Buffer> _indexBuffer3D;
 
-	MeshData _meshData;
+	MeshData _meshData = MeshData();
 	ObjectData3D _objectData;
 
 	// 同じテクスチャをまとめてGPUに送るためのリスト

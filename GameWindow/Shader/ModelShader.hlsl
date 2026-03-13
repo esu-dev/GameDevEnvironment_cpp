@@ -38,6 +38,9 @@ VS_OUTPUT VS_Main(VS_INPUT input)
     float4 worldPos = mul(float4(input.pos, 1.0f), input.worldMat);
     output.pos = mul(worldPos, viewProjMat);
     
+    // 行列無視
+    output.pos = float4(input.pos, 1);
+    
     // 法線の変換 (拡大縮小を考慮して正規化)
     output.normal = normalize(mul(input.normal, (float3x3)input.worldMat));
     
@@ -50,6 +53,8 @@ VS_OUTPUT VS_Main(VS_INPUT input)
 // ピクセルシェーダー
 float4 PS_Main(VS_OUTPUT input) : SV_Target0
 {
+    return float4(1, 1, 1, 1);
+    
     // 簡易的なランバート照明
     float3 lightDir = normalize(float3(1.0f, -1.0f, 1.0f));
     float ambient = 0.4f;
@@ -61,6 +66,6 @@ float4 PS_Main(VS_OUTPUT input) : SV_Target0
     
     // 透明度が0の場合は破棄（必要に応じて）
     if(texColor.a < 0.01f) discard;
-
+    
     return texColor * input.color * float4(lighting, 1.0f);
 }

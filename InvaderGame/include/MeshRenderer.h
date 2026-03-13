@@ -10,9 +10,12 @@ public:
 		SERIALIZE3(EngineBehaviour,
 			)
 
+	MeshRenderer();
 	void Start() override;
 	void Update() override;
+	void EditorUpdate() override;
 
 private:
 	Mesh* _mesh;
+	void Render();
 };

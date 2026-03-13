@@ -5,7 +5,7 @@
 #include "Transform.h"
 #include "Vector3.h"
 
-void MeshRenderer::Start()
+MeshRenderer::MeshRenderer()
 {
 	_mesh = new Mesh();
 	if (_mesh->Load("./Resources/Fbx/cube.fbx"))
@@ -18,26 +18,35 @@ void MeshRenderer::Start()
 	}
 }
 
+void MeshRenderer::Start()
+{
+	
+}
+
 void MeshRenderer::Update()
 {
-	auto render = [&]() -> void {
-		Debug::Log("Render");
+	GameSystem::GetInstance().AddRenderingFunc([&]() -> void { Render(); });
+}
 
-		// メッシュデータを設定
-		Direct3D::GetInstance().SetMeshData(_mesh->GetVertices(), _mesh->GetIndices());
+void MeshRenderer::EditorUpdate()
+{
+	GameSystem::GetInstance().AddRenderingFunc([&]() -> void { Render(); });
+}
 
-		// 座標データを設定
-		Transform* t = this->GetTransform();
-		Direct3D::GetInstance().SetObjectData(
-			{ t->position.Get().x, t->position.Get().y, t->position.Get().z },
-			{ t->scale.x, t->scale.y, t->scale.z },
-			t->rotation,
-			{ 1, 1, 1, 1 }
-		);
+void MeshRenderer::Render()
+{
+	// メッシュデータを設定
+	Direct3D::GetInstance().SetMeshData(_mesh->GetVertices(), _mesh->GetIndices());
 
-		// 描画する
-		Direct3D::GetInstance().Draw3D();
-	};
+	// 座標データを設定
+	Transform* t = this->GetTransform();
+	Direct3D::GetInstance().SetObjectData(
+		{ t->position.Get().x, t->position.Get().y, t->position.Get().z },
+		{ t->scale.x, t->scale.y, t->scale.z },
+		t->rotation,
+		{ 1, 1, 1, 1 }
+	);
 
-	GameSystem::GetInstance().AddRenderingFunc(render);
+	// 描画する
+	Direct3D::GetInstance().Draw3D();
 }

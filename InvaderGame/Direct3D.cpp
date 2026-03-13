@@ -119,11 +119,48 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	//=====================================================
 	// バックバッファをRTとしてセット
 	// ここでGetAddressOf()を使うのは、ComPtrでは&がオーバーロードされているから
-	m_deviceContext->OMSetRenderTargets(1, m_backBufferView.GetAddressOf(), nullptr);
+	//m_deviceContext->OMSetRenderTargets(1, m_backBufferView.GetAddressOf(), nullptr);
 
-	// ビューポートの設定
+	//// ビューポートの設定
+	//D3D11_VIEWPORT vp = { 0.0f, 0.0f, (float)width, (float)height, 0.0f, 1.0f };
+	//m_deviceContext->RSSetViewports(1, &vp);
+
+	// 深度バッファの作成
+	// 1. テクスチャ（2Dバッファ）の作成
+	D3D11_TEXTURE2D_DESC depthDesc = {};
+	depthDesc.Width = GameSystem::WINDOW_WIDTH;                // ウィンドウ幅
+	depthDesc.Height = GameSystem::WINDOW_HEIGHT;              // ウィンドウ高さ
+	depthDesc.MipLevels = 1;
+	depthDesc.ArraySize = 1;
+	depthDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT; // 一般的な24bit深度
+	depthDesc.SampleDesc.Count = 1;         // マルチサンプルなし
+	depthDesc.SampleDesc.Quality = 0;
+	depthDesc.Usage = D3D11_USAGE_DEFAULT;
+	depthDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+
+	ComPtr<ID3D11Texture2D> depthBuffer;
+	_device->CreateTexture2D(&depthDesc, nullptr, depthBuffer.GetAddressOf());
+
+	// 2. 深度ステンシルビュー (DSV) の作成
+	_device->CreateDepthStencilView(depthBuffer.Get(), nullptr, m_depthStencilView.GetAddressOf());
+
+	// 第3引数に NULL ではなく DSV を渡す
+	m_deviceContext->OMSetRenderTargets(1, m_backBufferView.GetAddressOf(), m_depthStencilView.Get());
+
+
 	D3D11_VIEWPORT vp = { 0.0f, 0.0f, (float)width, (float)height, 0.0f, 1.0f };
 	m_deviceContext->RSSetViewports(1, &vp);
+
+
+	// Depth Stencil Stateのセット
+	CD3D11_DEPTH_STENCIL_DESC dsDesc(D3D11_DEFAULT);
+	dsDesc.DepthEnable = TRUE;
+	dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+	dsDesc.DepthFunc = D3D11_COMPARISON_LESS; // 手前にあるものを描く
+
+	ComPtr<ID3D11DepthStencilState> pDSState;
+	_device->CreateDepthStencilState(&dsDesc, pDSState.GetAddressOf());
+	m_deviceContext->OMSetDepthStencilState(pDSState.Get(), 1);
 
 
 	//=====================================================
@@ -136,19 +173,6 @@ bool Direct3D::Initialize(HWND hWnd, int width, int height)
 	// 3D
 	_meshShader->CreateShader(*_device.Get());
 
-
-	// インデックスバッファの作成
-	// 四角形1つ分のインデックス
-	unsigned short indices[] = { 0, 1, 2, 1, 3, 2 };
-
-	CD3D11_BUFFER_DESC indexBufferDesc = {};
-	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	indexBufferDesc.ByteWidth = sizeof(indices);
-	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-
-	D3D11_SUBRESOURCE_DATA indexBufSRdata = {};
-	indexBufSRdata.pSysMem = indices;
-	_device->CreateBuffer(&indexBufferDesc, &indexBufSRdata, _indexBuffer.GetAddressOf());
 
 	return true;
 }
@@ -192,6 +216,7 @@ void Direct3D::InitMode2D()
 
 
 	// プロミティブ・トポロジーをセット
+	// これもう使っていないかも？
 	D3D.m_deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST); // 三角形メッシュ
 
 
@@ -203,6 +228,20 @@ void Direct3D::InitMode2D()
 	instanceBufferDesk.CPUAccessFlags = D3D10_CPU_ACCESS_WRITE;
 
 	_device->CreateBuffer(&instanceBufferDesk, nullptr, _instanceBuffer.GetAddressOf());
+
+
+	// インデックスバッファの作成
+	// 四角形1つ分のインデックス
+	unsigned short indices[] = { 0, 1, 2, 1, 3, 2 };
+
+	CD3D11_BUFFER_DESC indexBufferDesc = {};
+	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	indexBufferDesc.ByteWidth = sizeof(indices);
+	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+
+	D3D11_SUBRESOURCE_DATA indexBufSRdata = {};
+	indexBufSRdata.pSysMem = indices;
+	_device->CreateBuffer(&indexBufferDesc, &indexBufSRdata, _indexBuffer.GetAddressOf());
 
 
 	// サンプラーステートを作成しセットする
@@ -261,6 +300,18 @@ void Direct3D::InitMode2D()
 
 void Direct3D::InitMode3D()
 {
+	// ラスタライザの作成
+	// もし２D描画に影響が出るなら、deviceContextを分離する必要があるかも
+	CD3D11_RASTERIZER_DESC rsDesc(D3D11_DEFAULT);
+	rsDesc.CullMode = D3D11_CULL_NONE;
+	rsDesc.FillMode = D3D11_FILL_SOLID;
+
+	ComPtr<ID3D11RasterizerState> pRS;
+	_device->CreateRasterizerState(&rsDesc, pRS.GetAddressOf());
+
+	m_deviceContext->RSSetState(pRS.Get());
+
+
 	// カメラ定数バッファの作成
 	{
 		D3D11_BUFFER_DESC bufferDesk = {};
@@ -301,6 +352,19 @@ void Direct3D::InitMode3D()
 			MessageBoxW(NULL, L"モデル頂点バッファを作成できませんでした．", L"エラー", MB_OK);
 			return;
 		}
+	}
+
+
+	// インデックスバッファの作成
+	CD3D11_BUFFER_DESC indexBD = {}; // 0埋めは必須 // C++で追加されたConvenienceなヘルパークラス
+	indexBD.Usage = D3D11_USAGE_DYNAMIC;
+	indexBD.ByteWidth = sizeof(unsigned int) * 100000;
+	indexBD.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	indexBD.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	if (FAILED(_device->CreateBuffer(&indexBD, nullptr, _indexBuffer3D.GetAddressOf())))
+	{
+		MessageBoxW(NULL, L"インデックスバッファを作成できませんでした．", L"エラー", MB_OK);
+		return;
 	}
 }
 
@@ -496,15 +560,37 @@ void Direct3D::Draw3D()
 {
 	if (_vertexVec.empty()) return;
 
+	// --- 追加：3D描画用のステートを強制する ---
+	D3D.m_deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	D3D11_VIEWPORT vp = { 0.0f, 0.0f, (float)GameSystem::WINDOW_WIDTH, (float)GameSystem::WINDOW_HEIGHT, 0.0f, 1.0f };
+	m_deviceContext->RSSetViewports(1, &vp);
+
+	// 2D描画の影響を排除（念のため）
+	float blendFactor[4] = { 0, 0, 0, 0 };
+	m_deviceContext->OMSetBlendState(nullptr, blendFactor, 0xffffffff);
+
 	// シェーダーのセット
 	m_deviceContext->VSSetShader(_meshShader->GetVertexShader().Get(), 0, 0);
 	m_deviceContext->PSSetShader(_meshShader->GetPixelShader().Get(), 0, 0);
 
 	// InputLayout
-	m_deviceContext->IASetInputLayout(_meshShader->GetInputLayout_Batch().Get());
+	m_deviceContext->IASetInputLayout(_meshShader->GetInputLayout3D().Get());
 
 	// ConstantBuffer
 	m_deviceContext->VSSetConstantBuffers(1, 1, _camBuf3D.GetAddressOf());
+
+
+	// 頂点データ (時計回り)
+	std::vector<VertexType3D> testVertices = {
+		//   pos(x, y, z)          normal(x, y, z)      uv(u, v)
+		{ {  0.0f,  0.5f, 0.0f }, { 0.0f, 0.0f, -1.0f }, { 0.5f, 0.0f } }, // 上
+		{ {  0.5f, -0.5f, 0.0f }, { 0.0f, 0.0f, -1.0f }, { 1.0f, 1.0f } }, // 右下
+		{ { -0.5f, -0.5f, 0.0f }, { 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f } }  // 左下
+	};
+
+	// インデックスデータ
+	std::vector<unsigned int> testIndices = { 0, 1, 2 };
 
 
 	// 頂点バッファをGPUに転送する
@@ -514,7 +600,8 @@ void Direct3D::Draw3D()
 	if (SUCCEEDED(m_deviceContext.Get()->Map(_vertexBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedSubResource)))
 	{
 		// データをコピー（memcpyなど）
-		memcpy(mappedSubResource.pData, _meshData.vertexVec.data(), sizeof(VertexType3D) * _meshData.vertexVec.size());
+		//memcpy(mappedSubResource.pData, _meshData.vertexVec.data(), sizeof(VertexType3D) * _meshData.vertexVec.size());
+		memcpy(mappedSubResource.pData, testVertices.data(), sizeof(VertexType3D) * testVertices.size());
 
 		// ロックを解除（この瞬間にGPUへ転送されるイメージ）
 		m_deviceContext->Unmap(_vertexBuffer.Get(), 0);
@@ -531,6 +618,16 @@ void Direct3D::Draw3D()
 	}
 
 
+	// インデックスバッファをGPUに転送する
+	D3D11_MAPPED_SUBRESOURCE msr_indexBuf;
+	if (SUCCEEDED(m_deviceContext->Map(_indexBuffer3D.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &msr_indexBuf)))
+	{
+		//memcpy(msr_indexBuf.pData, _meshData._indexVec.data(), sizeof(unsigned int) * _meshData._indexVec.size());
+		memcpy(msr_indexBuf.pData, testIndices.data(), sizeof(unsigned int) * testIndices.size());
+		m_deviceContext->Unmap(_indexBuffer3D.Get(), 0);
+	}
+
+
 	// ふたつのバッファを頂点バッファとしてセット
 	ID3D11Buffer* buffers[] = { _vertexBuffer.Get(), _modelBuffer.Get() };
 	UINT strides[] = { sizeof(VertexType3D), sizeof(ObjectData3D) };
@@ -539,6 +636,11 @@ void Direct3D::Draw3D()
 	m_deviceContext->IASetVertexBuffers(0, 2, buffers, strides, offsets);
 
 
+	// インデックスバッファをセット
+	m_deviceContext->IASetIndexBuffer(_indexBuffer3D.Get(), DXGI_FORMAT_R32_UINT, 0);
+
+
 	// 描画
-	//m_deviceContext->DrawIndexed();
+	//m_deviceContext->DrawIndexedInstanced(_meshData._indexVec.size(), 1, 0, 0 , 0);
+	m_deviceContext->DrawIndexedInstanced((UINT)testIndices.size(), 1, 0, 0 , 0);
 }
