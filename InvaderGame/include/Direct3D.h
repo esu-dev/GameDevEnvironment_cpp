@@ -118,7 +118,7 @@ private:
 	ComPtr<ID3D11Buffer> _indexBuffer3D;
 
 	MeshData _meshData = MeshData();
-	ObjectData3D _objectData;
+	ObjectData3D _objectData = ObjectData3D();
 
 	// 同じテクスチャをまとめてGPUに送るためのリスト
 	std::vector<InstanceBuffer> _instBufVec;

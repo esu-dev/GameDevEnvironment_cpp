@@ -140,14 +140,23 @@ void SceneEditor::Update()
 	// プラスボタン
 	if (ImGui::Button("+"))
 	{
-		GameObject* newGo = GameObject::Create();
-		newGo->name = "New GameObject";
-		SceneManager::GetActiveScene()->AddGameObject(newGo);
+		ImGui::OpenPopup("HierarchyAddPopup");
+	}
 
-		SceneDataManager::GetInstanceID2PointerMap()[newGo->instanceID] = newGo;
-		SceneDataManager::GetInstanceID2PointerMap()[newGo->GetTransform()->instanceID] = newGo->GetTransform();
+	if (ImGui::BeginPopup("HierarchyAddPopup"))
+	{
+		if (ImGui::MenuItem("Create Empty"))
+		{
+			GameObject* newGo = GameObject::Create();
+			newGo->name = "New GameObject";
+			SceneManager::GetActiveScene()->AddGameObject(newGo);
 
-		Selection::gameObject = newGo;
+			SceneDataManager::GetInstanceID2PointerMap()[newGo->instanceID] = newGo;
+			SceneDataManager::GetInstanceID2PointerMap()[newGo->GetTransform()->instanceID] = newGo->GetTransform();
+
+			Selection::gameObject = newGo;
+		}
+		ImGui::EndPopup();
 	}
 
 	ImGui::SameLine();

@@ -130,7 +130,7 @@ void GameSystem::Execute()
 	cd_rendering->categories["CamSetting"] = subCD_camSetting;
 	TimeMeasurer::Start();
 	DirectX::XMVECTOR camPos;
-	int camSize = 1;
+	float camSize = 1;
 	if (SceneEditor::GetIsEditMode())
 	{
 		camPos = EditorCamera::GetPosition().ToXMVECTOR();

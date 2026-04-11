@@ -39,7 +39,7 @@ VS_OUTPUT VS_Main(VS_INPUT input)
     output.pos = mul(worldPos, viewProjMat);
     
     // 行列無視
-    output.pos = float4(input.pos, 1);
+    //output.pos = float4(input.pos, 1);
     
     // 法線の変換 (拡大縮小を考慮して正規化)
     output.normal = normalize(mul(input.normal, (float3x3)input.worldMat));

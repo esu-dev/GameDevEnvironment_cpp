@@ -159,8 +159,8 @@ Transform:
   - (instanceID)1660112007=1826137525=1761606654
   position:
     _variable:
-      x: 12.333335
-      y: 2.916668
+      x: -5.000000
+      y: -5.000000
       z: 0.000000
     (vector)_timeVariableSetVector[HideInspector]: 0
   _localPosition:
@@ -376,8 +376,8 @@ Transform:
   (vector)_childVector[HideInspector]: 0
   position:
     _variable:
-      x: 12.333335
-      y: 0.916668
+      x: -5.000000
+      y: -7.000000
       z: 0.000000
     (vector)_timeVariableSetVector[HideInspector]: 0
   _localPosition:
@@ -675,8 +675,8 @@ Transform:
   (vector)_childVector[HideInspector]: 0
   position:
     _variable:
-      x: 12.333335
-      y: 2.916668
+      x: -5.000000
+      y: -5.000000
       z: 0.000000
     (vector)_timeVariableSetVector[HideInspector]: 0
   _localPosition:
@@ -786,8 +786,8 @@ Transform:
   (vector)_childVector[HideInspector]: 0
   position:
     _variable:
-      x: 12.333335
-      y: 2.916668
+      x: -5.000000
+      y: -5.000000
       z: 0.000000
     (vector)_timeVariableSetVector[HideInspector]: 0
   _localPosition:

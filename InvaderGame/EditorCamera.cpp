@@ -43,7 +43,6 @@ void EditorCamera::Update()
 	static bool isEditorCameraOn;
 	static float moveSpeed = 4;
 
-
 	if (Input::GetKey(VK_CONTROL) && Input::GetKeyDown('C'))
 	{
 		isEditorCameraOn = !isEditorCameraOn;
